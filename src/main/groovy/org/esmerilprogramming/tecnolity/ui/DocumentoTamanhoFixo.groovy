@@ -1,22 +1,22 @@
-package br.com.mentores.ui;
+package br.com.mentores.ui
 
-import java.awt.*;
-import javax.swing.text.*;
+import java.awt.*
+import javax.swing.text.*
 
-public class DocumentoTamanhoFixo extends PlainDocument
+class DocumentoTamanhoFixo extends PlainDocument
 {
-    private int tamanhoMaximo;
-    
-    public DocumentoTamanhoFixo(final int tamanhoMaximo) {
-        this.tamanhoMaximo = tamanhoMaximo;
+  private int tamanhoMaximo
+
+  DocumentoTamanhoFixo(final int tamanhoMaximo) {
+    this.tamanhoMaximo = tamanhoMaximo
+  }
+
+  void insertString(final int offset, final String str, final AttributeSet a) throws BadLocationException {
+    if (this.getLength() + str.length() > this.tamanhoMaximo) {
+      Toolkit.getDefaultToolkit().beep()
     }
-    
-    public void insertString(final int offset, final String str, final AttributeSet a) throws BadLocationException {
-        if (this.getLength() + str.length() > this.tamanhoMaximo) {
-            Toolkit.getDefaultToolkit().beep();
-        }
-        else {
-            super.insertString(offset, str, a);
-        }
+    else {
+      super.insertString(offset, str, a)
     }
+  }
 }
