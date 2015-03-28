@@ -1,0 +1,40 @@
+package br.com.tecnolity.aplicacao.relatorios;
+
+import java.util.*;
+import br.com.tecnolity.suprimentos.*;
+import br.com.tecnolity.util.*;
+
+public class RelatorioFornecedoresPendentes extends Relatorio
+{
+    private Vector fornecedores;
+    
+    public RelatorioFornecedoresPendentes(Vector fornecedores)
+    {
+        this.fornecedores = fornecedores;
+    }
+   
+    public String gerarRelatorio()
+    {
+        Calendario calendario = new Calendario();
+        conteudo = new StringBuffer();
+        conteudo.append("FORNECEDORES PENDENTES                                        TECNOLITY DO NORDESTE LTDA");
+        conteudo.append(QUEBRA);
+        conteudo.append("========================================================================================");
+        conteudo.append(QUEBRA);
+        conteudo.append("                                                                        Data: " + calendario.dataHoje("dd/MM/yyyy"));
+        conteudo.append(QUEBRA);
+        conteudo.append("Cod.  | Fornecedor");
+        conteudo.append(QUEBRA);
+        conteudo.append("----------------------------------------------------------------------------------------");
+        conteudo.append(QUEBRA);
+        String quantMinima = "";
+        for(int i = 0;i < fornecedores.size();i++)
+        {
+            Fornecedor fornecedor = (Fornecedor)fornecedores.get(i);
+            conteudo.append("" + Texto.obterNumeroTamanhoFixo("" + fornecedor.obterCodigo(),6,"0") +"|"+ fornecedor.obterRazaoSocial());
+            conteudo.append(QUEBRA);
+        }
+        conteudo.append("----------------------------------------------------------------------------------------");
+        return conteudo.toString();
+    }
+}
