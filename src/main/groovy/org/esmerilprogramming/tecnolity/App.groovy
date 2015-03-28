@@ -8,9 +8,9 @@ import java.awt.print.*
 import br.com.tecnolity.administracao.*
 import br.com.tecnolity.util.*
 
-class App extends br.com.mentores.ui.Aplicacao
-{
-  private JPanel areaTrabalho
+class App extends br.com.mentores.ui.Aplicacao {
+
+    private JPanel areaTrabalho
     private Container conteudo
     private Colaborador colaborador
     private Conexao conexao
@@ -20,8 +20,7 @@ class App extends br.com.mentores.ui.Aplicacao
     private PageFormat formatoPagina
     private Configuracao configuracao
 
-    App()
-    {
+    App() {
       super("Sistema de Planejamento e Controle da Produção")
         configuracao = new Configuracao()
         try
