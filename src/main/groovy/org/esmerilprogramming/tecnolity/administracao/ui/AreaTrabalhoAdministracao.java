@@ -1,12 +1,12 @@
-package br.com.tecnolity.administracao.ui
+package org.esmerilprogramming.tecnolity.administracao.ui
 
 import java.awt.*
 import javax.swing.*
 import javax.swing.border.*
-import br.com.tecnolity.administracao.Permissao
-import br.com.tecnolity.aplicacao.Aplicacao
-import br.com.tecnolity.aplicacao.Interface
-import br.com.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
+import org.esmerilprogramming.tecnolity.administracao.Permissao
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
+import org.esmerilprogramming.tecnolity.aplicacao.Interface
+import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
 
 class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
   public final int IDENTIFICADOR = 1

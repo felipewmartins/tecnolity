@@ -1,11 +1,11 @@
-package br.com.tecnolity.pedidos;
+package org.esmerilprogramming.tecnolity.pedidos;
 
 import java.sql.*;
 import java.util.*;
 
-import br.com.tecnolity.administracao.Estado;
-import br.com.tecnolity.administracao.Pais;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.Estado;
+import org.esmerilprogramming.tecnolity.administracao.Pais;
+import org.esmerilprogramming.tecnolity.util.*;
 
 /**
    * Projeto: 001 - Tecnolity

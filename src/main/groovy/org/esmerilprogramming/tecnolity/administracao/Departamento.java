@@ -1,9 +1,9 @@
-package br.com.tecnolity.administracao;
+package org.esmerilprogramming.tecnolity.administracao;
 
 import java.util.Vector;
 import java.sql.*;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>

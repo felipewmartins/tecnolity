@@ -1,6 +1,6 @@
-package br.com.tecnolity.aplicacao.modelos;
+package org.esmerilprogramming.tecnolity.aplicacao.modelos;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class ModeloTabelaItens extends ModeloTabela
 {

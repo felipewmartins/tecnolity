@@ -1,8 +1,8 @@
-package br.com.tecnolity.producao;
+package org.esmerilprogramming.tecnolity.producao;
 
 import java.text.*;
 
-import br.com.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>

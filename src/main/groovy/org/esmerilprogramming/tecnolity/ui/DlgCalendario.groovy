@@ -1,6 +1,6 @@
-package br.com.mentores.ui
+package org.esmerilprogramming.ui
 
-import br.com.mentores.util.*
+import org.esmerilprogramming.util.*
 import javax.swing.*
 import javax.swing.border.*
 import java.awt.*

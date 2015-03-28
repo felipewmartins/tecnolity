@@ -1,7 +1,7 @@
-package br.com.tecnolity.aplicacao.relatorios;
+package org.esmerilprogramming.tecnolity.aplicacao.relatorios;
 
-import br.com.tecnolity.producao.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.producao.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class RelatorioProduto extends Relatorio
 {

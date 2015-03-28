@@ -1,6 +1,6 @@
-package br.com.mentores.ui
+package org.esmerilprogramming.ui
 
-import br.com.mentores.util.*
+import org.esmerilprogramming.util.*
 import javax.swing.*
 import java.awt.*
 import java.awt.event.*

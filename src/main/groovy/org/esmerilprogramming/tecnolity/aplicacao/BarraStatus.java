@@ -14,11 +14,11 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao;
 
 import java.awt.*;
 import javax.swing.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class BarraStatus extends JPanel
 {

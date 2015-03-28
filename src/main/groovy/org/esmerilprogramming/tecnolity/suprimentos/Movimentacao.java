@@ -1,8 +1,8 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
-import br.com.tecnolity.administracao.Colaborador;
-import br.com.tecnolity.logistica.Transportadora;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.Colaborador;
+import org.esmerilprogramming.tecnolity.logistica.Transportadora;
+import org.esmerilprogramming.tecnolity.util.*;
 import java.sql.*;
 import java.util.*;
 

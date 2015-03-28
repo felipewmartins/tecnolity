@@ -1,7 +1,7 @@
-package br.com.tecnolity.aplicacao.relatorios;
+package org.esmerilprogramming.tecnolity.aplicacao.relatorios;
 
 import java.sql.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class RelatorioInventario extends Relatorio
 {

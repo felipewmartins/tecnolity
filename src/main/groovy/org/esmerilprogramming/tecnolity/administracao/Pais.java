@@ -1,8 +1,8 @@
-package br.com.tecnolity.administracao;
+package org.esmerilprogramming.tecnolity.administracao;
 
 import java.sql.*;
 import java.util.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>
@@ -20,7 +20,7 @@ import br.com.tecnolity.util.*;
    * Última Versão: 1.0 <br>
 */
 
-public class Pais extends br.com.mentores.Pais
+public class Pais extends org.esmerilprogramming.Pais
 {
     public Pais(String siglaPais, String nomePais) throws Exception
     {

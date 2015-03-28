@@ -1,10 +1,10 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
 import java.sql.*;
 import java.util.Vector;
 import javax.swing.*;
-import br.com.tecnolity.util.*;
-import br.com.tecnolity.aplicacao.*;
+import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.aplicacao.*;
 
 public class Categoria
 {

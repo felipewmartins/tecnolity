@@ -1,4 +1,4 @@
-package br.com.tecnolity.pedidos;
+package org.esmerilprogramming.tecnolity.pedidos;
 
 public class RegistroHistoricoStatusPedido
 {

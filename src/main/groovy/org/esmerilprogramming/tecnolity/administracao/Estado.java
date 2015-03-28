@@ -14,14 +14,14 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.administracao;
+package org.esmerilprogramming.tecnolity.administracao;
 
 import java.util.*;
 import java.sql.*;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
-public class Estado extends br.com.mentores.Estado
+public class Estado extends org.esmerilprogramming.Estado
 {
     public Estado(String sigla, String nome, Pais pais) throws Exception
     {

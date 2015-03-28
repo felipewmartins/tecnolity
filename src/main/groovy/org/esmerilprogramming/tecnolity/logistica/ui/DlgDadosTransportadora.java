@@ -14,13 +14,13 @@
 * Última Versão: 1.0
 */
 
-package br.com.tecnolity.logistica.ui;
+package org.esmerilprogramming.tecnolity.logistica.ui;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.logistica.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.logistica.*;
 
 public class DlgDadosTransportadora extends JDialog implements ActionListener, FocusListener
 {

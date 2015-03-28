@@ -1,4 +1,4 @@
-package br.com.tecnolity.aplicacao.relatorios;
+package org.esmerilprogramming.tecnolity.aplicacao.relatorios;
 
 import java.awt.print.*;
 import java.util.*;

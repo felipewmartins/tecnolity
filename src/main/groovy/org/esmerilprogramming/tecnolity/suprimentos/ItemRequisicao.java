@@ -1,4 +1,4 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
 
 public class ItemRequisicao

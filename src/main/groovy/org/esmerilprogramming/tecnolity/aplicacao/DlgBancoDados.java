@@ -1,12 +1,12 @@
-package br.com.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao;
 
 import java.awt.*;
 import java.io.*;
 import java.sql.*;
 import java.awt.event.*;
 import javax.swing.*;
-import br.com.tecnolity.util.*;
-import br.com.tecnolity.aplicacao.modelos.*;
+import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.aplicacao.modelos.*;
 
 /**
 * Projeto: 001 - Tecnolity <br>

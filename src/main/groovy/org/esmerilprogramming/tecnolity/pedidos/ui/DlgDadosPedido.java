@@ -1,4 +1,4 @@
-package br.com.tecnolity.pedidos.ui;
+package org.esmerilprogramming.tecnolity.pedidos.ui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -7,11 +7,11 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.producao.*;
-import br.com.tecnolity.producao.ui.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.producao.*;
+import org.esmerilprogramming.tecnolity.producao.ui.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>

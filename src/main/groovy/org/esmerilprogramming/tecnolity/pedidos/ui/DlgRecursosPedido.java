@@ -1,15 +1,15 @@
-package br.com.tecnolity.pedidos.ui;
+package org.esmerilprogramming.tecnolity.pedidos.ui;
 
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.aplicacao.modelos.*;
-import br.com.tecnolity.aplicacao.relatorios.*;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.suprimentos.*;
-import br.com.tecnolity.suprimentos.ui.DlgDadosRequisicaoInterna;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.aplicacao.modelos.*;
+import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.suprimentos.ui.DlgDadosRequisicaoInterna;
 
 /**
 * Projeto: 001 - Tecnolity

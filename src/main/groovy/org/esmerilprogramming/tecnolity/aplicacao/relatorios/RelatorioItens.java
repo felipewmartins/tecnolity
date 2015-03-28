@@ -1,8 +1,8 @@
-package br.com.tecnolity.aplicacao.relatorios;
+package org.esmerilprogramming.tecnolity.aplicacao.relatorios;
 
 import java.util.*;
-import br.com.tecnolity.suprimentos.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class RelatorioItens extends Relatorio
 {

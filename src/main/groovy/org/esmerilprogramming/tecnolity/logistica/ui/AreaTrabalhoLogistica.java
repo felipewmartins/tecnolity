@@ -14,15 +14,15 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.logistica.ui;
+package org.esmerilprogramming.tecnolity.logistica.ui;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import br.com.tecnolity.administracao.Permissao;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.aplicacao.Interface;
-import br.com.tecnolity.aplicacao.modelos.ModeloAreaTrabalho;
+import org.esmerilprogramming.tecnolity.administracao.Permissao;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.aplicacao.Interface;
+import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho;
 
 public class AreaTrabalhoLogistica extends ModeloAreaTrabalho
 {

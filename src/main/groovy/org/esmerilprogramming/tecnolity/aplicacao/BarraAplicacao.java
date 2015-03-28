@@ -14,18 +14,18 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import br.com.tecnolity.administracao.ui.*;
-import br.com.tecnolity.logistica.ui.*;
-import br.com.tecnolity.pedidos.ui.*;
-import br.com.tecnolity.producao.ui.*;
-import br.com.tecnolity.suprimentos.ui.*;
+import org.esmerilprogramming.tecnolity.administracao.ui.*;
+import org.esmerilprogramming.tecnolity.logistica.ui.*;
+import org.esmerilprogramming.tecnolity.pedidos.ui.*;
+import org.esmerilprogramming.tecnolity.producao.ui.*;
+import org.esmerilprogramming.tecnolity.suprimentos.ui.*;
 
 public class BarraAplicacao extends JPanel implements ActionListener
 {

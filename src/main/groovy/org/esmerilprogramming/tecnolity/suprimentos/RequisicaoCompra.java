@@ -1,11 +1,11 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
-import br.com.tecnolity.administracao.Colaborador;
-import br.com.tecnolity.administracao.Departamento;
-import br.com.tecnolity.logistica.Transportadora;
-import br.com.tecnolity.pedidos.FormaPagamento;
-import br.com.tecnolity.pedidos.Pedido;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.Colaborador;
+import org.esmerilprogramming.tecnolity.administracao.Departamento;
+import org.esmerilprogramming.tecnolity.logistica.Transportadora;
+import org.esmerilprogramming.tecnolity.pedidos.FormaPagamento;
+import org.esmerilprogramming.tecnolity.pedidos.Pedido;
+import org.esmerilprogramming.tecnolity.util.*;
 import java.util.*;
 import java.sql.*;
 

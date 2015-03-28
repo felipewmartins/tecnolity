@@ -1,12 +1,12 @@
-package br.com.tecnolity.aplicacao.relatorios;
+package org.esmerilprogramming.tecnolity.aplicacao.relatorios;
 
 import java.awt.*;
 import java.awt.print.*;
 import java.sql.*;
 import javax.swing.*;
-import br.com.tecnolity.aplicacao.*;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.aplicacao.*;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class RelRecursosPedido extends JPanel implements Printable
 {

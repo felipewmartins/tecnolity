@@ -1,4 +1,4 @@
-package br.com.mentores.ui
+package org.esmerilprogramming.ui
 
 interface DialogoCaixaSelecao {
   void setVisible(boolean p0)

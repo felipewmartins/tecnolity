@@ -1,4 +1,4 @@
-package br.com.mentores.organizacao
+package org.esmerilprogramming.organizacao
 
 class ClientePessoaJuridica extends PessoaJuridica {
   int codigo

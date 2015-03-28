@@ -14,9 +14,9 @@
    * Última Versão: 1.0 <br>
 */
 
-package br.com.tecnolity.pedidos;
+package org.esmerilprogramming.tecnolity.pedidos;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 import java.sql.*;
 import java.util.*;
 

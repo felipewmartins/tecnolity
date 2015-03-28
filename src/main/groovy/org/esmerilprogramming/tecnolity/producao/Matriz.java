@@ -1,6 +1,6 @@
-package br.com.tecnolity.producao;
+package org.esmerilprogramming.tecnolity.producao;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 import java.util.*;
 import java.sql.*;
 

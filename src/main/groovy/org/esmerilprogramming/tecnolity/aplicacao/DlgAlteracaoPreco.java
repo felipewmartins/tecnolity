@@ -14,13 +14,13 @@
 * Última Versão: 1.0
 */
 
-package br.com.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import br.com.tecnolity.suprimentos.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class DlgAlteracaoPreco extends JDialog implements ActionListener
 {

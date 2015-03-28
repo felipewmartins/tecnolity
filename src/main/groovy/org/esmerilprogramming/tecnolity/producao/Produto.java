@@ -1,13 +1,13 @@
-package br.com.tecnolity.producao;
+package org.esmerilprogramming.tecnolity.producao;
 
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.*;
 
-import br.com.mentores.util.Calendario;
-import br.com.tecnolity.pedidos.Cliente;
-import br.com.tecnolity.suprimentos.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.util.Calendario;
+import org.esmerilprogramming.tecnolity.pedidos.Cliente;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>

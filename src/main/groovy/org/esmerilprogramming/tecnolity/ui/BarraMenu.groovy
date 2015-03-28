@@ -1,4 +1,4 @@
-package br.com.tecnolity.ui
+package org.esmerilprogramming.tecnolity.ui
 
 import java.awt.event.*
 import java.io.File
