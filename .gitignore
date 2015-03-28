@@ -1,0 +1,9 @@
+build
+.gradle
+out
+*.swp
+classes
+/bin/
+*~
+.*
+!/.gitignore
