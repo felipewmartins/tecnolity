@@ -8,7 +8,7 @@ import java.awt.print.*
 import br.com.tecnolity.administracao.*
 import br.com.tecnolity.util.*
 
-class App extends br.com.mentores.ui.Aplicacao {
+class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
     private JPanel areaTrabalho
     private Container conteudo
@@ -20,7 +20,7 @@ class App extends br.com.mentores.ui.Aplicacao {
     private PageFormat formatoPagina
     private Configuracao configuracao
 
-    App() {
+    Aplicacao() {
       super("Sistema de Planejamento e Controle da Produção")
         configuracao = new Configuracao()
         try
@@ -266,10 +266,8 @@ class LogAplicacao extends PrintStream
     super.write(b)
   }
 
-  void write(byte buf[],int off, int len)
-  {
-    try
-    {
+  void write(byte[] buf,int off, int len) {
+    try {
       arquivoLog.write(buf,off,len)
     }
     catch(Exception e)
