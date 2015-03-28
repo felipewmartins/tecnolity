@@ -1,7 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
+apply plugin: 'application'
 
-mainClassName = 'org.esmerilprogramming.tecnolity.aplicacao.App'
+mainClassName = 'org.esmerilprogramming.tecnolity.App'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
