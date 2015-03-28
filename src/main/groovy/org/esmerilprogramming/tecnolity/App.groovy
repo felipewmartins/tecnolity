@@ -8,7 +8,7 @@ import java.awt.print.*
 import br.com.tecnolity.administracao.*
 import br.com.tecnolity.util.*
 
-class Aplicacao extends br.com.mentores.ui.Aplicacao
+class App extends br.com.mentores.ui.Aplicacao
 {
   private JPanel areaTrabalho
     private Container conteudo
@@ -20,7 +20,7 @@ class Aplicacao extends br.com.mentores.ui.Aplicacao
     private PageFormat formatoPagina
     private Configuracao configuracao
 
-    public Aplicacao()
+    App()
     {
       super("Sistema de Planejamento e Controle da Produção")
         configuracao = new Configuracao()
@@ -76,7 +76,7 @@ class Aplicacao extends br.com.mentores.ui.Aplicacao
         conteudo.add(barraStatus,BorderLayout.SOUTH)
     }
 
-  public void adicionarAreaTrabalho(JPanel areaTrabalho)
+  void adicionarAreaTrabalho(JPanel areaTrabalho)
   {
     if(this.areaTrabalho != null)
       conteudo.remove(this.areaTrabalho)
@@ -85,19 +85,19 @@ class Aplicacao extends br.com.mentores.ui.Aplicacao
         this.areaTrabalho.updateUI()
   }
 
-  public void inicializarTarefaImpressao()
+  void inicializarTarefaImpressao()
   {
     if(this.tarefaImpressao == null)
       tarefaImpressao = PrinterJob.getPrinterJob()
   }
 
-  public PrinterJob obterTarefaImpressao()
+  PrinterJob obterTarefaImpressao()
   {
     inicializarTarefaImpressao()
       return tarefaImpressao
   }
 
-  public void definirFormatoPagina()
+  void definirFormatoPagina()
   {
     this.formatoPagina = new PageFormat()
       Paper papel = new Paper()
@@ -169,7 +169,7 @@ class Aplicacao extends br.com.mentores.ui.Aplicacao
     }
   }
 
-  static main (args)i {
+  static main (args) {
     Aplicacao aplicacao = new Aplicacao()
       aplicacao.setVisible(true)
   }
@@ -192,7 +192,7 @@ class Aplicacao extends br.com.mentores.ui.Aplicacao
     }
   }
 
-  public void finalizarAplicacao()
+  void finalizarAplicacao()
   {
     if(conectado())
     {
@@ -209,7 +209,7 @@ class Aplicacao extends br.com.mentores.ui.Aplicacao
     super.finalizarAplicacao()
   }
 
-  public static String obterCaminho()
+  static String obterCaminho()
   {
     return caminho
   }
@@ -226,7 +226,7 @@ class LogAplicacao extends PrintStream
       super(ps)
     }
 
-  public static void start(String arquivo) throws IOException
+  static void start(String arquivo) throws IOException
   {
     saida = System.out
       erro = System.err
@@ -236,7 +236,7 @@ class LogAplicacao extends PrintStream
       System.setErr(new LogAplicacao(System.err))
   }
 
-  public static void stop()
+  static void stop()
   {
     if(saida != null || erro != null)
     {
@@ -253,7 +253,7 @@ class LogAplicacao extends PrintStream
     }
   }
 
-  public void write(int b)
+  void write(int b)
   {
     try
     {
@@ -267,7 +267,7 @@ class LogAplicacao extends PrintStream
     super.write(b)
   }
 
-  public void write(byte buf[],int off, int len)
+  void write(byte buf[],int off, int len)
   {
     try
     {
