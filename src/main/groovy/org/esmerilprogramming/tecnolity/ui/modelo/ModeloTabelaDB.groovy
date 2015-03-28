@@ -44,16 +44,16 @@ class ModeloTabelaDB extends ModeloTabela {
             final ResultSetMetaData meta = this.resultado.getMetaData()
               this.numeroColunas = meta.getColumnCount()
               this.cabecalhos = new String[this.numeroColunas]
-              for (int i = 1 i <= this.numeroColunas ++i) {
+              for (int i = 1 ; i <= this.numeroColunas;  ++i) {
                 this.cabecalhos[i - 1] = meta.getColumnName(i)
               }
-            do {
+            /*do {
               final String[] dados = new String[this.numeroColunas]
-                for (int j = 0 j < this.numeroColunas ++j) {
+                for (int j = 0 ; j < this.numeroColunas ; ++j) {
                   dados[j] = this.resultado.getString(j + 1)
                 }
               this.cache.addElement(dados)
-            } while (this.resultado.next())
+            } while (this.resultado.next())*/
           }
         this.resultado.close()
           this.fireTableChanged(null)
@@ -68,9 +68,9 @@ class ModeloTabelaDB extends ModeloTabela {
     this.cache = new Vector()
       this.numeroColunas = cabecalhos.length
       this.cabecalhos = cabecalhos
-      for (int i = 0 i < dados.length ++i) {
+      for (int i = 0 ; i < dados.length ; ++i) {
         final String[] celulas = new String[this.numeroColunas]
-          for (int j = 0 j < this.numeroColunas ++j) {
+          for (int j = 0 ; j < this.numeroColunas ;++j) {
             celulas[j] = dados[i][j]
           }
         this.cache.addElement(celulas)

@@ -2,13 +2,13 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'application'
 
-mainClassName = 'org.esmerilprogramming.tecnolity.App'
+mainClassName = 'org.esmerilprogramming.tecnolity.aplicacao.Aplicacao'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jar {
   manifest {
-    attributes 'Main-Class': 'org.esmerilprogramming.tecnolity.App'
+    attributes 'Main-Class': 'org.esmerilprogramming.tecnolity.aplicacao.Aplicacao'
   }
 }
 
@@ -17,5 +17,6 @@ repositories {
 }
 
 dependencies {
+  compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.0'
   testCompile 'junit:junit:4.11'
 }

@@ -10,7 +10,7 @@ class Numero extends DecimalFormat {
     private String[][] qualificadores
     private String[][] numeros
 
-    Numero(final BigDecimal dec) {
+   /* Numero(final BigDecimal dec) {
       this.nro = new ArrayList()
         this.qualificadores = new String[][] { { "centavo", "centavos" }, { "", "" }, { "mil", "mil" }, { "milh\u00e3o", "milh\u00f5es" }, { "bilh\u00e3o", "bilh\u00f5es" }, { "trilh\u00e3o", "trilh\u00f5es" }, { "quatrilh\u00e3o", "quatrilh\u00f5es" }, { "quintilh\u00e3o", "quintilh\u00f5es" }, { "sextilh\u00e3o", "sextilh\u00f5es" }, { "septilh\u00e3o", "septilh\u00f5es" } }
       this.numeros = new String[][] { { "zero", "um", "dois", "tr\u00eas", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "desesseis", "desessete", "dezoito", "desenove" }, { "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa" }, { "cem", "cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos" } }
@@ -19,7 +19,7 @@ class Numero extends DecimalFormat {
 
   Numero(final double dec) {
     this.nro = new ArrayList()
-      this.qualificadores = new String[][] { { "centavo", "centavos" }, { "", "" }, { "mil", "mil" }, { "milh\u00e3o", "milh\u00f5es" }, { "bilh\u00e3o", "bilh\u00f5es" }, { "trilh\u00e3o", "trilh\u00f5es" }, { "quatrilh\u00e3o", "quatrilh\u00f5es" }, { "quintilh\u00e3o", "quintilh\u00f5es" }, { "sextilh\u00e3o", "sextilh\u00f5es" }, { "septilh\u00e3o", "septilh\u00f5es" } }
+    this.qualificadores = new String[][] { { "centavo", "centavos" }, { "", "" }, { "mil", "mil" }, { "milh\u00e3o", "milh\u00f5es" }, { "bilh\u00e3o", "bilh\u00f5es" }, { "trilh\u00e3o", "trilh\u00f5es" }, { "quatrilh\u00e3o", "quatrilh\u00f5es" }, { "quintilh\u00e3o", "quintilh\u00f5es" }, { "sextilh\u00e3o", "sextilh\u00f5es" }, { "septilh\u00e3o", "septilh\u00f5es" } }
     this.numeros = new String[][] { { "zero", "um", "dois", "tr\u00eas", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "desesseis", "desessete", "dezoito", "desenove" }, { "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa" }, { "cem", "cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos" } }
     this.setNumber(dec)
   }
@@ -221,5 +221,5 @@ class Numero extends DecimalFormat {
   static int hexadecimalParaDecimal(final String hexadecimal) {
     final int decimal = Integer.parseInt(hexadecimal, 16)
       return decimal
-  }
+  }*/
 }

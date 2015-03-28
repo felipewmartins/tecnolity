@@ -13,7 +13,7 @@ class Texto {
     }
     if (texto.length() < tamanho) {
       String espacosBranco = ""
-        for (int i = 0 i < tamanho - texto.length() ++i) {
+        for (int i = 0 ; i < tamanho - texto.length() ; ++i) {
           espacosBranco = String.valueOf(espacosBranco) + " "
         }
       return String.valueOf(texto) + espacosBranco
@@ -27,7 +27,7 @@ class Texto {
     }
     if (numero.length() < tamanho) {
       String zeros = ""
-        for (int i = 0 i < tamanho - numero.length() ++i) {
+        for (int i = 0 ; i < tamanho - numero.length() ; ++i) {
           zeros = String.valueOf(zeros) + preenchimento
         }
       return String.valueOf(zeros) + numero
@@ -42,7 +42,7 @@ class Texto {
   static String[] getTextoAlinhado(final String texto, final int largura) {
     String[] linhas
       if (texto == null) {
-        linhas = new String[] { "" }
+        linhas = ['']
       }
       else if (texto.length() > largura) {
         linhas = new String[(texto.length() % largura == 0) ? (texto.length() / largura) : (texto.length() / largura + 1)]
@@ -82,7 +82,7 @@ class Texto {
           }
       }
       else {
-        linhas = new String[] { texto }
+        linhas = null //new String[] { texto }
       }
     return linhas
   }
