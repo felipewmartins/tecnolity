@@ -1,7 +1,7 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
-import br.com.tecnolity.administracao.Departamento;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.Departamento;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class ItemRequisicaoInterna
 {

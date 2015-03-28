@@ -15,13 +15,13 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import br.com.tecnolity.administracao.*;
-import br.com.tecnolity.administracao.ui.*;
+import org.esmerilprogramming.tecnolity.administracao.*;
+import org.esmerilprogramming.tecnolity.administracao.ui.*;
 
 public class FormAutenticacao extends JDialog implements ActionListener
 {

@@ -1,11 +1,11 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
 import java.sql.*;
 import java.util.*;
 
-import br.com.tecnolity.administracao.Departamento;
-import br.com.tecnolity.pedidos.Pedido;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.Departamento;
+import org.esmerilprogramming.tecnolity.pedidos.Pedido;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class Item
 {

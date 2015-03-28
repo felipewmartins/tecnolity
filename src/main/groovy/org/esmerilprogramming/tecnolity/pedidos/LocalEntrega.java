@@ -1,9 +1,9 @@
-package br.com.tecnolity.pedidos;
+package org.esmerilprogramming.tecnolity.pedidos;
 
 import java.sql.*;
 
-import br.com.tecnolity.administracao.Estado;
-import br.com.tecnolity.util.Conexao;
+import org.esmerilprogramming.tecnolity.administracao.Estado;
+import org.esmerilprogramming.tecnolity.util.Conexao;
 
 public class LocalEntrega 
 {

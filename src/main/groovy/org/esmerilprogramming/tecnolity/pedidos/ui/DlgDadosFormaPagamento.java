@@ -14,14 +14,14 @@
 * Última Versão: 1.0
 */
 
-package br.com.tecnolity.pedidos.ui;
+package org.esmerilprogramming.tecnolity.pedidos.ui;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.pedidos.*;
 
 public class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusListener
 {

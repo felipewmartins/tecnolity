@@ -1,4 +1,4 @@
-package br.com.tecnolity.aplicacao.modelos;
+package org.esmerilprogramming.tecnolity.aplicacao.modelos;
 
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;

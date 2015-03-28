@@ -1,6 +1,6 @@
-package br.com.tecnolity.administracao;
+package org.esmerilprogramming.tecnolity.administracao;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 import java.sql.*;
 
 /**

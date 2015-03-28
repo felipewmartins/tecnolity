@@ -13,9 +13,9 @@
    * Fim da Programação: <br>
    * Última Versão: 1.0 <br>
 */
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 import java.sql.*;
 
 public class Lote 

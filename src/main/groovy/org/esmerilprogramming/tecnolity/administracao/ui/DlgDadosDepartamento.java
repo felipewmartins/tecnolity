@@ -1,11 +1,11 @@
-package br.com.tecnolity.administracao.ui;
+package org.esmerilprogramming.tecnolity.administracao.ui;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.Vector;
-import br.com.tecnolity.administracao.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.administracao.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
 
 /**
 * Projeto: 001 - Tecnolity <br>

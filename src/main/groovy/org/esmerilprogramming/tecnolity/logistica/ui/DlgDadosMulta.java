@@ -14,16 +14,16 @@
 * Última Versão: 1.0
 */
 
-package br.com.tecnolity.logistica.ui;
+package org.esmerilprogramming.tecnolity.logistica.ui;
 
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.logistica.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.logistica.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
 {

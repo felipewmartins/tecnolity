@@ -1,10 +1,10 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
 import java.sql.*;
 
-import br.com.tecnolity.administracao.Estado;
-import br.com.tecnolity.administracao.Pais;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.Estado;
+import org.esmerilprogramming.tecnolity.administracao.Pais;
+import org.esmerilprogramming.tecnolity.util.*;
 import java.util.*;
 
 public class Fornecedor

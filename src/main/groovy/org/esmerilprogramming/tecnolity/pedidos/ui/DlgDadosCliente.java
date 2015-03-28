@@ -1,4 +1,4 @@
-package br.com.tecnolity.pedidos.ui;
+package org.esmerilprogramming.tecnolity.pedidos.ui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,13 +6,13 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import br.com.mentores.ui.Dialogo;
-import br.com.mentores.ui.modelo.ModeloTabelaDB;
-import br.com.tecnolity.administracao.*;
-import br.com.tecnolity.administracao.ui.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.util.Endereco;
+import org.esmerilprogramming.ui.Dialogo;
+import org.esmerilprogramming.ui.modelo.ModeloTabelaDB;
+import org.esmerilprogramming.tecnolity.administracao.*;
+import org.esmerilprogramming.tecnolity.administracao.ui.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.util.Endereco;
 
 /**
    * Projeto: 001 - Tecnolity <br>

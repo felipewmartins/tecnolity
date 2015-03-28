@@ -14,10 +14,10 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.pedidos;
+package org.esmerilprogramming.tecnolity.pedidos;
 
-import br.com.tecnolity.producao.Matriz;
-import br.com.tecnolity.producao.Produto;
+import org.esmerilprogramming.tecnolity.producao.Matriz;
+import org.esmerilprogramming.tecnolity.producao.Produto;
 
 public class ProdutoPedido 
 {

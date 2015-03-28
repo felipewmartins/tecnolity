@@ -1,14 +1,14 @@
-package br.com.tecnolity.pedidos;
+package org.esmerilprogramming.tecnolity.pedidos;
 
 import java.io.*;
 import java.util.*;
 import java.sql.*;
 
-import br.com.tecnolity.administracao.Estado;
-import br.com.tecnolity.producao.Matriz;
-import br.com.tecnolity.producao.Produto;
-import br.com.tecnolity.suprimentos.Movimentacao;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.Estado;
+import org.esmerilprogramming.tecnolity.producao.Matriz;
+import org.esmerilprogramming.tecnolity.producao.Produto;
+import org.esmerilprogramming.tecnolity.suprimentos.Movimentacao;
+import org.esmerilprogramming.tecnolity.util.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>

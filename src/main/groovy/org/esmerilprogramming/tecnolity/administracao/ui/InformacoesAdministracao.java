@@ -1,4 +1,4 @@
-package br.com.tecnolity.administracao.ui;
+package org.esmerilprogramming.tecnolity.administracao.ui;
 
 import java.io.*;
 import java.sql.*;
@@ -7,10 +7,10 @@ import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import br.com.tecnolity.util.*;
-import br.com.tecnolity.administracao.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.aplicacao.modelos.*;
+import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.aplicacao.modelos.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>
@@ -274,7 +274,7 @@ public class InformacoesAdministracao extends JTabbedPane implements ActionListe
         pnlGeracaoInformacoes.add(scroll, BorderLayout.CENTER);
         
         JPanel pnlComandoInfo = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btSalvar = new JButton("Salvar Consulta",new ImageIcon("br/com/tecnolity/aplicacao/recursos/imagens/salvar.gif"));
+        btSalvar = new JButton("Salvar Consulta",new ImageIcon("org.esmerilprogramming.tecnolity/aplicacao/recursos/imagens/salvar.gif"));
         btSalvar.addActionListener(this);
         btSalvar.setEnabled(false);
         pnlComandoInfo.add(btSalvar);

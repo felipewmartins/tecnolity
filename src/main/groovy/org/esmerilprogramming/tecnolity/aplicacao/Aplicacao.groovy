@@ -5,8 +5,8 @@ import javax.swing.*
 import java.awt.*
 import java.io.*
 import java.awt.print.*
-import br.com.tecnolity.administracao.*
-import br.com.tecnolity.util.*
+import org.esmerilprogramming.tecnolity.administracao.*
+import org.esmerilprogramming.tecnolity.util.*
 
 class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 

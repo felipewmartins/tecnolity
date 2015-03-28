@@ -1,12 +1,12 @@
-package br.com.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao;
 
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import br.com.tecnolity.administracao.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class DlgConfiguracoes extends JDialog implements ActionListener
 {

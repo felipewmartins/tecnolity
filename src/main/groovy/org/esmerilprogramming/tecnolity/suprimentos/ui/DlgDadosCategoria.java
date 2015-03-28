@@ -1,11 +1,11 @@
-package br.com.tecnolity.suprimentos.ui;
+package org.esmerilprogramming.tecnolity.suprimentos.ui;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
 
 /**
 * Projeto: 001 - Tecnolity <br>

@@ -1,4 +1,4 @@
-package br.com.tecnolity.suprimentos.ui;
+package org.esmerilprogramming.tecnolity.suprimentos.ui;
 
 import java.awt.*;
 import java.sql.*;
@@ -7,13 +7,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.suprimentos.*;
-import br.com.tecnolity.util.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.aplicacao.DlgAlteracaoPreco;
-import br.com.tecnolity.aplicacao.modelos.*;
-import br.com.tecnolity.aplicacao.relatorios.*;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.aplicacao.DlgAlteracaoPreco;
+import org.esmerilprogramming.tecnolity.aplicacao.modelos.*;
+import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*;
 
 /**
    * Projeto: 001 - Tecnolity <br>

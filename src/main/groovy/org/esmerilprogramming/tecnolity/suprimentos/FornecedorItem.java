@@ -1,6 +1,6 @@
-package br.com.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos;
 
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class FornecedorItem
 {

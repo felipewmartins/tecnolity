@@ -14,7 +14,7 @@
 * Última Versão: 1.0
 */
 
-package br.com.tecnolity.suprimentos.ui;
+package org.esmerilprogramming.tecnolity.suprimentos.ui;
 
 import java.sql.*;
 import java.awt.*;
@@ -22,15 +22,15 @@ import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import br.com.tecnolity.logistica.*;
-import br.com.tecnolity.logistica.ui.*;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.pedidos.ui.DlgDadosFormaPagamento;
-import br.com.tecnolity.suprimentos.*;
-import br.com.tecnolity.util.*;
-import br.com.tecnolity.administracao.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.aplicacao.relatorios.*;
+import org.esmerilprogramming.tecnolity.logistica.*;
+import org.esmerilprogramming.tecnolity.logistica.ui.*;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.pedidos.ui.DlgDadosFormaPagamento;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.administracao.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*;
 
 public class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, FocusListener
 {

@@ -1,4 +1,4 @@
-package br.com.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao;
 
 import javax.swing.*;
 

@@ -1,8 +1,8 @@
-package br.com.tecnolity.administracao;
+package org.esmerilprogramming.tecnolity.administracao;
 
-import br.com.tecnolity.aplicacao.Interface;
-import br.com.tecnolity.util.*;
-import br.com.mentores.PessoaFisica;
+import org.esmerilprogramming.tecnolity.aplicacao.Interface;
+import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.PessoaFisica;
 import java.sql.*;
 import java.util.Vector;
 

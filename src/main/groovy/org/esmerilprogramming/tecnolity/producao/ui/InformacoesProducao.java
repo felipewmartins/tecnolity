@@ -14,7 +14,7 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.producao.ui;
+package org.esmerilprogramming.tecnolity.producao.ui;
 
 import java.awt.*;
 import java.util.*;
@@ -22,12 +22,12 @@ import java.sql.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.aplicacao.modelos.*;
-import br.com.tecnolity.aplicacao.relatorios.*;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.pedidos.ui.DlgRecursosPedido;
-import br.com.tecnolity.producao.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.aplicacao.modelos.*;
+import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.pedidos.ui.DlgRecursosPedido;
+import org.esmerilprogramming.tecnolity.producao.*;
 
 public class InformacoesProducao extends JTabbedPane implements ActionListener, MouseListener
 {

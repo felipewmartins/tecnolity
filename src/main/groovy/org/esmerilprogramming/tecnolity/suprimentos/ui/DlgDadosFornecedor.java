@@ -14,17 +14,17 @@
    * Última Versão: 1.0
 */
 
-package br.com.tecnolity.suprimentos.ui;
+package org.esmerilprogramming.tecnolity.suprimentos.ui;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import br.com.tecnolity.administracao.*;
-import br.com.tecnolity.administracao.ui.*;
-import br.com.tecnolity.aplicacao.Aplicacao;
-import br.com.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.administracao.*;
+import org.esmerilprogramming.tecnolity.administracao.ui.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
 
 public class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListener
 {

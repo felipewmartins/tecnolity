@@ -1,9 +1,9 @@
-package br.com.tecnolity.aplicacao.relatorios;
+package org.esmerilprogramming.tecnolity.aplicacao.relatorios;
 
 import java.util.*;
-import br.com.tecnolity.pedidos.*;
-import br.com.tecnolity.suprimentos.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.pedidos.*;
+import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class RelatorioRequisicaoCompra extends Relatorio
 {

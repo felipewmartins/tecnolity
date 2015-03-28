@@ -1,9 +1,9 @@
-package br.com.tecnolity.aplicacao.modelos;
+package org.esmerilprogramming.tecnolity.aplicacao.modelos;
 
 import java.sql.*;
 import java.util.Vector;
 import javax.swing.table.*;
-import br.com.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*;
 
 public class ModeloTabela extends AbstractTableModel
 {
