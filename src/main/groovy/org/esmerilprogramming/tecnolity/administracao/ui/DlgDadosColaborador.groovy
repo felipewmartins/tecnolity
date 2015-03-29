@@ -8,8 +8,7 @@ import javax.swing.border.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 
-class DlgDadosColaborador extends JDialog implements ActionListener, FocusListener
-{
+class DlgDadosColaborador extends JDialog implements ActionListener, FocusListener {
   final int IDENTIFICADOR = 10
 
     private Aplicacao aplicacao
@@ -35,8 +34,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
               private JRadioButton rdbSexoMasculino, rdbSexoFeminino
               private JComboBox cbxDepartamento, cbxEstado, cbxPais
 
-              DlgDadosColaborador(Aplicacao aplicacao, char modo)
-              {
+              DlgDadosColaborador(Aplicacao aplicacao, char modo) {
                 super(aplicacao,true)
                   colaborador = new Colaborador()
 
@@ -52,15 +50,12 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
                       montarInterface()
               }
 
-  DlgDadosColaborador(Aplicacao aplicacao, char modo, String usuario)
-  {
+  DlgDadosColaborador(Aplicacao aplicacao, char modo, String usuario) {
     super(aplicacao,true)
-      try
-      {
+      try {
         colaborador = new Colaborador(usuario,aplicacao.obterConexao())
       }
-    catch(Exception e)
-    {
+    catch(e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -78,8 +73,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
               montarInterface()
   }
 
-  private void montarInterface()
-  {
+  private void montarInterface() {
     conteudo = this.getContentPane()
 
       gridbag = new GridBagLayout()
@@ -140,8 +134,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
                   this.carregarDepartamentos(cbxDepartamento)
 
                   int indiceDepartamento = 0
-                  for(int i = 1; i < departamentos.size(); i++)
-                  {
+                  for(int i = 1; i < departamentos.size(); i++) {
                     if((((Departamento)departamentos.get(i)).obterNomeDepartamento()).equals((this.colaborador.obterDepartamento())==null?"":(this.colaborador.obterDepartamento()).obterNomeDepartamento()))
                     {
                       indiceDepartamento = i
@@ -185,22 +178,18 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       adicionarComponente(pnlContato,txtCidade,3,0,1,1)
       pnlSuporteCombo = new JPanel(new BorderLayout())
       cbxEstado = new JComboBox()
-      try
-      {
+      try {
         estados = Estado.carregarEstados("BRA",aplicacao.obterConexao())
           carregarEstados()
       }
-    catch(Exception e)
-    {
+    catch(e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
     int indiceEstado = 0
-      for(int i = 1; i < estados.size(); i++)
-      {
-        if((((Estado)estados.get(i)).getSigla()).equals((this.colaborador.obterEstado())==null?"":(this.colaborador.obterEstado()).getSigla()))
-        {
+      for(int i = 1; i < estados.size(); i++) {
+        if((((Estado)estados.get(i)).getSigla()).equals((this.colaborador.obterEstado())==null?"":(this.colaborador.obterEstado()).getSigla())) {
           indiceEstado = i
         }
       }
@@ -244,37 +233,38 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       label = new JLabel("Confirmação de Senha")
       adicionarComponente(pnlAutenticacao,label,0,2,1,1)
       txtMatricula = new JTextField(this.colaborador.obterMatricula(),10)
-      if(modo == 'A')
+      if(modo == 'A') {
         txtMatricula.setEditable(false)
-          adicionarComponente(pnlAutenticacao,txtMatricula,1,0,1,1)
-          txpSenha = new JPasswordField(this.colaborador.obterSenha(),10)
-          adicionarComponente(pnlAutenticacao,txpSenha,1,1,1,1)
-          txpConfirmacaoSenha = new JPasswordField(this.colaborador.obterSenha(),10)
-          adicionarComponente(pnlAutenticacao,txpConfirmacaoSenha,1,2,1,1)
+      }
+    adicionarComponente(pnlAutenticacao,txtMatricula,1,0,1,1)
+      txpSenha = new JPasswordField(this.colaborador.obterSenha(),10)
+      adicionarComponente(pnlAutenticacao,txpSenha,1,1,1,1)
+      txpConfirmacaoSenha = new JPasswordField(this.colaborador.obterSenha(),10)
+      adicionarComponente(pnlAutenticacao,txpConfirmacaoSenha,1,2,1,1)
 
-          adicionarComponente(pnlAreaDados,pnlAutenticacao,7,0,4,1)
+      adicionarComponente(pnlAreaDados,pnlAutenticacao,7,0,4,1)
 
-          conteudo.add(pnlAreaDados, BorderLayout.CENTER)
+      conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
-          JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
+      JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
 
-          btConfirmar = new JButton("Confirmar")
-          btConfirmar.addActionListener(this)
-          pnlComandos.add(btConfirmar)
+      btConfirmar = new JButton("Confirmar")
+      btConfirmar.addActionListener(this)
+      pnlComandos.add(btConfirmar)
 
-          btCancelar = new JButton("Cancelar")
-          btCancelar.addActionListener(this)
-          pnlComandos.add(btCancelar)
+      btCancelar = new JButton("Cancelar")
+      btCancelar.addActionListener(this)
+      pnlComandos.add(btCancelar)
 
-          conteudo.add(pnlComandos, BorderLayout.SOUTH)
+      conteudo.add(pnlComandos, BorderLayout.SOUTH)
 
-          this.pack()
+      this.pack()
 
-          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
-          this.setBounds((screenSize.width/2) - (this.getBounds().width/2),
-              (screenSize.height/2) - (this.getBounds().height/2) - 30,
-              this.getBounds().width,
-              this.getBounds().height)
+      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
+      this.setBounds((screenSize.width/2) - (this.getBounds().width/2),
+          (screenSize.height/2) - (this.getBounds().height/2) - 30,
+          this.getBounds().width,
+          this.getBounds().height)
   }
 
   private void carregarEstados()
@@ -381,31 +371,28 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
           colaborador.definirEmail(this.txtEmail.getText())
           colaborador.senhaAlterada(true)
 
-          if(modo == 'I')
+          if (modo == 'I') {
             colaborador.cadastrarColaborador()
-          else if(modo == 'A')
+          } else if (modo == 'A') {
             colaborador.alterarColaborador()
-              this.setVisible(false)
+          }
+          this.setVisible(false)
       }
-      catch(Exception e)
-      {
+      catch(e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
-          e.printStackTrace()
+        e.printStackTrace()
       }
     }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)
     }
   }
 
-  void focusLost(java.awt.event.FocusEvent focusEvent)
-  {
+  void focusLost(java.awt.event.FocusEvent focusEvent) {
   }
 
-  void focusGained(java.awt.event.FocusEvent e)
-  {
+  void focusGained(java.awt.event.FocusEvent e) {
     Component componente = e.getComponent()
   }
 }
