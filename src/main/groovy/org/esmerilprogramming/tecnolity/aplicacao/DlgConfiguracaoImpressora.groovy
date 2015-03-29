@@ -1,11 +1,11 @@
-package org.esmerilprogramming.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.PageFormat;
 import javax.swing.*;
 import javax.swing.border.*;
-
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.util.Configuracao;
 
 public class DlgConfiguracaoImpressora extends JDialog implements ActionListener, FocusListener

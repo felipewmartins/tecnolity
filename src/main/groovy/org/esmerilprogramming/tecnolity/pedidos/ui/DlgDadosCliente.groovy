@@ -6,31 +6,15 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import org.esmerilprogramming.ui.Dialogo;
-import org.esmerilprogramming.ui.modelo.ModeloTabelaDB;
+import org.esmerilprogramming.tecnolity.ui.Dialogo;
+import org.esmerilprogramming.tecnolity.ui.modelo.ModeloTabelaDB;
 import org.esmerilprogramming.tecnolity.administracao.*;
 import org.esmerilprogramming.tecnolity.administracao.ui.*;
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao;
 import org.esmerilprogramming.tecnolity.pedidos.*;
 import org.esmerilprogramming.tecnolity.util.Endereco;
 
-/**
- * Projeto: 001 - Tecnolity <br>
- * Autor do Código: Hildeberto Mendonça Filho <br>
- * Nome do Arquivo: DlgDadosCliente.java <br>
- * Linguagem: Java <br>
- *  <br>
- * Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
- *  <br>
- * Objetivo: Diálogo para cadastramento,alteração e visualização de dados de um cliente. <br>
- *  <br>
- * Objetivo definido por: Hildeberto Mendonça <br>
- * Início da Programação: 11/02/2002 <br>
- * Fim da Programação: <br>
- * Última Versão: 1.0 <br>
- */
-
-public class DlgDadosCliente extends Dialogo implements ActionListener
+class DlgDadosCliente extends Dialogo implements ActionListener
 {
   public final int IDENTIFICADOR = 9;
 
@@ -39,8 +23,8 @@ public class DlgDadosCliente extends Dialogo implements ActionListener
   private Container conteudo;
   private JPanel pnlAreaDados;
   private JButton btNovoPais, btNovoEstado, btAnterior, btProximo, btConfirmar, btCancelar;
-  private JTextField txtRazaoSocial, txtNomeFantasia, txtCnpj, txtInscricaoEstadual, 
-          txtLogradouro, txtBairro, txtComplemento, txtCidade, txtCep, 
+  private JTextField txtRazaoSocial, txtNomeFantasia, txtCnpj, txtInscricaoEstadual,
+          txtLogradouro, txtBairro, txtComplemento, txtCidade, txtCep,
           txtTelefone, txtFax, txtContatoComercial, txtContatoTecnico, txtEmail;
   private JComboBox cbxEstado, cbxPais;
   private Vector estados, paises;
@@ -170,7 +154,7 @@ public class DlgDadosCliente extends Dialogo implements ActionListener
     adicionarComponente(pnlEndereco,pnlSuporteCombo,3,3,1,1);
     label = new JLabel("CEP (Somente números)");
     adicionarComponente(pnlEndereco,label,4,0,1,1);
-    txtCep = new JTextField((cliente != null?cliente.obterCep():""),8); 
+    txtCep = new JTextField((cliente != null?cliente.obterCep():""),8);
     adicionarComponente(pnlEndereco,txtCep,5,0,1,1);
     adicionarComponente(pnlDadosCliente,pnlEndereco,4,0,4,1);
 
@@ -383,7 +367,7 @@ public class DlgDadosCliente extends Dialogo implements ActionListener
       Vector locaisEntrega = cliente.getLocaisEntrega();
       String[][] dados = new String[locaisEntrega.size()][2];
       String[] cabecalhos = ['Local','Endereço']
-      LocalEntrega localEntrega;
+        LocalEntrega localEntrega;
       int linha = 0;
       for(int i = 0;i < locaisEntrega.size();i++)
       {
@@ -396,7 +380,7 @@ public class DlgDadosCliente extends Dialogo implements ActionListener
       }
       modeloTblLocaisEntrega.carregar(cabecalhos, dados);
       int[] tamanhoColunas = [25,75]
-      modeloTblLocaisEntrega.setTamanhoColunas(tblLocaisEntrega,tamanhoColunas);
+        modeloTblLocaisEntrega.setTamanhoColunas(tblLocaisEntrega,tamanhoColunas);
     }
     catch(Exception ex)
     {
@@ -418,7 +402,7 @@ public class DlgDadosCliente extends Dialogo implements ActionListener
     txtTelefoneEntrega.setText("");
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource();
 
@@ -606,12 +590,12 @@ public class DlgDadosCliente extends Dialogo implements ActionListener
     }
   }
 
-  public void focusLost(java.awt.event.FocusEvent focusEvent) 
+  public void focusLost(java.awt.event.FocusEvent focusEvent)
   {
 
   }
 
-  public void focusGained(java.awt.event.FocusEvent e) 
+  public void focusGained(java.awt.event.FocusEvent e)
   {
 
   }

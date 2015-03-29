@@ -3,7 +3,10 @@ package org.esmerilprogramming.tecnolity.ui
 import java.awt.event.*
 import java.io.File
 import java.net.URL
-import org.esmerilprogramming.tecnolity.App
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
+import org.esmerilprogramming.tecnolity.aplicacao.DlgConfiguracoes
+import org.esmerilprogramming.tecnolity.aplicacao.DlgConfiguracaoImpressora
+
 import javax.swing.*
 
 class BarraMenu extends JMenuBar implements ActionListener {
@@ -11,7 +14,7 @@ class BarraMenu extends JMenuBar implements ActionListener {
     private JMenuItem mnArqDesconectar
     private JMenuItem mnArqSair
 
-    private App aplicacao
+    private Aplicacao aplicacao
 
     private JMenu mnPreferencias
     private JMenu mnPrefAparencia
@@ -21,7 +24,7 @@ class BarraMenu extends JMenuBar implements ActionListener {
     private JMenuItem mnPrefConfigurarImpressora
     private JMenuItem mnPrefConfiguracoes
 
-    BarraMenu(App aplicacao) {
+    BarraMenu(Aplicacao aplicacao) {
       this.aplicacao = aplicacao
         // Itens e SubItens de Arquivo
         mnArquivo = new JMenu("Arquivo")
