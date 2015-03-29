@@ -359,7 +359,7 @@ class Produto {
     {
       /*  Exclui toda a matéria prima para evitar duplicação duranta a inserção.*/
       conexao.executarAtualizacao("delete from quantidade_materia_prima where produto = "+ this.obterCodigo())
-      for(int i = 0i < materiasPrimas.size()i++)
+      for(int i = 0;i < materiasPrimas.size();i++)
       {
         materiaPrima = (MateriaPrima)materiasPrimas.get(i)
         query = "insert into quantidade_materia_prima (item, referencia, numero_sola, quantidade,produto) "
@@ -464,7 +464,7 @@ class Produto {
    Object[][] carregarMateriasPrimas(Conexao conexao, Object[][] dados) throws Exception
   {
     MateriaPrima materiaPrima
-    for(int i = 0i < materiasPrimas.size()i++)
+    for(int i = 0;i < materiasPrimas.size();i++)
     {
       materiaPrima = (MateriaPrima)materiasPrimas.get(i)
       dados[i][0] = materiaPrima.obterMatriz().obterDescricao()

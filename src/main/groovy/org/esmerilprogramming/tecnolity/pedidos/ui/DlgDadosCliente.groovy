@@ -189,7 +189,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
     boolean localEntregaClienteExistente = false
     if(cliente != null)
     {
-      for(int i = 0i < cliente.getLocaisEntrega().size()i++)
+      for(int i = 0;i < cliente.getLocaisEntrega().size();i++)
       {
         if(cliente.obterRazaoSocial().equals((LocalEntrega)cliente.getLocaisEntrega().get(i)))
         {
@@ -310,7 +310,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
     cbxPais.addItem("Selecione...")
     String siglaPais
     int indicePais = 0
-    for(int i = 1i < paises.size()i++)
+    for(int i = 1;i < paises.size();i++)
     {
       if(cliente != null)
       {
@@ -332,7 +332,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
     cbxEstado.addItem("Selecione...")
     String siglaEstado
     int indiceEstado = 0
-    for(int i = 1i < estados.size()i++)
+    for(int i = 1;i < estados.size();i++)
     {
       if(cliente != null)
       {
@@ -353,7 +353,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
     cbxEstadoEntrega.removeAllItems()
     cbxEstadoEntrega.addItem("Selecione...")
 
-    for(int i = 1i < estadosEntrega.size()i++)
+    for(int i = 1;i < estadosEntrega.size();i++)
     {
       cbxEstadoEntrega.addItem(((Estado)estadosEntrega.get(i)).getNome())
     }
@@ -369,7 +369,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       String[] cabecalhos = ['Local','Endereço']
         LocalEntrega localEntrega
       int linha = 0
-      for(int i = 0i < locaisEntrega.size()i++)
+      for(int i = 0;i < locaisEntrega.size();i++)
       {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
         if(!localEntrega.isInvalido())

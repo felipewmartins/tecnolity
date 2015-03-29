@@ -257,7 +257,7 @@ import org.esmerilprogramming.tecnolity.pedidos.*
       Pedido[] pedidos = new Pedido[linha.length]
       try
       {
-        for(int i = 0i < linha.lengthi++)
+        for(int i = 0;i < linha.length;i++)
         {
           codigoPedido[i] = Integer.parseInt((String)tblPedido.getValueAt(linha[i],0))
           pedidos[i] = new Pedido(codigoPedido[i])

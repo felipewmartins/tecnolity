@@ -1,19 +1,3 @@
-/**
- * Projeto: 001 - Tecnolity
- * Autor do Código: Hildeberto Mendonça Filho
- * Nome do Arquivo: InformacoesProducao.java
- * Linguagem: Java
- *
- * Requerimentos: Requer máquina virtual java versão 1.3 ou superior.
- *
- * Objetivo: Área onde os dados da produção são apresentados.
- *
- * Objetivo definido por: Hildeberto Mendonça
- * Início da Programação: 28/01/2002
- * Fim da Programação:
- * Última Versão: 1.0
- */
-
 package org.esmerilprogramming.tecnolity.producao.ui
 
 import java.awt.*
@@ -251,7 +235,7 @@ import org.esmerilprogramming.tecnolity.producao.*
   {
     cbxCliente.removeAllItems()
     cbxCliente.addItem("Todos")
-    for(int i=1i < clientes.size()i++)
+    for(int i=1;i < clientes.size();i++)
     {
       cbxCliente.addItem(((Cliente)clientes.get(i)).obterRazaoSocial())
     }
@@ -261,7 +245,7 @@ import org.esmerilprogramming.tecnolity.producao.*
   {
     cbxProduto.removeAllItems()
     cbxProduto.addItem("Todos")
-    for(int i=1i < produtos.size()i++)
+    for(int i=1;i < produtos.size();i++)
     {
       cbxProduto.addItem(((Produto)produtos.get(i)).obterNomeModelo())
     }
@@ -296,7 +280,7 @@ import org.esmerilprogramming.tecnolity.producao.*
         tblStatus.setValueAt("",0,2)
         tblStatus.setValueAt("",0,3)
         tblStatus.setValueAt("",0,4)
-        for(int i = 0 i < historico.size()i++)
+        for(int i = 0; i < historico.size();i++)
         {
           if(((RegistroHistoricoStatusPedido)historico.get(i)).getStatus().equals(Pedido.PENDENTE))
             tblStatus.setValueAt(((RegistroHistoricoStatusPedido)historico.get(i)).getData(),0,0)
@@ -520,7 +504,7 @@ import org.esmerilprogramming.tecnolity.producao.*
       Pedido[] pedidos = new Pedido[linha.length]
       try
       {
-        for(int i = 0i < linha.lengthi++)
+        for(int i = 0;i < linha.length;i++)
         {
           codigoPedido[i] = Integer.parseInt((String)tblProducao.getValueAt(linha[i],0))
           pedidos[i] = new Pedido(codigoPedido[i])
@@ -718,5 +702,5 @@ import org.esmerilprogramming.tecnolity.producao.*
    void mouseReleased(MouseEvent e)
   {
     exibirHistoricoPedido()
-  }   
+  }
 }
