@@ -81,7 +81,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     try
     {
       // Seleciona o fornecedor da requisição de compras.
-      for(int i = 1 i < fornecedores.size() i++)
+      for(int i = 1; i < fornecedores.size(); i++)
       {
         if( (((Fornecedor)fornecedores.get(i)).obterCodigo()) == ((this.requisicaoCompra.obterFornecedor())==null?0:this.requisicaoCompra.obterFornecedor().obterCodigo()))
         {
@@ -90,7 +90,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
         }
       }
       // Seleciona a forma de pagamento da requisição de compras.
-      for(int i = 1 i < formasPagamento.size() i++)
+      for(int i = 1; i < formasPagamento.size(); i++)
       {
         if(((FormaPagamento)formasPagamento.get(i)).obterFormaPagamento().equals(requisicaoCompra.obterFormaPagamento().obterFormaPagamento()))
         {
@@ -227,7 +227,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     }
 
     int indiceTransportadora = 0
-    for(int i = 1 i < transportadoras.size() i++)
+    for(int i = 1; i < transportadoras.size(); i++)
     {
       if((((Transportadora)transportadoras.get(i)).obterCodigo()) == (this.requisicaoCompra==null?0:this.requisicaoCompra.obterTransportadora().obterCodigo()))
       {
@@ -284,7 +284,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
       this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
       modeloListaPedidos = new DefaultListModel()
       lstPedidos = new JList(modeloListaPedidos)
-      for(int i = 0i < this.pedidos.size()i++)
+      for(int i = 0;i < this.pedidos.size();i++)
       {
         modeloListaPedidos.addElement(this.pedidos.get(i))
       }
@@ -470,7 +470,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     cbxTransportadora.removeAllItems()
     cbxTransportadora.addItem("Selecione...")
 
-    for(int i = 1i < transportadoras.size()i++)
+    for(int i = 1;i < transportadoras.size();i++)
     {
       cbxTransportadora.addItem(((Transportadora)transportadoras.get(i)).obterNome())
     }
@@ -482,7 +482,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     cbxFornecedor.addItem("Selecione...")
     String cnpj,razaoSocial
 
-    for(int i = 1i < fornecedores.size()i++)
+    for(int i = 1;i < fornecedores.size();i++)
     {
       cnpj = (((Fornecedor)fornecedores.get(i)).obterCnpj()).trim()
       razaoSocial = (((Fornecedor)fornecedores.get(i)).obterRazaoSocial()).trim()
@@ -495,7 +495,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     cbxFormaPagamento.removeAllItems()
     cbxFormaPagamento.addItem("Selecione...")
 
-    for(int i = 1i < formasPagamento.size()i++)
+    for(int i = 1;i < formasPagamento.size();i++)
     {
       cbxFormaPagamento.addItem(((FormaPagamento)formasPagamento.get(i)).obterFormaPagamento())
     }
@@ -507,7 +507,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     {
       modeloListaPedidos.removeAllElements()
       this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
-      for(int i = 0i < this.pedidos.size()i++)
+      for(int i = 0;i < this.pedidos.size();i++)
       {
         modeloListaPedidos.addElement(this.pedidos.get(i))
       }
@@ -525,7 +525,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     {
       modeloListaPedidos.removeAllElements()
       this.pedidos = Pedido.carregarPedidosProduzindo(aplicacao.obterConexao())
-      for(int i = 0i < this.pedidos.size()i++)
+      for(int i = 0;i < this.pedidos.size();i++)
       {
         modeloListaPedidos.addElement(this.pedidos.get(i))
       }
@@ -542,7 +542,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
     cbxItem.removeAllItems()
     cbxItem.addItem("Selecione...")
 
-    for(int i = 1i < itens.size()i++)
+    for(int i = 1;i < itens.size();i++)
     {
       cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
     }
@@ -747,7 +747,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
         try
         {
           boolean ItemInserido = false
-          for(int i=0i < 20i++)
+          for(int i=0;i < 20;i++)
           {
             if(cbxItem.getSelectedItem().equals((String)tblItens.getValueAt(i,0)))
             {
@@ -862,7 +862,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
 
       if(linhaSelecionada < (numeroItens -1))
       {
-        for(int i = linhaSelecionadai < (numeroItens -1)i++)
+        for(int i = linhaSelecionada;i < (numeroItens -1);i++)
         {
           this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,0),i,0)
           this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,1),i,1)
@@ -962,7 +962,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
           "from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi " +
           "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo "
 
-        for(int i = 0i < pedidosSelecionados.size()i++)
+        for(int i = 0;i < pedidosSelecionados.size();i++)
         {
           if(i == 0)
             query += "and ("
@@ -973,7 +973,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
             query += ") "
         }
         query += "and i.codigo = fi.item and fi.fornecedor = "+ ((Fornecedor)this.fornecedores.get(cbxFornecedor.getSelectedIndex())).obterCodigo() + " and i.codigo not in (select distinct item_requisicao from pedido_requisicao_compra "
-        for(int i = 0i < pedidosSelecionados.size()i++)
+        for(int i = 0;i < pedidosSelecionados.size();i++)
         {
           if(i == 0)
             query += "where "
@@ -983,7 +983,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
         }
         query += ") group by i.codigo,i.descricao,i.percentual_perda,fi.valor_item,fi.referencia_fornecedor,i.percentual_ipi"
         numeroItens = 0
-        for(int i = 0i < 100i++)
+        for(int i = 0;i < 100;i++)
         {
           this.tblItens.setValueAt("",i,0)
           this.tblItens.setValueAt("",i,1)

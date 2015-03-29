@@ -25,7 +25,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
   // Objetos do painel de dados do item
   private JPanel pnlDadosItem
-  private JTextField txtDescricao, txtTemperatura, txtQuantidade, 
+  private JTextField txtDescricao, txtTemperatura, txtQuantidade,
           txtQuantMinima, txtQuantMaxima, txtPercentualIPI, txtPercentualPerda
   private JCheckBox chbReservavel
   private JRadioButton rdbSituacaoAtiva, rdbSituacaoDesativa
@@ -54,7 +54,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
    DlgDadosItem(Aplicacao aplicacao)
   {
-    super(aplicacao,true)	    
+    super(aplicacao,true)
     item = new Item()
 
     this.setTitle("Item")
@@ -65,7 +65,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
   }
 
    DlgDadosItem(Aplicacao aplicacao, int codigo)
-  {	
+  {
     super(aplicacao,true)
     try
     {
@@ -82,7 +82,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     this.aplicacao = aplicacao
 
     montarInterface()
-    carregarFornecedorItem()             
+    carregarFornecedorItem()
     carregarDepartamentosSelecionados(lstDepartamentoSelecionado)
   }
 
@@ -108,7 +108,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     adicionarComponente(pnlDadosItem,label,0,0,3,1)
     label = new JLabel("Unidade Tecnolity")
     adicionarComponente(pnlDadosItem,label,0,3,1,1)
-    txtDescricao = new JTextField(this.item.obterDescricao(),30)            
+    txtDescricao = new JTextField(this.item.obterDescricao(),30)
     adicionarComponente(pnlDadosItem,txtDescricao,1,0,3,1)
 
     JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -116,13 +116,13 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     carregarUnidades(cbxUnidadeTecnolity)
 
     int indiceUnidade = 0
-    for(int i = 1 i < unidades.size() i++)
-    {                
+    for(int i = 1; i < unidades.size(); i++)
+    {
       if((((Unidade)unidades.get(i)).obterNomeUnidade()).equals((this.item.obterUnidade())==null?"":(this.item.obterUnidade()).obterNomeUnidade()))
       {
-        indiceUnidade = i         
+        indiceUnidade = i
       }
-    }        
+    }
     cbxUnidadeTecnolity.setSelectedIndex(indiceUnidade)
 
     pnlSuporteCombo.add(cbxUnidadeTecnolity,BorderLayout.CENTER)
@@ -143,13 +143,13 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     categorias = categoria.carregarCategorias(cbxCategoria,aplicacao)
 
     int indiceCategoria = 0
-    for(int i = 1 i < categorias.size() i++)
-    {            
+    for(int i = 1; i < categorias.size(); i++)
+    {
       if((((Categoria)categorias.get(i)).obterNomeCategoria()).equals((this.item.obterCategoria())==null?"":(this.item.obterCategoria()).obterNomeCategoria()))
       {
-        indiceCategoria = i         
+        indiceCategoria = i
       }
-    }        
+    }
     cbxCategoria.setSelectedIndex(indiceCategoria)
 
     pnlSuporteCombo.add(cbxCategoria,BorderLayout.CENTER)
@@ -163,7 +163,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     txtTemperatura = new JTextField(""+Numero.inverterSeparador(""+this.item.obterTemperatura()),8)
     txtTemperatura.addFocusListener(this)
     adicionarComponente(pnlDadosItem,txtTemperatura,3,2,1,1)
-    chbReservavel = new JCheckBox("Independente")            
+    chbReservavel = new JCheckBox("Independente")
     adicionarComponente(pnlDadosItem,chbReservavel,3,3,1,1)
     if(this.item.obterIndependente())
       chbReservavel.setSelected(true)
@@ -292,7 +292,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     tblFornecedores = new JTable(dados, nomeColunas)
     tblFornecedores.setPreferredScrollableViewportSize(new Dimension(460, 100))
     tblFornecedores.addRowSelectionInterval(0,0)
-    scroll = new JScrollPane(tblFornecedores) 
+    scroll = new JScrollPane(tblFornecedores)
 
     pnlFornecedores.add(scroll, BorderLayout.CENTER)
     pnlComandoFornecedor = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -305,7 +305,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     btExcluirFornecedor.setEnabled(false)
     pnlComandoFornecedor.add(btExcluirFornecedor)
     pnlFornecedores.add(pnlComandoFornecedor, BorderLayout.SOUTH)
-    adicionarComponente(pnlDadosFornecedor,pnlFornecedores,4,0,4,1)            
+    adicionarComponente(pnlDadosFornecedor,pnlFornecedores,4,0,4,1)
 
     departamentosSelecionados = new Vector()
     pnlAssociacaoDepartamento = new JPanel(gridbag)
@@ -316,7 +316,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     adicionarComponente(pnlAssociacaoDepartamento,label,0,2,1,1)
     lstDepartamento = new JList()
     lstDepartamento.setFixedCellWidth(180)
-    carregarDepartamentos(lstDepartamento)             
+    carregarDepartamentos(lstDepartamento)
     scroll = new JScrollPane(lstDepartamento)
     adicionarComponente(pnlAssociacaoDepartamento,scroll,1,0,1,4)
     DefaultListModel modeloListaSelecionado = new DefaultListModel()
@@ -496,7 +496,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
   }
 
   private void carregarFornecedorItem()
-  {            
+  {
     numeroFornecedores = 0
     Conexao conexao = aplicacao.obterConexao()
     String query = "select f.codigo as fornecedor_codigo, f.cnpj as cnpj_fornecedor,razao_social,data_atualizacao_valor,fi.unidade as unidade_codigo,u.unidade as unidade,valor_item,moeda,referencia_fornecedor from fornecedor_item fi, fornecedor f, unidade u where fi.fornecedor = f.codigo and fi.unidade = u.codigo and fi.item = " + this.item.obterCodigo() + " order by razao_social "
@@ -533,7 +533,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           tblFornecedores.setValueAt(nomeUnidade,numeroFornecedores,1)
           tblFornecedores.setValueAt(moeda + " " + Numero.inverterSeparador(""+valorItem),numeroFornecedores,2)
           tblFornecedores.setValueAt(dataAtualizacaoValor,numeroFornecedores,3)
-          numeroFornecedores++                    
+          numeroFornecedores++
         }
       }
       catch(Exception ex)
@@ -563,7 +563,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     txtReferenciaFornecedor.setText("")
   }
 
-   void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -637,7 +637,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         try
         {
           boolean fornecedorInserido = false
-          for(int i=0i < 20i++)
+          for(int i=0;i < 20;i++)
           {
             if(cbxFornecedor.getSelectedItem().equals((String)tblFornecedores.getValueAt(i,0)))
             {
@@ -690,7 +690,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     {
       linhaSelecionada = tblFornecedores.getSelectedRow()
       FornecedorItem fornecedorSelecionado = (FornecedorItem)fornecedoresItem.get(linhaSelecionada)
-      for(int i = 1i < fornecedores.size()i++)
+      for(int i = 1;i < fornecedores.size();i++)
       {
         if(fornecedorSelecionado.obterFornecedor().obterCodigo() == ((Fornecedor)fornecedores.get(i)).obterCodigo())
         {
@@ -699,7 +699,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         }
       }
 
-      for(int i = 1i < unidades.size()i++)
+      for(int i = 1;i < unidades.size();i++)
       {
         if(fornecedorSelecionado.obterUnidade().obterCodigo() == ((Unidade)unidades.get(i)).obterCodigo())
         {
@@ -726,17 +726,17 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
       if(linhaSelecionada < (numeroFornecedores -1))
       {
-        for(int i = linhaSelecionadai < (numeroFornecedores -1)i++)
+        for(int i = linha;Selecionada < (numeroFornecedores -1);i++)
         {
           tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1,0),i,0)
           tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1,1),i,1)
           tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1,2),i,2)
-          tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1,3),i,3)                
+          tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1,3),i,3)
         }
         tblFornecedores.setValueAt("",numeroFornecedores -1,0)
         tblFornecedores.setValueAt("",numeroFornecedores -1,1)
         tblFornecedores.setValueAt("",numeroFornecedores -1,2)
-        tblFornecedores.setValueAt("",numeroFornecedores -1,3)                
+        tblFornecedores.setValueAt("",numeroFornecedores -1,3)
       }
       numeroFornecedores--
 
@@ -785,7 +785,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Selecione um departamento.","Erro",JOptionPane.WARNING_MESSAGE)
-      }	
+      }
     }
 
     if(objeto == btProximo)
@@ -886,10 +886,10 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       txtTemperatura.selectAll()
 
     if(componente == txtQuantidade)
-      txtQuantidade.selectAll()	
+      txtQuantidade.selectAll()
 
     if(componente == txtQuantMaxima)
-      txtQuantMaxima.selectAll()	
+      txtQuantMaxima.selectAll()
 
     if(componente == txtQuantMinima)
       txtQuantMinima.selectAll()

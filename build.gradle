@@ -1,10 +1,13 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'application'
+apply plugin: 'codenarc'
 
 mainClassName = 'org.esmerilprogramming.tecnolity.aplicacao.Aplicacao'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+project.codenarc.ignoreFailures = true
 
 jar {
   manifest {

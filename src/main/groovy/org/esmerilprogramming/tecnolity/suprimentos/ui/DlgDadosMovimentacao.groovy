@@ -784,7 +784,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     int codigoRequisicaoCompra
     int fornecedor
 
-    for(int i = 1i < this.requisicoesCompra.size()i++)
+    for(int i = 1;i < this.requisicoesCompra.size();i++)
     {
       cbxRequisicaoAbastecimento.addItem(""+ ((RequisicaoCompra)requisicoesCompra.get(i)).obterCodigo() + " - "+
           ((RequisicaoCompra)requisicoesCompra.get(i)).obterFornecedor().obterRazaoSocial())
@@ -793,7 +793,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
   private void carregarItensRequisicaoCompra()
   {
-    for(int i = 0 i < itensRequisicaoCompra.size()i++)
+    for(int i = 0 ;i < itensRequisicaoCompra.size();i++)
     {
       tblItensAbastecimento.setValueAt("",i,0)
       tblItensAbastecimento.setValueAt("",i,1)
@@ -816,7 +816,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       itensRequisicaoCompra = requisicaoCompraSelecionada.obterItensRequisicao()
       ItemRequisicao itemRequisicao
       float totalGeral = 0
-      for(int i = 0i < itensRequisicaoCompra.size()i++)
+      for(int i = 0;i < itensRequisicaoCompra.size();i++)
       {
         itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
         tblItensAbastecimento.setValueAt(itemRequisicao.obterItem().obterDescricao(),i,0)
@@ -837,7 +837,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
   private void carregarItensRequisicaoInternaVendas()
   {
-    for(int i = 0 i < numeroItensi++)
+    for(int i = 0; i < numeroItens;i++)
     {
       tblItensVenda.setValueAt("",i,0)
       tblItensVenda.setValueAt("",i,1)
@@ -881,7 +881,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
    void carregarItensRequisicaoInternaDevolucaoExterna()
   {
-    for(int i = 0 i < numeroItensi++)
+    for(int i = 0; i < numeroItens;i++)
     {
       tblItensDevolucaoExterna.setValueAt("",i,0)
       tblItensDevolucaoExterna.setValueAt("",i,1)
@@ -938,7 +938,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         observacao = dadosRequisicaoCompra.getString("observacao")
         txaObservacao.setText(observacao)
         lblRequisicaoAbastecimento.setText(""+ requisicaoCompraSelecionada.obterCodigo() + " - "+ dadosRequisicaoCompra.getString("razao_social"))
-        for(int i = 0 i < itensRequisicaoCompra.size() i++)
+        for(int i = 0; i < itensRequisicaoCompra.size(); i++)
         {
           tblItensAbastecimentoConfirmacao.setValueAt(""+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterCodigo(),i,0)
           tblItensAbastecimentoConfirmacao.setValueAt(""+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterDescricao(),i,1)
@@ -960,7 +960,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     try
     {
       ItemRequisicao itemRequisicao = null
-      for(int i = 0i < itensRequisicaoCompra.size()i++)
+      for(int i = 0;i < itensRequisicaoCompra.size();i++)
       {
         itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
         if(itemRequisicao.obterItem().obterLote() != null)
@@ -1040,7 +1040,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         lblSolicitanteConsumo.setText(requisicaoInterna.obterSolicitante().getNome())
         txaJustificativaConsumo.setText(requisicaoInterna.obterJustificativa())
 
-        for(int i = 0 i < numeroItensi++)
+        for(int i = 0; i < numeroItens;i++)
         {
           tblItensConsumo.setValueAt("",i,0)
           tblItensConsumo.setValueAt("",i,1)
@@ -1051,7 +1051,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
           numeroItens = 0
           ItemRequisicaoInterna itemRequisicaoInterna
-          for(int i = 0i < itensRequisicaoInterna.size()i++)
+          for(int i = 0;i < itensRequisicaoInterna.size();i++)
           {
             itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
@@ -1083,7 +1083,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         lblDepartSolicitanteVendas.setText(requisicaoInterna.obterDepartamento().obterNomeDepartamento())
         lblSolicitanteVendas.setText(requisicaoInterna.obterSolicitante().getNome())
 
-        for(int i = 0 i < numeroItensi++)
+        for(int i = 0; i < numeroItens;i++)
         {
           tblItensVenda.setValueAt("",i,0)
           tblItensVenda.setValueAt("",i,1)
@@ -1094,7 +1094,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
           numeroItens = 0
           ItemRequisicaoInterna itemRequisicaoInterna
-          for(int i = 0i < itensRequisicaoInterna.size()i++)
+          for(int i = 0;i < itensRequisicaoInterna.size();i++)
           {
             itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
@@ -1126,7 +1126,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         lblDepartSolicitanteDescarte.setText(requisicaoInterna.obterDepartamento().obterNomeDepartamento())
         lblSolicitanteDescarte.setText(requisicaoInterna.obterSolicitante().getNome())
         txaJustificativaDescarte.setText(requisicaoInterna.obterJustificativa())
-        for(int i = 0 i < numeroItensi++)
+        for(int i = 0; i < numeroItens;i++)
         {
           tblItensDescarte.setValueAt("",i,0)
           tblItensDescarte.setValueAt("",i,1)
@@ -1137,7 +1137,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
           numeroItens = 0
           ItemRequisicaoInterna itemRequisicaoInterna
-          for(int i = 0i < itensRequisicaoInterna.size()i++)
+          for(int i = 0;i < itensRequisicaoInterna.size();i++)
           {
             itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
@@ -1172,7 +1172,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         lblSolicitanteDevolucao.setText(requisicaoInterna.obterSolicitante().getNome())
         txaJustificativaDevolucao.setText(requisicaoInterna.obterJustificativa())
 
-        for(int i = 0 i < numeroItensi++)
+        for(int i = 0; i < numeroItens;i++)
         {
           tblItensDevolucao.setValueAt("",i,0)
           tblItensDevolucao.setValueAt("",i,1)
@@ -1183,7 +1183,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
           numeroItens = 0
           ItemRequisicaoInterna itemRequisicaoInterna
-          for(int i = 0i < itensRequisicaoInterna.size()i++)
+          for(int i = 0;i < itensRequisicaoInterna.size();i++)
           {
             itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
             tblItensDevolucao.setValueAt(""+ itemRequisicaoInterna.obterItem().obterCodigo(),numeroItens,0)
@@ -1207,7 +1207,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         lblSolicitanteDevolucao.setText("")
         txaJustificativaDevolucao.setText("")
 
-        for(int i = 0 i < numeroItensi++)
+        for(int i = 0; i < numeroItens;i++)
         {
           tblItensDevolucao.setValueAt("",i,0)
           tblItensDevolucao.setValueAt("",i,1)
@@ -1229,7 +1229,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         lblDepartSolicitanteDevolucaoExterna.setText(requisicaoInterna.obterDepartamento().obterNomeDepartamento())
         lblSolicitanteDevolucaoExterna.setText(requisicaoInterna.obterSolicitante().getNome())
         txaJustificativaDevolucaoExterna.setText(requisicaoInterna.obterJustificativa())
-        for(int i = 0 i < numeroItensi++)
+        for(int i = 0; i < numeroItens;i++)
         {
           tblItensDevolucaoExterna.setValueAt("",i,0)
           tblItensDevolucaoExterna.setValueAt("",i,1)
@@ -1240,7 +1240,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
           numeroItens = 0
           ItemRequisicaoInterna itemRequisicaoInterna
-          for(int i = 0i < itensRequisicaoInterna.size()i++)
+          for(int i = 0;i < itensRequisicaoInterna.size();i++)
           {
             itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
