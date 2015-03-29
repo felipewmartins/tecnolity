@@ -1,8 +1,9 @@
 package org.esmerilprogramming.tecnolity.util
 
 import java.sql.*
+import groovy.sql.*
 
- class Conexao implements ConexaoDB {
+class Conexao implements ConexaoDB {
   Connection conexao
   Statement expressao
   ResultSet resultado
@@ -11,12 +12,26 @@ import java.sql.*
   String usuario
   String senha
 
+  Conexao() {
+  }
+
+  Conexao(String driver, String fonteDados) {
+    this.driver = driver
+    this.fonteDados = fonteDados
+  }
+
+  Conexao(String driver, String fonteDados, String usuario, String senha) {
+    this.driver = driver
+    this.fonteDados = fonteDados
+    this.usuario = usuario
+    this.senha = senha
+  }
+
   void abrirConexao() throws Exception {
     try {
-      Class.forName(this.driver)
-      this.conexao = DriverManager.getConnection(this.fonteDados, this.usuario, this.senha)
-    }
-    catch (Exception e) {
+      Class.forName(driver)
+      conexao = DriverManager.getConnection(fonteDados, usuario, senha)
+    } catch (e) {
       e.printStackTrace()
       throw new Exception("N\u00e3o foi poss\u00edvel abrir uma conex\u00e3o com o banco de dados. (" + e.getMessage() + ")")
     }
@@ -30,9 +45,8 @@ import java.sql.*
 
   boolean conexaoAberta() throws Exception {
     try {
-      return !this.conexao.isClosed()
-    }
-    catch (Exception e) {
+      return !conexao.isClosed()
+    } catch (e) {
       throw new Exception("N\u00e3o foi poss\u00edvel verificar o estado da conex\u00e3o.")
     }
   }
@@ -40,8 +54,7 @@ import java.sql.*
   void fecharConexao() throws Exception {
     try {
       this.conexao.close()
-    }
-    catch (Exception e) {
+    } catch (e) {
       throw new Exception("N\u00e3o foi poss\u00edvel fechar a conex\u00e3o com o banco de dados.")
     }
   }
@@ -55,7 +68,23 @@ import java.sql.*
     int quantAtualizacoes = 0
     this.expressao = this.conexao.createStatement()
     quantAtualizacoes = this.expressao.executeUpdate(query)
-    return quantAtualizacoes
+    quantAtualizacoes
   }
 
+  static main(args) {
+
+    def db = Sql.newInstance('jdbc:h2:mem:tecnolity', 'sa', '', 'org.h2.Driver')
+
+    db.execute '''
+create table pais (
+  pais_id int(3) not null auto_increment,
+  sigla varchar(3) not null,
+  nome varchar(50) not null,
+  primary key (pais_id)
+);
+'''
+    def paises = db.rows('select * from pais')
+    println paises
+
+  }
 }
