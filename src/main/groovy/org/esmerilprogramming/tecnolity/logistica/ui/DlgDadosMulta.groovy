@@ -120,7 +120,7 @@ import org.esmerilprogramming.tecnolity.util.*
     }
 
     int indiceMotorista = 0
-    for(int i = 1 i < motoristas.size() i++)
+    for(int i = 1; i < motoristas.size(); i++)
     {
       if((((Motorista)motoristas.get(i)).obterCodigo()) == ((this.multa)==null?0:this.multa.obterResponsabilidade()))
       {
@@ -189,7 +189,7 @@ import org.esmerilprogramming.tecnolity.util.*
     cbxPlaca.removeAllItems()
     cbxPlaca.addItem("Selecione...")
 
-    for(int i = 1i < veiculos.size()i++)
+    for(int i = 1;i < veiculos.size();i++)
     {
       cbxPlaca.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
     }
@@ -200,7 +200,7 @@ import org.esmerilprogramming.tecnolity.util.*
     cbxMotorista.removeAllItems()
     cbxMotorista.addItem("Selecione...")
 
-    for(int i = 1i < motoristas.size()i++)
+    for(int i = 1;i < motoristas.size();i++)
     {
       cbxMotorista.addItem(((Motorista)motoristas.get(i)).obterMotorista())
     }
