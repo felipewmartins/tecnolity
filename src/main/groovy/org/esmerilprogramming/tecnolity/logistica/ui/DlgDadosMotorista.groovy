@@ -36,8 +36,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               private JPanel pnlAreaDados
               private JButton btConfirmar, btCancelar
 
-              DlgDadosMotorista(Aplicacao aplicacao, char modo)
-              {
+              DlgDadosMotorista(Aplicacao aplicacao, char modo) {
                 super(aplicacao,true)
                   motorista = new Motorista()
 
@@ -48,15 +47,13 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
                   montarInterface()
               }
 
-  DlgDadosMotorista(Aplicacao aplicacao, char modo, int codigo)
-  {
+  DlgDadosMotorista(Aplicacao aplicacao, char modo, int codigo) {
     super(aplicacao,true)
       try
       {
         motorista = new Motorista(codigo,aplicacao.obterConexao())
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar o Motorista.","Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -71,8 +68,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       montarInterface()
   }
 
-  void montarInterface()
-  {
+  void montarInterface() {
     conteudo = this.getContentPane()
 
       gridbag = new GridBagLayout()
@@ -101,8 +97,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
         veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
           cbxVeiculo = new JComboBox(veiculos)
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos. ","Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -148,10 +143,8 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       categorias.addElement("C")
 
       int indiceCategoria = 0
-      for(int i = 1; i < categorias.size(); i++)
-      {
-        if((categorias.get(i)).equals((this.motorista.obterCategoria())==null?"":this.motorista.obterCategoria()))
-        {
+      for(int i = 1; i < categorias.size(); i++) {
+        if((categorias.get(i)).equals((this.motorista.obterCategoria())==null?"":this.motorista.obterCategoria())) {
           indiceCategoria = i
         }
       }
@@ -193,8 +186,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
         estados = Estado.carregarEstados("BRA",aplicacao.obterConexao())
           carregarEstados()
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -243,8 +235,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
           this.getBounds().height)
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -255,34 +246,28 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       painel.add(c)
   }
 
-  private void carregarVeiculos()
-  {
+  private void carregarVeiculos() {
     cbxVeiculo.removeAllItems()
       cbxVeiculo.addItem("Selecione...")
 
-      for(int i = 1;i < veiculos.size();i++)
-      {
+      for(int i = 1;i < veiculos.size();i++) {
         cbxVeiculo.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
       }
   }
 
-  private void carregarEstados()
-  {
+  private void carregarEstados() {
     cbxEstado.removeAllItems()
       cbxEstado.addItem("Selecione...")
 
-      for(int i = 1;i < estados.size();i++)
-      {
+      for(int i = 1;i < estados.size();i++) {
         cbxEstado.addItem(((Estado)estados.get(i)).getNome())
       }
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent)
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoEstado)
-      {
+      if(objeto == btNovoEstado) {
         DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao,'I')
           dlgDadosEstado.setVisible(true)
           try
@@ -290,15 +275,13 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
             estados = Estado.carregarEstados("BRA",aplicacao.obterConexao())
               carregarEstados()
           }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
 
-    if(objeto == btNovoVeiculo)
-    {
+    if(objeto == btNovoVeiculo) {
       DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao)
         dlgDadosVeiculo.setVisible(true)
         try
@@ -306,22 +289,18 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
           veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
             carregarVeiculos()
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos","Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)
     }
 
-    if(objeto == btConfirmar)
-    {
-      if(motorista == null)
-      {
+    if(objeto == btConfirmar) {
+      if(motorista == null) {
         boolean confirmado = true
           try
           {
@@ -342,20 +321,17 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirTelefone(this.txtTelefone.getText())
               motorista.definirCelular(this.txtCelular.getText())
           }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
         }
-        if(confirmado)
-        {
+        if(confirmado) {
           try
           {
             this.motorista.cadastrarMotorista()
           }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -385,20 +361,17 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirTelefone(this.txtTelefone.getText())
               motorista.definirCelular(this.txtCelular.getText())
           }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
         }
-        if(confirmado)
-        {
+        if(confirmado) {
           try
           {
             this.motorista.alterarMotorista()
           }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }

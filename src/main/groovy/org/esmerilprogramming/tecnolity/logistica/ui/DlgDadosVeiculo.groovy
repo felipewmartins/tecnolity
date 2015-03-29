@@ -30,8 +30,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
               private Container conteudo
               private JButton btConfirmar, btCancelar
 
-              DlgDadosVeiculo(Aplicacao aplicacao)
-              {
+              DlgDadosVeiculo(Aplicacao aplicacao) {
                 super(aplicacao,true)
 
                   this.setTitle("Veículo")
@@ -39,15 +38,13 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
                   montarInterface()
               }
 
-  DlgDadosVeiculo(Aplicacao aplicacao, Veiculo veiculo)
-  {
+  DlgDadosVeiculo(Aplicacao aplicacao, Veiculo veiculo) {
     super(aplicacao,true)
       try
       {
         this.veiculo = veiculo
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar o Veículo.","Erro",JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -57,8 +54,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       montarInterface()
   }
 
-  private void montarInterface()
-  {
+  private void montarInterface() {
     conteudo = this.getContentPane()
 
       gridbag = new GridBagLayout()
@@ -85,20 +81,16 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       {
         this.transportadoras = Transportadora.carregarTransportadoras(aplicacao.obterConexao())
           cbxTransportadora = new JComboBox(this.transportadoras)
-          if(veiculo != null)
-          {
-            for(int i = 1;i < transportadoras.size();i++)
-            {
-              if(((Transportadora)transportadoras.get(i)).obterNome().equals(veiculo.obterTransportadora().obterNome()))
-              {
+          if(veiculo != null) {
+            for(int i = 1;i < transportadoras.size();i++) {
+              if(((Transportadora)transportadoras.get(i)).obterNome().equals(veiculo.obterTransportadora().obterNome())) {
                 cbxTransportadora.setSelectedIndex(i)
                   break
               }
             }
           }
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Transportadoras. ","Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -193,8 +185,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
           this.getBounds().height)
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -205,25 +196,21 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       painel.add(c)
   }
 
-  private void carregarTransportadoras()
-  {
+  private void carregarTransportadoras() {
     cbxTransportadora.removeAllItems()
       cbxTransportadora.addItem("Selecione...")
 
-      for(int i = 1;i < transportadoras.size();i++)
-      {
+      for(int i = 1;i < transportadoras.size();i++) {
         cbxTransportadora.addItem(((Transportadora)transportadoras.get(i)).obterNome())
       }
     this.pack()
   }
 
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent)
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovaTransportadora)
-      {
+      if(objeto == btNovaTransportadora) {
         DlgDadosTransportadora dlgDadosTransportadora = new DlgDadosTransportadora(aplicacao,'I')
           dlgDadosTransportadora.setVisible(true)
           try
@@ -232,19 +219,16 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
               transportadoras = Transportadora.carregarTransportadoras(aplicacao.obterConexao())
               carregarTransportadoras()
           }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Transportadoras","Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
 
-    if(objeto == btConfirmar)
-    {
+    if(objeto == btConfirmar) {
       try
       {
-        if(veiculo == null)
-        {
+        if(veiculo == null) {
           veiculo = new Veiculo(this.txtPlaca.getText(), (Transportadora)this.cbxTransportadora.getSelectedItem(), this.txtChassi.getText(), this.txtRenavam.getText(),
               this.txtMarca.getText(), this.txtModelo.getText(), this.txtAno.getText(), this.txtCor.getText(),
               Integer.parseInt(this.txtNumeroEixo.getText()), Float.parseFloat(Numero.inverterSeparador(this.txtCubagem.getText())),
@@ -273,20 +257,17 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
         }
         this.setVisible(false)
       }
-      catch(NumberFormatException n)
-      {
+      catch(NumberFormatException n) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)
     }
   }
