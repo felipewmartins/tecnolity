@@ -1,33 +1,33 @@
-package org.esmerilprogramming.tecnolity.pedidos;
+package org.esmerilprogramming.tecnolity.pedidos
 
 public class RegistroHistoricoStatusPedido
 {
-	private String status;
-	private String data;
+	private String status
+	private String data
 	
 	public RegistroHistoricoStatusPedido(String status, String data)
 	{
-		setStatus(status);
-		setData(data);
+		setStatus(status)
+		setData(data)
 	}
 	
 	public void setStatus(String status)
 	{
-		this.status = status;
+		this.status = status
 	}
 	
 	public void setData(String data)
 	{
-		this.data = data;
+		this.data = data
 	}
 	
 	public String getStatus()
 	{
-		return this.status;
+		return this.status
 	}
 	
 	public String getData()
 	{
-		return this.data;
+		return this.data
 	}
 }

@@ -1,13 +1,13 @@
-package org.esmerilprogramming.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao
 
-import javax.swing.*;
+import javax.swing.*
 
 public class DlgVisualizacaoImpressao extends JDialog
 {
-    private Aplicacao aplicacao;
+    private Aplicacao aplicacao
     
     public DlgVisualizacaoImpressao(Aplicacao aplicacao) 
     {
-        this.aplicacao = aplicacao;
+        this.aplicacao = aplicacao
     }
 }

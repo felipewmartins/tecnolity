@@ -1,8 +1,8 @@
-package org.esmerilprogramming.tecnolity.producao;
+package org.esmerilprogramming.tecnolity.producao
 
-import java.text.*;
+import java.text.*
 
-import org.esmerilprogramming.tecnolity.suprimentos.*;
+import org.esmerilprogramming.tecnolity.suprimentos.*
 
 /**
    * Projeto: 001 - Tecnolity <br>
@@ -22,89 +22,89 @@ import org.esmerilprogramming.tecnolity.suprimentos.*;
 
 public class MateriaPrima implements Cloneable
 {
-    private Item item;
-    private Matriz matriz;
-    private float quantidade;
+    private Item item
+    private Matriz matriz
+    private float quantidade
 
     public MateriaPrima() {}
     
     public MateriaPrima(Item item, Matriz matriz, float quantidade) throws Exception
     {
-        definirItem(item);
-        definirMatriz(matriz);
-        definirQuantidade(quantidade);
+        definirItem(item)
+        definirMatriz(matriz)
+        definirQuantidade(quantidade)
     }
 
     public Item obterItem() 
     {
-        return this.item;
+        return this.item
     }
     
     public Matriz obterMatriz() 
     {
-        return this.matriz;
+        return this.matriz
     }
     
     public float obterQuantidade() 
     {
-        return this.quantidade;
+        return this.quantidade
     }
     
     public String obterQuantidade(String formato)
     {
-        DecimalFormat df;
+        DecimalFormat df
         if(!formato.equals(""))
         {
-            df = new DecimalFormat(formato);
+            df = new DecimalFormat(formato)
         }
         else
         {
-            df = new DecimalFormat("###.#####");
+            df = new DecimalFormat("###.#####")
         }
-        return df.format(this.quantidade);
+        return df.format(this.quantidade)
     }
         
     public void definirItem(Item item) throws Exception
     {
         if(item == null)
         {
-            Exception e = new Exception("O Item não foi informado.");
-            throw e;
+            Exception e = new Exception("O Item não foi informado.")
+            throw e
         }
-        this.item = item;
+        this.item = item
     }
     
     public void definirMatriz(Matriz matriz) throws Exception
     {
         if(matriz == null)
         {
-            Exception e = new Exception("A Matriz nao foi informada.");
-            throw e;
+            Exception e = new Exception("A Matriz nao foi informada.")
+            throw e
         }
-        this.matriz = matriz;
+        this.matriz = matriz
     }
     
     public void definirQuantidade(float quantidade) throws Exception
     {
         if(quantidade < 0.0f)
         {
-            Exception e = new Exception("Quantidade inválida.");
-            throw e;
+            Exception e = new Exception("Quantidade inválida.")
+            throw e
         }
-        this.quantidade = quantidade;
+        this.quantidade = quantidade
     }
     
     public MateriaPrima clonar()
     {
-        MateriaPrima materiaPrima = null;
+        MateriaPrima materiaPrima = null
         try
         {
-            materiaPrima = (MateriaPrima)super.clone();
+            materiaPrima = (MateriaPrima)super.clone()
         } 
         catch (CloneNotSupportedException e) 
         {
             
         }
-        return materiaPrima;
+        return materiaPrima
     }
 }

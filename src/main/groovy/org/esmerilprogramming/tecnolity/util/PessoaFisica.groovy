@@ -22,7 +22,7 @@ class PessoaFisica extends Pessoa {
       final int[] digitos = new int[11]
       int soma = 0
       String numerosCpf = ""
-      for (int i = 0 ; i < chrCpf.length ;++i) {
+      for (int i = 0  i < chrCpf.length ++i) {
         if (Character.isDigit(chrCpf[i])) {
           numerosCpf = String.valueOf(numerosCpf) + chrCpf[i]
         }
