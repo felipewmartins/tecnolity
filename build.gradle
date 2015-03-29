@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
-  compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.0'
+  compile 'org.codehaus.groovy:groovy:2.4.0'
+  compile 'com.h2database:h2:1.4.186'
   testCompile 'junit:junit:4.11'
 }
