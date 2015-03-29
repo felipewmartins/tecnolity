@@ -63,7 +63,7 @@ class RelatorioProduto extends Relatorio
         conteudo.append("Acabamentos                                                                 ")
         conteudo.append(QUEBRA)
         texto = Texto.obterTextoAlinhado(produto.obterAcabamento(),77)
-        for(int linha = 0linha < texto.lengthlinha++)
+        for(int linha = 0;linha < texto.lengthl;inha++)
         {
           conteudo.append(texto[linha])
             conteudo.append(QUEBRA)
@@ -103,7 +103,7 @@ class RelatorioProduto extends Relatorio
       int numeroSola, numeroSolaAnterior = 0
       String referencia = ""
       MateriaPrima materiaPrima
-      for(int i = 0i < produto.obterMateriasPrimas().size()i++)
+      for(int i = 0;i < produto.obterMateriasPrimas().size();i++)
       {
         materiaPrima = (MateriaPrima)produto.obterMateriasPrimas().get(i)
           referencia = materiaPrima.obterMatriz().obterReferencia()

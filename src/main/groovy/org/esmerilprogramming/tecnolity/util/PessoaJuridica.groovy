@@ -29,7 +29,7 @@ class PessoaJuridica extends Pessoa {
       final int[] digitos = new int[15]
       int soma = 0
       String numerosCnpj = ""
-      for (int i = 0  i < chrCnpj.length  ++i) {
+      for (int i = 0 ; i < chrCnpj.length;  ++i) {
         if (Character.isDigit(chrCnpj[i])) {
           numerosCnpj = String.valueOf(numerosCnpj) + chrCnpj[i]
         }
