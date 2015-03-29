@@ -387,16 +387,12 @@ class DlgDadosProduto extends JDialog implements ActionListener
     redimencionar()
   }
 
-  /**
-   * Method carregarClientes. Carrega o combobox com os clientes cadastrados
-   * no sistema.
-   */
   private void carregarClientes()
   {
     cbxCliente.removeAllItems()
     cbxCliente.addItem("Selecione...")
     int posicao = 0
-    for(int i = 1i < clientes.size()i++)
+    for(int i = 1;i < clientes.size();i++)
     {
       if(cliente != null)
       {
@@ -418,7 +414,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
     cbxMatriz.removeAllItems()
     cbxMatriz.addItem("Selecione...")
     Matriz matriz
-    for(int i = 1i < matrizes.size()i++)
+    for(int i = 1;i < matrizes.size();i++)
     {
       matriz = (Matriz)matrizes.get(i)
       cbxMatriz.addItem(matriz.obterDescricao())
@@ -430,7 +426,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
   {
     cbxItem.removeAllItems()
     cbxItem.addItem("Selecione...")
-    for(int i = 1i < itens.size()i++)
+    for(int i = 1;i < itens.size();i++)
     {
       cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
     }
@@ -443,7 +439,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
     cbxComponente.addItem("Selecione...")
     int posicao = 0
     Componente componente
-    for(int i = 1i < componentes.size()i++)
+    for(int i = 1;i < componentes.size();i++)
     {
       componente = (Componente)componentes.get(i)
       if(this.produto != null)
@@ -470,7 +466,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
     cbxTipoProducao.addItem("Selecione...")
     int posicao = 0
     TipoProducao tipoProducao
-    for(int i = 1i < tiposProducao.size()i++)
+    for(int i = 1;i < tiposProducao.size();i++)
     {
       tipoProducao = (TipoProducao)tiposProducao.get(i)
       if(this.produto != null)
@@ -516,7 +512,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
   private void carregarFormMateriaPrima(MateriaPrima materiaPrima)
   {
-    for(int i = 1i < matrizes.size()i++)
+    for(int i = 1;i < matrizes.size();i++)
     {
       if(materiaPrima.obterMatriz().obterDescricao().equals(((Matriz)matrizes.get(i)).obterDescricao()))
       {
@@ -525,7 +521,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    for(int i = 1i < itens.size()i++)
+    for(int i = 1;i < itens.size();i++)
     {
       if(materiaPrima.obterItem().obterCodigo() == ((Item)itens.get(i)).obterCodigo())
       {
@@ -628,11 +624,11 @@ class DlgDadosProduto extends JDialog implements ActionListener
       if(materiasPrimasIniciais == null)
       {
         materiasPrimasIniciais = new Vector()
-        for(int i = 0i < materiasPrimas.size()i++)
+        for(int i = 0;i < materiasPrimas.size();i++)
         {
           materiasPrimasIniciais.addElement(materiasPrimas.get(i))
         }
-        for(int i = 0i < materiasPrimasIniciais.size()i++)
+        for(int i = 0;i < materiasPrimasIniciais.size();i++)
         {
           try
           {
@@ -654,7 +650,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
       else
       {
-        for(int i = 0i < materiasPrimasIniciais.size()i++)
+        for(int i = 0;i < materiasPrimasIniciais.size();i++)
         {
           try
           {
@@ -760,7 +756,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
         if(linhaSelecionada < (indiceTabela - 1))
         {
-          for(int i = linhaSelecionadai < (indiceTabela - 1)i++)
+          for(int i = linhaSelecionada;i < (indiceTabela - 1);i++)
           {
             tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i+1,0),i,0)
             tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i+1,1),i,1)

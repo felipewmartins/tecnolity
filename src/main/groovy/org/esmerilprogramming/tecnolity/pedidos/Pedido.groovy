@@ -234,7 +234,7 @@ import org.esmerilprogramming.tecnolity.util.*
     Vector numeros = new Vector()
     Matriz matriz
     int j = 0
-    for(int i = 0 0i < produtosPedido.size()i++)
+    for(int i = 0; i < produtosPedido.size() ;i++)
     {
       matriz = ((ProdutoPedido)produtosPedido.get(i)).obterMatriz()
       if(matriz.obterReferencia().equals(referencia))
@@ -312,7 +312,7 @@ import org.esmerilprogramming.tecnolity.util.*
     if(conexao.abrirConexao())
     {
       anteriorOrdemCompra = ""
-      for(int i = 0i < registros.lengthi++)
+      for(int i = 0; i < registros.length; i++)
       {
         cnpjCliente = registros[i].substring(0,14).trim()
         proximaOrdemCompra = registros[i].substring(14,24).trim()
