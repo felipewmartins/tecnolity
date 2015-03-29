@@ -55,7 +55,7 @@ import org.esmerilprogramming.tecnolity.util.*
       g2.drawString("No. Pedidos: "+ pedidos.length +" Data: " + calendario.dataHoje("dd/MM/yyyy 'as' HH:mm"),10,30)
       g2.drawString("Pedidos",10,45)
       String strPedidos = ""
-      for(int i = 0i < pedidos.lengthi++)
+      for(int i = 0 ; i < pedidos.length ; i++)
       {
         strPedidos += pedidos[i].obterOrdemCompra()
         if((i + 1) < pedidos.length)
@@ -63,7 +63,7 @@ import org.esmerilprogramming.tecnolity.util.*
       }
       String[] linhas = Texto.obterTextoAlinhado(strPedidos,63)
       alturaLinha = 45
-      for(int i = 0 i < linhas.lengthi++)
+      for(int i = 0 ; i < linhas.length ; i++)
       {
         g2.drawString(linhas[i],10,alturaLinha += 10)
       }
@@ -75,7 +75,7 @@ import org.esmerilprogramming.tecnolity.util.*
     String query =  "select i.descricao,i.quantidade as disponivel,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria,(i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp " +
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
-    for(int i = 0i < pedidos.lengthi++)
+    for(int i = 0 ; i < pedidos.length ; i++)
     {
       query += "mp.pedido = "+ pedidos[i].obterCodigo()
       if((i+1) < pedidos.length)

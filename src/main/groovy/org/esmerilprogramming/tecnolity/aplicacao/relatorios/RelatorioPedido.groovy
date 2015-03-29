@@ -42,7 +42,7 @@ class RelatorioPedido extends Relatorio
       String produtoAnterior = " "
       int quantidadePares = 0
 
-      for(int i = 0;i < produtosPedido.size();i++)
+      for(int i = 0 ; i < produtosPedido.size() ; i++)
       {
         ProdutoPedido produtoPedido = (ProdutoPedido)produtosPedido.get(i)
           numerosSola = pedido.obterNumeracaoProdutos(produtoPedido.obterMatriz().obterReferencia())
@@ -55,7 +55,7 @@ class RelatorioPedido extends Relatorio
               conteudo.append("                           --- Quantidades ---                              ")
               conteudo.append(QUEBRA)
               String strNumerosSola = ""
-              for(int j = 0j < numerosSola.size()j++)
+              for(int j = 0 ; j < numerosSola.size() ; j++)
               {
                 strNumerosSola += "|  " + numerosSola.get(j) + "  "
               }
@@ -64,7 +64,7 @@ class RelatorioPedido extends Relatorio
           }
         if(produtoAnterior.equals(produtoPedido.obterProduto().obterNomeModelo()))
         {
-          for(int k = 0;k < numerosSola.size();k++)
+          for(int k = 0 ; k < numerosSola.size() ; k++)
           {
             if(produtoPedido.obterMatriz().obterNumeroSola() == Integer.parseInt((String)numerosSola.get(k)))
             {
