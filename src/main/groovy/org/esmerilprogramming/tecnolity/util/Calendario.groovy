@@ -211,7 +211,7 @@ import java.util.regex.*
   }
 
    static int getNumeroDiaSemana(final String nomeDiaSemana) {
-    for (int i = 0 i < Calendario.nomeDiasSemana.length ++i) {
+    for (int i = 0 ;i < Calendario.nomeDiasSemana.length; ++i) {
       if (nomeDiaSemana.equals(Calendario.nomeDiasSemana[i])) {
         return i
       }
