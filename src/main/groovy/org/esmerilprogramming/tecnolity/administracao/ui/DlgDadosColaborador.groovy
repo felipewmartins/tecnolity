@@ -135,8 +135,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
 
                   int indiceDepartamento = 0
                   for(int i = 1; i < departamentos.size(); i++) {
-                    if((((Departamento)departamentos.get(i)).obterNomeDepartamento()).equals((this.colaborador.obterDepartamento())==null?"":(this.colaborador.obterDepartamento()).obterNomeDepartamento()))
-                    {
+                    if((((Departamento)departamentos.get(i)).obterNomeDepartamento()).equals((this.colaborador.obterDepartamento())==null?"":(this.colaborador.obterDepartamento()).obterNomeDepartamento())) {
                       indiceDepartamento = i
                     }
                   }
@@ -267,39 +266,33 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
           this.getBounds().height)
   }
 
-  private void carregarEstados()
-  {
+  private void carregarEstados() {
     cbxEstado.removeAllItems()
       cbxEstado.addItem("Selecione...")
 
-      for(int i = 1;i < estados.size();i++)
-      {
+      for(int i = 1;i < estados.size();i++) {
         cbxEstado.addItem(((Estado)estados.get(i)).getNome())
       }
   }
 
-  private void carregarDepartamentos(JComboBox comboBox)
-  {
+  private void carregarDepartamentos(JComboBox comboBox) {
     Departamento departamento = new Departamento()
       comboBox.removeAllItems()
       try
       {
         departamentos = departamento.carregarDepartamentos(aplicacao.obterConexao())
           comboBox.addItem("Selecione...")
-          for(int i=1;i < this.departamentos.size();i++)
-          {
+          for(int i=1;i < this.departamentos.size();i++) {
             comboBox.addItem(((Departamento)this.departamentos.get(i)).obterNomeDepartamento())
           }
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -310,12 +303,10 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       painel.add(c)
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent)
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoEstado)
-      {
+      if(objeto == btNovoEstado) {
         DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao,'I')
           dlgDadosEstado.setVisible(true)
           try
@@ -323,15 +314,13 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
             estados = Estado.carregarEstados("BRA",aplicacao.obterConexao())
               carregarEstados()
           }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
 
-    if(objeto == btNovoDepartamento)
-    {
+    if(objeto == btNovoDepartamento) {
       DlgDadosDepartamento dlgDadosDepartamento = new DlgDadosDepartamento(aplicacao)
         dlgDadosDepartamento.setVisible(true)
         try
@@ -339,15 +328,13 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
           departamentos = new Departamento().carregarDepartamentos(aplicacao.obterConexao())
             this.carregarDepartamentos(cbxDepartamento)
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btConfirmar)
-    {
+    if(objeto == btConfirmar) {
       try
       {
         colaborador.definirMatricula(this.txtMatricula.getText())

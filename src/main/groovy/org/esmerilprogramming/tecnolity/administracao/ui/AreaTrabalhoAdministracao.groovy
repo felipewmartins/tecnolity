@@ -14,10 +14,8 @@ class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
   private JPanel pnlCabecalho, pnlInformacoes
   private InformacoesAdministracao tbpInformacoes
 
-  AreaTrabalhoAdministracao(Aplicacao aplicacao)
-  {
-    switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao()))
-    {
+  AreaTrabalhoAdministracao(Aplicacao aplicacao) {
+    switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao())) {
       case Permissao.SEM_ACESSO:
         JOptionPane.showMessageDialog(this,"Acesso Negado.","Segurança",JOptionPane.WARNING_MESSAGE)
         break

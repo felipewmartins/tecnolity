@@ -21,8 +21,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
     private Vector responsaveis
     private Departamento departamento
 
-    DlgDadosDepartamento(Aplicacao aplicacao)
-    {
+    DlgDadosDepartamento(Aplicacao aplicacao) {
       super(aplicacao,true)
 
         this.setTitle("Novo Departamento")
@@ -32,8 +31,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
         montarInterface()
     }
 
-  DlgDadosDepartamento(Aplicacao aplicacao, Departamento departamento)
-  {
+  DlgDadosDepartamento(Aplicacao aplicacao, Departamento departamento) {
     super(aplicacao,true)
 
       this.setTitle("Novo Departamento")
@@ -44,8 +42,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
       montarInterface()
   }
 
-  private void montarInterface()
-  {
+  private void montarInterface() {
     this.conteudo = this.getContentPane()
 
       gridbag = new GridBagLayout()
@@ -71,8 +68,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
         responsaveis = colaborador.carregarColaboradores(aplicacao.obterConexao())
           carregarResponsaveis()
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -92,8 +88,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
       redimencionar()
   }
 
-  private void redimencionar()
-  {
+  private void redimencionar() {
     this.pack()
 
       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
@@ -103,13 +98,11 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
           this.getBounds().height)
   }
 
-  private void carregarResponsaveis()
-  {
+  private void carregarResponsaveis() {
     cbxResponsavel.removeAllItems()
       cbxResponsavel.addItem("Selecione...")
       int selecionado = 0
-      for(int i = 1;i < responsaveis.size();i++)
-      {
+      for(int i = 1;i < responsaveis.size();i++) {
         Colaborador colaborador = (Colaborador)responsaveis.get(i)
           if(departamento.obterResponsavel() != null)
             if(colaborador.obterMatricula().equals(departamento.obterResponsavel().obterMatricula()))
@@ -119,8 +112,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
     cbxResponsavel.setSelectedIndex(selecionado)
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -131,21 +123,17 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
       painel.add(c)
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent) 
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar)
-      {
-        if(departamento.obterCodigo() > 0)
-        {
+      if(objeto == btConfirmar) {
+        if(departamento.obterCodigo() > 0) {
           try
           {
             departamento.alterarDepartamento(txtNomeDepartamento.getText(),(Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
               this.setVisible(false)
           }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -157,16 +145,14 @@ class DlgDadosDepartamento extends JDialog implements ActionListener
             departamento.cadastrarDepartamento(txtNomeDepartamento.getText(),(Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
               this.setVisible(false)
           }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
       }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)	
     }
   }

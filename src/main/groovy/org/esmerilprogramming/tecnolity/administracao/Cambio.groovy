@@ -4,65 +4,58 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
 
- class Cambio 
+class Cambio
 {
-    private float dolar
+  private float dolar
     private String data
-    
-     Cambio() {}
-    
-     Cambio(float dolar, String data)
-    {
-        this.dolar = dolar
-        this.data = data
+
+    Cambio() {}
+
+  Cambio(float dolar, String data) {
+    this.dolar = dolar
+      this.data = data
+  }
+
+  float obterDolar() {
+    return this.dolar
+  }
+
+  String obterData() {
+    return this.data
+  }
+
+  void definirDolar(float dolar) throws Exception
+  {
+    if(dolar == 0.0f) {
+      Exception e = new Exception("O valor do dólar não foi informado.")
+        throw e
     }
-    
-     float obterDolar()
-    {
-        return this.dolar
-    }
-    
-     String obterData()
-    {
-        return this.data
-    }
-    
-     void definirDolar(float dolar) throws Exception
-    {
-        if(dolar == 0.0f)
-        {
-            Exception e = new Exception("O valor do dólar não foi informado.")
-            throw e
-        }
-        else
-            this.dolar = dolar
-     }
-     
-      void definirData(String data)
-     {
-         this.data = data
-     }
-     
-      void carregarCambio(Conexao conexao) throws Exception
-     {
-        ResultSet dadosCambio        
-        dadosCambio = conexao.executarConsulta("select distinct valor_dolar from cotacao_dolar where data = (select max(data) from cotacao_dolar)")
-        if(dadosCambio.next())
-        {
-            definirDolar(dadosCambio.getFloat("valor_dolar"))
-        }
-        dadosCambio.close()
+    else
+      this.dolar = dolar
+  }
+
+  void definirData(String data) {
+    this.data = data
+  }
+
+  void carregarCambio(Conexao conexao) throws Exception
+  {
+    ResultSet dadosCambio
+      dadosCambio = conexao.executarConsulta("select distinct valor_dolar from cotacao_dolar where data = (select max(data) from cotacao_dolar)")
+      if(dadosCambio.next()) {
+        definirDolar(dadosCambio.getFloat("valor_dolar"))
       }
-     
-      void cadastrarCambio() throws Exception
-     {
-        Conexao conexao = new Conexao('T')        
-        if(conexao.abrirConexao())
-        {                
-            String query = "insert into cotacao_dolar (valor_dolar) "
-            query += "values ("+ this.dolar +")"
-            conexao.executarAtualizacao(query)                
-            conexao.fecharConexao()
-        }
+    dadosCambio.close()
+  }
+
+  void cadastrarCambio() throws Exception
+  {
+    Conexao conexao = new Conexao('T')
+      if(conexao.abrirConexao()) {
+        String query = "insert into cotacao_dolar (valor_dolar) "
+          query += "values ("+ this.dolar +")"
+          conexao.executarAtualizacao(query)
+          conexao.fecharConexao()
       }
+  }
 }

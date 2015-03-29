@@ -22,8 +22,7 @@ class DlgDadosEstado extends JDialog implements ActionListener
     private Vector paises
     private JButton btNovoPais, btConfirmar, btCancelar
 
-    DlgDadosEstado(Aplicacao aplicacao, char modo)
-    {
+    DlgDadosEstado(Aplicacao aplicacao, char modo) {
       super(aplicacao,true)
 
         // Define o título da janela
@@ -69,8 +68,7 @@ class DlgDadosEstado extends JDialog implements ActionListener
                       paises = Pais.carregarPaises(aplicacao.obterConexao())
                         carregarPaises()
                     }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Países.","Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -102,19 +100,16 @@ class DlgDadosEstado extends JDialog implements ActionListener
             this.getBounds().height)
     }
 
-  private void carregarPaises()
-  {
+  private void carregarPaises() {
     cbxPais.removeAllItems()
       cbxPais.addItem("Selecione...")
 
-      for(int i = 1;i < paises.size();i++)
-      {
+      for(int i = 1;i < paises.size();i++) {
         cbxPais.addItem(((Pais)paises.get(i)).getNome())
       }
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -125,12 +120,10 @@ class DlgDadosEstado extends JDialog implements ActionListener
       painel.add(c)
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent) 
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoPais)
-      {
+      if(objeto == btNovoPais) {
         DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao,'I')
           dlgDadosPais.setVisible(true)
           try
@@ -138,30 +131,26 @@ class DlgDadosEstado extends JDialog implements ActionListener
             paises = Pais.carregarPaises(aplicacao.obterConexao())
               carregarPaises()
           }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Países.","Erro",JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
 
-    if(objeto == btConfirmar)
-    {
+    if(objeto == btConfirmar) {
       try
       {
         Estado estado = new Estado(txtSiglaEstado.getText(),txtNomeEstado.getText(),(Pais)paises.get(cbxPais.getSelectedIndex()))
           estado.cadastrarEstado()
           this.setVisible(false)
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.WARNING_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)	
     }
   }

@@ -57,8 +57,7 @@ class Colaborador extends PessoaFisica
 
       dadosColaborador = conexao.executarConsulta("select * from usuario where usuario = '"+ this.matricula +"'")
 
-      if(dadosColaborador.next())
-      {
+      if(dadosColaborador.next()) {
         this.definirSenha(dadosColaborador.getString("senha"))
           this.definirSexo(dadosColaborador.getString("sexo").charAt(0))
           super.setNome(dadosColaborador.getString("nome_completo"))
@@ -67,11 +66,9 @@ class Colaborador extends PessoaFisica
           this.definirCpf(dadosColaborador.getString("cpf"))
 
           int codigoDepartamento = dadosColaborador.getInt("departamento")
-          if(codigoDepartamento > 0)
-          {
+          if(codigoDepartamento > 0) {
             dadosDepartamento = conexao.executarConsulta("select departamento from departamento where codigo = " + codigoDepartamento)
-              if(dadosDepartamento.next())
-              {
+              if(dadosDepartamento.next()) {
                 this.definirDepartamento(new Departamento(codigoDepartamento,dadosDepartamento.getString("departamento")))
               }
             dadosDepartamento.close()
@@ -81,8 +78,7 @@ class Colaborador extends PessoaFisica
           this.definirBairro(dadosColaborador.getString("bairro"))
           this.definirCidade(dadosColaborador.getString("cidade"))
           String siglaEstado = dadosColaborador.getString("estado")
-          if(siglaEstado != null)
-          {
+          if(siglaEstado != null) {
             this.setEstado(new Estado(siglaEstado))
           }
         this.definirCep(dadosColaborador.getString("cep"))
@@ -102,47 +98,38 @@ class Colaborador extends PessoaFisica
 
   Colaborador(){}
 
-  String obterMatricula()
-  {
+  String obterMatricula() {
     return this.matricula
   }
 
-  String obterSenha()
-  {
+  String obterSenha() {
     return this.senha
   }
 
-  char obterSexo()
-  {
+  char obterSexo() {
     return super.getSexo()
   }
 
-  Departamento obterDepartamento()
-  {
+  Departamento obterDepartamento() {
     return this.departamento
   }
 
-  Estado obterEstado()
-  {
+  Estado obterEstado() {
     return (Estado)this.getEstado()
   }
 
-  String obterRamal()
-  {
+  String obterRamal() {
     return this.ramal
   }
 
-  boolean senhaAlterada()
-  {
+  boolean senhaAlterada() {
     return this.senhaAlterada
   }
 
   void definirMatricula(String matricula) throws Exception
   {
-    if(matricula != null)
-    {
-      if(matricula.equals(""))
-      {
+    if(matricula != null) {
+      if(matricula.equals("")) {
         Exception e = new Exception("A Matrícula não foi informada.")
           throw e
       }
@@ -153,8 +140,7 @@ class Colaborador extends PessoaFisica
 
   void definirSenha(String senha) throws Exception
   {
-    if(senha.equals(""))
-    {
+    if(senha.equals("")) {
       Exception e = new Exception("A Senha não foi informada.")
         throw e
     }
@@ -164,8 +150,7 @@ class Colaborador extends PessoaFisica
 
   void definirSexo(char sexo) throws Exception
   {
-    if(sexo == '\u0000')
-    {
+    if(sexo == '\u0000') {
       Exception e = new Exception("O Sexo não foi informado.")
         throw e
     }
@@ -173,13 +158,11 @@ class Colaborador extends PessoaFisica
       super.setSexo(sexo)
   }
 
-  void definirIdentidade(String identidade)
-  {
+  void definirIdentidade(String identidade) {
     super.setIdentidade(identidade)
   }
 
-  void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade)
-  {
+  void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade) {
     super.setOrgaoIdentidade(orgaoEmissorIdentidade)
   }
 
@@ -188,8 +171,7 @@ class Colaborador extends PessoaFisica
     super.setCPF(cpf)
   }
 
-  void definirDepartamento(Departamento departamento)
-  {
+  void definirDepartamento(Departamento departamento) {
     this.departamento = departamento
   }
 
@@ -198,13 +180,11 @@ class Colaborador extends PessoaFisica
     super.setLogradouro(logradouro)
   }
 
-  void definirComplemento(String complemento)
-  {
+  void definirComplemento(String complemento) {
     super.setComplemento(complemento)
   }
 
-  void definirBairro(String bairro)
-  {
+  void definirBairro(String bairro) {
     super.setBairro(bairro)
   }
 
@@ -213,13 +193,11 @@ class Colaborador extends PessoaFisica
     super.setCidade(cidade)
   }
 
-  void definirCep(String cep)
-  {
+  void definirCep(String cep) {
     super.setCEP(cep)
   }
 
-  void setDDD(String ddd)
-  {
+  void setDDD(String ddd) {
     this.ddd = ddd
   }
 
@@ -227,8 +205,7 @@ class Colaborador extends PessoaFisica
   {
     if(telefone == null)
       return
-        if(telefone.length() <= 8)
-        {
+        if(telefone.length() <= 8) {
           super.setTelefone(telefone)
         }
         else
@@ -238,8 +215,7 @@ class Colaborador extends PessoaFisica
         }
   }
 
-  void definirRamal(String ramal)
-  {
+  void definirRamal(String ramal) {
     if(ramal == null)
       return
         this.ramal = ramal.trim()
@@ -249,8 +225,7 @@ class Colaborador extends PessoaFisica
   {
     if(celular == null)
       return
-        if(celular.length() <= 8)
-        {
+        if(celular.length() <= 8) {
           super.setCelular(celular)
         }
         else
@@ -265,8 +240,7 @@ class Colaborador extends PessoaFisica
     super.setEmail(email)
   }
 
-  void senhaAlterada(boolean senhaAlterada)
-  {
+  void senhaAlterada(boolean senhaAlterada) {
     this.senhaAlterada = senhaAlterada
   }
 
@@ -277,13 +251,11 @@ class Colaborador extends PessoaFisica
       boolean usuarioAutenticado = false
 
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao())
-      {
+      if(conexao.abrirConexao()) {
         query = "select usuario,senha,sexo,nome_completo,identidade,orgao_emissor_rg,cpf,d.codigo as codigo_departamento,d.departamento,logradouro,complemento,bairro,cidade,estado,cep,ddd,telefone,ramal,celular,email,senha_alterada from usuario u, departamento d "+
           "where usuario = '"+ matricula +"' and senha = '"+ senha +"' and d.codigo =* u.departamento"
           colaborador = conexao.executarConsulta(query)
-          if(colaborador.next())
-          {
+          if(colaborador.next()) {
             usuarioAutenticado = true
               this.matricula = colaborador.getString("usuario")
               this.senha = colaborador.getString("senha")
@@ -312,8 +284,7 @@ class Colaborador extends PessoaFisica
           {
             query = "select * from usuario"
               colaborador = conexao.executarConsulta(query)
-              if(!colaborador.next())
-              {
+              if(!colaborador.next()) {
                 colaboradorExiste = false
               }
           }
@@ -325,22 +296,18 @@ class Colaborador extends PessoaFisica
 
   /** Retorna true se houver algum colaborador cadastrado no Banco de dados.
     Retorna false se não houver nenhum colaborador cadastrado.*/
-  boolean colaboradorExiste()
-  {
+  boolean colaboradorExiste() {
     return this.colaboradorExiste
   }
 
-  void cadastrarColaborador()
-  {
+  void cadastrarColaborador() {
     Conexao conexao = new Conexao('T')
       boolean existente = false
       try
       {
-        if(conexao.abrirConexao())
-        {
+        if(conexao.abrirConexao()) {
           ResultSet colaborador = conexao.executarConsulta("select usuario from usuario where usuario = '"+ this.matricula +"'")
-            if(colaborador.next())
-            {
+            if(colaborador.next()) {
               existente = true
             }
             else
@@ -352,14 +319,12 @@ class Colaborador extends PessoaFisica
           conexao.fecharConexao()
         }
       }
-    catch (SQLException e)
-    {
+    catch (SQLException e) {
 
     }
   }
 
-  void alterarColaborador()
-  {
+  void alterarColaborador() {
     Conexao conexao = new Conexao('T')
       conexao.abrirConexao()
       String query = "update usuario set senha = '"+ this.senha +"',sexo = '"+ super.getSexo() +"',nome_completo = '"+ super.getNome() +"',identidade = '"+ super.getIdentidade() +"',orgao_emissor_rg = '"+ super.getOrgaoIdentidade().trim() +"',cpf = '"+ super.getCPF() +"',departamento = "+ ((this.departamento == null)?"NULL":"" + this.departamento.obterCodigo()) +",logradouro = '"+ super.getLogradouro() +"',complemento = '"+ super.getComplemento() +"',bairro = '"+ super.getBairro() +"',cidade = '"+ super.getCidade() +"',estado = "+ (this.obterEstado() != null?"'"+ this.obterEstado().getSigla() +"'":null) +",cep = '"+ super.getCEP() +"',ddd = '"+ this.getDDD() +"',telefone = '"+ super.getTelefone() +"',ramal = '"+ this.ramal +"',celular = '"+ super.getCelular() +"',email = '"+ super.getEmail() +"',senha_alterada = 1 where usuario = '"+ this.matricula +"'"
@@ -367,8 +332,7 @@ class Colaborador extends PessoaFisica
       conexao.fecharConexao()
   }
 
-  void excluirColaborador()
-  {
+  void excluirColaborador() {
     Conexao conexao = new Conexao('T')
       conexao.abrirConexao()
       String query = "delete from usuario where usuario = '"+ this.matricula +"'"
@@ -376,8 +340,7 @@ class Colaborador extends PessoaFisica
       conexao.fecharConexao()
   }
 
-  boolean colaboradorTemPermissao(Interface inter)
-  {
+  boolean colaboradorTemPermissao(Interface inter) {
     return true
   }
 
@@ -389,14 +352,12 @@ class Colaborador extends PessoaFisica
       {
         dadosColaborador = conexao.executarConsulta("select usuario, nome_completo, senha from usuario order by usuario asc")
           colaboradores.addElement(null)
-          while(dadosColaborador.next())
-          {
+          while(dadosColaborador.next()) {
             colaboradores.addElement(new Colaborador(dadosColaborador.getString("usuario"),dadosColaborador.getString("nome_completo"), dadosColaborador.getString("senha")))
           }
         dadosColaborador.close()
       }
-    catch (SQLException e)
-    {
+    catch (SQLException e) {
       e.printStackTrace()
     }
     return colaboradores
@@ -408,8 +369,7 @@ class Colaborador extends PessoaFisica
       Permissao permissao
       permissoes.removeAllElements()
       ResultSet dadosPermissoes = conexao.executarConsulta("select i.identificador as identificador, i.interface as interface, i.descricao as descricao_interface, p.permissao as tipo_permissao from permissao p, interface i where i.identificador = p.interface and p.usuario = '"+ this.matricula +"' order by i.identificador asc")
-      while(dadosPermissoes.next())
-      {
+      while(dadosPermissoes.next()) {
         tela = new Interface(dadosPermissoes.getInt("identificador"),dadosPermissoes.getString("interface"),dadosPermissoes.getString("descricao_interface"))
           permissao = new Permissao(tela,dadosPermissoes.getString("tipo_permissao").toCharArray()[0])
           permissoes.addElement(permissao)
@@ -417,8 +377,7 @@ class Colaborador extends PessoaFisica
     dadosPermissoes.close()
   }
 
-  Vector obterPermissoes()
-  {
+  Vector obterPermissoes() {
     return this.permissoes
   }
 
@@ -429,20 +388,16 @@ class Colaborador extends PessoaFisica
       ResultSet dadosColaborador
 
       conexao.executarAtualizacao("delete from permissao where usuario = '"+ this.matricula +"'")
-      for(int i = 0;i < permissoes.size();i++)
-      {
+      for(int i = 0;i < permissoes.size();i++) {
         conexao.executarAtualizacao("insert into permissao (interface,usuario,permissao) values ("+ ((Permissao)permissoes.get(i)).obterTela().obterIdentificador() +",'"+ this.matricula +"','"+ ((Permissao)permissoes.get(i)).obterTipoAcesso() +"')")
       }
     conexao.fecharConexao()
   }
 
-  char verificarPermissao(Interface tela)
-  {
+  char verificarPermissao(Interface tela) {
     char tipoPermissao = '\u0000'
-      for(int i=0;i < permissoes.size();i++)
-      {
-        if(((Permissao)permissoes.get(i)).obterTela().obterIdentificador() == tela.obterIdentificador())
-        {
+      for(int i=0;i < permissoes.size();i++) {
+        if(((Permissao)permissoes.get(i)).obterTela().obterIdentificador() == tela.obterIdentificador()) {
           tipoPermissao = ((Permissao)permissoes.get(i)).obterTipoAcesso()
         }
       }
