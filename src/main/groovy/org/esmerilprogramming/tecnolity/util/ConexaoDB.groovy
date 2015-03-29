@@ -1,4 +1,4 @@
-package org.esmerilprogramming.tecnolity
+package org.esmerilprogramming.tecnolity.util
 
 import java.sql.*
 
