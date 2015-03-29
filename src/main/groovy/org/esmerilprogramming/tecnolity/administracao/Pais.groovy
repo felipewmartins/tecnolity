@@ -25,8 +25,7 @@ import org.esmerilprogramming.tecnolity.util.*
     dadosPais = conexao.executarConsulta("select sigla_pais, pais from pais order by pais asc")
     paises = new Vector()
     paises.addElement(null)
-    while(dadosPais.next())
-    {
+    while(dadosPais.next()) {
       paises.addElement(new Pais(dadosPais.getString("sigla_pais"),dadosPais.getString("pais")))
     }
     dadosPais.close()
@@ -37,14 +36,12 @@ import org.esmerilprogramming.tecnolity.util.*
   {
     Conexao conexao = new Conexao('T')
     String erro = ""
-    if (conexao.abrirConexao())
-    {
+    if (conexao.abrirConexao()) {
       String query = "Select sigla_pais from pais where sigla_pais = '"+ getSigla() +"'"
       try
       {
         ResultSet dadosPais = conexao.executarConsulta(query)
-        if(!dadosPais.next())
-        {
+        if(!dadosPais.next()) {
           query = "insert into pais (sigla_pais,pais) values ('"+ getSigla() +"','"+ getNome() +"')"
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
@@ -55,8 +52,7 @@ import org.esmerilprogramming.tecnolity.util.*
           dadosPais.close()
         }
       }
-      catch(Exception ex)
-      {
+      catch(Exception ex) {
         ex.printStackTrace()
       }
       conexao.fecharConexao()
@@ -66,8 +62,7 @@ import org.esmerilprogramming.tecnolity.util.*
       erro = "Não foi possível realizar uma conexão com o banco de dados."
     }
 
-    if (!erro.equals(""))
-    {
+    if (!erro.equals("")) {
       Exception e = new Exception(erro)
       throw e
     }

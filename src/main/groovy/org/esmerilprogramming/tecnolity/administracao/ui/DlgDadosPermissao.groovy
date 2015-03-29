@@ -23,8 +23,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
     private JButton btAdicionarLeitura, btRemoverLeitura, btAdicionarEscrita, btRemoverEscrita, btAplicar, btConfirmar, btCancelar
     private Vector colaboradores, interfaces, acessosLeitura, acessosEscrita
 
-    DlgDadosPermissao(Aplicacao aplicacao, char modo)
-    {
+    DlgDadosPermissao(Aplicacao aplicacao, char modo) {
       super(aplicacao,true)
 
         this.setTitle("Atribuição de Permissões")
@@ -52,8 +51,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
         {
           colaboradores = colaborador.carregarColaboradores(aplicacao.obterConexao())
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -140,42 +138,34 @@ class DlgDadosPermissao extends JDialog implements ActionListener
             this.getBounds().height)
     }
 
-  private void carregarColaboradores()
-  {
+  private void carregarColaboradores() {
     cbxColaborador.removeAllItems()
       cbxColaborador.addItem("Selecione...")
-      for(int i = 1;i < colaboradores.size();i++)
-      {
+      for(int i = 1;i < colaboradores.size();i++) {
         cbxColaborador.addItem(((Colaborador)colaboradores.get(i)).getNome())
       }
   }
 
-  private void carregarInterfaces()
-  {
+  private void carregarInterfaces() {
     DefaultListModel modeloLista = new DefaultListModel()
       this.lstInterface.setModel(modeloLista)
-      for(int i = 0;i < interfaces.size();i++)
-      {
+      for(int i = 0;i < interfaces.size();i++) {
         modeloLista.addElement(((Interface)interfaces.get(i)).obterNomeInterface() + " ("+ ((Interface)interfaces.get(i)).obterIdentificador() +")")
       }
   }
 
-  private void carregarPermissoesLeitura()
-  {
+  private void carregarPermissoesLeitura() {
     DefaultListModel modeloLista = new DefaultListModel()
       lstInterfaceAcessoLeitura.setModel(modeloLista)
-      for(int i = 0;i < acessosLeitura.size();i++)
-      {
+      for(int i = 0;i < acessosLeitura.size();i++) {
         modeloLista.addElement(((Interface)acessosLeitura.get(i)).obterNomeInterface())
       }
   }
 
-  private void carregarPermissoesEscrita()
-  {
+  private void carregarPermissoesEscrita() {
     DefaultListModel modeloLista = new DefaultListModel()
       lstInterfaceAcessoEscrita.setModel(modeloLista)
-      for(int i = 0;i < acessosEscrita.size();i++)
-      {
+      for(int i = 0;i < acessosEscrita.size();i++) {
         modeloLista.addElement(((Interface)acessosEscrita.get(i)).obterNomeInterface())
       }
   }
@@ -186,8 +176,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
    *  de leitura e escrita serão apresentadas, ao mesmo tempo que as mesmas
    *  são retiradas da lista de interfaces.
    */
-  private void carregarPermissoes()
-  {
+  private void carregarPermissoes() {
     Colaborador colaborador = (Colaborador)colaboradores.get(cbxColaborador.getSelectedIndex())
       Vector permissoes
 
@@ -201,38 +190,31 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       {
         interfaces = tela.carregarInterfaces(aplicacao.obterConexao())
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
     }
 
-    if(colaborador != null)
-    {
+    if(colaborador != null) {
       try
       {
         colaborador.carregarPermissoes(aplicacao.obterConexao())
           permissoes = colaborador.obterPermissoes()
-          for(int i = 0 ;i < permissoes.size();i++)
-          {
+          for(int i = 0 ;i < permissoes.size();i++) {
             Permissao permissao = (Permissao)permissoes.get(i)
-              if(permissao.obterTipoAcesso() == 'L')
-              {
+              if(permissao.obterTipoAcesso() == 'L') {
                 acessosLeitura.addElement(permissao.obterTela())
               }
-            if(permissao.obterTipoAcesso() == 'E')
-            {
+            if(permissao.obterTipoAcesso() == 'E') {
               acessosEscrita.addElement(permissao.obterTela())
             }
 
-            for(int j = 0;j < interfaces.size();j++)
-            {
+            for(int j = 0;j < interfaces.size();j++) {
               if(((Interface)interfaces.get(j)).obterIdentificador() == ((Permissao)permissoes.get(i)).obterTela().obterIdentificador())
                 interfaces.removeElementAt(j)
             }
           }
       }
-      catch(SQLException e)
-      {
+      catch(SQLException e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: "+ e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
       }
     }
@@ -241,8 +223,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       this.carregarPermissoesEscrita()
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -253,19 +234,15 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       painel.add(c)
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent) 
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == cbxColaborador)
-      {
+      if(objeto == cbxColaborador) {
         this.carregarPermissoes()
       }
 
-    if(objeto == btAdicionarLeitura)
-    {
-      if(!lstInterface.isSelectionEmpty())
-      {
+    if(objeto == btAdicionarLeitura) {
+      if(!lstInterface.isSelectionEmpty()) {
         acessosLeitura.addElement(interfaces.get(lstInterface.getSelectedIndex()))
           interfaces.removeElementAt(lstInterface.getSelectedIndex())
           DefaultListModel modelo = (DefaultListModel)lstInterface.getModel()
@@ -279,10 +256,8 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btRemoverLeitura)
-    {
-      if(!lstInterfaceAcessoLeitura.isSelectionEmpty())
-      {
+    if(objeto == btRemoverLeitura) {
+      if(!lstInterfaceAcessoLeitura.isSelectionEmpty()) {
         interfaces.addElement(acessosLeitura.get(lstInterfaceAcessoLeitura.getSelectedIndex()))
           acessosLeitura.removeElementAt(lstInterfaceAcessoLeitura.getSelectedIndex())
           DefaultListModel modelo = (DefaultListModel)lstInterface.getModel()
@@ -296,10 +271,8 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btAdicionarEscrita)
-    {
-      if(!lstInterface.isSelectionEmpty())
-      {
+    if(objeto == btAdicionarEscrita) {
+      if(!lstInterface.isSelectionEmpty()) {
         acessosEscrita.addElement(interfaces.get(lstInterface.getSelectedIndex()))
           interfaces.removeElementAt(lstInterface.getSelectedIndex())
           DefaultListModel modelo = (DefaultListModel)lstInterface.getModel()
@@ -313,10 +286,8 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btRemoverEscrita)
-    {
-      if(!lstInterfaceAcessoEscrita.isSelectionEmpty())
-      {
+    if(objeto == btRemoverEscrita) {
+      if(!lstInterfaceAcessoEscrita.isSelectionEmpty()) {
         interfaces.addElement(acessosEscrita.get(lstInterfaceAcessoEscrita.getSelectedIndex()))
           acessosEscrita.removeElementAt(lstInterfaceAcessoEscrita.getSelectedIndex())
           DefaultListModel modelo = (DefaultListModel)lstInterface.getModel()
@@ -330,25 +301,20 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btAplicar)
-    {
-      if(cbxColaborador.getSelectedIndex() > 0)
-      {
+    if(objeto == btAplicar) {
+      if(cbxColaborador.getSelectedIndex() > 0) {
         Vector permissoes = new Vector()
-          for(int i = 0;i < acessosLeitura.size();i++)
-          {
+          for(int i = 0;i < acessosLeitura.size();i++) {
             permissoes.addElement(new Permissao(((Interface)acessosLeitura.get(i)),'L'))
           }
-        for(int i = 0;i < acessosEscrita.size();i++)
-        {
+        for(int i = 0;i < acessosEscrita.size();i++) {
           permissoes.addElement(new Permissao(((Interface)acessosEscrita.get(i)),'E'))
         }
         try
         {
           ((Colaborador)colaboradores.get(cbxColaborador.getSelectedIndex())).definirPermissoes(permissoes)
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
         }
       }
@@ -358,17 +324,13 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btConfirmar)
-    {
-      if(cbxColaborador.getSelectedIndex() > 0)
-      {
+    if(objeto == btConfirmar) {
+      if(cbxColaborador.getSelectedIndex() > 0) {
         Vector permissoes = new Vector()
-          for(int i = 0;i < acessosLeitura.size();i++)
-          {
+          for(int i = 0;i < acessosLeitura.size();i++) {
             permissoes.addElement(new Permissao(((Interface)acessosLeitura.get(i)),'L'))
           }
-        for(int i = 0;i < acessosEscrita.size();i++)
-        {
+        for(int i = 0;i < acessosEscrita.size();i++) {
           permissoes.addElement(new Permissao(((Interface)acessosEscrita.get(i)),'E'))
         }
         try
@@ -376,8 +338,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
           ((Colaborador)colaboradores.get(cbxColaborador.getSelectedIndex())).definirPermissoes(permissoes)
             this.setVisible(false)
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
         }
       }
@@ -387,8 +348,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)	
     }
   }
