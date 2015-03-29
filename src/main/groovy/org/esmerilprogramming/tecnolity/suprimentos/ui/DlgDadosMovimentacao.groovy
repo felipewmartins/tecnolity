@@ -1275,7 +1275,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         {
           // Carrega os itens da movimentacao pelos itens da requisicao de compras.
           movimentacoes = new Vector()
-          for(int i = 0 i < itensRequisicaoCompra.size() i++)
+          for(int i = 0; i < itensRequisicaoCompra.size(); i++)
           {
             movimentacoes.addElement(new Movimentacao((String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()),
                   ((ItemRequisicao)itensRequisicaoCompra.get(i)),
@@ -1307,7 +1307,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         {
           //Definir o status da requisição de compra com base nos status dos itens da requisição.
           ItemRequisicao itemRequisicao
-          for(int i = 0i < itensRequisicaoCompra.size()i++)
+          for(int i = 0;i < itensRequisicaoCompra.size();i++)
           {
             itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
             if(itemRequisicao.obterStatus().equals(ItemRequisicao.ABASTECIDO_PARCIALMENTE))
@@ -1324,7 +1324,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           //Registrar movimentações para cada item da requisição.
 
           Movimentacao movimentacao = null
-          for(int i = 0i < movimentacoes.size()i++)
+          for(int i = 0;i < movimentacoes.size();i++)
           {
             if(((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterLote() != null)
             {
@@ -1356,7 +1356,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       else if(tipoMovimentacao == Movimentacao.CONSUMO || tipoMovimentacao == Movimentacao.VENDAS || tipoMovimentacao == Movimentacao.DESCARTE || tipoMovimentacao == Movimentacao.DEVOLUCAO_EXTERNA)
       {
         String statusDefinido = ""
-        for(int i = 0 i < itensRequisicaoInterna.size() i++)
+        for(int i = 0; i < itensRequisicaoInterna.size(); i++)
         {
           try
           {
@@ -1375,7 +1375,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         // Atualiza o status da Movimentação Interna
         try
         {
-          for(int i = 0i < itensRequisicaoInterna.size()i++)
+          for(int i = 0;i < itensRequisicaoInterna.size();i++)
           {
             if(((ItemRequisicaoInterna)itensRequisicaoInterna.get(i)).obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE))
             {
@@ -1395,7 +1395,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           else if(requisicaoInterna.obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE))
           {
             String mensagem = "Atenção: Os seguintes itens possuem quantidades insuficientes no estoque: \n"
-            for(int i = 0 i < itensRequisicaoInterna.size() i++)
+            for(int i = 0; i < itensRequisicaoInterna.size(); i++)
             {
               ItemRequisicaoInterna item = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
               if(item.obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE))
@@ -1417,7 +1417,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
        * da entrada de um novo lote. */
       else if(tipoMovimentacao == Movimentacao.DEVOLUCAO)
       {
-        for(int i = 0 i < itensRequisicaoInterna.size() i++)
+        for(int i = 0; i < itensRequisicaoInterna.size(); i++)
         {
           try
           {

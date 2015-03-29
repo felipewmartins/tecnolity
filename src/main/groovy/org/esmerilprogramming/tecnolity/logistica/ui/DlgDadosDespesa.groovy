@@ -116,7 +116,7 @@ import org.esmerilprogramming.tecnolity.util.*
     }
 
     int indicePlaca = 0
-    for(int i = 1 i < veiculos.size() i++)
+    for(int i = 1; i < veiculos.size(); i++)
     {
       if((((Veiculo)veiculos.get(i)).obterPlaca()).equals((this.despesa)==null?"":this.despesa.obterPlaca()))
       {
@@ -191,7 +191,7 @@ import org.esmerilprogramming.tecnolity.util.*
     cbxPlaca.removeAllItems()
     cbxPlaca.addItem("Selecione...")
 
-    for(int i = 1i < veiculos.size()i++)
+    for(int i = 1;i < veiculos.size();i++)
     {
       cbxPlaca.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
     }
