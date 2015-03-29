@@ -30,15 +30,13 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
     private JPanel pnlAreaDados
     private JButton btConfirmar, btCancelar
 
-    DlgDadosLote(Aplicacao aplicacao,ItemRequisicao itemRequisicao, Movimentacao movimentacaoItem)
-    {
+    DlgDadosLote(Aplicacao aplicacao,ItemRequisicao itemRequisicao, Movimentacao movimentacaoItem) {
       super(aplicacao,true)
         try
         {
           lote = new Lote()
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar o Lote.","Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -52,8 +50,7 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
         montarInterface()
     }
 
-  void montarInterface()
-  {
+  void montarInterface() {
     conteudo = this.getContentPane()
 
       gridbag = new GridBagLayout()
@@ -125,12 +122,10 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
           this.getBounds().height)
   }
 
-  private void carregarLocalizacoes()
-  {
+  private void carregarLocalizacoes() {
     cbxLocalizacao.addItem("Selecione...")
       Categoria categoria
-      for(int i = 1;i < localizacoes.size();i++)
-      {
+      for(int i = 1;i < localizacoes.size();i++) {
         categoria = (Categoria)localizacoes.get(i)
           cbxLocalizacao.addItem(categoria.obterNomeCategoria())
           if(categoria.obterNomeCategoria().equals(itemRequisicao.obterItem().obterCategoria().obterNomeCategoria()))
@@ -138,8 +133,7 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
       }
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -151,27 +145,22 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
   }
 
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent)
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btCancelar)
-      {
+      if(objeto == btCancelar) {
         this.setVisible(false)
       }
 
-    if(objeto == btConfirmar)
-    {
-      if(!txtQuantidadeRecebida.getText().equals(""))
-      {
+    if(objeto == btConfirmar) {
+      if(!txtQuantidadeRecebida.getText().equals("")) {
         //Verifica se o item foi atendido completamente ou parcialmente.
         if(itemRequisicao.getQuantidadePendente() > Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
           itemRequisicao.definirStatus(ItemRequisicao.ABASTECIDO_PARCIALMENTE)
         else if(itemRequisicao.getQuantidadePendente() == Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
           itemRequisicao.definirStatus(ItemRequisicao.ABASTECIDO_TOTALMENTE)
             // Define o lote para o item requisitado.
-            if(itemRequisicao.getQuantidadePendente() >= Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
-            {
+            if(itemRequisicao.getQuantidadePendente() >= Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText()))) {
               try
               {
                 lote.definirItem(itemRequisicao.obterItem())
@@ -184,8 +173,7 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
                   lote.definirDescricao(txtDescricao.getText())
                   this.itemRequisicao.obterItem().definirLote(this.lote)
               }
-              catch(Exception e)
-              {
+              catch(Exception e) {
                 JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
                   e.printStackTrace()
               }

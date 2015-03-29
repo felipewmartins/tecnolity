@@ -45,8 +45,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
               private Vector clientes, produtos, matrizes, locaisEntrega, produtosPedido
               private Pedido pedido
 
-              DlgDadosPedido(Aplicacao aplicacao)
-              {
+              DlgDadosPedido(Aplicacao aplicacao) {
                 super(aplicacao,true)
 
                   // Define o título da janela
@@ -59,8 +58,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
                   montarInterface()
               }
 
-  DlgDadosPedido(Aplicacao aplicacao, Pedido pedido)
-  {
+  DlgDadosPedido(Aplicacao aplicacao, Pedido pedido) {
     super(aplicacao,true)
       this.setTitle("Pedido")
       this.alteracao = true
@@ -72,8 +70,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       montarInterface()
   }
 
-  private void montarInterface()
-  {
+  private void montarInterface() {
     conteudo = this.getContentPane()
 
       gridbag = new GridBagLayout()
@@ -89,8 +86,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       pnlAreaDados = new JPanel(card)
       JLabel label = null
       JScrollPane scroll = null
-      if(pedido == null)
-      {
+      if(pedido == null) {
         JPanel pnlOpcoes = new JPanel(gridbag)
           ButtonGroup grupo = new ButtonGroup()
           rdbImportar = new JRadioButton("Importar Arquivo (EDI)")
@@ -143,8 +139,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
           clientes = cliente.carregarClientes(aplicacao.obterConexao())
           carregarClientes()
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Clientes.\n\n" + e.getMessage())
         e.printStackTrace()
     }
@@ -161,8 +156,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       cbxTipoOperacao.addItem("Selecione...")
       cbxTipoOperacao.addItem("Venda")
       cbxTipoOperacao.addItem("Beneficiamento")
-      if(pedido != null)
-      {
+      if(pedido != null) {
         cbxTipoOperacao.setSelectedItem(pedido.obterTipoOperacao() == 'V'?"Venda":"Beneficiamento")
       }
     adicionarComponente(pnlInsercaoPedido,cbxTipoOperacao,1,2,1,1)
@@ -216,8 +210,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       btNovoProduto.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovoProduto,BorderLayout.EAST)
       adicionarComponente(pnlProduto,pnlSuporteCombo,1,0,1,1)
-      if(pedido != null)
-      {
+      if(pedido != null) {
         produtos = Produto.carregarProdutos(((Cliente)clientes.get(cbxCliente.getSelectedIndex())),aplicacao.obterConexao())
           carregarProdutos()
       }
@@ -263,8 +256,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       tblProduto.addRowSelectionInterval(0,0)
       scroll = new JScrollPane(tblProduto)
       adicionarComponente(pnlProdutosSelecionados,scroll,1,0,3,1)
-      if(pedido != null)
-      {
+      if(pedido != null) {
         carregarProdutosPedido()
       }
     btExcluirProduto = new JButton("Excluir Selecionado")
@@ -287,8 +279,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       btConfirmar = new JButton("Confirmar Pedido")
       btConfirmar.addActionListener(this)
       btConfirmar.setVisible(false)
-      if(pedido == null)
-      {
+      if(pedido == null) {
         pnlComandos.add(btConfirmar)
       }
       else
@@ -306,8 +297,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       redimencionar()
   }
 
-  private void redimencionar()
-  {
+  private void redimencionar() {
     this.pack()
 
       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
@@ -317,23 +307,19 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
           this.getBounds().height)
   }
 
-  private void carregarClientes()
-  {
+  private void carregarClientes() {
     cbxCliente.removeAllItems()
       cbxCliente.addItem("Selecione...")
-      for(int i = 1;i < clientes.size();i++)
-      {
+      for(int i = 1;i < clientes.size();i++) {
         cbxCliente.addItem(((Cliente)clientes.get(i)).obterRazaoSocial())
       }
-    if(pedido != null)
-    {
+    if(pedido != null) {
       cbxCliente.setSelectedItem(pedido.obterCliente().obterRazaoSocial())
         try
         {
           locaisEntrega = Cliente.carregarLocaisEntrega(aplicacao.obterConexao(),(Cliente)clientes.get(cbxCliente.getSelectedIndex()))
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os locais de entrega.","Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -343,21 +329,17 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
     redimencionar()
   }
 
-  private void carregarProdutos()
-  {
+  private void carregarProdutos() {
     cbxProduto.removeAllItems()
       cbxProduto.addItem("Selecione...")
-      for(int i = 1;i < produtos.size();i++)
-      {
+      for(int i = 1;i < produtos.size();i++) {
         cbxProduto.addItem(((Produto)produtos.get(i)).obterNomeModelo())
       }
     redimencionar()
   }
 
-  private void carregarProdutosPedido()
-  {
-    for(int i = 0;i < produtosPedido.size();i++)
-    {
+  private void carregarProdutosPedido() {
+    for(int i = 0;i < produtosPedido.size();i++) {
       ProdutoPedido produtoPedido = (ProdutoPedido)produtosPedido.get(i)
         tblProduto.setValueAt(produtoPedido.obterProduto().obterNomeModelo(),indiceTabela,0)
         tblProduto.setValueAt("" + produtoPedido.obterMatriz().obterNumeroSola(),indiceTabela,1)
@@ -366,25 +348,21 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
     }
   }
 
-  private void carregarMatrizes()
-  {
+  private void carregarMatrizes() {
     cbxMatriz.removeAllItems()
       cbxMatriz.addItem("Selecione...")
       Matriz matriz
-      for(int i = 1;i < matrizes.size();i++)
-      {
+      for(int i = 1;i < matrizes.size();i++) {
         matriz = (Matriz)matrizes.get(i)
           cbxMatriz.addItem(matriz.obterDescricao())
       }
     redimencionar()
   }
 
-  private void carregarLocaisEntrega()
-  {
+  private void carregarLocaisEntrega() {
     cbxLocalEntrega.removeAllItems()
       cbxLocalEntrega.addItem("Selecione...")
-      for(int i = 1;i < locaisEntrega.size();i++)
-      {
+      for(int i = 1;i < locaisEntrega.size();i++) {
         cbxLocalEntrega.addItem(((LocalEntrega)locaisEntrega.get(i)).obterDescricaoLocal())
       }
     if(pedido != null)
@@ -392,8 +370,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         redimencionar()
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -404,84 +381,70 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       painel.add(c)
   }
 
-  private void inicializarFormularioProduto()
-  {
+  private void inicializarFormularioProduto() {
     txtQuantidade.setText("")
       txtTransferenciaICMS.setText("")
       txaObservacaoProduto.setText("")
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent)
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btAbrirArquivo)
-      {
+      if(objeto == btAbrirArquivo) {
         JFileChooser fchEDI = new JFileChooser("edi")
           int status = fchEDI.showOpenDialog(this)
 
-          if(status == JFileChooser.APPROVE_OPTION)
-          {
+          if(status == JFileChooser.APPROVE_OPTION) {
             edi = fchEDI.getSelectedFile()
               txtCaminhoArquivo.setText(edi.getAbsolutePath())
           }
       }
 
-    if(objeto == cbxCliente)
-    {
+    if(objeto == cbxCliente) {
       try
       {
-        if(cbxCliente.getSelectedIndex() > 0)
-        {
+        if(cbxCliente.getSelectedIndex() > 0) {
           locaisEntrega = Cliente.carregarLocaisEntrega(aplicacao.obterConexao(), (Cliente)clientes.get(cbxCliente.getSelectedIndex()))
             carregarLocaisEntrega()
         }
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os locais de entrega.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
 
       try
       {
-        if(cbxCliente.getSelectedIndex() > 0)
-        {
+        if(cbxCliente.getSelectedIndex() > 0) {
           produtos = Produto.carregarProdutos(((Cliente)clientes.get(cbxCliente.getSelectedIndex())),aplicacao.obterConexao())
         }
         carregarProdutos()
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os produtos.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == cbxProduto)
-    {
+    if(objeto == cbxProduto) {
       try
       {
-        if(cbxProduto.getSelectedIndex() > 0)
-        {
+        if(cbxProduto.getSelectedIndex() > 0) {
           Matriz matriz = new Matriz()
             matrizes = matriz.carregarMatrizes(((Produto)produtos.get(cbxProduto.getSelectedIndex())),aplicacao.obterConexao())
             carregarMatrizes()
         }
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Matrizes dos produtos.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
-      if(txtValorNegociado != null && cbxProduto.getSelectedIndex() > 0)
-      {
+      if(txtValorNegociado != null && cbxProduto.getSelectedIndex() > 0) {
         txtValorNegociado.setText(Numero.inverterSeparador("" + ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterValor()))
       }
     }
 
-    if(objeto == btIncluirProduto)
-    {
+    if(objeto == btIncluirProduto) {
       tblProduto.setValueAt(this.cbxProduto.getSelectedItem(),indiceTabela,0)
         tblProduto.setValueAt(this.cbxMatriz.getSelectedItem(),indiceTabela,1)
         tblProduto.setValueAt(this.txtQuantidade.getText(),indiceTabela,2)
@@ -494,20 +457,17 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
             Float.parseFloat(Numero.inverterSeparador(txtValorNegociado.getText())),'R$','')
         produtosPedido.addElement(produtoPedido)
         indiceTabela++
-        if (indiceTabela > 0)
-        {
+        if (indiceTabela > 0) {
           btExcluirProduto.setEnabled(true)
         }
       inicializarFormularioProduto()
     }
 
-    if(objeto == btDesfazerProduto)
-    {
+    if(objeto == btDesfazerProduto) {
       inicializarFormularioProduto()
     }
 
-    if(objeto == btExcluirProduto)
-    {
+    if(objeto == btExcluirProduto) {
       int linhaSelecionada = tblProduto.getSelectedRow()
         produtosPedido.removeElementAt(linhaSelecionada)
 
@@ -515,10 +475,8 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         tblProduto.setValueAt("",linhaSelecionada,1)
         tblProduto.setValueAt("",linhaSelecionada,2)
 
-        if(linhaSelecionada < (indiceTabela - 1))
-        {
-          for(int i = linhaSelecionada;i < (indiceTabela - 1);i++)
-          {
+        if(linhaSelecionada < (indiceTabela - 1)) {
+          for(int i = linhaSelecionada;i < (indiceTabela - 1);i++) {
             tblProduto.setValueAt(tblProduto.getValueAt(i+1,0),i,0)
               tblProduto.setValueAt(tblProduto.getValueAt(i+1,1),i,1)
               tblProduto.setValueAt(tblProduto.getValueAt(i+1,2),i,2)
@@ -529,14 +487,12 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         }
       indiceTabela--
 
-        if (indiceTabela == 0)
-        {
+        if (indiceTabela == 0) {
           btExcluirProduto.setEnabled(false)
         }
     }
 
-    if(objeto == btNovoCliente)
-    {
+    if(objeto == btNovoCliente) {
       DlgDadosCliente dlgDadosCliente = new DlgDadosCliente(aplicacao)
         dlgDadosCliente.setVisible(true)
         try
@@ -545,36 +501,30 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
             clientes = cliente.carregarClientes(aplicacao.obterConexao())
             carregarClientes()
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Clientes.\n\n" + e.getMessage())
           e.printStackTrace()
       }
     }
 
-    if(objeto == btNovoProduto)
-    {
+    if(objeto == btNovoProduto) {
       DlgDadosProduto dlgDadosProduto = new DlgDadosProduto(aplicacao,((Cliente)clientes.get(cbxCliente.getSelectedIndex())))
         dlgDadosProduto.setVisible(true)
         try
         {
-          if(cbxCliente.getSelectedIndex() > 0)
-          {
+          if(cbxCliente.getSelectedIndex() > 0) {
             produtos = Produto.carregarProdutos(((Cliente)clientes.get(cbxCliente.getSelectedIndex())),aplicacao.obterConexao())
           }
           carregarProdutos()
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os produtos.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btNovaMatriz)
-    {
-      if(cbxProduto.getSelectedIndex() > 0)
-      {
+    if(objeto == btNovaMatriz) {
+      if(cbxProduto.getSelectedIndex() > 0) {
         DlgDadosMatriz dlgDadosMatriz = new DlgDadosMatriz(aplicacao,((Produto)produtos.get(cbxProduto.getSelectedIndex())))
           dlgDadosMatriz.setVisible(true)
           try
@@ -583,43 +533,35 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
               matrizes = matriz.carregarMatrizes(((Produto)produtos.get(cbxProduto.getSelectedIndex())),aplicacao.obterConexao())
               carregarMatrizes()
           }
-        catch(Exception e)
-        {
+        catch(Exception e) {
           JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Matrizes do produto.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
     }
 
-    if(objeto == btImportar)
-    {
+    if(objeto == btImportar) {
       try
       {
         txaConteudoArquivo.setText(pedido.importarArquivoEDI(edi))
           lblStatus.setText("Status: Importado. " + pedido.obterNumeroRegistros() + " registros.")
           redimencionar()
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível importar o arquivo.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btAnterior)
-    {
-      if(rdbImportar != null)
-      {
-        if(rdbImportar.isSelected())
-        {
+    if(objeto == btAnterior) {
+      if(rdbImportar != null) {
+        if(rdbImportar.isSelected()) {
           card.show(pnlAreaDados,"opcoes")
             btProximo.setEnabled(true)
             btAnterior.setEnabled(false)
         }
-        else if(rdbInserir.isSelected())
-        {
-          switch(telaPedido)
-          {
+        else if(rdbInserir.isSelected()) {
+          switch(telaPedido) {
             case ITENS_PEDIDO:
               card.show(pnlAreaDados,"pedido")
                 btProximo.setEnabled(true)
@@ -643,10 +585,8 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btProximo)
-    {
-      if(pedido != null?false:rdbImportar.isSelected())
-      {
+    if(objeto == btProximo) {
+      if(pedido != null?false:rdbImportar.isSelected()) {
         card.show(pnlAreaDados,"importacao")
           btProximo.setEnabled(false)
           btAnterior.setEnabled(true)
@@ -655,8 +595,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       {
         if(pedido != null)
           telaPedido = PEDIDO
-            switch(telaPedido)
-            {
+            switch(telaPedido) {
               case INICIAL: // Na inclusão de um pedido mostra o formulário de pedido em branco
                 card.show(pnlAreaDados,"pedido")
                   btAnterior.setEnabled(true)
@@ -683,8 +622,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
                         btConfirmar.setVisible(true)
                         telaPedido = ITENS_PEDIDO
                   }
-                  catch(Exception e)
-                  {
+                  catch(Exception e) {
                     JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
                       e.printStackTrace()
                   }
@@ -693,8 +631,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btConfirmar)
-    {
+    if(objeto == btConfirmar) {
       try
       {
         this.pedido.cadastrarPedido()
@@ -702,15 +639,13 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
 
           this.setVisible(false)
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível cadastrar o pedido." + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btConfirmarAlteracao)
-    {
+    if(objeto == btConfirmarAlteracao) {
       try
       {
         this.pedido.alterarPedido()
@@ -718,26 +653,22 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
 
           this.setVisible(false)
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possivel alterar o pedido." + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)
     }
   }
 
-  void focusLost(java.awt.event.FocusEvent focusEvent)
-  {
+  void focusLost(java.awt.event.FocusEvent focusEvent) {
 
   }
 
-  void focusGained(java.awt.event.FocusEvent e)
-  {
+  void focusGained(java.awt.event.FocusEvent e) {
 
   }
 }

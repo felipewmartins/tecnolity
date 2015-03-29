@@ -28,8 +28,7 @@ class Cliente
     private String email
     private Vector locaisEntrega = new Vector()
 
-    Cliente()
-    {
+    Cliente() {
 
     }
 
@@ -67,95 +66,77 @@ class Cliente
       this.definirRazaoSocial(razaoSocial)
   }
 
-  long obterCodigo()
-  {
+  long obterCodigo() {
     return this.codigo
   }
 
-  String obterRazaoSocial()
-  {
+  String obterRazaoSocial() {
     return this.razaoSocial
   }
 
-  String obterNomeFantasia()
-  {
+  String obterNomeFantasia() {
     return this.nomeFantasia
   }
 
-  String obterCnpj()
-  {
+  String obterCnpj() {
     return this.cnpj
   }
 
-  String obterInscricaoEstadual()
-  {
+  String obterInscricaoEstadual() {
     return this.inscricaoEstadual
   }
 
-  String obterLogradouro()
-  {
+  String obterLogradouro() {
     return this.logradouro
   }
 
-  String obterBairro()
-  {
+  String obterBairro() {
     return this.bairro
   }
 
-  String obterComplemento()
-  {
+  String obterComplemento() {
     return this.complemento
   }
 
-  String obterCidade()
-  {
+  String obterCidade() {
     return this.cidade
   }
 
-  Estado obterEstado()
-  {
+  Estado obterEstado() {
     return this.estado
   }
 
-  Pais obterPais()
-  {
+  Pais obterPais() {
     return this.pais
   }
 
-  String obterCep()
-  {
+  String obterCep() {
     return this.cep
   }
 
-  String obterTelefone()
-  {
+  String obterTelefone() {
     return this.telefone
   }
 
-  String obterFax()
-  {
+  String obterFax() {
     return this.fax
   }
 
-  String obterContatoComercial()
-  {
+  String obterContatoComercial() {
     return this.contatoComercial
   }
 
-  String obterContatoTecnico()
-  {
+  String obterContatoTecnico() {
     return this.contatoTecnico
   }
 
-  String obterEmail()
-  {
+  String obterEmail() {
     return this.email
   }
 
   void definirCodigo(long codigo) throws Exception
   {
-    if(codigo <= 0)
-    {
+    if(codigo <= 0) {
       Exception e = new Exception("Código do Cliente inválido.")
         throw e
     }
@@ -164,8 +145,7 @@ class Cliente
 
   void definirRazaoSocial(String razaoSocial) throws Exception
   {
-    if(razaoSocial.equals("") || razaoSocial == null)
-    {
+    if(razaoSocial.equals("") || razaoSocial == null) {
       Exception e = new Exception("A Razão Social não foi informada.")
         throw e
     }
@@ -176,8 +156,7 @@ class Cliente
    *  Define o Nome Fantasia do cliente da fábrica.
    *  @param nomeFantasia nome fantasia do cliente.
    */
-  void definirNomeFantasia(String nomeFantasia)
-  {
+  void definirNomeFantasia(String nomeFantasia) {
     this.nomeFantasia = nomeFantasia.trim().toUpperCase()
   }
 
@@ -188,8 +167,7 @@ class Cliente
    */
   void definirCnpj(String cnpj) throws Exception
   {
-    if(!cnpj.equals("") && cnpj.length() <= 15)
-    {
+    if(!cnpj.equals("") && cnpj.length() <= 15) {
       this.cnpj = cnpj.trim()
     }
     else
@@ -199,50 +177,43 @@ class Cliente
     }
   }
 
-  void definirInscricaoEstadual(String inscricaoEstadual)
-  {
+  void definirInscricaoEstadual(String inscricaoEstadual) {
     this.inscricaoEstadual = inscricaoEstadual.trim()
   }
 
   void definirLogradouro(String logradouro) throws Exception
   {
-    if(logradouro.equals("") || logradouro == null)
-    {
+    if(logradouro.equals("") || logradouro == null) {
       Exception e = new Exception("O Logradouro nao foi informado.")
         throw e
     }
     this.logradouro = logradouro.trim().toUpperCase()
   }
 
-  void definirBairro(String bairro)
-  {
+  void definirBairro(String bairro) {
     this.bairro = bairro.trim().toUpperCase()
   }
 
-  void definirComplemento(String complemento)
-  {
+  void definirComplemento(String complemento) {
     this.complemento = complemento.trim().toUpperCase()
   }
 
   void definirCidade(String cidade) throws Exception
   {
-    if(cidade.equals("") || cidade == null)
-    {
+    if(cidade.equals("") || cidade == null) {
       Exception e = new Exception("A Cidade não foi informada.")
         throw e
     }
     this.cidade = cidade.trim().toUpperCase()
   }
 
-  void definirEstado(Estado estado)
-  {
+  void definirEstado(Estado estado) {
     this.estado = estado
   }
 
   void definirPais(Pais pais) throws Exception
   {
-    if(pais == null)
-    {
+    if(pais == null) {
       Exception e = new Exception("O País nao foi informado.")
         throw e
     }
@@ -256,8 +227,7 @@ class Cliente
    */
   void definirCep(String cep) throws Exception
   {
-    if(!cep.equals(""))
-    {
+    if(!cep.equals("")) {
       if(cep.length() == 8)
         this.cep = cep
       else
@@ -268,38 +238,31 @@ class Cliente
     }
   }
 
-  void definirTelefone(String telefone)
-  {
+  void definirTelefone(String telefone) {
     this.telefone = telefone
   }
 
-  void definirFax(String fax)
-  {
+  void definirFax(String fax) {
     this.fax = fax
   }
 
-  void definirContatoComercial(String contatoComercial)
-  {
+  void definirContatoComercial(String contatoComercial) {
     this.contatoComercial = contatoComercial
   }
 
-  void definirContatoTecnico(String contatoTecnico)
-  {
+  void definirContatoTecnico(String contatoTecnico) {
     this.contatoTecnico = contatoTecnico.trim().toUpperCase()
   }
 
-  void definirEmail(String email)
-  {
+  void definirEmail(String email) {
     this.email = email.trim().toLowerCase()
   }
 
   void carregarCliente(Conexao conexao) throws Exception
   {
-    if(codigo > 0)
-    {
+    if(codigo > 0) {
       ResultSet dadosCliente = conexao.executarConsulta("select * from cliente where codigo = " + this.codigo)
-        if(dadosCliente.next())
-        {
+        if(dadosCliente.next()) {
           this.definirRazaoSocial(dadosCliente.getString("razao_social"))
             this.definirNomeFantasia(dadosCliente.getString("nome_fantasia"))
             this.definirCnpj(dadosCliente.getString("cnpj"))
@@ -341,14 +304,12 @@ class Cliente
         dadosCliente = conexao.executarConsulta("select codigo, razao_social from cliente order by razao_social asc")
           clientes.addElement(null)
 
-          while(dadosCliente.next())
-          {
+          while(dadosCliente.next()) {
             clientes.addElement(new Cliente(dadosCliente.getLong("codigo"),dadosCliente.getString("razao_social")))
           }
         dadosCliente.close()
       }
-    catch (SQLException e)
-    {
+    catch (SQLException e) {
       e.printStackTrace()
     }
     return clientes
@@ -360,8 +321,7 @@ class Cliente
       Vector locaisEntrega = new Vector()
       String query = "select * from local_entrega where cliente = "+ cliente.obterCodigo() +" order by descricao_local asc"
       dadosLocalEntrega = conexao.executarConsulta(query)
-      while(dadosLocalEntrega.next())
-      {
+      while(dadosLocalEntrega.next()) {
         locaisEntrega.addElement(new LocalEntrega(cliente,
               dadosLocalEntrega.getLong("codigo_local"),
               dadosLocalEntrega.getString("descricao_local"),
@@ -379,8 +339,7 @@ class Cliente
       return locaisEntrega
   }
 
-  Vector getLocaisEntrega()
-  {
+  Vector getLocaisEntrega() {
     return this.locaisEntrega
   }
 
@@ -388,8 +347,7 @@ class Cliente
   {
     String query
       ResultSet dadosCliente = conexao.executarConsulta("select cnpj from cliente where cnpj = '"+ this.cnpj +"'")
-      if(dadosCliente.next())
-      {
+      if(dadosCliente.next()) {
         Exception e = new Exception("Já existe um cliente com este CNPJ.")
           throw e
       }
@@ -398,14 +356,12 @@ class Cliente
       "('"+ this.razaoSocial +"','"+ this.nomeFantasia +"','"+ this.cnpj +"','"+ this.inscricaoEstadual +"','"+ this.logradouro +"','"+ this.bairro +"','"+ this.complemento +"','"+ this.cidade +"','"+ ((this.estado == null)?"":this.estado.getSigla()) +"','"+ this.pais.getSigla() +"','"+ this.cep +"','"+ this.telefone +"','"+ this.fax +"','"+ this.contatoComercial +"','"+ this.contatoTecnico +"','"+ this.email +"')"
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
-      for(int i = 0;i < locaisEntrega.size();i++)
-      {
+      for(int i = 0;i < locaisEntrega.size();i++) {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
           localEntrega.addLocalEntrega(conexao)
       }
     dadosCliente = conexao.executarConsulta("select codigo from cliente where razao_social = '"+ this.razaoSocial +"' and cnpj = '"+ this.cnpj +"'")
-      if(dadosCliente.next())
-      {
+      if(dadosCliente.next()) {
         this.codigo = dadosCliente.getInt("codigo")
       }
   }
@@ -416,8 +372,7 @@ class Cliente
       query = "update cliente set razao_social = '"+ this.razaoSocial +"',nome_fantasia = '"+ this.nomeFantasia +"',cnpj = '"+ this.cnpj +"',inscricao_estadual = '"+ this.inscricaoEstadual +"',logradouro = '"+ this.logradouro +"',bairro = '"+ this.bairro +"',complemento = '"+ this.complemento +"',cidade = '"+ this.cidade +"',estado = '"+ this.estado.getSigla() +"',pais = '"+ this.pais.getSigla() +"',cep = '"+ this.obterCep() +"',telefone = '"+ this.telefone +"',fax = '"+ this.fax +"',contato_comercial = '"+ this.contatoComercial +"',contato_tecnico = '"+ this.contatoTecnico +"',email = '"+ this.email +"' where codigo = " + this.codigo
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
-      for(int i = 0;i < locaisEntrega.size();i++)
-      {
+      for(int i = 0;i < locaisEntrega.size();i++) {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
           localEntrega.addLocalEntrega(conexao)
       }
@@ -426,8 +381,7 @@ class Cliente
   void excluirCliente(Conexao conexao) throws Exception
   {
     ResultSet dadosModelo = conexao.executarConsulta("select codigo from modelo where cliente = "+ this.obterCodigo())
-      while(dadosModelo.next())
-      {
+      while(dadosModelo.next()) {
         conexao.executarAtualizacao("delete from materia_prima where modelo =" + dadosModelo.getInt("codigo"))
       }
     dadosModelo.close()
@@ -436,8 +390,7 @@ class Cliente
       conexao.executarAtualizacao("delete from cliente where codigo = " + this.obterCodigo())
   }
 
-  void setLocaisEntrega(Vector vector)
-  {
+  void setLocaisEntrega(Vector vector) {
     locaisEntrega = vector
   }
 }
