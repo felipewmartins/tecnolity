@@ -40,7 +40,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         abrirConexao()
         if(!conexao.abrirConexao()) {
           JOptionPane.showMessageDialog(this,"Não foi possível realizar uma conexão com o banco de dados. \nA aplicação terá que ser finalizada.","Erro",JOptionPane.WARNING_MESSAGE)
-            System.exit(0)
+          System.exit(0)
         }
 
       FormAutenticacao formAutenticacao = new FormAutenticacao(this)
@@ -127,7 +127,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   void abrirConexao() {
-    this.conexao = new Conexao('C')
+    this.conexao = new Conexao()
   }
 
   Colaborador obterColaborador() {
@@ -156,7 +156,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
   static main (args) {
     Aplicacao aplicacao = new Aplicacao()
-      aplicacao.setVisible(true)
+    aplicacao.setVisible(true)
   }
 
   boolean conectado() {

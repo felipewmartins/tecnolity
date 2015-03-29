@@ -3,7 +3,10 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'codenarc'
 
-mainClassName = 'org.esmerilprogramming.tecnolity.aplicacao.Aplicacao'
+//mainClassName = 'org.esmerilprogramming.tecnolity.aplicacao.Aplicacao'
+
+mainClassName = System.getProperty("mc")
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -20,7 +23,7 @@ repositories {
 }
 
 dependencies {
-  compile 'org.codehaus.groovy:groovy:2.4.0'
+  compile 'org.codehaus.groovy:groovy-all:2.4.0'
   compile 'com.h2database:h2:1.4.186'
   testCompile 'junit:junit:4.11'
 }
