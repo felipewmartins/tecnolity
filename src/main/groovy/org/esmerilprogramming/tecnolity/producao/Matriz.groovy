@@ -4,22 +4,6 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.util.*
 import java.sql.*
 
-/**
-   * Projeto: 001 - Tecnolity <br>
-   * Autor do Código: Hildeberto Mendonça <br>
-   * Nome do Arquivo: Matriz.java <br>
-   * Linguagem: Java <br>
-   *  <br>
-   * Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-   *  <br>
-   * Objetivo: Classe que representa a matriz do produto. <br>
-   *  <br>
-   * Objetivo definido por: Hildeberto Mendonça <br>
-   * Início da Programação: 19/02/2002 <br>
-   * Fim da Programação: <br>
-   * Última Versão: 1.0 <br>
-*/
-
  class Matriz 
 {
     private String referencia, referenciaOriginal

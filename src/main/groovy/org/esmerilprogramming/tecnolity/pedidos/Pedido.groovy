@@ -10,22 +10,6 @@ import org.esmerilprogramming.tecnolity.producao.Produto
 import org.esmerilprogramming.tecnolity.suprimentos.Movimentacao
 import org.esmerilprogramming.tecnolity.util.*
 
-/**
- * Projeto: 001 - Tecnolity <br>
- * Autor do Código: Hildeberto Mendonça Filho <br>
- * Nome do Arquivo: Pedido.java <br>
- * Linguagem: Java <br>
- *  <br>
- * Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
- *  <br>
- * Objetivo: Classe que representa o pedido do cliente. <br>
- *  <br>
- * Objetivo definido por: Hildeberto Mendonça <br>
- * Início da Programação: 31/01/2002 <br>
- * Fim da Programação: <br>
- * Última Versão: 1.0 <br>
- */
-
  class Pedido
 {
   private long codigo
