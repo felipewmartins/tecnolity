@@ -20,11 +20,11 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     private static String caminho
     private PrinterJob tarefaImpressao
     private PageFormat formatoPagina
-    //private Configuracao configuracao
+    private Configuracao configuracao
 
     Aplicacao() {
       super("Sistema de Planejamento e Controle da Produção")
-        /*configuracao = new Configuracao()
+        configuracao = new Configuracao()
         try
         {
           configuracao.carregarConfiguracao()
@@ -34,7 +34,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         JOptionPane.showMessageDialog(this,"Falha no carregamento das propriedades do sistema.","Falha",JOptionPane.ERROR_MESSAGE)
           DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this, configuracao)
           dlgConfiguracoes.setVisible(true)
-      }*/
+      }
 
       super.setIconImage((new ImageIcon("imagens/ico_tecnolity.jpg")).getImage())
 
@@ -111,10 +111,10 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       this.formatoPagina.setOrientation(Configuracao.getOrientacao())
   }
 
-  /*Configuracao obterConfiguracao()
+  Configuracao obterConfiguracao()
   {
     return this.configuracao
-  }*/
+  }
 
   PageFormat obterFormatoPagina()
   {
