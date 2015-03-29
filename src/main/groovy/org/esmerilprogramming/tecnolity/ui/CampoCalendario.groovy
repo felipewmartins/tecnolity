@@ -1,6 +1,7 @@
-package org.esmerilprogramming.ui
+package org.esmerilprogramming.tecnolity.ui
 
-import org.esmerilprogramming.util.*
+import org.esmerilprogramming.tecnolity.util.*
+import org.esmerilprogramming.tecnolity.ui.*
 import javax.swing.*
 import java.awt.*
 import java.awt.event.*

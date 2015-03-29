@@ -1,19 +1,3 @@
-/**
-   * Projeto: 001 - Tecnolity
-   * Autor do Código: Hildeberto Mendonça Filho
-   * Nome do Arquivo: Estado.java
-   * Linguagem: Java
-   * 
-   * Requerimentos: Requer máquina virtual java versão 1.3 ou superior.
-   * 
-   * Objetivo: Classe que representa uma unidade federativa de um determinado pais.
-   * 
-   * Objetivo definido por: Hildeberto Mendonça
-   * Início da Programação: 25/12/2001
-   * Fim da Programação:
-   * Última Versão: 1.0
-*/
-
 package org.esmerilprogramming.tecnolity.administracao;
 
 import java.util.*;
@@ -21,7 +5,7 @@ import java.sql.*;
 
 import org.esmerilprogramming.tecnolity.util.*;
 
-public class Estado extends org.esmerilprogramming.Estado
+public class Estado extends org.esmerilprogramming.tecnolity.util.Estado
 {
     public Estado(String sigla, String nome, Pais pais) throws Exception
     {

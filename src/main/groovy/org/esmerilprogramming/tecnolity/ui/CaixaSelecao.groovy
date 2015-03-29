@@ -93,7 +93,7 @@ class CaixaSelecao extends JPanel implements ActionListener
     }
   }
 
-  private void addItens() {
+  void addItens() {
     this.cbxSelecao.removeAllItems()
       if (!this.editavel) {
         this.cbxSelecao.addItem("Selecione...")
