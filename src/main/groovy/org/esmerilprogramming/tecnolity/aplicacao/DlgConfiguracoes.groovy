@@ -194,7 +194,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
     cbxPais.removeAllItems()
     cbxPais.addItem("Selecione...")
 
-    for(int i = 1i < paises.size()i++)
+    for(int i = 1;i < paises.size();i++)
     {
       cbxPais.addItem(((Pais)paises.get(i)).getNome())
     }
@@ -207,7 +207,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
     cbxEstado.removeAllItems()
     cbxEstado.addItem("Selecione...")
 
-    for(int i = 1i < estados.size()i++)
+    for(int i = 1;i < estados.size();i++)
     {
       cbxEstado.addItem(((Estado)estados.get(i)).getNome())
     }

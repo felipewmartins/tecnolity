@@ -13,7 +13,7 @@ class Texto {
     }
     if (texto.length() < tamanho) {
       String espacosBranco = ""
-        for (int i = 0  i < tamanho - texto.length()  ++i) {
+        for (int i = 0;  i < tamanho - texto.length();  ++i) {
           espacosBranco = String.valueOf(espacosBranco) + " "
         }
       return String.valueOf(texto) + espacosBranco
@@ -27,7 +27,7 @@ class Texto {
     }
     if (numero.length() < tamanho) {
       String zeros = ""
-        for (int i = 0  i < tamanho - numero.length()  ++i) {
+        for (int i = 0 ; i < tamanho - numero.length();  ++i) {
           zeros = String.valueOf(zeros) + preenchimento
         }
       return String.valueOf(zeros) + numero
