@@ -1,18 +1,3 @@
-/**
-   * Projeto: 001 - Tecnolity <br>
-   * Autor do Código: Kenia Soares <br>
-   * Nome do Arquivo: Lote.java <br>
-   * Linguagem: Java <br>
-   *  <br>
-   * Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-   *  <br>
-   * Objetivo: Classe que representa um lote no sistema. <br>
-   *  <br>
-   * Objetivo definido por: Kenia Soares <br>
-   * Início da Programação: 09/03/2002 <br>
-   * Fim da Programação: <br>
-   * Última Versão: 1.0 <br>
-*/
 package org.esmerilprogramming.tecnolity.suprimentos
 
 import org.esmerilprogramming.tecnolity.util.*

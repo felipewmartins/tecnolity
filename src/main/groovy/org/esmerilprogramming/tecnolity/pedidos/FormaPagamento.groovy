@@ -1,19 +1,3 @@
-/**
-   * Projeto: 001 - Tecnolity <br>
-   * Autor do Código: Kenia Soares <br>
-   * Nome do Arquivo: FormaPagamento.java <br>
-   * Linguagem: Java <br>
-   *  <br>
-   * Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-   *  <br>
-   * Objetivo: Classe que representa uma forma de pagamento no sistema. <br>
-   *  <br>
-   * Objetivo definido por: Kenia Soares <br>
-   * Início da Programação: 21/02/2001 <br>
-   * Fim da Programação: <br>
-   * Última Versão: 1.0 <br>
-*/
-
 package org.esmerilprogramming.tecnolity.pedidos
 
 import org.esmerilprogramming.tecnolity.util.*

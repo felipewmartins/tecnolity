@@ -6,22 +6,6 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 import java.util.*
 
-/**
-   * Projeto: 001 - Tecnolity <br>
-   * Autor do Código: Kenia Soares <br>
-   * Nome do Arquivo: Movimentacao.java <br>
-   * Linguagem: Java <br>
-   *  <br>
-   * Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-   *  <br>
-   * Objetivo: Classe que representa uma movimentação no sistema. <br>
-   *  <br>
-   * Objetivo definido por: Kenia Soares <br>
-   * Início da Programação: 10/03/2002 <br>
-   * Fim da Programação: <br>
-   * Última Versão: 1.0 <br>
-*/
-
  class Movimentacao 
 {
      static final String ABASTECIMENTO     = "AB"

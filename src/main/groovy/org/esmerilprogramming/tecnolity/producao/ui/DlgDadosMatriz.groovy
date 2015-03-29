@@ -9,22 +9,6 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.producao.*
 import org.esmerilprogramming.tecnolity.util.*
 
-/**
-* Projeto: 001 - Tecnolity <br>
-* Autor do Código: Hildeberto Mendonça Filho <br>
-* Nome do Arquivo: DlgDadosMatriz.java <br>
-* Linguagem: Java <br>
-*  <br>
-* Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-*  <br>
-* Objetivo: Diálogo para cadastramento,alteração e visualização de dados de uma unidade. <br>
-*  <br>
-* Objetivo definido por: Hildeberto Mendonça <br>
-* Início da Programação: 19/02/2002 <br>
-* Fim da Programação: <br>
-* Última Versão: 1.0 <br>
-*/
-
  class DlgDadosMatriz extends JDialog implements ActionListener
 {
      final int IDENTIFICADOR = 19
