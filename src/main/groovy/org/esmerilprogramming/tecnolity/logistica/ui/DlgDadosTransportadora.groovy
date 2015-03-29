@@ -1,19 +1,3 @@
-/**
-* Projeto: 001 - Tecnolity
-* Autor do Código: Kenia Soares
-* Nome do Arquivo: DlgDadosTransportadora.java
-* Linguagem: Java
-* 
-* Requerimentos: Requer máquina virtual java versão 1.3 ou superior.
-* 
-* Objetivo: Diálogo para cadastramento,alteração e visualização de dados de uma transportadora.
-* 
-* Objetivo definido por: Kenia Soares
-* Início da Programação: 16/02/2002
-* Fim da Programação:
-* Última Versão: 1.0
-*/
-
 package org.esmerilprogramming.tecnolity.logistica.ui
 
 import java.awt.*

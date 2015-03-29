@@ -3,10 +3,6 @@ package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 import java.awt.print.*
 import java.util.*
 
-/**
- * @author hildeberto
- */
-
  class Impressora
 {
     private PrinterJob trabalhoImpressao

@@ -4,9 +4,6 @@ import javax.swing.event.TableModelEvent
 import javax.swing.event.TableModelListener
 
 
-/**
- * @author Hildeberto Mendonça Filho
- */
  class ModeloTabelaListaPreco extends ModeloTabela implements TableModelListener
 {
      ModeloTabelaListaPreco()

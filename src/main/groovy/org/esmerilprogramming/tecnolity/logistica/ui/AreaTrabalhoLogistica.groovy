@@ -1,19 +1,3 @@
-/**
-   * Projeto: 001 - Tecnolity
-   * Autor do Código: Hildeberto Mendonça Filho
-   * Nome do Arquivo: AreaTrabalhoSuprimentos.java
-   * Linguagem: Java
-   * 
-   * Requerimentos: Requer máquina virtual java versão 1.3 ou superior.
-   * 
-   * Objetivo: Seção que manipula dos dados do Suprimento.
-   * 
-   * Objetivo definido por: Hildeberto Mendonça
-   * Início da Programação: 22/12/2001
-   * Fim da Programação:
-   * Última Versão: 1.0
-*/
-
 package org.esmerilprogramming.tecnolity.logistica.ui
 
 import java.awt.*
