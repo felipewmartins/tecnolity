@@ -8,22 +8,6 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.aplicacao.modelos.*
 
-/**
-* Projeto: 001 - Tecnolity <br>
-* Autor do Código: Hildeberto Mendonça Filho <br>
-* Nome do Arquivo: DlgBancoDados.java <br>
-* Linguagem: Java <br>
-*  <br>
-* Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-*  <br>
-* Objetivo: Diálogo para realização de transações e consultas com o banco de dados.<br>
-*  <br>
-* Objetivo definido por: Hildeberto Mendonça <br>
-* Início da Programação: 13/03/2002 <br>
-* Fim da Programação: <br>
-* Última Versão: 1.0 <br>
-*/
-
  class DlgBancoDados extends JDialog implements ActionListener
 {
      final int IDENTIFICADOR = 7

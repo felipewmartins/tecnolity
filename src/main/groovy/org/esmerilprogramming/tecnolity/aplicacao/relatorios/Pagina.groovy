@@ -3,9 +3,6 @@ package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 import java.awt.*
 import java.awt.print.*
 
-/**
- * @author hildeberto
- */
  class Pagina implements Printable
 {
     private String conteudo
