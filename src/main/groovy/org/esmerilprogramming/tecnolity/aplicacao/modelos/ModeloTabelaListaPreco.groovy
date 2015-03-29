@@ -4,26 +4,22 @@ import javax.swing.event.TableModelEvent
 import javax.swing.event.TableModelListener
 
 
- class ModeloTabelaListaPreco extends ModeloTabela implements TableModelListener
+class ModeloTabelaListaPreco extends ModeloTabela implements TableModelListener
 {
-     ModeloTabelaListaPreco()
-    {
-        this.addTableModelListener(this)
+  ModeloTabelaListaPreco() {
+    this.addTableModelListener(this)
+  }
+  boolean isCellEditable(int row, int col) {
+    if (col < 3) {
+      return false
     }
-     boolean isCellEditable(int row, int col) 
+    else
     {
-        if (col < 3)
-        { 
-            return false
-        }
-        else
-        {
-            return true
-        }
+      return true
     }
-        
-	 void tableChanged(TableModelEvent arg0)
-	{
+  }
 
-	}
+  void tableChanged(TableModelEvent arg0) {
+
+  }
 }

@@ -8,13 +8,11 @@ class RelatorioPedido extends Relatorio
 {
   private Pedido pedido
 
-    RelatorioPedido(Pedido pedido) 
-    {
+    RelatorioPedido(Pedido pedido) {
       this.pedido = pedido
     }
 
-  String gerarRelatorio()
-  {
+  String gerarRelatorio() {
     conteudo = new StringBuffer()
       Calendario calendario = new Calendario()
       conteudo.append("PEDIDO DO CLIENTE                                 TECNOLITY DO NORDESTE LTDA")
@@ -42,12 +40,10 @@ class RelatorioPedido extends Relatorio
       String produtoAnterior = " "
       int quantidadePares = 0
 
-      for(int i = 0 ; i < produtosPedido.size() ; i++)
-      {
+      for(int i = 0 ; i < produtosPedido.size() ; i++) {
         ProdutoPedido produtoPedido = (ProdutoPedido)produtosPedido.get(i)
           numerosSola = pedido.obterNumeracaoProdutos(produtoPedido.obterMatriz().obterReferencia())
-          if(!produtoAnterior.equals(produtoPedido.obterProduto().obterNomeModelo()))
-          {
+          if(!produtoAnterior.equals(produtoPedido.obterProduto().obterNomeModelo())) {
             produtoAnterior = produtoPedido.obterProduto().obterNomeModelo()
 
               conteudo.append("Produto: "+ Texto.obterStringTamanhoFixo(produtoAnterior,49) +" Matriz: " + produtoPedido.obterMatriz().obterReferencia())
@@ -55,29 +51,23 @@ class RelatorioPedido extends Relatorio
               conteudo.append("                           --- Quantidades ---                              ")
               conteudo.append(QUEBRA)
               String strNumerosSola = ""
-              for(int j = 0 ; j < numerosSola.size() ; j++)
-              {
+              for(int j = 0 ; j < numerosSola.size() ; j++) {
                 strNumerosSola += "|  " + numerosSola.get(j) + "  "
               }
             conteudo.append(strNumerosSola)
               conteudo.append(QUEBRA)
           }
-        if(produtoAnterior.equals(produtoPedido.obterProduto().obterNomeModelo()))
-        {
-          for(int k = 0 ; k < numerosSola.size() ; k++)
-          {
-            if(produtoPedido.obterMatriz().obterNumeroSola() == Integer.parseInt((String)numerosSola.get(k)))
-            {
+        if(produtoAnterior.equals(produtoPedido.obterProduto().obterNomeModelo())) {
+          for(int k = 0 ; k < numerosSola.size() ; k++) {
+            if(produtoPedido.obterMatriz().obterNumeroSola() == Integer.parseInt((String)numerosSola.get(k))) {
               conteudo.append(Texto.obterStringTamanhoFixo(" " + (int)produtoPedido.obterQuantidade(), 7))
                 break
             }
           }
           quantidadePares += produtoPedido.obterQuantidade()
         }
-        if(i < (produtosPedido.size() - 1))
-        {
-          if(!produtoAnterior.equals(((ProdutoPedido)produtosPedido.get(i+1)).obterProduto().obterNomeModelo()))
-          {
+        if(i < (produtosPedido.size() - 1)) {
+          if(!produtoAnterior.equals(((ProdutoPedido)produtosPedido.get(i+1)).obterProduto().obterNomeModelo())) {
             conteudo.append(QUEBRA)
               conteudo.append("Total: " + quantidadePares)
               conteudo.append(QUEBRA)
@@ -95,8 +85,7 @@ class RelatorioPedido extends Relatorio
       conteudo.append("Observação: ")
       conteudo.append(QUEBRA)
       String[] texto = Texto.obterTextoAlinhado(pedido.obterObservacao(),77)
-      for(int linha = 0;linha < texto.length;linha++)
-      {
+      for(int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }

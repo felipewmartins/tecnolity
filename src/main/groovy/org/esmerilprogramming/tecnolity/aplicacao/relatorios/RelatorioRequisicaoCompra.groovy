@@ -11,21 +11,18 @@ class RelatorioRequisicaoCompra extends Relatorio
     private Vector pedidos
     private String via
 
-    RelatorioRequisicaoCompra(RequisicaoCompra requisicaoCompra, String via)
-    {
+    RelatorioRequisicaoCompra(RequisicaoCompra requisicaoCompra, String via) {
       this.requisicaoCompra = requisicaoCompra
         this.via = via
     }
 
-  RelatorioRequisicaoCompra(RequisicaoCompra requisicaoCompra, Vector pedidos, String via)
-  {
+  RelatorioRequisicaoCompra(RequisicaoCompra requisicaoCompra, Vector pedidos, String via) {
     this.requisicaoCompra = requisicaoCompra
       this.pedidos = pedidos
       this.via = via
   }
 
-  String gerarRelatorio()
-  {
+  String gerarRelatorio() {
     Calendario calendario = new Calendario()
       conteudo = new StringBuffer()
       conteudo.append("REQUISIÇÃO DE COMPRA AO FORNECEDOR                               TECNOLITY DO NORDESTE LTDA")
@@ -57,13 +54,11 @@ class RelatorioRequisicaoCompra extends Relatorio
       String strPedidos = ""
       if(pedidos == null)
         pedidos = requisicaoCompra.getPedidos()
-          for(int i = 0;i < pedidos.size();i++)
-          {
+          for(int i = 0;i < pedidos.size();i++) {
             strPedidos += ((Pedido)pedidos.get(i)).obterCodigo() + "(OC:" +((Pedido)pedidos.get(i)).obterOrdemCompra() + ") "
           }
     String[] texto = Texto.obterTextoAlinhado(strPedidos,92)
-      for(int linha = 0;linha < texto.length;linha++)
-      {
+      for(int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }
@@ -76,8 +71,7 @@ class RelatorioRequisicaoCompra extends Relatorio
       Vector itens = this.requisicaoCompra.obterItensRequisicao()
       int posicaoBarraLista = 0
       float totalRequisicao = 0.0f, totalIPI = 0.0f
-      for(int i = 0;i < itens.size();i++)
-      {
+      for(int i = 0;i < itens.size();i++) {
         ItemRequisicao irAtual = (ItemRequisicao)itens.get(i)
           conteudo.append(Texto.obterStringTamanhoFixo(irAtual.obterItem().obterDescricao(),32) + "|" + 
               Texto.obterStringTamanhoFixo("" + irAtual.obterItem().obterFornecedorItem().obterReferenciaFornecedor(),14) + "|" + 
@@ -99,8 +93,7 @@ class RelatorioRequisicaoCompra extends Relatorio
       conteudo.append("Observação: ")
       conteudo.append(QUEBRA)
       texto = Texto.obterTextoAlinhado(requisicaoCompra.obterObservacao(),92)
-      for(int linha = 0;linha < texto.length;linha++)
-      {
+      for(int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }

@@ -8,13 +8,11 @@ class RelatorioPedidoReferencia extends Relatorio
 {
   private Pedido pedido
 
-    RelatorioPedidoReferencia(Pedido pedido)
-    {
+    RelatorioPedidoReferencia(Pedido pedido) {
       this.pedido = pedido
     }
 
-  String gerarRelatorio()
-  {
+  String gerarRelatorio() {
     Calendario calendario = new Calendario()
       conteudo = new StringBuffer()
       conteudo.append("PEDIDOS POR REFERÊNCIA                            TECNOLITY DO NORDESTE LTDA")
@@ -42,16 +40,13 @@ class RelatorioPedidoReferencia extends Relatorio
       int quantidadeTotal = 0
       boolean espacamentoCabecalho = false
       ProdutoPedido produtoPedido
-      for(int i = 0;i < pedido.getProdutosPedido().size(); i ++)
-      {
+      for(int i = 0;i < pedido.getProdutosPedido().size(); i ++) {
         produtoPedido = (ProdutoPedido)pedido.getProdutosPedido().get(i)
           referencia = produtoPedido.obterProduto().obterReferenciaCliente()
-          if(!referencia.equals(referenciaAnterior))
-          {
+          if(!referencia.equals(referenciaAnterior)) {
             referenciaAnterior = referencia
               margemNumeroSola = ""
-              if(espacamentoCabecalho)
-              {
+              if(espacamentoCabecalho) {
                 conteudo.append(QUEBRA)
                   conteudo.append("Total: " + quantidadeTotal)
                   conteudo.append(QUEBRA)
@@ -70,8 +65,7 @@ class RelatorioPedidoReferencia extends Relatorio
               conteudo.append(QUEBRA)
               String strNumerosSola = ""
               Vector numerosSola = pedido.obterNumeracaoProdutos(referencia)
-              for(int j = 0;j < numerosSola.size();j++)
-              {
+              for(int j = 0;j < numerosSola.size();j++) {
                 strNumerosSola += "|  " + numerosSola.get(j) + "  "
               }
             conteudo.append(strNumerosSola)
@@ -96,8 +90,7 @@ class RelatorioPedidoReferencia extends Relatorio
       conteudo.append("Observação: ")
       conteudo.append(QUEBRA)
       String[] texto = Texto.obterTextoAlinhado(pedido.obterObservacao(),77)
-      for(int linha = 0;linha < texto.length;linha++)
-      {
+      for(int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }
