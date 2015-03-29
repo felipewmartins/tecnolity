@@ -23,9 +23,9 @@ import org.esmerilprogramming.tecnolity.suprimentos.*
 * Última Versão: 1.0 <br>
 */
 
-public class DlgDadosCategoria extends JDialog implements ActionListener
+ class DlgDadosCategoria extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 8
+     final int IDENTIFICADOR = 8
     
 	private Aplicacao aplicacao
 	private char modo // I = inserir, A = alterar, V = visualizar
@@ -35,7 +35,7 @@ public class DlgDadosCategoria extends JDialog implements ActionListener
 	private JTextField txtNomeCategoria
 	private JButton btConfirmar, btCancelar
 
-	public DlgDadosCategoria(Aplicacao aplicacao, char modo)
+	 DlgDadosCategoria(Aplicacao aplicacao, char modo)
 	{
 		super(aplicacao,true)
 		
@@ -100,7 +100,7 @@ public class DlgDadosCategoria extends JDialog implements ActionListener
 	    painel.add(c)
 	}
 	
-	public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+	 void actionPerformed(java.awt.event.ActionEvent actionEvent) 
 	{
 	    Object objeto = actionEvent.getSource()
 	    

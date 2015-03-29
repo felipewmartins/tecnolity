@@ -8,7 +8,7 @@ class FiltroArquivo extends FileFilter {
   String description
   ArrayList exts
 
-  public FiltroArquivo() {
+   FiltroArquivo() {
     this.exts = new ArrayList()
   }
 

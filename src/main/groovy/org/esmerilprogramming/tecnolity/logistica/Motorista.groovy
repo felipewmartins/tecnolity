@@ -21,7 +21,7 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.util.*
 import java.sql.*
 
-public class Motorista 
+ class Motorista 
 {
     private int codigo
     private String placa
@@ -41,9 +41,9 @@ public class Motorista
     private String telefone
     private String celular
 
-    public Motorista() {}
+     Motorista() {}
     
-    public Motorista(int codigo,String motorista)
+     Motorista(int codigo,String motorista)
     {
     	this.definirCodigo(codigo)
         try
@@ -56,12 +56,12 @@ public class Motorista
         }
     }
     
-    public Motorista(int codigo)
+     Motorista(int codigo)
     {
         this.definirCodigo(codigo)
     }
     
-    public Motorista(int codigo, Conexao conexao)throws Exception
+     Motorista(int codigo, Conexao conexao)throws Exception
     {
         this.definirCodigo(codigo)
 
@@ -100,7 +100,7 @@ public class Motorista
         }			
     }
     
-    public Motorista(String placa,String motorista,String identidade,
+     Motorista(String placa,String motorista,String identidade,
                      String orgaoEmissorIdentidade,String cpf,String habilitacao,
                      String categoria,String validade,String logradouro,
                      String complemento,String bairro,String cidade,Estado estado,
@@ -131,7 +131,7 @@ public class Motorista
         }
     }
     
-    public Motorista(int codigo,String placa,String motorista,String identidade,
+     Motorista(int codigo,String placa,String motorista,String identidade,
                      String orgaoEmissorIdentidade,String cpf,String habilitacao,
                      String categoria,String validade,String logradouro,
                      String complemento,String bairro,String cidade,Estado estado,
@@ -163,12 +163,12 @@ public class Motorista
         }   
     }
     
-    public void definirCodigo(int codigo)
+     void definirCodigo(int codigo)
     {
         this.codigo = codigo
     }
     
-    public void definirPlaca(String placa) throws Exception
+     void definirPlaca(String placa) throws Exception
     {
          if(!placa.equals(""))
             this.placa = placa
@@ -179,7 +179,7 @@ public class Motorista
         }
     }
     
-    public void definirMotorista(String motorista) throws Exception
+     void definirMotorista(String motorista) throws Exception
     {
          if(!motorista.equals("") && motorista.length() <= 50)
             this.motorista = motorista
@@ -190,7 +190,7 @@ public class Motorista
         }        
     }
     
-    public void definirIdentidade(String identidade) throws Exception
+     void definirIdentidade(String identidade) throws Exception
     {
         if(!identidade.equals("") && identidade.length() <= 15)
             this.identidade = identidade
@@ -201,7 +201,7 @@ public class Motorista
         }        
     }
     
-    public void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade) throws Exception
+     void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade) throws Exception
     {
         if(!orgaoEmissorIdentidade.equals("") && orgaoEmissorIdentidade.length() <= 15)
             this.orgaoEmissorIdentidade = orgaoEmissorIdentidade
@@ -212,7 +212,7 @@ public class Motorista
         }
     }
     
-    public void definirCpf(String cpf) throws Exception
+     void definirCpf(String cpf) throws Exception
     {
         if(!cpf.equals("") && cpf.length() <= 15)
             this.cpf = cpf
@@ -223,7 +223,7 @@ public class Motorista
         }
     }
     
-    public void definirHabilitacao(String habilitacao) throws Exception
+     void definirHabilitacao(String habilitacao) throws Exception
     {
         if(!habilitacao.equals("") && habilitacao.length() <= 10)
             this.habilitacao = habilitacao
@@ -234,7 +234,7 @@ public class Motorista
         }        
     }
     
-    public void definirCategoria(String categoria) throws Exception
+     void definirCategoria(String categoria) throws Exception
     {
         if(!categoria.equals(""))
             this.categoria = categoria
@@ -245,7 +245,7 @@ public class Motorista
         }        
     }
     
-    public void definirValidade(String validade) throws Exception
+     void definirValidade(String validade) throws Exception
     {
         String erro = ""
         if(validade.equals(""))
@@ -267,7 +267,7 @@ public class Motorista
             this.validade = validade
     }
     
-    public void definirLogradouro(String logradouro) throws Exception
+     void definirLogradouro(String logradouro) throws Exception
     {
         if(!logradouro.equals("") && logradouro.length() <= 50)
             this.logradouro = logradouro
@@ -278,7 +278,7 @@ public class Motorista
         }        
     }
 
-    public void definirComplemento(String complemento) throws Exception
+     void definirComplemento(String complemento) throws Exception
     {
         if(complemento.length() <= 30)
             this.complemento = complemento
@@ -289,7 +289,7 @@ public class Motorista
         } 
     }
 
-    public void definirBairro(String bairro) throws Exception
+     void definirBairro(String bairro) throws Exception
     {
         if(bairro.length() <= 50)
             this.bairro = bairro
@@ -300,7 +300,7 @@ public class Motorista
         } 
     }
 
-    public void definirCidade(String cidade) throws Exception
+     void definirCidade(String cidade) throws Exception
     {
         if(!cidade.equals("") && cidade.length() <= 50)
             this.cidade = cidade
@@ -311,7 +311,7 @@ public class Motorista
         }        
     }
 
-    public void definirEstado(Estado estado) throws Exception
+     void definirEstado(Estado estado) throws Exception
     {
         if(estado != null)
             this.estado = estado
@@ -322,7 +322,7 @@ public class Motorista
         }        
     }
 
-    public void definirCep(String cep) throws Exception
+     void definirCep(String cep) throws Exception
     {
         if(cep.length() <= 8)
             this.cep = cep
@@ -333,7 +333,7 @@ public class Motorista
         } 
     }
 
-    public void definirTelefone(String telefone) throws Exception
+     void definirTelefone(String telefone) throws Exception
     {
         if(telefone.length() <= 15)
             this.telefone = telefone
@@ -344,7 +344,7 @@ public class Motorista
         } 
     }
 
-    public void definirCelular(String celular) throws Exception
+     void definirCelular(String celular) throws Exception
     {
         if(celular.length() <= 15)
             this.celular = celular
@@ -355,92 +355,92 @@ public class Motorista
         } 
     }
 
-    public int obterCodigo()
+     int obterCodigo()
     {
     	return this.codigo	
     }
     
-    public String obterPlaca()
+     String obterPlaca()
     {
         return this.placa
     }
     
-    public String obterMotorista()
+     String obterMotorista()
     {
         return this.motorista
     }
     
-    public String obterIdentidade()
+     String obterIdentidade()
     {
         return this.identidade
     }
     
-    public String obterOrgaoEmissorIdentidade()
+     String obterOrgaoEmissorIdentidade()
     {
         return this.orgaoEmissorIdentidade
     }
     
-    public String obterCpf()
+     String obterCpf()
     {
         return this.cpf
     }
     
-    public String obterHabilitacao()
+     String obterHabilitacao()
     {
         return this.habilitacao
     }
     
-    public String obterCategoria()
+     String obterCategoria()
     {
         return this.categoria
     }
     
-    public String obterValidade()
+     String obterValidade()
     {
         return this.validade
     }
     
-    public String obterLogradouro()
+     String obterLogradouro()
     {
         return this.logradouro
     }
 
-    public String obterComplemento()
+     String obterComplemento()
     {
         return this.complemento
     }
 
-    public String obterBairro()
+     String obterBairro()
     {
         return this.bairro
     }
 
-    public String obterCidade()
+     String obterCidade()
     {
         return this.cidade
     }
 
-    public Estado obterEstado()
+     Estado obterEstado()
     {
         return this.estado
     }
 
-    public String obterCep()
+     String obterCep()
     {
         return this.cep
     }
 
-    public String obterTelefone()
+     String obterTelefone()
     {
         return this.telefone
     }
 
-    public String obterCelular()
+     String obterCelular()
     {
         return this.celular
     }
    
-    public Vector carregarMotoristas(Conexao conexao) throws Exception
+     Vector carregarMotoristas(Conexao conexao) throws Exception
     {
     	ResultSet dadosMotorista
         Vector motoristas = null
@@ -462,7 +462,7 @@ public class Motorista
         return motoristas
     } 
     
-    public void cadastrarMotorista() throws Exception
+     void cadastrarMotorista() throws Exception
 	{
 		String query = "insert into motorista (placa,motorista,identidade,orgao_emissor,cpf,habilitacao,categoria,validade,logradouro,complemento,bairro,cidade,estado,cep,telefone,celular) values "
 		query = query + "('"+ this.placa +"', '"+ this.motorista +"', '"+ this.identidade +"', '"+ this.orgaoEmissorIdentidade +"','"+ this.cpf +"','"+ this.habilitacao +"','"+ this.categoria +"','"+ Calendario.inverterFormato(this.validade,"/") +"','"+ this.logradouro +"','"+ this.complemento +"','"+ this.bairro +"','"+ this.cidade +"','"+ this.estado.getSigla() +"','"+ this.cep +"','"+ this.telefone +"','"+ this.celular +"')"
@@ -479,7 +479,7 @@ public class Motorista
                 }
 	}
         
-        public void alterarMotorista() throws Exception
+         void alterarMotorista() throws Exception
         {
             String query = "update motorista set placa = '"+ this.placa +"',motorista = '"+ this.motorista +"',identidade = '"+ this.identidade +"',orgao_emissor = '"+ this.orgaoEmissorIdentidade +"',cpf = '"+ this.cpf +"',habilitacao = '"+ this.habilitacao +"',categoria = '"+ this.categoria +"',validade = '"+ Calendario.inverterFormato(this.validade,"/") +"',logradouro = '"+ this.logradouro +"',complemento = '"+ this.complemento +"',bairro = '"+ this.bairro +"',cidade = '"+ this.cidade +"',estado = '"+ this.estado.getSigla() +"',cep = '"+ this.cep +"',telefone = '"+ this.telefone +"',celular = '"+ this.celular +"' where codigo = "+ this.codigo +" "
             Conexao conexao = new Conexao('T')
@@ -495,7 +495,7 @@ public class Motorista
             }
         }
         
-        public void excluirMotorista() throws Exception
+         void excluirMotorista() throws Exception
         {
             String query = "delete from motorista where codigo = "+ this.codigo +" "
             Conexao conexao = new Conexao('T')

@@ -3,16 +3,16 @@ package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 import org.esmerilprogramming.tecnolity.producao.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelatorioProduto extends Relatorio
+ class RelatorioProduto extends Relatorio
 {
   private Produto produto
 
-  public RelatorioProduto(Produto produto)
+   RelatorioProduto(Produto produto)
   {
     this.produto = produto
   }
 
-  public String gerarRelatorio()
+   String gerarRelatorio()
   {
     Calendario calendario = new Calendario()
     conteudo = new StringBuffer()

@@ -2,14 +2,14 @@ package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-public class ModeloTabelaRequisicoesInternas extends ModeloTabela
+ class ModeloTabelaRequisicoesInternas extends ModeloTabela
 {
-    public ModeloTabelaRequisicoesInternas () 
+     ModeloTabelaRequisicoesInternas () 
     {
         super()
     }
     
-    public Object getValueAt(int linha, int coluna)
+     Object getValueAt(int linha, int coluna)
     {        
         if(coluna == 2 || coluna == 3)   
         {

@@ -3,18 +3,18 @@ package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 import java.sql.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelatorioInventario extends Relatorio
+ class RelatorioInventario extends Relatorio
 {
   private String data
   private Conexao conexao
 
-  public RelatorioInventario(Conexao conexao, String data)
+   RelatorioInventario(Conexao conexao, String data)
   {
     this.conexao = conexao
     this.data = data
   }
 
-  public String gerarRelatorio()
+   String gerarRelatorio()
   {
     Calendario calendario = new Calendario()
     conteudo = new StringBuffer()

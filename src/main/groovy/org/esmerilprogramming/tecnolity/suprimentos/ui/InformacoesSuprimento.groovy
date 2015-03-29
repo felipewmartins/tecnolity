@@ -74,7 +74,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   private JTable tblInventario
   private ModeloTabela modeloTabelaInventario
 
-  public InformacoesSuprimento(Aplicacao aplicacao) 
+   InformacoesSuprimento(Aplicacao aplicacao) 
   {
     this.setBorder(new LineBorder(Color.black))
     this.aplicacao = aplicacao
@@ -677,7 +677,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     tblListaPrecos.updateUI()
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+   void actionPerformed(java.awt.event.ActionEvent actionEvent) 
   {
     Object objeto = actionEvent.getSource()
 

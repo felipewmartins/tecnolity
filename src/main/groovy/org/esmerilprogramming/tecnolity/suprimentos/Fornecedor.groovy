@@ -7,7 +7,7 @@ import org.esmerilprogramming.tecnolity.administracao.Pais
 import org.esmerilprogramming.tecnolity.util.*
 import java.util.*
 
-public class Fornecedor
+ class Fornecedor
 {
 	private int codigo
 	private String razaoSocial
@@ -27,7 +27,7 @@ public class Fornecedor
 	private String email
 	private String website
 	
-	public Fornecedor(int codigo,String razaoSocial,String cnpj,
+	 Fornecedor(int codigo,String razaoSocial,String cnpj,
 					  int percentualICMS,String logradouro,String complemento,
 					  String bairro,String cidade,Estado estado,
 					  Pais pais,String cep,String ddd,String telefone,
@@ -52,7 +52,7 @@ public class Fornecedor
 		this.website = website
 	}
 	
-	public Fornecedor(String razaoSocial,String cnpj,
+	 Fornecedor(String razaoSocial,String cnpj,
 					  int percentualICMS,String logradouro,String complemento,
 					  String bairro,String cidade,Estado estado,
 					  Pais pais,String cep,String ddd,String telefone,
@@ -76,20 +76,20 @@ public class Fornecedor
 		this.website = website
 	}
 	
-	public Fornecedor(int codigo,String razaoSocial, String cnpj)
+	 Fornecedor(int codigo,String razaoSocial, String cnpj)
 	{
             this.codigo = codigo
             this.razaoSocial = razaoSocial
             this.cnpj = cnpj
 	}
         
-        public Fornecedor(int codigo,String razaoSocial)
+         Fornecedor(int codigo,String razaoSocial)
 	{
             this.codigo = codigo
             this.razaoSocial = razaoSocial
 	}
         
-	public Fornecedor(int codigo) throws Exception
+	 Fornecedor(int codigo) throws Exception
 	{
 		this.codigo = codigo
                 Conexao conexao = new Conexao('C')
@@ -104,14 +104,14 @@ public class Fornecedor
                 }
                 conexao.fecharConexao()
 	}
-        public Fornecedor(){}
+         Fornecedor(){}
         
-        public void definirCodigo(int codigo)
+         void definirCodigo(int codigo)
         {
             this.codigo = codigo
         }
         
-        public void definirRazaoSocial(String razaoSocial) throws Exception
+         void definirRazaoSocial(String razaoSocial) throws Exception
         {
             if(!razaoSocial.equals("") && razaoSocial.length() <= 60)
                 this.razaoSocial = razaoSocial.trim()
@@ -122,7 +122,7 @@ public class Fornecedor
             }            
         }
         
-        public void definirCnpj(String cnpj) throws Exception
+         void definirCnpj(String cnpj) throws Exception
         {
             if(cnpj.length() <= 15)
                 this.cnpj = cnpj.trim()
@@ -133,7 +133,7 @@ public class Fornecedor
             }             
         }
         
-        public void definirPercentualIcms(int percentualICMS) throws Exception
+         void definirPercentualIcms(int percentualICMS) throws Exception
         {
             String erro = ""
             if(Float.isNaN(percentualICMS))
@@ -148,7 +148,7 @@ public class Fornecedor
                 this.percentualICMS = percentualICMS
         }
         
-        public void definirLogradouro(String logradouro) throws Exception
+         void definirLogradouro(String logradouro) throws Exception
         {
             if(!logradouro.equals("") && logradouro.length() <= 60)
                 this.logradouro = logradouro
@@ -159,7 +159,7 @@ public class Fornecedor
             }        
         }
 
-        public void definirComplemento(String complemento) throws Exception
+         void definirComplemento(String complemento) throws Exception
         {
             if(complemento.length() <= 30)
                 this.complemento = complemento
@@ -170,7 +170,7 @@ public class Fornecedor
             } 
         }
 
-        public void definirBairro(String bairro) throws Exception
+         void definirBairro(String bairro) throws Exception
         {
             if(bairro.length() <= 50)
                 this.bairro = bairro
@@ -181,7 +181,7 @@ public class Fornecedor
             } 
         }
 
-        public void definirCidade(String cidade) throws Exception
+         void definirCidade(String cidade) throws Exception
         {
             if(!cidade.equals("") && cidade.length() <= 60)
                 this.cidade = cidade
@@ -192,7 +192,7 @@ public class Fornecedor
             }        
         }
 
-        public void definirEstado(Estado estado) throws Exception
+         void definirEstado(Estado estado) throws Exception
         {
             if(estado != null)
                 this.estado = estado
@@ -203,7 +203,7 @@ public class Fornecedor
             }        
         }
         
-        public void definirPais(Pais pais) throws Exception
+         void definirPais(Pais pais) throws Exception
         {
             if(pais != null)
                 this.pais = pais
@@ -214,7 +214,7 @@ public class Fornecedor
             }        
         }
 
-        public void definirCep(String cep) throws Exception
+         void definirCep(String cep) throws Exception
         {
             if(cep.length() <= 8)
                 this.cep = cep
@@ -225,7 +225,7 @@ public class Fornecedor
             } 
         }
         
-        public void definirDdd(String ddd) throws Exception
+         void definirDdd(String ddd) throws Exception
         {
             if(!ddd.equals("") && ddd.length() <= 3)
                 this.ddd = ddd
@@ -236,7 +236,7 @@ public class Fornecedor
             }             
         }
 
-        public void definirTelefone(String telefone) throws Exception
+         void definirTelefone(String telefone) throws Exception
         {
             if(!telefone.equals("") && telefone.length() <= 8)
                 this.telefone = telefone
@@ -247,7 +247,7 @@ public class Fornecedor
             } 
         }
         
-        public void definirRamal(String ramal) throws Exception
+         void definirRamal(String ramal) throws Exception
         {
             if(ramal.length() <= 8)
                 this.ramal = ramal
@@ -258,7 +258,7 @@ public class Fornecedor
             }             
         }
         
-        public void definirFax(String fax) throws Exception
+         void definirFax(String fax) throws Exception
         {
             if(fax.length() <= 8)
                 this.fax = fax
@@ -269,7 +269,7 @@ public class Fornecedor
             }
         }
         
-        public void definirEmail(String email) throws Exception
+         void definirEmail(String email) throws Exception
         {
             if(email.length() <= 50)
                 this.email = email
@@ -280,7 +280,7 @@ public class Fornecedor
             }            
         }
         
-        public void definirWebsite(String website) throws Exception
+         void definirWebsite(String website) throws Exception
         {
             if(website.length() <= 50)
                 this.website = website
@@ -291,87 +291,87 @@ public class Fornecedor
             }             
         }
         
-	public int obterCodigo()
+	 int obterCodigo()
 	{
 		return this.codigo	
 	}
 	
-	public String obterRazaoSocial()
+	 String obterRazaoSocial()
 	{
 		return this.razaoSocial	
 	}
 	
-	public String obterCnpj()
+	 String obterCnpj()
 	{
 		return this.cnpj
 	}
 	
-	public int obterPercentualICMS()
+	 int obterPercentualICMS()
 	{
 		return this.percentualICMS
 	}
 	
-	public String obterLogradouro()
+	 String obterLogradouro()
 	{
 		return this.logradouro	
 	}
 	
-	public String obterComplemento()
+	 String obterComplemento()
 	{
 		return this.complemento	
 	}
 	
-	public String obterBairro()
+	 String obterBairro()
 	{
 		return this.bairro	
 	}
 	
-	public String obterCidade()
+	 String obterCidade()
 	{
 		return this.cidade
 	}
 	
-	public Estado obterEstado()
+	 Estado obterEstado()
 	{
 		return this.estado	
 	}
 	
-	public Pais obterPais()
+	 Pais obterPais()
 	{
 		return this.pais
 	}
 	
-	public String obterCep()
+	 String obterCep()
 	{
 		return this.cep
 	}
 	
-	public String obterDdd()
+	 String obterDdd()
 	{
 		return this.ddd
 	}
 	
-	public String obterTelefone()
+	 String obterTelefone()
 	{
 		return this.telefone	
 	}
 	
-	public String obterRamal()
+	 String obterRamal()
 	{
 		return this.ramal
 	}
 	
-	public String obterFax()
+	 String obterFax()
 	{
 		return this.fax
 	}
 	
-	public String obterEmail()
+	 String obterEmail()
 	{
 		return this.email
 	}
 	
-	public String  obterWebsite()
+	 String  obterWebsite()
 	{
 		return this.website
 	}
@@ -416,7 +416,7 @@ public class Fornecedor
         }
     }
         
-    public static Vector carregarFornecedores(Conexao conexao) throws Exception
+     static Vector carregarFornecedores(Conexao conexao) throws Exception
     {
         ResultSet dadosFornecedor
         Vector fornecedores = new Vector()
@@ -430,7 +430,7 @@ public class Fornecedor
         return fornecedores
     }
 	
-	public void cadastrarFornecedor() throws Exception
+	 void cadastrarFornecedor() throws Exception
 	{
 		String query = "insert into fornecedor (razao_social,cnpj,percentual_icms,logradouro,complemento,bairro,cidade,estado,pais,cep,ddd,telefone,ramal,fax,email,website) values "
 		query = query + "('"+ razaoSocial +"','"+ cnpj +"',"+ percentualICMS +",'"+ logradouro +"','"+ complemento +"','"+ bairro +"','"+ cidade +"','"+ estado.getSigla() +"','"+ pais.getSigla() +"','"+ cep +"','"+ ddd +"','"+ telefone +"','"+ ramal +"','"+ fax +"','"+ email +"','"+ website +"')"
@@ -456,7 +456,7 @@ public class Fornecedor
         }
 	}
         
-        public void alterarFornecedor() throws Exception
+         void alterarFornecedor() throws Exception
 	{
 		String query = "update fornecedor set razao_social = '"+ razaoSocial +"',cnpj = '"+ cnpj +"',percentual_icms = "+ percentualICMS +",logradouro = '"+ logradouro +"',complemento = '"+ complemento +"',bairro = '"+ bairro +"',cidade = '"+ cidade +"',estado = '"+ estado.getSigla() +"',pais = '"+ pais.getSigla() +"',cep = '"+ cep +"',ddd = '"+ ddd +"',telefone = '"+ telefone +"',ramal = '"+ ramal +"',fax = '"+ fax +"',email = '"+ email +"',website = '"+ website +"' "
 		query = query + " where codigo = "+ codigo +" "
@@ -473,7 +473,7 @@ public class Fornecedor
                 }
 	}
         
-    public void excluirFornecedor(int codigo) throws Exception
+     void excluirFornecedor(int codigo) throws Exception
 	{
 		String query = "delete from fornecedor where codigo = "+ codigo +" "
 		Conexao conexao = new Conexao('T')
@@ -508,7 +508,7 @@ public class Fornecedor
      * Falso se o fornecedor possui pelo menos 1 item dependente de pedido.
 	 * @throws SQLException Problemas de acesso ao banco de dados.
 	 */
-    public boolean possuiApenasItensIndependentes(Conexao conexao) throws Exception
+     boolean possuiApenasItensIndependentes(Conexao conexao) throws Exception
     {
         String query = "select count(i.independente) " +
                        "from fornecedor f, item i, fornecedor_item fi " +
@@ -522,7 +522,7 @@ public class Fornecedor
         return true // não possui nenhum item dependente de pedido.
     }
     
-    public String toString()
+     String toString()
     {
         return this.obterRazaoSocial()
     }

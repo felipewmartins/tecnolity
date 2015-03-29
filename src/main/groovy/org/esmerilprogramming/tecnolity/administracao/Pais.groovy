@@ -4,21 +4,21 @@ import java.sql.*
 import java.util.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class Pais extends org.esmerilprogramming.tecnolity.util.Pais
+ class Pais extends org.esmerilprogramming.tecnolity.util.Pais
 {
-  public Pais(String siglaPais, String nomePais) throws Exception
+   Pais(String siglaPais, String nomePais) throws Exception
   {
     super(siglaPais, nomePais)
   }
 
-  public Pais(String siglaPais) throws Exception
+   Pais(String siglaPais) throws Exception
   {
     super(siglaPais)
   }
 
-  public Pais(){}
+   Pais(){}
 
-  public static Vector carregarPaises(Conexao conexao) throws Exception
+   static Vector carregarPaises(Conexao conexao) throws Exception
   {
     ResultSet dadosPais
     Vector paises = null
@@ -33,7 +33,7 @@ public class Pais extends org.esmerilprogramming.tecnolity.util.Pais
     return paises
   }
 
-  public void cadastrarPais() throws Exception
+   void cadastrarPais() throws Exception
   {
     Conexao conexao = new Conexao('T')
     String erro = ""

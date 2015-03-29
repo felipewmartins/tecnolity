@@ -1,13 +1,13 @@
 package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
-public class ModeloTabelaPedido extends ModeloTabela
+ class ModeloTabelaPedido extends ModeloTabela
 {
-    public ModeloTabelaPedido() 
+     ModeloTabelaPedido() 
     {
         super()
     }
     
-    public Object getValueAt(int linha, int coluna)
+     Object getValueAt(int linha, int coluna)
     {
         return ((String[])cache.elementAt(linha))[coluna]
     }

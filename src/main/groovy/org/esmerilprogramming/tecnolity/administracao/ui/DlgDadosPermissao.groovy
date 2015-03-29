@@ -25,9 +25,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.Interface
 * Última Versão: 1.0  <br>
 */
 
-public class DlgDadosPermissao extends JDialog implements ActionListener
+ class DlgDadosPermissao extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 25
+     final int IDENTIFICADOR = 25
     
     private Aplicacao aplicacao
     private char modo // I = inserir, A = alterar, V = visualizar
@@ -39,7 +39,7 @@ public class DlgDadosPermissao extends JDialog implements ActionListener
     private JButton btAdicionarLeitura, btRemoverLeitura, btAdicionarEscrita, btRemoverEscrita, btAplicar, btConfirmar, btCancelar
     private Vector colaboradores, interfaces, acessosLeitura, acessosEscrita
     
-    public DlgDadosPermissao(Aplicacao aplicacao, char modo)
+     DlgDadosPermissao(Aplicacao aplicacao, char modo)
     {
         super(aplicacao,true)
 
@@ -269,7 +269,7 @@ public class DlgDadosPermissao extends JDialog implements ActionListener
         painel.add(c)
     }
 	
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
 

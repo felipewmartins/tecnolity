@@ -2,15 +2,15 @@ package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-public class ModeloTabelaMovimentacoes extends ModeloTabela
+ class ModeloTabelaMovimentacoes extends ModeloTabela
 {
 
-    public ModeloTabelaMovimentacoes() 
+     ModeloTabelaMovimentacoes() 
     {
         super()
     }
     
-    public Object getValueAt(int linha, int coluna)
+     Object getValueAt(int linha, int coluna)
     {
         if(coluna == 3)
             return Numero.inverterSeparador(((String[])cache.elementAt(linha))[coluna])

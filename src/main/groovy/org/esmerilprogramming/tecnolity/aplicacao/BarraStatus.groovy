@@ -10,7 +10,7 @@ class BarraStatus extends JPanel
   private Aplicacao aplicacao
   private Calendario calendario = new Calendario()
 
-  public BarraStatus(Aplicacao aplicacao)
+   BarraStatus(Aplicacao aplicacao)
   {
     setLayout(new BorderLayout())
     this.aplicacao = aplicacao

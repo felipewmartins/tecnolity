@@ -23,7 +23,7 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.administracao.ui.*
 
-public class FormAutenticacao extends JDialog implements ActionListener
+ class FormAutenticacao extends JDialog implements ActionListener
 {
     private JButton btAcessar, btCancelar
     private JTextField txtUsuario
@@ -34,7 +34,7 @@ public class FormAutenticacao extends JDialog implements ActionListener
     
     private Aplicacao aplicacao
     
-    public FormAutenticacao(Aplicacao aplicacao)
+     FormAutenticacao(Aplicacao aplicacao)
     {
         super(aplicacao,true)
         this.aplicacao = aplicacao
@@ -125,7 +125,7 @@ public class FormAutenticacao extends JDialog implements ActionListener
         }
     }
     
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
         

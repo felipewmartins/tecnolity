@@ -5,7 +5,7 @@ import java.awt.event.*
 import javax.swing.*
 import java.awt.*
 
-public class CampoCPF extends JTextField implements KeyListener
+ class CampoCPF extends JTextField implements KeyListener
 {
     private String numeros
     private String w
@@ -34,7 +34,7 @@ public class CampoCPF extends JTextField implements KeyListener
     private String z
     private Vector formatar
     
-    public CampoCPF() {
+     CampoCPF() {
         this.numeros = ""
         this.w = ""
         this.i = 0
@@ -61,21 +61,21 @@ public class CampoCPF extends JTextField implements KeyListener
         this.addKeyListener(this)
     }
     
-    public void keyPressed(final KeyEvent e) {
+     void keyPressed(final KeyEvent e) {
         this.s = KeyEvent.getKeyText(e.getKeyCode())
     }
     
-    public void keyReleased(final KeyEvent e) {
+     void keyReleased(final KeyEvent e) {
         this.s = KeyEvent.getKeyText(e.getKeyCode())
         this.numeros = String.valueOf(this.numeros) + KeyEvent.getKeyText(e.getKeyCode())
         this.setFormatarNumero(e)
     }
     
-    public void keyTyped(final KeyEvent e) {
+     void keyTyped(final KeyEvent e) {
         this.s = "" + e.getKeyChar()
     }
     
-    public void setFormatarNumero(final KeyEvent e) {
+     void setFormatarNumero(final KeyEvent e) {
         final String execao = "O CPF s\u00f3 possui 11 n\u00fameros."
         final Vector formatar = new Vector()
         final String valor = KeyEvent.getKeyText(e.getKeyCode())

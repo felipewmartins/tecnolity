@@ -5,9 +5,9 @@ import java.awt.*
 
 class Dialogo extends JDialog
 {
-  public static final char ACESSO_INCLUSAO = 'I'
-  public static final char ACESSO_ALTERACAO = 'A'
-  public static final char ACESSO_LEITURA = 'L'
+   static final char ACESSO_INCLUSAO = 'I'
+   static final char ACESSO_ALTERACAO = 'A'
+   static final char ACESSO_LEITURA = 'L'
   private int identificador
   private char acesso
   private Aplicacao aplicacao

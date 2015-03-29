@@ -4,15 +4,15 @@ import java.util.*
 import java.text.*
 import java.util.regex.*
 
-public class Calendario extends GregorianCalendar
+ class Calendario extends GregorianCalendar
 {
-  public static final String DOMINGO = "Dom"
-  public static final String SEGUNDA = "Seg"
-  public static final String TERCA = "Ter"
-  public static final String QUARTA = "Qua"
-  public static final String QUINTA = "Qui"
-  public static final String SEXTA = "Sex"
-  public static final String SABADO = "Sab"
+   static final String DOMINGO = "Dom"
+   static final String SEGUNDA = "Seg"
+   static final String TERCA = "Ter"
+   static final String QUARTA = "Qua"
+   static final String QUINTA = "Qui"
+   static final String SEXTA = "Sex"
+   static final String SABADO = "Sab"
   private String dataAtual
   private static int[] numeroDiasMes
   private static String[] nomeDiasSemana
@@ -24,22 +24,22 @@ public class Calendario extends GregorianCalendar
     Calendario.nomeMeses = [ "Janeiro", "Fevereiro", "Mar\u00e7o", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" ]
   }
 
-  public Calendario() {
+   Calendario() {
   }
 
-  public Calendario(final int ano, final int mes, final int dia) {
+   Calendario(final int ano, final int mes, final int dia) {
     super(ano, mes - 1, dia)
   }
 
-  public Calendario(final int ano, final int mes, final int dia, final int hora, final int minuto) {
+   Calendario(final int ano, final int mes, final int dia, final int hora, final int minuto) {
     super(ano, mes - 1, dia, hora, minuto)
   }
 
-  public Calendario(final int ano, final int mes, final int dia, final int hora, final int minuto, final int segundo) {
+   Calendario(final int ano, final int mes, final int dia, final int hora, final int minuto, final int segundo) {
     super(ano, mes - 1, dia, hora, minuto, segundo)
   }
 
-  public Calendario(String data) {
+   Calendario(String data) {
     int hora = 0
     int minuto = 0
     int segundo = 0
@@ -80,17 +80,17 @@ public class Calendario extends GregorianCalendar
     super.set(14, 0)
   }
 
-  public Calendario(final Date data) {
+   Calendario(final Date data) {
     if (data != null) {
       this.setTime(data)
     }
   }
 
-  public String get(final String formato) {
+   String get(final String formato) {
     return new SimpleDateFormat(formato).format(this.getTime())
   }
 
-  public static Calendario getInstance(final String formato) {
+   static Calendario getInstance(final String formato) {
     final Calendario calendario = new Calendario()
     if (formato.indexOf("y") < 0) {
       calendario.set(1, 0)
@@ -116,7 +116,7 @@ public class Calendario extends GregorianCalendar
     return calendario
   }
 
-  public Calendario redefinirElementos(final String formato) {
+   Calendario redefinirElementos(final String formato) {
     if (formato.indexOf("y") < 0) {
       this.set(1, 0)
     }
@@ -141,15 +141,15 @@ public class Calendario extends GregorianCalendar
     return this
   }
 
-  public Date getDate() {
+   Date getDate() {
     return this.getTime()
   }
 
-  public String getDataAtualPorExtenso() {
+   String getDataAtualPorExtenso() {
     return "" + Calendario.nomeDiasSemana[this.get(7) - 1] + ", " + this.get(5) + " de " + Calendario.nomeMeses[this.get(2)] + " de " + this.get(1)
   }
 
-  public static boolean compararDataMaiorIgual(final Calendario dataMaior, final Calendario dataMenor) {
+   static boolean compararDataMaiorIgual(final Calendario dataMaior, final Calendario dataMenor) {
     String dMaior = dataMaior.get("dd-MM-yyyy")
     String dMenor = dataMenor.get("dd-MM-yyyy")
     int ddMaior
@@ -192,7 +192,7 @@ public class Calendario extends GregorianCalendar
     return true
   }
 
-  public String getTratamento() {
+   String getTratamento() {
     final int hora = this.get(11)
     if (hora >= 0 && hora < 12) {
       return "Bom dia"
@@ -206,11 +206,11 @@ public class Calendario extends GregorianCalendar
     return ""
   }
 
-  public String getMesPorExtenso() {
+   String getMesPorExtenso() {
     return Calendario.nomeMeses[this.get(2)]
   }
 
-  public static int getNumeroDiaSemana(final String nomeDiaSemana) {
+   static int getNumeroDiaSemana(final String nomeDiaSemana) {
     for (int i = 0 i < Calendario.nomeDiasSemana.length ++i) {
       if (nomeDiaSemana.equals(Calendario.nomeDiasSemana[i])) {
         return i
@@ -219,21 +219,21 @@ public class Calendario extends GregorianCalendar
     return -1
   }
 
-  public int getNumeroDiasMes() {
+   int getNumeroDiasMes() {
     if (anoBisexto(this.get(1)) && this.get(2) == 1) {
       return 29
     }
     return Calendario.numeroDiasMes[this.get(2)]
   }
 
-  public static int getNumeroDiasMes(final int mes, final int ano) {
+   static int getNumeroDiasMes(final int mes, final int ano) {
     if (anoBisexto(ano) && mes == 1) {
       return 29
     }
     return Calendario.numeroDiasMes[mes]
   }
 
-  public static int getNumeroSemanasAno() {
+   static int getNumeroSemanasAno() {
     final Calendario ano = new Calendario()
     ano.set(2, 11)
     ano.set(5, 25)
@@ -241,7 +241,7 @@ public class Calendario extends GregorianCalendar
     return numeroSemanasAno
   }
 
-  public static int getBimestreMes(final int mes) {
+   static int getBimestreMes(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -263,7 +263,7 @@ public class Calendario extends GregorianCalendar
     return 6
   }
 
-  public static int getTrimestreMes(final int mes) {
+   static int getTrimestreMes(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -279,7 +279,7 @@ public class Calendario extends GregorianCalendar
     return 4
   }
 
-  public static int getSemestreMes(final int mes) {
+   static int getSemestreMes(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -289,7 +289,7 @@ public class Calendario extends GregorianCalendar
     return 2
   }
 
-  public static int getPrimeiroMesBimestre(final int mes) {
+   static int getPrimeiroMesBimestre(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -311,7 +311,7 @@ public class Calendario extends GregorianCalendar
     return 10
   }
 
-  public static int getUltimoMesBimestre(final int mes) {
+   static int getUltimoMesBimestre(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -333,7 +333,7 @@ public class Calendario extends GregorianCalendar
     return 11
   }
 
-  public static int getPrimeiroMesTrimestre(final int mes) {
+   static int getPrimeiroMesTrimestre(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -349,7 +349,7 @@ public class Calendario extends GregorianCalendar
     return 9
   }
 
-  public static int getUltimoMesTrimestre(final int mes) {
+   static int getUltimoMesTrimestre(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -365,7 +365,7 @@ public class Calendario extends GregorianCalendar
     return 11
   }
 
-  public static int getPrimeiroMesSemestre(final int mes) {
+   static int getPrimeiroMesSemestre(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -375,7 +375,7 @@ public class Calendario extends GregorianCalendar
     return 6
   }
 
-  public static int getUltimoMesSemestre(final int mes) {
+   static int getUltimoMesSemestre(final int mes) {
     if (mes >= 12 || mes < 0) {
       return -1
     }
@@ -385,11 +385,11 @@ public class Calendario extends GregorianCalendar
     return 11
   }
 
-  public String getDataAtual() {
+   String getDataAtual() {
     return this.dataAtual = new SimpleDateFormat("dd/MM/yyyy").format(this.getTime())
   }
 
-  public static boolean validarData(String data, final String separador) {
+   static boolean validarData(String data, final String separador) {
     try {
       if (data.equals("")) {
         return true
@@ -423,11 +423,11 @@ public class Calendario extends GregorianCalendar
     }
   }
 
-  public int compararCom(final Calendar data) {
+   int compararCom(final Calendar data) {
     return this.getTime().compareTo(data.getTime())
   }
 
-  public static boolean compararHora(final Calendario horaMaior, final Calendario horaMenor) {
+   static boolean compararHora(final Calendario horaMaior, final Calendario horaMenor) {
     String hMaior = horaMaior.get("HH:mm")
     String hMenor = horaMenor.get("HH:mm")
     if (hMaior.equals("00:00")) {
@@ -462,7 +462,7 @@ public class Calendario extends GregorianCalendar
     return true
   }
 
-  public static boolean compararHoraMaiorIgual(final Calendario horaMaior, final Calendario horaMenor) {
+   static boolean compararHoraMaiorIgual(final Calendario horaMaior, final Calendario horaMenor) {
     String hMaior = horaMaior.get("HH:mm")
     String hMenor = horaMenor.get("HH:mm")
     if (hMaior.equals("00:00")) {
@@ -497,7 +497,7 @@ public class Calendario extends GregorianCalendar
     return true
   }
 
-  public static String numeroParaHora(final double numero) {
+   static String numeroParaHora(final double numero) {
     final long hora = (long)numero
     String strHora = ""
     if (hora >= 0L) {
@@ -518,14 +518,14 @@ public class Calendario extends GregorianCalendar
     return strHora
   }
 
-  public static long subtrairData(final Calendario primeiraData, final Calendario segundaData) {
+   static long subtrairData(final Calendario primeiraData, final Calendario segundaData) {
     final Date dtMaior = primeiraData.getTime()
     final Date dtMenor = segundaData.getTime()
     final long diferenca = dtMaior.getTime() - dtMenor.getTime()
     return Math.abs(diferenca / 86400000L)
   }
 
-  public static String inverterFormato(String data, final String separador) {
+   static String inverterFormato(String data, final String separador) {
     if (!data.equals("") && !separador.equals("")) {
       final String dd = data.substring(0, data.indexOf(separador))
       data = data.substring(data.indexOf(separador) + 1)
@@ -537,7 +537,7 @@ public class Calendario extends GregorianCalendar
     return ""
   }
 
-  public static String trocarSeparador(final String data, final char separadorAtual, final char separadorNovo) {
+   static String trocarSeparador(final String data, final char separadorAtual, final char separadorNovo) {
     String dataModificada = data
     if (!dataModificada.equals("")) {
       dataModificada = dataModificada.replace(separadorAtual, separadorNovo)
@@ -545,11 +545,11 @@ public class Calendario extends GregorianCalendar
     return dataModificada
   }
 
-  public static boolean anoBisexto(final int ano) {
+   static boolean anoBisexto(final int ano) {
     return ano % 4 == 0
   }
 
-  public static Calendario converterStringHora(String hora) {
+   static Calendario converterStringHora(String hora) {
     String hh = "0"
     String mm = "0"
     String ss = "0"
@@ -565,7 +565,7 @@ public class Calendario extends GregorianCalendar
     return new Calendario(0, 0, 0, Integer.parseInt(hh), Integer.parseInt(mm), Integer.parseInt(ss))
   }
 
-  public static Calendario stringParaCalendario(final String data) {
+   static Calendario stringParaCalendario(final String data) {
     if (data == null) {
       return null
     }
@@ -584,17 +584,17 @@ public class Calendario extends GregorianCalendar
     return null
   }
 
-  public static boolean validarHora(final String hora) {
+   static boolean validarHora(final String hora) {
     final Pattern padrao = Pattern.compile("(([0-1]{1}[0-9]{1})|(2[0-3]{1})):[0-5]{1}[0-9]{1}")
     final Matcher busca = padrao.matcher(hora)
     return busca.matches()
   }
 
-  public static String getNomeMes(final int mes) {
+   static String getNomeMes(final int mes) {
     return Calendario.nomeMeses[mes - 1]
   }
 
-  public String toString() {
+   String toString() {
     return this.get("dd/MM/yyyy")
   }
 }

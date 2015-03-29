@@ -23,18 +23,18 @@ import java.sql.*
    * Última Versão: 1.0 <br>
 */
 
-public class RequisicaoInterna 
+ class RequisicaoInterna 
 {
-    public static final String STATUS_EMITIDO    = "EM"
-    public static final String STATUS_CANCELADO  = "CL"
-    public static final String STATUS_CONFIRMADO = "CO"
-    public static final String STATUS_PENDENTE   = "PD"
+     static final String STATUS_EMITIDO    = "EM"
+     static final String STATUS_CANCELADO  = "CL"
+     static final String STATUS_CONFIRMADO = "CO"
+     static final String STATUS_PENDENTE   = "PD"
     
-    public static final String REQUISICAO_CONSUMO           = "CS"
-    public static final String REQUISICAO_VENDAS            = "VD"
-    public static final String REQUISICAO_DESCARTE          = "DS"
-    public static final String REQUISICAO_DEVOLUCAO         = "DV"
-    public static final String REQUISICAO_DEVOLUCAO_EXTERNA = "DE"
+     static final String REQUISICAO_CONSUMO           = "CS"
+     static final String REQUISICAO_VENDAS            = "VD"
+     static final String REQUISICAO_DESCARTE          = "DS"
+     static final String REQUISICAO_DEVOLUCAO         = "DV"
+     static final String REQUISICAO_DEVOLUCAO_EXTERNA = "DE"
     
     private int codigo
     private int ultimoCodigoRequisicao
@@ -50,26 +50,26 @@ public class RequisicaoInterna
     private String status
     private Vector itensRequisicaoInterna
     
-    public RequisicaoInterna() {}
+     RequisicaoInterna() {}
     
-    public RequisicaoInterna(int codigo) 
+     RequisicaoInterna(int codigo) 
     {
         this.definirCodigo(codigo)
     } 
     
-    public RequisicaoInterna(int codigo, Departamento departamento) throws Exception
+     RequisicaoInterna(int codigo, Departamento departamento) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDepartamento(departamento)
     } 
      
-    public RequisicaoInterna(int codigo, Conexao conexao) throws Exception
+     RequisicaoInterna(int codigo, Conexao conexao) throws Exception
     {
         this.definirCodigo(codigo)        
         this.carregarRequisicaoInterna(conexao)            
     }
     
-    public RequisicaoInterna(int codigo, String dataLimiteEntrega, Departamento departamento, Colaborador solicitante, Pedido pedidoCliente, String justificativa, String status) throws Exception
+     RequisicaoInterna(int codigo, String dataLimiteEntrega, Departamento departamento, Colaborador solicitante, Pedido pedidoCliente, String justificativa, String status) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDataLimiteEntrega(dataLimiteEntrega)
@@ -80,7 +80,7 @@ public class RequisicaoInterna
         this.definirStatus(status)
     }
     
-    public RequisicaoInterna(int codigo, String dataEmissao, String dataLimiteEntrega, Departamento departamento, Colaborador solicitante, Pedido pedidoCliente, String justificativa, String status) throws Exception
+     RequisicaoInterna(int codigo, String dataEmissao, String dataLimiteEntrega, Departamento departamento, Colaborador solicitante, Pedido pedidoCliente, String justificativa, String status) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDataEmissao(dataEmissao)
@@ -92,12 +92,12 @@ public class RequisicaoInterna
         this.definirStatus(status)
     }
     
-    public void definirCodigo(int codigo)
+     void definirCodigo(int codigo)
     {
         this.codigo = codigo
     }
     
-    public void definirTipoSolicitacao(String tipoSolicitacao) throws Exception
+     void definirTipoSolicitacao(String tipoSolicitacao) throws Exception
     {
         if(!tipoSolicitacao.equals("") || tipoSolicitacao.length() <= 2)           
             this.tipoSolicitacao = tipoSolicitacao
@@ -108,12 +108,12 @@ public class RequisicaoInterna
         } 
     }
     
-    public void definirDataEmissao(String dataEmissao)
+     void definirDataEmissao(String dataEmissao)
     {
     	this.dataEmissao = dataEmissao
     }
     
-    public void definirDataLimiteEntrega(String dataLimiteEntrega) throws Exception
+     void definirDataLimiteEntrega(String dataLimiteEntrega) throws Exception
     {
         String erro = ""
         if(!dataLimiteEntrega.equals(""))
@@ -135,7 +135,7 @@ public class RequisicaoInterna
         }
     }
     
-    public void definirData(String data) throws Exception
+     void definirData(String data) throws Exception
     {
         String erro = ""
         if(data.equals(""))
@@ -151,7 +151,7 @@ public class RequisicaoInterna
             this.data = data
     }
     
-    public void definirDepartamento(Departamento departamento) throws Exception
+     void definirDepartamento(Departamento departamento) throws Exception
     {
         if(departamento != null)
             this.departamento = departamento
@@ -162,7 +162,7 @@ public class RequisicaoInterna
         }
     }
     
-    public void definirSolicitante(Colaborador solicitante) throws Exception
+     void definirSolicitante(Colaborador solicitante) throws Exception
     {
         if(solicitante != null)           
             this.solicitante = solicitante
@@ -173,12 +173,12 @@ public class RequisicaoInterna
         } 
     }
     
-    public void definirPedidoCliente(Pedido pedidoCliente)
+     void definirPedidoCliente(Pedido pedidoCliente)
     {        
         this.pedidoCliente = pedidoCliente        
     }
     
-    public void definirJustificativa(String justificativa) throws Exception
+     void definirJustificativa(String justificativa) throws Exception
     {
         if(justificativa.length() <= 200)
             this.justificativa = justificativa
@@ -189,7 +189,7 @@ public class RequisicaoInterna
         }
     }
     
-    public void definirResponsavelAutorizacao(Colaborador responsavelAutorizacao) throws Exception
+     void definirResponsavelAutorizacao(Colaborador responsavelAutorizacao) throws Exception
     {
         if(responsavelAutorizacao != null)           
             this.responsavelAutorizacao = responsavelAutorizacao
@@ -200,7 +200,7 @@ public class RequisicaoInterna
         }
     }
     
-    public void definirStatus(String status) throws Exception
+     void definirStatus(String status) throws Exception
     {
         if(!status.equals("") && status.length() <= 2)           
             this.status = status
@@ -211,17 +211,17 @@ public class RequisicaoInterna
         }
     }
     
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
     
-    public String obterTipoSolicitacao()
+     String obterTipoSolicitacao()
     {
         return this.tipoSolicitacao
     }
     
-    public String obterTipoSolicitacaoLiteral()
+     String obterTipoSolicitacaoLiteral()
     {
         String tipo
         if(tipoSolicitacao.equals(REQUISICAO_CONSUMO))
@@ -236,37 +236,37 @@ public class RequisicaoInterna
             return "Devolução Externa"
     }
     
-    public String obterDataEmissao()
+     String obterDataEmissao()
     {
     	return this.dataEmissao
     }
     
-    public String obterDataLimiteEntrega()
+     String obterDataLimiteEntrega()
     {
         return this.dataLimiteEntrega
     }
     
-    public String obterData()
+     String obterData()
     {
         return this.data
     }
     
-    public Departamento obterDepartamento()
+     Departamento obterDepartamento()
     {
         return this.departamento
     }
     
-    public Colaborador obterSolicitante()
+     Colaborador obterSolicitante()
     {
         return this.solicitante
     }
     
-    public Pedido obterPedidoCliente()
+     Pedido obterPedidoCliente()
     {
         return this.pedidoCliente
     }
     
-    public Vector obterPedidosCliente(Conexao conexao) throws Exception
+     Vector obterPedidosCliente(Conexao conexao) throws Exception
     {
         Vector pedidosRequisicao = new Vector()
         String query = "select distinct p.codigo, p.ordem_compra " +
@@ -281,22 +281,22 @@ public class RequisicaoInterna
         return pedidosRequisicao
     }
     
-    public String obterJustificativa()
+     String obterJustificativa()
     {
         return this.justificativa
     }
     
-    public Colaborador obterResponsavelAutorizacao()
+     Colaborador obterResponsavelAutorizacao()
     {
         return this.responsavelAutorizacao
     }
     
-    public String obterStatus()
+     String obterStatus()
     {
         return this.status
     }
     
-    public String obterStatusLiteral()
+     String obterStatusLiteral()
     {
         if(this.status.equals(RequisicaoInterna.STATUS_EMITIDO))
             return "Emitido"
@@ -308,12 +308,12 @@ public class RequisicaoInterna
             return "Pendente"
     }
     
-    public Vector obterItensRequisicaoInterna()
+     Vector obterItensRequisicaoInterna()
     {
         return itensRequisicaoInterna
     }
         
-    public void carregarRequisicaoInterna(Conexao conexao) throws Exception
+     void carregarRequisicaoInterna(Conexao conexao) throws Exception
     {
         ResultSet dadosRequisicaoInterna  
         String query = "select ri.tipo_solicitacao, ri.datahora_limite_entrega, ri.datahora, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, ri.justificativa, ri.responsavel_autorizacao, ri.status " +
@@ -344,7 +344,7 @@ public class RequisicaoInterna
 	 * @return Vector Lista de Requisições Internas encontradas no banco de dados.
 	 * @throws Exception
 	 */
-    public static Vector carregarRequisicoesInternas(Conexao conexao, String tipoSolicitacao) throws Exception
+     static Vector carregarRequisicoesInternas(Conexao conexao, String tipoSolicitacao) throws Exception
     {
         Vector requisicoesInternas = new Vector()
         ResultSet dadosRequisicaoInterna
@@ -357,7 +357,7 @@ public class RequisicaoInterna
             													 Calendario.ajustarFormatoDataBanco(dadosRequisicaoInterna.getString("datahora")),
                                                                  Calendario.ajustarFormatoDataBanco(dadosRequisicaoInterna.getString("datahora_limite_entrega")),
                                                                  new Departamento(dadosRequisicaoInterna.getInt("codigo_departamento"),dadosRequisicaoInterna.getString("departamento")),
-                                                                 new Colaborador(dadosRequisicaoInterna.getString("usuario"),dadosRequisicaoInterna.getString("nome_completo"),"public"),
+                                                                 new Colaborador(dadosRequisicaoInterna.getString("usuario"),dadosRequisicaoInterna.getString("nome_completo"),""),
                                                                  new Pedido(dadosRequisicaoInterna.getInt("pedido_cliente"),dadosRequisicaoInterna.getString("ordem_compra")),
                                                                  dadosRequisicaoInterna.getString("justificativa"),
                                                                  dadosRequisicaoInterna.getString("status")))
@@ -366,7 +366,7 @@ public class RequisicaoInterna
         return requisicoesInternas
     }
     
-    public Vector carregarItensRequisicaoInterna(Conexao conexao) throws Exception
+     Vector carregarItensRequisicaoInterna(Conexao conexao) throws Exception
     {
         itensRequisicaoInterna = new Vector()
         ResultSet rsItensRequisicaoInterna
@@ -390,7 +390,7 @@ public class RequisicaoInterna
     
     /** Carrega todos os itens da requisição interna
      * */
-    public Vector carregarItensRequisicaoInternaCompleta(Conexao conexao) throws Exception
+     Vector carregarItensRequisicaoInternaCompleta(Conexao conexao) throws Exception
     {
         itensRequisicaoInterna = new Vector()
         ResultSet rsItensRequisicaoInterna
@@ -413,7 +413,7 @@ public class RequisicaoInterna
         return itensRequisicaoInterna
     } 
         
-    public void cadastrarRequisicaoInterna() throws Exception
+     void cadastrarRequisicaoInterna() throws Exception
     {
         String query = "insert into requisicao_interna (tipo_solicitacao,datahora_limite_entrega,departamento,solicitante,pedido_cliente,justificativa,status) values ('"+ this.tipoSolicitacao +"',"
         if(!this.dataLimiteEntrega.equals(""))
@@ -443,7 +443,7 @@ public class RequisicaoInterna
         }
     }
         
-    public void associarItens(Vector itensRequisicaoInterna, Vector pedidos) throws Exception
+     void associarItens(Vector itensRequisicaoInterna, Vector pedidos) throws Exception
     {
         if(itensRequisicaoInterna != null)
         {
@@ -469,7 +469,7 @@ public class RequisicaoInterna
         }
     }
     
-    public void cancelarRequisicaoInterna() throws Exception
+     void cancelarRequisicaoInterna() throws Exception
     {
         String queryCancelarRequisicaoInterna = "update requisicao_interna set status = 'CL' where codigo = "+ this.codigo +" "
         Conexao conexao = new Conexao('T')
@@ -485,7 +485,7 @@ public class RequisicaoInterna
         }
     }
     
-    public void mudarStatusRequisicaoInterna(String status) throws Exception
+     void mudarStatusRequisicaoInterna(String status) throws Exception
     {
         String queryCancelarRequisicaoInterna = "update requisicao_interna set status = '"+ status +"' where codigo = "+ this.codigo +" "
         Conexao conexao = new Conexao('T')
@@ -501,7 +501,7 @@ public class RequisicaoInterna
         }
     }
     
-    public void adicionarItem(Item item)
+     void adicionarItem(Item item)
     {
         this.itensRequisicaoInterna.addElement(item)
     }
@@ -512,7 +512,7 @@ public class RequisicaoInterna
 	 * @param status Status para o qual se quer alterar o item da requisição interna.
 	 * @throws Exception Em caso de erros com a transação com o banco de dados.
 	 */
-    public void atualizarRequisicaoInterna(String status) throws Exception
+     void atualizarRequisicaoInterna(String status) throws Exception
     {
         Conexao conexao = new Conexao('T')
         this.status = status
@@ -550,7 +550,7 @@ public class RequisicaoInterna
         conexao = null
     }
     
-    public String toString()
+     String toString()
     {
     	return "" + this.codigo + " - " + this.departamento.obterNomeDepartamento()
     }

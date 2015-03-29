@@ -22,9 +22,9 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class DlgAlteracaoPreco extends JDialog implements ActionListener
+ class DlgAlteracaoPreco extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 14
+     final int IDENTIFICADOR = 14
     
     private Aplicacao aplicacao
     private Container conteudo
@@ -34,7 +34,7 @@ public class DlgAlteracaoPreco extends JDialog implements ActionListener
     private JButton btConfirmar, btCancelar
     private FornecedorItem fornecedorItem
 
-    public DlgAlteracaoPreco(Aplicacao aplicacao, FornecedorItem fornecedorItem)
+     DlgAlteracaoPreco(Aplicacao aplicacao, FornecedorItem fornecedorItem)
     {
         super(aplicacao,true)
 
@@ -93,7 +93,7 @@ public class DlgAlteracaoPreco extends JDialog implements ActionListener
 	    painel.add(c)
 	}
 	
-	public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+	 void actionPerformed(java.awt.event.ActionEvent actionEvent) 
 	{
 	    Object objeto = actionEvent.getSource()
 	            

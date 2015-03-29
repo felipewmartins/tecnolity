@@ -26,7 +26,7 @@ import org.esmerilprogramming.tecnolity.util.*
  * Última Versão: 1.0 <br>
  */
 
-public class Pedido
+ class Pedido
 {
   private long codigo
   private Cliente cliente
@@ -43,12 +43,12 @@ public class Pedido
   private String observacao
   private Vector produtosPedido
 
-  public static final String PENDENTE   = "1P"
-  public static final String PRODUZINDO = "2P"
-  public static final String FINALIZADO = "3F"
-  public static final String ATRASADO   = "4A"
-  public static final String PARALIZADO = "5P"
-  public static final String CANCELADO  = "6C"
+   static final String PENDENTE   = "1P"
+   static final String PRODUZINDO = "2P"
+   static final String FINALIZADO = "3F"
+   static final String ATRASADO   = "4A"
+   static final String PARALIZADO = "5P"
+   static final String CANCELADO  = "6C"
 
   Pedido(){}
 
@@ -80,17 +80,17 @@ public class Pedido
     definirValorTotal(valorTotal)
   }
 
-  public long obterCodigo()
+   long obterCodigo()
   {
     return this.codigo
   }
 
-  public String obterOrdemCompra()
+   String obterOrdemCompra()
   {
     return this.ordemCompra
   }
 
-  public void definirCodigo(long codigo) throws Exception
+   void definirCodigo(long codigo) throws Exception
   {
     if(codigo < 0)
     {
@@ -100,22 +100,22 @@ public class Pedido
     this.codigo = codigo
   }
 
-  public void definirObservacao(String observacao)
+   void definirObservacao(String observacao)
   {
     this.observacao = observacao
   }
 
-  public void definirEsteira(String esteira)
+   void definirEsteira(String esteira)
   {
     this.esteira = esteira
   }
 
-  public void definirLocalEntrega(LocalEntrega localEntrega)
+   void definirLocalEntrega(LocalEntrega localEntrega)
   {
     this.localEntrega = localEntrega
   }
 
-  public void definirCliente(Cliente cliente) throws Exception
+   void definirCliente(Cliente cliente) throws Exception
   {
     if(cliente == null)
     {
@@ -125,7 +125,7 @@ public class Pedido
     this.cliente = cliente
   }
 
-  public void definirTipoOperacao(char tipoOperacao) throws Exception
+   void definirTipoOperacao(char tipoOperacao) throws Exception
   {
     if(tipoOperacao == '\u0000')
     {
@@ -135,7 +135,7 @@ public class Pedido
     this.tipoOperacao = tipoOperacao
   }
 
-  public void definirOrdemCompra(String ordemCompra) throws Exception
+   void definirOrdemCompra(String ordemCompra) throws Exception
   {
     if(ordemCompra != null)
     {
@@ -151,7 +151,7 @@ public class Pedido
     }
   }
 
-  public void definirDataEmissao(String dataEmissao) throws Exception
+   void definirDataEmissao(String dataEmissao) throws Exception
   {
     if(dataEmissao.equals("") || !Calendario.validarData(dataEmissao,"/"))
     {
@@ -161,7 +161,7 @@ public class Pedido
     this.dataEmissao = dataEmissao
   }
 
-  public void definirDataEntrega(String dataEntrega) throws Exception
+   void definirDataEntrega(String dataEntrega) throws Exception
   {
     if(!dataEntrega.equals("") && dataEntrega != null)
     {
@@ -487,7 +487,7 @@ public class Pedido
       //Exclui todos os produtos do pedido e os insere novamente.
       String query = "delete from modelo_pedido where pedido = " + this.codigo
       conexao.executarAtualizacao(query)
-      for(int i = 0i < produtosPedido.size()i++)
+      for(int i = 0 ; i < produtosPedido.size() ; i++)
       {
         produtoPedido = (ProdutoPedido)produtosPedido.get(i)
         query = "select * from modelo_pedido where pedido = "+ this.codigo +" and modelo = "+ produtoPedido.obterProduto().obterCodigo() +" and referencia = '"+ produtoPedido.obterMatriz().obterReferencia() +"' and numero_sola = " + produtoPedido.obterMatriz().obterNumeroSola()

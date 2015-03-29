@@ -3,13 +3,13 @@ package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 import java.sql.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelatorioMovimentacao extends Relatorio
+ class RelatorioMovimentacao extends Relatorio
 {
     private String tipo, dataInicio, dataFinal
     private int codigoItem
     private Conexao conexao
     
-    public RelatorioMovimentacao(Conexao conexao, String tipo, int codigoItem, String dataInicio, String dataFinal)
+     RelatorioMovimentacao(Conexao conexao, String tipo, int codigoItem, String dataInicio, String dataFinal)
     {
         this.conexao = conexao
         this.tipo = tipo
@@ -18,7 +18,7 @@ public class RelatorioMovimentacao extends Relatorio
         this.dataFinal = dataFinal
     }
    
-    public String gerarRelatorio()
+     String gerarRelatorio()
     {
         Calendario calendario = new Calendario()
         conteudo = new StringBuffer()

@@ -16,7 +16,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
 
 class DlgDadosProduto extends JDialog implements ActionListener
 {
-  public final int IDENTIFICADOR = 26
+   final int IDENTIFICADOR = 26
 
   private Aplicacao aplicacao
 
@@ -43,7 +43,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
   private Cliente cliente
   private Produto produto
 
-  public DlgDadosProduto(Aplicacao aplicacao)
+   DlgDadosProduto(Aplicacao aplicacao)
   {
     super(aplicacao,true)
     this.setTitle("Novo Produto")
@@ -53,7 +53,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
     montarInterface()
   }
 
-  public DlgDadosProduto(Aplicacao aplicacao, Cliente cliente)
+   DlgDadosProduto(Aplicacao aplicacao, Cliente cliente)
   {
     super(aplicacao,true)
 
@@ -65,7 +65,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
     montarInterface()
   }
 
-  public DlgDadosProduto(Aplicacao aplicacao, Produto produto)
+   DlgDadosProduto(Aplicacao aplicacao, Produto produto)
   {
     super(aplicacao,true)
     this.setTitle("Produto")
@@ -536,7 +536,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
     this.txtQuantidade.setText(Numero.inverterSeparador(materiaPrima.obterQuantidade("###.#####")))
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+   void actionPerformed(java.awt.event.ActionEvent actionEvent) 
   {
     Object objeto = actionEvent.getSource()
 

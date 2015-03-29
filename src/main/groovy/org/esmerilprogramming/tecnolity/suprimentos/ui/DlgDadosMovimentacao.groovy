@@ -14,7 +14,7 @@ import org.esmerilprogramming.tecnolity.util.*
 
 class DlgDadosMovimentacao extends JDialog implements ActionListener
 {
-  public final int IDENTIFICADOR = 21
+   final int IDENTIFICADOR = 21
 
   private Aplicacao aplicacao
 
@@ -127,7 +127,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           lblSolicitanteRetiradaDeposito, lblDescricaoRetiradaDeposito
   private JTextArea txaJustificativaRetiradaDeposito
 
-  public DlgDadosMovimentacao(Aplicacao aplicacao)
+   DlgDadosMovimentacao(Aplicacao aplicacao)
   {
     super(aplicacao,true)
     this.setTitle("Movimentação")
@@ -879,7 +879,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     catch(SQLException e){e.printStackTrace()}
   }
 
-  public void carregarItensRequisicaoInternaDevolucaoExterna()
+   void carregarItensRequisicaoInternaDevolucaoExterna()
   {
     for(int i = 0 i < numeroItensi++)
     {
@@ -926,7 +926,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     }
   }
 
-  public void carregarDadosRequisicaoCompra()
+   void carregarDadosRequisicaoCompra()
   {
     requisicaoCompraSelecionada = (RequisicaoCompra)requisicoesCompra.get(cbxRequisicaoAbastecimento.getSelectedIndex())
     String query = "select observacao, fornecedor.razao_social as razao_social from requisicao_compra, fornecedor where requisicao_compra.codigo = "+ requisicaoCompraSelecionada.obterCodigo() +" and fornecedor.codigo = requisicao_compra.fornecedor "
@@ -955,7 +955,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     }
   }
 
-  public void atualizarTabelaItensAbastecimentoConfirmacao()
+   void atualizarTabelaItensAbastecimentoConfirmacao()
   {
     try
     {
@@ -978,7 +978,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     }
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 

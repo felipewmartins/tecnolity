@@ -5,26 +5,26 @@ import java.sql.*
 
 import org.esmerilprogramming.tecnolity.util.*
 
-public class Estado extends org.esmerilprogramming.tecnolity.util.Estado
+ class Estado extends org.esmerilprogramming.tecnolity.util.Estado
 {
-    public Estado(String sigla, String nome, Pais pais) throws Exception
+     Estado(String sigla, String nome, Pais pais) throws Exception
     {
         super(sigla,nome,pais)
     }
 
-    public Estado(String siglaEstado, String nomeEstado) throws Exception
+     Estado(String siglaEstado, String nomeEstado) throws Exception
     {
         super(siglaEstado,nomeEstado)
     }
 
-    public Estado(String siglaEstado) throws Exception
+     Estado(String siglaEstado) throws Exception
     {
         super(siglaEstado)
     }
     
-    public Estado(){}
+     Estado(){}
 
-    public void carregarEstado() throws Exception
+     void carregarEstado() throws Exception
     {
         Conexao conexao = new Conexao('C')
         if(conexao.abrirConexao())
@@ -40,7 +40,7 @@ public class Estado extends org.esmerilprogramming.tecnolity.util.Estado
         conexao.fecharConexao()
     }
     
-    public static Vector carregarEstados(String pais,Conexao conexao) throws Exception
+     static Vector carregarEstados(String pais,Conexao conexao) throws Exception
     {
     	ResultSet dadosEstado
         Vector estados = new Vector()
@@ -61,7 +61,7 @@ public class Estado extends org.esmerilprogramming.tecnolity.util.Estado
         return estados
     }
     
-    public void cadastrarEstado() throws Exception
+     void cadastrarEstado() throws Exception
     {
         Conexao conexao = new Conexao('T')
         String erro = ""

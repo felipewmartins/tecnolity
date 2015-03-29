@@ -36,9 +36,9 @@ class Configuracao extends Properties
   private static int margemInferior = 0
   private boolean carregada
 
-  public Configuracao(){}
+   Configuracao(){}
 
-  public void carregarConfiguracao() throws IOException
+   void carregarConfiguracao() throws IOException
   {
     FileInputStream entrada = new FileInputStream("config.properties")
     this.load(entrada)
@@ -82,322 +82,322 @@ class Configuracao extends Properties
     carregada = true
   }
 
-  public void setOrganizacaoRazaoSocial(String organizacaoRazaoSocial)
+   void setOrganizacaoRazaoSocial(String organizacaoRazaoSocial)
   {
     Configuracao.organizacaoRazaoSocial = organizacaoRazaoSocial
   }
 
-  public void setOrganizacaoNomeFantasia(String organizacaoNomeFantasia)
+   void setOrganizacaoNomeFantasia(String organizacaoNomeFantasia)
   {
     Configuracao.organizacaoNomeFantasia = organizacaoNomeFantasia
   }
 
-  public void setOrganizacaoCnpj(String organizacaoCnpj)
+   void setOrganizacaoCnpj(String organizacaoCnpj)
   {
     Configuracao.organizacaoCnpj = organizacaoCnpj
   }
 
-  public void setOrganizacaoLogradouro(String organizacaoLogradouro)
+   void setOrganizacaoLogradouro(String organizacaoLogradouro)
   {
     Configuracao.organizacaoLogradouro = organizacaoLogradouro
   }
 
-  public void setOrganizacaoNumero(String organizacaoNumero)
+   void setOrganizacaoNumero(String organizacaoNumero)
   {
     Configuracao.organizacaoNumero = organizacaoNumero
   }
 
-  public void setOrganizacaoComplemento(String organizacaoComplemento)
+   void setOrganizacaoComplemento(String organizacaoComplemento)
   {
     Configuracao.organizacaoComplemento = organizacaoComplemento
   }
 
-  public void setOrganizacaoBairro(String organizacaoBairro)
+   void setOrganizacaoBairro(String organizacaoBairro)
   {
     Configuracao.organizacaoBairro = organizacaoBairro
   }
 
-  public void setOrganizacaoCidade(String organicacaoCidade)
+   void setOrganizacaoCidade(String organicacaoCidade)
   {
     Configuracao.organicacaoCidade = organicacaoCidade
   }
 
-  public void setOrganizacaoEstado(String organizacaoEstado)
+   void setOrganizacaoEstado(String organizacaoEstado)
   {
     Configuracao.organizacaoEstado = organizacaoEstado
   }
 
-  public void setOrganizacaoPais(String organizacaoPais)
+   void setOrganizacaoPais(String organizacaoPais)
   {
     Configuracao.organizacaoPais = organizacaoPais
   }
 
-  public void setOrganizacaoCep(String organizacaoCep)
+   void setOrganizacaoCep(String organizacaoCep)
   {
     Configuracao.organizacaoCep = organizacaoCep
   }
 
-  public void setOrganizacaoTelefone(String organizacaoTelefone)
+   void setOrganizacaoTelefone(String organizacaoTelefone)
   {
     Configuracao.organizacaoTelefone = organizacaoTelefone
   }
 
-  public void setOrganizacaoFax(String organizacaoFax)
+   void setOrganizacaoFax(String organizacaoFax)
   {
     Configuracao.organizacaoFax = organizacaoFax
   }
 
-  public void setRepositorioConsultas(String repositorioConsultas)
+   void setRepositorioConsultas(String repositorioConsultas)
   {
     Configuracao.repositorioConsultas = repositorioConsultas
   }
 
-  public void setRepositorioRelatorios(String repositorioRelatorios)
+   void setRepositorioRelatorios(String repositorioRelatorios)
   {
     Configuracao.repositorioRelatorios = repositorioRelatorios
   }
 
-  public void setRepositorioLogs(String repositorioLogs)
+   void setRepositorioLogs(String repositorioLogs)
   {
     Configuracao.repositorioLogs = repositorioLogs
   }
 
-  public void setBancoDadosUsuario(String bancoDadosUsuario)
+   void setBancoDadosUsuario(String bancoDadosUsuario)
   {
     Configuracao.bancoDadosUsuario = bancoDadosUsuario
   }
 
-  public void setBancoDadosSenha(String bancoDadosSenha)
+   void setBancoDadosSenha(String bancoDadosSenha)
   {
     Configuracao.bancoDadosSenha = bancoDadosSenha
   }
 
-  public void setBancoDadosDriver(String bancoDadosDriver)
+   void setBancoDadosDriver(String bancoDadosDriver)
   {
     Configuracao.bancoDadosDriver = bancoDadosDriver
   }
 
-  public void setBancoDadosURL(String bancoDadosURL)
+   void setBancoDadosURL(String bancoDadosURL)
   {
     Configuracao.bancoDadosURL = bancoDadosURL
   }
 
-  public void setBancoDadosBaseDados(String bancoDadosBaseDados)
+   void setBancoDadosBaseDados(String bancoDadosBaseDados)
   {
     Configuracao.bancoDadosBaseDados = bancoDadosBaseDados
   }
 
-  public void setLarguraPapel(int larguraPapel)
+   void setLarguraPapel(int larguraPapel)
   {
     Configuracao.larguraPapel = larguraPapel
   }
 
-  public void setAlturaPapel(int alturaPapel)
+   void setAlturaPapel(int alturaPapel)
   {
     Configuracao.alturaPapel = alturaPapel
   }
 
-  public void setOrientacao(int orientacao)
+   void setOrientacao(int orientacao)
   {
     Configuracao.orientacao = orientacao
   }
 
-  public void setMargemEsquerda(int margemEsquerda)
+   void setMargemEsquerda(int margemEsquerda)
   {
     Configuracao.margemEsquerda = margemEsquerda
   }
 
-  public void setMargemDireita(int margemDireita)
+   void setMargemDireita(int margemDireita)
   {
     Configuracao.margemDireita = margemDireita
   }
 
-  public void setMargemSuperior(int margemSuperior)
+   void setMargemSuperior(int margemSuperior)
   {
     Configuracao.margemSuperior = margemSuperior
   }
 
-  public void setMargemInferior(int margemInferior)
+   void setMargemInferior(int margemInferior)
   {
     Configuracao.margemInferior = margemInferior
   }
 
-  public static String getOrganizacaoRazaoSocial()
+   static String getOrganizacaoRazaoSocial()
   {
     return organizacaoRazaoSocial
   }
 
-  public static String getOrganizacaoNomeFantasia()
+   static String getOrganizacaoNomeFantasia()
   {
     return organizacaoNomeFantasia
   }
 
-  public static String getOrganizacaoCnpj()
+   static String getOrganizacaoCnpj()
   {
     return organizacaoCnpj
   }
 
-  public static String getOrganizacaoLogradouro()
+   static String getOrganizacaoLogradouro()
   {
     return organizacaoLogradouro
   }
 
-  public static String getOrganizacaoNumero()
+   static String getOrganizacaoNumero()
   {
     return organizacaoNumero
   }
 
-  public static String getOrganizacaoComplemento()
+   static String getOrganizacaoComplemento()
   {
     return organizacaoComplemento
   }
 
-  public static String getOrganizacaoBairro()
+   static String getOrganizacaoBairro()
   {
     return organizacaoBairro
   }
 
-  public static String getOrganizacaoCidade()
+   static String getOrganizacaoCidade()
   {
     return organicacaoCidade
   }
 
-  public static String getOrganizacaoEstado()
+   static String getOrganizacaoEstado()
   {
     return organizacaoEstado
   }
 
-  public static String getOrganizacaoPais()
+   static String getOrganizacaoPais()
   {
     return organizacaoPais
   }
 
-  public static String getOrganizacaoCep()
+   static String getOrganizacaoCep()
   {
     return organizacaoCep
   }
 
-  public static String getOrganizacaoTelefone()
+   static String getOrganizacaoTelefone()
   {
     return organizacaoTelefone
   }
 
-  public static String getOrganizacaoFax()
+   static String getOrganizacaoFax()
   {
     return organizacaoFax
   }
 
-  public static String getRepositorioConsultas()
+   static String getRepositorioConsultas()
   {
     return repositorioConsultas
   }
 
-  public static String getRepositorioRelatorios()
+   static String getRepositorioRelatorios()
   {
     return repositorioRelatorios
   }
 
-  public static String getRepositorioLogs()
+   static String getRepositorioLogs()
   {
     return repositorioLogs
   }
 
-  public static String getBancoDadosUsuario()
+   static String getBancoDadosUsuario()
   {
     return bancoDadosUsuario
   }
 
-  public static String getBancoDadosSenha()
+   static String getBancoDadosSenha()
   {
     return bancoDadosSenha
   }
 
-  public static String getBancoDadosDriver()
+   static String getBancoDadosDriver()
   {
     return bancoDadosDriver
   }
 
-  public static String getBancoDadosURL()
+   static String getBancoDadosURL()
   {
     return bancoDadosURL
   }
 
-  public static String getBancoDadosBaseDados()
+   static String getBancoDadosBaseDados()
   {
     return bancoDadosBaseDados
   }
 
-  public static int getLarguraPapel()
+   static int getLarguraPapel()
   {
     return larguraPapel
   }
 
-  public static int getAlturaPapel()
+   static int getAlturaPapel()
   {
     return alturaPapel
   }
 
-  public static int getLarguraPapelPixel()
+   static int getLarguraPapelPixel()
   {
     return (int)((larguraPapel/25.4f) * 72)
   }
 
-  public static int getAlturaPapelPixel()
+   static int getAlturaPapelPixel()
   {
     return (int)((alturaPapel/25.4f) * 72)
   }
 
-  public static int getOrientacao()
+   static int getOrientacao()
   {
     return orientacao
   }
 
-  public static int getMargemEsquerda()
+   static int getMargemEsquerda()
   {
     return margemEsquerda
   }
 
-  public static int getMargemDireita()
+   static int getMargemDireita()
   {
     return margemDireita
   }
 
-  public static int getMargemSuperior()
+   static int getMargemSuperior()
   {
     return margemSuperior
   }
 
-  public static int getMargemInferior()
+   static int getMargemInferior()
   {
     return margemInferior
   }
 
-  public static int getMargemEsquerdaPixel()
+   static int getMargemEsquerdaPixel()
   {
     return (int)((margemEsquerda/25.4f) * 72)
   }
 
-  public static int getMargemDireitaPixel()
+   static int getMargemDireitaPixel()
   {
     return (int)((margemDireita/25.4f) * 72)
   }
 
-  public static int getMargemSuperiorPixel()
+   static int getMargemSuperiorPixel()
   {
     return (int)((margemSuperior/25.4f) * 72)
   }
 
-  public static int getMargemInferiorPixel()
+   static int getMargemInferiorPixel()
   {
     return (int)((margemInferior/25.4f) * 72)
   }
 
-  public boolean isCarregada()
+   boolean isCarregada()
   {
     return this.carregada
   }
 
-  public void salvarConfiguracao()
+   void salvarConfiguracao()
   {
     try
     {

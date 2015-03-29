@@ -19,7 +19,7 @@ package org.esmerilprogramming.tecnolity.logistica
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
-public class Multa 
+ class Multa 
 {
 
 	private int codigo
@@ -29,14 +29,14 @@ public class Multa
 	private int responsabilidade
         private String data
 	
-	public Multa(){}
+	 Multa(){}
 	
-	public Multa(int codigo)
+	 Multa(int codigo)
 	{
 		definirCodigo(codigo)			
 	}
 	
-	public Multa(int codigo, Conexao conexao)throws Exception
+	 Multa(int codigo, Conexao conexao)throws Exception
 	{
             this.definirCodigo(codigo)
 
@@ -60,7 +60,7 @@ public class Multa
             }			
 	}
 	
-	public Multa(Veiculo veiculo, String motivo, float valor, int responsabilidade, String data)
+	 Multa(Veiculo veiculo, String motivo, float valor, int responsabilidade, String data)
 	{		
         try
         {
@@ -76,7 +76,7 @@ public class Multa
         }
 	}
         
-    public Multa(int codigo, Veiculo veiculo, String motivo, float valor, int responsabilidade, String data)
+     Multa(int codigo, Veiculo veiculo, String motivo, float valor, int responsabilidade, String data)
     {
 		this.definirCodigo(codigo)                
         try
@@ -93,12 +93,12 @@ public class Multa
         }
 	}
 	
-	public void definirCodigo(int codigo)
+	 void definirCodigo(int codigo)
 	{
         this.codigo = codigo
     }
 	
-	public void definirVeiculo(Veiculo veiculo) throws Exception
+	 void definirVeiculo(Veiculo veiculo) throws Exception
 	{
         if(veiculo != null)
             this.veiculo = veiculo
@@ -108,7 +108,7 @@ public class Multa
         }
 	}
 	
-	public void definirMotivo(String motivo) throws Exception
+	 void definirMotivo(String motivo) throws Exception
 	{
         if(!motivo.equals("") && motivo.length() <= 100)           
             this.motivo = motivo
@@ -119,7 +119,7 @@ public class Multa
         }
 	}
 	
-	public void definirValor(float valor) throws Exception
+	 void definirValor(float valor) throws Exception
 	{
         String erro = ""
         if(Float.isNaN(valor) || valor <= 0.0f)
@@ -134,7 +134,7 @@ public class Multa
             this.valor = valor
 	}
 	
-	public void definirResponsabilidade(int responsabilidade) throws Exception
+	 void definirResponsabilidade(int responsabilidade) throws Exception
 	{
         if(responsabilidade > 0)        
             this.responsabilidade = responsabilidade
@@ -145,7 +145,7 @@ public class Multa
         }	            
 	}
         
-    public void definirData(String data) throws Exception
+     void definirData(String data) throws Exception
 	{		
         String erro = ""
         if(data.equals(""))
@@ -167,37 +167,37 @@ public class Multa
             this.data = data
 	}
 	
-	public int obterCodigo()
+	 int obterCodigo()
 	{
 		return this.codigo	
 	}
 	
-	public Veiculo obterVeiculo()
+	 Veiculo obterVeiculo()
 	{
 		return this.veiculo
 	}
 	
-	public String obterMotivo()
+	 String obterMotivo()
 	{
 		return this.motivo
 	}
 	
-	public float obterValor()
+	 float obterValor()
 	{
 		return this.valor
 	}
 	
-	public int obterResponsabilidade()
+	 int obterResponsabilidade()
 	{
 		return this.responsabilidade
 	}
         
-        public String obterData()
+         String obterData()
         {
             return this.data
         }
 	
-	public void cadastrarMulta() throws Exception
+	 void cadastrarMulta() throws Exception
 	{
 		String query = "insert into multa (placa,motivo,valor,responsabilidade,datahora) values "
 		query = query + "('"+ this.veiculo.obterPlaca() +"', '"+ this.motivo +"', "+ this.valor +", "+ this.responsabilidade +", '"+ Calendario.inverterFormato(this.data,"/") +"')"
@@ -214,7 +214,7 @@ public class Multa
                 }
 	}
         
-    public void alterarMulta() throws Exception
+     void alterarMulta() throws Exception
     {
         String query = "update multa set placa = '"+ this.veiculo.obterPlaca() +"',motivo = '"+ this.motivo +"',valor = "+ this.valor +",responsabilidade = "+ this.responsabilidade +",datahora = '"+ Calendario.inverterFormato(this.data,"/") +"' where codigo = "+ this.codigo +" "
         Conexao conexao = new Conexao('T')
@@ -230,7 +230,7 @@ public class Multa
         }
     }
     
-    public void excluirMulta() throws Exception
+     void excluirMulta() throws Exception
     {
         String query = "delete from multa where codigo = "+ this.codigo +" "
         Conexao conexao = new Conexao('T')

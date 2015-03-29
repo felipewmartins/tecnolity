@@ -21,66 +21,66 @@ import org.esmerilprogramming.tecnolity.util.*
    * Última Versão: 1.0 <br>
 */
 
-public class Departamento
+ class Departamento
 {
     private int codigo
     private String nomeDepartamento
     private Colaborador responsavel
 
-    public Departamento(int codigo, String nomeDepartamento, Colaborador responsavel)
+     Departamento(int codigo, String nomeDepartamento, Colaborador responsavel)
     {
         this.codigo = codigo
         this.nomeDepartamento = nomeDepartamento
         this.responsavel = responsavel
     }
 
-    public Departamento(int codigo, String nomeDepartamento)
+     Departamento(int codigo, String nomeDepartamento)
     {
         this.codigo = codigo
         this.nomeDepartamento = nomeDepartamento
     }
 
-    public Departamento(int codigo)
+     Departamento(int codigo)
     {
         this.codigo = codigo
     }
     
-    public Departamento()
+     Departamento()
     {
         
     }
 	
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
 
-    public String obterNomeDepartamento()
+     String obterNomeDepartamento()
     {
         return this.nomeDepartamento	
     }
 
-    public Colaborador obterResponsavel()
+     Colaborador obterResponsavel()
     {
         return this.responsavel
     }
     
-    public void definirCodigo(int codigo)
+     void definirCodigo(int codigo)
     {
         this.codigo = codigo
     }
 
-    public void definirNomeDepartamento(String nomeDepartamento)
+     void definirNomeDepartamento(String nomeDepartamento)
     {
         this.nomeDepartamento = nomeDepartamento
     }
 
-    public void definirResponsavel(Colaborador responsavel)
+     void definirResponsavel(Colaborador responsavel)
     {
         this.responsavel = responsavel
     }
     
-    public void carregarDepartamento(Conexao conexao) throws Exception
+     void carregarDepartamento(Conexao conexao) throws Exception
     {
         ResultSet dadosDepartamento = conexao.executarConsulta("select * from departamento where codigo = " + this.codigo)
         if(dadosDepartamento.next())
@@ -91,7 +91,7 @@ public class Departamento
         }
     }
     
-    public Vector carregarDepartamentos(Conexao conexao) throws Exception
+     Vector carregarDepartamentos(Conexao conexao) throws Exception
     {
         ResultSet dadosDepartamento
         Vector departamentos = new Vector()
@@ -121,7 +121,7 @@ public class Departamento
         return departamentos
     }
     
-    public Vector carregarNomesDepartamentos(Conexao conexao) throws Exception
+     Vector carregarNomesDepartamentos(Conexao conexao) throws Exception
     {
     	ResultSet dadosDepartamento
         Vector departamentos = new Vector()
@@ -135,7 +135,7 @@ public class Departamento
         return departamentos
     }
         
-    public void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
+     void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
     {
         String query = "insert into departamento (departamento, responsavel) values ('"+ nomeDepartamento +"',"+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") +")"
 		Conexao conexao = new Conexao('T')
@@ -151,7 +151,7 @@ public class Departamento
         }
     }
     
-    public void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
+     void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
     {
         String query = "update departamento set departamento = '"+ nomeDepartamento +"', responsavel = "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() +"'") + " where codigo = " + this.codigo
 		Conexao conexao = new Conexao('T')
@@ -167,7 +167,7 @@ public class Departamento
         }
     }
     
-    public void excluirDepartamento() throws Exception
+     void excluirDepartamento() throws Exception
     {
         String query = "delete from departamento where codigo = " + this.codigo
 		Conexao conexao = new Conexao('T')
@@ -183,7 +183,7 @@ public class Departamento
         }
     }
     
-    public String toString()
+     String toString()
     {
         return this.nomeDepartamento
     }

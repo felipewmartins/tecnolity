@@ -4,16 +4,16 @@ import java.util.*
 import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelatorioRequisicaoInterna extends Relatorio
+ class RelatorioRequisicaoInterna extends Relatorio
 {
     private RequisicaoInterna requisicaoInterna
     
-    public RelatorioRequisicaoInterna(RequisicaoInterna requisicaoInterna) 
+     RelatorioRequisicaoInterna(RequisicaoInterna requisicaoInterna) 
     {
         this.requisicaoInterna = requisicaoInterna
     }
     
-    public String gerarRelatorio()
+     String gerarRelatorio()
     {
         conteudo = new StringBuffer()
         Calendario calendario = new Calendario()

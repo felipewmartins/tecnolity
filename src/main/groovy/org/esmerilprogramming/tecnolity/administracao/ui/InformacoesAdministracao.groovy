@@ -52,7 +52,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   private ModeloTabelaVisualizacao modeloTabelaVisualizacao
   private File arqComandos
 
-  public InformacoesAdministracao(Aplicacao aplicacao)
+   InformacoesAdministracao(Aplicacao aplicacao)
   {
     this.setBorder(new LineBorder(Color.black))
     this.aplicacao = aplicacao
@@ -315,7 +315,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     tblPermissoes.updateUI()
   }
 
-  public void importarArquivoComandoSQL()
+   void importarArquivoComandoSQL()
   {
     StringBuffer conteudoArquivo = new StringBuffer()
     try
@@ -390,7 +390,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     }
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -634,12 +634,12 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     }
   }
 
-  public void keyTyped(KeyEvent e)
+   void keyTyped(KeyEvent e)
   {
 
   }
 
-  public void keyPressed(KeyEvent e)
+   void keyPressed(KeyEvent e)
   {
     if(e.getKeyCode() == KeyEvent.VK_F5)
     {
@@ -647,7 +647,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     }
   }
 
-  public void keyReleased(KeyEvent e)
+   void keyReleased(KeyEvent e)
   {
 
   }

@@ -8,7 +8,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.*
 import org.esmerilprogramming.tecnolity.pedidos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelRecursosPedido extends JPanel implements Printable
+ class RelRecursosPedido extends JPanel implements Printable
 {
   private Book book
   private Aplicacao aplicacao
@@ -16,7 +16,7 @@ public class RelRecursosPedido extends JPanel implements Printable
   private PageFormat formatoPagina
   private Pedido[] pedidos
 
-  public RelRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos)
+   RelRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos)
   {
     this.pedidos = pedidos
     this.aplicacao = aplicacao
@@ -29,13 +29,13 @@ public class RelRecursosPedido extends JPanel implements Printable
     tarefaImpressao.setPageable(book)
   }
 
-  public void paintComponent(Graphics g)
+   void paintComponent(Graphics g)
   {
     super.paintComponent(g)
     desenharPagina((Graphics2D)g)
   }
 
-  public void desenharPagina(Graphics2D g2)
+   void desenharPagina(Graphics2D g2)
   {
     Calendario calendario = new Calendario()
     g2.setPaint(Color.black)
@@ -98,7 +98,7 @@ public class RelRecursosPedido extends JPanel implements Printable
     }
   }
 
-  public void imprimir()
+   void imprimir()
   {
     if(tarefaImpressao.printDialog())
     {
@@ -113,7 +113,7 @@ public class RelRecursosPedido extends JPanel implements Printable
     }
   }
 
-  public int print(Graphics graphics, PageFormat formato, int param) throws PrinterException
+   int print(Graphics graphics, PageFormat formato, int param) throws PrinterException
   {
     Graphics2D g2 = (Graphics2D)graphics
     g2.translate(formato.getImageableX(),formato.getImageableY())

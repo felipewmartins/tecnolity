@@ -24,15 +24,15 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
 
-public class AreaTrabalhoPedido extends ModeloAreaTrabalho
+ class AreaTrabalhoPedido extends ModeloAreaTrabalho
 {
-    public final int IDENTIFICADOR = 4
+     final int IDENTIFICADOR = 4
     
     private JPanel pnlCabecalho, pnlInformacoes
     private InformacoesPedido tbpInformacoes
     private Aplicacao aplicacao
 
-    public AreaTrabalhoPedido(Aplicacao aplicacao)
+     AreaTrabalhoPedido(Aplicacao aplicacao)
     {
         this.aplicacao = aplicacao
         switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao()))

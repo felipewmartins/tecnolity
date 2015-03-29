@@ -20,7 +20,7 @@ import java.sql.*
    * Última Versão: 1.0 <br>
 */
 
-public class Matriz 
+ class Matriz 
 {
     private String referencia, referenciaOriginal
     private int numeroSola, numeroSolaOriginal
@@ -34,15 +34,15 @@ public class Matriz
     private String modificacoes
     private boolean mudouChave = false
     
-    public Matriz() {}
+     Matriz() {}
     
-    public Matriz(String referencia, int numeroSola) throws Exception
+     Matriz(String referencia, int numeroSola) throws Exception
     {
         this.definirReferencia(referencia)
         this.definirNumeroSola(numeroSola)
     }
     
-    public Matriz(String referencia, int numeroSola, int quantidade, float dureza, float densidade, float peso, float volume, float tempoInjecao, int tempoForma, String modificacoes) throws Exception
+     Matriz(String referencia, int numeroSola, int quantidade, float dureza, float densidade, float peso, float volume, float tempoInjecao, int tempoForma, String modificacoes) throws Exception
     {
         this.definirReferencia(referencia)
         this.definirNumeroSola(numeroSola)
@@ -56,7 +56,7 @@ public class Matriz
         this.definirModificacoes(modificacoes)
     }
     
-    public Matriz(String referencia, int numeroSola, int quantidade, int tempoForma, float tempoInjecao, float dureza, float densidade, float peso, float volume) throws Exception
+     Matriz(String referencia, int numeroSola, int quantidade, int tempoForma, float tempoInjecao, float dureza, float densidade, float peso, float volume) throws Exception
     {
         this.definirReferencia(referencia)
         this.definirNumeroSola(numeroSola)
@@ -69,7 +69,7 @@ public class Matriz
         this.definirVolume(volume)
     }
     
-    public Matriz(String referencia, int numeroSola, float dureza, float densidade, float peso, float volume) throws Exception
+     Matriz(String referencia, int numeroSola, float dureza, float densidade, float peso, float volume) throws Exception
     {
         this.definirReferencia(referencia)
         this.definirNumeroSola(numeroSola)
@@ -79,7 +79,7 @@ public class Matriz
         this.definirVolume(volume)
     }
     
-    public void definirReferencia(String referencia) throws Exception
+     void definirReferencia(String referencia) throws Exception
     {
         if(referencia.equals("") || referencia == null)
         {
@@ -99,7 +99,7 @@ public class Matriz
         this.referenciaOriginal = referencia.trim()
     }
         
-    public void definirNumeroSola(int numeroSola) throws Exception
+     void definirNumeroSola(int numeroSola) throws Exception
     {
         if(numeroSola <= 0)
         {
@@ -109,7 +109,7 @@ public class Matriz
         this.numeroSola = numeroSola
     }
            
-    public void definirNumeroSolaOriginal(int numeroSola) throws Exception
+     void definirNumeroSolaOriginal(int numeroSola) throws Exception
     {
         if(numeroSola <= 0)
         {
@@ -119,7 +119,7 @@ public class Matriz
         this.numeroSolaOriginal = numeroSola
     }
     
-    public void definirQuantidade(int quantidade) throws Exception
+     void definirQuantidade(int quantidade) throws Exception
     {
         if(quantidade <= 0)
         {
@@ -129,101 +129,101 @@ public class Matriz
         this.quantidade = quantidade
     }
     
-    public void definirDureza(float dureza)
+     void definirDureza(float dureza)
     {
         this.dureza = dureza
     }
     
-    public void definirDensidade(float densidade)
+     void definirDensidade(float densidade)
     {
         this.densidade = densidade
     }
     
-    public void definirPeso(float peso)
+     void definirPeso(float peso)
     {
         this.peso = peso
     }
     
-    public void definirVolume(float volume)
+     void definirVolume(float volume)
     {
         this.volume = volume
     }
     
-    public void definirTempoInjecao(float tempoInjecao)
+     void definirTempoInjecao(float tempoInjecao)
     {
         this.tempoInjecao = tempoInjecao
     }
     
-    public void definirTempoForma(int tempoForma)
+     void definirTempoForma(int tempoForma)
     {
         this.tempoForma = tempoForma
     }
     
-    public void definirModificacoes(String modificacoes)
+     void definirModificacoes(String modificacoes)
     {
         this.modificacoes = modificacoes.trim()
     }
     
-    public String obterReferencia()
+     String obterReferencia()
     {
     	return this.referencia	
     }
     
-    public String obterReferenciaOriginal()
+     String obterReferenciaOriginal()
     {
     	return this.referenciaOriginal	
     }
         
-    public int obterNumeroSola()
+     int obterNumeroSola()
     {
         return this.numeroSola
     }
     
-    public int obterNumeroSolaOriginal()
+     int obterNumeroSolaOriginal()
     {
         return this.numeroSolaOriginal
     }
     
-    public int obterQuantidade()
+     int obterQuantidade()
     {
         return this.quantidade
     }
-    public float obterDureza()
+     float obterDureza()
     {
         return this.dureza
     }
     
-    public float obterDensidade()
+     float obterDensidade()
     {
         return this.densidade
     }
     
-    public float obterPeso()
+     float obterPeso()
     {
         return this.peso
     }
     
-    public float obterVolume()
+     float obterVolume()
     {
         return this.volume
     }
     
-    public float obterTempoInjecao()
+     float obterTempoInjecao()
     {
         return this.tempoInjecao
     }
     
-    public int obterTempoForma()
+     int obterTempoForma()
     {
         return this.tempoForma
     }
     
-    public String obterModificacoes()
+     String obterModificacoes()
     {
         return this.modificacoes
     }
     
-    public String obterDescricao()
+     String obterDescricao()
     {
         String descricao = ""
         descricao = this.referencia + " - " + this.numeroSola
@@ -254,7 +254,7 @@ public class Matriz
         return descricao
     }
     
-    public Vector carregarMatrizes(Conexao conexao) throws Exception
+     Vector carregarMatrizes(Conexao conexao) throws Exception
     {
         Vector matrizes = new Vector()
         matrizes.addElement(null)
@@ -270,7 +270,7 @@ public class Matriz
         return matrizes
     }
     
-    public Vector carregarMatrizes(Produto produto,Conexao conexao) throws Exception
+     Vector carregarMatrizes(Produto produto,Conexao conexao) throws Exception
     {
         Vector matrizes = new Vector()
         matrizes.addElement(null)
@@ -286,7 +286,7 @@ public class Matriz
         return matrizes
     }
     
-    public void cadastrarMatriz() throws Exception
+     void cadastrarMatriz() throws Exception
     {
         Conexao conexao = new Conexao('T')
         if(conexao.abrirConexao())
@@ -309,7 +309,7 @@ public class Matriz
         }
     }
     
-    public void alterarMatriz() throws Exception
+     void alterarMatriz() throws Exception
     {
         Conexao conexao = new Conexao('T')
         String query = ""
@@ -343,7 +343,7 @@ public class Matriz
         }
     }
     
-    public void carregarMatriz(Conexao conexao) throws Exception
+     void carregarMatriz(Conexao conexao) throws Exception
     {
         ResultSet dadosMatriz = conexao.executarConsulta("select * from matriz_modelo where referencia = '"+ this.referencia +"' and numero_sola = " + this.numeroSola)
         if(dadosMatriz.next())
@@ -362,7 +362,7 @@ public class Matriz
         dadosMatriz.close()
     }
     
-    public void excluirMatriz() throws Exception
+     void excluirMatriz() throws Exception
     {
         Conexao conexao = new Conexao('T')
         if(conexao.abrirConexao())

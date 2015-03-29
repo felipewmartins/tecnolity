@@ -27,9 +27,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.logistica.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
+ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
 {
-    public final int IDENTIFICADOR = 20
+     final int IDENTIFICADOR = 20
     
     private Aplicacao aplicacao
     private Vector veiculos,categorias,estados    
@@ -52,7 +52,7 @@ public class DlgDadosMotorista extends JDialog implements ActionListener, FocusL
     private JPanel pnlAreaDados
     private JButton btConfirmar, btCancelar
 		
-    public DlgDadosMotorista(Aplicacao aplicacao, char modo) 
+     DlgDadosMotorista(Aplicacao aplicacao, char modo) 
     {
         super(aplicacao,true)
         motorista = new Motorista()
@@ -64,7 +64,7 @@ public class DlgDadosMotorista extends JDialog implements ActionListener, FocusL
         montarInterface()
     }
     
-    public DlgDadosMotorista(Aplicacao aplicacao, char modo, int codigo)
+     DlgDadosMotorista(Aplicacao aplicacao, char modo, int codigo)
     {	
         super(aplicacao,true)
         try
@@ -87,7 +87,7 @@ public class DlgDadosMotorista extends JDialog implements ActionListener, FocusL
         montarInterface()        
     }
     
-   public void montarInterface()
+    void montarInterface()
    {
        conteudo = this.getContentPane()
   
@@ -293,7 +293,7 @@ public class DlgDadosMotorista extends JDialog implements ActionListener, FocusL
         }
     }
   
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
     	Object objeto = actionEvent.getSource()
         
@@ -424,7 +424,7 @@ public class DlgDadosMotorista extends JDialog implements ActionListener, FocusL
         }
     }
     
-    public void focusLost(java.awt.event.FocusEvent focusEvent) {}
+     void focusLost(java.awt.event.FocusEvent focusEvent) {}
     
-    public void focusGained(java.awt.event.FocusEvent focusEvent) {}   
+     void focusGained(java.awt.event.FocusEvent focusEvent) {}   
 }

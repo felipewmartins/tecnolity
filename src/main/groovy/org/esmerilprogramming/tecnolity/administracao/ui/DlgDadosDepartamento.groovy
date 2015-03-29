@@ -23,9 +23,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 * Última Versão: 1.0  <br>
 */
 
-public class DlgDadosDepartamento extends JDialog implements ActionListener
+ class DlgDadosDepartamento extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 12
+     final int IDENTIFICADOR = 12
     
 	private Aplicacao aplicacao
 	private Container conteudo
@@ -37,7 +37,7 @@ public class DlgDadosDepartamento extends JDialog implements ActionListener
     private Vector responsaveis
     private Departamento departamento
 
-	public DlgDadosDepartamento(Aplicacao aplicacao)
+	 DlgDadosDepartamento(Aplicacao aplicacao)
 	{
 		super(aplicacao,true)
 		
@@ -48,7 +48,7 @@ public class DlgDadosDepartamento extends JDialog implements ActionListener
         montarInterface()
 	}
     
-    public DlgDadosDepartamento(Aplicacao aplicacao, Departamento departamento)
+     DlgDadosDepartamento(Aplicacao aplicacao, Departamento departamento)
 	{
 		super(aplicacao,true)
 		
@@ -147,7 +147,7 @@ public class DlgDadosDepartamento extends JDialog implements ActionListener
 	    painel.add(c)
 	}
 	
-	public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+	 void actionPerformed(java.awt.event.ActionEvent actionEvent) 
 	{
 	    Object objeto = actionEvent.getSource()
 	    

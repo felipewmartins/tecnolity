@@ -28,9 +28,9 @@ import org.esmerilprogramming.tecnolity.suprimentos.ui.DlgDadosRequisicaoInterna
 * Última Versão: 1.0
 */
 
-public class DlgRecursosPedido extends JDialog implements ActionListener
+ class DlgRecursosPedido extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 33
+     final int IDENTIFICADOR = 33
     
     private Aplicacao aplicacao
     private Pedido[] pedidos
@@ -39,7 +39,7 @@ public class DlgRecursosPedido extends JDialog implements ActionListener
     private JTable tblRecursos
     private ModeloTabela modeloTabelaRecursos
 		
-    public DlgRecursosPedido(Aplicacao aplicacao, Pedido pedido) 
+     DlgRecursosPedido(Aplicacao aplicacao, Pedido pedido) 
     {
         super(aplicacao,true)
         this.setTitle("Recursos Necessários para produção do Pedido")
@@ -50,7 +50,7 @@ public class DlgRecursosPedido extends JDialog implements ActionListener
         montarInterface()
     }
     
-    public DlgRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos) 
+     DlgRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos) 
     {
         super(aplicacao,true)
         this.setTitle("Recursos Necessários para produção do Pedido")
@@ -60,7 +60,7 @@ public class DlgRecursosPedido extends JDialog implements ActionListener
         montarInterface()
     }
         
-    public void montarInterface()
+     void montarInterface()
     {
        	conteudo = this.getContentPane()
 	    
@@ -124,7 +124,7 @@ public class DlgRecursosPedido extends JDialog implements ActionListener
                                this.getBounds().height)
     }
 
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
     	Object objeto = actionEvent.getSource()
         

@@ -13,9 +13,9 @@ import org.esmerilprogramming.tecnolity.pedidos.*
 import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, FocusListener
+ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, FocusListener
 {
-  public final int IDENTIFICADOR = 28
+   final int IDENTIFICADOR = 28
 
   private Aplicacao aplicacao
   private RequisicaoInterna requisicaoInterna
@@ -55,7 +55,7 @@ public class DlgDadosRequisicaoInterna extends JDialog implements ActionListener
   private int indiceCard
   private JButton btAnterior, btProximo, btProximoLeitura, btConfirmar, btCancelar
 
-  public DlgDadosRequisicaoInterna(Aplicacao aplicacao)
+   DlgDadosRequisicaoInterna(Aplicacao aplicacao)
   {
     super(aplicacao,true)
 
@@ -67,7 +67,7 @@ public class DlgDadosRequisicaoInterna extends JDialog implements ActionListener
     requisicaoInterna = new RequisicaoInterna()
   }
 
-  public DlgDadosRequisicaoInterna(Aplicacao aplicacao, Pedido pedido, Vector itensRequisicaoInterna)
+   DlgDadosRequisicaoInterna(Aplicacao aplicacao, Pedido pedido, Vector itensRequisicaoInterna)
   {
     super(aplicacao,true)
     this.setTitle("Requisição Interna")
@@ -108,7 +108,7 @@ public class DlgDadosRequisicaoInterna extends JDialog implements ActionListener
     this.btConfirmar.setEnabled(true)
   }
 
-  public DlgDadosRequisicaoInterna(Aplicacao aplicacao, RequisicaoInterna requisicaoInterna)
+   DlgDadosRequisicaoInterna(Aplicacao aplicacao, RequisicaoInterna requisicaoInterna)
   {
     super(aplicacao,true)
     this.setTitle("Requisição Interna")
@@ -473,7 +473,7 @@ public class DlgDadosRequisicaoInterna extends JDialog implements ActionListener
     }
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -871,7 +871,7 @@ public class DlgDadosRequisicaoInterna extends JDialog implements ActionListener
     }
   }
 
-  public void focusGained(FocusEvent e)
+   void focusGained(FocusEvent e)
   {
     Component componente = e.getComponent()
 
@@ -879,5 +879,5 @@ public class DlgDadosRequisicaoInterna extends JDialog implements ActionListener
       txtQuantidade.selectAll()
   }
 
-  public void focusLost(FocusEvent e) {}
+   void focusLost(FocusEvent e) {}
 }

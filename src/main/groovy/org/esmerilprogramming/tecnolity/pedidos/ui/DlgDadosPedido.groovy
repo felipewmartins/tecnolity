@@ -29,12 +29,12 @@ import org.esmerilprogramming.tecnolity.util.*
  * Última Versão: 1.0 <br>
  */
 
-public class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
+ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
 {
-  public final int IDENTIFICADOR = 24
-  public static final int INICIAL = 0
-  public static final int PEDIDO = 1
-  public static final int ITENS_PEDIDO = 2
+   final int IDENTIFICADOR = 24
+   static final int INICIAL = 0
+   static final int PEDIDO = 1
+   static final int ITENS_PEDIDO = 2
 
   private Aplicacao aplicacao
   private CardLayout card
@@ -61,7 +61,7 @@ public class DlgDadosPedido extends JDialog implements ActionListener, FocusList
   private Vector clientes, produtos, matrizes, locaisEntrega, produtosPedido
   private Pedido pedido
 
-  public DlgDadosPedido(Aplicacao aplicacao)
+   DlgDadosPedido(Aplicacao aplicacao)
   {
     super(aplicacao,true)
 
@@ -75,7 +75,7 @@ public class DlgDadosPedido extends JDialog implements ActionListener, FocusList
     montarInterface()
   }
 
-  public DlgDadosPedido(Aplicacao aplicacao, Pedido pedido)
+   DlgDadosPedido(Aplicacao aplicacao, Pedido pedido)
   {
     super(aplicacao,true)
     this.setTitle("Pedido")
@@ -427,7 +427,7 @@ public class DlgDadosPedido extends JDialog implements ActionListener, FocusList
     txaObservacaoProduto.setText("")
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+   void actionPerformed(java.awt.event.ActionEvent actionEvent) 
   {
     Object objeto = actionEvent.getSource()
 
@@ -747,12 +747,12 @@ public class DlgDadosPedido extends JDialog implements ActionListener, FocusList
     }
   }
 
-  public void focusLost(java.awt.event.FocusEvent focusEvent) 
+   void focusLost(java.awt.event.FocusEvent focusEvent) 
   {
 
   }
 
-  public void focusGained(java.awt.event.FocusEvent e) 
+   void focusGained(java.awt.event.FocusEvent e) 
   {
 
   }

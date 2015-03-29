@@ -12,31 +12,31 @@ class ModeloTabelaDB extends ModeloTabela {
     private ResultSet resultado
     private ConexaoDB conexao
 
-    public ModeloTabelaDB() {
+     ModeloTabelaDB() {
       this.cache = new Vector()
     }
 
-  public String getColumnName(final int i) {
+   String getColumnName(final int i) {
     return this.cabecalhos[i]
   }
 
-  public int getColumnCount() {
+   int getColumnCount() {
     return this.numeroColunas
   }
 
-  public int getRowCount() {
+   int getRowCount() {
     return this.cache.size()
   }
 
-  public Object getValueAt(final int linha, final int coluna) {
+   Object getValueAt(final int linha, final int coluna) {
     return ((String[])this.cache.elementAt(linha))[coluna]
   }
 
-  public void setConexao(final ConexaoDB conexao) {
+   void setConexao(final ConexaoDB conexao) {
     this.conexao = conexao
   }
 
-  public void setConsulta(final String consulta) {
+   void setConsulta(final String consulta) {
     this.cache = new Vector()
       try {
         this.resultado = this.conexao.executarConsulta(consulta)
@@ -64,7 +64,7 @@ class ModeloTabelaDB extends ModeloTabela {
     }
   }
 
-  public void carregar(final String[] cabecalhos, final String[][] dados) {
+   void carregar(final String[] cabecalhos, final String[][] dados) {
     this.cache = new Vector()
       this.numeroColunas = cabecalhos.length
       this.cabecalhos = cabecalhos

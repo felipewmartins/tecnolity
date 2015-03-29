@@ -23,9 +23,9 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 
-public class DlgDadosEstado extends JDialog implements ActionListener
+ class DlgDadosEstado extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 14
+     final int IDENTIFICADOR = 14
     
     private Aplicacao aplicacao
     private char modo // I = inserir, A = alterar, V = visualizar, E = Excluir
@@ -38,7 +38,7 @@ public class DlgDadosEstado extends JDialog implements ActionListener
     private Vector paises
     private JButton btNovoPais, btConfirmar, btCancelar
 
-    public DlgDadosEstado(Aplicacao aplicacao, char modo)
+     DlgDadosEstado(Aplicacao aplicacao, char modo)
     {
         super(aplicacao,true)
 
@@ -141,7 +141,7 @@ public class DlgDadosEstado extends JDialog implements ActionListener
 	    painel.add(c)
 	}
 	
-	public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+	 void actionPerformed(java.awt.event.ActionEvent actionEvent) 
 	{
 	    Object objeto = actionEvent.getSource()
 	    

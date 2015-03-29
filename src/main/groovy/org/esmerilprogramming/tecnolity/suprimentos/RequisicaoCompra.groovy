@@ -25,18 +25,18 @@ import java.sql.*
    * Última Versão: 1.0 <br>
 */
 
-public class RequisicaoCompra
+ class RequisicaoCompra
 {
     // tipos de status de requisição e dos itens da requisição
-    public static final String STATUS_EMITIDO       = "EM" // Assim que a requisição é cadastrada
-    public static final String STATUS_CANCELADO     = "CL" // Caso precise cancelar a requisição inteira
-    public static final String STATUS_CONCLUIDO     = "CO" // Quando a requisição terminar de ser abastecida totalmente.
-    public static final String STATUS_PENDENTE      = "PD" // Quando a requisição for abastecida parcialmente.
+     static final String STATUS_EMITIDO       = "EM" // Assim que a requisição é cadastrada
+     static final String STATUS_CANCELADO     = "CL" // Caso precise cancelar a requisição inteira
+     static final String STATUS_CONCLUIDO     = "CO" // Quando a requisição terminar de ser abastecida totalmente.
+     static final String STATUS_PENDENTE      = "PD" // Quando a requisição for abastecida parcialmente.
     
     // tipo de frete
-    public static final String CIF     = "C"
-    public static final String FOB     = "F"
-    public static final String PROPRIO = "P"
+     static final String CIF     = "C"
+     static final String FOB     = "F"
+     static final String PROPRIO = "P"
 
     private int codigo
     private int ultimoCodigoRequisicao
@@ -56,14 +56,14 @@ public class RequisicaoCompra
 
     private Conexao conexao
     
-    public RequisicaoCompra(){}
+     RequisicaoCompra(){}
     
-    public RequisicaoCompra(int codigo)
+     RequisicaoCompra(int codigo)
     {
         this.definirCodigo(codigo)
     }
     
-    public RequisicaoCompra(int codigo, Conexao conexao) throws Exception
+     RequisicaoCompra(int codigo, Conexao conexao) throws Exception
     {
         this.conexao = conexao
         this.definirCodigo(codigo)        
@@ -79,13 +79,13 @@ public class RequisicaoCompra
         }        
     }
     
-    public RequisicaoCompra(int codigo, Fornecedor fornecedor) throws Exception
+     RequisicaoCompra(int codigo, Fornecedor fornecedor) throws Exception
     {       
         this.definirCodigo(codigo)            
         this.definirFornecedor(fornecedor)
     }
     
-    public RequisicaoCompra(int codigo, Fornecedor fornecedor, String dataEmissao, Departamento departamento, String dataLimiteEntrega, Transportadora transportadora, String tipoFrete) throws Exception
+     RequisicaoCompra(int codigo, Fornecedor fornecedor, String dataEmissao, Departamento departamento, String dataLimiteEntrega, Transportadora transportadora, String tipoFrete) throws Exception
     {       
         this.definirCodigo(codigo)            
         this.definirFornecedor(fornecedor)
@@ -96,12 +96,12 @@ public class RequisicaoCompra
         this.definirTipoFrete(tipoFrete)
     }
     
-    public void definirCodigo(int codigo)
+     void definirCodigo(int codigo)
     {
         this.codigo = codigo
     }
     
-    public void definirFornecedor(Fornecedor fornecedor) throws Exception
+     void definirFornecedor(Fornecedor fornecedor) throws Exception
     {
         if(fornecedor != null)
             this.fornecedor = fornecedor
@@ -112,7 +112,7 @@ public class RequisicaoCompra
         }         
     }
          
-    public void definirDataEmissao(String dataEmissao) throws Exception
+     void definirDataEmissao(String dataEmissao) throws Exception
     {
         String erro = ""
         if(dataEmissao.equals(""))
@@ -128,7 +128,7 @@ public class RequisicaoCompra
             this.dataEmissao = dataEmissao
     }
     
-    public void definirDepartamento(Departamento departamento) throws Exception
+     void definirDepartamento(Departamento departamento) throws Exception
     {
         if(departamento != null)
             this.departamento = departamento
@@ -139,7 +139,7 @@ public class RequisicaoCompra
         }        
     }
     
-    public void definirResponsavelEmissao(Colaborador responsavelEmissao) throws Exception
+     void definirResponsavelEmissao(Colaborador responsavelEmissao) throws Exception
     {
         if(responsavelEmissao != null)           
             this.responsavelEmissao = responsavelEmissao
@@ -150,7 +150,7 @@ public class RequisicaoCompra
         }         
     }
      
-    public void definirDataLimiteEntrega(String dataLimiteEntrega) throws Exception
+     void definirDataLimiteEntrega(String dataLimiteEntrega) throws Exception
     {		
         String erro = ""
         if(dataLimiteEntrega.equals(""))
@@ -167,7 +167,7 @@ public class RequisicaoCompra
             this.dataLimiteEntrega = dataLimiteEntrega
     }
          
-    public void definirCondicaoPagamento(String condicaoPagamento) throws Exception
+     void definirCondicaoPagamento(String condicaoPagamento) throws Exception
     {
         if(condicaoPagamento.length() <= 60)           
             this.condicaoPagamento = condicaoPagamento
@@ -178,7 +178,7 @@ public class RequisicaoCompra
         }        
     }
     
-    public void definirFormaPagamento(FormaPagamento formaPagamento) throws Exception
+     void definirFormaPagamento(FormaPagamento formaPagamento) throws Exception
     {
         if(formaPagamento != null)           
             this.formaPagamento = formaPagamento
@@ -189,7 +189,7 @@ public class RequisicaoCompra
         }         
     }
     
-    public void definirTransportadora(Transportadora transportadora) throws Exception
+     void definirTransportadora(Transportadora transportadora) throws Exception
     {        
         if(transportadora != null)
             this.transportadora = transportadora
@@ -197,7 +197,7 @@ public class RequisicaoCompra
             throw new Exception("A Transportadora não foi informada.")
     }
     
-    public void definirTipoFrete(String tipoFrete) throws Exception
+     void definirTipoFrete(String tipoFrete) throws Exception
     {
         if(!tipoFrete.equals(""))           
             this.tipoFrete = tipoFrete
@@ -208,7 +208,7 @@ public class RequisicaoCompra
         }        
     }
          
-    public void definirObservacao(String observacao) throws Exception
+     void definirObservacao(String observacao) throws Exception
     {       
         if(observacao.length() <= 200)
             this.observacao = observacao
@@ -219,7 +219,7 @@ public class RequisicaoCompra
         }
     }
         
-    public void definirStatus(String status) throws Exception
+     void definirStatus(String status) throws Exception
     {        
        if(!status.equals("") && status.length() <= 2)
              this.status = status
@@ -230,72 +230,72 @@ public class RequisicaoCompra
         }
     }
     
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
     
-    public Fornecedor obterFornecedor()
+     Fornecedor obterFornecedor()
     {
         return this.fornecedor
     }
         
-    public String obterDataEmissao()
+     String obterDataEmissao()
     {
         return this.dataEmissao
     }
     
-    public Departamento obterDepartamento()
+     Departamento obterDepartamento()
     {
         return this.departamento
     }
     
-    public Colaborador obterResponsavelEmissao()
+     Colaborador obterResponsavelEmissao()
     {
         return this.responsavelEmissao
     }
     
-    public String obterDataLimiteEntrega()
+     String obterDataLimiteEntrega()
     {
         return this.dataLimiteEntrega
     }
     
-    public String obterCondicaoPagamento()
+     String obterCondicaoPagamento()
     {
         return this.condicaoPagamento
     }
     
-    public FormaPagamento obterFormaPagamento()
+     FormaPagamento obterFormaPagamento()
     {
         return this.formaPagamento
     }
     
-    public Transportadora obterTransportadora()
+     Transportadora obterTransportadora()
     {
         return this.transportadora
     }
     
-    public String obterTipoFrete()
+     String obterTipoFrete()
     {
         return this.tipoFrete
     }
     
-    public String obterObservacao()
+     String obterObservacao()
     {
         return this.observacao
     }
     
-    public String obterStatus()
+     String obterStatus()
     {
         return this.status
     }
     
-    public Vector obterItensRequisicao()
+     Vector obterItensRequisicao()
     {
         return this.itensRequisicao
     }
     
-    public void carregarRequisicaoCompra(Conexao conexao) throws Exception
+     void carregarRequisicaoCompra(Conexao conexao) throws Exception
     {
         ResultSet dadosRequisicaoCompra        
         String query = "select rc.codigo, rc.fornecedor as codigo_fornecedor, f.razao_social, rc.departamento_solicitante, rc.data_emissao, rc.responsavel_emissao, rc.data_despacho, rc.data_limite_entrega,rc.data_recebimento, rc.responsavel_recebimento, rc.data_pagamento,rc.condicao_pagamento, rc.forma_pagamento as sigla_forma_pagamento, fp.forma_pagamento, rc.transportadora, rc.tipo_frete,rc.valor_conhecimento, rc.numero_conhecimento, rc.observacao, rc.nota_fiscal,rc.status, rc.observacao_status " +
@@ -325,7 +325,7 @@ public class RequisicaoCompra
         }
     }
     
-    public void carregarItensRequisicaoAbastecidos(Conexao conexao) throws Exception
+     void carregarItensRequisicaoAbastecidos(Conexao conexao) throws Exception
     {
         itensRequisicao = new Vector()
         String query = "select i.codigo as codigo_item,i.descricao as descricao_item,ir.requisicao_compra,ir.status,ir.quantidade,ir.quantidade_pendente,ir.quantidade_abastecida, ir.valor_item, i.percentual_ipi " + 
@@ -360,7 +360,7 @@ public class RequisicaoCompra
         }
     }
     
-    public void carregarItensRequisicao(Conexao conexao) throws Exception
+     void carregarItensRequisicao(Conexao conexao) throws Exception
     {
         itensRequisicao = new Vector()
         String query = "select distinct i.codigo as codigo_item,i.descricao as descricao_item, ci.codigo as codigo_categoria, ci.categoria,fi.referencia_fornecedor,ir.status,ir.quantidade,ir.quantidade_pendente,ir.quantidade_abastecida, ir.valor_item, i.percentual_ipi " +
@@ -396,7 +396,7 @@ public class RequisicaoCompra
         }
     }
     
-    public void carregarItensRequisicaoCompleto(Conexao conexao) throws Exception
+     void carregarItensRequisicaoCompleto(Conexao conexao) throws Exception
     {
         itensRequisicao = new Vector()
         String query = "select distinct i.codigo as codigo_item,i.descricao as descricao_item, ci.codigo as codigo_categoria, ci.categoria,fi.referencia_fornecedor,ir.status,ir.quantidade,ir.quantidade_pendente,ir.quantidade_abastecida, ir.valor_item, i.percentual_ipi " +
@@ -432,7 +432,7 @@ public class RequisicaoCompra
         }
     }
     
-    public void carregarPedidosRequisicao(Conexao conexao) throws Exception
+     void carregarPedidosRequisicao(Conexao conexao) throws Exception
     {
         pedidos = new Vector()
         String query = "select distinct prc.pedido, pc.ordem_compra " +
@@ -468,7 +468,7 @@ public class RequisicaoCompra
 	 * @throws Exception Caso não seja possível acessar o banco de dados para
      * obter as requisições de compra.
 	 */
-    public Vector carregarRequisicoesCompra(Conexao conexao) throws Exception
+     Vector carregarRequisicoesCompra(Conexao conexao) throws Exception
     {
         Vector requisicoesCompra = new Vector()
         requisicoesCompra.addElement(null)
@@ -488,7 +488,7 @@ public class RequisicaoCompra
         return requisicoesCompra
     }
     
-    public void cadastrarRequisicaoCompra() throws Exception
+     void cadastrarRequisicaoCompra() throws Exception
     {
         String query = ""
         Conexao conexao = new Conexao('T')
@@ -509,7 +509,7 @@ public class RequisicaoCompra
         }
     }
        
-    public void associarItens(Vector itensRequisicao, Vector pedidos) throws Exception
+     void associarItens(Vector itensRequisicao, Vector pedidos) throws Exception
     {
         if(itensRequisicao != null)
         {
@@ -542,7 +542,7 @@ public class RequisicaoCompra
 	    }
     }        
     
-    public void alterarRequisicaoCompra() throws Exception
+     void alterarRequisicaoCompra() throws Exception
     {
         String query = ""
         query = "update requisicao_compra set fornecedor = "+ this.fornecedor +",departamento_solicitante = "+ this.departamento.obterCodigo() +",responsavel_emissao = '"+ this.responsavelEmissao +"',data_limite_entrega = '"+ Calendario.inverterFormato(this.dataLimiteEntrega,"/") +"',condicao_pagamento = '"+ this.condicaoPagamento +"',forma_pagamento = '"+ this.formaPagamento +"',transportadora = "+ this.transportadora +",tipo_frete = '"+ this.tipoFrete +"',observacao = '"+ this.observacao +"',status = '"+ STATUS_EMITIDO +"' where codigo =  "+ this.codigo +" "
@@ -560,7 +560,7 @@ public class RequisicaoCompra
         }
     }
     
-    /*public void alterarItensRequisicao(Vector itensRequisicao)
+    /* void alterarItensRequisicao(Vector itensRequisicao)
     {
         if(itensRequisicao != null)
         {
@@ -586,7 +586,7 @@ public class RequisicaoCompra
         }
     }   */
     
-    public void excluirRequisicaoCompra() throws Exception
+     void excluirRequisicaoCompra() throws Exception
     {
         String queryRequisicaoCompra = "delete from requisicao_compra where codigo = "+ this.codigo +" "
         String queryItemRequisicao = "delete from item_requisicao where requisicao_compra = "+ this.codigo +" "        
@@ -604,7 +604,7 @@ public class RequisicaoCompra
         }
     }
     
-    public void cancelarRequisicaoCompra() throws Exception
+     void cancelarRequisicaoCompra() throws Exception
     {
         String query = "update requisicao_compra set status = '"+ STATUS_CANCELADO +"' where codigo = " + this.codigo
         Conexao conexao = new Conexao('T')
@@ -622,7 +622,7 @@ public class RequisicaoCompra
         }
     }
     
-    public void registrarStatusRequisicaoCompra() throws Exception
+     void registrarStatusRequisicaoCompra() throws Exception
     {
         String query = "update requisicao_compra set status = '"+ this.status +"' where codigo = "+ this.codigo +" "
         Conexao conexao = new Conexao('T')
@@ -643,7 +643,7 @@ public class RequisicaoCompra
      * de cada item da requisição de compras e seus respectivos status.
 	 * @throws Exception
 	 */
-    public void registrarQuantidadesAbastecidas() throws Exception
+     void registrarQuantidadesAbastecidas() throws Exception
     {
         ItemRequisicao itemRequisicao
         Conexao conexao = new Conexao('T')
@@ -668,12 +668,12 @@ public class RequisicaoCompra
         }
     }
 
-	public Vector getPedidos()
+	 Vector getPedidos()
 	{
 		return pedidos
 	}
 
-	public void setPedidos(Vector pedidos)
+	 void setPedidos(Vector pedidos)
 	{
 		this.pedidos = pedidos
 	}

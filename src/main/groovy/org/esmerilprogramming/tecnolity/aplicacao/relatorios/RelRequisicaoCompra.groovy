@@ -5,20 +5,20 @@ import org.esmerilprogramming.tecnolity.pedidos.*
 import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelRequisicaoCompra extends Relatorio
+ class RelRequisicaoCompra extends Relatorio
 {
     private RequisicaoCompra requisicaoCompra
     private Vector pedidos
     private String via
     
-    public RelRequisicaoCompra(RequisicaoCompra requisicaoCompra, Vector pedidos, String via)
+     RelRequisicaoCompra(RequisicaoCompra requisicaoCompra, Vector pedidos, String via)
     {
         this.requisicaoCompra = requisicaoCompra
         this.pedidos = pedidos
         this.via = via
     }
     
-    public String gerarRelatorio()
+     String gerarRelatorio()
     {
         Calendario calendario = new Calendario()
         conteudo = new StringBuffer()

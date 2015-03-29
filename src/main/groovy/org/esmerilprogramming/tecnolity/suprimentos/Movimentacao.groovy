@@ -22,16 +22,16 @@ import java.util.*
    * Última Versão: 1.0 <br>
 */
 
-public class Movimentacao 
+ class Movimentacao 
 {
-    public static final String ABASTECIMENTO     = "AB"
-    public static final String CONSUMO           = "CS"
-    public static final String VENDAS            = "VD"
-    public static final String DESCARTE          = "DS"
-    public static final String DEVOLUCAO         = "DV"
-    public static final String DEVOLUCAO_EXTERNA = "DE"
-    public static final String DEPOSITO          = "DP"
-    public static final String RETIRADA_DEPOSITO = "RD"
+     static final String ABASTECIMENTO     = "AB"
+     static final String CONSUMO           = "CS"
+     static final String VENDAS            = "VD"
+     static final String DESCARTE          = "DS"
+     static final String DEVOLUCAO         = "DV"
+     static final String DEVOLUCAO_EXTERNA = "DE"
+     static final String DEPOSITO          = "DP"
+     static final String RETIRADA_DEPOSITO = "RD"
     
     private int codigo
     private String tipoMovimentacao
@@ -48,22 +48,22 @@ public class Movimentacao
     private String numeroConhecimento
     private String notaFiscal
     
-    public Movimentacao() {}
+     Movimentacao() {}
     
-    public Movimentacao(int codigo, Item item)
+     Movimentacao(int codigo, Item item)
     {
         definirCodigoMovimentacao(codigo)
         definirItem(item)
     }
     
-    public Movimentacao(String tipoMovimentacao,ItemRequisicao itemRequisicao, Colaborador responsavel)
+     Movimentacao(String tipoMovimentacao,ItemRequisicao itemRequisicao, Colaborador responsavel)
     {
         definirTipoMovimentacao(tipoMovimentacao)
         definirItemRequisicao(itemRequisicao)
         definirResponsavel(responsavel)
     }
     
-    public Movimentacao(String tipoMovimentacao,ItemRequisicaoInterna itemRequisicaoInterna,RequisicaoInterna requisicaoInterna,Colaborador responsavel)
+     Movimentacao(String tipoMovimentacao,ItemRequisicaoInterna itemRequisicaoInterna,RequisicaoInterna requisicaoInterna,Colaborador responsavel)
     {
         definirTipoMovimentacao(tipoMovimentacao)
         definirItemRequisicaoInterna(itemRequisicaoInterna)
@@ -71,122 +71,122 @@ public class Movimentacao
         definirResponsavel(responsavel)
     }
      
-    public void definirCodigoMovimentacao(int codigo)
+     void definirCodigoMovimentacao(int codigo)
     {
         this.codigo = codigo
     }
     
-    public void definirItemRequisicaoInterna(ItemRequisicaoInterna itemRequisicaoInterna)
+     void definirItemRequisicaoInterna(ItemRequisicaoInterna itemRequisicaoInterna)
     {
     	this.itemRequisicaoInterna = itemRequisicaoInterna
     }
     
-    public void definirTipoMovimentacao(String tipoMovimentacao)
+     void definirTipoMovimentacao(String tipoMovimentacao)
     {
         this.tipoMovimentacao = tipoMovimentacao
     }
     
-    public void definirItem(Item item)
+     void definirItem(Item item)
     {
         this.item = item
     }
     
-    public void definirQuantidadeItem(float quantidadeItem)
+     void definirQuantidadeItem(float quantidadeItem)
     {
         this.quantidadeItem = quantidadeItem
     }
     
-    public void definirItemRequisicao(ItemRequisicao itemRequisicao)
+     void definirItemRequisicao(ItemRequisicao itemRequisicao)
     {
         this.itemRequisicao = itemRequisicao
     }
     
-    public void definirRequisicaoInterna(RequisicaoInterna requisicaoInterna)
+     void definirRequisicaoInterna(RequisicaoInterna requisicaoInterna)
     {
         this.requisicaoInterna = requisicaoInterna
     }
     
-    public void definirResponsavel(Colaborador responsavel)
+     void definirResponsavel(Colaborador responsavel)
     {
         this.responsavel = responsavel
     }
     
-    public void definirDataDespacho(String dataDespacho)
+     void definirDataDespacho(String dataDespacho)
     {
         this.dataDespacho = dataDespacho
     }
     
-    public void definirDataRecebimento(String dataRecebimento)
+     void definirDataRecebimento(String dataRecebimento)
     {
         this.dataRecebimento = dataRecebimento
     }
     
-    public void definirTransportadora(Transportadora transportadora)
+     void definirTransportadora(Transportadora transportadora)
     {
         this.transportadora = transportadora
     }
     
-    public void definirValorConhecimento(float valorConhecimento)
+     void definirValorConhecimento(float valorConhecimento)
     {
         this.valorConhecimento = valorConhecimento
     }
     
-    public void definirNumeroConhecimento(String numeroConhecimento)
+     void definirNumeroConhecimento(String numeroConhecimento)
     {
         this.numeroConhecimento = numeroConhecimento
     }
     
-    public void definirNotaFiscal(String notaFiscal)
+     void definirNotaFiscal(String notaFiscal)
     {
         this.notaFiscal = notaFiscal
     }
         
-    public ItemRequisicao obterItemRequisicao()
+     ItemRequisicao obterItemRequisicao()
     {
         return this.itemRequisicao   
     }
     
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
     
-    public Item obterItem()
+     Item obterItem()
     {
         return this.item
     }
     
-    public String obterDataDespacho()
+     String obterDataDespacho()
     {
         return this.dataDespacho
     }
     
-    public String obterDataRecebimento()
+     String obterDataRecebimento()
     {
         return this.dataRecebimento
     }
     
-    public Transportadora obterTransportadora()
+     Transportadora obterTransportadora()
     {
         return this.transportadora
     }
     
-    public float obterValorConhecimento()
+     float obterValorConhecimento()
     {
         return this.valorConhecimento
     }
     
-    public String obterNumeroConhecimento()
+     String obterNumeroConhecimento()
     {
         return this.numeroConhecimento
     }
     
-    public String obterNotaFiscal()
+     String obterNotaFiscal()
     {
         return this.notaFiscal
     }
     
-    public void cadastrarMovimentacao() throws Exception
+     void cadastrarMovimentacao() throws Exception
     {
         String query = "insert into movimentacao_item (tipo_movimento,item,quantidade,responsavel,requisicao_compra,requisicao_interna,data_despacho,data_recebimento,valor_conhecimento,numero_conhecimento,nota_fiscal) values "
         if(requisicaoInterna != null)

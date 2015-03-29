@@ -9,9 +9,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.logistica.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
+ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
 {
-  public final int IDENTIFICADOR = 13
+   final int IDENTIFICADOR = 13
 
   private Aplicacao aplicacao
   private char modo // I = inserir, A = alterar, V = visualizar
@@ -34,7 +34,7 @@ public class DlgDadosDespesa extends JDialog implements ActionListener, FocusLis
   private JPanel pnlAreaDados
   private JButton btConfirmar, btCancelar
 
-  public DlgDadosDespesa(Aplicacao aplicacao, char modo)
+   DlgDadosDespesa(Aplicacao aplicacao, char modo)
   {
     super(aplicacao,true)
     despesa = new Despesa()
@@ -54,7 +54,7 @@ public class DlgDadosDespesa extends JDialog implements ActionListener, FocusLis
     montarInterface()
   }
 
-  public DlgDadosDespesa(Aplicacao aplicacao, char modo, String placa, String data)
+   DlgDadosDespesa(Aplicacao aplicacao, char modo, String placa, String data)
   {
     super(aplicacao,true)
     try
@@ -83,7 +83,7 @@ public class DlgDadosDespesa extends JDialog implements ActionListener, FocusLis
     montarInterface()
   }
 
-  public void montarInterface()
+   void montarInterface()
   {
     conteudo = this.getContentPane()
 
@@ -197,7 +197,7 @@ public class DlgDadosDespesa extends JDialog implements ActionListener, FocusLis
     }
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -296,9 +296,9 @@ public class DlgDadosDespesa extends JDialog implements ActionListener, FocusLis
     }
   }
 
-  public void focusLost(java.awt.event.FocusEvent focusEvent) {}
+   void focusLost(java.awt.event.FocusEvent focusEvent) {}
 
-  public void focusGained(FocusEvent e)
+   void focusGained(FocusEvent e)
   {
     Component componente = e.getComponent()
 

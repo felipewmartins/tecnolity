@@ -22,60 +22,60 @@ import java.util.*
    * Última Versão: 1.0 <br>
 */
 
-public class Interface
+ class Interface
 {
     private int identificador
     private String nomeInterface
     private String descricaoInterface
 
-    public Interface(int identificador, String nomeInterface, String descricaoInterface)
+     Interface(int identificador, String nomeInterface, String descricaoInterface)
     {
         this.definirIdentificador(identificador)
         this.definirNomeInterface(nomeInterface)
         this.definirDescricaoInterface(descricaoInterface)
     }
     
-    public Interface(int identificador)
+     Interface(int identificador)
     {
         this.definirIdentificador(identificador)
     }
     
-    public Interface()
+     Interface()
     {
         
     }
     
-    public int obterIdentificador()
+     int obterIdentificador()
     {
         return this.identificador
     }
     
-    public String obterNomeInterface()
+     String obterNomeInterface()
     {
         return this.nomeInterface
     }
     
-    public String obterDescricaoInterface()
+     String obterDescricaoInterface()
     {
         return this.descricaoInterface
     }
     
-    public void definirIdentificador(int identificador)
+     void definirIdentificador(int identificador)
     {
         this.identificador = identificador
     }
     
-    public void definirNomeInterface(String nomeInterface)
+     void definirNomeInterface(String nomeInterface)
     {
         this.nomeInterface = nomeInterface
     }
     
-    public void definirDescricaoInterface(String descricaoInterface)
+     void definirDescricaoInterface(String descricaoInterface)
     {
         this.descricaoInterface = descricaoInterface
     }
     
-    public Vector carregarInterfaces(Conexao conexao) throws Exception
+     Vector carregarInterfaces(Conexao conexao) throws Exception
     {
         Vector interfaces = new Vector()
         ResultSet dadosInterface = conexao.executarConsulta("select * from interface order by interface asc")
@@ -87,7 +87,7 @@ public class Interface
         return interfaces
     }
     
-    public void cadastrarInterfacesPadroes() throws Exception
+     void cadastrarInterfacesPadroes() throws Exception
     {
         Conexao conexao = new Conexao('T')
         
@@ -142,7 +142,7 @@ public class Interface
         }
     }
     
-    public void excluirInterfacesPadroes() throws Exception
+     void excluirInterfacesPadroes() throws Exception
     {
         Conexao conexao = new Conexao('T')
         

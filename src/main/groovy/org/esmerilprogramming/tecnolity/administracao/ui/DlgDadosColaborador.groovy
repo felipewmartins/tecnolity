@@ -24,9 +24,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
    * Última Versão: 1.0 <br>
 */
 
-public class DlgDadosColaborador extends JDialog implements ActionListener, FocusListener
+ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListener
 {
-    public final int IDENTIFICADOR = 10
+     final int IDENTIFICADOR = 10
     
     private Aplicacao aplicacao
     private char modo // I = inhserir, A = alterar, V = visualizar
@@ -51,7 +51,7 @@ public class DlgDadosColaborador extends JDialog implements ActionListener, Focu
     private JRadioButton rdbSexoMasculino, rdbSexoFeminino
     private JComboBox cbxDepartamento, cbxEstado, cbxPais
     
-    public DlgDadosColaborador(Aplicacao aplicacao, char modo)
+     DlgDadosColaborador(Aplicacao aplicacao, char modo)
     {
         super(aplicacao,true)
         colaborador = new Colaborador()
@@ -68,7 +68,7 @@ public class DlgDadosColaborador extends JDialog implements ActionListener, Focu
         montarInterface()
     }
     
-    public DlgDadosColaborador(Aplicacao aplicacao, char modo, String usuario)
+     DlgDadosColaborador(Aplicacao aplicacao, char modo, String usuario)
     {
         super(aplicacao,true)
         try
@@ -336,7 +336,7 @@ public class DlgDadosColaborador extends JDialog implements ActionListener, Focu
         painel.add(c)
     }
     
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
         
@@ -416,11 +416,11 @@ public class DlgDadosColaborador extends JDialog implements ActionListener, Focu
         }
     }
     
-    public void focusLost(java.awt.event.FocusEvent focusEvent) 
+     void focusLost(java.awt.event.FocusEvent focusEvent) 
     {
     }
     
-    public void focusGained(java.awt.event.FocusEvent e) 
+     void focusGained(java.awt.event.FocusEvent e) 
     {
         Component componente = e.getComponent()
     }

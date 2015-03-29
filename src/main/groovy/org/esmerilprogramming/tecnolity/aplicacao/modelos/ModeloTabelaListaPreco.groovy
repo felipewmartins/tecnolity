@@ -7,13 +7,13 @@ import javax.swing.event.TableModelListener
 /**
  * @author Hildeberto Mendonça Filho
  */
-public class ModeloTabelaListaPreco extends ModeloTabela implements TableModelListener
+ class ModeloTabelaListaPreco extends ModeloTabela implements TableModelListener
 {
-    public ModeloTabelaListaPreco()
+     ModeloTabelaListaPreco()
     {
         this.addTableModelListener(this)
     }
-    public boolean isCellEditable(int row, int col) 
+     boolean isCellEditable(int row, int col) 
     {
         if (col < 3)
         { 
@@ -25,7 +25,7 @@ public class ModeloTabelaListaPreco extends ModeloTabela implements TableModelLi
         }
     }
         
-	public void tableChanged(TableModelEvent arg0)
+	 void tableChanged(TableModelEvent arg0)
 	{
 
 	}

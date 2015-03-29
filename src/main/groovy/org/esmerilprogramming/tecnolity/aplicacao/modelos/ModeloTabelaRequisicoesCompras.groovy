@@ -2,14 +2,14 @@ package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-public class ModeloTabelaRequisicoesCompras extends ModeloTabela
+ class ModeloTabelaRequisicoesCompras extends ModeloTabela
 {
-    public ModeloTabelaRequisicoesCompras () 
+     ModeloTabelaRequisicoesCompras () 
     {
         super()
     }
     
-    public Object getValueAt(int linha, int coluna)
+     Object getValueAt(int linha, int coluna)
     {        
         if(((String[])cache.elementAt(linha))[coluna] != null)
         {    

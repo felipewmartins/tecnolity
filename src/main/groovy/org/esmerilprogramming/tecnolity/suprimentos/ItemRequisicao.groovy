@@ -1,13 +1,13 @@
 package org.esmerilprogramming.tecnolity.suprimentos
 
 
-public class ItemRequisicao
+ class ItemRequisicao
 {
     // status do item da requisição interna.
-    public static final String EMITIDO                 = "EM" // Quando a requisição de compra é emitida.
-    public static final String ABASTECIDO_TOTALMENTE   = "AT" // Quando a quantidade requisitada do item entra de uma vez no estoque.
-    public static final String ABASTECIDO_PARCIALMENTE = "AP" // Quando a quantidade requisitada do item entra em parte no estoque.
-    public static final String CANCELADO               = "CL" // Quando a requisição de compra é cancelada.
+     static final String EMITIDO                 = "EM" // Quando a requisição de compra é emitida.
+     static final String ABASTECIDO_TOTALMENTE   = "AT" // Quando a quantidade requisitada do item entra de uma vez no estoque.
+     static final String ABASTECIDO_PARCIALMENTE = "AP" // Quando a quantidade requisitada do item entra em parte no estoque.
+     static final String CANCELADO               = "CL" // Quando a requisição de compra é cancelada.
     
     private Item item
     private float quantidadeItem, quantidadePendente, quantidadeAbastecida, valorUnitario
@@ -15,7 +15,7 @@ public class ItemRequisicao
     private RequisicaoCompra requisicaoCompra
     private String status
     
-    public ItemRequisicao(Item item, RequisicaoCompra requisicaoCompra, String status, float quantidadeItem, float quantidadePendente, float quantidadeAbastecida, float valorUnitario, int percentualIPI)
+     ItemRequisicao(Item item, RequisicaoCompra requisicaoCompra, String status, float quantidadeItem, float quantidadePendente, float quantidadeAbastecida, float valorUnitario, int percentualIPI)
     {
         this.definirItem(item)
         this.definirRequisicaoCompra(requisicaoCompra)
@@ -27,7 +27,7 @@ public class ItemRequisicao
         this.definirPercentualIPI(percentualIPI)
     }
     
-    public ItemRequisicao(Item item, RequisicaoCompra requisicaoCompra, float quantidadeItem, float quantidadePendente, float quantidadeAbastecida, float valorUnitario, int percentualIPI)
+     ItemRequisicao(Item item, RequisicaoCompra requisicaoCompra, float quantidadeItem, float quantidadePendente, float quantidadeAbastecida, float valorUnitario, int percentualIPI)
     {
         this.definirItem(item)
         this.definirRequisicaoCompra(requisicaoCompra)
@@ -38,7 +38,7 @@ public class ItemRequisicao
         this.definirPercentualIPI(percentualIPI)
     }
     
-    public ItemRequisicao(Item item, RequisicaoCompra requisicaoCompra, float quantidadeItem, float quantidadePendente, float quantidadeAbastecida)
+     ItemRequisicao(Item item, RequisicaoCompra requisicaoCompra, float quantidadeItem, float quantidadePendente, float quantidadeAbastecida)
     {
         this.definirItem(item)
         this.definirRequisicaoCompra(requisicaoCompra)
@@ -48,93 +48,93 @@ public class ItemRequisicao
     }
     
     /** Construtor para carregar itens de uma requisicao de compras. */
-    public ItemRequisicao(RequisicaoCompra requisicaoCompra)
+     ItemRequisicao(RequisicaoCompra requisicaoCompra)
     {
         this.definirRequisicaoCompra(requisicaoCompra)
     }
     
-    public void definirItem(Item item)
+     void definirItem(Item item)
     {
         this.item = item
     }
     
-    public void setQuantidadeItem(float quantidadeItem)
+     void setQuantidadeItem(float quantidadeItem)
     {
         this.quantidadeItem = quantidadeItem
     }
     
-    public void definirStatus(String status)
+     void definirStatus(String status)
     {
         this.status = status
     }
     
-    public void setQuantidadeAbastecida(float quantidadeAbastecida)
+     void setQuantidadeAbastecida(float quantidadeAbastecida)
     {
         // Atualiza a quantidade pendente com base no último abastecimento.
         this.quantidadeAbastecida = quantidadeAbastecida
     }
     
-    public void definirValorUnitario(float valorUnitario)
+     void definirValorUnitario(float valorUnitario)
     {
         this.valorUnitario = valorUnitario
     }
     
-    public void definirRequisicaoCompra(RequisicaoCompra requisicaoCompra)
+     void definirRequisicaoCompra(RequisicaoCompra requisicaoCompra)
     {
         this.requisicaoCompra = requisicaoCompra
     }
     
-    public void definirPercentualIPI(int percentualIPI)
+     void definirPercentualIPI(int percentualIPI)
     {
         this.percentualIPI = percentualIPI
     }
     
-    public Item obterItem()
+     Item obterItem()
     {
         return this.item
     }
     
-    public float getQuantidadeItem()
+     float getQuantidadeItem()
     {
         return this.quantidadeItem
     }
     
-    public String obterStatus()
+     String obterStatus()
     {
         return this.status
     }
     
-    public float getQuantidadeAbastecida()
+     float getQuantidadeAbastecida()
     {
         return this.quantidadeAbastecida
     }
     
-    public float obterValorUnitario()
+     float obterValorUnitario()
     {
         return this.valorUnitario
     }
     
-    public float obterValorTotal()
+     float obterValorTotal()
     {
         return this.quantidadeItem * this.valorUnitario
     }
     
-    public float obterValorTotalComIPI()
+     float obterValorTotalComIPI()
     {
         return obterValorTotal() + ((obterValorTotal() * percentualIPI)/100)
     }
     
-    public float obterValorIPI()
+     float obterValorIPI()
     {
         return (obterValorTotal() * percentualIPI)/100
     }
     
-    public RequisicaoCompra obterRequisicaoCompra()
+     RequisicaoCompra obterRequisicaoCompra()
     {
         return this.requisicaoCompra
     }
     
-    public int obterPercentualIPI()
+     int obterPercentualIPI()
     {
         return this.percentualIPI
     }
@@ -143,7 +143,7 @@ public class ItemRequisicao
 	 * Quantidade do item requisitado que ainda não foi movimentado.
 	 * @return float A quantidade pendente.
 	 */
-	public float getQuantidadePendente()
+	 float getQuantidadePendente()
 	{
 		return quantidadePendente
 	}
@@ -152,7 +152,7 @@ public class ItemRequisicao
 	 * Define a quantidade do item requisitado que ainda não foi movimentado.
 	 * @param quantidadePendente A quantidade a ser definida.
 	 */
-	public void setQuantidadePendente(float quantidadePendente)
+	 void setQuantidadePendente(float quantidadePendente)
 	{
 		this.quantidadePendente = quantidadePendente
 	}

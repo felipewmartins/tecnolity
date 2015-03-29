@@ -4,18 +4,18 @@ import java.util.*
 import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelatorioItens extends Relatorio
+ class RelatorioItens extends Relatorio
 {
     private Vector itens
     private String titulo
     
-    public RelatorioItens(Vector itens, String titulo)
+     RelatorioItens(Vector itens, String titulo)
     {
         this.itens = itens
         this.titulo = titulo
     }
    
-    public String gerarRelatorio()
+     String gerarRelatorio()
     {
         Calendario calendario = new Calendario()
         conteudo = new StringBuffer()

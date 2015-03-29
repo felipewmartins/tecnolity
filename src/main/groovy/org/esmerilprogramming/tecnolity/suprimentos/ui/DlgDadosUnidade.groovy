@@ -22,9 +22,9 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.suprimentos.*
 
-public class DlgDadosUnidade extends JDialog implements ActionListener
+ class DlgDadosUnidade extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 31
+     final int IDENTIFICADOR = 31
     
 	private Aplicacao aplicacao
 	private char modo // I = inserir, A = alterar, V = visualizar
@@ -34,7 +34,7 @@ public class DlgDadosUnidade extends JDialog implements ActionListener
 	private JTextField txtNomeUnidade
 	private JButton btConfirmar, btCancelar
 
-	public DlgDadosUnidade(Aplicacao aplicacao, char modo)
+	 DlgDadosUnidade(Aplicacao aplicacao, char modo)
 	{
 		super(aplicacao,true)
 		
@@ -99,7 +99,7 @@ public class DlgDadosUnidade extends JDialog implements ActionListener
 	    painel.add(c)
 	}
 	
-	public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+	 void actionPerformed(java.awt.event.ActionEvent actionEvent) 
 	{
 	    Object objeto = actionEvent.getSource()
 	    

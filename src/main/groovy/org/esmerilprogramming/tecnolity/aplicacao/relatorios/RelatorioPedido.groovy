@@ -4,16 +4,16 @@ import java.util.*
 import org.esmerilprogramming.tecnolity.pedidos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class RelatorioPedido extends Relatorio
+ class RelatorioPedido extends Relatorio
 {
     private Pedido pedido
     
-    public RelatorioPedido(Pedido pedido) 
+     RelatorioPedido(Pedido pedido) 
     {
         this.pedido = pedido
     }
     
-    public String gerarRelatorio()
+     String gerarRelatorio()
     {
         conteudo = new StringBuffer()
         Calendario calendario = new Calendario()

@@ -20,19 +20,19 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.util.Vector
 import java.sql.*
 
-public class Transportadora 
+ class Transportadora 
 {
     private int codigo
     private String transportadora
     
-    public Transportadora(){}
+     Transportadora(){}
     
-    public Transportadora(int codigo)
+     Transportadora(int codigo)
     {
         this.definirCodigo(codigo)
     }
     
-    public Transportadora(int codigo, String transportadora)
+     Transportadora(int codigo, String transportadora)
     {
         this.definirCodigo(codigo)
         try
@@ -45,7 +45,7 @@ public class Transportadora
         }
     }
     
-    public Transportadora(String transportadora)
+     Transportadora(String transportadora)
     {
         try
         {
@@ -57,7 +57,7 @@ public class Transportadora
         }
     }
     
-    public Transportadora(int codigo, Conexao conexao)throws Exception
+     Transportadora(int codigo, Conexao conexao)throws Exception
     {
         this.definirCodigo(codigo)
 
@@ -77,12 +77,12 @@ public class Transportadora
         }			
     }
     
-    public void definirCodigo(int codigo)
+     void definirCodigo(int codigo)
     {
         this.codigo = codigo
     }
     
-    public void definirTransportadora(String transportadora) throws Exception
+     void definirTransportadora(String transportadora) throws Exception
     {
         if(!transportadora.equals("") && transportadora.length() <= 60)           
             this.transportadora = transportadora
@@ -93,16 +93,16 @@ public class Transportadora
         }
     }
     
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
-    public String obterNome()
+     String obterNome()
     {
         return this.transportadora
     }        
     
-    public static Vector carregarTransportadoras(Conexao conexao) throws Exception
+     static Vector carregarTransportadoras(Conexao conexao) throws Exception
     {
     	ResultSet dadosTransportadora
         Vector transportadoras = null
@@ -117,7 +117,7 @@ public class Transportadora
         return transportadoras
     }  
     
-    public void cadastrarTransportadora() throws Exception
+     void cadastrarTransportadora() throws Exception
     {
         String query = "insert into transportadora (transportadora) values "
         query = query + "('"+ this.transportadora + "')"
@@ -134,7 +134,7 @@ public class Transportadora
         }
     }
     
-    public void alterarTransportadora() throws Exception
+     void alterarTransportadora() throws Exception
     {
         String query = "update transportadora set transportadora = '"+ this.transportadora +"' where codigo = "+ this.codigo +" "
         Conexao conexao = new Conexao('T')
@@ -150,7 +150,7 @@ public class Transportadora
         }
     }
     
-    public void excluirTransportadora() throws Exception
+     void excluirTransportadora() throws Exception
     {
         String query = "delete from transportadora where codigo = "+ this.codigo +" "
         Conexao conexao = new Conexao('T')
@@ -166,7 +166,7 @@ public class Transportadora
         }
     }
     
-    public String toString()
+     String toString()
     {
     	return this.transportadora
     }

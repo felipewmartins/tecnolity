@@ -16,7 +16,7 @@ import org.esmerilprogramming.tecnolity.util.Endereco
 
 class DlgDadosCliente extends Dialogo implements ActionListener
 {
-  public final int IDENTIFICADOR = 9
+   final int IDENTIFICADOR = 9
 
   private Aplicacao aplicacao
   private CardLayout card
@@ -42,14 +42,14 @@ class DlgDadosCliente extends Dialogo implements ActionListener
 
   private Cliente cliente
 
-  public DlgDadosCliente(Aplicacao aplicacao)
+   DlgDadosCliente(Aplicacao aplicacao)
   {
     super(aplicacao, "Cliente")
     this.aplicacao = aplicacao
     montarInterface()
   }
 
-  public DlgDadosCliente(Aplicacao aplicacao, Cliente cliente)
+   DlgDadosCliente(Aplicacao aplicacao, Cliente cliente)
   {
     super(aplicacao, "Cliente")
     this.aplicacao = aplicacao
@@ -402,7 +402,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
     txtTelefoneEntrega.setText("")
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -590,12 +590,12 @@ class DlgDadosCliente extends Dialogo implements ActionListener
     }
   }
 
-  public void focusLost(java.awt.event.FocusEvent focusEvent)
+   void focusLost(java.awt.event.FocusEvent focusEvent)
   {
 
   }
 
-  public void focusGained(java.awt.event.FocusEvent e)
+   void focusGained(java.awt.event.FocusEvent e)
   {
 
   }

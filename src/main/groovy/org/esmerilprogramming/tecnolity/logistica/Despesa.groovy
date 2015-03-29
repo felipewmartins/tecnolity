@@ -20,20 +20,20 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 import java.util.*
 
-public class Despesa 
+ class Despesa 
 {
 
 	private String placa, descricao, data, placaAntesAlteracao, dataAntesAlteracao
 	private float valor
 	
-	public Despesa(){}		
+	 Despesa(){}		
         
-        public Despesa(String data)
+         Despesa(String data)
         {
             this.data = data
         }
         
-        public Despesa(String placa, String data)
+         Despesa(String placa, String data)
         {            
             try
             {
@@ -46,7 +46,7 @@ public class Despesa
             }
         }
 	
-	public Despesa(String placa, String data, Conexao conexao)throws Exception
+	 Despesa(String placa, String data, Conexao conexao)throws Exception
 	{            
             try
             {
@@ -77,7 +77,7 @@ public class Despesa
             }			
 	}
 	
-	public Despesa(String placa, String descricao, float valor, String data)
+	 Despesa(String placa, String descricao, float valor, String data)
 	{		
 		try
                 {
@@ -92,7 +92,7 @@ public class Despesa
                 }
 	}
         
-        public Despesa(String placa, String descricao, float valor, String data, String placaAntesAlteracao, String dataAntesAlteracao)
+         Despesa(String placa, String descricao, float valor, String data, String placaAntesAlteracao, String dataAntesAlteracao)
 	{		
 		try
                 {
@@ -109,7 +109,7 @@ public class Despesa
                 }
 	}
         
-        public void definirPlacaAntesAlteracao(String placaAntesAlteracao) throws Exception
+         void definirPlacaAntesAlteracao(String placaAntesAlteracao) throws Exception
         {
             if(!placaAntesAlteracao.equals(""))           
                 this.placaAntesAlteracao = placaAntesAlteracao
@@ -120,7 +120,7 @@ public class Despesa
             }            
         }
         
-	public void definirDataAntesAlteracao(String dataAntesAlteracao) throws Exception
+	 void definirDataAntesAlteracao(String dataAntesAlteracao) throws Exception
         {
             
             String erro = ""
@@ -143,7 +143,7 @@ public class Despesa
                 this.dataAntesAlteracao = dataAntesAlteracao
         }
         
-	public void definirPlaca(String placa) throws Exception
+	 void definirPlaca(String placa) throws Exception
 	{
             if(!placa.equals(""))           
                 this.placa = placa
@@ -154,7 +154,7 @@ public class Despesa
             }  	            
 	}
 	
-	public void definirDescricao(String descricao) throws Exception
+	 void definirDescricao(String descricao) throws Exception
 	{
 	    if(!descricao.equals("") && descricao.length() <= 500)           
                 this.descricao = descricao
@@ -165,7 +165,7 @@ public class Despesa
             }  	            
 	}
 	
-	public void definirValor(float valor) throws Exception
+	 void definirValor(float valor) throws Exception
 	{	   
             String erro = ""
             if(Float.isNaN(valor) || valor <= 0.0f)
@@ -180,7 +180,7 @@ public class Despesa
                 this.valor = valor
 	}
 	
-	public void definirData(String data) throws Exception
+	 void definirData(String data) throws Exception
 	{
 		
             String erro = ""
@@ -203,37 +203,37 @@ public class Despesa
                 this.data = data
 	}
         
-        public String obterPlacaAntesAlteracao()
+         String obterPlacaAntesAlteracao()
         {
             return this.placaAntesAlteracao
         }
         
-        public String obterDataAntesAlteracao()
+         String obterDataAntesAlteracao()
         {
             return this.dataAntesAlteracao
         }
 	
-	public String obterPlaca()
+	 String obterPlaca()
 	{
 		return this.placa	
 	}
 	
-	public String obterDescricao()
+	 String obterDescricao()
 	{
 		return this.descricao
 	}
 	
-	public float obterValor()
+	 float obterValor()
 	{
 		return this.valor
 	}
 	
-	public String obterData()
+	 String obterData()
 	{
 		return this.data
 	}
         
-        public Vector carregarDatasDespesas(Conexao conexao) throws Exception
+         Vector carregarDatasDespesas(Conexao conexao) throws Exception
         {
             ResultSet dadosDespesas
             Vector datasDespesas = null
@@ -247,7 +247,7 @@ public class Despesa
             return datasDespesas
         }
 	
-	public void cadastrarDespesa() throws Exception
+	 void cadastrarDespesa() throws Exception
 	{
 		String query = "insert into despesa_veiculo (veiculo,datahora,descricao,valor) values "
 		query = query + "('"+ this.placa +"', '"+ Calendario.inverterFormato(this.data,"/") +"', '"+ this.descricao +"', "+ this.valor +")"
@@ -276,7 +276,7 @@ public class Despesa
                 }
 	}
         
-        public void alterarDespesa() throws Exception
+         void alterarDespesa() throws Exception
         {
             String query = "update despesa_veiculo set veiculo = '"+ this.placa +"',datahora = '"+ Calendario.inverterFormato(this.data,"/") +"',descricao = '"+ this.descricao +"',valor = "+ this.valor +" where veiculo = '"+ this.placaAntesAlteracao +"' and datahora = '"+ Calendario.inverterFormato(this.dataAntesAlteracao,"/") +"' "
             Conexao conexao = new Conexao('T')
@@ -292,7 +292,7 @@ public class Despesa
             }
         }
         
-        public void excluirDespesa() throws Exception
+         void excluirDespesa() throws Exception
         {
             String query = "delete from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data,"/") +"' "
             Conexao conexao = new Conexao('T')
