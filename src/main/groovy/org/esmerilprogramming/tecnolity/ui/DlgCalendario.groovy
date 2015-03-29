@@ -81,8 +81,8 @@ class DlgCalendario extends JDialog implements ActionListener
     int indiceDia = 1
     this.pnlDias.removeAll()
     this.pnlDias.updateUI()
-    for (int i = 0 ; i < 6 ; ++i) {
-      for (j = 0 ; j < 7 ; ++j) {
+    for (int i = 0  i < 6  ++i) {
+      for (j = 0  j < 7  ++j) {
         if (indiceDia <= this.calendario.getNumeroDiasMes()) {
           (this.btDias[i][j] = new JButton("" + indiceDia)).setMargin(new Insets(0, 0, 0, 0))
           if (indiceDia == this.calendario.get(5)) {

@@ -1,9 +1,9 @@
-package org.esmerilprogramming.tecnolity.administracao;
+package org.esmerilprogramming.tecnolity.administracao
 
-import java.sql.*;
+import java.sql.*
 
-import org.esmerilprogramming.tecnolity.aplicacao.Interface;
-import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.aplicacao.Interface
+import org.esmerilprogramming.tecnolity.util.*
 
 /**
 * Projeto: 001 - Tecnolity <br>
@@ -23,61 +23,61 @@ import org.esmerilprogramming.tecnolity.util.*;
 
 public class Permissao 
 {
-    public static final char LEITURA = 'L';
-    public static final char ESCRITA = 'E';
-    public static final char SEM_ACESSO = 'S';
+    public static final char LEITURA = 'L'
+    public static final char ESCRITA = 'E'
+    public static final char SEM_ACESSO = 'S'
     
-    private Interface tela;
-    private Colaborador colaborador;
-    private char tipoAcesso;
+    private Interface tela
+    private Colaborador colaborador
+    private char tipoAcesso
     
     public Permissao(Interface tela, Colaborador colaborador, char tipoAcesso) 
     {
-        definirTela(tela);
-        definirColaborador(colaborador);
-        definirTipoAcesso(tipoAcesso);
+        definirTela(tela)
+        definirColaborador(colaborador)
+        definirTipoAcesso(tipoAcesso)
     }
     
     public Permissao(Interface tela, char tipoAcesso) 
     {
-        definirTela(tela);
-        definirTipoAcesso(tipoAcesso);
+        definirTela(tela)
+        definirTipoAcesso(tipoAcesso)
     }
     
     public Permissao(Interface tela, Colaborador colaborador) 
     {
-        definirTela(tela);
-        definirColaborador(colaborador);
+        definirTela(tela)
+        definirColaborador(colaborador)
     }
     
     public Interface obterTela()
     {
-        return this.tela;
+        return this.tela
     }
     
     public Colaborador obterColaborador()
     {
-        return this.colaborador;
+        return this.colaborador
     }
     
     public char obterTipoAcesso()
     {
-        return this.tipoAcesso;
+        return this.tipoAcesso
     }
 
     public void definirTela(Interface tela)
     {
-        this.tela = tela;
+        this.tela = tela
     }
     
     public void definirColaborador(Colaborador colaborador)
     {
-        this.colaborador = colaborador;
+        this.colaborador = colaborador
     }
     
     public void definirTipoAcesso(char tipoAcesso)
     {
-        this.tipoAcesso = tipoAcesso;
+        this.tipoAcesso = tipoAcesso
     }
     
     /** Verifica de o usuário tem permissão de leitura ou escrita na tela. Caso
@@ -86,17 +86,17 @@ public class Permissao
     {
         try
         {
-            String query = "select permissao from permissao where interface = "+ tela.obterIdentificador() +" and usuario = '"+ colaborador.obterMatricula() +"'";
-            ResultSet permissoes = conexao.executarConsulta(query);
+            String query = "select permissao from permissao where interface = "+ tela.obterIdentificador() +" and usuario = '"+ colaborador.obterMatricula() +"'"
+            ResultSet permissoes = conexao.executarConsulta(query)
             if(permissoes.next())
             {
-                return permissoes.getString("permissao").charAt(0);
+                return permissoes.getString("permissao").charAt(0)
             }
         }
         catch(SQLException e)
         {
-            return SEM_ACESSO;
+            return SEM_ACESSO
         }
-        return SEM_ACESSO;
+        return SEM_ACESSO
     }
 }

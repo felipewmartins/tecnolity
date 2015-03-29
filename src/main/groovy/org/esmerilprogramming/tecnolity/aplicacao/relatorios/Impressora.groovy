@@ -1,7 +1,7 @@
-package org.esmerilprogramming.tecnolity.aplicacao.relatorios;
+package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 
-import java.awt.print.*;
-import java.util.*;
+import java.awt.print.*
+import java.util.*
 
 /**
  * @author hildeberto
@@ -9,22 +9,22 @@ import java.util.*;
 
 public class Impressora
 {
-    private PrinterJob trabalhoImpressao;
-    private Book livro;
-    private int numeroPaginas;
+    private PrinterJob trabalhoImpressao
+    private Book livro
+    private int numeroPaginas
    
 	public Impressora()
 	{
-        trabalhoImpressao = PrinterJob.getPrinterJob();
-        livro = new Book();
+        trabalhoImpressao = PrinterJob.getPrinterJob()
+        livro = new Book()
 	}
     
     public void addPaginas(Vector paginas, PageFormat formato)
     {
-        numeroPaginas = paginas.size();
-        for(int i = 0;i < numeroPaginas;i++)
+        numeroPaginas = paginas.size()
+        for(int i = 0i < numeroPaginasi++)
         {
-            livro.append((Pagina)paginas.get(i),formato);
+            livro.append((Pagina)paginas.get(i),formato)
         }
     }
         
@@ -32,13 +32,13 @@ public class Impressora
     {
         if(numeroPaginas > 0)
         {
-            trabalhoImpressao.setPageable(livro);
+            trabalhoImpressao.setPageable(livro)
             if(trabalhoImpressao.printDialog())
             {
-                trabalhoImpressao.print();
+                trabalhoImpressao.print()
             }
         }
         else
-            throw new PrinterException("Nenhuma página foi adicionada a impressora.");
+            throw new PrinterException("Nenhuma página foi adicionada a impressora.")
     }
 }

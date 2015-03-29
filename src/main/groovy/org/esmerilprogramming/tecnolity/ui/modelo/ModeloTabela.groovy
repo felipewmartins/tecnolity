@@ -35,21 +35,21 @@ class ModeloTabela extends AbstractTableModel {
   }
 
   void addRow(final Object[] values) {
-    for (int i = 0 ; i < values.length ; ++i) {
+    for (int i = 0  i < values.length  ++i) {
       this.setValueAt(values[i], this.numeroRegistros, i)
     }
     ++this.numeroRegistros
   }
 
   void setRow(final Object[] values, final int posLinha) {
-    for (int i = 0 ; i < values.length ; ++i) {
+    for (int i = 0  i < values.length  ++i) {
       this.setValueAt(values[i], posLinha, i)
     }
   }
 
   Object[] getRow(final int posLinha) {
     final Object[] linha = new Object[this.getColumnCount()]
-      for (int i = 0 ; i < linha.length ;++i) {
+      for (int i = 0  i < linha.length ++i) {
         linha[i] = this.getValueAt(posLinha, i)
       }
     return linha
@@ -57,11 +57,11 @@ class ModeloTabela extends AbstractTableModel {
 
   void removeRow(final int posLinha) {
     if (posLinha < this.numeroRegistros) {
-      for (int i = 0 ;i < this.getColumnCount() ; ++i) {
+      for (int i = 0 i < this.getColumnCount()  ++i) {
         this.setValueAt("", posLinha, i)
       }
-      for (int i = posLinha ; i < this.numeroRegistros - 1 ; ++i) {
-        for (int j = 0 ; j < this.getColumnCount() ; ++j) {
+      for (int i = posLinha  i < this.numeroRegistros - 1  ++i) {
+        for (int j = 0  j < this.getColumnCount()  ++j) {
           this.setValueAt(this.getValueAt(i + 1, j), i, j)
             this.setValueAt("", i + 1, j)
         }
@@ -73,7 +73,7 @@ class ModeloTabela extends AbstractTableModel {
   void setTamanhoColunas(final JTable tabela, final int[] tamanhoColunas) {
     TableColumn column = null
       int larguraTabela = 0
-      for (int i = 0 ; i < this.getColumnCount() ;++i) {
+      for (int i = 0  i < this.getColumnCount() ++i) {
         column = tabela.getColumnModel().getColumn(i)
           larguraTabela = tabela.getPreferredScrollableViewportSize().width
           column.setPreferredWidth(tamanhoColunas[i] * larguraTabela / 100)

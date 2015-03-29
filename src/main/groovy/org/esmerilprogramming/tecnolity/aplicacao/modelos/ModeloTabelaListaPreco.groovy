@@ -1,7 +1,7 @@
-package org.esmerilprogramming.tecnolity.aplicacao.modelos;
+package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
+import javax.swing.event.TableModelEvent
+import javax.swing.event.TableModelListener
 
 
 /**
@@ -11,17 +11,17 @@ public class ModeloTabelaListaPreco extends ModeloTabela implements TableModelLi
 {
     public ModeloTabelaListaPreco()
     {
-        this.addTableModelListener(this);
+        this.addTableModelListener(this)
     }
     public boolean isCellEditable(int row, int col) 
     {
         if (col < 3)
         { 
-            return false;
+            return false
         }
         else
         {
-            return true;
+            return true
         }
     }
         

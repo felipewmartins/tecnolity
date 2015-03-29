@@ -14,117 +14,117 @@
    * Última Versão: 1.0
 */
 
-package org.esmerilprogramming.tecnolity.aplicacao;
+package org.esmerilprogramming.tecnolity.aplicacao
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.border.*;
+import java.awt.*
+import java.awt.event.*
+import javax.swing.*
+import javax.swing.border.*
 
-import org.esmerilprogramming.tecnolity.administracao.ui.*;
-import org.esmerilprogramming.tecnolity.logistica.ui.*;
-import org.esmerilprogramming.tecnolity.pedidos.ui.*;
-import org.esmerilprogramming.tecnolity.producao.ui.*;
-import org.esmerilprogramming.tecnolity.suprimentos.ui.*;
+import org.esmerilprogramming.tecnolity.administracao.ui.*
+import org.esmerilprogramming.tecnolity.logistica.ui.*
+import org.esmerilprogramming.tecnolity.pedidos.ui.*
+import org.esmerilprogramming.tecnolity.producao.ui.*
+import org.esmerilprogramming.tecnolity.suprimentos.ui.*
 
 public class BarraAplicacao extends JPanel implements ActionListener
 {
-    private JButton btGerencia, btSuprimentos, btProducao, btPedidos, btLogistica, btAdministracao;
-    private Aplicacao aplicacao;
+    private JButton btGerencia, btSuprimentos, btProducao, btPedidos, btLogistica, btAdministracao
+    private Aplicacao aplicacao
     
     public BarraAplicacao(Aplicacao aplicacao) 
     {
-        this.aplicacao = aplicacao;
-        this.setLayout(new BorderLayout());
-        this.setBorder(new LineBorder(Color.black));
+        this.aplicacao = aplicacao
+        this.setLayout(new BorderLayout())
+        this.setBorder(new LineBorder(Color.black))
         
-        JPanel pnlComandos = new JPanel(new GridLayout(1,5));
+        JPanel pnlComandos = new JPanel(new GridLayout(1,5))
         
-        btSuprimentos = new JButton("Suprimentos",new ImageIcon("imagens/ico_suprimentos.gif"));
-        btSuprimentos.setFont(new Font("Arial",Font.PLAIN,11));
-        btSuprimentos.addActionListener(this);
-        btSuprimentos.setMnemonic('S');
-        btSuprimentos.setVerticalTextPosition(SwingConstants.BOTTOM);
-        btSuprimentos.setHorizontalTextPosition(SwingConstants.CENTER);
-        pnlComandos.add(btSuprimentos);
+        btSuprimentos = new JButton("Suprimentos",new ImageIcon("imagens/ico_suprimentos.gif"))
+        btSuprimentos.setFont(new Font("Arial",Font.PLAIN,11))
+        btSuprimentos.addActionListener(this)
+        btSuprimentos.setMnemonic('S')
+        btSuprimentos.setVerticalTextPosition(SwingConstants.BOTTOM)
+        btSuprimentos.setHorizontalTextPosition(SwingConstants.CENTER)
+        pnlComandos.add(btSuprimentos)
         
-        btProducao = new JButton("Produção",new ImageIcon("imagens/ico_producao.gif"));
-        btProducao.setFont(new Font("Arial",Font.PLAIN,11));
-        btProducao.addActionListener(this);
-        btProducao.setMnemonic('P');
-        btProducao.setVerticalTextPosition(SwingConstants.BOTTOM);
-        btProducao.setHorizontalTextPosition(SwingConstants.CENTER);
-        pnlComandos.add(btProducao);
+        btProducao = new JButton("Produção",new ImageIcon("imagens/ico_producao.gif"))
+        btProducao.setFont(new Font("Arial",Font.PLAIN,11))
+        btProducao.addActionListener(this)
+        btProducao.setMnemonic('P')
+        btProducao.setVerticalTextPosition(SwingConstants.BOTTOM)
+        btProducao.setHorizontalTextPosition(SwingConstants.CENTER)
+        pnlComandos.add(btProducao)
         
-        btPedidos = new JButton("Pedidos",new ImageIcon("imagens/ico_pedidos.gif"));
-        btPedidos.setFont(new Font("Arial",Font.PLAIN,11));
-        btPedidos.addActionListener(this);
-        btPedidos.setMnemonic('d');
-        btPedidos.setVerticalTextPosition(SwingConstants.BOTTOM);
-        btPedidos.setHorizontalTextPosition(SwingConstants.CENTER);
-        pnlComandos.add(btPedidos);
+        btPedidos = new JButton("Pedidos",new ImageIcon("imagens/ico_pedidos.gif"))
+        btPedidos.setFont(new Font("Arial",Font.PLAIN,11))
+        btPedidos.addActionListener(this)
+        btPedidos.setMnemonic('d')
+        btPedidos.setVerticalTextPosition(SwingConstants.BOTTOM)
+        btPedidos.setHorizontalTextPosition(SwingConstants.CENTER)
+        pnlComandos.add(btPedidos)
         
-        btLogistica = new JButton("Logística",new ImageIcon("imagens/ico_logistica.gif"));
-        btLogistica.setFont(new Font("Arial",Font.PLAIN,11));
-        btLogistica.addActionListener(this);
-        btLogistica.setMnemonic('L');
-        btLogistica.setVerticalTextPosition(SwingConstants.BOTTOM);
-        btLogistica.setHorizontalTextPosition(SwingConstants.CENTER);
-        pnlComandos.add(btLogistica);
+        btLogistica = new JButton("Logística",new ImageIcon("imagens/ico_logistica.gif"))
+        btLogistica.setFont(new Font("Arial",Font.PLAIN,11))
+        btLogistica.addActionListener(this)
+        btLogistica.setMnemonic('L')
+        btLogistica.setVerticalTextPosition(SwingConstants.BOTTOM)
+        btLogistica.setHorizontalTextPosition(SwingConstants.CENTER)
+        pnlComandos.add(btLogistica)
         
-        btAdministracao = new JButton("Administração",new ImageIcon("imagens/ico_administracao.gif"));
-        btAdministracao.setFont(new Font("Arial",Font.PLAIN,11));
-        btAdministracao.addActionListener(this);
-        btAdministracao.setMnemonic('d');
-        btAdministracao.setVerticalTextPosition(SwingConstants.BOTTOM);
-        btAdministracao.setHorizontalTextPosition(SwingConstants.CENTER);
-        pnlComandos.add(btAdministracao);
-        JPanel pnlAreaComandos = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        pnlAreaComandos.add(pnlComandos);
-        this.add(pnlAreaComandos, BorderLayout.CENTER);
+        btAdministracao = new JButton("Administração",new ImageIcon("imagens/ico_administracao.gif"))
+        btAdministracao.setFont(new Font("Arial",Font.PLAIN,11))
+        btAdministracao.addActionListener(this)
+        btAdministracao.setMnemonic('d')
+        btAdministracao.setVerticalTextPosition(SwingConstants.BOTTOM)
+        btAdministracao.setHorizontalTextPosition(SwingConstants.CENTER)
+        pnlComandos.add(btAdministracao)
+        JPanel pnlAreaComandos = new JPanel(new FlowLayout(FlowLayout.LEFT))
+        pnlAreaComandos.add(pnlComandos)
+        this.add(pnlAreaComandos, BorderLayout.CENTER)
         
-        JLabel lblLogomarca = new JLabel(new ImageIcon("imagens/logo.gif"));
-        this.add(lblLogomarca, BorderLayout.EAST);
+        JLabel lblLogomarca = new JLabel(new ImageIcon("imagens/logo.gif"))
+        this.add(lblLogomarca, BorderLayout.EAST)
     }
     
     public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
-        Object objeto = actionEvent.getSource();
+        Object objeto = actionEvent.getSource()
         
         /*if(objeto == btGerencia)
         {
-            AreaTrabalhoGerencia areaTrabalho = new AreaTrabalhoGerencia(aplicacao);
-            this.aplicacao.adicionarAreaTrabalho(areaTrabalho);
+            AreaTrabalhoGerencia areaTrabalho = new AreaTrabalhoGerencia(aplicacao)
+            this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
         }*/
         
         if(objeto == btSuprimentos)
         {
-            AreaTrabalhoSuprimentos areaTrabalho = new AreaTrabalhoSuprimentos(aplicacao);
-            this.aplicacao.adicionarAreaTrabalho(areaTrabalho);
+            AreaTrabalhoSuprimentos areaTrabalho = new AreaTrabalhoSuprimentos(aplicacao)
+            this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
         }
         
         if(objeto == btProducao)
         {
-            AreaTrabalhoProducao areaTrabalho = new AreaTrabalhoProducao(aplicacao);
-            this.aplicacao.adicionarAreaTrabalho(areaTrabalho);
+            AreaTrabalhoProducao areaTrabalho = new AreaTrabalhoProducao(aplicacao)
+            this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
         }
         
         if(objeto == btPedidos)
         {
-            AreaTrabalhoPedido areaTrabalho = new AreaTrabalhoPedido(aplicacao);
-            this.aplicacao.adicionarAreaTrabalho(areaTrabalho);
+            AreaTrabalhoPedido areaTrabalho = new AreaTrabalhoPedido(aplicacao)
+            this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
         }
         
         if(objeto == btLogistica)
         {
-            AreaTrabalhoLogistica areaTrabalho = new AreaTrabalhoLogistica(aplicacao);
-            this.aplicacao.adicionarAreaTrabalho(areaTrabalho);
+            AreaTrabalhoLogistica areaTrabalho = new AreaTrabalhoLogistica(aplicacao)
+            this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
         }
         
         if(objeto == btAdministracao)
         {
-            AreaTrabalhoAdministracao areaTrabalho = new AreaTrabalhoAdministracao(aplicacao);
-            this.aplicacao.adicionarAreaTrabalho(areaTrabalho);
+            AreaTrabalhoAdministracao areaTrabalho = new AreaTrabalhoAdministracao(aplicacao)
+            this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
         }
     }
     

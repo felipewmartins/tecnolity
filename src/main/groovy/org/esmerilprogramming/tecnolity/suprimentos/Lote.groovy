@@ -13,160 +13,160 @@
    * Fim da Programação: <br>
    * Última Versão: 1.0 <br>
 */
-package org.esmerilprogramming.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos
 
-import org.esmerilprogramming.tecnolity.util.*;
-import java.sql.*;
+import org.esmerilprogramming.tecnolity.util.*
+import java.sql.*
 
 public class Lote 
 {
-    public static final char LOTE_BASICO = 'B';
+    public static final char LOTE_BASICO = 'B'
     
-    private int numero;
-    private Item item;
-    private Movimentacao movimentacao;
-    private Categoria localizacao;
-    private String dataValidade;
-    private float quantidade;
-    private boolean reservado;
-    private String descricao;
+    private int numero
+    private Item item
+    private Movimentacao movimentacao
+    private Categoria localizacao
+    private String dataValidade
+    private float quantidade
+    private boolean reservado
+    private String descricao
     
     public Lote() {}
     
     public Lote(Item item) throws Exception
     {
-        this.definirItem(item);
+        this.definirItem(item)
     }
     
     public Lote(Item item, Movimentacao movimentacao, float quantidade) throws Exception
     {
-        this.definirItem(item);
-        this.definirMovimentacao(movimentacao);
-        this.definirQuantidade(quantidade);
+        this.definirItem(item)
+        this.definirMovimentacao(movimentacao)
+        this.definirQuantidade(quantidade)
     }
     
     public Lote(int numero, Item item, Movimentacao movimentacao, Categoria localizacao, String dataValidade, float quantidade, boolean reservado, String descricao) throws Exception
     {
-        this.definirNumero(numero);
-        this.definirItem(item);
-        this.definirMovimentacao(movimentacao);
-        this.definirLocalizacao(localizacao);
-        this.definirDataValidade(dataValidade);
-        this.definirQuantidade(quantidade);
-        this.definirReservado(reservado);
-        this.definirDescricao(descricao);
+        this.definirNumero(numero)
+        this.definirItem(item)
+        this.definirMovimentacao(movimentacao)
+        this.definirLocalizacao(localizacao)
+        this.definirDataValidade(dataValidade)
+        this.definirQuantidade(quantidade)
+        this.definirReservado(reservado)
+        this.definirDescricao(descricao)
     }
     
     public Lote(Item item, Movimentacao movimentacao, Categoria localizacao, String dataValidade, float quantidade, boolean reservado, String descricao) throws Exception
     {
-        this.definirItem(item);
-        this.definirMovimentacao(movimentacao);
-        this.definirLocalizacao(localizacao);
-        this.definirDataValidade(dataValidade);
-        this.definirQuantidade(quantidade);
-        this.definirReservado(reservado);
-        this.definirDescricao(descricao);
+        this.definirItem(item)
+        this.definirMovimentacao(movimentacao)
+        this.definirLocalizacao(localizacao)
+        this.definirDataValidade(dataValidade)
+        this.definirQuantidade(quantidade)
+        this.definirReservado(reservado)
+        this.definirDescricao(descricao)
     }
     
     public void definirNumero(int numero)
     {
-        this.numero = numero;
+        this.numero = numero
     }
     
     public void definirItem(Item item)
     {
-        this.item = item;
+        this.item = item
     }
     
     public void definirMovimentacao(Movimentacao movimentacao)
     {
-        this.movimentacao = movimentacao;
+        this.movimentacao = movimentacao
     }
     
     public void definirLocalizacao(Categoria localizacao)
     {
-        this.localizacao = localizacao;
+        this.localizacao = localizacao
     }
     
     public void definirDataValidade(String dataValidade) throws Exception
     {
-        String erro = "";
+        String erro = ""
         if(!dataValidade.equals(""))
         {
             if(!Calendario.validarData(dataValidade,"/"))
-                erro = "Data de Validade inválida.";        
+                erro = "Data de Validade inválida."        
         }
         
         if(!erro.equals(""))
         {
-            Exception e = new Exception(erro);
-            throw e;
+            Exception e = new Exception(erro)
+            throw e
         }
         else
-            this.dataValidade = dataValidade;
+            this.dataValidade = dataValidade
     }
     
     public void definirQuantidade(float quantidade)
     {
-        this.quantidade = quantidade;
+        this.quantidade = quantidade
     }
     
     public void definirDescricao(String descricao)
     {
-        this.descricao = descricao;
+        this.descricao = descricao
     }
     
     public void definirReservado(boolean reservado)
     {
-        this.reservado = reservado;
+        this.reservado = reservado
     }
     
     public String obterLocalizacao()
     {
-        return this.localizacao.obterNomeCategoria();
+        return this.localizacao.obterNomeCategoria()
     }
     
     public String obterDataValidade()
     {
-        return this.dataValidade;
+        return this.dataValidade
     }
     
     public void cadastrarLote() throws Exception
     {
-        String query = "insert into lote (item, movimentacao_item, localizacao, data_validade, quantidade, reservado, descricao) values ("+ this.item.obterCodigo();
+        String query = "insert into lote (item, movimentacao_item, localizacao, data_validade, quantidade, reservado, descricao) values ("+ this.item.obterCodigo()
         
         if(this.movimentacao != null)
-        	query = query + ", "+ this.movimentacao.obterCodigo();
+        	query = query + ", "+ this.movimentacao.obterCodigo()
         else
-        	query = query + ", null";
+        	query = query + ", null"
         
         if(this.localizacao != null)
-			query = query + ", '"+ this.localizacao.obterNomeCategoria() + "' ";
+			query = query + ", '"+ this.localizacao.obterNomeCategoria() + "' "
 		else
-			query = query + ", null";
+			query = query + ", null"
 		
 		if(this.dataValidade != null)
-            query = query + ", '"+ Calendario.inverterFormato(this.dataValidade,"/") + "' ";
+            query = query + ", '"+ Calendario.inverterFormato(this.dataValidade,"/") + "' "
         else
-        	query = query + ", null";
+        	query = query + ", null"
         
-        query = query + ", "+ this.quantidade +", "+ ((this.reservado)?1:0);
+        query = query + ", "+ this.quantidade +", "+ ((this.reservado)?1:0)
         
         if(this.descricao != null)
-        	query = query + ", '"+ this.descricao +"')";
+        	query = query + ", '"+ this.descricao +"')"
         else
-        	query = query + ", null)";
+        	query = query + ", null)"
         
-        Conexao conexao = new Conexao('T');
+        Conexao conexao = new Conexao('T')
         if (conexao.abrirConexao())
         {            
-            conexao.executarAtualizacao(query);  
-            conexao.fecharConexao();
+            conexao.executarAtualizacao(query)  
+            conexao.fecharConexao()
         }
         else
         {
-            Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.");
-            throw e;
+            Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
+            throw e
         }
     } 
 
@@ -182,60 +182,60 @@ public class Lote
 	 */
     public static void retirarItem(Movimentacao movimentacao, ItemRequisicaoInterna itemRequisicaoInterna) throws Exception
     {
-        String erro = "";
-        Conexao conexao = new Conexao('T');
-        float quantidadeSolicitada = itemRequisicaoInterna.obterQuantidadeItem();
-        float quantSolicitadaAux = quantidadeSolicitada;
+        String erro = ""
+        Conexao conexao = new Conexao('T')
+        float quantidadeSolicitada = itemRequisicaoInterna.obterQuantidadeItem()
+        float quantSolicitadaAux = quantidadeSolicitada
         if(conexao.abrirConexao())
         {
             // Consulta a quantidade de determinado item em lotes distribuídos no estoque.
-            String query = "select isnull(sum(quantidade),-1) as quantidade_total from lote where item = " + itemRequisicaoInterna.obterItem().obterCodigo();
-            ResultSet rsQuantidadeTotal = conexao.executarConsulta(query);
-            float quantidadeTotal = 0.0f;
+            String query = "select isnull(sum(quantidade),-1) as quantidade_total from lote where item = " + itemRequisicaoInterna.obterItem().obterCodigo()
+            ResultSet rsQuantidadeTotal = conexao.executarConsulta(query)
+            float quantidadeTotal = 0.0f
             if(rsQuantidadeTotal.next())
-                quantidadeTotal = rsQuantidadeTotal.getFloat("quantidade_total");
+                quantidadeTotal = rsQuantidadeTotal.getFloat("quantidade_total")
             // Continua se houver algum lote do item no estoque
             if(quantidadeTotal >= 0)
             {
-                boolean quantidadeSuficiente = false;
+                boolean quantidadeSuficiente = false
                 if(quantidadeSolicitada <= quantidadeTotal)
                 {
-                    quantidadeSuficiente = true;
+                    quantidadeSuficiente = true
                 }
-                query = "select quantidade, numero from lote where item = " + itemRequisicaoInterna.obterItem().obterCodigo() + " and quantidade > 0";
-                ResultSet rsLote = conexao.executarConsulta(query);
+                query = "select quantidade, numero from lote where item = " + itemRequisicaoInterna.obterItem().obterCodigo() + " and quantidade > 0"
+                ResultSet rsLote = conexao.executarConsulta(query)
                 // Percorre os lotes existentes retirando os itens dos mesmos 
                 // até que a quantidade necessária seja atendida.
                 while(rsLote.next() && quantidadeSolicitada > 0)
                 {
-                    float quantidadeLote = rsLote.getFloat("quantidade");
+                    float quantidadeLote = rsLote.getFloat("quantidade")
                     // Neste caso a solicitação foi atendida completamente.
                     if(quantidadeSolicitada <= quantidadeLote)
                     {
-                        query = "update lote set quantidade = (quantidade - "+ quantidadeSolicitada +") where numero = " + rsLote.getInt("numero");
-                        quantidadeSolicitada = 0;
+                        query = "update lote set quantidade = (quantidade - "+ quantidadeSolicitada +") where numero = " + rsLote.getInt("numero")
+                        quantidadeSolicitada = 0
                     }
                     // Neste caso a quantidade que havia no Lote não foi suficiente
                     // para atender a solicitação completamente, sendo necessário
                     // extrair itens de outros lotes. 
                     else
                     {
-                        query = "update lote set quantidade = 0 where numero = " + rsLote.getInt("numero");
-                        quantidadeSolicitada -= quantidadeLote;
+                        query = "update lote set quantidade = 0 where numero = " + rsLote.getInt("numero")
+                        quantidadeSolicitada -= quantidadeLote
                     }
-                    conexao.executarAtualizacao(query);
+                    conexao.executarAtualizacao(query)
                 }
-                rsLote.close();
+                rsLote.close()
                 if(quantidadeSuficiente)
                 {
-                    movimentacao.cadastrarMovimentacao();
-                    itemRequisicaoInterna.definirStatus(ItemRequisicaoInterna.STATUS_CONFIRMADO);
-                    itemRequisicaoInterna.atualizarItemRequisicaoInterna();
+                    movimentacao.cadastrarMovimentacao()
+                    itemRequisicaoInterna.definirStatus(ItemRequisicaoInterna.STATUS_CONFIRMADO)
+                    itemRequisicaoInterna.atualizarItemRequisicaoInterna()
                     
                     if(!itemRequisicaoInterna.obterRequisicaoInterna().obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE))
                     {
-                        itemRequisicaoInterna.obterRequisicaoInterna().definirStatus(RequisicaoInterna.STATUS_EMITIDO);
-                        itemRequisicaoInterna.obterRequisicaoInterna().atualizarRequisicaoInterna(RequisicaoInterna.STATUS_EMITIDO);
+                        itemRequisicaoInterna.obterRequisicaoInterna().definirStatus(RequisicaoInterna.STATUS_EMITIDO)
+                        itemRequisicaoInterna.obterRequisicaoInterna().atualizarRequisicaoInterna(RequisicaoInterna.STATUS_EMITIDO)
                     }
                 }   
                 else
@@ -243,36 +243,36 @@ public class Lote
                     //A movimentação só é gerada se alguma quantidade tiver sido movimentada.
                     if((quantSolicitadaAux - quantidadeSolicitada) > 0)
                     {
-                        itemRequisicaoInterna.definirQuantidadeItem(quantSolicitadaAux - quantidadeSolicitada);
-                        movimentacao.cadastrarMovimentacao();
+                        itemRequisicaoInterna.definirQuantidadeItem(quantSolicitadaAux - quantidadeSolicitada)
+                        movimentacao.cadastrarMovimentacao()
                     }
-                    itemRequisicaoInterna.definirStatus(ItemRequisicaoInterna.STATUS_PENDENTE);
-                    itemRequisicaoInterna.definirQuantidadeItem(quantidadeSolicitada);
-                    itemRequisicaoInterna.atualizarItemRequisicaoInterna();
+                    itemRequisicaoInterna.definirStatus(ItemRequisicaoInterna.STATUS_PENDENTE)
+                    itemRequisicaoInterna.definirQuantidadeItem(quantidadeSolicitada)
+                    itemRequisicaoInterna.atualizarItemRequisicaoInterna()
                     if(!itemRequisicaoInterna.obterRequisicaoInterna().obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE))
                     {
-                        itemRequisicaoInterna.obterRequisicaoInterna().definirStatus(RequisicaoInterna.STATUS_PENDENTE);
-                        itemRequisicaoInterna.obterRequisicaoInterna().atualizarRequisicaoInterna(RequisicaoInterna.STATUS_PENDENTE);
+                        itemRequisicaoInterna.obterRequisicaoInterna().definirStatus(RequisicaoInterna.STATUS_PENDENTE)
+                        itemRequisicaoInterna.obterRequisicaoInterna().atualizarRequisicaoInterna(RequisicaoInterna.STATUS_PENDENTE)
                     }
                 }
-                rsQuantidadeTotal.close();
+                rsQuantidadeTotal.close()
             }
             else
             {
-                erro = "Não há nenhum lote registrado para o item selecionado.";
+                erro = "Não há nenhum lote registrado para o item selecionado."
             }
-            conexao.fecharConexao();
+            conexao.fecharConexao()
         }
     }
         
     /** Exclui os lotes que não mais serão usados por estarem vazios. */
     public static void excluirLotesVazios() throws Exception
     {
-    	Conexao conexao = new Conexao('T');
+    	Conexao conexao = new Conexao('T')
         if(conexao.abrirConexao())
         {
-        	conexao.executarAtualizacao("delete from lote where quantidade <= 0");
-        	conexao.fecharConexao();
+        	conexao.executarAtualizacao("delete from lote where quantidade <= 0")
+        	conexao.fecharConexao()
         }
     }
 }

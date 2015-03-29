@@ -3,7 +3,7 @@ package org.esmerilprogramming.tecnolity.financeiro
 class Juros {
   static float calcularJurosCompostos(float capital, final int periodo, final float taxa) {
     float juros = 0.0f
-    for (int i = 0 ; i < periodo ; ++i) {
+    for (int i = 0  i < periodo  ++i) {
       juros += capital * (taxa / 100.0f)
       capital += juros
     }
@@ -13,7 +13,7 @@ class Juros {
   static float calcularJurosCompostos(float capital, final int periodo, final float[] taxas) {
     float juros = 0.0f
     if (periodo == taxas.length) {
-      for (int i = 0 ; i < periodo ; ++i) {
+      for (int i = 0  i < periodo  ++i) {
         juros += capital * (taxas[i] / 100.0f)
         capital += juros
       }

@@ -46,7 +46,7 @@ class CaixaSelecao extends JPanel implements ActionListener
       if (itens != null) {
         this.itens = new Vector()
           final Object[] itensAux = itens.toArray()
-          for (int i = 0 ; i < itensAux.length ; ++i) {
+          for (int i = 0  i < itensAux.length  ++i) {
             this.itens.add(itensAux[i])
           }
       }
@@ -88,7 +88,7 @@ class CaixaSelecao extends JPanel implements ActionListener
       else {
         this.cbxSelecao.addItem("")
       }
-    for (int i = 0 ; i < this.itens.size() ; ++i) {
+    for (int i = 0  i < this.itens.size()  ++i) {
       this.cbxSelecao.addItem(this.itens.get(i))
     }
   }
@@ -101,7 +101,7 @@ class CaixaSelecao extends JPanel implements ActionListener
       else {
         this.cbxSelecao.addItem("")
       }
-    for (int i = 0 ; i < this.itens.size() ; ++i) {
+    for (int i = 0  i < this.itens.size()  ++i) {
       this.cbxSelecao.addItem(this.itens.get(i))
     }
   }
@@ -115,7 +115,7 @@ class CaixaSelecao extends JPanel implements ActionListener
       else {
         this.cbxSelecao.addItem("")
       }
-    for (int i = 0 ; i < itens.size() ; ++i) {
+    for (int i = 0  i < itens.size()  ++i) {
       this.cbxSelecao.addItem(itens.get(i))
     }
   }
@@ -146,7 +146,7 @@ class CaixaSelecao extends JPanel implements ActionListener
 
   void setSelectedItem(final Object objeto) {
     if (objeto != null) {
-      for (int i = 0 ; i < this.itens.size() ; ++i) {
+      for (int i = 0  i < this.itens.size()  ++i) {
         if (this.itens.get(i).toString().equals(objeto.toString())) {
           this.cbxSelecao.setSelectedIndex(i + 1)
             break

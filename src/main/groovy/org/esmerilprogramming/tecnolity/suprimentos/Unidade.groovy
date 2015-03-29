@@ -15,24 +15,24 @@
    * Última Versão: 1.0
 */
 
-package org.esmerilprogramming.tecnolity.suprimentos;
+package org.esmerilprogramming.tecnolity.suprimentos
 
-import org.esmerilprogramming.tecnolity.util.*;
+import org.esmerilprogramming.tecnolity.util.*
 
 public class Unidade
 {
-	private int codigo;
-	private String nomeUnidade;
+	private int codigo
+	private String nomeUnidade
 	
 	public Unidade(int codigo, String nomeUnidade)
 	{
-		this.codigo = codigo;
-		this.nomeUnidade = nomeUnidade;
+		this.codigo = codigo
+		this.nomeUnidade = nomeUnidade
 	}	
 	
 	public Unidade(int codigo)
 	{
-		this.codigo = codigo;
+		this.codigo = codigo
 	}
 	
 	public Unidade()
@@ -42,24 +42,24 @@ public class Unidade
 	
 	public int obterCodigo()
 	{
-		return codigo;
+		return codigo
 	}
 	
 	public String obterNomeUnidade()
 	{
-		return this.nomeUnidade;
+		return this.nomeUnidade
 	}
 	
 	public boolean cadastrarUnidade(String nomeUnidade)
 	{
-		String query = "insert into unidade (unidade) values ('"+ nomeUnidade +"')";
-		Conexao conexao = new Conexao('T');
+		String query = "insert into unidade (unidade) values ('"+ nomeUnidade +"')"
+		Conexao conexao = new Conexao('T')
 		if (conexao.abrirConexao())
 		{
-			conexao.executarAtualizacao(query);
-			conexao.fecharConexao();
-			return true;
+			conexao.executarAtualizacao(query)
+			conexao.fecharConexao()
+			return true
 		}
-		return false;
+		return false
 	}
 }

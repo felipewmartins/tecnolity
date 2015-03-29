@@ -1,7 +1,7 @@
-package org.esmerilprogramming.tecnolity.administracao;
+package org.esmerilprogramming.tecnolity.administracao
 
-import org.esmerilprogramming.tecnolity.util.*;
-import java.sql.*;
+import org.esmerilprogramming.tecnolity.util.*
+import java.sql.*
 
 /**
    * Projeto: 001 - Tecnolity <br>
@@ -21,63 +21,63 @@ import java.sql.*;
 
 public class Cambio 
 {
-    private float dolar;
-    private String data;
+    private float dolar
+    private String data
     
     public Cambio() {}
     
     public Cambio(float dolar, String data)
     {
-        this.dolar = dolar;
-        this.data = data;
+        this.dolar = dolar
+        this.data = data
     }
     
     public float obterDolar()
     {
-        return this.dolar;
+        return this.dolar
     }
     
     public String obterData()
     {
-        return this.data;
+        return this.data
     }
     
     public void definirDolar(float dolar) throws Exception
     {
         if(dolar == 0.0f)
         {
-            Exception e = new Exception("O valor do dólar não foi informado.");
-            throw e;
+            Exception e = new Exception("O valor do dólar não foi informado.")
+            throw e
         }
         else
-            this.dolar = dolar;
+            this.dolar = dolar
      }
      
      public void definirData(String data)
      {
-         this.data = data;
+         this.data = data
      }
      
      public void carregarCambio(Conexao conexao) throws Exception
      {
-        ResultSet dadosCambio;        
-        dadosCambio = conexao.executarConsulta("select distinct valor_dolar from cotacao_dolar where data = (select max(data) from cotacao_dolar)");
+        ResultSet dadosCambio        
+        dadosCambio = conexao.executarConsulta("select distinct valor_dolar from cotacao_dolar where data = (select max(data) from cotacao_dolar)")
         if(dadosCambio.next())
         {
-            definirDolar(dadosCambio.getFloat("valor_dolar"));
+            definirDolar(dadosCambio.getFloat("valor_dolar"))
         }
-        dadosCambio.close();
+        dadosCambio.close()
       }
      
      public void cadastrarCambio() throws Exception
      {
-        Conexao conexao = new Conexao('T');        
+        Conexao conexao = new Conexao('T')        
         if(conexao.abrirConexao())
         {                
-            String query = "insert into cotacao_dolar (valor_dolar) ";
-            query += "values ("+ this.dolar +")";
-            conexao.executarAtualizacao(query);                
-            conexao.fecharConexao();
+            String query = "insert into cotacao_dolar (valor_dolar) "
+            query += "values ("+ this.dolar +")"
+            conexao.executarAtualizacao(query)                
+            conexao.fecharConexao()
         }
       }
 }
