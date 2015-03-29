@@ -33,8 +33,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
             txtFax, txtEmail, txtWebSite
               private JComboBox   cbxEstado, cbxPais
 
-              DlgDadosFornecedor(Aplicacao aplicacao, char modo)
-              {
+              DlgDadosFornecedor(Aplicacao aplicacao, char modo) {
                 super(aplicacao,true)
                   fornecedor = new Fornecedor()
 
@@ -54,15 +53,13 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                               montarInterface()
               }
 
-  DlgDadosFornecedor(Aplicacao aplicacao, char modo, int codigoFornecedor)
-  {
+  DlgDadosFornecedor(Aplicacao aplicacao, char modo, int codigoFornecedor) {
     super(aplicacao,true)
       try
       {
         fornecedor = new Fornecedor(codigoFornecedor)
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -83,8 +80,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                   montarInterface()
   }
 
-  private void montarInterface()
-  {
+  private void montarInterface() {
     conteudo = this.getContentPane()
 
       gridbag = new GridBagLayout()
@@ -141,17 +137,14 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
         paises = Pais.carregarPaises(aplicacao.obterConexao())
           carregarPaises()
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Países.","Erro",JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
     int indicePais = 0
-      for(int i = 1; i < paises.size(); i++)
-      {
-        if((((Pais)paises.get(i)).getSigla()).equals((this.fornecedor.obterPais())==null?"":(this.fornecedor.obterPais()).getSigla()))
-        {
+      for(int i = 1; i < paises.size(); i++) {
+        if((((Pais)paises.get(i)).getSigla()).equals((this.fornecedor.obterPais())==null?"":(this.fornecedor.obterPais()).getSigla())) {
           indicePais = i
         }
       }
@@ -177,8 +170,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
         estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?"BRA":(String)(this.fornecedor.obterPais()).getSigla(),aplicacao.obterConexao())
           carregarEstados()
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -246,30 +238,25 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           this.getBounds().height)
   }
 
-  private void carregarPaises()
-  {
+  private void carregarPaises() {
     cbxPais.removeAllItems()
       cbxPais.addItem("Selecione...")
 
-      for(int i = 1;i < paises.size();i++)
-      {
+      for(int i = 1;i < paises.size();i++) {
         cbxPais.addItem(((Pais)paises.get(i)).getNome())
       }
   }
 
-  private void carregarEstados()
-  {
+  private void carregarEstados() {
     cbxEstado.removeAllItems()
       cbxEstado.addItem("Selecione...")
 
-      for(int i = 1;i < estados.size();i++)
-      {
+      for(int i = 1;i < estados.size();i++) {
         cbxEstado.addItem(((Estado)estados.get(i)).getNome())
       }
   }
 
-  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura)
-  {
+  private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
       gbc.gridy = linha
 
@@ -280,29 +267,24 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
       painel.add(c)
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent)
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == cbxPais)
-      {
-        if(cbxEstado != null)
-        {
+      if(objeto == cbxPais) {
+        if(cbxEstado != null) {
           try
           {
             estados = Estado.carregarEstados(((Pais)paises.get(cbxPais.getSelectedIndex())).getSigla(),aplicacao.obterConexao())
               carregarEstados()
           }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
       }
 
-    if(objeto == btNovoPais)
-    {
+    if(objeto == btNovoPais) {
       DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao,'I')
         dlgDadosPais.setVisible(true)
         try
@@ -311,15 +293,13 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
             paises = Pais.carregarPaises(aplicacao.obterConexao())
             carregarPaises()
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Países.","Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btNovoEstado)
-    {
+    if(objeto == btNovoEstado) {
       DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao,'I')
         dlgDadosEstado.setVisible(true)
         try
@@ -328,19 +308,16 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
             estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?"BRA":(String)(this.fornecedor.obterPais()).getSigla(),aplicacao.obterConexao())
             carregarEstados()
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btConfirmar)
-    {
+    if(objeto == btConfirmar) {
       try
       {
-        if(modo == 'I')
-        {
+        if(modo == 'I') {
           boolean confirmado = true
             try
             {
@@ -361,28 +338,24 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 fornecedor.definirEmail(txtEmail.getText())
                 fornecedor.definirWebsite(txtWebSite.getText())
             }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado)
-          {
+          if(confirmado) {
             try
             {
               fornecedor.cadastrarFornecedor()
             }
-            catch(Exception e)
-            {
+            catch(Exception e) {
               JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
           }
         }
-        else if(modo == 'A')
-        {
+        else if(modo == 'A') {
           boolean confirmado = true
             try
             {
@@ -404,20 +377,17 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 fornecedor.definirEmail(txtEmail.getText())
                 fornecedor.definirWebsite(txtWebSite.getText())
             }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado)
-          {
+          if(confirmado) {
             try
             {
               fornecedor.alterarFornecedor()
             }
-            catch(Exception e)
-            {
+            catch(Exception e) {
               JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
@@ -425,20 +395,17 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           }
         }
       }
-      catch(NumberFormatException n)
-      {
+      catch(NumberFormatException n) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
-    if(objeto == btCancelar)
-    {
+    if(objeto == btCancelar) {
       this.setVisible(false)
     }
   }
@@ -446,8 +413,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
   void focusLost(java.awt.event.FocusEvent focusEvent) {
   }
 
-  void focusGained(java.awt.event.FocusEvent e)
-  {
+  void focusGained(java.awt.event.FocusEvent e) {
     Component componente = e.getComponent()
 
       if(componente == txtPercentualICMS)

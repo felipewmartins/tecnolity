@@ -22,8 +22,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
     private JTable tblRecursos
     private ModeloTabela modeloTabelaRecursos
 
-    DlgRecursosPedido(Aplicacao aplicacao, Pedido pedido)
-    {
+    DlgRecursosPedido(Aplicacao aplicacao, Pedido pedido) {
       super(aplicacao,true)
         this.setTitle("Recursos Necessários para produção do Pedido")
 
@@ -33,8 +32,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
         montarInterface()
     }
 
-  DlgRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos)
-  {
+  DlgRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos) {
     super(aplicacao,true)
       this.setTitle("Recursos Necessários para produção do Pedido")
 
@@ -43,13 +41,11 @@ class DlgRecursosPedido extends JDialog implements ActionListener
       montarInterface()
   }
 
-  void montarInterface()
-  {
+  void montarInterface() {
     conteudo = this.getContentPane()
 
       String strLabel = "Recursos Necessários para a produção do pedido No. "
-      for(int i = 0;i < pedidos.length;i++)
-      {
+      for(int i = 0;i < pedidos.length;i++) {
         strLabel += "" + pedidos[i].obterCodigo()
           if((i+1) < pedidos.length)
             strLabel += ", "
@@ -62,8 +58,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
       String query =  "select i.codigo,i.descricao,i.quantidade as disponivel,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria,(i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp " +
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
-      for(int i = 0;i < pedidos.length;i++)
-      {
+      for(int i = 0;i < pedidos.length;i++) {
         query += "mp.pedido = "+ pedidos[i].obterCodigo()
           if((i+1) < pedidos.length)
             query += " or "
@@ -78,8 +73,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
 
-      if(pedidos.length == 1)
-      {
+      if(pedidos.length == 1) {
         btRequisitarSelecionado = new JButton("Requisitar Selecionado")
           btRequisitarSelecionado.addActionListener(this)
           pnlComandos.add(btRequisitarSelecionado)
@@ -107,14 +101,11 @@ class DlgRecursosPedido extends JDialog implements ActionListener
           this.getBounds().height)
   }
 
-  void actionPerformed(java.awt.event.ActionEvent actionEvent)
-  {
+  void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btRequisitarSelecionado)
-      {
-        if(tblRecursos.getSelectedRows().length == 1)
-        {
+      if(objeto == btRequisitarSelecionado) {
+        if(tblRecursos.getSelectedRows().length == 1) {
           Vector itensRequisicaoInterna = new Vector()
             int linha = tblRecursos.getSelectedRow()
             try
@@ -125,8 +116,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
                 DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao,this.pedidos[0],itensRequisicaoInterna)
                 dlgDadosRequisicaoInterna.setVisible(true)
             }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -137,11 +127,9 @@ class DlgRecursosPedido extends JDialog implements ActionListener
         }
       }
 
-    if(objeto == btRequisitarTudo)
-    {
+    if(objeto == btRequisitarTudo) {
       Vector itensRequisicaoInterna = new Vector()
-        for(int i = 0;i < tblRecursos.getRowCount();i++)
-        {
+        for(int i = 0;i < tblRecursos.getRowCount();i++) {
           try
           {
             itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(Integer.parseInt((String)tblRecursos.getValueAt(i,0)),
@@ -149,8 +137,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
                   Float.parseFloat((String)tblRecursos.getValueAt(i,3))))
 
           }
-          catch(Exception e)
-          {
+          catch(Exception e) {
             JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -159,14 +146,12 @@ class DlgRecursosPedido extends JDialog implements ActionListener
         dlgDadosRequisicaoInterna.setVisible(true)
     }
 
-    if(objeto == btImprimir)
-    {
+    if(objeto == btImprimir) {
       RelRecursosPedido relRecursosPedido = new RelRecursosPedido(aplicacao,pedidos)
         relRecursosPedido.imprimir()
     }
 
-    if(objeto == btFechar)
-    {
+    if(objeto == btFechar) {
       this.setVisible(false)
     }
   }

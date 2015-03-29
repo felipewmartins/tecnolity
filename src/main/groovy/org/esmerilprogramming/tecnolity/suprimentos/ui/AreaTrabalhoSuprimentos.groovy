@@ -8,25 +8,23 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
 
- class AreaTrabalhoSuprimentos extends ModeloAreaTrabalho
+class AreaTrabalhoSuprimentos extends ModeloAreaTrabalho
 {
-     final int IDENTIFICADOR = 6
-    
+  final int IDENTIFICADOR = 6
+
     private JPanel pnlCabecalho, pnlInformacoes
     private InformacoesSuprimento tbpInformacoes
     private Aplicacao aplicacao
-    
-     AreaTrabalhoSuprimentos(Aplicacao aplicacao)
-    {        
-        this.aplicacao = aplicacao
-        switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao()))
-        {
-            case Permissao.SEM_ACESSO:
-                JOptionPane.showMessageDialog(this,"Acesso Negado.","Segurança",JOptionPane.WARNING_MESSAGE)
-                break
-            default:
-                this.setLayout(new BorderLayout())
-                
+
+    AreaTrabalhoSuprimentos(Aplicacao aplicacao) {
+      this.aplicacao = aplicacao
+        switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao())) {
+          case Permissao.SEM_ACESSO:
+            JOptionPane.showMessageDialog(this,"Acesso Negado.","Segurança",JOptionPane.WARNING_MESSAGE)
+              break
+          default:
+              this.setLayout(new BorderLayout())
+
                 pnlCabecalho = new JPanel(new BorderLayout(5,5))
                 pnlCabecalho.setBorder(new EmptyBorder(3,3,3,3))
                 pnlCabecalho.setBackground(Color.white)

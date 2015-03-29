@@ -36,8 +36,7 @@ class RequisicaoInterna
 
     RequisicaoInterna() {}
 
-  RequisicaoInterna(int codigo)
-  {
+  RequisicaoInterna(int codigo) {
     this.definirCodigo(codigo)
   }
 
@@ -76,8 +75,7 @@ class RequisicaoInterna
       this.definirStatus(status)
   }
 
-  void definirCodigo(int codigo)
-  {
+  void definirCodigo(int codigo) {
     this.codigo = codigo
   }
 
@@ -92,18 +90,15 @@ class RequisicaoInterna
     }
   }
 
-  void definirDataEmissao(String dataEmissao)
-  {
+  void definirDataEmissao(String dataEmissao) {
     this.dataEmissao = dataEmissao
   }
 
   void definirDataLimiteEntrega(String dataLimiteEntrega) throws Exception
   {
     String erro = ""
-      if(!dataLimiteEntrega.equals(""))
-      {
-        if(Calendario.validarData(dataLimiteEntrega,"/"))
-        {
+      if(!dataLimiteEntrega.equals("")) {
+        if(Calendario.validarData(dataLimiteEntrega,"/")) {
           this.dataLimiteEntrega = dataLimiteEntrega
         }
         else
@@ -112,8 +107,7 @@ class RequisicaoInterna
       else
         erro = "Data de Limite de Entrega não informada."
 
-          if(!erro.equals(""))
-          {
+          if(!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -126,8 +120,7 @@ class RequisicaoInterna
         erro = "A Data não foi informada."
       else if(!Calendario.validarData(data,"/"))
         erro = "Data inválida."
-          if(!erro.equals(""))
-          {
+          if(!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -157,8 +150,7 @@ class RequisicaoInterna
     }
   }
 
-  void definirPedidoCliente(Pedido pedidoCliente)
-  {
+  void definirPedidoCliente(Pedido pedidoCliente) {
     this.pedidoCliente = pedidoCliente
   }
 
@@ -195,18 +187,15 @@ class RequisicaoInterna
     }
   }
 
-  int obterCodigo()
-  {
+  int obterCodigo() {
     return this.codigo
   }
 
-  String obterTipoSolicitacao()
-  {
+  String obterTipoSolicitacao() {
     return this.tipoSolicitacao
   }
 
-  String obterTipoSolicitacaoLiteral()
-  {
+  String obterTipoSolicitacaoLiteral() {
     String tipo
       if(tipoSolicitacao.equals(REQUISICAO_CONSUMO))
         return "Consumo"
@@ -220,33 +209,27 @@ class RequisicaoInterna
         return "Devolução Externa"
   }
 
-  String obterDataEmissao()
-  {
+  String obterDataEmissao() {
     return this.dataEmissao
   }
 
-  String obterDataLimiteEntrega()
-  {
+  String obterDataLimiteEntrega() {
     return this.dataLimiteEntrega
   }
 
-  String obterData()
-  {
+  String obterData() {
     return this.data
   }
 
-  Departamento obterDepartamento()
-  {
+  Departamento obterDepartamento() {
     return this.departamento
   }
 
-  Colaborador obterSolicitante()
-  {
+  Colaborador obterSolicitante() {
     return this.solicitante
   }
 
-  Pedido obterPedidoCliente()
-  {
+  Pedido obterPedidoCliente() {
     return this.pedidoCliente
   }
 
@@ -257,31 +240,26 @@ class RequisicaoInterna
       "from pedido_cliente p, pedido_requisicao_interna pri " +
       "where p.codigo = pri.pedido and pri.requisicao_interna = " + this.codigo
       ResultSet rsPedidosRequisicao = conexao.executarConsulta(query)
-      while(rsPedidosRequisicao.next())
-      {
+      while(rsPedidosRequisicao.next()) {
         pedidosRequisicao.addElement(new Pedido(rsPedidosRequisicao.getInt("codigo"), rsPedidosRequisicao.getString("ordem_compra")))
       }
     rsPedidosRequisicao.close()
       return pedidosRequisicao
   }
 
-  String obterJustificativa()
-  {
+  String obterJustificativa() {
     return this.justificativa
   }
 
-  Colaborador obterResponsavelAutorizacao()
-  {
+  Colaborador obterResponsavelAutorizacao() {
     return this.responsavelAutorizacao
   }
 
-  String obterStatus()
-  {
+  String obterStatus() {
     return this.status
   }
 
-  String obterStatusLiteral()
-  {
+  String obterStatusLiteral() {
     if(this.status.equals(RequisicaoInterna.STATUS_EMITIDO))
       return "Emitido"
     else if(this.status.equals(RequisicaoInterna.STATUS_CANCELADO))
@@ -292,8 +270,7 @@ class RequisicaoInterna
       return "Pendente"
   }
 
-  Vector obterItensRequisicaoInterna()
-  {
+  Vector obterItensRequisicaoInterna() {
     return itensRequisicaoInterna
   }
 
@@ -304,8 +281,7 @@ class RequisicaoInterna
       "from requisicao_interna ri, departamento d, usuario u " +
       "where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.codigo = " + this.codigo
       dadosRequisicaoInterna = conexao.executarConsulta(query)
-      if(dadosRequisicaoInterna.next())
-      {
+      if(dadosRequisicaoInterna.next()) {
         this.definirTipoSolicitacao(dadosRequisicaoInterna.getString("tipo_solicitacao"))
           this.definirDataLimiteEntrega(dadosRequisicaoInterna.getString("datahora_limite_entrega"))
           this.definirData(dadosRequisicaoInterna.getString("datahora"))
@@ -335,8 +311,7 @@ class RequisicaoInterna
       requisicoesInternas.addElement("Selecione...")
       String query = "select ri.codigo,ri.datahora, ri.datahora_limite_entrega, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, pc.ordem_compra, ri.justificativa, ri.status from requisicao_interna ri, departamento d, usuario u, pedido_cliente pc where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.tipo_solicitacao = '"+ tipoSolicitacao +"' and (ri.status = '"+ STATUS_EMITIDO +"' or ri.status = '"+ STATUS_PENDENTE +"') and ri.pedido_cliente *= pc.codigo order by datahora_limite_entrega desc"
       dadosRequisicaoInterna = conexao.executarConsulta(query)
-      while(dadosRequisicaoInterna.next())
-      {
+      while(dadosRequisicaoInterna.next()) {
         requisicoesInternas.addElement(new RequisicaoInterna(dadosRequisicaoInterna.getInt("codigo"),
               Calendario.ajustarFormatoDataBanco(dadosRequisicaoInterna.getString("datahora")),
               Calendario.ajustarFormatoDataBanco(dadosRequisicaoInterna.getString("datahora_limite_entrega")),
@@ -361,8 +336,7 @@ class RequisicaoInterna
       "(iri.status = '"+ STATUS_EMITIDO +"' or iri.status = '"+ STATUS_PENDENTE +"') and " +
       "iri.requisicao_interna = " + this.obterCodigo()
       rsItensRequisicaoInterna = conexao.executarConsulta(query)
-      while(rsItensRequisicaoInterna.next())
-      {
+      while(rsItensRequisicaoInterna.next()) {
         itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(rsItensRequisicaoInterna.getInt("codigo_item"),rsItensRequisicaoInterna.getString("descricao_item")),
               this,
               rsItensRequisicaoInterna.getFloat("quantidade"),
@@ -386,8 +360,7 @@ class RequisicaoInterna
       "iri.requisicao_interna = " + this.obterCodigo()
 
       rsItensRequisicaoInterna = conexao.executarConsulta(query)
-      while(rsItensRequisicaoInterna.next())
-      {
+      while(rsItensRequisicaoInterna.next()) {
         itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(rsItensRequisicaoInterna.getInt("codigo_item"),rsItensRequisicaoInterna.getString("descricao_item")),
               this,
               rsItensRequisicaoInterna.getFloat("quantidade"),
@@ -412,8 +385,7 @@ class RequisicaoInterna
               query += "'"+ this.justificativa +"','"+ STATUS_EMITIDO +"') "
 
               Conexao conexao = new Conexao('T')
-              if (conexao.abrirConexao())
-              {
+              if (conexao.abrirConexao()) {
                 conexao.executarAtualizacao(query)
                   ResultSet codigoRequisicao = conexao.executarConsulta("select max(codigo) as codigo from requisicao_interna where solicitante = '"+ this.solicitante.obterMatricula() +"'")
                   if (codigoRequisicao.next())
@@ -429,21 +401,17 @@ class RequisicaoInterna
 
   void associarItens(Vector itensRequisicaoInterna, Vector pedidos) throws Exception
   {
-    if(itensRequisicaoInterna != null)
-    {
+    if(itensRequisicaoInterna != null) {
       this.itensRequisicaoInterna = itensRequisicaoInterna
         int numItens = this.itensRequisicaoInterna.size()
         Conexao conexao = new Conexao('T')
         String query = ""
         ItemRequisicaoInterna irAtual = null
-        if(numItens > 0 && conexao.abrirConexao())
-        {
-          for(int i = 0;i < itensRequisicaoInterna.size();i++)
-          {
+        if(numItens > 0 && conexao.abrirConexao()) {
+          for(int i = 0;i < itensRequisicaoInterna.size();i++) {
             irAtual = (ItemRequisicaoInterna)this.itensRequisicaoInterna.get(i)
               ((ItemRequisicaoInterna)itensRequisicaoInterna.get(i)).registrarItemRequisicaoInterna()
-              for(int j = 0;j < pedidos.size();j++)
-              {
+              for(int j = 0;j < pedidos.size();j++) {
                 query = "insert into pedido_requisicao_interna (pedido,item,requisicao_interna) values ("+ ((Pedido)pedidos.get(j)).obterCodigo() +","+ irAtual.obterItem().obterCodigo() +","+ this.obterCodigo() +")"
                   conexao.executarAtualizacao(query)
               }
@@ -457,8 +425,7 @@ class RequisicaoInterna
   {
     String queryCancelarRequisicaoInterna = "update requisicao_interna set status = 'CL' where codigo = "+ this.codigo +" "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao())
-      {
+      if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(queryCancelarRequisicaoInterna)
           conexao.fecharConexao()
       }
@@ -473,8 +440,7 @@ class RequisicaoInterna
   {
     String queryCancelarRequisicaoInterna = "update requisicao_interna set status = '"+ status +"' where codigo = "+ this.codigo +" "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao())
-      {
+      if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(queryCancelarRequisicaoInterna)
           conexao.fecharConexao()
       }
@@ -485,8 +451,7 @@ class RequisicaoInterna
       }
   }
 
-  void adicionarItem(Item item)
-  {
+  void adicionarItem(Item item) {
     this.itensRequisicaoInterna.addElement(item)
   }
 
@@ -502,11 +467,9 @@ class RequisicaoInterna
       this.status = status
 
       // Se o status for CONFIRMADO informações adicionais são inseridas na requisição interna.
-      if(this.status.equals(STATUS_CONFIRMADO))
-      {
+      if(this.status.equals(STATUS_CONFIRMADO)) {
         Calendario calendario = new Calendario()
-          if(conexao.abrirConexao())
-          {
+          if(conexao.abrirConexao()) {
             String query = "update requisicao_interna set data_entrega = '"+ calendario.dataHoje("MM/dd/yyyy HH:mm:ss") +"', status = '"+ STATUS_CONFIRMADO +"' where codigo = " + this.obterCodigo()
               conexao.executarAtualizacao(query)
               conexao.fecharConexao()
@@ -519,8 +482,7 @@ class RequisicaoInterna
       }
       else
       {
-        if(conexao.abrirConexao())
-        {
+        if(conexao.abrirConexao()) {
           String query = "update requisicao_interna set status = '"+ this.status +"' where codigo = " + this.obterCodigo()
             conexao.executarAtualizacao(query)
             conexao.fecharConexao()
@@ -534,8 +496,7 @@ class RequisicaoInterna
     conexao = null
   }
 
-  String toString()
-  {
+  String toString() {
     return "" + this.codigo + " - " + this.departamento.obterNomeDepartamento()
   }
 }
