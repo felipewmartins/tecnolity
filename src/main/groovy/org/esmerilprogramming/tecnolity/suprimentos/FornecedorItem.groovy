@@ -2,7 +2,7 @@ package org.esmerilprogramming.tecnolity.suprimentos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-public class FornecedorItem
+ class FornecedorItem
 {
   private Fornecedor fornecedor
   private Item item
@@ -12,26 +12,26 @@ public class FornecedorItem
   private String moeda
   private String referenciaFornecedor
 
-  public FornecedorItem(Fornecedor fornecedor, Item item, float valorItem) throws Exception
+   FornecedorItem(Fornecedor fornecedor, Item item, float valorItem) throws Exception
   {
     this.definirValorItem(valorItem)
     this.definirFornecedor(fornecedor)
     this.definirItem(item)
   }
 
-  public FornecedorItem(Fornecedor fornecedor, String referenciaFornecedor) throws Exception
+   FornecedorItem(Fornecedor fornecedor, String referenciaFornecedor) throws Exception
   {
     this.definirFornecedor(fornecedor)
     this.definirReferenciaFornecedor(referenciaFornecedor)
   }
 
-  public FornecedorItem(float valorItem, String referenciaFornecedor) throws Exception
+   FornecedorItem(float valorItem, String referenciaFornecedor) throws Exception
   {
     definirValorItem(valorItem)
     definirReferenciaFornecedor(referenciaFornecedor)
   }
 
-  public FornecedorItem(Fornecedor fornecedor, Item item, String dataAtualizacaoValor,
+   FornecedorItem(Fornecedor fornecedor, Item item, String dataAtualizacaoValor,
       Unidade unidade, float valorItem, String moeda, String referenciaFornecedor) throws Exception
   {
     this.definirFornecedor(fornecedor)
@@ -43,42 +43,42 @@ public class FornecedorItem
     definirReferenciaFornecedor(referenciaFornecedor)
   }
 
-  public Fornecedor obterFornecedor()
+   Fornecedor obterFornecedor()
   {
     return this.fornecedor
   }
 
-  public Item obterItem()
+   Item obterItem()
   {
     return this.item
   }
 
-  public String obterDataAtualizacaoValor()
+   String obterDataAtualizacaoValor()
   {
     return this.dataAtualizacaoValor
   }
 
-  public Unidade obterUnidade()
+   Unidade obterUnidade()
   {
     return this.unidade
   }
 
-  public float obterValorItem()
+   float obterValorItem()
   {
     return this.valorItem
   }
 
-  public String obterMoeda()
+   String obterMoeda()
   {
     return this.moeda
   }
 
-  public String obterReferenciaFornecedor()
+   String obterReferenciaFornecedor()
   {
     return this.referenciaFornecedor
   }
 
-  public void definirItem(Item item) throws Exception
+   void definirItem(Item item) throws Exception
   {
     if(item != null)
       this.item = item
@@ -89,7 +89,7 @@ public class FornecedorItem
     }
   }
 
-  public void definirFornecedor(Fornecedor fornecedor) throws Exception
+   void definirFornecedor(Fornecedor fornecedor) throws Exception
   {
     if(fornecedor != null)
       this.fornecedor = fornecedor
@@ -100,7 +100,7 @@ public class FornecedorItem
     }
   }
 
-  public void definirDataAtualizacaoValor(String data) throws Exception
+   void definirDataAtualizacaoValor(String data) throws Exception
   {
     String erro = ""
     if(data.equals(""))
@@ -118,7 +118,7 @@ public class FornecedorItem
     }
   }
 
-  public void definirUnidade(Unidade unidade) throws Exception
+   void definirUnidade(Unidade unidade) throws Exception
   {
     if(unidade != null)
       this.unidade = unidade
@@ -129,7 +129,7 @@ public class FornecedorItem
     }
   }
 
-  public void definirValorItem(float valorItem) throws Exception
+   void definirValorItem(float valorItem) throws Exception
   {
     if(!Float.isNaN(valorItem) && valorItem >= 0.0f)
       this.valorItem = valorItem
@@ -141,7 +141,7 @@ public class FornecedorItem
     this.valorItem = valorItem
   }
 
-  public void definirMoeda(String moeda)
+   void definirMoeda(String moeda)
   {
     if(moeda.equals(""))
       this.moeda = 'R$'
@@ -149,12 +149,12 @@ public class FornecedorItem
       this.moeda = moeda
   }
 
-  public void definirReferenciaFornecedor(String referenciaFornecedor)
+   void definirReferenciaFornecedor(String referenciaFornecedor)
   {
     this.referenciaFornecedor = referenciaFornecedor
   }
 
-  public void alterarValorItem() throws Exception
+   void alterarValorItem() throws Exception
   {
     String query = "update fornecedor_item set valor_item = "+ this.valorItem +" where fornecedor = "+ this.fornecedor.obterCodigo() +" and item = " + this.item.obterCodigo()
     Conexao conexao = new Conexao('T')

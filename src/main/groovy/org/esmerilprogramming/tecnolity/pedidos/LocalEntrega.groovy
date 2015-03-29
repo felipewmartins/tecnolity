@@ -5,7 +5,7 @@ import java.sql.*
 import org.esmerilprogramming.tecnolity.administracao.Estado
 import org.esmerilprogramming.tecnolity.util.Conexao
 
-public class LocalEntrega 
+ class LocalEntrega 
 {
     private long codigo
     private Cliente cliente
@@ -21,12 +21,12 @@ public class LocalEntrega
     private boolean novoLocalEntrega // Quando um novo local de entrega for informado para inclusão.
     private boolean invalido // Quando o local de entrega for selecionado para exclusão.
 
-    public LocalEntrega() 
+     LocalEntrega() 
     {
         setNovoLocalEntrega(true)
     }
     
-    public LocalEntrega(long codigo,Cliente cliente, String descricaoLocal) throws Exception
+     LocalEntrega(long codigo,Cliente cliente, String descricaoLocal) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirCliente(cliente)
@@ -34,7 +34,7 @@ public class LocalEntrega
         this.setNovoLocalEntrega(false)
     }
     
-    public LocalEntrega(Cliente cliente, String descricaoLocal, String logradouro, String complemento,
+     LocalEntrega(Cliente cliente, String descricaoLocal, String logradouro, String complemento,
                         String bairro, String cidade, Estado estado, String cep, String telefone,
                         String responsavelRecebimento) throws Exception
     {
@@ -51,7 +51,7 @@ public class LocalEntrega
         setNovoLocalEntrega(true)
     }
     
-    public LocalEntrega(Cliente cliente, long codigo, String descricaoLocal, String logradouro, String complemento,
+     LocalEntrega(Cliente cliente, long codigo, String descricaoLocal, String logradouro, String complemento,
                         String bairro, String cidade, Estado estado, String cep, String telefone,
                         String responsavelRecebimento) throws Exception
     {
@@ -69,62 +69,62 @@ public class LocalEntrega
         setNovoLocalEntrega(false)
     }
     
-    public long obterCodigo()
+     long obterCodigo()
     {
         return this.codigo
     }
     
-    public String obterDescricaoLocal()
+     String obterDescricaoLocal()
     {
         return this.descricaoLocal
     }
     
-    public Cliente obterCliente()
+     Cliente obterCliente()
     {
         return this.cliente
     }
     
-    public String obterLogradouro()
+     String obterLogradouro()
     {
         return this.logradouro
     }
     
-    public String obterComplemento()
+     String obterComplemento()
     {
         return this.complemento
     }
     
-    public String obterBairro()
+     String obterBairro()
     {
         return this.bairro
     }
     
-    public String obterCidade()
+     String obterCidade()
     {
         return this.cidade
     }
     
-    public Estado obterEstado()
+     Estado obterEstado()
     {
         return this.estado
     }
     
-    public String obterCep()
+     String obterCep()
     {
         return this.cep
     }
     
-    public String obterTelefone()
+     String obterTelefone()
     {
         return this.telefone
     }
     
-    public String obterResponsavelRecebimento()
+     String obterResponsavelRecebimento()
     {
         return this.responsavelRecebimento
     }
     
-    public void definirCodigo(long codigo) throws Exception
+     void definirCodigo(long codigo) throws Exception
     {
         if(codigo <= 0)
         {
@@ -135,7 +135,7 @@ public class LocalEntrega
         setNovoLocalEntrega(false)
     }
     
-    public void definirCliente(Cliente cliente) throws Exception
+     void definirCliente(Cliente cliente) throws Exception
     {
         if(cliente == null)
         {
@@ -145,7 +145,7 @@ public class LocalEntrega
         this.cliente = cliente
     }
     
-    public void definirDescricaoLocal(String descricaoLocal) throws Exception
+     void definirDescricaoLocal(String descricaoLocal) throws Exception
     {
         if(descricaoLocal.equals("") || descricaoLocal == null)
         {
@@ -155,7 +155,7 @@ public class LocalEntrega
         this.descricaoLocal = descricaoLocal
     }
     
-    public void definirLogradouro(String logradouro) throws Exception
+     void definirLogradouro(String logradouro) throws Exception
     {
         if(!logradouro.equals(""))
         {
@@ -168,17 +168,17 @@ public class LocalEntrega
         }
     }
     
-    public void definirComplemento(String complemento)
+     void definirComplemento(String complemento)
     {
         this.complemento = complemento
     }
     
-    public void definirBairro(String bairro)
+     void definirBairro(String bairro)
     {
         this.bairro = bairro
     }
     
-    public void definirCidade(String cidade) throws Exception
+     void definirCidade(String cidade) throws Exception
     {
         if(!cidade.equals(""))
         {
@@ -191,7 +191,7 @@ public class LocalEntrega
         }
     }
     
-    public void definirEstado(Estado estado) throws Exception
+     void definirEstado(Estado estado) throws Exception
     {
         if(estado != null)
         {
@@ -205,22 +205,22 @@ public class LocalEntrega
         }
     }
     
-    public void definirCep(String cep)
+     void definirCep(String cep)
     {
         this.cep = cep
     }
     
-    public void definirTelefone(String telefone)
+     void definirTelefone(String telefone)
     {
         this.telefone = telefone
     }
     
-    public void definirResponsavelRecebimento(String responsavelRecebimento)
+     void definirResponsavelRecebimento(String responsavelRecebimento)
     {
         this.responsavelRecebimento = responsavelRecebimento
     }
     
-    public void addLocalEntrega(Conexao conexao) throws Exception
+     void addLocalEntrega(Conexao conexao) throws Exception
     {
         String query = ""
         if(isNovoLocalEntrega() && !isInvalido())
@@ -236,7 +236,7 @@ public class LocalEntrega
         }
     }
     
-    public void deleteLocalEntrega(Conexao conexao) throws Exception
+     void deleteLocalEntrega(Conexao conexao) throws Exception
     {
     	ResultSet rsLocalEntrega = conexao.executarConsulta("select * from pedido_cliente where local_entrega = " + this.codigo)
         if(rsLocalEntrega.next())
@@ -249,27 +249,27 @@ public class LocalEntrega
         rsLocalEntrega.close()
     }
     
-    public String toString()
+     String toString()
     {
         return this.descricaoLocal
     }
 
-    public boolean isNovoLocalEntrega()
+     boolean isNovoLocalEntrega()
     {
         return novoLocalEntrega
     }
 
-    public void setNovoLocalEntrega(boolean b)
+     void setNovoLocalEntrega(boolean b)
     {
         novoLocalEntrega = b
     }
 
-    public boolean isInvalido()
+     boolean isInvalido()
     {
         return invalido
     }
 
-    public void setInvalido(boolean b)
+     void setInvalido(boolean b)
     {
         invalido = b
     }

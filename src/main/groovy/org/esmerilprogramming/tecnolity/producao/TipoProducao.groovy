@@ -21,48 +21,48 @@ import org.esmerilprogramming.tecnolity.util.*
    * Última Versão: 1.0 <br>
 */
 
-public class TipoProducao
+ class TipoProducao
 {
     private int codigo
     private String tipoProducao
     
-    public TipoProducao(int codigo, String tipoProducao)
+     TipoProducao(int codigo, String tipoProducao)
     {
         this.codigo = codigo
         this.tipoProducao = tipoProducao
     }
 
-    public TipoProducao(int codigo)
+     TipoProducao(int codigo)
     {
         this.codigo = codigo
     }
     
-    public TipoProducao()
+     TipoProducao()
     {
         
     }
 	
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
 
-    public String obterTipoProducao()
+     String obterTipoProducao()
     {
         return this.tipoProducao	
     }
     
-    public void definirCodigo(int codigo)
+     void definirCodigo(int codigo)
     {
         this.codigo = codigo
     }
 
-    public void definirTipoProducao(String tipoProducao)
+     void definirTipoProducao(String tipoProducao)
     {
         this.tipoProducao = tipoProducao
     }
     
-    public Vector carregarTiposProducao(Conexao conexao) throws Exception
+     Vector carregarTiposProducao(Conexao conexao) throws Exception
     {
         ResultSet dadosTipoProducao
         Vector tiposProducao = new Vector()
@@ -84,7 +84,7 @@ public class TipoProducao
         return tiposProducao
     }
     
-    public int obterUltimoIdentificador(Conexao conexao) throws Exception
+     int obterUltimoIdentificador(Conexao conexao) throws Exception
     {
         ResultSet dadosTipoProducao
         try
@@ -103,7 +103,7 @@ public class TipoProducao
         return 1
     }
     
-    public void cadastrarTipoProducao()
+     void cadastrarTipoProducao()
     {
         String query = "insert into tipo_producao (codigo,tipo_producao) values ("+ this.codigo +",'"+ this.tipoProducao +"')"
 	Conexao conexao = new Conexao('T')

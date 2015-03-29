@@ -26,9 +26,9 @@ import org.esmerilprogramming.tecnolity.administracao.ui.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.suprimentos.*
 
-public class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListener
+ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListener
 {
-    public final int IDENTIFICADOR = 16
+     final int IDENTIFICADOR = 16
     
     private Aplicacao aplicacao
     private char modo // I = inhserir, A = alterar, V = visualizar
@@ -49,7 +49,7 @@ public class DlgDadosFornecedor extends JDialog implements ActionListener, Focus
     					txtFax, txtEmail, txtWebSite	
     private JComboBox   cbxEstado, cbxPais
     
-    public DlgDadosFornecedor(Aplicacao aplicacao, char modo)
+     DlgDadosFornecedor(Aplicacao aplicacao, char modo)
     {
         super(aplicacao,true)
         fornecedor = new Fornecedor()
@@ -70,7 +70,7 @@ public class DlgDadosFornecedor extends JDialog implements ActionListener, Focus
         montarInterface()
     }
     
-    public DlgDadosFornecedor(Aplicacao aplicacao, char modo, int codigoFornecedor)
+     DlgDadosFornecedor(Aplicacao aplicacao, char modo, int codigoFornecedor)
     {
         super(aplicacao,true)
         try
@@ -296,7 +296,7 @@ public class DlgDadosFornecedor extends JDialog implements ActionListener, Focus
         painel.add(c)
     }
     
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
         
@@ -459,10 +459,10 @@ public class DlgDadosFornecedor extends JDialog implements ActionListener, Focus
         }
     }
     
-    public void focusLost(java.awt.event.FocusEvent focusEvent) {
+     void focusLost(java.awt.event.FocusEvent focusEvent) {
     }
     
-    public void focusGained(java.awt.event.FocusEvent e) 
+     void focusGained(java.awt.event.FocusEvent e) 
     {
         Component componente = e.getComponent()
         

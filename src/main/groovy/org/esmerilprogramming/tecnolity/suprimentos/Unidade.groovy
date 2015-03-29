@@ -19,38 +19,38 @@ package org.esmerilprogramming.tecnolity.suprimentos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-public class Unidade
+ class Unidade
 {
 	private int codigo
 	private String nomeUnidade
 	
-	public Unidade(int codigo, String nomeUnidade)
+	 Unidade(int codigo, String nomeUnidade)
 	{
 		this.codigo = codigo
 		this.nomeUnidade = nomeUnidade
 	}	
 	
-	public Unidade(int codigo)
+	 Unidade(int codigo)
 	{
 		this.codigo = codigo
 	}
 	
-	public Unidade()
+	 Unidade()
 	{
 		
 	}
 	
-	public int obterCodigo()
+	 int obterCodigo()
 	{
 		return codigo
 	}
 	
-	public String obterNomeUnidade()
+	 String obterNomeUnidade()
 	{
 		return this.nomeUnidade
 	}
 	
-	public boolean cadastrarUnidade(String nomeUnidade)
+	 boolean cadastrarUnidade(String nomeUnidade)
 	{
 		String query = "insert into unidade (unidade) values ('"+ nomeUnidade +"')"
 		Conexao conexao = new Conexao('T')

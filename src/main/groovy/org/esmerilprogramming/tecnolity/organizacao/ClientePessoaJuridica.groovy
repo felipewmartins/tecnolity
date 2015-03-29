@@ -17,7 +17,7 @@ class ClientePessoaJuridica extends PessoaJuridica {
   boolean exportacao
   String setorAtividade
   String missao
-  String publicoAlvo
+  String oAlvo
   String atividadeFim
 
 }

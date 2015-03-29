@@ -3,9 +3,9 @@ package org.esmerilprogramming.tecnolity.util
 import java.util.regex.*
 
 class Pessoa {
-  public static final char PESSOAFISICA = 'F'
-  public static final char PESSOAJURIDICA = 'J'
-  public static final char OUTRO = 'O'
+   static final char PESSOAFISICA = 'F'
+   static final char PESSOAJURIDICA = 'J'
+   static final char OUTRO = 'O'
   char tipoCliente
   String nome
   String logradouro

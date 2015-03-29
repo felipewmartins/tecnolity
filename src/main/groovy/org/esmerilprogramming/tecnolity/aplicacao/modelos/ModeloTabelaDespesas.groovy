@@ -2,14 +2,14 @@ package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-public class ModeloTabelaDespesas extends ModeloTabela
+ class ModeloTabelaDespesas extends ModeloTabela
 {
-    public ModeloTabelaDespesas () 
+     ModeloTabelaDespesas () 
     {
         super()
     }
     
-    public Object getValueAt(int linha, int coluna)
+     Object getValueAt(int linha, int coluna)
     {
         if(coluna == 3)
             return Numero.inverterSeparador(((String[])cache.elementAt(linha))[coluna])

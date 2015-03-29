@@ -19,30 +19,30 @@ import java.sql.*
    * Última Versão: 1.0 <br>
 */
 
-public class Cambio 
+ class Cambio 
 {
     private float dolar
     private String data
     
-    public Cambio() {}
+     Cambio() {}
     
-    public Cambio(float dolar, String data)
+     Cambio(float dolar, String data)
     {
         this.dolar = dolar
         this.data = data
     }
     
-    public float obterDolar()
+     float obterDolar()
     {
         return this.dolar
     }
     
-    public String obterData()
+     String obterData()
     {
         return this.data
     }
     
-    public void definirDolar(float dolar) throws Exception
+     void definirDolar(float dolar) throws Exception
     {
         if(dolar == 0.0f)
         {
@@ -53,12 +53,12 @@ public class Cambio
             this.dolar = dolar
      }
      
-     public void definirData(String data)
+      void definirData(String data)
      {
          this.data = data
      }
      
-     public void carregarCambio(Conexao conexao) throws Exception
+      void carregarCambio(Conexao conexao) throws Exception
      {
         ResultSet dadosCambio        
         dadosCambio = conexao.executarConsulta("select distinct valor_dolar from cotacao_dolar where data = (select max(data) from cotacao_dolar)")
@@ -69,7 +69,7 @@ public class Cambio
         dadosCambio.close()
       }
      
-     public void cadastrarCambio() throws Exception
+      void cadastrarCambio() throws Exception
      {
         Conexao conexao = new Conexao('T')        
         if(conexao.abrirConexao())

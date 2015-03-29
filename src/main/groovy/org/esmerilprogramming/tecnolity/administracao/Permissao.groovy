@@ -21,68 +21,68 @@ import org.esmerilprogramming.tecnolity.util.*
 * Última Versão: 1.0  <br>
 */
 
-public class Permissao 
+ class Permissao 
 {
-    public static final char LEITURA = 'L'
-    public static final char ESCRITA = 'E'
-    public static final char SEM_ACESSO = 'S'
+     static final char LEITURA = 'L'
+     static final char ESCRITA = 'E'
+     static final char SEM_ACESSO = 'S'
     
     private Interface tela
     private Colaborador colaborador
     private char tipoAcesso
     
-    public Permissao(Interface tela, Colaborador colaborador, char tipoAcesso) 
+     Permissao(Interface tela, Colaborador colaborador, char tipoAcesso) 
     {
         definirTela(tela)
         definirColaborador(colaborador)
         definirTipoAcesso(tipoAcesso)
     }
     
-    public Permissao(Interface tela, char tipoAcesso) 
+     Permissao(Interface tela, char tipoAcesso) 
     {
         definirTela(tela)
         definirTipoAcesso(tipoAcesso)
     }
     
-    public Permissao(Interface tela, Colaborador colaborador) 
+     Permissao(Interface tela, Colaborador colaborador) 
     {
         definirTela(tela)
         definirColaborador(colaborador)
     }
     
-    public Interface obterTela()
+     Interface obterTela()
     {
         return this.tela
     }
     
-    public Colaborador obterColaborador()
+     Colaborador obterColaborador()
     {
         return this.colaborador
     }
     
-    public char obterTipoAcesso()
+     char obterTipoAcesso()
     {
         return this.tipoAcesso
     }
 
-    public void definirTela(Interface tela)
+     void definirTela(Interface tela)
     {
         this.tela = tela
     }
     
-    public void definirColaborador(Colaborador colaborador)
+     void definirColaborador(Colaborador colaborador)
     {
         this.colaborador = colaborador
     }
     
-    public void definirTipoAcesso(char tipoAcesso)
+     void definirTipoAcesso(char tipoAcesso)
     {
         this.tipoAcesso = tipoAcesso
     }
     
     /** Verifica de o usuário tem permissão de leitura ou escrita na tela. Caso
         contrário um caractere de SEM_ACESSO é retornado. */
-    public char verificarPermissaoAcesso(Conexao conexao)
+     char verificarPermissaoAcesso(Conexao conexao)
     {
         try
         {

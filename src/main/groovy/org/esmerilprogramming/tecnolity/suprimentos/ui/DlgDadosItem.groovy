@@ -13,7 +13,7 @@ import org.esmerilprogramming.tecnolity.util.*
 
 class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 {
-  public final int IDENTIFICADOR = 17
+   final int IDENTIFICADOR = 17
 
   private Aplicacao aplicacao
   private Vector unidades,categorias,fornecedores, departamentos, departamentosSelecionados, fornecedoresItem
@@ -52,7 +52,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
   private int indiceCard
   private JButton btAnterior, btProximo, btConfirmar, btCancelar
 
-  public DlgDadosItem(Aplicacao aplicacao)
+   DlgDadosItem(Aplicacao aplicacao)
   {
     super(aplicacao,true)	    
     item = new Item()
@@ -64,7 +64,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     montarInterface()
   }
 
-  public DlgDadosItem(Aplicacao aplicacao, int codigo)
+   DlgDadosItem(Aplicacao aplicacao, int codigo)
   {	
     super(aplicacao,true)
     try
@@ -563,7 +563,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     txtReferenciaFornecedor.setText("")
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+   void actionPerformed(java.awt.event.ActionEvent actionEvent) 
   {
     Object objeto = actionEvent.getSource()
 
@@ -879,7 +879,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     }
   }
 
-  public void focusGained(FocusEvent e)
+   void focusGained(FocusEvent e)
   {
     Component componente = e.getComponent()
     if(componente == txtTemperatura)
@@ -903,5 +903,5 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     if(componente == txtDataAtualizacao)
       txtDataAtualizacao.selectAll()
   }
-  public void focusLost(FocusEvent e){}
+   void focusLost(FocusEvent e){}
 }

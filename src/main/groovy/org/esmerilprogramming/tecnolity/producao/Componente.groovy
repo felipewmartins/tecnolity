@@ -20,43 +20,43 @@ import org.esmerilprogramming.tecnolity.util.*
    * Última Versão: 1.0 <br>
 */
 
-public class Componente
+ class Componente
 {
     private int codigo
     private String nomeComponente
     
-    public Componente(int codigo, String nomeComponente)
+     Componente(int codigo, String nomeComponente)
     {
         this.codigo = codigo
         this.nomeComponente = nomeComponente
     }
 
-    public Componente(int codigo)
+     Componente(int codigo)
     {
         this.codigo = codigo
     }
     
-    public Componente(String nomeComponente)
+     Componente(String nomeComponente)
     {
         this.nomeComponente = nomeComponente
     }
     
-    public Componente()
+     Componente()
     {
         
     }
 	
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
 
-    public String obterNomeComponente()
+     String obterNomeComponente()
     {
         return this.nomeComponente	
     }
     
-    public String obterNomeComponente(Conexao conexao) throws Exception
+     String obterNomeComponente(Conexao conexao) throws Exception
     {
         ResultSet dadosComponente = conexao.executarConsulta("select componente from componente where codigo = " + this.codigo)
         if(dadosComponente.next())
@@ -67,17 +67,17 @@ public class Componente
         return this.nomeComponente
     }
     
-    public void definirCodigo(int codigo)
+     void definirCodigo(int codigo)
     {
         this.codigo = codigo
     }
 
-    public void definirNomeComponente(String nomeComponente)
+     void definirNomeComponente(String nomeComponente)
     {
         this.nomeComponente = nomeComponente
     }
     
-    public Vector carregarComponentes(Conexao conexao) throws Exception
+     Vector carregarComponentes(Conexao conexao) throws Exception
     {
         ResultSet dadosComponente
         Vector componentes = new Vector()
@@ -92,7 +92,7 @@ public class Componente
         return componentes
     }
     
-    public void cadastrarComponente()
+     void cadastrarComponente()
     {
         String query = "insert into componente (componente) values ('"+ this.nomeComponente +"')"
 	Conexao conexao = new Conexao('T')

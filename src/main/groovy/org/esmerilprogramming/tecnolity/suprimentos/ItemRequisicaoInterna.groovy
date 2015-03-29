@@ -3,12 +3,12 @@ package org.esmerilprogramming.tecnolity.suprimentos
 import org.esmerilprogramming.tecnolity.administracao.Departamento
 import org.esmerilprogramming.tecnolity.util.*
 
-public class ItemRequisicaoInterna
+ class ItemRequisicaoInterna
 {
-    public static final String STATUS_EMITIDO    = "EM"
-    public static final String STATUS_CANCELADO  = "CL"
-    public static final String STATUS_CONFIRMADO = "CO"
-    public static final String STATUS_PENDENTE   = "PD"
+     static final String STATUS_EMITIDO    = "EM"
+     static final String STATUS_CANCELADO  = "CL"
+     static final String STATUS_CONFIRMADO = "CO"
+     static final String STATUS_PENDENTE   = "PD"
     
     private Item item
     private RequisicaoInterna requisicaoInterna
@@ -16,7 +16,7 @@ public class ItemRequisicaoInterna
     private float quantidadeItem
     private Departamento destino
     
-    public ItemRequisicaoInterna(Item item, RequisicaoInterna requisicaoInterna, float quantidadeItem,Departamento destino, String status) throws Exception
+     ItemRequisicaoInterna(Item item, RequisicaoInterna requisicaoInterna, float quantidadeItem,Departamento destino, String status) throws Exception
     {
         this.definirItem(item)
         this.definirRequisicaoInterna(requisicaoInterna)
@@ -26,23 +26,23 @@ public class ItemRequisicaoInterna
     }
         
     /** Construtor para carregar itens de uma requisicao interna. */
-    public ItemRequisicaoInterna(RequisicaoInterna requisicaoInterna)
+     ItemRequisicaoInterna(RequisicaoInterna requisicaoInterna)
     {
         this.definirRequisicaoInterna(requisicaoInterna)
     }
     
-    public ItemRequisicaoInterna(Item item, float quantidade) throws Exception
+     ItemRequisicaoInterna(Item item, float quantidade) throws Exception
     {
         this.definirItem(item)
         this.definirQuantidadeItem(quantidade)
     }
     
-    public void definirItem(Item item)
+     void definirItem(Item item)
     {
         this.item = item
     }
     
-    public void definirQuantidadeItem(float quantidadeItem) throws Exception
+     void definirQuantidadeItem(float quantidadeItem) throws Exception
     {
         if(quantidadeItem >= 0.0f)
         {
@@ -54,42 +54,42 @@ public class ItemRequisicaoInterna
         }
     }
         
-    public void definirRequisicaoInterna(RequisicaoInterna requisicaoInterna)
+     void definirRequisicaoInterna(RequisicaoInterna requisicaoInterna)
     {
         this.requisicaoInterna = requisicaoInterna
     }
     
-    public void definirStatus(String status)
+     void definirStatus(String status)
     {
         this.status = status
     }
     
-    public void definirDestino(Departamento destino)
+     void definirDestino(Departamento destino)
     {
         this.destino = destino
     }
         
-    public Item obterItem()
+     Item obterItem()
     {
         return this.item
     }
     
-    public float obterQuantidadeItem()
+     float obterQuantidadeItem()
     {
         return this.quantidadeItem
     }
         
-    public RequisicaoInterna obterRequisicaoInterna()
+     RequisicaoInterna obterRequisicaoInterna()
     {
         return this.requisicaoInterna
     }
     
-    public String obterStatus()
+     String obterStatus()
     {
         return this.status
     }
     
-    public String obterStatusLiteral()
+     String obterStatusLiteral()
     {
         if(status.equals(STATUS_CANCELADO))
             return "Cancelado"
@@ -101,12 +101,12 @@ public class ItemRequisicaoInterna
             return "Pendente"
     }
     
-    public Departamento obterDestino()
+     Departamento obterDestino()
     {
         return this.destino
     }
     
-    public void registrarItemRequisicaoInterna() throws Exception
+     void registrarItemRequisicaoInterna() throws Exception
     {
         Conexao conexao = new Conexao('T')
         if(conexao.abrirConexao())
@@ -124,7 +124,7 @@ public class ItemRequisicaoInterna
 	 * @param status Status para o qual se quer alterar o item da requisição interna.
 	 * @throws Exception Em caso de erros com a transação com o banco de dados.
 	 */
-    public void atualizarItemRequisicaoInterna() throws Exception
+     void atualizarItemRequisicaoInterna() throws Exception
     {
         Conexao conexao = new Conexao('T')
         if(conexao.abrirConexao())

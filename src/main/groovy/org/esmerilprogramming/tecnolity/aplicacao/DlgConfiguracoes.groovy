@@ -8,7 +8,7 @@ import javax.swing.border.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
-public class DlgConfiguracoes extends JDialog implements ActionListener
+ class DlgConfiguracoes extends JDialog implements ActionListener
 {
   private Aplicacao aplicacao
   private Container conteudo
@@ -28,7 +28,7 @@ public class DlgConfiguracoes extends JDialog implements ActionListener
   private JButton btConfirmar, btCancelar
   private Configuracao configuracao
 
-  public DlgConfiguracoes(Aplicacao aplicacao,Configuracao configuracao)
+   DlgConfiguracoes(Aplicacao aplicacao,Configuracao configuracao)
   {
     super(aplicacao,true)
 
@@ -227,7 +227,7 @@ public class DlgConfiguracoes extends JDialog implements ActionListener
     painel.add(c)
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 

@@ -5,7 +5,7 @@ import java.util.Vector
 import javax.swing.table.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class ModeloTabela extends AbstractTableModel
+ class ModeloTabela extends AbstractTableModel
 {
   protected Vector cache
   private int numeroColunas
@@ -13,37 +13,37 @@ public class ModeloTabela extends AbstractTableModel
   private ResultSet resultado
   private Conexao conexao
 
-  public ModeloTabela()
+   ModeloTabela()
   {
     cache = new Vector()
   }
 
-  public String getColumnName(int i)
+   String getColumnName(int i)
   {
     return cabecalhos[i]
   }
 
-  public int getColumnCount()
+   int getColumnCount()
   {
     return numeroColunas
   }
 
-  public int getRowCount()
+   int getRowCount()
   {
     return cache.size()
   }
 
-  public Object getValueAt(int linha, int coluna)
+   Object getValueAt(int linha, int coluna)
   {
     return ((String[])cache.elementAt(linha))[coluna]
   }
 
-  public void definirConexao(Conexao conexao)
+   void definirConexao(Conexao conexao)
   {
     this.conexao = conexao
   }
 
-  public void definirConsulta(String consulta)
+   void definirConsulta(String consulta)
   {
     cache = new Vector()
     try

@@ -22,9 +22,9 @@ import org.esmerilprogramming.tecnolity.producao.*
    * Última Versão: 1.0 <br>
 */
 
-public class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListener
+ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListener
 {
-    public final int IDENTIFICADOR = 29
+     final int IDENTIFICADOR = 29
     
     private Aplicacao aplicacao
     private char modo // I = inhserir, A = alterar, V = visualizar
@@ -38,7 +38,7 @@ public class DlgDadosTipoProducao extends JDialog implements ActionListener, Foc
     private GridBagLayout gridbag
     private GridBagConstraints gbc
     
-    public DlgDadosTipoProducao(Aplicacao aplicacao, char modo)
+     DlgDadosTipoProducao(Aplicacao aplicacao, char modo)
     {
         super(aplicacao,true)
         
@@ -120,7 +120,7 @@ public class DlgDadosTipoProducao extends JDialog implements ActionListener, Foc
         painel.add(c)
     }
     
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
                 
@@ -138,12 +138,12 @@ public class DlgDadosTipoProducao extends JDialog implements ActionListener, Foc
         }
     }
     
-    public void focusLost(java.awt.event.FocusEvent focusEvent) 
+     void focusLost(java.awt.event.FocusEvent focusEvent) 
     {
         
     }
     
-    public void focusGained(java.awt.event.FocusEvent e) 
+     void focusGained(java.awt.event.FocusEvent e) 
     {
         
     }

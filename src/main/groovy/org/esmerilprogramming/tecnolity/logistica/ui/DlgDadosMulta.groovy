@@ -9,9 +9,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.logistica.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
+ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
 {
-  public final int IDENTIFICADOR = 22
+   final int IDENTIFICADOR = 22
 
   private Aplicacao aplicacao
   private Vector veiculos, motoristas
@@ -32,7 +32,7 @@ public class DlgDadosMulta extends JDialog implements ActionListener, FocusListe
   private JPanel pnlAreaDados
   private JButton btConfirmar, btCancelar
 
-  public DlgDadosMulta(Aplicacao aplicacao)
+   DlgDadosMulta(Aplicacao aplicacao)
   {
     super(aplicacao,true)
     this.setTitle("Multa")
@@ -42,7 +42,7 @@ public class DlgDadosMulta extends JDialog implements ActionListener, FocusListe
     montarInterface()
   }
 
-  public DlgDadosMulta(Aplicacao aplicacao, Multa multa)
+   DlgDadosMulta(Aplicacao aplicacao, Multa multa)
   {
     super(aplicacao,true)
     this.multa = multa
@@ -55,7 +55,7 @@ public class DlgDadosMulta extends JDialog implements ActionListener, FocusListe
     montarInterface()
   }
 
-  public void montarInterface()
+   void montarInterface()
   {
     conteudo = this.getContentPane()
 
@@ -206,7 +206,7 @@ public class DlgDadosMulta extends JDialog implements ActionListener, FocusListe
     }
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -290,9 +290,9 @@ public class DlgDadosMulta extends JDialog implements ActionListener, FocusListe
     }
   }
 
-  public void focusLost(java.awt.event.FocusEvent focusEvent) {}
+   void focusLost(java.awt.event.FocusEvent focusEvent) {}
 
-  public void focusGained(FocusEvent e)
+   void focusGained(FocusEvent e)
   {
     Component componente = e.getComponent()
 

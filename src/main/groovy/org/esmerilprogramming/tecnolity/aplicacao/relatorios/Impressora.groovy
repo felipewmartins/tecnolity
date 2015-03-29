@@ -7,19 +7,19 @@ import java.util.*
  * @author hildeberto
  */
 
-public class Impressora
+ class Impressora
 {
     private PrinterJob trabalhoImpressao
     private Book livro
     private int numeroPaginas
    
-	public Impressora()
+	 Impressora()
 	{
         trabalhoImpressao = PrinterJob.getPrinterJob()
         livro = new Book()
 	}
     
-    public void addPaginas(Vector paginas, PageFormat formato)
+     void addPaginas(Vector paginas, PageFormat formato)
     {
         numeroPaginas = paginas.size()
         for(int i = 0i < numeroPaginasi++)
@@ -28,7 +28,7 @@ public class Impressora
         }
     }
         
-    public void imprimir() throws PrinterException
+     void imprimir() throws PrinterException
     {
         if(numeroPaginas > 0)
         {

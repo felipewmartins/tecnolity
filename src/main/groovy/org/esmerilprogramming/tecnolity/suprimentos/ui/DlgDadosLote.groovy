@@ -25,9 +25,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
 
-public class DlgDadosLote extends JDialog implements ActionListener, FocusListener
+ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
 { 
-    public final int IDENTIFICADOR = 18
+     final int IDENTIFICADOR = 18
     
     private Aplicacao aplicacao
     private GridBagLayout gridbag
@@ -46,7 +46,7 @@ public class DlgDadosLote extends JDialog implements ActionListener, FocusListen
     private JPanel pnlAreaDados
     private JButton btConfirmar, btCancelar
 		
-    public DlgDadosLote(Aplicacao aplicacao,ItemRequisicao itemRequisicao, Movimentacao movimentacaoItem) 
+     DlgDadosLote(Aplicacao aplicacao,ItemRequisicao itemRequisicao, Movimentacao movimentacaoItem) 
     {
         super(aplicacao,true)
         try
@@ -68,7 +68,7 @@ public class DlgDadosLote extends JDialog implements ActionListener, FocusListen
         montarInterface()
     }
        
-    public void montarInterface()
+     void montarInterface()
     { 
         conteudo = this.getContentPane()
 	    
@@ -167,7 +167,7 @@ public class DlgDadosLote extends JDialog implements ActionListener, FocusListen
     }   
         
   
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
     	Object objeto = actionEvent.getSource()
         
@@ -219,7 +219,7 @@ public class DlgDadosLote extends JDialog implements ActionListener, FocusListen
         }
     }
     
-    public void focusLost(java.awt.event.FocusEvent focusEvent) {}
+     void focusLost(java.awt.event.FocusEvent focusEvent) {}
     
-    public void focusGained(FocusEvent e) {}    
+     void focusGained(FocusEvent e) {}    
 }

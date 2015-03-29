@@ -10,7 +10,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.modelos.*
 import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
 import org.esmerilprogramming.tecnolity.pedidos.*
 
-public class InformacoesPedido extends JTabbedPane implements ActionListener
+ class InformacoesPedido extends JTabbedPane implements ActionListener
 {
   private Aplicacao aplicacao
   private JPanel pnlPedido
@@ -29,7 +29,7 @@ public class InformacoesPedido extends JTabbedPane implements ActionListener
   private ModeloTabelaPedido modeloTabelaPedido
   private JPanel pnlCliente
 
-  public InformacoesPedido(Aplicacao aplicacao)
+   InformacoesPedido(Aplicacao aplicacao)
   {
     this.setBorder(new LineBorder(Color.black))
     this.aplicacao = aplicacao
@@ -143,7 +143,7 @@ public class InformacoesPedido extends JTabbedPane implements ActionListener
     tblCliente.updateUI()
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 

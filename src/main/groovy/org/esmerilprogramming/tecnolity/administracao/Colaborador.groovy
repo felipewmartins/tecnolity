@@ -18,7 +18,7 @@ class Colaborador extends PessoaFisica
   private boolean colaboradorExiste = true
   private String ddd
 
-  public Colaborador(String matricula, String senha, char sexo, String nomeCompleto,
+   Colaborador(String matricula, String senha, char sexo, String nomeCompleto,
       String identidade, String orgaoEmissorIdentidade, String cpf,
       Departamento departamento, String logradouro, String complemento,
       String bairro, String cidade, Estado estado, String cep, String ddd,
@@ -35,21 +35,21 @@ class Colaborador extends PessoaFisica
     this.senhaAlterada(senhaAlterada)
   }
 
-  public Colaborador(String matricula, String senha) throws Exception
+   Colaborador(String matricula, String senha) throws Exception
   {
     this.definirMatricula(matricula)
     this.definirSenha(senha)
   }
 
-  public Colaborador(String matricula, String nomeCompleto, String senha) throws Exception
+   Colaborador(String matricula, String nomeCompleto, String senha) throws Exception
   {
     this.definirMatricula(matricula)
     super.setNome(nomeCompleto)
-    if(!senha.equals("public"))
+    if(!senha.equals(""))
       this.definirSenha(senha)
   }
 
-  public Colaborador(String matricula, Conexao conexao) throws Exception
+   Colaborador(String matricula, Conexao conexao) throws Exception
   {
     this.definirMatricula(matricula)
 
@@ -95,49 +95,49 @@ class Colaborador extends PessoaFisica
     }
   }
 
-  public Colaborador(String matricula) throws Exception
+   Colaborador(String matricula) throws Exception
   {
     this.definirMatricula(matricula)
   }
 
-  public Colaborador(){}
+   Colaborador(){}
 
-  public String obterMatricula()
+   String obterMatricula()
   {
     return this.matricula
   }
 
-  public String obterSenha()
+   String obterSenha()
   {
     return this.senha
   }
 
-  public char obterSexo()
+   char obterSexo()
   {
     return super.getSexo()
   }
 
-  public Departamento obterDepartamento()
+   Departamento obterDepartamento()
   {
     return this.departamento
   }
 
-  public Estado obterEstado()
+   Estado obterEstado()
   {
     return (Estado)this.getEstado()
   }
 
-  public String obterRamal()
+   String obterRamal()
   {
     return this.ramal
   }
 
-  public boolean senhaAlterada()
+   boolean senhaAlterada()
   {
     return this.senhaAlterada
   }
 
-  public void definirMatricula(String matricula) throws Exception
+   void definirMatricula(String matricula) throws Exception
   {
     if(matricula != null)
     {
@@ -151,7 +151,7 @@ class Colaborador extends PessoaFisica
     }
   }
 
-  public void definirSenha(String senha) throws Exception
+   void definirSenha(String senha) throws Exception
   {
     if(senha.equals(""))
     {
@@ -162,7 +162,7 @@ class Colaborador extends PessoaFisica
       this.senha = senha
   }
 
-  public void definirSexo(char sexo) throws Exception
+   void definirSexo(char sexo) throws Exception
   {
     if(sexo == '\u0000')
     {
@@ -173,57 +173,57 @@ class Colaborador extends PessoaFisica
       super.setSexo(sexo)
   }
 
-  public void definirIdentidade(String identidade)
+   void definirIdentidade(String identidade)
   {
     super.setIdentidade(identidade)
   }
 
-  public void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade)
+   void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade)
   {
     super.setOrgaoIdentidade(orgaoEmissorIdentidade)
   }
 
-  public void definirCpf(String cpf) throws Exception
+   void definirCpf(String cpf) throws Exception
   {
     super.setCPF(cpf)
   }
 
-  public void definirDepartamento(Departamento departamento)
+   void definirDepartamento(Departamento departamento)
   {
     this.departamento = departamento
   }
 
-  public void definirLogradouro(String logradouro) throws Exception
+   void definirLogradouro(String logradouro) throws Exception
   {
     super.setLogradouro(logradouro)
   }
 
-  public void definirComplemento(String complemento)
+   void definirComplemento(String complemento)
   {
     super.setComplemento(complemento)
   }
 
-  public void definirBairro(String bairro)
+   void definirBairro(String bairro)
   {
     super.setBairro(bairro)
   }
 
-  public void definirCidade(String cidade) throws Exception
+   void definirCidade(String cidade) throws Exception
   {
     super.setCidade(cidade)
   }
 
-  public void definirCep(String cep)
+   void definirCep(String cep)
   {
     super.setCEP(cep)
   }
 
-  public void setDDD(String ddd)
+   void setDDD(String ddd)
   {
     this.ddd = ddd
   }
 
-  public void definirTelefone(String telefone) throws Exception
+   void definirTelefone(String telefone) throws Exception
   {
     if(telefone == null)
       return
@@ -238,14 +238,14 @@ class Colaborador extends PessoaFisica
     }
   }
 
-  public void definirRamal(String ramal)
+   void definirRamal(String ramal)
   {
     if(ramal == null)
       return
     this.ramal = ramal.trim()
   }
 
-  public void definirCelular(String celular) throws Exception
+   void definirCelular(String celular) throws Exception
   {
     if(celular == null)
       return
@@ -260,17 +260,17 @@ class Colaborador extends PessoaFisica
     }
   }
 
-  public void definirEmail(String email) throws Exception
+   void definirEmail(String email) throws Exception
   {
     super.setEmail(email)
   }
 
-  public void senhaAlterada(boolean senhaAlterada)
+   void senhaAlterada(boolean senhaAlterada)
   {
     this.senhaAlterada = senhaAlterada
   }
 
-  public boolean autenticarColaborador() throws Exception
+   boolean autenticarColaborador() throws Exception
   {
     ResultSet colaborador
     String query
@@ -325,12 +325,12 @@ class Colaborador extends PessoaFisica
 
   /** Retorna true se houver algum colaborador cadastrado no Banco de dados.
     Retorna false se não houver nenhum colaborador cadastrado.*/
-  public boolean colaboradorExiste()
+   boolean colaboradorExiste()
   {
     return this.colaboradorExiste
   }
 
-  public void cadastrarColaborador()
+   void cadastrarColaborador()
   {
     Conexao conexao = new Conexao('T')
     boolean existente = false
@@ -358,7 +358,7 @@ class Colaborador extends PessoaFisica
     }
   }
 
-  public void alterarColaborador()
+   void alterarColaborador()
   {
     Conexao conexao = new Conexao('T')
     conexao.abrirConexao()
@@ -367,7 +367,7 @@ class Colaborador extends PessoaFisica
     conexao.fecharConexao()
   }
 
-  public void excluirColaborador()
+   void excluirColaborador()
   {
     Conexao conexao = new Conexao('T')
     conexao.abrirConexao()
@@ -376,12 +376,12 @@ class Colaborador extends PessoaFisica
     conexao.fecharConexao()
   }
 
-  public boolean colaboradorTemPermissao(Interface inter)
+   boolean colaboradorTemPermissao(Interface inter)
   {
     return true
   }
 
-  public Vector carregarColaboradores(Conexao conexao) throws Exception
+   Vector carregarColaboradores(Conexao conexao) throws Exception
   {
     ResultSet dadosColaborador
     Vector colaboradores = new Vector()
@@ -402,7 +402,7 @@ class Colaborador extends PessoaFisica
     return colaboradores
   }
 
-  public void carregarPermissoes(Conexao conexao) throws SQLException
+   void carregarPermissoes(Conexao conexao) throws SQLException
   {
     Interface tela
     Permissao permissao
@@ -417,12 +417,12 @@ class Colaborador extends PessoaFisica
     dadosPermissoes.close()
   }
 
-  public Vector obterPermissoes()
+   Vector obterPermissoes()
   {
     return this.permissoes
   }
 
-  public void definirPermissoes(Vector permissoes) throws SQLException, Exception
+   void definirPermissoes(Vector permissoes) throws SQLException, Exception
   {
     Conexao conexao = new Conexao('T')
     conexao.abrirConexao()
@@ -436,7 +436,7 @@ class Colaborador extends PessoaFisica
     conexao.fecharConexao()
   }
 
-  public char verificarPermissao(Interface tela)
+   char verificarPermissao(Interface tela)
   {
     char tipoPermissao = '\u0000'
     for(int i=0i < permissoes.size()i++)
@@ -449,12 +449,12 @@ class Colaborador extends PessoaFisica
     return tipoPermissao
   }
 
-  public String getDDD()
+   String getDDD()
   {
     return ddd
   }
 
-  public String toString()
+   String toString()
   {
     return super.getNome()
   }

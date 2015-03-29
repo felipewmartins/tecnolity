@@ -6,40 +6,40 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.aplicacao.*
 
-public class Categoria
+ class Categoria
 {
 	private int codigo
 	private String nomeCategoria
 	
-	public Categoria(int codigo, String nomeCategoria)
+	 Categoria(int codigo, String nomeCategoria)
 	{
             this.codigo = codigo
             this.nomeCategoria = nomeCategoria
 	}
         
-        public Categoria(String nomeCategoria)
+         Categoria(String nomeCategoria)
 	{
             this.nomeCategoria = nomeCategoria
 	}
 	
-	public Categoria(int codigo)
+	 Categoria(int codigo)
 	{
             this.codigo = codigo
 	}
 	
-	public Categoria(){}
+	 Categoria(){}
 	
-	public int obterCodigo()
+	 int obterCodigo()
 	{
             return codigo
 	}
 	
-	public String obterNomeCategoria()
+	 String obterNomeCategoria()
 	{
             return this.nomeCategoria
 	}
 	
-	public boolean cadastrarCategoria(String nomeCategoria)
+	 boolean cadastrarCategoria(String nomeCategoria)
 	{
             String query = "insert into categoria_item (categoria) values ('"+ nomeCategoria +"')"
             Conexao conexao = new Conexao('T')
@@ -52,7 +52,7 @@ public class Categoria
             return false
 	}
     
-    public Vector carregarCategorias(JComboBox comboBox, Aplicacao aplicacao)
+     Vector carregarCategorias(JComboBox comboBox, Aplicacao aplicacao)
     {
         ResultSet dadosCategoria
         Vector categorias = new Vector()
@@ -80,7 +80,7 @@ public class Categoria
         return categorias
     }
     
-    public Vector carregarCategorias(Conexao conexao)
+     Vector carregarCategorias(Conexao conexao)
     {
         ResultSet dadosCategoria
         Vector categorias = new Vector()

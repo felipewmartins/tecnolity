@@ -8,7 +8,7 @@ import javax.swing.border.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.util.Configuracao
 
-public class DlgConfiguracaoImpressora extends JDialog implements ActionListener, FocusListener
+ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, FocusListener
 {
   private Aplicacao aplicacao
   private Container conteudo
@@ -20,7 +20,7 @@ public class DlgConfiguracaoImpressora extends JDialog implements ActionListener
   private PainelDesenho pnlAmostra
   private JButton btConfirmar, btCancelar
 
-  public DlgConfiguracaoImpressora(Aplicacao aplicacao)
+   DlgConfiguracaoImpressora(Aplicacao aplicacao)
   {
     super(aplicacao,true)
 
@@ -201,7 +201,7 @@ public class DlgConfiguracaoImpressora extends JDialog implements ActionListener
     pnlAmostra.repaint()
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -255,12 +255,12 @@ public class DlgConfiguracaoImpressora extends JDialog implements ActionListener
     }
   }
 
-  public void focusLost(FocusEvent evento)
+   void focusLost(FocusEvent evento)
   {
     desenharPapel()
   }
 
-  public void focusGained(FocusEvent evento)
+   void focusGained(FocusEvent evento)
   {
 
   }
@@ -270,7 +270,7 @@ class PainelDesenho extends JPanel
 {
   int altura, largura, margemEsquerda, margemDireita, margemSuperior, margemInferior, orientacao
 
-  public PainelDesenho(int largura,int altura,int margemEsquerda,int margemDireita,int margemSuperior,int margemInferior,int orientacao)
+   PainelDesenho(int largura,int altura,int margemEsquerda,int margemDireita,int margemSuperior,int margemInferior,int orientacao)
   {
     this.setLargura(largura)
     this.setAltura(altura)
@@ -281,7 +281,7 @@ class PainelDesenho extends JPanel
     this.setOrientacao(orientacao)
   }
 
-  public void paintComponent(Graphics g)
+   void paintComponent(Graphics g)
   {
     super.paintComponent(g)
     if(orientacao == 1)
@@ -306,37 +306,37 @@ class PainelDesenho extends JPanel
     }
   }
 
-  public void setAltura(int altura)
+   void setAltura(int altura)
   {
     this.altura = altura
   }
 
-  public void setLargura(int largura)
+   void setLargura(int largura)
   {
     this.largura = largura
   }
 
-  public void setMargemEsquerda(int margemEsquerda)
+   void setMargemEsquerda(int margemEsquerda)
   {
     this.margemEsquerda = margemEsquerda
   }
 
-  public void setMargemDireita(int margemDireita)
+   void setMargemDireita(int margemDireita)
   {
     this.margemDireita = margemDireita
   }
 
-  public void setMargemSuperior(int margemSuperior)
+   void setMargemSuperior(int margemSuperior)
   {
     this.margemSuperior = margemSuperior
   }
 
-  public void setMargemInferior(int margemInferior)
+   void setMargemInferior(int margemInferior)
   {
     this.margemInferior = margemInferior
   }
 
-  public void setOrientacao(int orientacao)
+   void setOrientacao(int orientacao)
   {
     this.orientacao = orientacao
   }

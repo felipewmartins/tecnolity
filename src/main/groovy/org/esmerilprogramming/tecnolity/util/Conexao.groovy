@@ -2,7 +2,7 @@ package org.esmerilprogramming.tecnolity.util
 
 import java.sql.*
 
-public class Conexao implements ConexaoDB {
+ class Conexao implements ConexaoDB {
   Connection conexao
   Statement expressao
   ResultSet resultado

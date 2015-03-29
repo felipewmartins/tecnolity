@@ -20,18 +20,18 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 import java.util.*
 
-public class FormaPagamento 
+ class FormaPagamento 
 {
     private String sigla
     private String siglaAntesAlteracao
     private String formaPagamento
     
-    public FormaPagamento() 
+     FormaPagamento() 
     {
     
     }
     
-    public FormaPagamento(String sigla, String formaPagamento)
+     FormaPagamento(String sigla, String formaPagamento)
     {
         try
         {
@@ -44,7 +44,7 @@ public class FormaPagamento
         }
     }
     
-    public FormaPagamento(String sigla)
+     FormaPagamento(String sigla)
     {
         try
         {
@@ -56,7 +56,7 @@ public class FormaPagamento
         }
     }
     
-    public FormaPagamento(String sigla, Conexao conexao)throws Exception
+     FormaPagamento(String sigla, Conexao conexao)throws Exception
     {
         try
         {
@@ -84,7 +84,7 @@ public class FormaPagamento
         }			
     }
     
-    public void definirSigla(String sigla) throws Exception
+     void definirSigla(String sigla) throws Exception
     {
         if(!sigla.equals("") && sigla.length() <= 2)           
             this.sigla = sigla
@@ -95,7 +95,7 @@ public class FormaPagamento
         } 
     }
     
-    public void definirSiglaAntesAlteracao(String siglaAntesAlteracao) throws Exception
+     void definirSiglaAntesAlteracao(String siglaAntesAlteracao) throws Exception
     {
         if(!siglaAntesAlteracao.equals("") && siglaAntesAlteracao.length() <= 2)           
             this.siglaAntesAlteracao = siglaAntesAlteracao
@@ -106,7 +106,7 @@ public class FormaPagamento
         } 
     }
     
-    public void definirFormaPagamento(String formaPagamento) throws Exception
+     void definirFormaPagamento(String formaPagamento) throws Exception
     {
         if(!formaPagamento.equals("") && formaPagamento.length() <= 50)           
             this.formaPagamento = formaPagamento
@@ -117,22 +117,22 @@ public class FormaPagamento
         } 
     }
     
-    public String obterSigla()
+     String obterSigla()
     {
         return this.sigla
     }
     
-    public String obterSiglaAntesAlteracao()
+     String obterSiglaAntesAlteracao()
     {
         return this.siglaAntesAlteracao
     }
     
-    public String obterFormaPagamento()
+     String obterFormaPagamento()
     {
         return this.formaPagamento
     }
     
-    public Vector carregarFormasPagamento(Conexao conexao) throws Exception
+     Vector carregarFormasPagamento(Conexao conexao) throws Exception
     {
     	ResultSet formasPagamento
         Vector formas = null
@@ -147,7 +147,7 @@ public class FormaPagamento
         return formas
     }
     
-    public void cadastrarFormaPagamento() throws Exception
+     void cadastrarFormaPagamento() throws Exception
     {
         String query = "insert into forma_pagamento (sigla,forma_pagamento) values "
         query = query + "('"+ this.sigla+ "', '"+ this.formaPagamento +"')"
@@ -164,7 +164,7 @@ public class FormaPagamento
         }
     }
     
-    public void alterarFormaPagamento() throws Exception
+     void alterarFormaPagamento() throws Exception
     {
         String query = "update forma_pagamento set sigla = '"+ this.sigla +"', forma_pagamento = '"+ this.formaPagamento +"' where sigla = '"+ this.siglaAntesAlteracao +"' "
         Conexao conexao = new Conexao('T')
@@ -180,7 +180,7 @@ public class FormaPagamento
         }
     }
     
-    public void excluirFormaPagamento() throws Exception
+     void excluirFormaPagamento() throws Exception
     {
         String query = "delete from forma_pagamento where sigla = '"+ this.sigla +"' "
         Conexao conexao = new Conexao('T')
@@ -196,7 +196,7 @@ public class FormaPagamento
         }
     }
     
-    public String toString()
+     String toString()
     {
         return this.formaPagamento
     }

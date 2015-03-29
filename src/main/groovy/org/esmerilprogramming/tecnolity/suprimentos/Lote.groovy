@@ -18,9 +18,9 @@ package org.esmerilprogramming.tecnolity.suprimentos
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
-public class Lote 
+ class Lote 
 {
-    public static final char LOTE_BASICO = 'B'
+     static final char LOTE_BASICO = 'B'
     
     private int numero
     private Item item
@@ -31,21 +31,21 @@ public class Lote
     private boolean reservado
     private String descricao
     
-    public Lote() {}
+     Lote() {}
     
-    public Lote(Item item) throws Exception
+     Lote(Item item) throws Exception
     {
         this.definirItem(item)
     }
     
-    public Lote(Item item, Movimentacao movimentacao, float quantidade) throws Exception
+     Lote(Item item, Movimentacao movimentacao, float quantidade) throws Exception
     {
         this.definirItem(item)
         this.definirMovimentacao(movimentacao)
         this.definirQuantidade(quantidade)
     }
     
-    public Lote(int numero, Item item, Movimentacao movimentacao, Categoria localizacao, String dataValidade, float quantidade, boolean reservado, String descricao) throws Exception
+     Lote(int numero, Item item, Movimentacao movimentacao, Categoria localizacao, String dataValidade, float quantidade, boolean reservado, String descricao) throws Exception
     {
         this.definirNumero(numero)
         this.definirItem(item)
@@ -57,7 +57,7 @@ public class Lote
         this.definirDescricao(descricao)
     }
     
-    public Lote(Item item, Movimentacao movimentacao, Categoria localizacao, String dataValidade, float quantidade, boolean reservado, String descricao) throws Exception
+     Lote(Item item, Movimentacao movimentacao, Categoria localizacao, String dataValidade, float quantidade, boolean reservado, String descricao) throws Exception
     {
         this.definirItem(item)
         this.definirMovimentacao(movimentacao)
@@ -68,27 +68,27 @@ public class Lote
         this.definirDescricao(descricao)
     }
     
-    public void definirNumero(int numero)
+     void definirNumero(int numero)
     {
         this.numero = numero
     }
     
-    public void definirItem(Item item)
+     void definirItem(Item item)
     {
         this.item = item
     }
     
-    public void definirMovimentacao(Movimentacao movimentacao)
+     void definirMovimentacao(Movimentacao movimentacao)
     {
         this.movimentacao = movimentacao
     }
     
-    public void definirLocalizacao(Categoria localizacao)
+     void definirLocalizacao(Categoria localizacao)
     {
         this.localizacao = localizacao
     }
     
-    public void definirDataValidade(String dataValidade) throws Exception
+     void definirDataValidade(String dataValidade) throws Exception
     {
         String erro = ""
         if(!dataValidade.equals(""))
@@ -106,32 +106,32 @@ public class Lote
             this.dataValidade = dataValidade
     }
     
-    public void definirQuantidade(float quantidade)
+     void definirQuantidade(float quantidade)
     {
         this.quantidade = quantidade
     }
     
-    public void definirDescricao(String descricao)
+     void definirDescricao(String descricao)
     {
         this.descricao = descricao
     }
     
-    public void definirReservado(boolean reservado)
+     void definirReservado(boolean reservado)
     {
         this.reservado = reservado
     }
     
-    public String obterLocalizacao()
+     String obterLocalizacao()
     {
         return this.localizacao.obterNomeCategoria()
     }
     
-    public String obterDataValidade()
+     String obterDataValidade()
     {
         return this.dataValidade
     }
     
-    public void cadastrarLote() throws Exception
+     void cadastrarLote() throws Exception
     {
         String query = "insert into lote (item, movimentacao_item, localizacao, data_validade, quantidade, reservado, descricao) values ("+ this.item.obterCodigo()
         
@@ -180,7 +180,7 @@ public class Lote
      * estoque.
 	 * @throws Exception
 	 */
-    public static void retirarItem(Movimentacao movimentacao, ItemRequisicaoInterna itemRequisicaoInterna) throws Exception
+     static void retirarItem(Movimentacao movimentacao, ItemRequisicaoInterna itemRequisicaoInterna) throws Exception
     {
         String erro = ""
         Conexao conexao = new Conexao('T')
@@ -266,7 +266,7 @@ public class Lote
     }
         
     /** Exclui os lotes que não mais serão usados por estarem vazios. */
-    public static void excluirLotesVazios() throws Exception
+     static void excluirLotesVazios() throws Exception
     {
     	Conexao conexao = new Conexao('T')
         if(conexao.abrirConexao())

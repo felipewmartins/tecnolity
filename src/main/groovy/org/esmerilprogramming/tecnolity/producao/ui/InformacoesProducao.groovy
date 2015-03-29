@@ -29,7 +29,7 @@ import org.esmerilprogramming.tecnolity.pedidos.*
 import org.esmerilprogramming.tecnolity.pedidos.ui.DlgRecursosPedido
 import org.esmerilprogramming.tecnolity.producao.*
 
-public class InformacoesProducao extends JTabbedPane implements ActionListener, MouseListener
+ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseListener
 {
   private Aplicacao aplicacao
 
@@ -59,7 +59,7 @@ public class InformacoesProducao extends JTabbedPane implements ActionListener, 
   private Vector produtos
   private ModeloTabelaMatriz modeloTabelaMatriz
 
-  public InformacoesProducao(Aplicacao aplicacao)
+   InformacoesProducao(Aplicacao aplicacao)
   {
     this.setBorder(new LineBorder(Color.black))
     this.aplicacao = aplicacao
@@ -337,7 +337,7 @@ public class InformacoesProducao extends JTabbedPane implements ActionListener, 
     tblMatriz.updateUI()
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -695,27 +695,27 @@ public class InformacoesProducao extends JTabbedPane implements ActionListener, 
     }
   }
 
-  public void mouseClicked(MouseEvent e)
+   void mouseClicked(MouseEvent e)
   {
 
   }
 
-  public void mouseEntered(MouseEvent e)
+   void mouseEntered(MouseEvent e)
   {
 
   }
 
-  public void mouseExited(MouseEvent e)
+   void mouseExited(MouseEvent e)
   {
 
   }
 
-  public void mousePressed(MouseEvent e)
+   void mousePressed(MouseEvent e)
   {
 
   }
 
-  public void mouseReleased(MouseEvent e)
+   void mouseReleased(MouseEvent e)
   {
     exibirHistoricoPedido()
   }   

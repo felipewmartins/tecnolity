@@ -26,22 +26,22 @@ class Produto {
   private char destino
   private Vector materiasPrimas
 
-  public Produto() {}
+   Produto() {}
 
-  public Produto(Conexao conexao,long codigo) throws Exception
+   Produto(Conexao conexao,long codigo) throws Exception
   {
     definirCodigo(codigo)
     this.carregarProduto(conexao)
   }
 
-  public Produto(long codigo, String referenciaCliente, String nomeModelo) throws Exception
+   Produto(long codigo, String referenciaCliente, String nomeModelo) throws Exception
   {
     this.definirCodigo(codigo)
     this.definirReferenciaCliente(referenciaCliente)
     this.definirNomeModelo(nomeModelo)
   }
 
-  public Produto(long codigo, String referenciaCliente, String nomeModelo, float valor, String moeda) throws Exception
+   Produto(long codigo, String referenciaCliente, String nomeModelo, float valor, String moeda) throws Exception
   {
     this.definirCodigo(codigo)
     this.definirReferenciaCliente(referenciaCliente)
@@ -50,7 +50,7 @@ class Produto {
     this.definirMoeda(moeda)
   }
 
-  public Produto(long codigo, String referenciaCliente, Componente componente, String nomeModelo,
+   Produto(long codigo, String referenciaCliente, Componente componente, String nomeModelo,
       float valor, String moeda, float custoFabricacao, Cliente cliente, TipoProducao tipoProducao,
       String especificacaoInserto, String acabamento, String lavagem, String pintura,
       char destino) throws Exception
@@ -71,7 +71,7 @@ class Produto {
     this.definirDestino(destino)
   }
 
-  public Produto(String referenciaCliente, Componente componente, String nomeModelo,
+   Produto(String referenciaCliente, Componente componente, String nomeModelo,
       float valor, String moeda, float custoFabricacao, Cliente cliente, TipoProducao tipoProducao,
       String especificacaoInserto, String acabamento, String lavagem, String pintura,
       char destino) throws Exception
@@ -91,22 +91,22 @@ class Produto {
     this.definirDestino(destino)
   }
 
-  public long obterCodigo()
+   long obterCodigo()
   {
     return this.codigo
   }
 
-  public String obterNomeModelo()
+   String obterNomeModelo()
   {
     return this.nomeModelo
   }
 
-  public float obterValor()
+   float obterValor()
   {
     return this.valor
   }
 
-  public String getValor(String formato)
+   String getValor(String formato)
   {
     DecimalFormat df
     if(!formato.equals(""))
@@ -120,67 +120,67 @@ class Produto {
     return df.format(this.valor)
   }
 
-  public String obterReferenciaCliente()
+   String obterReferenciaCliente()
   {
     return this.referenciaCliente
   }
 
-  public Componente obterComponente()
+   Componente obterComponente()
   {
     return this.componente
   }
 
-  public String obterMoeda()
+   String obterMoeda()
   {
     return this.moeda
   }
 
-  public float obterCustoFabricacao()
+   float obterCustoFabricacao()
   {
     return this.custoFabricacao
   }
 
-  public Cliente obterCliente()
+   Cliente obterCliente()
   {
     return this.cliente
   }
 
-  public TipoProducao obterTipoProducao()
+   TipoProducao obterTipoProducao()
   {
     return this.tipoProducao
   }
 
-  public String obterEspecificacaoInserto()
+   String obterEspecificacaoInserto()
   {
     return this.especificacaoInserto
   }
 
-  public String obterAcabamento()
+   String obterAcabamento()
   {
     return this.acabamento
   }
 
-  public String obterLavagem()
+   String obterLavagem()
   {
     return this.lavagem
   }
 
-  public String obterPintura()
+   String obterPintura()
   {
     return this.pintura
   }
 
-  public char obterDestino()
+   char obterDestino()
   {
     return this.destino
   }
 
-  public Vector obterMateriasPrimas()
+   Vector obterMateriasPrimas()
   {
     return this.materiasPrimas
   }
 
-  public void definirCodigo(long codigo) throws Exception
+   void definirCodigo(long codigo) throws Exception
   {
     if(codigo < 0)
     {
@@ -190,7 +190,7 @@ class Produto {
     this.codigo = codigo
   }
 
-  public void definirReferenciaCliente(String referencia) throws Exception
+   void definirReferenciaCliente(String referencia) throws Exception
   {
     if(referencia.equals("") || referencia == null)
     {
@@ -200,7 +200,7 @@ class Produto {
     this.referenciaCliente = referencia
   }
 
-  public void definirComponente(Componente componente) throws Exception
+   void definirComponente(Componente componente) throws Exception
   {
     if(componente == null)
     {
@@ -210,7 +210,7 @@ class Produto {
     this.componente = componente
   }
 
-  public void definirNomeModelo(String nomeModelo) throws Exception
+   void definirNomeModelo(String nomeModelo) throws Exception
   {
     if(nomeModelo.equals("") || nomeModelo == null)
     {
@@ -220,22 +220,22 @@ class Produto {
     this.nomeModelo = nomeModelo
   }
 
-  public void definirValor(float valor)
+   void definirValor(float valor)
   {
     this.valor = valor
   }
 
-  public void definirMoeda(String moeda)
+   void definirMoeda(String moeda)
   {
     this.moeda = moeda
   }
 
-  public void definirCustoFabricacao(float custoFabricacao)
+   void definirCustoFabricacao(float custoFabricacao)
   {
     this.custoFabricacao = custoFabricacao
   }
 
-  public void definirCliente(Cliente cliente) throws Exception
+   void definirCliente(Cliente cliente) throws Exception
   {
     if(cliente == null)
     {
@@ -245,7 +245,7 @@ class Produto {
     this.cliente = cliente
   }
 
-  public void definirTipoProducao(TipoProducao tipoProducao) throws Exception
+   void definirTipoProducao(TipoProducao tipoProducao) throws Exception
   {
     if(tipoProducao == null)
     {
@@ -255,7 +255,7 @@ class Produto {
     this.tipoProducao = tipoProducao
   }
 
-  public void definirEspecificacaoInserto(String especificacaoInserto)
+   void definirEspecificacaoInserto(String especificacaoInserto)
   {
     if(especificacaoInserto != null)
       this.especificacaoInserto = especificacaoInserto
@@ -263,7 +263,7 @@ class Produto {
       this.especificacaoInserto = ""
   }
 
-  public void definirAcabamento(String acabamento)
+   void definirAcabamento(String acabamento)
   {
     if(acabamento != null)
       this.acabamento = acabamento
@@ -271,7 +271,7 @@ class Produto {
       this.acabamento = ""
   }
 
-  public void definirLavagem(String lavagem)
+   void definirLavagem(String lavagem)
   {
     if(lavagem != null)
       this.lavagem = lavagem
@@ -279,7 +279,7 @@ class Produto {
       this.lavagem = ""
   }
 
-  public void definirPintura(String pintura)
+   void definirPintura(String pintura)
   {
     if(pintura != null)
       this.pintura = pintura
@@ -287,12 +287,12 @@ class Produto {
       this.pintura = ""
   }
 
-  public void definirDestino(char destino)
+   void definirDestino(char destino)
   {
     this.destino = destino
   }
 
-  public void cadastrarProduto() throws Exception
+   void cadastrarProduto() throws Exception
   {
     Conexao conexao = new Conexao('T')
     String query
@@ -316,7 +316,7 @@ class Produto {
     }
   }
 
-  public void alterarProduto() throws Exception
+   void alterarProduto() throws Exception
   {
     Conexao conexao = new Conexao('T')
     String query
@@ -330,7 +330,7 @@ class Produto {
     }
   }
 
-  public void excluirProduto(int codigoProduto) throws Exception
+   void excluirProduto(int codigoProduto) throws Exception
   {
     Conexao conexao = new Conexao('T')
     if(conexao.abrirConexao())
@@ -348,7 +348,7 @@ class Produto {
     }
   }
 
-  public void associarMateriasPrimas(Vector materiasPrimas) throws Exception
+   void associarMateriasPrimas(Vector materiasPrimas) throws Exception
   {
     Conexao conexao = new Conexao('T')
     String query
@@ -374,7 +374,7 @@ class Produto {
     }
   }
 
-  public static Vector carregarProdutos(Cliente cliente, Conexao conexao)
+   static Vector carregarProdutos(Cliente cliente, Conexao conexao)
   {
     ResultSet dadosProduto
     Vector produtos = new Vector()
@@ -397,7 +397,7 @@ class Produto {
     return produtos
   }
 
-  public Vector carregarProdutos(Conexao conexao)
+   Vector carregarProdutos(Conexao conexao)
   {
     ResultSet dadosProduto
     Vector produtos = new Vector()
@@ -417,7 +417,7 @@ class Produto {
     return produtos
   }
 
-  public void carregarProduto(Conexao conexao) throws Exception
+   void carregarProduto(Conexao conexao) throws Exception
   {
     String query = "select  m.codigo as codigo_modelo, m.referencia_cliente, c.codigo as codigo_componente, " +
       "c.componente, m.modelo, m.valor, m.custo_fabricacao, m.moeda, cl.codigo as codigo_cliente, " +
@@ -461,7 +461,7 @@ class Produto {
     dadosMateriaPrima.close()
   }
 
-  public Object[][] carregarMateriasPrimas(Conexao conexao, Object[][] dados) throws Exception
+   Object[][] carregarMateriasPrimas(Conexao conexao, Object[][] dados) throws Exception
   {
     MateriaPrima materiaPrima
     for(int i = 0i < materiasPrimas.size()i++)
@@ -474,7 +474,7 @@ class Produto {
     return dados
   }
 
-  public String getDataUltimaAlteracaoValor(Conexao conexao) throws Exception
+   String getDataUltimaAlteracaoValor(Conexao conexao) throws Exception
   {
     String dataUltimaAlteracao = ""
     if(conexao == null)

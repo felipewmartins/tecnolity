@@ -67,7 +67,7 @@ class BarraMenu extends JMenuBar implements ActionListener {
         this.add(mnPreferencias)
     }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+   void actionPerformed(java.awt.event.ActionEvent actionEvent) 
   {
     Object objeto = actionEvent.getSource()
       if(objeto == mnArqDesconectar)

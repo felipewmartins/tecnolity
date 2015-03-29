@@ -40,7 +40,7 @@ class CampoCEP extends JTextField implements KeyListener
     private String z
     private Vector formatar
 
-    public CampoCEP() {
+     CampoCEP() {
       this.numeros = ""
         this.w = ""
         this.n1 = ""

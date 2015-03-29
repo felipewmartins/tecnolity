@@ -6,13 +6,13 @@ import java.awt.print.*
 /**
  * @author hildeberto
  */
-public class Relatorio
+ class Relatorio
 {
     protected int numeroLinhas
     protected StringBuffer conteudo
     protected static String QUEBRA = "\n"
     
-    public Vector paginar(PageFormat formato)
+     Vector paginar(PageFormat formato)
     {
         Vector paginas = new Vector()
         String conteudoAImprimir = gerarRelatorio()
@@ -45,7 +45,7 @@ public class Relatorio
         return paginas
     }
     
-    public String gerarRelatorio()
+     String gerarRelatorio()
     {
         return "Relatório Vazio"
     }

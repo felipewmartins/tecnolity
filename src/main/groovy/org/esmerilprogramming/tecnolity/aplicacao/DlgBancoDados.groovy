@@ -24,9 +24,9 @@ import org.esmerilprogramming.tecnolity.aplicacao.modelos.*
 * Última Versão: 1.0 <br>
 */
 
-public class DlgBancoDados extends JDialog implements ActionListener
+ class DlgBancoDados extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 7
+     final int IDENTIFICADOR = 7
     
     private Aplicacao aplicacao
     private Container conteudo
@@ -40,7 +40,7 @@ public class DlgBancoDados extends JDialog implements ActionListener
     private JTable tblDados
     private ModeloTabelaVisualizacao modeloTabelaVisualizacao
 
-    public DlgBancoDados(Aplicacao aplicacao)
+     DlgBancoDados(Aplicacao aplicacao)
     {
         super(aplicacao,true)
 
@@ -129,7 +129,7 @@ public class DlgBancoDados extends JDialog implements ActionListener
         painel.add(c)
     }
 	
-    public void importarArquivoComandoSQL()
+     void importarArquivoComandoSQL()
     {
         StringBuffer conteudoArquivo = new StringBuffer()
         try
@@ -163,7 +163,7 @@ public class DlgBancoDados extends JDialog implements ActionListener
             return 'T'
     }
     
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
 	    

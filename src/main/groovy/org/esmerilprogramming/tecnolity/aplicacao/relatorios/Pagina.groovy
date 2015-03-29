@@ -6,19 +6,19 @@ import java.awt.print.*
 /**
  * @author hildeberto
  */
-public class Pagina implements Printable
+ class Pagina implements Printable
 {
     private String conteudo
     private int numeroLinhas
-    public static int ENTRELINHA = 12
+     static int ENTRELINHA = 12
     private int totalLinhasPagina
     
-	public Pagina(String conteudo)
+	 Pagina(String conteudo)
 	{
         this.conteudo = conteudo
 	}
     
-    public void desenharPagina(Graphics2D g2)
+     void desenharPagina(Graphics2D g2)
     {
         int posicaoFimLinha = 0
         String conteudoAImprimir = conteudo
@@ -40,7 +40,7 @@ public class Pagina implements Printable
         }
     }
 
-	public int print(Graphics g, PageFormat formato, int pagina) throws PrinterException
+	 int print(Graphics g, PageFormat formato, int pagina) throws PrinterException
 	{
         Graphics2D g2 = (Graphics2D)g
         g2.translate(formato.getImageableX(),formato.getImageableY())

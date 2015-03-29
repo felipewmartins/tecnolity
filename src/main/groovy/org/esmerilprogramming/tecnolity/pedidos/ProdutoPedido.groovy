@@ -19,7 +19,7 @@ package org.esmerilprogramming.tecnolity.pedidos
 import org.esmerilprogramming.tecnolity.producao.Matriz
 import org.esmerilprogramming.tecnolity.producao.Produto
 
-public class ProdutoPedido 
+ class ProdutoPedido 
 {
     private Pedido pedido
     private Produto produto
@@ -31,12 +31,12 @@ public class ProdutoPedido
     private String moeda
     private String resumo
     
-    public ProdutoPedido() 
+     ProdutoPedido() 
     {
     
     }
     
-    public ProdutoPedido(Pedido pedido, Produto produto, Matriz matriz, float quantidade, int transferenciaICMS,
+     ProdutoPedido(Pedido pedido, Produto produto, Matriz matriz, float quantidade, int transferenciaICMS,
                          String moeda, float valorNegociado, String observacao)
     {
         this.definirPedido(pedido)
@@ -49,7 +49,7 @@ public class ProdutoPedido
         this.definirObservacao(observacao)
     }
     
-    public ProdutoPedido(Pedido pedido, Produto produto, Matriz matriz, float quantidade, String observacao,
+     ProdutoPedido(Pedido pedido, Produto produto, Matriz matriz, float quantidade, String observacao,
                          int transferenciaICMS, float valorNegociado, String moeda, String resumo)
     {
         this.definirPedido(pedido)
@@ -63,87 +63,87 @@ public class ProdutoPedido
         this.definirResumo(resumo)
     }
     
-    public Pedido obterPedido()
+     Pedido obterPedido()
     {
         return this.pedido
     }
     
-    public Produto obterProduto()
+     Produto obterProduto()
     {
         return this.produto
     }
     
-    public Matriz obterMatriz()
+     Matriz obterMatriz()
     {
         return this.matriz
     }
     
-    public float obterQuantidade()
+     float obterQuantidade()
     {
         return this.quantidade
     }
     
-    public String obterObservacao()
+     String obterObservacao()
     {
         return this.observacao
     }
     
-    public int obterTransferenciaICMS()
+     int obterTransferenciaICMS()
     {
         return this.transferenciaICMS
     }
     
-    public float obterValorNegociado()
+     float obterValorNegociado()
     {
         return this.valorNegociado
     }
     
-    public String obterMoeda()
+     String obterMoeda()
     {
         return this.moeda
     }
     
-    public void definirPedido(Pedido pedido)
+     void definirPedido(Pedido pedido)
     {
         this.pedido = pedido
     }
     
-    public void definirProduto(Produto produto)
+     void definirProduto(Produto produto)
     {
         this.produto = produto
     }
     
-    public void definirMatriz(Matriz matriz)
+     void definirMatriz(Matriz matriz)
     {
         this.matriz = matriz
     }
         
-    public void definirQuantidade(float quantidade)
+     void definirQuantidade(float quantidade)
     {
         this.quantidade = quantidade
     }
     
-    public void definirObservacao(String observacao)
+     void definirObservacao(String observacao)
     {
         this.observacao = observacao
     }
     
-    public void definirTransferenciaICMS(int transferenciaICMS)
+     void definirTransferenciaICMS(int transferenciaICMS)
     {
         this.transferenciaICMS = transferenciaICMS
     }
     
-    public void definirValorNegociado(float valorNegociado)
+     void definirValorNegociado(float valorNegociado)
     {
         this.valorNegociado = valorNegociado
     }
     
-    public void definirMoeda(String moeda)
+     void definirMoeda(String moeda)
     {
         this.moeda = moeda
     }
     
-    public void definirResumo(String resumo)
+     void definirResumo(String resumo)
     {
         this.resumo = resumo
     }

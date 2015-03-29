@@ -25,7 +25,7 @@ import org.esmerilprogramming.tecnolity.logistica.*
    * Última Versão: 1.0 <br>
 */
 
-public class InformacoesLogistica extends JTabbedPane implements ActionListener
+ class InformacoesLogistica extends JTabbedPane implements ActionListener
 {
     private Aplicacao aplicacao
     private JPanel pnlVeiculo, pnlExpedicao, pnlMotorista, pnlDespesa, pnlMulta
@@ -61,7 +61,7 @@ public class InformacoesLogistica extends JTabbedPane implements ActionListener
     private JButton btAdicionarMulta,btAlterarMulta,btExcluirMulta,btAtualizarMulta
     private JComboBox cbxVeiculoMultas
     
-    public InformacoesLogistica(Aplicacao aplicacao) 
+     InformacoesLogistica(Aplicacao aplicacao) 
     {
         this.setBorder(new LineBorder(Color.black))
         this.aplicacao = aplicacao
@@ -332,7 +332,7 @@ public class InformacoesLogistica extends JTabbedPane implements ActionListener
         tblMultas.updateUI()
     }
     
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
         

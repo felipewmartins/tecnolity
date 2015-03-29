@@ -23,7 +23,7 @@ import org.esmerilprogramming.tecnolity.util.*
    * Última Versão: 1.0
 */
 
-public class Cliente 
+ class Cliente 
 {
     private long codigo
     private String razaoSocial
@@ -44,17 +44,17 @@ public class Cliente
     private String email
     private Vector locaisEntrega = new Vector()
     
-    public Cliente() 
+     Cliente() 
     {
     
     }
     
-    public Cliente(long codigo) throws Exception
+     Cliente(long codigo) throws Exception
     {
         definirCodigo(codigo)
     }
     
-    public Cliente(String razaoSocial, String nomeFantasia, String cnpj, String inscricaoEstadual,
+     Cliente(String razaoSocial, String nomeFantasia, String cnpj, String inscricaoEstadual,
                    String logradouro, String bairro, String complemento, String cidade,
                    Estado estado, Pais pais, String cep, String telefone, String fax,
                    String contatoComercial, String contatoTecnico, String email) throws Exception
@@ -77,98 +77,98 @@ public class Cliente
         this.definirEmail(email)
     }
     
-    public Cliente(long codigo, String razaoSocial) throws Exception
+     Cliente(long codigo, String razaoSocial) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirRazaoSocial(razaoSocial)
     }
     
-    public long obterCodigo()
+     long obterCodigo()
     {
         return this.codigo
     }
     
-    public String obterRazaoSocial()
+     String obterRazaoSocial()
     {
         return this.razaoSocial
     }
     
-    public String obterNomeFantasia()
+     String obterNomeFantasia()
     {
         return this.nomeFantasia
     }
     
-    public String obterCnpj()
+     String obterCnpj()
     {
         return this.cnpj
     }
     
-    public String obterInscricaoEstadual()
+     String obterInscricaoEstadual()
     {
         return this.inscricaoEstadual
     }
     
-    public String obterLogradouro()
+     String obterLogradouro()
     {
         return this.logradouro
     }
     
-    public String obterBairro()
+     String obterBairro()
     {
         return this.bairro
     }
     
-    public String obterComplemento()
+     String obterComplemento()
     {
         return this.complemento
     }
     
-    public String obterCidade()
+     String obterCidade()
     {
         return this.cidade
     }
     
-    public Estado obterEstado()
+     Estado obterEstado()
     {
         return this.estado
     }
     
-    public Pais obterPais()
+     Pais obterPais()
     {
         return this.pais
     }
     
-    public String obterCep()
+     String obterCep()
     {
         return this.cep
     }
     
-    public String obterTelefone()
+     String obterTelefone()
     {
         return this.telefone
     }
     
-    public String obterFax()
+     String obterFax()
     {
         return this.fax
     }
     
-    public String obterContatoComercial()
+     String obterContatoComercial()
     {
         return this.contatoComercial
     }
     
-    public String obterContatoTecnico()
+     String obterContatoTecnico()
     {
         return this.contatoTecnico
     }
     
-    public String obterEmail()
+     String obterEmail()
     {
         return this.email
     }
     
-    public void definirCodigo(long codigo) throws Exception
+     void definirCodigo(long codigo) throws Exception
     {
         if(codigo <= 0)
         {
@@ -178,7 +178,7 @@ public class Cliente
         this.codigo = codigo
     }
     
-    public void definirRazaoSocial(String razaoSocial) throws Exception
+     void definirRazaoSocial(String razaoSocial) throws Exception
     {
         if(razaoSocial.equals("") || razaoSocial == null)
         {
@@ -192,7 +192,7 @@ public class Cliente
      *  Define o Nome Fantasia do cliente da fábrica.
      *  @param nomeFantasia nome fantasia do cliente.
      */
-    public void definirNomeFantasia(String nomeFantasia)
+     void definirNomeFantasia(String nomeFantasia)
     {
         this.nomeFantasia = nomeFantasia.trim().toUpperCase()
     }
@@ -202,7 +202,7 @@ public class Cliente
      *  @param cnpj números do CNPJ sem pontos e separadores.
      *  @throws Exception caso o CNPJ não tenha sido informado.
      */
-    public void definirCnpj(String cnpj) throws Exception
+     void definirCnpj(String cnpj) throws Exception
     {
         if(!cnpj.equals("") && cnpj.length() <= 15)
         {
@@ -215,12 +215,12 @@ public class Cliente
         }
     }
     
-    public void definirInscricaoEstadual(String inscricaoEstadual)
+     void definirInscricaoEstadual(String inscricaoEstadual)
     {
         this.inscricaoEstadual = inscricaoEstadual.trim()
     }
     
-    public void definirLogradouro(String logradouro) throws Exception
+     void definirLogradouro(String logradouro) throws Exception
     {
         if(logradouro.equals("") || logradouro == null)
         {
@@ -230,17 +230,17 @@ public class Cliente
         this.logradouro = logradouro.trim().toUpperCase()
     }
     
-    public void definirBairro(String bairro)
+     void definirBairro(String bairro)
     {
         this.bairro = bairro.trim().toUpperCase()
     }
     
-    public void definirComplemento(String complemento)
+     void definirComplemento(String complemento)
     {
         this.complemento = complemento.trim().toUpperCase()
     }
     
-    public void definirCidade(String cidade) throws Exception
+     void definirCidade(String cidade) throws Exception
     {
         if(cidade.equals("") || cidade == null)
         {
@@ -250,12 +250,12 @@ public class Cliente
         this.cidade = cidade.trim().toUpperCase()
     }
     
-    public void definirEstado(Estado estado)
+     void definirEstado(Estado estado)
     {
         this.estado = estado
     }
     
-    public void definirPais(Pais pais) throws Exception
+     void definirPais(Pais pais) throws Exception
     {
         if(pais == null)
         {
@@ -270,7 +270,7 @@ public class Cliente
      *  @param cep números do CEP sem pontos e separadores.
      *  @throws Exception caso o CEP tenha tamanho diferente de 8.
      */
-    public void definirCep(String cep) throws Exception
+     void definirCep(String cep) throws Exception
     {
         if(!cep.equals(""))
         {
@@ -284,32 +284,32 @@ public class Cliente
         }
     }
     
-    public void definirTelefone(String telefone)
+     void definirTelefone(String telefone)
     {
         this.telefone = telefone
     }
     
-    public void definirFax(String fax)
+     void definirFax(String fax)
     {
         this.fax = fax
     }
     
-    public void definirContatoComercial(String contatoComercial)
+     void definirContatoComercial(String contatoComercial)
     {
         this.contatoComercial = contatoComercial
     }
     
-    public void definirContatoTecnico(String contatoTecnico)
+     void definirContatoTecnico(String contatoTecnico)
     {
         this.contatoTecnico = contatoTecnico.trim().toUpperCase()
     }
     
-    public void definirEmail(String email)
+     void definirEmail(String email)
     {
         this.email = email.trim().toLowerCase()
     }
     
-    public void carregarCliente(Conexao conexao) throws Exception
+     void carregarCliente(Conexao conexao) throws Exception
     {
         if(codigo > 0)
         {
@@ -348,7 +348,7 @@ public class Cliente
         }
     }
     
-    public Vector carregarClientes(Conexao conexao) throws Exception
+     Vector carregarClientes(Conexao conexao) throws Exception
     {
         ResultSet dadosCliente
         Vector clientes = new Vector()
@@ -370,7 +370,7 @@ public class Cliente
         return clientes
     }
     
-    public static Vector carregarLocaisEntrega(Conexao conexao, Cliente cliente) throws Exception
+     static Vector carregarLocaisEntrega(Conexao conexao, Cliente cliente) throws Exception
     {
         ResultSet dadosLocalEntrega
         Vector locaisEntrega = new Vector()
@@ -395,12 +395,12 @@ public class Cliente
         return locaisEntrega
     }
     
-    public Vector getLocaisEntrega()
+     Vector getLocaisEntrega()
     {
         return this.locaisEntrega
     }
     
-    public void cadastrarCliente(Conexao conexao) throws Exception
+     void cadastrarCliente(Conexao conexao) throws Exception
     {
         String query
         ResultSet dadosCliente = conexao.executarConsulta("select cnpj from cliente where cnpj = '"+ this.cnpj +"'")
@@ -426,7 +426,7 @@ public class Cliente
         }
     }
     
-    public void alterarCliente(Conexao conexao) throws Exception
+     void alterarCliente(Conexao conexao) throws Exception
     {
         String query
         query = "update cliente set razao_social = '"+ this.razaoSocial +"',nome_fantasia = '"+ this.nomeFantasia +"',cnpj = '"+ this.cnpj +"',inscricao_estadual = '"+ this.inscricaoEstadual +"',logradouro = '"+ this.logradouro +"',bairro = '"+ this.bairro +"',complemento = '"+ this.complemento +"',cidade = '"+ this.cidade +"',estado = '"+ this.estado.getSigla() +"',pais = '"+ this.pais.getSigla() +"',cep = '"+ this.obterCep() +"',telefone = '"+ this.telefone +"',fax = '"+ this.fax +"',contato_comercial = '"+ this.contatoComercial +"',contato_tecnico = '"+ this.contatoTecnico +"',email = '"+ this.email +"' where codigo = " + this.codigo
@@ -439,7 +439,7 @@ public class Cliente
         }
     }
     
-    public void excluirCliente(Conexao conexao) throws Exception
+     void excluirCliente(Conexao conexao) throws Exception
     {
         ResultSet dadosModelo = conexao.executarConsulta("select codigo from modelo where cliente = "+ this.obterCodigo())
         while(dadosModelo.next())
@@ -452,7 +452,7 @@ public class Cliente
         conexao.executarAtualizacao("delete from cliente where codigo = " + this.obterCodigo())
      }
 
-    public void setLocaisEntrega(Vector vector)
+     void setLocaisEntrega(Vector vector)
     {
         locaisEntrega = vector
     }

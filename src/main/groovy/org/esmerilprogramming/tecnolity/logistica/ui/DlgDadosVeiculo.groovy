@@ -25,9 +25,9 @@ import org.esmerilprogramming.tecnolity.util.*
 * Última Versão: 1.0
 */
 
-public class DlgDadosVeiculo  extends JDialog implements ActionListener
+ class DlgDadosVeiculo  extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 32
+     final int IDENTIFICADOR = 32
     
     private Aplicacao aplicacao
     private Veiculo veiculo
@@ -46,7 +46,7 @@ public class DlgDadosVeiculo  extends JDialog implements ActionListener
     private Container conteudo
     private JButton btConfirmar, btCancelar
     
-    public DlgDadosVeiculo(Aplicacao aplicacao)
+     DlgDadosVeiculo(Aplicacao aplicacao)
     {
         super(aplicacao,true)	    
 
@@ -55,7 +55,7 @@ public class DlgDadosVeiculo  extends JDialog implements ActionListener
         montarInterface()
     }
         
-    public DlgDadosVeiculo(Aplicacao aplicacao, Veiculo veiculo)
+     DlgDadosVeiculo(Aplicacao aplicacao, Veiculo veiculo)
     {	
         super(aplicacao,true)            
         try
@@ -234,7 +234,7 @@ public class DlgDadosVeiculo  extends JDialog implements ActionListener
     }
 
 
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
         

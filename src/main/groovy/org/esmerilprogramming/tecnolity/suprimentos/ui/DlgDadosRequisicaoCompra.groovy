@@ -16,9 +16,9 @@ import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.relatorios.*
 
-public class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, FocusListener
+ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, FocusListener
 {
-  public final int IDENTIFICADOR = 27
+   final int IDENTIFICADOR = 27
 
   private Aplicacao aplicacao
   private RequisicaoCompra requisicaoCompra
@@ -58,7 +58,7 @@ public class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener
   private int indiceCard
   private JButton btAnterior, btProximo, btProximoLeitura, btConfirmar, btCancelar
 
-  public DlgDadosRequisicaoCompra(Aplicacao aplicacao)
+   DlgDadosRequisicaoCompra(Aplicacao aplicacao)
   {
     super(aplicacao,true)
     this.setTitle("Nova Requisição de Compra")
@@ -69,7 +69,7 @@ public class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener
     requisicaoCompra = new RequisicaoCompra()
   }
 
-  public DlgDadosRequisicaoCompra(Aplicacao aplicacao, RequisicaoCompra requisicaoCompra)
+   DlgDadosRequisicaoCompra(Aplicacao aplicacao, RequisicaoCompra requisicaoCompra)
   {
     super(aplicacao,true)
     this.setTitle("Requisição de Compra")
@@ -582,7 +582,7 @@ public class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener
     }
   }
 
-  public void actionPerformed(java.awt.event.ActionEvent actionEvent)
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -1091,7 +1091,7 @@ public class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener
 
   }
 
-  public void focusGained(FocusEvent e)
+   void focusGained(FocusEvent e)
   {
     Component componente = e.getComponent()
 
@@ -1107,7 +1107,7 @@ public class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener
       txtIpi.selectAll()
   }
 
-  public void focusLost(FocusEvent e)
+   void focusLost(FocusEvent e)
   {
     Component componente = e.getComponent()
 

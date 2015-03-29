@@ -20,37 +20,37 @@ import org.esmerilprogramming.tecnolity.suprimentos.*
    * Última Versão: 1.0 <br>
 */
 
-public class MateriaPrima implements Cloneable
+ class MateriaPrima implements Cloneable
 {
     private Item item
     private Matriz matriz
     private float quantidade
 
-    public MateriaPrima() {}
+     MateriaPrima() {}
     
-    public MateriaPrima(Item item, Matriz matriz, float quantidade) throws Exception
+     MateriaPrima(Item item, Matriz matriz, float quantidade) throws Exception
     {
         definirItem(item)
         definirMatriz(matriz)
         definirQuantidade(quantidade)
     }
 
-    public Item obterItem() 
+     Item obterItem() 
     {
         return this.item
     }
     
-    public Matriz obterMatriz() 
+     Matriz obterMatriz() 
     {
         return this.matriz
     }
     
-    public float obterQuantidade() 
+     float obterQuantidade() 
     {
         return this.quantidade
     }
     
-    public String obterQuantidade(String formato)
+     String obterQuantidade(String formato)
     {
         DecimalFormat df
         if(!formato.equals(""))
@@ -64,7 +64,7 @@ public class MateriaPrima implements Cloneable
         return df.format(this.quantidade)
     }
         
-    public void definirItem(Item item) throws Exception
+     void definirItem(Item item) throws Exception
     {
         if(item == null)
         {
@@ -74,7 +74,7 @@ public class MateriaPrima implements Cloneable
         this.item = item
     }
     
-    public void definirMatriz(Matriz matriz) throws Exception
+     void definirMatriz(Matriz matriz) throws Exception
     {
         if(matriz == null)
         {
@@ -84,7 +84,7 @@ public class MateriaPrima implements Cloneable
         this.matriz = matriz
     }
     
-    public void definirQuantidade(float quantidade) throws Exception
+     void definirQuantidade(float quantidade) throws Exception
     {
         if(quantidade < 0.0f)
         {
@@ -94,7 +94,7 @@ public class MateriaPrima implements Cloneable
         this.quantidade = quantidade
     }
     
-    public MateriaPrima clonar()
+     MateriaPrima clonar()
     {
         MateriaPrima materiaPrima = null
         try

@@ -9,7 +9,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
 
 class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
-  public final int IDENTIFICADOR = 1
+   final int IDENTIFICADOR = 1
 
   private JPanel pnlCabecalho, pnlInformacoes
   private InformacoesAdministracao tbpInformacoes

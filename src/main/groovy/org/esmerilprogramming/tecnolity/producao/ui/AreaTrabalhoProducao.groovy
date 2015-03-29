@@ -24,15 +24,15 @@ import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
    * Última Versão: 1.0 <br>
 */
 
-public class AreaTrabalhoProducao extends ModeloAreaTrabalho
+ class AreaTrabalhoProducao extends ModeloAreaTrabalho
 {
-    public final int IDENTIFICADOR = 5
+     final int IDENTIFICADOR = 5
     
     private JPanel pnlCabecalho, pnlInformacoes
     private InformacoesProducao tbpInformacoes
     private Aplicacao aplicacao
     
-    public AreaTrabalhoProducao(Aplicacao aplicacao) 
+     AreaTrabalhoProducao(Aplicacao aplicacao) 
     {
         this.aplicacao = aplicacao
         switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao()))

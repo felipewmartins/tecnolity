@@ -25,9 +25,9 @@ import org.esmerilprogramming.tecnolity.util.*
 * Última Versão: 1.0 <br>
 */
 
-public class DlgDadosMatriz extends JDialog implements ActionListener
+ class DlgDadosMatriz extends JDialog implements ActionListener
 {
-    public final int IDENTIFICADOR = 19
+     final int IDENTIFICADOR = 19
     
     private Aplicacao aplicacao
     private char modo // I = inserir, A = alterar, V = visualizar
@@ -41,7 +41,7 @@ public class DlgDadosMatriz extends JDialog implements ActionListener
     private Produto produto
     private Matriz matriz
 
-    public DlgDadosMatriz(Aplicacao aplicacao)
+     DlgDadosMatriz(Aplicacao aplicacao)
     {
         super(aplicacao,true)
 
@@ -53,7 +53,7 @@ public class DlgDadosMatriz extends JDialog implements ActionListener
         carregarInterface()
     }
     
-    public DlgDadosMatriz(Aplicacao aplicacao,Produto produto)
+     DlgDadosMatriz(Aplicacao aplicacao,Produto produto)
     {
         super(aplicacao,true)
 
@@ -65,7 +65,7 @@ public class DlgDadosMatriz extends JDialog implements ActionListener
         carregarInterface()
     }
     
-    public DlgDadosMatriz(Aplicacao aplicacao,Matriz matriz)
+     DlgDadosMatriz(Aplicacao aplicacao,Matriz matriz)
     {
         super(aplicacao,true)
 
@@ -177,7 +177,7 @@ public class DlgDadosMatriz extends JDialog implements ActionListener
         painel.add(c)
     }
 
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
         

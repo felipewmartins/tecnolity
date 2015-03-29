@@ -7,7 +7,7 @@ import org.esmerilprogramming.tecnolity.administracao.Departamento
 import org.esmerilprogramming.tecnolity.pedidos.Pedido
 import org.esmerilprogramming.tecnolity.util.*
 
-public class Item
+ class Item
 {
     private int codigo
     private String descricao
@@ -27,7 +27,7 @@ public class Item
     private Vector fornecedoresItem 
     private Lote lote
 
-    public Item(int codigo, String descricao, Categoria categoria,
+     Item(int codigo, String descricao, Categoria categoria,
                 String armazenamento, Unidade unidade, float temperatura,
                 String seguranca, float quantidade, float quantidadeMinima,
                 float quantidadeMaxima, int percentualIPI, int percentualPerda, 
@@ -49,20 +49,20 @@ public class Item
         this.definirIndependente(independente)
     }
 
-    public Item(int codigo, String descricao) throws Exception
+     Item(int codigo, String descricao) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
     }
     
-    public Item(int codigo, String descricao, Categoria categoria) throws Exception
+     Item(int codigo, String descricao, Categoria categoria) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
         this.definirCategoria(categoria)
     }
     
-    public Item(int codigo, String descricao, Categoria categoria, FornecedorItem fornecedorItem) throws Exception
+     Item(int codigo, String descricao, Categoria categoria, FornecedorItem fornecedorItem) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
@@ -70,21 +70,21 @@ public class Item
         this.definirFornecedorItem(fornecedorItem)
     }
     
-    public Item(int codigo, String descricao, FornecedorItem fornecedorItem) throws Exception
+     Item(int codigo, String descricao, FornecedorItem fornecedorItem) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
         this.definirFornecedorItem(fornecedorItem)
     }
 
-    public Item(int codigo, String descricao, float quantidade) throws Exception
+     Item(int codigo, String descricao, float quantidade) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
         this.definirQuantidade(quantidade)
     }
     
-    public Item(int codigo, String descricao, float quantidade , float quantidadeMinima) throws Exception
+     Item(int codigo, String descricao, float quantidade , float quantidadeMinima) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
@@ -92,14 +92,14 @@ public class Item
         this.definirQuantidadeMinima(quantidadeMinima)
     }
 
-    public Item(int codigo, String descricao,Unidade unidade) throws Exception
+     Item(int codigo, String descricao,Unidade unidade) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
         this.definirUnidade(unidade)
     }
     
-    public Item(int codigo, String descricao, Categoria categoria, Unidade unidade, float quantidade) throws Exception
+     Item(int codigo, String descricao, Categoria categoria, Unidade unidade, float quantidade) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
@@ -108,7 +108,7 @@ public class Item
         this.definirQuantidade(quantidade)
     }
     
-    public Item(int codigo, String descricao, Categoria categoria, Unidade unidade, float quantidade, float quantidadeMinima) throws Exception
+     Item(int codigo, String descricao, Categoria categoria, Unidade unidade, float quantidade, float quantidadeMinima) throws Exception
     {
         this.definirCodigo(codigo)
         this.definirDescricao(descricao)
@@ -118,7 +118,7 @@ public class Item
         this.definirQuantidadeMinima(quantidadeMinima)
     }
         
-    public Item(int codigo, Conexao conexao) throws Exception
+     Item(int codigo, Conexao conexao) throws Exception
     {
         this.codigo = codigo
         if (conexao.abrirConexao())
@@ -141,84 +141,84 @@ public class Item
         }
     }
 	
-    public Item(){}
+     Item(){}
 
-    public int obterCodigo()
+     int obterCodigo()
     {
         return this.codigo
     }
 	
-    public String obterDescricao()
+     String obterDescricao()
     {
         return this.descricao
     }
 	
-    public Categoria obterCategoria()
+     Categoria obterCategoria()
     {
         return this.categoria
     }
 	
-    public String obterArmazenamento()
+     String obterArmazenamento()
     {
         return this.armazenamento
     }
 
-    public Unidade obterUnidade()
+     Unidade obterUnidade()
     {
         return this.unidade
     }
 	
-    public float obterTemperatura()
+     float obterTemperatura()
     {
         return this.temperatura
     }
 
-    public String obterSeguranca()
+     String obterSeguranca()
     {
         return this.seguranca
     }
 
-    public float obterQuantidade()
+     float obterQuantidade()
     {
         return this.quantidade
     }
 
-    public float obterQuantidadeMinima()
+     float obterQuantidadeMinima()
     {
         return this.quantidadeMinima
     }
 
-    public float obterQuantidadeMaxima()
+     float obterQuantidadeMaxima()
     {
         return this.quantidadeMaxima
     }
 
-    public int obterPercentualIPI()
+     int obterPercentualIPI()
     {
         return this.percentualIPI
     }
 
-	public int obterPercentualPerda()
+	 int obterPercentualPerda()
     {
         return this.percentualPerda
     }
 
-    public boolean obterAtivo()
+     boolean obterAtivo()
     {
         return this.ativo
     }
 
-    public boolean obterIndependente()
+     boolean obterIndependente()
     {
         return this.independente
     }
     
-    public Lote obterLote()
+     Lote obterLote()
     {
         return this.lote
     }
     
-    public static int obterNumeroItensCadastrados(Conexao conexao) throws Exception
+     static int obterNumeroItensCadastrados(Conexao conexao) throws Exception
     {
         int i = 0
         ResultSet rsTotal = conexao.executarConsulta("select count(codigo) as numero from item")
@@ -230,7 +230,7 @@ public class Item
         return i
     }
     
-    public FornecedorItem obterFornecedorItem()
+     FornecedorItem obterFornecedorItem()
     {
         return (FornecedorItem)fornecedoresItem.get(0)
     }
@@ -267,7 +267,7 @@ public class Item
         }
     }
     
-    public static Vector carregarItensIndependentes(Departamento departamento, Conexao conexao) throws Exception
+     static Vector carregarItensIndependentes(Departamento departamento, Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -291,7 +291,7 @@ public class Item
         return itens
     }
     
-    public static Vector carregarItensIndependentes(Conexao conexao) throws Exception
+     static Vector carregarItensIndependentes(Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -315,7 +315,7 @@ public class Item
         return itens
     }
     
-    public static Vector carregarItensIndependentesEmFalta(Conexao conexao) throws Exception
+     static Vector carregarItensIndependentesEmFalta(Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -339,7 +339,7 @@ public class Item
         return itens
     }
     
-    public static Vector carregarItensIndependentesEmFalta(Fornecedor fornecedor, Conexao conexao) throws Exception
+     static Vector carregarItensIndependentesEmFalta(Fornecedor fornecedor, Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -362,7 +362,7 @@ public class Item
         return itens
     }
         
-    public static Vector carregarItens(Conexao conexao) throws Exception
+     static Vector carregarItens(Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -385,7 +385,7 @@ public class Item
         return itens
     }
     
-    public static Vector carregarItensExistentes(Conexao conexao) throws Exception
+     static Vector carregarItensExistentes(Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -408,7 +408,7 @@ public class Item
         return itens
     }
     
-    public static Vector carregarItensInativos(Conexao conexao) throws Exception
+     static Vector carregarItensInativos(Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -439,7 +439,7 @@ public class Item
 	 * @return Vector Lista de itens carregados.
 	 * @throws Exception
 	 */
-    public static Vector carregarItensSelecionados(int[] codigos, Conexao conexao) throws Exception
+     static Vector carregarItensSelecionados(int[] codigos, Conexao conexao) throws Exception
     {
         Vector itens = new Vector()
         ResultSet dadosItem
@@ -468,7 +468,7 @@ public class Item
         return itens
     }
 
-    public static Vector carregarItens(Fornecedor fornecedor, Vector pedidos, Conexao conexao) throws Exception
+     static Vector carregarItens(Fornecedor fornecedor, Vector pedidos, Conexao conexao) throws Exception
     {
         ResultSet dadosItem
         Vector itens = new Vector()
@@ -525,7 +525,7 @@ public class Item
      * @return Vector retorna uma lista de itens encontrados.
      * @throws Exception
      */
-    public static Vector carregarItens(Departamento departamento, Conexao conexao) throws Exception
+     static Vector carregarItens(Departamento departamento, Conexao conexao) throws Exception
     {
         ResultSet dadosItem
         Vector itens = new Vector()
@@ -551,7 +551,7 @@ public class Item
 	 * @return Vector retorna uma lista de itens encontrados.
 	 * @throws Exception
 	 */
-    public static Vector carregarItens(Departamento departamento, Pedido pedido, Conexao conexao) throws Exception
+     static Vector carregarItens(Departamento departamento, Pedido pedido, Conexao conexao) throws Exception
     {
         ResultSet dadosItem
         Vector itens = new Vector()
@@ -570,7 +570,7 @@ public class Item
     }
 
     /** Retorna os itens que foram comprados para um determinado pedido do cliente. */
-    public Vector carregarItensCompradosPedido(Pedido pedidoCliente, Conexao conexao) throws Exception
+     Vector carregarItensCompradosPedido(Pedido pedidoCliente, Conexao conexao) throws Exception
     {
         ResultSet dadosItem
         Vector itens = new Vector()
@@ -636,7 +636,7 @@ public class Item
         }
     }
 	
-    public void definirCodigo(int codigo) throws Exception
+     void definirCodigo(int codigo) throws Exception
     {
         if (codigo > 0)
         {
@@ -649,7 +649,7 @@ public class Item
         }
     }
 	
-    public void definirDescricao(String descricao) throws Exception
+     void definirDescricao(String descricao) throws Exception
     {
         if(!descricao.equals("") && descricao.length() <= 60)
             this.descricao = descricao
@@ -660,7 +660,7 @@ public class Item
         }
     }
     
-    public void definirFornecedorItem(FornecedorItem fornecedorItem)
+     void definirFornecedorItem(FornecedorItem fornecedorItem)
     {
         if(fornecedoresItem == null)
         {
@@ -677,7 +677,7 @@ public class Item
         }
     }
 	
-    public void definirCategoria(Categoria categoria) throws Exception
+     void definirCategoria(Categoria categoria) throws Exception
     {
         if(categoria != null)
                 this.categoria = categoria
@@ -688,12 +688,12 @@ public class Item
         }
     }
 	
-    public void definirArmazenamento(String armazenamento)
+     void definirArmazenamento(String armazenamento)
     {
         this.armazenamento = armazenamento
     }
 
-    public void definirUnidade(Unidade unidade) throws Exception
+     void definirUnidade(Unidade unidade) throws Exception
     {
         if(unidade != null)
            this.unidade = unidade
@@ -704,7 +704,7 @@ public class Item
         }
     }
 	
-    public void definirTemperatura(float temperatura) throws Exception
+     void definirTemperatura(float temperatura) throws Exception
     {		
         String erro = ""
         if(Float.isNaN(temperatura))
@@ -719,12 +719,12 @@ public class Item
             this.temperatura = temperatura
     }
 	
-    public void definirSeguranca(String seguranca)
+     void definirSeguranca(String seguranca)
     {
         this.seguranca = seguranca
     }
 
-    public void definirQuantidade(float quantidade) throws Exception
+     void definirQuantidade(float quantidade) throws Exception
     {
         if(!Float.isNaN(quantidade) && quantidade >= 0.0f)
             this.quantidade = quantidade
@@ -735,7 +735,7 @@ public class Item
         }
     }
 	
-    public void definirQuantidadeMinima(float quantidadeMinima) throws Exception
+     void definirQuantidadeMinima(float quantidadeMinima) throws Exception
     {
         String erro = ""
         if(Float.isNaN(quantidadeMinima) || quantidadeMinima < 0.0f)
@@ -750,7 +750,7 @@ public class Item
             this.quantidadeMinima = quantidadeMinima
     }
 	
-    public void definirQuantidadeMaxima(float quantidadeMaxima) throws Exception
+     void definirQuantidadeMaxima(float quantidadeMaxima) throws Exception
     {
         String erro = ""
         if(Float.isNaN(quantidadeMaxima) || quantidadeMaxima < 0.0f)
@@ -765,7 +765,7 @@ public class Item
             this.quantidadeMaxima = quantidadeMaxima
     }
 	
-    public void definirPercentualIPI(int percentualIPI) throws Exception
+     void definirPercentualIPI(int percentualIPI) throws Exception
     {
         String erro = ""
         if(Float.isNaN(percentualIPI))
@@ -780,7 +780,7 @@ public class Item
             this.percentualIPI = percentualIPI
     }
     
-    public void definirPercentualPerda(int percentualPerda) throws Exception
+     void definirPercentualPerda(int percentualPerda) throws Exception
     {
         String erro = ""
         if(Float.isNaN(percentualPerda))
@@ -795,22 +795,22 @@ public class Item
             this.percentualPerda = percentualPerda
     }
 
-    public void definirAtivo(boolean ativo)
+     void definirAtivo(boolean ativo)
     {
         this.ativo = ativo
     }
 
-    public void definirIndependente(boolean independente)
+     void definirIndependente(boolean independente)
     {
         this.independente = independente
     }
     
-    public void definirLote(Lote lote)
+     void definirLote(Lote lote)
     {
         this.lote = lote
     }
 	
-    public void cadastrarItem() throws Exception
+     void cadastrarItem() throws Exception
     {
         String query = "insert into item (descricao,categoria,armazenamento,unidade,temperatura,seguranca,quantidade,quantidade_minima,quantidade_maxima,percentual_ipi,percentual_perda,ativo,independente) values "
         query = query + "('"+ descricao +"',"+ categoria.obterCodigo() +",'"+ armazenamento +"',"+ unidade.obterCodigo() +","+ temperatura +",'"+ seguranca +"',0,"+ quantidadeMinima +","+ quantidadeMaxima +","+ percentualIPI +","+ percentualPerda +","+ ((this.ativo)?1:0) +","+ ((this.independente)?1:0) +")"
@@ -842,7 +842,7 @@ public class Item
         }
     }
         
-    public void associarDepartamentos(Vector departamentos)
+     void associarDepartamentos(Vector departamentos)
     {
         if(departamentos != null)
         {
@@ -862,7 +862,7 @@ public class Item
         }
     }
 	
-    public void associarFornecedores(Vector fornecedoresItem)
+     void associarFornecedores(Vector fornecedoresItem)
     {
         if(fornecedoresItem != null)
         {
@@ -884,7 +884,7 @@ public class Item
         }	
     }
         
-    public void alterarItem() throws Exception
+     void alterarItem() throws Exception
     {
         float quantidadeAtual = 0.0f
         Conexao conexao = new Conexao('T')
@@ -914,7 +914,7 @@ public class Item
         }
     }
         
-    public void alterarDepartamentosItem(Vector departamentos)
+     void alterarDepartamentosItem(Vector departamentos)
     {
         if(departamentos != null)
         {
@@ -938,7 +938,7 @@ public class Item
         }
     }
     
-    public void alterarFornecedoresItem(Vector fornecedoresItem)
+     void alterarFornecedoresItem(Vector fornecedoresItem)
     {
         if(fornecedoresItem != null)
         {
@@ -965,7 +965,7 @@ public class Item
         }
     }
     
-    public void excluirFornecedorItem(int codigo) throws Exception
+     void excluirFornecedorItem(int codigo) throws Exception
     {
         String query = "delete from fornecedor_item where item = "+ codigo +" "
         Conexao conexao = new Conexao('T')
@@ -981,7 +981,7 @@ public class Item
         }
     }
         
-    public void excluirDepartamentoItem(int codigo) throws Exception
+     void excluirDepartamentoItem(int codigo) throws Exception
     {
         String query = "delete from departamento_item where item = "+ codigo +" "
         Conexao conexao = new Conexao('T')
@@ -997,7 +997,7 @@ public class Item
         }
     }
         
-    public void excluirItem(int codigo) throws Exception
+     void excluirItem(int codigo) throws Exception
     {
         String query = "delete from item where codigo = "+ codigo +" "
         Conexao conexao = new Conexao('T')
@@ -1019,12 +1019,12 @@ public class Item
      * além do previsto para a produção de um pedido.
 	 * @param conexao Conexão com o banco de dados.
 	 */
-    public void  carregarListaCompras(Conexao conexao)
+     void  carregarListaCompras(Conexao conexao)
     {
         
     }
     
-    public String toString()
+     String toString()
     {
         return this.obterDescricao()
     }

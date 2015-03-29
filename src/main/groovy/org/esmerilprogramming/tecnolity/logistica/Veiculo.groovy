@@ -20,7 +20,7 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.util.Vector
 import java.sql.*
 
-public class Veiculo 
+ class Veiculo 
 {
     //dados de Veiculo
     private String placa
@@ -39,9 +39,9 @@ public class Veiculo
     private float volumeCombustivel
     private float mediaConsumo
         
-    public Veiculo(){}
+     Veiculo(){}
     
-    public Veiculo(String placa)
+     Veiculo(String placa)
     {
         try
         {
@@ -53,13 +53,13 @@ public class Veiculo
         }
     }
     
-    public Veiculo(String placa, Conexao conexao)throws Exception
+     Veiculo(String placa, Conexao conexao)throws Exception
     {
         this.definirPlaca(placa)       
         this.carregarDadosVeiculo(conexao)
     } 
     
-    public Veiculo(String placa, Transportadora transportadora, String chassi, String renavam, 
+     Veiculo(String placa, Transportadora transportadora, String chassi, String renavam, 
                    String marca, String modelo, String ano, String cor,
                    int numeroEixo, float cubagem, float tara, float pesoBruto,
                    String combustivel, float volumeCombustivel, float mediaConsumo) throws Exception
@@ -82,7 +82,7 @@ public class Veiculo
         this.definirMediaConsumo(mediaConsumo)
     }
 
-    public void definirPlaca(String placa) throws Exception
+     void definirPlaca(String placa) throws Exception
     {        
         if(!placa.equals("") && placa.length() <= 8)
             this.placa = placa
@@ -93,7 +93,7 @@ public class Veiculo
         }
     }
     
-    public void definirTransportadora(Transportadora transportadora) throws Exception
+     void definirTransportadora(Transportadora transportadora) throws Exception
     {
         if(transportadora != null)
             this.transportadora = transportadora
@@ -104,7 +104,7 @@ public class Veiculo
         }
     }
     
-    public void definirChassi(String chassi) throws Exception
+     void definirChassi(String chassi) throws Exception
     {
         if(!chassi.equals("") && chassi.length() <= 10)
             this.chassi = chassi
@@ -115,7 +115,7 @@ public class Veiculo
         }
     }
     
-    public void definirRenavam(String renavam) throws Exception
+     void definirRenavam(String renavam) throws Exception
     {
         if(!renavam.equals("") && renavam.length() <= 10)
             this.renavam = renavam
@@ -126,7 +126,7 @@ public class Veiculo
         }
     }
     
-    public void definirMarca(String marca) throws Exception
+     void definirMarca(String marca) throws Exception
     {
         if(!marca.equals("") && marca.length() <= 50)
             this.marca = marca
@@ -137,7 +137,7 @@ public class Veiculo
         }        
     }
     
-    public void definirModelo(String modelo) throws Exception
+     void definirModelo(String modelo) throws Exception
     {
         if(!modelo.equals("") && modelo.length() <= 50)
             this.modelo = modelo
@@ -148,7 +148,7 @@ public class Veiculo
         }
     }
     
-    public void definirAno(String ano) throws Exception
+     void definirAno(String ano) throws Exception
     {
         if(ano.length() == 4)
             this.ano = ano 
@@ -159,7 +159,7 @@ public class Veiculo
         }
     }
     
-    public void definirCor(String cor) throws Exception
+     void definirCor(String cor) throws Exception
     {
         if(ano.length() <= 12)
             this.cor = cor
@@ -170,7 +170,7 @@ public class Veiculo
         }
     }
     
-    public void definirNumeroEixo(int numeroEixo) throws Exception
+     void definirNumeroEixo(int numeroEixo) throws Exception
     {
         String erro = ""
         if(Float.isNaN(numeroEixo))
@@ -185,7 +185,7 @@ public class Veiculo
             this.numeroEixo = numeroEixo
     }
     
-    public void definirCubagem(float cubagem) throws Exception
+     void definirCubagem(float cubagem) throws Exception
     {
         String erro = ""
         if(Float.isNaN(cubagem))
@@ -200,7 +200,7 @@ public class Veiculo
             this.cubagem = cubagem
     }
     
-    public void definirTara(float tara) throws Exception
+     void definirTara(float tara) throws Exception
     {
         String erro = ""
         if(Float.isNaN(tara))
@@ -215,7 +215,7 @@ public class Veiculo
             this.tara = tara
     }
     
-    public void definirPesoBruto(float pesoBruto) throws Exception
+     void definirPesoBruto(float pesoBruto) throws Exception
     {
         String erro = ""
         if(Float.isNaN(pesoBruto))
@@ -230,7 +230,7 @@ public class Veiculo
             this.pesoBruto = pesoBruto
     }
     
-    public void definirCombustivel(String combustivel) throws Exception
+     void definirCombustivel(String combustivel) throws Exception
     {
         if(combustivel.length() <= 20)
             this.combustivel = combustivel
@@ -241,7 +241,7 @@ public class Veiculo
         }
     }
     
-    public void definirVolumeCombustivel(float volumeCombustivel) throws Exception
+     void definirVolumeCombustivel(float volumeCombustivel) throws Exception
     {
         String erro = ""
         if(Float.isNaN(volumeCombustivel))
@@ -256,7 +256,7 @@ public class Veiculo
             this.volumeCombustivel = volumeCombustivel
     }
     
-    public void definirMediaConsumo(float mediaConsumo) throws Exception
+     void definirMediaConsumo(float mediaConsumo) throws Exception
     {
         String erro = ""
         if(Float.isNaN(mediaConsumo))
@@ -271,82 +271,82 @@ public class Veiculo
             this.mediaConsumo = mediaConsumo
     }
     
-    public String obterPlaca()
+     String obterPlaca()
     {
         return this.placa
     }
     
-    public Transportadora obterTransportadora()
+     Transportadora obterTransportadora()
     {
         return this.transportadora
     }
     
-    public String obterChassi()
+     String obterChassi()
     {
         return this.chassi
     }
     
-    public String obterRenavam()
+     String obterRenavam()
     {
         return this.renavam
     }
     
-    public String obterMarca()
+     String obterMarca()
     {
         return this.marca
     }
     
-    public String obterModelo()
+     String obterModelo()
     {
         return this.modelo
     }
     
-    public String obterAno()
+     String obterAno()
     {
         return this.ano
     }
     
-    public String obterCor()
+     String obterCor()
     {
         return this.cor
     }
     
-    public int obterNumeroEixo()
+     int obterNumeroEixo()
     {
         return this.numeroEixo
     }
     
-    public float obterCubagem()
+     float obterCubagem()
     {
         return this.cubagem
     }
     
-    public float obterTara()
+     float obterTara()
     {
         return this.tara
     }
     
-    public float obterPesoBruto()
+     float obterPesoBruto()
     {
         return this.pesoBruto
     }
     
-    public String obterCombustivel()
+     String obterCombustivel()
     {
         return this.combustivel
     }
     
-    public float obterVolumeCombustivel()
+     float obterVolumeCombustivel()
     {
         return this.volumeCombustivel
     }
     
-    public float obterMediaConsumo()
+     float obterMediaConsumo()
     {
         return this.mediaConsumo
     }
             
-    public void carregarDadosVeiculo(Conexao conexao) throws Exception
+     void carregarDadosVeiculo(Conexao conexao) throws Exception
     {
         ResultSet dadosVeiculo        
         
@@ -371,7 +371,7 @@ public class Veiculo
         }
     }
         
-    public static Vector carregarVeiculos(Conexao conexao) throws Exception
+     static Vector carregarVeiculos(Conexao conexao) throws Exception
     {
     	ResultSet dadosVeiculo
         Vector veiculos = new Vector()
@@ -385,7 +385,7 @@ public class Veiculo
         return veiculos
     }
     
-    public void cadastrarDadosVeiculo() throws Exception
+     void cadastrarDadosVeiculo() throws Exception
     {
         String query = "insert into veiculo (placa,transportadora,chassi,renavam,marca,modelo,ano,cor,numero_eixo,cubagem,tara,peso_bruto,combustivel,volume_combustivel,media_consumo) values "
         query += "('"+ this.placa +"', "+ this.transportadora.obterCodigo() +", '"+ this.chassi +"', '"+ this.renavam +"', '"+ this.marca +"', '"+ this.modelo +"', '"+ this.ano +"', '"+ this.cor +"', "+ this.numeroEixo +", "+ this.cubagem +", "+ this.tara +", "+ this.pesoBruto +", '"+ this.combustivel +"', "+ this.volumeCombustivel +", "+ this.mediaConsumo +") "
@@ -414,7 +414,7 @@ public class Veiculo
         }
     }
         
-    public void alterarDadosVeiculo() throws Exception
+     void alterarDadosVeiculo() throws Exception
     {
         String query = "update veiculo set transportadora = "+ this.transportadora.obterCodigo() +",chassi = '"+ this.chassi +"',renavam = '"+ this.renavam +"',marca = '"+ this.marca +"',modelo = '"+ this.modelo +"',ano = '"+ this.ano +"',cor = '"+ this.cor +"',numero_eixo = "+ this.numeroEixo +",cubagem = "+ this.cubagem +",tara = "+ this.tara +",peso_bruto = "+ this.pesoBruto +",combustivel = '"+ this.combustivel +"',volume_combustivel = "+ this.volumeCombustivel +",media_consumo = "+ this.mediaConsumo +" where placa =  '"+ this.placa +"' "        
         Conexao conexao = new Conexao('T')
@@ -430,7 +430,7 @@ public class Veiculo
         }
     }
         
-    public void excluirVeiculo() throws Exception
+     void excluirVeiculo() throws Exception
     {
         String queryVeiculo = "delete from veiculo where placa = '"+ this.placa +"' "
         Conexao conexao = new Conexao('T')
@@ -446,7 +446,7 @@ public class Veiculo
         }
     }
     
-    public String toString()
+     String toString()
     {
         return this.placa + " " + modelo
     }

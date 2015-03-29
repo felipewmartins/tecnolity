@@ -27,12 +27,12 @@ import org.esmerilprogramming.tecnolity.pedidos.ui.*
 import org.esmerilprogramming.tecnolity.producao.ui.*
 import org.esmerilprogramming.tecnolity.suprimentos.ui.*
 
-public class BarraAplicacao extends JPanel implements ActionListener
+ class BarraAplicacao extends JPanel implements ActionListener
 {
     private JButton btGerencia, btSuprimentos, btProducao, btPedidos, btLogistica, btAdministracao
     private Aplicacao aplicacao
     
-    public BarraAplicacao(Aplicacao aplicacao) 
+     BarraAplicacao(Aplicacao aplicacao) 
     {
         this.aplicacao = aplicacao
         this.setLayout(new BorderLayout())
@@ -87,7 +87,7 @@ public class BarraAplicacao extends JPanel implements ActionListener
         this.add(lblLogomarca, BorderLayout.EAST)
     }
     
-    public void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+     void actionPerformed(java.awt.event.ActionEvent actionEvent) 
     {
         Object objeto = actionEvent.getSource()
         
