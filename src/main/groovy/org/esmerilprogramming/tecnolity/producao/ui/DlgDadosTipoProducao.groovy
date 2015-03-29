@@ -6,22 +6,6 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.producao.*
 
-/**
-   * Projeto: 001 - Tecnolity <br>
-   * Autor do Código: Hildeberto Mendonça Filho <br>
-   * Nome do Arquivo: DlgDadosTipoProducao.java <br>
-   * Linguagem: Java <br>
-   *  <br>
-   * Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-   *  <br>
-   * Objetivo: Diálogo para cadastramento,alteração e visualização de dados de tipo de produção. <br>
-   *  <br>
-   * Objetivo definido por: Hildeberto Mendonça <br>
-   * Início da Programação: 12/02/2002 <br>
-   * Fim da Programação: <br>
-   * Última Versão: 1.0 <br>
-*/
-
  class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListener
 {
      final int IDENTIFICADOR = 29
