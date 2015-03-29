@@ -44,7 +44,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   /* Objetos da aba Fornecedores */
   private JButton btAdicionarFornecedor, btAlterarFornecedor, btExcluirFornecedor, btAtualizarFornecedor
   private JTable tblFornecedores
-  private Fornecedor fornecedor 
+  private Fornecedor fornecedor
   private ModeloTabela modeloTabelaFornecedores
 
   /* Objetos da aba Requisica interna */
@@ -53,7 +53,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   private ModeloTabela modeloTabelaRequisicoesInternas
 
   /* Objetos da aba Requisicao de compra */
-  private JButton btEmitirRequisicaoCompra, btCancelarRequisicaoCompra, btVisualizarRequisicaoCompra, 
+  private JButton btEmitirRequisicaoCompra, btCancelarRequisicaoCompra, btVisualizarRequisicaoCompra,
           btAtualizarRequisicaoCompra, btImprimirRequisicaoCompra, btVisualizarRecursos, btAlterarValor,
           btAtualizarFornecedores, btImprimirFornecedores
   private JComboBox cbxPedidos,cbxFornecedor, cbxItem
@@ -74,7 +74,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   private JTable tblInventario
   private ModeloTabela modeloTabelaInventario
 
-   InformacoesSuprimento(Aplicacao aplicacao) 
+   InformacoesSuprimento(Aplicacao aplicacao)
   {
     this.setBorder(new LineBorder(Color.black))
     this.aplicacao = aplicacao
@@ -122,7 +122,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     btImprimirItensTodos.addActionListener(this)
     pnlComandos.add(btImprimirItensTodos)
     pnlAreaComandos.add(pnlComandos)
-    pnlItem.add(pnlAreaComandos, BorderLayout.EAST)        
+    pnlItem.add(pnlAreaComandos, BorderLayout.EAST)
     tbpVisoesItens.addTab("Todos",pnlItem)
 
     JPanel pnlItemPorCategoria = new JPanel(new BorderLayout())
@@ -168,7 +168,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     btImprimirItensPorCategoria.addActionListener(this)
     pnlComandos.add(btImprimirItensPorCategoria)
     pnlAreaComandos.add(pnlComandos)
-    pnlItemPorCategoria.add(pnlAreaComandos, BorderLayout.EAST)        
+    pnlItemPorCategoria.add(pnlAreaComandos, BorderLayout.EAST)
     tbpVisoesItens.addTab("Por Categoria",pnlItemPorCategoria)
 
     JPanel pnlItensInativos = new JPanel(new BorderLayout())
@@ -188,7 +188,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     btImprimirItensInativos.addActionListener(this)
     pnlComandos.add(btImprimirItensInativos)
     pnlAreaComandos.add(pnlComandos)
-    pnlItensInativos.add(pnlAreaComandos, BorderLayout.EAST)        
+    pnlItensInativos.add(pnlAreaComandos, BorderLayout.EAST)
     tbpVisoesItens.addTab("Inativos",pnlItensInativos)
 
     JPanel pnlItemListaCompras = new JPanel(new BorderLayout())
@@ -214,7 +214,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     btImprimirItensListaCompras.addActionListener(this)
     pnlComandos.add(btImprimirItensListaCompras)
     pnlAreaComandos.add(pnlComandos)
-    pnlItemListaCompras.add(pnlAreaComandos, BorderLayout.EAST)        
+    pnlItemListaCompras.add(pnlAreaComandos, BorderLayout.EAST)
     tbpVisoesItens.addTab("Lista de Compras",pnlItemListaCompras)
 
     this.addTab("Insumos",tbpVisoesItens)
@@ -264,7 +264,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       cbxItemMovimentacao = new JComboBox()
       cbxItemMovimentacao.addActionListener(this)
       cbxItemMovimentacao.addItem("Todos")
-      for(int i = 1i < itensMovimentacao.size()i++)
+      for(int i = 1;i < itensMovimentacao.size();i++)
       {
         cbxItemMovimentacao.addItem((Item)itensMovimentacao.get(i))
       }
@@ -344,7 +344,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     pnlComandos = new JPanel(new GridLayout(5,1,5,5))
     btRequisitarItem = new JButton("Requisitar Itens")
     btRequisitarItem.addActionListener(this)
-    pnlComandos.add(btRequisitarItem)        
+    pnlComandos.add(btRequisitarItem)
     btCancelarRequisicao = new JButton("Cancelar Selecionado")
     btCancelarRequisicao.addActionListener(this)
     pnlComandos.add(btCancelarRequisicao)
@@ -364,7 +364,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     modeloTabelaRequisicoesInternas.definirConexao(aplicacao.obterConexao())
     tblRequisicoesInternas = new JTable(modeloTabelaRequisicoesInternas)
     JScrollPane scrollRequisicoesInternas = new JScrollPane(tblRequisicoesInternas)
-    pnlRequisicaoInterna.add(scrollRequisicoesInternas, BorderLayout.CENTER)        
+    pnlRequisicaoInterna.add(scrollRequisicoesInternas, BorderLayout.CENTER)
     this.addTab("Requisições Internas",pnlRequisicaoInterna)
 
     // Conteúdo da Aba Requisição de Compra
@@ -402,7 +402,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     pnlComandos.add(btEmitirRequisicaoCompra)
     btCancelarRequisicaoCompra = new JButton("Cancelar Selecionado")
     btCancelarRequisicaoCompra.addActionListener(this)
-    pnlComandos.add(btCancelarRequisicaoCompra)   
+    pnlComandos.add(btCancelarRequisicaoCompra)
     btVisualizarRequisicaoCompra = new JButton("Visualizar Requisição")
     btVisualizarRequisicaoCompra.addActionListener(this)
     pnlComandos.add(btVisualizarRequisicaoCompra)
@@ -445,7 +445,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     try
     {
       fornecedores = Fornecedor.carregarFornecedores(aplicacao.obterConexao())
-      for(int i = 1i < fornecedores.size()i++)
+      for(int i = 1;i < fornecedores.size();i++)
       {
         cbxFornecedor.addItem((Fornecedor)fornecedores.get(i))
       }
@@ -505,7 +505,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       itensInventario = Item.carregarItens(aplicacao.obterConexao())
       cbxItens = new JComboBox()
       cbxItens.addItem("Todos")
-      for(int i = 1i < itensInventario.size()i++)
+      for(int i = 1;i < itensInventario.size();i++)
       {
         cbxItens.addItem((Item)itensInventario.get(i))
       }
@@ -637,7 +637,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
 
   private void atualizarTabelaFornecedor()
   {
-    modeloTabelaFornecedores.definirConsulta("select codigo as código,razao_social as 'razão social',cnpj,('(' + rtrim(ddd) + ') ' + telefone) as telefone,fax,email as 'e-mail' from fornecedor order by razao_social asc")        
+    modeloTabelaFornecedores.definirConsulta("select codigo as código,razao_social as 'razão social',cnpj,('(' + rtrim(ddd) + ') ' + telefone) as telefone,fax,email as 'e-mail' from fornecedor order by razao_social asc")
     tblFornecedores.setModel(modeloTabelaFornecedores)
     tblFornecedores.updateUI()
   }
@@ -677,7 +677,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     tblListaPrecos.updateUI()
   }
 
-   void actionPerformed(java.awt.event.ActionEvent actionEvent) 
+   void actionPerformed(java.awt.event.ActionEvent actionEvent)
   {
     Object objeto = actionEvent.getSource()
 
@@ -695,7 +695,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     if(objeto == txtDataInventario || objeto == btPesquisarItens)
     {
       String query
-      for(int i = 0i < tblInventario.getRowCount()i++)
+      for(int i = 0;i < tblInventario.getRowCount();i++)
       {
         tblInventario.setValueAt("",i,0)
         tblInventario.setValueAt("",i,1)
@@ -804,7 +804,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para alterar os dados do item.","Atenção",JOptionPane.WARNING_MESSAGE)	        	
+        JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para alterar os dados do item.","Atenção",JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -841,11 +841,11 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     if(objeto == btExcluirItemTodos)
     {
       if(tblItensTodos.getSelectedRow() >=0)
-      {                
+      {
         if(JOptionPane.showConfirmDialog(aplicacao,"Atenção: Tem certeza que deseja excluir o item selecionado?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == 0)
-        {                        
-          int linha = tblItensTodos.getSelectedRow()        		
-          int codigoItem = Integer.parseInt((String)tblItensTodos.getValueAt(linha,0)) 
+        {
+          int linha = tblItensTodos.getSelectedRow()
+          int codigoItem = Integer.parseInt((String)tblItensTodos.getValueAt(linha,0))
           item = new Item()
           try
           {
@@ -863,16 +863,16 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para excluir um item.","Atenção",JOptionPane.WARNING_MESSAGE)
-      }            
+      }
     }
 
     if(objeto == btExcluirItemPorCategoria)
     {
       if(tblItensPorCategoria.getSelectedRow() >=0)
-      {                
+      {
         if(JOptionPane.showConfirmDialog(aplicacao,"Atenção: Tem certeza que deseja excluir o item selecionado?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == 0)
         {
-          int linha = tblItensPorCategoria.getSelectedRow()             
+          int linha = tblItensPorCategoria.getSelectedRow()
           int codigoItem = Integer.parseInt((String)tblItensPorCategoria.getValueAt(linha,0))
           item = new Item()
           try
@@ -891,16 +891,16 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para excluir um item.","Atenção",JOptionPane.WARNING_MESSAGE)
-      }            
+      }
     }
 
     if(objeto == btExcluirItemListaCompras)
     {
       if(tblItensListaCompras.getSelectedRow() >=0)
-      {                
+      {
         if(JOptionPane.showConfirmDialog(aplicacao,"Atenção: Tem certeza que deseja excluir o item selecionado?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == 0)
         {
-          int linha = tblItensListaCompras.getSelectedRow()             
+          int linha = tblItensListaCompras.getSelectedRow()
           int codigoItem = Integer.parseInt((String)tblItensListaCompras.getValueAt(linha,0))
           item = new Item()
           try
@@ -919,7 +919,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para excluir um item.","Atenção",JOptionPane.WARNING_MESSAGE)
-      }            
+      }
     }
 
     if(objeto == btAtualizarItemTodos)
@@ -950,7 +950,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
         {
           int[] linhas = tblItensTodos.getSelectedRows()
           int[] codigosItem = new int[linhas.length]
-          for(int i = 0i < linhas.lengthi++)
+          for(int i = 0;i < linhas.length;i++)
           {
             codigosItem[i] = Integer.parseInt((String)tblItensTodos.getValueAt(linhas[i],0))
           }
@@ -994,7 +994,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
         {
           int[] linhas = tblItensPorCategoria.getSelectedRows()
           int[] codigosItem = new int[linhas.length]
-          for(int i = 0i < linhas.lengthi++)
+          for(int i = 0;i < linhas.length;i++)
           {
             codigosItem[i] = Integer.parseInt((String)tblItensPorCategoria.getValueAt(linhas[i],0))
           }
@@ -1056,7 +1056,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
         {
           int[] linhas = tblItensListaCompras.getSelectedRows()
           int[] codigosItem = new int[linhas.length]
-          for(int i = 0i < linhas.lengthi++)
+          for(int i = 0;i < linhas.length;i++)
           {
             codigosItem[i] = Integer.parseInt((String)tblItensListaCompras.getValueAt(linhas[i],0))
           }
@@ -1115,25 +1115,25 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     {
       if(tblFornecedores.getSelectedRow() >=0)
       {
-        int linha = tblFornecedores.getSelectedRow()    
-        int codigoFornecedor = Integer.parseInt((String)tblFornecedores.getValueAt(linha,0)) 
+        int linha = tblFornecedores.getSelectedRow()
+        int codigoFornecedor = Integer.parseInt((String)tblFornecedores.getValueAt(linha,0))
         DlgDadosFornecedor dlgDadosFornecedor = new DlgDadosFornecedor(aplicacao,'A',codigoFornecedor)
         dlgDadosFornecedor.setVisible(true)
       }
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para alterar os dados do fornecedor.","Atenção",JOptionPane.WARNING_MESSAGE)
-      }            
+      }
     }
 
     if(objeto == btExcluirFornecedor)
     {
       if(tblFornecedores.getSelectedRow() >=0)
-      {                
+      {
         if(JOptionPane.showConfirmDialog(aplicacao,"Atenção: Tem certeza que deseja excluir o fornecedor selecionado?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == 0)
-        {                        
-          int linha = tblFornecedores.getSelectedRow()        		
-          int codigoFornecedor = Integer.parseInt((String)tblFornecedores.getValueAt(linha,0)) 
+        {
+          int linha = tblFornecedores.getSelectedRow()
+          int codigoFornecedor = Integer.parseInt((String)tblFornecedores.getValueAt(linha,0))
           fornecedor = new Fornecedor()
           try
           {
@@ -1150,7 +1150,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para excluir um fornecedor.","Atenção",JOptionPane.WARNING_MESSAGE)
-      }            
+      }
     }
 
     if(objeto == btAtualizarFornecedor)
@@ -1163,9 +1163,9 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       if(btVisualizarRecursos.getText().equals("Ocultar Recursos do Pedido"))
       {
         // Limpa a tabela.
-        for(int i = 0i < 40i++)
+        for(int i = 0;i < 40;i++)
         {
-          for(int j = 0j < 6j++)
+          for(int j = 0;j < 6;j++)
           {
             tblRecursos.setValueAt("",i,j)
           }
@@ -1175,9 +1175,9 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
           try
           {
             dadosRecursos = Pedido.carregarRecursosPedido(aplicacao.obterConexao(),(Pedido)cbxPedidos.getSelectedItem())
-            for(int i = 0i < 40i++)
+            for(int i = 0;i < 40;i++)
             {
-              for(int j = 0j < 6j++)
+              for(int j = 0;j < 6;j++)
               {
                 tblRecursos.setValueAt("" + (dadosRecursos[i][j] == null?"":dadosRecursos[i][j]),i,j)
               }
@@ -1201,11 +1201,11 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     if(objeto == this.btCancelarRequisicaoCompra)
     {
       if(this.tblRequisicoesCompras.getSelectedRow() >=0)
-      {                
+      {
         if(JOptionPane.showConfirmDialog(aplicacao,"Atenção: Tem certeza que deseja cancelar a requisição de compra selecionada?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == 0)
-        {                        
-          int linha = this.tblRequisicoesCompras.getSelectedRow()        		
-          int codigo = Integer.parseInt((String)this.tblRequisicoesCompras.getValueAt(linha,0)) 
+        {
+          int linha = this.tblRequisicoesCompras.getSelectedRow()
+          int codigo = Integer.parseInt((String)this.tblRequisicoesCompras.getValueAt(linha,0))
           RequisicaoCompra requisicaoCompra = new RequisicaoCompra(codigo)
           try
           {
@@ -1220,7 +1220,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para cancelar uma requisição de compra.","Atenção",JOptionPane.WARNING_MESSAGE)
-      }            
+      }
     }
 
     if(objeto == this.btAtualizarRequisicaoCompra)
@@ -1335,11 +1335,11 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     if(objeto == this.btCancelarRequisicao)
     {
       if(this.tblRequisicoesInternas.getSelectedRow() >=0)
-      {                
+      {
         if(JOptionPane.showConfirmDialog(aplicacao,"Atenção: Tem certeza que deseja cancelar a requisição interna selecionada?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == 0)
-        {                        
-          int linha = this.tblRequisicoesInternas.getSelectedRow()        		
-          int codigo = Integer.parseInt((String)this.tblRequisicoesInternas.getValueAt(linha,0)) 
+        {
+          int linha = this.tblRequisicoesInternas.getSelectedRow()
+          int codigo = Integer.parseInt((String)this.tblRequisicoesInternas.getValueAt(linha,0))
           RequisicaoInterna requisicaoInterna = new RequisicaoInterna(codigo)
           try
           {
@@ -1354,7 +1354,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       else
       {
         JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para cancelar uma requisição interna.","Atenção",JOptionPane.WARNING_MESSAGE)
-      }            
+      }
     }
 
     if(objeto == this.btAtualizarRequisicao)
@@ -1363,7 +1363,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     }
 
     if(objeto == cbxCategoria)
-    {   
+    {
       atualizarTabelaItem('C',"")
     }
 

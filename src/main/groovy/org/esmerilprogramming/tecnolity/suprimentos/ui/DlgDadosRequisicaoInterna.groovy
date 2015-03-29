@@ -82,7 +82,7 @@ import org.esmerilprogramming.tecnolity.util.*
     cbxTipoSolicitacao.setSelectedIndex(1)
     cbxTipoSolicitacao.setEnabled(false)
     btNovoDepartamento.setEnabled(false)
-    for(int i = 0i < departamentos.size()i++)
+    for(int i = 0;i < departamentos.size();i++)
     {
       if(departamentos.get(i) instanceof Departamento)
       {
@@ -95,7 +95,7 @@ import org.esmerilprogramming.tecnolity.util.*
     }
     cbxDepartamento.setEnabled(false)
 
-    for(int i = 0i < this.itensRequisicaoInterna.size()i++)
+    for(int i = 0;i < this.itensRequisicaoInterna.size();i++)
     {
       ItemRequisicaoInterna itemRequisicaoInterna = ((ItemRequisicaoInterna)itensRequisicaoInterna.get(i))
       itemRequisicaoInterna.definirRequisicaoInterna(this.requisicaoInterna)
@@ -124,7 +124,7 @@ import org.esmerilprogramming.tecnolity.util.*
         montarInterface()
         cbxTipoSolicitacao.setSelectedItem(requisicaoInterna.obterTipoSolicitacaoLiteral())
         txtDataLimiteEntrega.setText(Calendario.ajustarFormatoDataBanco(requisicaoInterna.obterDataLimiteEntrega()))
-        for(int i = 1i < departamentos.size()i++)
+        for(int i = 1;i < departamentos.size();i++)
         {
           if(((Departamento)departamentos.get(i)).obterNomeDepartamento().equals(requisicaoInterna.obterDepartamento().obterNomeDepartamento()))
             cbxDepartamento.setSelectedIndex(i)
@@ -248,7 +248,7 @@ import org.esmerilprogramming.tecnolity.util.*
       this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
       modeloListaPedidos = new DefaultListModel()
       lstPedidos = new JList(modeloListaPedidos)
-      for(int i = 0i < this.pedidos.size()i++)
+      for(int i = 0;i < this.pedidos.size();i++)
       {
         modeloListaPedidos.addElement(this.pedidos.get(i).toString())
       }
@@ -279,7 +279,7 @@ import org.esmerilprogramming.tecnolity.util.*
     lstPedidosSelecionados = new JList(modeloListaPedidosSelecionados)
     if(this.pedidosSelecionados != null)
     {
-      for(int i = 0i < this.pedidosSelecionados.size()i++)
+      for(int i = 0;i < this.pedidosSelecionados.size();i++)
       {
         modeloListaPedidosSelecionados.addElement(this.pedidosSelecionados.get(i).toString())
         modeloListaPedidos.removeElement(this.pedidosSelecionados.get(i).toString())
@@ -408,7 +408,7 @@ import org.esmerilprogramming.tecnolity.util.*
     {
       cbxDepartamento.removeAllItems()
       departamentos = departamento.carregarNomesDepartamentos(aplicacao.obterConexao())
-      for(int i = 0i < departamentos.size()i++)
+      for(int i = 0;i < departamentos.size();i++)
       {
         cbxDepartamento.addItem(departamentos.get(i))
       }
@@ -424,7 +424,7 @@ import org.esmerilprogramming.tecnolity.util.*
   {
     cbxItem.removeAllItems()
     cbxItem.addItem("Selecione...")
-    for(int i = 1i < itens.size()i++)
+    for(int i = 1;i < itens.size();i++)
     {
       cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
     }
@@ -443,7 +443,7 @@ import org.esmerilprogramming.tecnolity.util.*
     {
       modeloListaPedidos.removeAllElements()
       this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
-      for(int i = 0i < this.pedidos.size()i++)
+      for(int i = 0;i < this.pedidos.size();i++)
       {
         modeloListaPedidos.addElement(this.pedidos.get(i))
       }
@@ -461,7 +461,7 @@ import org.esmerilprogramming.tecnolity.util.*
     {
       modeloListaPedidos.removeAllElements()
       this.pedidos = Pedido.carregarPedidosProduzindo(aplicacao.obterConexao())
-      for(int i = 0i < this.pedidos.size()i++)
+      for(int i = 0;i < this.pedidos.size();i++)
       {
         modeloListaPedidos.addElement(this.pedidos.get(i))
       }
@@ -584,7 +584,7 @@ import org.esmerilprogramming.tecnolity.util.*
         try
         {
           boolean ItemInserido = false
-          for(int i=0i < itensRequisicaoInterna.size()i++)
+          for(int i=0;i < itensRequisicaoInterna.size();i++)
           {
             if(cbxItem.getSelectedItem().equals((String)tblItens.getValueAt(i,0)))
             {
@@ -643,7 +643,7 @@ import org.esmerilprogramming.tecnolity.util.*
 
       if(linhaSelecionada < itensRequisicaoInterna.size())
       {
-        for(int i = linhaSelecionadai < itensRequisicaoInterna.size()i++)
+        for(int i = linhaSelecionada;i < itensRequisicaoInterna.size();i++)
         {
           this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,0),i,0)
           this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,1),i,1)
