@@ -5,21 +5,6 @@ import java.sql.*
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.util.*
 
-/**
-* Projeto: 001 - Tecnolity <br>
-* Autor do Código: Hildeberto Mendonça Filho <br>
-* Nome do Arquivo: Permissao.java <br>
-* Linguagem: Java <br>
-*  <br>
-* Requerimentos: Requer máquina virtual java versão 1.3 ou superior. <br>
-*  <br>
-* Objetivo: Diálogo que representa a permissão atribuida a um usuário. <br>
-*  <br>
-* Objetivo definido por: Hildeberto Mendonça <br>
-* Início da Programação: 08/02/2002 <br>
-* Fim da Programação: <br>
-* Última Versão: 1.0  <br>
-*/
 
  class Permissao 
 {

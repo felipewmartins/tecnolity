@@ -3,7 +3,7 @@ package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 import java.awt.print.*
 import java.util.*
 
-class Impressora
+ class Impressora
 {
   private PrinterJob trabalhoImpressao
     private Book livro
