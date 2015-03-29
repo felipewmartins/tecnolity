@@ -1,4 +1,4 @@
-package org.esmerilprogramming.ui
+package org.esmerilprogramming.tecnolity.ui
 
 interface DialogoCaixaSelecao {
   void setVisible(boolean p0)

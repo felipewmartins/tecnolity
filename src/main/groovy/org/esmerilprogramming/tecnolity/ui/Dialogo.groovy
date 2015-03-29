@@ -1,4 +1,4 @@
-package org.esmerilprogramming.ui
+package org.esmerilprogramming.tecnolity.ui
 
 import javax.swing.*
 import java.awt.*

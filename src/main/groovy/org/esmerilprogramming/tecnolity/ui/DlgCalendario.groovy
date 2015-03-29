@@ -1,6 +1,6 @@
-package org.esmerilprogramming.ui
+package org.esmerilprogramming.tecnolity.ui
 
-import org.esmerilprogramming.util.*
+import org.esmerilprogramming.tecnolity.util.*
 import javax.swing.*
 import javax.swing.border.*
 import java.awt.*

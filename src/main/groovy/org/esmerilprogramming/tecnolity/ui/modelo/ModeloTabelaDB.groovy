@@ -1,7 +1,7 @@
 package org.esmerilprogramming.tecnolity.ui.modelo
 
 import java.util.*
-import org.esmerilprogramming.util.*
+import org.esmerilprogramming.tecnolity.util.*
 import javax.swing.event.*
 import java.sql.*
 

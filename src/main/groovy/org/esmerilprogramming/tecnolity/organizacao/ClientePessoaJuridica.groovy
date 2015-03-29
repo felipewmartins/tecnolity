@@ -1,5 +1,8 @@
 package org.esmerilprogramming.organizacao
 
+import org.esmerilprogramming.tecnolity.util.Calendario
+import org.esmerilprogramming.tecnolity.util.PessoaJuridica
+
 class ClientePessoaJuridica extends PessoaJuridica {
   int codigo
   Calendario dataFundacao
