@@ -54,7 +54,7 @@ import org.esmerilprogramming.tecnolity.util.*
         ResultSetMetaData meta = resultado.getMetaData()
         numeroColunas = meta.getColumnCount()
         cabecalhos = new String[numeroColunas]
-        for(int i = 1 i <= numeroColunas i++)
+        for(int i = 1 ; i <= numeroColunas ;  i++)
         {
           cabecalhos[i -1] = meta.getColumnName(i)
         }
