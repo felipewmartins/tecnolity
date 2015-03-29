@@ -271,7 +271,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   {
     this.cbxColaboradores.removeAllItems()
     this.cbxColaboradores.addItem("Selecione...")
-    for(int i = 1i < colaboradores.size()i++)
+    for(int i = 1;i < colaboradores.size();i++)
     {
       this.cbxColaboradores.addItem(((Colaborador)colaboradores.get(i)).getNome())
     }
@@ -600,22 +600,22 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
           saida.write("---- CONSULTA -----\n\n" + txaComandos.getText())
           saida.write("\n\n---- RESULTADO ----")
           int[] tabs = new int[tblResultado.getColumnCount()]
-          for(int i = 0i < tblResultado.getColumnCount()i++)
+          for(int i = 0;i < tblResultado.getColumnCount();i++)
           {
             tabs[i] = 1
-            for(int j = 0j < tblResultado.getRowCount()j++)
+            for(int j = 0;j < tblResultado.getRowCount();j++)
             {
               if(tabs[i] <= (((String)(tblResultado.getValueAt(j,i) != null?tblResultado.getValueAt(j,i):"")).length()/6.0f))
                 tabs[i]++
             }
           }
           String linha = ""
-          for(int i = 0i < tblResultado.getRowCount()i++)
+          for(int i = 0;i < tblResultado.getRowCount();i++)
           {
-            for(int j = 0j < tblResultado.getColumnCount()j++)
+            for(int j = 0;j < tblResultado.getColumnCount();j++)
             {
               linha += (tblResultado.getValueAt(i,j) != null?tblResultado.getValueAt(i,j):"")
-              for(int l = 0l < (tabs[j] - ((String)(tblResultado.getValueAt(i,j) != null?tblResultado.getValueAt(i,j):"")).length()/6)l++)
+              for(int l = 0;l < (tabs[j] - ((String)(tblResultado.getValueAt(i,j) != null?tblResultado.getValueAt(i,j):"")).length()/6);l++)
               {
                 linha += "\t"
               }
