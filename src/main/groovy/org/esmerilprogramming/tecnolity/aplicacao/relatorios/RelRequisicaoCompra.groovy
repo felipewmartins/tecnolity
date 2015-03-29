@@ -11,15 +11,13 @@ class RelRequisicaoCompra extends Relatorio
     private Vector pedidos
     private String via
 
-    RelRequisicaoCompra(RequisicaoCompra requisicaoCompra, Vector pedidos, String via)
-    {
+    RelRequisicaoCompra(RequisicaoCompra requisicaoCompra, Vector pedidos, String via) {
       this.requisicaoCompra = requisicaoCompra
         this.pedidos = pedidos
         this.via = via
     }
 
-  String gerarRelatorio()
-  {
+  String gerarRelatorio() {
     Calendario calendario = new Calendario()
       conteudo = new StringBuffer()
       conteudo.append("REQUISIÇÃO DE COMPRA AO FORNECEDOR                               TECNOLITY DO NORDESTE LTDA")
@@ -47,8 +45,7 @@ class RelRequisicaoCompra extends Relatorio
       conteudo.append("Cnd. Pagamento: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterCondicaoPagamento(),29) + "    Forma Pagamento: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterFormaPagamento().obterFormaPagamento(),10))
       conteudo.append(QUEBRA)
       conteudo.append("       Pedidos: ")
-      for(int i = 0;i < pedidos.size();i++)
-      {
+      for(int i = 0;i < pedidos.size();i++) {
         conteudo.append(((Pedido)pedidos.get(i)).obterCodigo() + "(OC:" +((Pedido)pedidos.get(i)).obterOrdemCompra() + ") ")
       }
     conteudo.append(QUEBRA)
@@ -61,8 +58,7 @@ class RelRequisicaoCompra extends Relatorio
       Vector itens = this.requisicaoCompra.obterItensRequisicao()
       int posicaoBarraLista = 0
       float totalRequisicao = 0.0f, totalIPI = 0.0f
-      for(int i = 0;i < itens.size();i++)
-      {
+      for(int i = 0;i < itens.size();i++) {
         ItemRequisicao irAtual = (ItemRequisicao)itens.get(i)
           conteudo.append(Texto.obterStringTamanhoFixo(irAtual.obterItem().obterDescricao(),32) + "|" + 
               Texto.obterStringTamanhoFixo("" + irAtual.obterItem().obterFornecedorItem().obterReferenciaFornecedor(),14) + "|" + 
@@ -84,8 +80,7 @@ class RelRequisicaoCompra extends Relatorio
       conteudo.append("Observação: ")
       conteudo.append(QUEBRA)
       String[] texto = Texto.obterTextoAlinhado(requisicaoCompra.obterObservacao(),92)
-      for(int linha = 0;linha < texto.length;linha++)
-      {
+      for(int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }

@@ -13,56 +13,46 @@ import org.esmerilprogramming.tecnolity.util.*
   private ResultSet resultado
   private Conexao conexao
 
-   ModeloTabela()
-  {
+   ModeloTabela() {
     cache = new Vector()
   }
 
-   String getColumnName(int i)
-  {
+   String getColumnName(int i) {
     return cabecalhos[i]
   }
 
-   int getColumnCount()
-  {
+   int getColumnCount() {
     return numeroColunas
   }
 
-   int getRowCount()
-  {
+   int getRowCount() {
     return cache.size()
   }
 
-   Object getValueAt(int linha, int coluna)
-  {
+   Object getValueAt(int linha, int coluna) {
     return ((String[])cache.elementAt(linha))[coluna]
   }
 
-   void definirConexao(Conexao conexao)
-  {
+   void definirConexao(Conexao conexao) {
     this.conexao = conexao
   }
 
-   void definirConsulta(String consulta)
-  {
+   void definirConsulta(String consulta) {
     cache = new Vector()
     try
     {
       resultado = conexao.executarConsulta(consulta)
-      if (resultado.next())
-      {
+      if (resultado.next()) {
         ResultSetMetaData meta = resultado.getMetaData()
         numeroColunas = meta.getColumnCount()
         cabecalhos = new String[numeroColunas]
-        for(int i = 1 ; i <= numeroColunas ;  i++)
-        {
+        for(int i = 1 ; i <= numeroColunas ;  i++) {
           cabecalhos[i -1] = meta.getColumnName(i)
         }
         /*do
         {
           String[] dados = new String[numeroColunas]
-          for(int i = 0 i < numeroColunas i++)
-          {
+          for(int i = 0 i < numeroColunas i++) {
             dados[i] = resultado.getString(i + 1)
           }
           cache.addElement(dados)
@@ -72,8 +62,7 @@ import org.esmerilprogramming.tecnolity.util.*
       resultado.close()
       fireTableChanged(null)//notificar a criacao de uma nova tabela
     }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       cache = new Vector()
       e.printStackTrace()
     }

@@ -9,14 +9,12 @@ class RelatorioItens extends Relatorio
   private Vector itens
     private String titulo
 
-    RelatorioItens(Vector itens, String titulo)
-    {
+    RelatorioItens(Vector itens, String titulo) {
       this.itens = itens
         this.titulo = titulo
     }
 
-  String gerarRelatorio()
-  {
+  String gerarRelatorio() {
     Calendario calendario = new Calendario()
       conteudo = new StringBuffer()
       conteudo.append(Texto.obterStringTamanhoFixo(titulo,29) + "                                 TECNOLITY DO NORDESTE LTDA")
@@ -31,8 +29,7 @@ class RelatorioItens extends Relatorio
       conteudo.append(QUEBRA)
       int linha = 60, alturaItens = 0
       String quantMinima = ""
-      for(int i = 1;i < itens.size();i++)
-      {
+      for(int i = 1;i < itens.size();i++) {
         Item item = (Item)itens.get(i)
           if(item.obterQuantidade() <= item.obterQuantidadeMinima())
             quantMinima = "*"

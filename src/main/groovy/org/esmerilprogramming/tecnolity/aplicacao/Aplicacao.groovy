@@ -12,7 +12,7 @@ import org.esmerilprogramming.tecnolity.ui.*
 
 class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
-    private JPanel areaTrabalho
+  private JPanel areaTrabalho
     private Container conteudo
     private Colaborador colaborador
     private Conexao conexao
@@ -29,8 +29,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         {
           configuracao.carregarConfiguracao()
         }
-      catch(IOException e)
-      {
+      catch(IOException e) {
         JOptionPane.showMessageDialog(this,"Falha no carregamento das propriedades do sistema.","Falha",JOptionPane.ERROR_MESSAGE)
           DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this, configuracao)
           dlgConfiguracoes.setVisible(true)
@@ -39,8 +38,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       super.setIconImage((new ImageIcon("imagens/ico_tecnolity.jpg")).getImage())
 
         abrirConexao()
-        if(!conexao.abrirConexao())
-        {
+        if(!conexao.abrirConexao()) {
           JOptionPane.showMessageDialog(this,"Não foi possível realizar uma conexão com o banco de dados. \nA aplicação terá que ser finalizada.","Erro",JOptionPane.WARNING_MESSAGE)
             System.exit(0)
         }
@@ -52,8 +50,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         {
           colaborador.carregarPermissoes(conexao)
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(this,"Não foi possível carregar as permissões do usuário.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -77,8 +74,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         conteudo.add(barraStatus,BorderLayout.SOUTH)
     }
 
-  void adicionarAreaTrabalho(JPanel areaTrabalho)
-  {
+  void adicionarAreaTrabalho(JPanel areaTrabalho) {
     if(this.areaTrabalho != null)
       conteudo.remove(this.areaTrabalho)
         this.areaTrabalho = areaTrabalho
@@ -86,20 +82,17 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         this.areaTrabalho.updateUI()
   }
 
-  void inicializarTarefaImpressao()
-  {
+  void inicializarTarefaImpressao() {
     if(this.tarefaImpressao == null)
       tarefaImpressao = PrinterJob.getPrinterJob()
   }
 
-  PrinterJob obterTarefaImpressao()
-  {
+  PrinterJob obterTarefaImpressao() {
     inicializarTarefaImpressao()
       return tarefaImpressao
   }
 
-  void definirFormatoPagina()
-  {
+  void definirFormatoPagina() {
     this.formatoPagina = new PageFormat()
       Paper papel = new Paper()
       papel.setSize(Configuracao.getLarguraPapelPixel(), Configuracao.getAlturaPapelPixel())
@@ -111,24 +104,19 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       this.formatoPagina.setOrientation(Configuracao.getOrientacao())
   }
 
-  Configuracao obterConfiguracao()
-  {
+  Configuracao obterConfiguracao() {
     return this.configuracao
   }
 
-  PageFormat obterFormatoPagina()
-  {
-    if(this.formatoPagina == null)
-    {
+  PageFormat obterFormatoPagina() {
+    if(this.formatoPagina == null) {
       definirFormatoPagina()
     }
     return this.formatoPagina
   }
 
-  Conexao obterConexao()
-  {
-    if(this.conexao.conexaoAberta() || this.conexao != null)
-    {
+  Conexao obterConexao() {
+    if(this.conexao.conexaoAberta() || this.conexao != null) {
       return this.conexao
     }
     else
@@ -138,18 +126,15 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     }
   }
 
-  void abrirConexao()
-  {
+  void abrirConexao() {
     this.conexao = new Conexao('C')
   }
 
-  Colaborador obterColaborador()
-  {
+  Colaborador obterColaborador() {
     return this.colaborador
   }
 
-  void definirColaborador(Colaborador colaborador)
-  {
+  void definirColaborador(Colaborador colaborador) {
     this.colaborador = colaborador
 
       // Inicia o registro de saídas no log.
@@ -164,8 +149,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
           System.out.println("---------------------------------------------------------------")
           System.out.println("")
       }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       e.printStackTrace()
     }
   }
@@ -175,8 +159,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       aplicacao.setVisible(true)
   }
 
-  boolean conectado()
-  {
+  boolean conectado() {
     try
     {
       if(conexao == null)
@@ -186,32 +169,27 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       else
         return false
     }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       JOptionPane.showMessageDialog(this,"Erro:" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
         return false
     }
   }
 
-  void finalizarAplicacao()
-  {
-    if(conectado())
-    {
+  void finalizarAplicacao() {
+    if(conectado()) {
       try
       {
         conexao.fecharConexao()
           LogAplicacao.stop()
       }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         JOptionPane.showMessageDialog(this,"Erro:" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
       }
     }
     super.finalizarAplicacao()
   }
 
-  static String obterCaminho()
-  {
+  static String obterCaminho() {
     return caminho
   }
 }
@@ -222,8 +200,7 @@ class LogAplicacao extends PrintStream
     static PrintStream saida
     static PrintStream erro
 
-    LogAplicacao(PrintStream ps)
-    {
+    LogAplicacao(PrintStream ps) {
       super(ps)
     }
 
@@ -237,31 +214,26 @@ class LogAplicacao extends PrintStream
       System.setErr(new LogAplicacao(System.err))
   }
 
-  static void stop()
-  {
-    if(saida != null || erro != null)
-    {
+  static void stop() {
+    if(saida != null || erro != null) {
       System.setOut(saida)
         System.setErr(erro)
         try
         {
           arquivoLog.close()
         }
-      catch(Exception e)
-      {
+      catch(Exception e) {
         e.printStackTrace()
       }
     }
   }
 
-  void write(int b)
-  {
+  void write(int b) {
     try
     {
       arquivoLog.write(b)
     }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       e.printStackTrace()
         setError()
     }
@@ -272,8 +244,7 @@ class LogAplicacao extends PrintStream
     try {
       arquivoLog.write(buf,off,len)
     }
-    catch(Exception e)
-    {
+    catch(Exception e) {
       e.printStackTrace()
         setError()
     }
