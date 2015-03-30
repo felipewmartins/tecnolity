@@ -12,7 +12,10 @@ class Conexao implements ConexaoDB {
   String usuario
   String senha
 
+  def db
+
   Conexao() {
+    db = Sql.newInstance('jdbc:h2:mem:tecnolity', 'sa', '', 'org.h2.Driver')
   }
 
   Conexao(String driver, String fonteDados) {
@@ -28,13 +31,7 @@ class Conexao implements ConexaoDB {
   }
 
   void abrirConexao() throws Exception {
-    try {
-      Class.forName(driver)
-      conexao = DriverManager.getConnection(fonteDados, usuario, senha)
-    } catch (e) {
-      e.printStackTrace()
-      throw new Exception("N\u00e3o foi poss\u00edvel abrir uma conex\u00e3o com o banco de dados. (" + e.getMessage() + ")")
-    }
+
   }
 
   void commit() throws SQLException {

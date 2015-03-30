@@ -13,90 +13,79 @@ import org.esmerilprogramming.tecnolity.ui.*
 class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
   private JPanel areaTrabalho
-    private Container conteudo
-    private Colaborador colaborador
-    private Conexao conexao
-    private int teste
-    private static String caminho
-    private PrinterJob tarefaImpressao
-    private PageFormat formatoPagina
-    private Configuracao configuracao
+  private Container conteudo
+  private Colaborador colaborador
+  private Conexao conexao
+  private int teste
+  private static String caminho
+  private PrinterJob tarefaImpressao
+  private PageFormat formatoPagina
+  private Configuracao configuracao
 
-    Aplicacao() {
-      super("Sistema de Planejamento e Controle da Produção")
-        configuracao = new Configuracao()
-        try
-        {
-          configuracao.carregarConfiguracao()
-        }
-      catch(IOException e) {
-        JOptionPane.showMessageDialog(this,"Falha no carregamento das propriedades do sistema.","Falha",JOptionPane.ERROR_MESSAGE)
-          DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this, configuracao)
-          dlgConfiguracoes.setVisible(true)
-      }
-
-      super.setIconImage((new ImageIcon("imagens/ico_tecnolity.jpg")).getImage())
-
-        abrirConexao()
-        if(!conexao.abrirConexao()) {
-          JOptionPane.showMessageDialog(this,"Não foi possível realizar uma conexão com o banco de dados. \nA aplicação terá que ser finalizada.","Erro",JOptionPane.WARNING_MESSAGE)
-          System.exit(0)
-        }
-
-      FormAutenticacao formAutenticacao = new FormAutenticacao(this)
-        formAutenticacao.setVisible(true)
-
-        try
-        {
-          colaborador.carregarPermissoes(conexao)
-        }
-      catch(Exception e) {
-        JOptionPane.showMessageDialog(this,"Não foi possível carregar as permissões do usuário.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
-          e.printStackTrace()
-      }
-
-      conteudo = this.getContentPane()
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
-        this.setBounds(0,0, screenSize.width, screenSize.height - 27)
-        this.addWindowListener(this)
-
-        /* adiciona a barra de menu */
-        BarraMenu barraMenu = new BarraMenu(this)
-        this.setJMenuBar(barraMenu)
-
-        /* Adiciona a barra de aplicações*/
-        BarraAplicacao barraAplicacao = new BarraAplicacao(this)
-        conteudo.add(barraAplicacao, BorderLayout.NORTH)
-
-        /* Adiciona a barra de status */
-        BarraStatus barraStatus = new BarraStatus(this)
-        conteudo.add(barraStatus,BorderLayout.SOUTH)
+  Aplicacao() {
+    super("Sistema de Planejamento e Controle da Produção")
+    configuracao = new Configuracao()
+    try {
+      configuracao.carregarConfiguracao()
+    } catch(e) {
+      JOptionPane.showMessageDialog(this,"Falha no carregamento das propriedades do sistema.","Falha",JOptionPane.ERROR_MESSAGE)
+      DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this, configuracao)
+      dlgConfiguracoes.setVisible(true)
     }
 
+    super.setIconImage((new ImageIcon("imagens/ico_tecnolity.jpg")).getImage())
+
+    FormAutenticacao formAutenticacao = new FormAutenticacao(this)
+    formAutenticacao.setVisible(true)
+
+    try {
+      colaborador.carregarPermissoes(conexao)
+    } catch(e) {
+      JOptionPane.showMessageDialog(this,"Não foi possível carregar as permissões do usuário.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+      e.printStackTrace()
+    }
+
+    conteudo = this.getContentPane()
+
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
+    this.setBounds(0,0, screenSize.width, screenSize.height - 27)
+    this.addWindowListener(this)
+
+    BarraMenu barraMenu = new BarraMenu(this)
+    this.setJMenuBar(barraMenu)
+
+    BarraAplicacao barraAplicacao = new BarraAplicacao(this)
+    conteudo.add(barraAplicacao, BorderLayout.NORTH)
+
+    BarraStatus barraStatus = new BarraStatus(this)
+    conteudo.add(barraStatus,BorderLayout.SOUTH)
+  }
+
   void adicionarAreaTrabalho(JPanel areaTrabalho) {
-    if(this.areaTrabalho != null)
+    if(this.areaTrabalho != null) {
       conteudo.remove(this.areaTrabalho)
-        this.areaTrabalho = areaTrabalho
-        conteudo.add(this.areaTrabalho,BorderLayout.CENTER)
-        this.areaTrabalho.updateUI()
+    }
+    this.areaTrabalho = areaTrabalho
+    conteudo.add(this.areaTrabalho,BorderLayout.CENTER)
+    this.areaTrabalho.updateUI()
   }
 
   void inicializarTarefaImpressao() {
-    if(this.tarefaImpressao == null)
+    if (this.tarefaImpressao == null) {
       tarefaImpressao = PrinterJob.getPrinterJob()
+    }
   }
 
   PrinterJob obterTarefaImpressao() {
     inicializarTarefaImpressao()
-      return tarefaImpressao
+    tarefaImpressao
   }
 
   void definirFormatoPagina() {
     this.formatoPagina = new PageFormat()
-      Paper papel = new Paper()
-      papel.setSize(Configuracao.getLarguraPapelPixel(), Configuracao.getAlturaPapelPixel())
-      papel.setImageableArea(Configuracao.getMargemEsquerdaPixel(),
+    Paper papel = new Paper()
+    papel.setSize(Configuracao.getLarguraPapelPixel(), Configuracao.getAlturaPapelPixel())
+    papel.setImageableArea(Configuracao.getMargemEsquerdaPixel(),
           Configuracao.getMargemSuperiorPixel(),
           Configuracao.getLarguraPapelPixel() - Configuracao.getMargemEsquerdaPixel() - Configuracao.getMargemDireitaPixel(),
           Configuracao.getAlturaPapelPixel() - Configuracao.getMargemSuperiorPixel() - Configuracao.getMargemInferiorPixel())
