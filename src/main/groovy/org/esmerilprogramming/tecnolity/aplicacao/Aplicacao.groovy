@@ -144,6 +144,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   static main (args) {
+    Conexao.instance.setupDB()
     Aplicacao aplicacao = new Aplicacao()
     aplicacao.setVisible(true)
   }

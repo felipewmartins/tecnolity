@@ -6,19 +6,18 @@ import org.esmerilprogramming.tecnolity.util.PessoaFisica
 import java.sql.*
 import java.util.Vector
 
-class Colaborador extends PessoaFisica
-{
-  private String matricula
-    private String senha
-    private Departamento departamento
-    private String ramal
-    private boolean senhaAlterada
-    private Calendario calendario = new Calendario()
-    private Vector permissoes = new Vector()
-    private boolean colaboradorExiste = true
-    private String ddd
+class Colaborador extends PessoaFisica {
+  String matricula
+  String senha
+  Departamento departamento
+  String ramal
+  boolean senhaAlterada
+  Calendario calendario = new Calendario()
+  Vector permissoes = new Vector()
+  boolean colaboradorExiste = true
+  String ddd
 
-    Colaborador(String matricula, String senha, char sexo, String nomeCompleto,
+  Colaborador(String matricula, String senha, char sexo, String nomeCompleto,
         String identidade, String orgaoEmissorIdentidade, String cpf,
         Departamento departamento, String logradouro, String complemento,
         String bairro, String cidade, Estado estado, String cep, String ddd,
@@ -35,18 +34,15 @@ class Colaborador extends PessoaFisica
         this.senhaAlterada(senhaAlterada)
     }
 
-  Colaborador(String matricula, String senha) throws Exception
-  {
-    this.definirMatricula(matricula)
-      this.definirSenha(senha)
+  Colaborador(String matricula, String senha) {
+    this.matricula = matricula
+    this.senha = senha
   }
 
-  Colaborador(String matricula, String nomeCompleto, String senha) throws Exception
-  {
-    this.definirMatricula(matricula)
-      super.setNome(nomeCompleto)
-      if(!senha.equals(""))
-        this.definirSenha(senha)
+  Colaborador(String matricula, String nomeCompleto, String senha) {
+    this.matricula = matricula
+    super.setNome(nomeCompleto)
+    this.senha = senha
   }
 
   Colaborador(String matricula, Conexao conexao) throws Exception
@@ -74,13 +70,13 @@ class Colaborador extends PessoaFisica
             dadosDepartamento.close()
           }
         this.definirLogradouro(dadosColaborador.getString("logradouro"))
-          this.definirComplemento(dadosColaborador.getString("complemento"))
-          this.definirBairro(dadosColaborador.getString("bairro"))
-          this.definirCidade(dadosColaborador.getString("cidade"))
-          String siglaEstado = dadosColaborador.getString("estado")
-          if(siglaEstado != null) {
-            this.setEstado(new Estado(siglaEstado))
-          }
+        this.definirComplemento(dadosColaborador.getString("complemento"))
+        this.definirBairro(dadosColaborador.getString("bairro"))
+        this.definirCidade(dadosColaborador.getString("cidade"))
+        String siglaEstado = dadosColaborador.getString("estado")
+        if(siglaEstado != null) {
+          this.setEstado(new Estado(siglaEstado))
+        }
         this.definirCep(dadosColaborador.getString("cep"))
           this.setDDD(dadosColaborador.getString("ddd"))
           this.definirTelefone(dadosColaborador.getString("telefone"))
@@ -91,92 +87,19 @@ class Colaborador extends PessoaFisica
       }
   }
 
-  Colaborador(String matricula) throws Exception
-  {
-    this.definirMatricula(matricula)
-  }
-
-  Colaborador(){}
-
-  String obterMatricula() {
-    return this.matricula
-  }
-
-  String obterSenha() {
-    return this.senha
+  Colaborador(String matricula) {
+    this.matricula = matricula
   }
 
   char obterSexo() {
     return super.getSexo()
   }
 
-  Departamento obterDepartamento() {
-    return this.departamento
-  }
-
-  Estado obterEstado() {
-    return (Estado)this.getEstado()
-  }
-
-  String obterRamal() {
-    return this.ramal
-  }
-
-  boolean senhaAlterada() {
-    return this.senhaAlterada
-  }
-
-  void definirMatricula(String matricula) throws Exception
-  {
-    if(matricula != null) {
-      if(matricula.equals("")) {
-        Exception e = new Exception("A Matrícula não foi informada.")
-          throw e
-      }
-      else
-        this.matricula = matricula
-    }
-  }
-
-  void definirSenha(String senha) throws Exception
-  {
-    if(senha.equals("")) {
-      Exception e = new Exception("A Senha não foi informada.")
-        throw e
-    }
-    else
-      this.senha = senha
-  }
-
-  void definirSexo(char sexo) throws Exception
-  {
-    if(sexo == '\u0000') {
-      Exception e = new Exception("O Sexo não foi informado.")
-        throw e
-    }
-    else
-      super.setSexo(sexo)
-  }
-
-  void definirIdentidade(String identidade) {
-    super.setIdentidade(identidade)
-  }
-
-  void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade) {
-    super.setOrgaoIdentidade(orgaoEmissorIdentidade)
-  }
-
-  void definirCpf(String cpf) throws Exception
-  {
+  void definirCpf(String cpf) throws Exception {
     super.setCPF(cpf)
   }
 
-  void definirDepartamento(Departamento departamento) {
-    this.departamento = departamento
-  }
-
-  void definirLogradouro(String logradouro) throws Exception
-  {
+  void definirLogradouro(String logradouro) throws Exception {
     super.setLogradouro(logradouro)
   }
 
@@ -188,8 +111,7 @@ class Colaborador extends PessoaFisica
     super.setBairro(bairro)
   }
 
-  void definirCidade(String cidade) throws Exception
-  {
+  void definirCidade(String cidade) throws Exception {
     super.setCidade(cidade)
   }
 
@@ -197,12 +119,7 @@ class Colaborador extends PessoaFisica
     super.setCEP(cep)
   }
 
-  void setDDD(String ddd) {
-    this.ddd = ddd
-  }
-
-  void definirTelefone(String telefone) throws Exception
-  {
+  void definirTelefone(String telefone) throws Exception {
     if(telefone == null)
       return
         if(telefone.length() <= 8) {
@@ -215,14 +132,7 @@ class Colaborador extends PessoaFisica
         }
   }
 
-  void definirRamal(String ramal) {
-    if(ramal == null)
-      return
-        this.ramal = ramal.trim()
-  }
-
-  void definirCelular(String celular) throws Exception
-  {
+  void definirCelular(String celular) throws Exception {
     if(celular == null)
       return
         if(celular.length() <= 8) {
@@ -235,22 +145,23 @@ class Colaborador extends PessoaFisica
         }
   }
 
-  void definirEmail(String email) throws Exception
-  {
+  void definirEmail(String email) throws Exception {
     super.setEmail(email)
   }
 
-  void senhaAlterada(boolean senhaAlterada) {
-    this.senhaAlterada = senhaAlterada
-  }
+  boolean autenticarColaborador() throws Exception {
 
-  boolean autenticarColaborador() throws Exception
-  {
+    // here we have a groovy SQL no need plain JDBC anymore ;]
+    def db = Conexao.instance.db
+    println db
+    println db.rows("select * from usuario")
+
+
+
     ResultSet colaborador
       String query
       boolean usuarioAutenticado = false
 
-      Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         query = "select usuario,senha,sexo,nome_completo,identidade,orgao_emissor_rg,cpf,d.codigo as codigo_departamento,d.departamento,logradouro,complemento,bairro,cidade,estado,cep,ddd,telefone,ramal,celular,email,senha_alterada from usuario u, departamento d "+
           "where usuario = '"+ matricula +"' and senha = '"+ senha +"' and d.codigo =* u.departamento"
@@ -292,12 +203,6 @@ class Colaborador extends PessoaFisica
       }
     conexao.fecharConexao()
       return usuarioAutenticado
-  }
-
-  /** Retorna true se houver algum colaborador cadastrado no Banco de dados.
-    Retorna false se não houver nenhum colaborador cadastrado.*/
-  boolean colaboradorExiste() {
-    return this.colaboradorExiste
   }
 
   void cadastrarColaborador() {
