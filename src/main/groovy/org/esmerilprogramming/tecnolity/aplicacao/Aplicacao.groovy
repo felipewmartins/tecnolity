@@ -48,7 +48,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     conteudo = this.getContentPane()
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
-    this.setBounds(0,0, screenSize.width, screenSize.height - 27)
+    this.setBounds(0,0, screenSize.width as int, screenSize.height - 27 as int)
     this.addWindowListener(this)
 
     BarraMenu barraMenu = new BarraMenu(this)
@@ -117,10 +117,6 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
   void abrirConexao() {
     this.conexao = new Conexao()
-  }
-
-  Colaborador obterColaborador() {
-    return this.colaborador
   }
 
   void definirColaborador(Colaborador colaborador) {

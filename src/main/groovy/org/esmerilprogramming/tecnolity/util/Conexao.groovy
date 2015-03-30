@@ -48,10 +48,26 @@ create table usuario (
 );
 '''
 
-   def params = [1, 'e', 'p', 1, 'Esmeril Programming', '999999999', 'ssp', '9999999999',
-   1,'universe','orion','space','gamma','ray','12345','111','88888888','111','88888888','ep@test.com', 0]
+    db.execute '''
+create table permissao (
+  interface int(6) not null,
+  usuario varchar(20) not null,
+  permissao varchar(2) not null
+);
+'''
 
-   db.execute 'insert into usuario values (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', params
+    db.execute '''
+create table interface (
+  identificador int(6) not null,
+  interface varchar(60) not null,
+  descricao varchar(120) null
+);
+'''
+
+    def params = [1, 'e', 'p', 1, 'Esmeril Programming', '999999999', 'ssp', '9999999999',
+    1,'universe','orion','space','gamma','ray','12345','111','88888888','111','88888888','ep@test.com', 0]
+
+    db.execute 'insert into usuario values (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', params
 
   }
 

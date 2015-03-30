@@ -235,18 +235,20 @@ class Colaborador extends PessoaFisica {
     return colaboradores
   }
 
-  void carregarPermissoes(Conexao conexao) throws SQLException
-  {
+  void carregarPermissoes(Conexao conexao) throws SQLException {
     Interface tela
-      Permissao permissao
-      permissoes.removeAllElements()
-      ResultSet dadosPermissoes = conexao.executarConsulta("select i.identificador as identificador, i.interface as interface, i.descricao as descricao_interface, p.permissao as tipo_permissao from permissao p, interface i where i.identificador = p.interface and p.usuario = '"+ this.matricula +"' order by i.identificador asc")
-      while(dadosPermissoes.next()) {
-        tela = new Interface(dadosPermissoes.getInt("identificador"),dadosPermissoes.getString("interface"),dadosPermissoes.getString("descricao_interface"))
-          permissao = new Permissao(tela,dadosPermissoes.getString("tipo_permissao").toCharArray()[0])
-          permissoes.addElement(permissao)
-      }
-    dadosPermissoes.close()
+    Permissao permissao
+    permissoes.removeAllElements()
+    def db = Conexao.instance.db
+    def consulta = '''select i.identificador as identificador,
+ i.interface as interface, i.descricao as descricao_interface, p.permissao as tipo_permissao from permissao p,
+ interface i where i.identificador = p.interface and p.usuario = '"+ this.matricula +"' order by i.identificador asc
+'''
+    db.eachRow(consulta) {
+      tela = new Interface(it.identificador as int, it.interface, it.descricao_interface)
+      permissao = new Permissao(tela, it.tipo_permissao.toCharArray()[0])
+      permissoes.addElement(permissao)
+    }
   }
 
   Vector obterPermissoes() {
