@@ -153,56 +153,23 @@ class Colaborador extends PessoaFisica {
 
     // here we have a groovy SQL no need plain JDBC anymore ;]
     def db = Conexao.instance.db
-    println db
-    println db.rows("select * from usuario")
 
-
-
-    ResultSet colaborador
-      String query
-      boolean usuarioAutenticado = false
-
-      if(conexao.abrirConexao()) {
-        query = "select usuario,senha,sexo,nome_completo,identidade,orgao_emissor_rg,cpf,d.codigo as codigo_departamento,d.departamento,logradouro,complemento,bairro,cidade,estado,cep,ddd,telefone,ramal,celular,email,senha_alterada from usuario u, departamento d "+
-          "where usuario = '"+ matricula +"' and senha = '"+ senha +"' and d.codigo =* u.departamento"
-          colaborador = conexao.executarConsulta(query)
-          if(colaborador.next()) {
-            usuarioAutenticado = true
-              this.matricula = colaborador.getString("usuario")
-              this.senha = colaborador.getString("senha")
-              super.setSexo(colaborador.getString("sexo").toCharArray()[0])
-              super.setNome(colaborador.getString("nome_completo"))
-              super.setIdentidade(colaborador.getString("identidade"))
-              super.setOrgaoIdentidade(colaborador.getString("orgao_emissor_rg"))
-              super.setCPF(colaborador.getString("cpf"))
-              this.departamento = new Departamento(colaborador.getInt("codigo_departamento"),colaborador.getString("departamento"))
-              super.setLogradouro(colaborador.getString("logradouro"))
-              super.setComplemento(colaborador.getString("complemento"))
-              super.setBairro(colaborador.getString("bairro"))
-              super.setCidade(colaborador.getString("cidade"))
-              this.setEstado(new Estado(colaborador.getString("estado")))
-              super.setCEP(colaborador.getString("cep"))
-              this.setDDD(colaborador.getString("ddd"))
-              super.setTelefone(colaborador.getString("telefone"))
-              this.ramal = colaborador.getString("ramal")
-              super.setCelular(colaborador.getString("celular"))
-              super.setEmail(colaborador.getString("email"))
-              this.senhaAlterada = colaborador.getBoolean("senha_alterada")
-              query = "insert into log_sistema (usuario,descricao) values ('"+ this.matricula +"','Acesso ao Sistema')"
-              conexao.executarAtualizacao(query)
-          }
-          else
-          {
-            query = "select * from usuario"
-              colaborador = conexao.executarConsulta(query)
-              if(!colaborador.next()) {
-                colaboradorExiste = false
-              }
-          }
-        colaborador.close()
-      }
-    conexao.fecharConexao()
-      return usuarioAutenticado
+    db.eachRow('select nome,senha,sexo,nome,identidade,orgao_emissor_rg,cpf,logradouro,complemento,cidade,cep from usuario') {
+      matricula = it.nome
+      senha = it.senha
+      sexo = it.sexo
+      nome = it.nome
+      identidade = it.identidade
+      orgaoIdentidade = it.orgao_emissor_rg
+      CPF = it.cpf
+      departamento = null
+      logradouro = it.logradouro
+      complemento = it.complemento
+      cidade = it.cidade
+      estado = null
+      CEP = it.cep
+    }
+    matricula != null
   }
 
   void cadastrarColaborador() {

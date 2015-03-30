@@ -126,19 +126,14 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   void definirColaborador(Colaborador colaborador) {
     this.colaborador = colaborador
 
-      // Inicia o registro de saídas no log.
-      try
-      {
-        Calendario calendario = new Calendario()
-          LogAplicacao.start("log/log-"+ colaborador.obterMatricula() +"-"+ calendario.dataHoje("yyyyMMddHHmmss") +".txt")
-          System.out.println("LOG DE EVENTOS DO SISTEMA TECNOLITY")
-          System.out.println("---------------------------------------------------------------")
-          System.out.println("Colaborador: " + colaborador.obterMatricula())
-          System.out.println("  Acesso em: " + calendario.dataHoje("dd/MM/yyyy 'as' HH:mm:ss"))
-          System.out.println("---------------------------------------------------------------")
-          System.out.println("")
-      }
-    catch(Exception e) {
+    try {
+      println 'LOG DE EVENTOS DO SISTEMA TECNOLITY'
+      println '---------------------------------------------------------------'
+      println 'Colaborador: ' + colaborador.matricula
+      println '  Acesso em: ' + new Date().format("dd/MM/yyyy 'as' HH:mm:ss")
+      println '---------------------------------------------------------------'
+      println ''
+    } catch(e) {
       e.printStackTrace()
     }
   }
