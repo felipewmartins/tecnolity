@@ -9,6 +9,7 @@ import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.aplicacao.*
 import org.esmerilprogramming.tecnolity.ui.*
+import org.esmerilprogramming.tecnolity.ui.img.ImageLoader
 
 class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
@@ -33,7 +34,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       dlgConfiguracoes.setVisible(true)
     }
 
-    super.setIconImage((new ImageIcon("imagens/ico_tecnolity.jpg")).getImage())
+    super.setIconImage(ImageLoader.instance.icon('ico_tecnolity.jpg').getImage())
 
     FormAutenticacao formAutenticacao = new FormAutenticacao(this)
     formAutenticacao.setVisible(true)
@@ -172,63 +173,5 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
   static String obterCaminho() {
     return caminho
-  }
-}
-
-class LogAplicacao extends PrintStream
-{
-  static OutputStream arquivoLog
-    static PrintStream saida
-    static PrintStream erro
-
-    LogAplicacao(PrintStream ps) {
-      super(ps)
-    }
-
-  static void start(String arquivo) throws IOException
-  {
-    saida = System.out
-      erro = System.err
-
-      arquivoLog = new PrintStream(new BufferedOutputStream(new FileOutputStream(arquivo)))
-      System.setOut(new LogAplicacao(System.out))
-      System.setErr(new LogAplicacao(System.err))
-  }
-
-  static void stop() {
-    if(saida != null || erro != null) {
-      System.setOut(saida)
-        System.setErr(erro)
-        try
-        {
-          arquivoLog.close()
-        }
-      catch(Exception e) {
-        e.printStackTrace()
-      }
-    }
-  }
-
-  void write(int b) {
-    try
-    {
-      arquivoLog.write(b)
-    }
-    catch(Exception e) {
-      e.printStackTrace()
-        setError()
-    }
-    super.write(b)
-  }
-
-  void write(byte[] buf,int off, int len) {
-    try {
-      arquivoLog.write(buf,off,len)
-    }
-    catch(Exception e) {
-      e.printStackTrace()
-        setError()
-    }
-    super.write(buf,off,len)
   }
 }
