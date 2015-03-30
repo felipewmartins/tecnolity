@@ -35,10 +35,6 @@ class Texto {
     return numero
   }
 
-  static String ajustarTexto(final String texto) {
-    return texto.replaceAll("'", "''")
-  }
-
   static String[] getTextoAlinhado(final String texto, final int largura) {
     String[] linhas
       if (texto == null) {

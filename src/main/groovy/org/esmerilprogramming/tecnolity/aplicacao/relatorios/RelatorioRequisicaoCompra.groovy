@@ -8,18 +8,18 @@ import org.esmerilprogramming.tecnolity.util.*
 class RelatorioRequisicaoCompra extends Relatorio
 {
   private RequisicaoCompra requisicaoCompra
-    private Vector pedidos
-    private String via
+  private Vector pedidos
+  private String via
 
-    RelatorioRequisicaoCompra(RequisicaoCompra requisicaoCompra, String via) {
-      this.requisicaoCompra = requisicaoCompra
-        this.via = via
-    }
+  RelatorioRequisicaoCompra(RequisicaoCompra requisicaoCompra, String via) {
+    this.requisicaoCompra = requisicaoCompra
+    this.via = via
+  }
 
   RelatorioRequisicaoCompra(RequisicaoCompra requisicaoCompra, Vector pedidos, String via) {
     this.requisicaoCompra = requisicaoCompra
-      this.pedidos = pedidos
-      this.via = via
+    this.pedidos = pedidos
+    this.via = via
   }
 
   String gerarRelatorio() {

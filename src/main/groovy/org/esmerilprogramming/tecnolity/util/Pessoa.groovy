@@ -3,9 +3,9 @@ package org.esmerilprogramming.tecnolity.util
 import java.util.regex.*
 
 class Pessoa {
-   static final char PESSOAFISICA = 'F'
-   static final char PESSOAJURIDICA = 'J'
-   static final char OUTRO = 'O'
+  static final char PESSOAFISICA = 'F'
+  static final char PESSOAJURIDICA = 'J'
+  static final char OUTRO = 'O'
   char tipoCliente
   String nome
   String logradouro
@@ -37,9 +37,9 @@ class Pessoa {
       return ""
     }
     String cepFormatado = ""
-    cepFormatado = "-" + cep.substring(cep.length() - 3)
-    cepFormatado = "." + cep.substring(cep.length() - 6, cep.length() - 3) + cepFormatado
-    cepFormatado = String.valueOf(cep.substring(0, cep.length() - 6)) + cepFormatado
-    cepFormatado
+      cepFormatado = "-" + cep.substring(cep.length() - 3)
+      cepFormatado = "." + cep.substring(cep.length() - 6, cep.length() - 3) + cepFormatado
+      cepFormatado = String.valueOf(cep.substring(0, cep.length() - 6)) + cepFormatado
+      cepFormatado
   }
 }
