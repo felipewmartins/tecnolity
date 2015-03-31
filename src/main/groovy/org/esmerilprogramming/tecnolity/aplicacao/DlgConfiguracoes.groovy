@@ -8,92 +8,91 @@ import javax.swing.border.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
-class DlgConfiguracoes extends JDialog implements ActionListener
-{
+
+class DlgConfiguracoes extends JDialog implements ActionListener {
   private Aplicacao aplicacao
-    private Container conteudo
-    private GridBagLayout gridbag
-    private GridBagConstraints gbc
-    private JTextField txtOrganizacaoRazaoSocial, txtOrganizacaoNomeFantasia, txtOrganizacaoCnpj, txtOrganizacaoLogradouro,
+  private Container conteudo
+  private GridBagLayout gridbag
+  private GridBagConstraints gbc
+  private JTextField txtOrganizacaoRazaoSocial, txtOrganizacaoNomeFantasia, txtOrganizacaoCnpj, txtOrganizacaoLogradouro,
             txtOrganizacaoNumero, txtOrganizacaoComplemento, txtOrganizacaoBairro, txtOrganizacaoCidade, txtOrganizacaoCep,
             txtOrganizacaoTelefone, txtOrganizacaoFax, txtRepositorioConsultas,
             txtRepositorioRelatorios, txtRepositorioLogs,
             txtBancoDadosUsuario, txtBancoDadosDriver,
             txtBancoDadosURL, txtBancoDadosBaseDados
-              private JPasswordField pwdBancoDadosSenha
-              private JComboBox cbxEstado, cbxPais
-              private Pais pais
-              private Estado estado
-              private Vector paises, estados
-              private JButton btConfirmar, btCancelar
-              private Configuracao configuracao
 
-              DlgConfiguracoes(Aplicacao aplicacao,Configuracao configuracao) {
-                super(aplicacao,true)
+  private JPasswordField pwdBancoDadosSenha
+  private JComboBox cbxEstado, cbxPais
+  private Pais pais
+  private Estado estado
+  private Vector paises, estados
+  private JButton btConfirmar, btCancelar
+  private Configuracao configuracao
 
-                  this.setTitle("Configurações")
-
-                  this.aplicacao = aplicacao
-                  this.configuracao = configuracao
-                  this.conteudo = this.getContentPane()
-                  this.montarInterface()
-              }
+  DlgConfiguracoes(Aplicacao aplicacao,Configuracao configuracao) {
+    super(aplicacao,true)
+    this.setTitle("Configurações")
+    this.aplicacao = aplicacao
+    this.configuracao = configuracao
+    this.conteudo = this.getContentPane()
+    this.montarInterface()
+  }
 
   private void montarInterface() {
     gridbag = new GridBagLayout()
-      gbc = new GridBagConstraints()
-      gbc.fill = GridBagConstraints.NONE
-      gbc.anchor = GridBagConstraints.NORTHWEST
-      gbc.insets.bottom = 2
-      gbc.insets.left = 2
-      gbc.insets.right = 2
-      gbc.insets.top = 2
+    gbc = new GridBagConstraints()
+    gbc.fill = GridBagConstraints.NONE
+    gbc.anchor = GridBagConstraints.NORTHWEST
+    gbc.insets.bottom = 2
+    gbc.insets.left = 2
+    gbc.insets.right = 2
+    gbc.insets.top = 2
 
-      JTabbedPane tbnAreaDados = new JTabbedPane()
+    JTabbedPane tbnAreaDados = new JTabbedPane()
 
-      JPanel pnlOrganizacao = new JPanel(gridbag)
-      JLabel label = new JLabel("Razão Social")
-      adicionarComponente(pnlOrganizacao,label,0,0,1,1)
-      label = new JLabel("Nome Fantasia")
-      adicionarComponente(pnlOrganizacao,label,0,1,1,1)
-      txtOrganizacaoRazaoSocial = new JTextField(Configuracao.getOrganizacaoRazaoSocial(),23)
-      adicionarComponente(pnlOrganizacao,txtOrganizacaoRazaoSocial,1,0,1,1)
-      txtOrganizacaoNomeFantasia = new JTextField(Configuracao.getOrganizacaoNomeFantasia(),23)
-      adicionarComponente(pnlOrganizacao,txtOrganizacaoNomeFantasia,1,1,1,1)
-      label = new JLabel("CNPJ")
-      adicionarComponente(pnlOrganizacao,label,2,0,1,1)
-      txtOrganizacaoCnpj = new JTextField(Configuracao.getOrganizacaoCnpj(),15)
-      adicionarComponente(pnlOrganizacao,txtOrganizacaoCnpj,3,0,1,1)
+    JPanel pnlOrganizacao = new JPanel(gridbag)
+    JLabel label = new JLabel("Razão Social")
+    adicionarComponente(pnlOrganizacao,label,0,0,1,1)
+    label = new JLabel("Nome Fantasia")
+    adicionarComponente(pnlOrganizacao,label,0,1,1,1)
+    txtOrganizacaoRazaoSocial = new JTextField(Configuracao.organizacaoRazaoSocial,23)
+    adicionarComponente(pnlOrganizacao,txtOrganizacaoRazaoSocial,1,0,1,1)
+    txtOrganizacaoNomeFantasia = new JTextField(Configuracao.organizacaoNomeFantasia,23)
+    adicionarComponente(pnlOrganizacao,txtOrganizacaoNomeFantasia,1,1,1,1)
+    label = new JLabel("CNPJ")
+    adicionarComponente(pnlOrganizacao,label,2,0,1,1)
+    txtOrganizacaoCnpj = new JTextField(Configuracao.getOrganizacaoCnpj(),15)
+    adicionarComponente(pnlOrganizacao,txtOrganizacaoCnpj,3,0,1,1)
 
-      JPanel pnlEndereco = new JPanel(gridbag)
-      pnlEndereco.setBorder(new TitledBorder(new LineBorder(Color.black),"Endereço"))
-      label = new JLabel("Logradouro")
-      adicionarComponente(pnlEndereco,label,0,0,1,1)
-      label = new JLabel("Número")
-      adicionarComponente(pnlEndereco,label,0,1,1,1)
-      label = new JLabel("Complemento")
-      adicionarComponente(pnlEndereco,label,0,2,1,1)
-      txtOrganizacaoLogradouro = new JTextField(Configuracao.getOrganizacaoLogradouro(),20)
-      adicionarComponente(pnlEndereco,txtOrganizacaoLogradouro,1,0,1,1)
-      txtOrganizacaoNumero = new JTextField(Configuracao.getOrganizacaoNumero(),10)
-      adicionarComponente(pnlEndereco,txtOrganizacaoNumero,1,1,1,1)
-      txtOrganizacaoComplemento = new JTextField(Configuracao.getOrganizacaoComplemento(),15)
-      adicionarComponente(pnlEndereco,txtOrganizacaoComplemento,1,2,1,1)
-      label = new JLabel("Bairro")
-      adicionarComponente(pnlEndereco,label,2,0,1,1)
-      label = new JLabel("Cidade")
-      adicionarComponente(pnlEndereco,label,2,1,1,1)
-      txtOrganizacaoBairro = new JTextField(Configuracao.getOrganizacaoBairro(),20)
-      adicionarComponente(pnlEndereco,txtOrganizacaoBairro,3,0,1,1)
-      txtOrganizacaoCidade = new JTextField(Configuracao.getOrganizacaoCidade(),20)
-      adicionarComponente(pnlEndereco,txtOrganizacaoCidade,3,1,2,1)
-      label = new JLabel("Estado")
-      adicionarComponente(pnlEndereco,label,4,0,1,1)
-      label = new JLabel("Pais")
-      adicionarComponente(pnlEndereco,label,4,1,1,1)
-      cbxEstado = new JComboBox()
-      if(configuracao.isCarregada()) {
-        try
+    JPanel pnlEndereco = new JPanel(gridbag)
+    pnlEndereco.setBorder(new TitledBorder(new LineBorder(Color.black),"Endereço"))
+    label = new JLabel("Logradouro")
+    adicionarComponente(pnlEndereco,label,0,0,1,1)
+    label = new JLabel("Número")
+    adicionarComponente(pnlEndereco,label,0,1,1,1)
+    label = new JLabel("Complemento")
+    adicionarComponente(pnlEndereco,label,0,2,1,1)
+    txtOrganizacaoLogradouro = new JTextField(Configuracao.getOrganizacaoLogradouro(),20)
+    adicionarComponente(pnlEndereco,txtOrganizacaoLogradouro,1,0,1,1)
+    txtOrganizacaoNumero = new JTextField(Configuracao.getOrganizacaoNumero(),10)
+    adicionarComponente(pnlEndereco,txtOrganizacaoNumero,1,1,1,1)
+    txtOrganizacaoComplemento = new JTextField(Configuracao.getOrganizacaoComplemento(),15)
+    adicionarComponente(pnlEndereco,txtOrganizacaoComplemento,1,2,1,1)
+    label = new JLabel("Bairro")
+    adicionarComponente(pnlEndereco,label,2,0,1,1)
+    label = new JLabel("Cidade")
+    adicionarComponente(pnlEndereco,label,2,1,1,1)
+    txtOrganizacaoBairro = new JTextField(Configuracao.getOrganizacaoBairro(),20)
+    adicionarComponente(pnlEndereco,txtOrganizacaoBairro,3,0,1,1)
+    txtOrganizacaoCidade = new JTextField(Configuracao.getOrganizacaoCidade(),20)
+    adicionarComponente(pnlEndereco,txtOrganizacaoCidade,3,1,2,1)
+    label = new JLabel("Estado")
+    adicionarComponente(pnlEndereco,label,4,0,1,1)
+    label = new JLabel("Pais")
+    adicionarComponente(pnlEndereco,label,4,1,1,1)
+    cbxEstado = new JComboBox()
+    if(configuracao.isCarregada()) {
+      try
         {
           estados = Estado.carregarEstados("BRA",aplicacao.obterConexao())
         }
@@ -187,35 +186,35 @@ class DlgConfiguracoes extends JDialog implements ActionListener
 
   private void carregarPaises(String pais) {
     cbxPais.removeAllItems()
-      cbxPais.addItem("Selecione...")
+    cbxPais.addItem("Selecione...")
 
-      for(int i = 1;i < paises.size();i++) {
+    for(int i = 1;i < paises.size();i++) {
         cbxPais.addItem(((Pais)paises.get(i)).getNome())
-      }
+    }
     if(!"".equals(pais))
       cbxPais.setSelectedItem(pais)
   }
 
   private void carregarEstados(String estado) {
     cbxEstado.removeAllItems()
-      cbxEstado.addItem("Selecione...")
+    cbxEstado.addItem("Selecione...")
 
-      for(int i = 1;i < estados.size();i++) {
+    for(int i = 1;i < estados.size();i++) {
         cbxEstado.addItem(((Estado)estados.get(i)).getNome())
-      }
+    }
     if(!"".equals(estado))
       cbxEstado.setSelectedItem(estado)
   }
 
   private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
-      gbc.gridy = linha
+    gbc.gridy = linha
 
-      gbc.gridwidth = largura
-      gbc.gridheight = altura
+    gbc.gridwidth = largura
+    gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
-      painel.add(c)
+    gridbag.setConstraints(c,gbc)
+    painel.add(c)
   }
 
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
@@ -246,18 +245,18 @@ class DlgConfiguracoes extends JDialog implements ActionListener
               configuracao.setOrganizacaoPais("")
           }
         configuracao.setOrganizacaoCep(txtOrganizacaoCep.getText())
-          configuracao.setOrganizacaoTelefone(txtOrganizacaoTelefone.getText())
-          configuracao.setOrganizacaoFax(txtOrganizacaoFax.getText())
-          configuracao.setRepositorioConsultas(txtRepositorioConsultas.getText())
-          configuracao.setRepositorioRelatorios(txtRepositorioRelatorios.getText())
-          configuracao.setRepositorioLogs(txtRepositorioLogs.getText())
-          configuracao.setBancoDadosUsuario(txtBancoDadosUsuario.getText())
-          configuracao.setBancoDadosSenha(String.valueOf(pwdBancoDadosSenha.getPassword()))
-          configuracao.setBancoDadosDriver(txtBancoDadosDriver.getText())
-          configuracao.setBancoDadosURL(txtBancoDadosURL.getText())
-          configuracao.setBancoDadosBaseDados(txtBancoDadosBaseDados.getText())
-          configuracao.salvarConfiguracao()
-          this.setVisible(false)
+        configuracao.setOrganizacaoTelefone(txtOrganizacaoTelefone.getText())
+        configuracao.setOrganizacaoFax(txtOrganizacaoFax.getText())
+        configuracao.setRepositorioConsultas(txtRepositorioConsultas.getText())
+        configuracao.setRepositorioRelatorios(txtRepositorioRelatorios.getText())
+        configuracao.setRepositorioLogs(txtRepositorioLogs.getText())
+        configuracao.setBancoDadosUsuario(txtBancoDadosUsuario.getText())
+        configuracao.setBancoDadosSenha(String.valueOf(pwdBancoDadosSenha.getPassword()))
+        configuracao.setBancoDadosDriver(txtBancoDadosDriver.getText())
+        configuracao.setBancoDadosURL(txtBancoDadosURL.getText())
+        configuracao.setBancoDadosBaseDados(txtBancoDadosBaseDados.getText())
+        configuracao.salvarConfiguracao()
+        this.setVisible(false)
       }
 
     if(objeto == btCancelar) {

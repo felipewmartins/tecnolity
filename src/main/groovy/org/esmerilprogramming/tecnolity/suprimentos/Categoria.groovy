@@ -1,20 +1,18 @@
 package org.esmerilprogramming.tecnolity.suprimentos
 
 import java.sql.*
-import java.util.Vector
 import javax.swing.*
 import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.aplicacao.*
 
-class Categoria
-{
+class Categoria {
   private int codigo
-    private String nomeCategoria
+  private String nomeCategoria
 
-    Categoria(int codigo, String nomeCategoria) {
-      this.codigo = codigo
-        this.nomeCategoria = nomeCategoria
-    }
+  Categoria(int codigo, String nomeCategoria) {
+    this.codigo = codigo
+    this.nomeCategoria = nomeCategoria
+  }
 
   Categoria(String nomeCategoria) {
     this.nomeCategoria = nomeCategoria
@@ -64,10 +62,10 @@ class Categoria
           }
         dadosCategoria.close()
       }
-    catch (SQLException e) {
+    catch (e) {
       e.printStackTrace()
     }
-    return categorias
+    categorias
   }
 
   Vector carregarCategorias(Conexao conexao) {
