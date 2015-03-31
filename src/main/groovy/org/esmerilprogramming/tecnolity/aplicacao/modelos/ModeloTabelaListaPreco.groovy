@@ -3,7 +3,6 @@ package org.esmerilprogramming.tecnolity.aplicacao.modelos
 import javax.swing.event.TableModelEvent
 import javax.swing.event.TableModelListener
 
-
 class ModeloTabelaListaPreco extends ModeloTabela implements TableModelListener
 {
   ModeloTabelaListaPreco() {

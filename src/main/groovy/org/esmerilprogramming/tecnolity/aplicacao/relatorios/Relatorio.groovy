@@ -1,6 +1,5 @@
 package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 
-import java.util.*
 import java.awt.print.*
 
 class Relatorio

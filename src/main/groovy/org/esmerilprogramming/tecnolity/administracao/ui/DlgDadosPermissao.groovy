@@ -4,7 +4,6 @@ import java.sql.*
 import java.awt.*
 import java.awt.event.*
 import javax.swing.*
-import java.util.Vector
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.Interface

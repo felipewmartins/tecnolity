@@ -1,7 +1,6 @@
 package org.esmerilprogramming.tecnolity.administracao
 
 import java.sql.*
-import java.util.*
 import org.esmerilprogramming.tecnolity.util.*
 
  class Pais extends org.esmerilprogramming.tecnolity.util.Pais

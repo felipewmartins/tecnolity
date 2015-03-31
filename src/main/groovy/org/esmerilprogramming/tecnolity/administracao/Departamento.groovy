@@ -1,10 +1,8 @@
 package org.esmerilprogramming.tecnolity.administracao
 
-import java.util.Vector
 import java.sql.*
 
 import org.esmerilprogramming.tecnolity.util.*
-
 
 class Departamento
 {

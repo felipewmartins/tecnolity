@@ -1,7 +1,6 @@
 package org.esmerilprogramming.tecnolity.aplicacao
 
 import java.awt.*
-import java.io.*
 import java.sql.*
 import java.awt.event.*
 import javax.swing.*

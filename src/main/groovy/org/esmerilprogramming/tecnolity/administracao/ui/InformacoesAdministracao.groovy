@@ -1,9 +1,7 @@
 package org.esmerilprogramming.tecnolity.administracao.ui
 
-import java.io.*
 import java.sql.*
 import java.awt.*
-import java.util.*
 import java.awt.event.*
 import javax.swing.*
 import javax.swing.border.*

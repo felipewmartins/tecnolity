@@ -1,7 +1,6 @@
 package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
 import java.sql.*
-import java.util.Vector
 import javax.swing.table.*
 import org.esmerilprogramming.tecnolity.util.*
 

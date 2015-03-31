@@ -5,7 +5,6 @@ import java.sql.*
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.util.*
 
-
 class Permissao
 {
   static final char LEITURA = 'L'

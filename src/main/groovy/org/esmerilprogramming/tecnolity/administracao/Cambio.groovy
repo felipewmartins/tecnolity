@@ -3,9 +3,7 @@ package org.esmerilprogramming.tecnolity.administracao
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
-
-class Cambio
-{
+class Cambio {
   private float dolar
     private String data
 
