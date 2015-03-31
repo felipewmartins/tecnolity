@@ -4,11 +4,11 @@ import javax.swing.*
 import java.awt.*
 import java.awt.event.*
 
-class Aplicacao extends JFrame implements WindowListener
-{
+class Aplicacao extends JFrame implements WindowListener {
+
   Aplicacao(final String tituloJanela) {
     super(tituloJanela)
-      this.addWindowListener(this)
+    this.addWindowListener(this)
   }
 
   void finalizarAplicacao() {
@@ -17,7 +17,7 @@ class Aplicacao extends JFrame implements WindowListener
 
   void maximizar() {
     final Dimension tela = Toolkit.getDefaultToolkit().getScreenSize()
-      this.setBounds(0, 0, tela.width, tela.height - 28)
+    this.setBounds(0, 0, tela.width, tela.height - 28)
   }
 
   void windowOpened(final WindowEvent evento) {
