@@ -1,8 +1,8 @@
 package org.esmerilprogramming.tecnolity.util
 
 import javax.swing.filechooser.*
-import java.io.*
-import java.util.*
+
+
 
 class FiltroArquivo extends FileFilter {
   String description

@@ -4,7 +4,7 @@ import org.esmerilprogramming.tecnolity.administracao.Colaborador
 import org.esmerilprogramming.tecnolity.administracao.Departamento
 import org.esmerilprogramming.tecnolity.pedidos.Pedido
 import org.esmerilprogramming.tecnolity.util.*
-import java.util.*
+
 import java.sql.*
 
 class RequisicaoInterna

@@ -1,6 +1,6 @@
 package org.esmerilprogramming.tecnolity.util
 
-import java.util.*
+
 
 class Texto {
   static String formatarTextoHTML(final String texto) {

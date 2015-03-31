@@ -1,6 +1,6 @@
 package org.esmerilprogramming.tecnolity.producao
 
-import java.util.Vector
+
 import java.sql.*
 import org.esmerilprogramming.tecnolity.util.*
 

@@ -1,7 +1,7 @@
 package org.esmerilprogramming.tecnolity.ui
 
 import java.awt.event.*
-import java.io.File
+
 import java.net.URL
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.DlgConfiguracoes

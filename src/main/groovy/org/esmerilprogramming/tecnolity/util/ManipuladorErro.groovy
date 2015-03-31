@@ -1,6 +1,6 @@
 package org.esmerilprogramming.tecnolity.util
 
-import java.util.*
+
 
 interface ManipuladorErro {
   Vector getErrosFatais()

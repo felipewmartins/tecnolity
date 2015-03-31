@@ -6,7 +6,7 @@ import org.esmerilprogramming.tecnolity.logistica.Transportadora
 import org.esmerilprogramming.tecnolity.pedidos.FormaPagamento
 import org.esmerilprogramming.tecnolity.pedidos.Pedido
 import org.esmerilprogramming.tecnolity.util.*
-import java.util.*
+
 import java.sql.*
 
 class RequisicaoCompra
