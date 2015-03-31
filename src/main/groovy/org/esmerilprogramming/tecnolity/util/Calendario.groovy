@@ -1,6 +1,7 @@
 package org.esmerilprogramming.tecnolity.util
 
-
+import java.util.regex.Pattern
+import java.util.regex.Matcher
 import java.text.*
 
 
@@ -584,10 +585,10 @@ import java.text.*
     return null
   }
 
-   static boolean validarHora(final String hora) {
-    final Pattern padrao = Pattern.compile("(([0-1]{1}[0-9]{1})|(2[0-3]{1})):[0-5]{1}[0-9]{1}")
-    final Matcher busca = padrao.matcher(hora)
-    return busca.matches()
+  static boolean validarHora(String hora) {
+    Pattern padrao = Pattern.compile('(([0-1]{1}[0-9]{1})|(2[0-3]{1})):[0-5]{1}[0-9]{1}')
+    Matcher busca = padrao.matcher(hora)
+    busca.matches()
   }
 
    static String getNomeMes(final int mes) {

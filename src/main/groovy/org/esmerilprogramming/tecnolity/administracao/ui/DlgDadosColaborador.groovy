@@ -83,7 +83,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     pnlSexo.setBorder(new TitledBorder('Sexo'))
     ButtonGroup grupo = new ButtonGroup()
     rdbSexoMasculino = new JRadioButton('Masculino')
-    if (colaborador != null)
+    if (colaborador != null) 
         if(this.colaborador.obterSexo() == 'M' || this.colaborador.obterSexo() == '\u0000')
           rdbSexoMasculino.setSelected(true)
             grupo.add(rdbSexoMasculino)
@@ -309,7 +309,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       dlgDadosDepartamento.setVisible(true)
       try {
         departamentos = new Departamento().carregarDepartamentos(aplicacao.conexao)
-        this.carregarDepartamentos(cbxDepartamento)
+        carregarDepartamentos(cbxDepartamento)
       } catch(e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
@@ -322,20 +322,20 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
         colaborador.senha = txpSenha.getPassword() as String
         colaborador.sexo = rdbSexoMasculino.isSelected() ? 'M' : 'F'
         colaborador.nome = txtNomeCompleto.getText()
-        colaborador.identidadethis.txtIdentidade.getText()
-        colaborador.OrgaoEmissorIdentidade(this.txtOrgaoEmissor.getText()
-        colaborador.Cpf(this.txtCpf.getText()
-        colaborador.Departamento((Departamento)this.departamentos.get(this.cbxDepartamento.getSelectedIndex())
-        colaborador.Logradouro(this.txtLogradouro.getText()
-        colaborador.Complemento(this.txtComplemento.getText()
-        colaborador.Bairro(this.txtBairro.getText()
-        colaborador.Cidade(this.txtCidade.getText()
-        colaborador.Estado((Estado)this.estados.get(this.cbxEstado.getSelectedIndex())
-        colaborador.Cep(this.txtCep.getText()
-        colaborador.DDD(this.txtDdd.getText()
-        colaborador.Telefone(this.txtTelefone.getText()
-        colaborador.Ramal(this.txtRamal.getText()
-        colaborador.Celular(this.txtCelular.getText()
+        colaborador.identidade = txtIdentidade.getText()
+        colaborador.orgaoEmissorIdentidade = txtOrgaoEmissor.getText()
+        colaborador.CPF = txtCpf.getText()
+        colaborador.departamento = (Departamento).departamentos.get(cbxDepartamento.getSelectedIndex())
+        colaborador.logradouro = txtLogradouro.getText()
+        colaborador.complemento = txtComplemento.getText()
+        colaborador.bairro = txtBairro.getText()
+        colaborador.cidade = txtCidade.getText()
+        colaborador.estado = (Estado)estados.get(cbxEstado.getSelectedIndex())
+        colaborador.cep = txtCep.getText()
+        colaborador.DDD = txtDdd.getText()
+        colaborador.telefone = txtTelefone.getText()
+        colaborador.ramal = txtRamal.getText()
+        colaborador.celular = txtCelular.getText()
         colaborador.email = txtEmail.getText()
         colaborador.senhaAlterada = true
 
@@ -344,7 +344,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
         } else if (modo == 'A') {
           colaborador.alterarColaborador()
         }
-        this.setVisible(false)
+        setVisible(false)
       } catch(e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
@@ -352,7 +352,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     }
 
     if(objeto == btCancelar) {
-      this.setVisible(false)
+      setVisible(false)
     }
   }
 
