@@ -4,7 +4,7 @@ import org.esmerilprogramming.tecnolity.administracao.Colaborador
 import org.esmerilprogramming.tecnolity.logistica.Transportadora
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
-import java.util.*
+
 
 class Movimentacao
 {

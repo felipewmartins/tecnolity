@@ -1,6 +1,6 @@
 package org.esmerilprogramming.tecnolity.util
 
-import java.util.Properties
+
 import java.io.*
 
 class Configuracao extends Properties {

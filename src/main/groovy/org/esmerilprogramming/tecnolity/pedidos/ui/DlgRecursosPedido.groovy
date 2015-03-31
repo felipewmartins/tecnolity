@@ -1,7 +1,7 @@
 package org.esmerilprogramming.tecnolity.pedidos.ui
 
 import java.awt.*
-import java.util.*
+
 import java.awt.event.*
 import javax.swing.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao

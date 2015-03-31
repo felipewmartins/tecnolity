@@ -2,7 +2,7 @@ package org.esmerilprogramming.tecnolity.suprimentos.ui
 
 import java.awt.*
 import java.awt.event.*
-import java.util.*
+
 import javax.swing.*
 import javax.swing.border.*
 import org.esmerilprogramming.tecnolity.administracao.*
