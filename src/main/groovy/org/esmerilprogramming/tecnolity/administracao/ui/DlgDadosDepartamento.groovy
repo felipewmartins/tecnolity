@@ -3,7 +3,6 @@ package org.esmerilprogramming.tecnolity.administracao.ui
 import java.awt.*
 import java.awt.event.*
 import javax.swing.*
-import java.util.Vector
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 

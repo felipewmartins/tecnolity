@@ -1,6 +1,6 @@
 package org.esmerilprogramming.tecnolity.util
 
-class Enderecoi {
+class Endereco {
   String logradouro
   String numero
   String complemento
