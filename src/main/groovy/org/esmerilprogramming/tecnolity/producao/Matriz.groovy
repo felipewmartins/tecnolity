@@ -1,24 +1,20 @@
 package org.esmerilprogramming.tecnolity.producao
 
 import org.esmerilprogramming.tecnolity.util.*
-import java.util.*
 import java.sql.*
 
-class Matriz 
-{
-  private String referencia, referenciaOriginal
-    private int numeroSola, numeroSolaOriginal
-    private int quantidade
-    private float dureza
-    private float densidade
-    private float peso
-    private float volume
-    private float tempoInjecao
-    private int tempoForma
-    private String modificacoes
-    private boolean mudouChave = false
-
-    Matriz() {}
+class Matriz {
+  String referencia, referenciaOriginal
+  int numeroSola, numeroSolaOriginal
+  int quantidade
+  float dureza
+  float densidade
+  float peso
+  float volume
+  float tempoInjecao
+  int tempoForma
+  String modificacoes
+  boolean mudouChave = false
 
   Matriz(String referencia, int numeroSola) throws Exception
   {
@@ -68,7 +64,7 @@ class Matriz
     if(referencia.equals("") || referencia == null) {
       Exception e = new Exception("A referência não foi informada.")
         throw e
-    }            
+    }
     this.referencia = referencia.trim()
   }
 
@@ -77,7 +73,7 @@ class Matriz
     if(referencia.equals("") || referencia == null) {
       Exception e = new Exception("A referência não foi informada.")
         throw e
-    }            
+    }
     this.referenciaOriginal = referencia.trim()
   }
 
@@ -106,81 +102,6 @@ class Matriz
         throw e
     }
     this.quantidade = quantidade
-  }
-
-  void definirDureza(float dureza) {
-    this.dureza = dureza
-  }
-
-  void definirDensidade(float densidade) {
-    this.densidade = densidade
-  }
-
-  void definirPeso(float peso) {
-    this.peso = peso
-  }
-
-  void definirVolume(float volume) {
-    this.volume = volume
-  }
-
-  void definirTempoInjecao(float tempoInjecao) {
-    this.tempoInjecao = tempoInjecao
-  }
-
-  void definirTempoForma(int tempoForma) {
-    this.tempoForma = tempoForma
-  }
-
-  void definirModificacoes(String modificacoes) {
-    this.modificacoes = modificacoes.trim()
-  }
-
-  String obterReferencia() {
-    return this.referencia	
-  }
-
-  String obterReferenciaOriginal() {
-    return this.referenciaOriginal	
-  }
-
-  int obterNumeroSola() {
-    return this.numeroSola
-  }
-
-  int obterNumeroSolaOriginal() {
-    return this.numeroSolaOriginal
-  }
-
-  int obterQuantidade() {
-    return this.quantidade
-  }
-  float obterDureza() {
-    return this.dureza
-  }
-
-  float obterDensidade() {
-    return this.densidade
-  }
-
-  float obterPeso() {
-    return this.peso
-  }
-
-  float obterVolume() {
-    return this.volume
-  }
-
-  float obterTempoInjecao() {
-    return this.tempoInjecao
-  }
-
-  int obterTempoForma() {
-    return this.tempoForma
-  }
-
-  String obterModificacoes() {
-    return this.modificacoes
   }
 
   String obterDescricao() {

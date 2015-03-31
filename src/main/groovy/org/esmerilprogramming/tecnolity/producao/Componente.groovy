@@ -1,18 +1,16 @@
 package org.esmerilprogramming.tecnolity.producao
 
-import java.util.Vector
 import java.sql.*
 import org.esmerilprogramming.tecnolity.util.*
 
-class Componente
-{
-  private int codigo
-    private String nomeComponente
+class Componente {
+  int codigo
+  String nomeComponente
 
-    Componente(int codigo, String nomeComponente) {
-      this.codigo = codigo
-        this.nomeComponente = nomeComponente
-    }
+  Componente(int codigo, String nomeComponente) {
+    this.codigo = codigo
+    this.nomeComponente = nomeComponente
+  }
 
   Componente(int codigo) {
     this.codigo = codigo
@@ -20,18 +18,6 @@ class Componente
 
   Componente(String nomeComponente) {
     this.nomeComponente = nomeComponente
-  }
-
-  Componente() {
-
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  String obterNomeComponente() {
-    return this.nomeComponente	
   }
 
   String obterNomeComponente(Conexao conexao) throws Exception
@@ -42,14 +28,6 @@ class Componente
       }
     dadosComponente.close()
       return this.nomeComponente
-  }
-
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
-  }
-
-  void definirNomeComponente(String nomeComponente) {
-    this.nomeComponente = nomeComponente
   }
 
   Vector carregarComponentes(Conexao conexao) throws Exception

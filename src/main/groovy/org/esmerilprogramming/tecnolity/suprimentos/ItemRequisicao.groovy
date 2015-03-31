@@ -1,8 +1,7 @@
 package org.esmerilprogramming.tecnolity.suprimentos
 
 
-class ItemRequisicao
-{
+class ItemRequisicao {
   // status do item da requisição interna.
   static final String EMITIDO                 = "EM" // Quando a requisição de compra é emitida.
     static final String ABASTECIDO_TOTALMENTE   = "AT" // Quando a quantidade requisitada do item entra de uma vez no estoque.

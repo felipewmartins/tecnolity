@@ -1,31 +1,29 @@
 package org.esmerilprogramming.tecnolity.suprimentos
 
 import java.sql.*
-import java.util.*
 
 import org.esmerilprogramming.tecnolity.administracao.Departamento
 import org.esmerilprogramming.tecnolity.pedidos.Pedido
 import org.esmerilprogramming.tecnolity.util.*
 
-class Item
-{
-  private int codigo
-    private String descricao
-    private Categoria categoria
-    private String armazenamento
-    private Unidade unidade
-    private float temperatura
-    private String seguranca
-    private float quantidade
-    private float quantidadeMinima
-    private float quantidadeMaxima
-    private int percentualIPI
-    private int percentualPerda
-    private boolean ativo
-    private boolean independente
-    private Vector departamentos
-    private Vector fornecedoresItem
-    private Lote lote
+class Item {
+  int codigo
+  String descricao
+  Categoria categoria
+  String armazenamento
+  Unidade unidade
+  float temperatura
+  String seguranca
+  float quantidade
+  float quantidadeMinima
+  float quantidadeMaxima
+  int percentualIPI
+  int percentualPerda
+  boolean ativo
+  boolean independente
+  Vector departamentos
+  Vector fornecedoresItem
+  Lote lote
 
     Item(int codigo, String descricao, Categoria categoria,
         String armazenamento, Unidade unidade, float temperatura,
@@ -137,68 +135,6 @@ class Item
         Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
           throw e
       }
-  }
-
-  Item(){}
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  String obterDescricao() {
-    return this.descricao
-  }
-
-  Categoria obterCategoria() {
-    return this.categoria
-  }
-
-  String obterArmazenamento() {
-    return this.armazenamento
-  }
-
-  Unidade obterUnidade() {
-    return this.unidade
-  }
-
-  float obterTemperatura() {
-    return this.temperatura
-  }
-
-  String obterSeguranca() {
-    return this.seguranca
-  }
-
-  float obterQuantidade() {
-    return this.quantidade
-  }
-
-  float obterQuantidadeMinima() {
-    return this.quantidadeMinima
-  }
-
-  float obterQuantidadeMaxima() {
-    return this.quantidadeMaxima
-  }
-
-  int obterPercentualIPI() {
-    return this.percentualIPI
-  }
-
-  int obterPercentualPerda() {
-    return this.percentualPerda
-  }
-
-  boolean obterAtivo() {
-    return this.ativo
-  }
-
-  boolean obterIndependente() {
-    return this.independente
-  }
-
-  Lote obterLote() {
-    return this.lote
   }
 
   static int obterNumeroItensCadastrados(Conexao conexao) throws Exception
@@ -639,10 +575,6 @@ class Item
     }
   }
 
-  void definirArmazenamento(String armazenamento) {
-    this.armazenamento = armazenamento
-  }
-
   void definirUnidade(Unidade unidade) throws Exception
   {
     if(unidade != null)
@@ -666,10 +598,6 @@ class Item
           }
           else
             this.temperatura = temperatura
-  }
-
-  void definirSeguranca(String seguranca) {
-    this.seguranca = seguranca
   }
 
   void definirQuantidade(float quantidade) throws Exception
@@ -737,18 +665,6 @@ class Item
           }
           else
             this.percentualPerda = percentualPerda
-  }
-
-  void definirAtivo(boolean ativo) {
-    this.ativo = ativo
-  }
-
-  void definirIndependente(boolean independente) {
-    this.independente = independente
-  }
-
-  void definirLote(Lote lote) {
-    this.lote = lote
   }
 
   void cadastrarItem() throws Exception
