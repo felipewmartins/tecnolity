@@ -10,23 +10,21 @@ import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
 
 class Produto {
-  private long codigo
-    private String referenciaCliente
-    private Componente componente
-    private String nomeModelo
-    private float valor
-    private String moeda
-    private float custoFabricacao
-    private Cliente cliente
-    private TipoProducao tipoProducao
-    private String especificacaoInserto
-    private String acabamento
-    private String lavagem
-    private String pintura
-    private char destino
-    private Vector materiasPrimas
-
-    Produto() {}
+  long codigo
+  String referenciaCliente
+  Componente componente
+  String nomeModelo
+  float valor
+  String moeda
+  float custoFabricacao
+  Cliente cliente
+  TipoProducao tipoProducao
+  String especificacaoInserto
+  String acabamento
+  String lavagem
+  String pintura
+  char destino
+  Vector materiasPrimas
 
   Produto(Conexao conexao,long codigo) throws Exception
   {
@@ -91,18 +89,6 @@ class Produto {
       this.definirDestino(destino)
   }
 
-  long obterCodigo() {
-    return this.codigo
-  }
-
-  String obterNomeModelo() {
-    return this.nomeModelo
-  }
-
-  float obterValor() {
-    return this.valor
-  }
-
   String getValor(String formato) {
     DecimalFormat df
       if(!formato.equals("")) {
@@ -113,54 +99,6 @@ class Produto {
         df = new DecimalFormat("###.##")
       }
     return df.format(this.valor)
-  }
-
-  String obterReferenciaCliente() {
-    return this.referenciaCliente
-  }
-
-  Componente obterComponente() {
-    return this.componente
-  }
-
-  String obterMoeda() {
-    return this.moeda
-  }
-
-  float obterCustoFabricacao() {
-    return this.custoFabricacao
-  }
-
-  Cliente obterCliente() {
-    return this.cliente
-  }
-
-  TipoProducao obterTipoProducao() {
-    return this.tipoProducao
-  }
-
-  String obterEspecificacaoInserto() {
-    return this.especificacaoInserto
-  }
-
-  String obterAcabamento() {
-    return this.acabamento
-  }
-
-  String obterLavagem() {
-    return this.lavagem
-  }
-
-  String obterPintura() {
-    return this.pintura
-  }
-
-  char obterDestino() {
-    return this.destino
-  }
-
-  Vector obterMateriasPrimas() {
-    return this.materiasPrimas
   }
 
   void definirCodigo(long codigo) throws Exception
@@ -197,18 +135,6 @@ class Produto {
         throw e
     }
     this.nomeModelo = nomeModelo
-  }
-
-  void definirValor(float valor) {
-    this.valor = valor
-  }
-
-  void definirMoeda(String moeda) {
-    this.moeda = moeda
-  }
-
-  void definirCustoFabricacao(float custoFabricacao) {
-    this.custoFabricacao = custoFabricacao
   }
 
   void definirCliente(Cliente cliente) throws Exception
@@ -255,10 +181,6 @@ class Produto {
       this.pintura = pintura
     else
       this.pintura = ""
-  }
-
-  void definirDestino(char destino) {
-    this.destino = destino
   }
 
   void cadastrarProduto() throws Exception

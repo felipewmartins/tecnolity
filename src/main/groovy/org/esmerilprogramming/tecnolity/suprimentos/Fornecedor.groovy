@@ -5,27 +5,25 @@ import java.sql.*
 import org.esmerilprogramming.tecnolity.administracao.Estado
 import org.esmerilprogramming.tecnolity.administracao.Pais
 import org.esmerilprogramming.tecnolity.util.*
-import java.util.*
 
-class Fornecedor
-{
-  private int codigo
-    private String razaoSocial
-    private String cnpj
-    private int percentualICMS
-    private String logradouro
-    private String complemento
-    private String bairro
-    private String cidade
-    private Estado estado
-    private Pais pais
-    private String cep
-    private String ddd
-    private String telefone
-    private String ramal
-    private String fax
-    private String email
-    private String website
+class Fornecedor {
+  int codigo
+  String razaoSocial
+  String cnpj
+  int percentualICMS
+  String logradouro
+  String complemento
+  String bairro
+  String cidade
+  Estado estado
+  Pais pais
+  String cep
+  String ddd
+  String telefone
+  String ramal
+  String fax
+  String email
+  String website
 
     Fornecedor(int codigo,String razaoSocial,String cnpj,
         int percentualICMS,String logradouro,String complemento,
@@ -98,11 +96,6 @@ class Fornecedor
           throw e
       }
     conexao.fecharConexao()
-  }
-  Fornecedor(){}
-
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
   }
 
   void definirRazaoSocial(String razaoSocial) throws Exception
@@ -282,74 +275,6 @@ class Fornecedor
       Exception e = new Exception("O Website não foi informado corretamente.")
         throw e
     }
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  String obterRazaoSocial() {
-    return this.razaoSocial
-  }
-
-  String obterCnpj() {
-    return this.cnpj
-  }
-
-  int obterPercentualICMS() {
-    return this.percentualICMS
-  }
-
-  String obterLogradouro() {
-    return this.logradouro
-  }
-
-  String obterComplemento() {
-    return this.complemento
-  }
-
-  String obterBairro() {
-    return this.bairro
-  }
-
-  String obterCidade() {
-    return this.cidade
-  }
-
-  Estado obterEstado() {
-    return this.estado
-  }
-
-  Pais obterPais() {
-    return this.pais
-  }
-
-  String obterCep() {
-    return this.cep
-  }
-
-  String obterDdd() {
-    return this.ddd
-  }
-
-  String obterTelefone() {
-    return this.telefone
-  }
-
-  String obterRamal() {
-    return this.ramal
-  }
-
-  String obterFax() {
-    return this.fax
-  }
-
-  String obterEmail() {
-    return this.email
-  }
-
-  String  obterWebsite() {
-    return this.website
   }
 
   private void carregarFornecedor(Conexao conexao) throws Exception

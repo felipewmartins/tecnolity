@@ -4,31 +4,16 @@ import java.text.*
 
 import org.esmerilprogramming.tecnolity.suprimentos.*
 
-class MateriaPrima implements Cloneable
-{
-  private Item item
-    private Matriz matriz
-    private float quantidade
-
-    MateriaPrima() {}
+class MateriaPrima implements Cloneable {
+  Item item
+  Matriz matriz
+  float quantidade
 
   MateriaPrima(Item item, Matriz matriz, float quantidade) throws Exception
   {
     definirItem(item)
       definirMatriz(matriz)
       definirQuantidade(quantidade)
-  }
-
-  Item obterItem() {
-    return this.item
-  }
-
-  Matriz obterMatriz() {
-    return this.matriz
-  }
-
-  float obterQuantidade() {
-    return this.quantidade
   }
 
   String obterQuantidade(String formato) {

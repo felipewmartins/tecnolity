@@ -4,38 +4,17 @@ import java.util.Vector
 import java.sql.*
 import org.esmerilprogramming.tecnolity.util.*
 
-class TipoProducao
-{
-  private int codigo
-    private String tipoProducao
+class TipoProducao {
+  int codigo
+  String tipoProducao
 
-    TipoProducao(int codigo, String tipoProducao) {
-      this.codigo = codigo
-        this.tipoProducao = tipoProducao
-    }
+  TipoProducao(int codigo, String tipoProducao) {
+    this.codigo = codigo
+    this.tipoProducao = tipoProducao
+  }
 
   TipoProducao(int codigo) {
     this.codigo = codigo
-  }
-
-  TipoProducao() {
-
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  String obterTipoProducao() {
-    return this.tipoProducao	
-  }
-
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
-  }
-
-  void definirTipoProducao(String tipoProducao) {
-    this.tipoProducao = tipoProducao
   }
 
   Vector carregarTiposProducao(Conexao conexao) throws Exception

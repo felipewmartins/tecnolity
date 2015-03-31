@@ -2,17 +2,16 @@ package org.esmerilprogramming.tecnolity.suprimentos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-class FornecedorItem
-{
-  private Fornecedor fornecedor
-    private Item item
-    private String dataAtualizacaoValor
-    private Unidade unidade
-    private float valorItem
-    private String moeda
-    private String referenciaFornecedor
+class FornecedorItem {
+  Fornecedor fornecedor
+  Item item
+  String dataAtualizacaoValor
+  Unidade unidade
+  float valorItem
+  String moeda
+  String referenciaFornecedor
 
-    FornecedorItem(Fornecedor fornecedor, Item item, float valorItem) throws Exception
+  FornecedorItem(Fornecedor fornecedor, Item item, float valorItem) throws Exception
     {
       this.definirValorItem(valorItem)
         this.definirFornecedor(fornecedor)
@@ -41,34 +40,6 @@ class FornecedorItem
       definirValorItem(valorItem)
       definirMoeda(moeda)
       definirReferenciaFornecedor(referenciaFornecedor)
-  }
-
-  Fornecedor obterFornecedor() {
-    return this.fornecedor
-  }
-
-  Item obterItem() {
-    return this.item
-  }
-
-  String obterDataAtualizacaoValor() {
-    return this.dataAtualizacaoValor
-  }
-
-  Unidade obterUnidade() {
-    return this.unidade
-  }
-
-  float obterValorItem() {
-    return this.valorItem
-  }
-
-  String obterMoeda() {
-    return this.moeda
-  }
-
-  String obterReferenciaFornecedor() {
-    return this.referenciaFornecedor
   }
 
   void definirItem(Item item) throws Exception
@@ -138,10 +109,6 @@ class FornecedorItem
       this.moeda = 'R$'
     else
       this.moeda = moeda
-  }
-
-  void definirReferenciaFornecedor(String referenciaFornecedor) {
-    this.referenciaFornecedor = referenciaFornecedor
   }
 
   void alterarValorItem() throws Exception

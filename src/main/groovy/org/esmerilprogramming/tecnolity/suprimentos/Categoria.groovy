@@ -6,8 +6,8 @@ import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.aplicacao.*
 
 class Categoria {
-  private int codigo
-  private String nomeCategoria
+  int codigo
+  String nomeCategoria
 
   Categoria(int codigo, String nomeCategoria) {
     this.codigo = codigo
@@ -20,16 +20,6 @@ class Categoria {
 
   Categoria(int codigo) {
     this.codigo = codigo
-  }
-
-  Categoria(){}
-
-  int obterCodigo() {
-    return codigo
-  }
-
-  String obterNomeCategoria() {
-    return this.nomeCategoria
   }
 
   boolean cadastrarCategoria(String nomeCategoria) {
