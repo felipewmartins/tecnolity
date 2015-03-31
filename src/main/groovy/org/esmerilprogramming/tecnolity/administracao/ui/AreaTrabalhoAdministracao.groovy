@@ -7,29 +7,29 @@ import org.esmerilprogramming.tecnolity.administracao.Permissao
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
+import org.esmerilprogramming.tecnolity.ui.img.ImageLoader
 
 class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
-   final int IDENTIFICADOR = 1
-
+  final int IDENTIFICADOR = 1
   private JPanel pnlCabecalho, pnlInformacoes
   private InformacoesAdministracao tbpInformacoes
 
-  AreaTrabalhoAdministracao(Aplicacao aplicacao) {
-    switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao())) {
+  AreaTrabalhoAdministracao(Aplicacao app) {
+    switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),app.colaborador, app.conexao)) {
       case Permissao.SEM_ACESSO:
-        JOptionPane.showMessageDialog(this,"Acesso Negado.","Segurança",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(this, 'Acesso Negado.', 'Segurança', JOptionPane.WARNING_MESSAGE)
         break
       default:
         this.setLayout(new BorderLayout())
-
         pnlCabecalho = new JPanel(new BorderLayout(5,5))
         pnlCabecalho.setBorder(new EmptyBorder(3,3,3,3))
         pnlCabecalho.setBackground(Color.white)
-        JLabel lblImagemSecao = new JLabel(new ImageIcon("imagens/tit_administracao.gif"))
+        def img = ImageLoader.instance
+        JLabel lblImagemSecao = new JLabel(img.icon('tit_administracao.gif'))
         pnlCabecalho.add(lblImagemSecao,BorderLayout.WEST)
-        lblImagemSecao = new JLabel(new ImageIcon("imagens/logo_mentores.gif"))
-        pnlCabecalho.add(lblImagemSecao,BorderLayout.EAST)
-        this.add(pnlCabecalho,BorderLayout.NORTH)
+        lblImagemSecao = new JLabel(img.icon('logo_mentores.gif'))
+        pnlCabecalho.add(lblImagemSecao, BorderLayout.EAST)
+        this.add(pnlCabecalho, BorderLayout.NORTH)
 
         pnlInformacoes = new JPanel(new BorderLayout())
         tbpInformacoes = new InformacoesAdministracao(aplicacao)

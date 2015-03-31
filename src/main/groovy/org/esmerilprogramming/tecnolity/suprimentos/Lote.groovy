@@ -3,7 +3,7 @@ package org.esmerilprogramming.tecnolity.suprimentos
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
-class Lote 
+class Lote
 {
   static final char LOTE_BASICO = 'B'
 
@@ -74,7 +74,7 @@ class Lote
     String erro = ""
       if(!dataValidade.equals("")) {
         if(!Calendario.validarData(dataValidade,"/"))
-          erro = "Data de Validade inválida."        
+          erro = "Data de Validade inválida."
       }
 
     if(!erro.equals("")) {
@@ -132,8 +132,8 @@ class Lote
                     query = query + ", null)"
 
                       Conexao conexao = new Conexao('T')
-                      if (conexao.abrirConexao()) {            
-                        conexao.executarAtualizacao(query)  
+                      if (conexao.abrirConexao()) {
+                        conexao.executarAtualizacao(query)
                           conexao.fecharConexao()
                       }
                       else
@@ -141,15 +141,15 @@ class Lote
                         Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
                           throw e
                       }
-  } 
+  }
 
   /**
-   * Method retirarItem. Subtrai as quantidades dos lotes para atender a 
-   * quantidade de uma requisição interna. Se a quantidade solicitada for 
-   * maior que a quantidade disponível, a disponível é liberada e o item 
+   * Method retirarItem. Subtrai as quantidades dos lotes para atender a
+   * quantidade de uma requisição interna. Se a quantidade solicitada for
+   * maior que a quantidade disponível, a disponível é liberada e o item
    * continua pendente para ser atendido.
    * @param movimentacao Movimentação criada para o item.
-   * @param itemRequisicaoInterna item, cuja quantidade será retirada do 
+   * @param itemRequisicaoInterna item, cuja quantidade será retirada do
    * estoque.
    * @throws Exception
    */
@@ -174,7 +174,7 @@ class Lote
                   }
                 query = "select quantidade, numero from lote where item = " + itemRequisicaoInterna.obterItem().obterCodigo() + " and quantidade > 0"
                   ResultSet rsLote = conexao.executarConsulta(query)
-                  // Percorre os lotes existentes retirando os itens dos mesmos 
+                  // Percorre os lotes existentes retirando os itens dos mesmos
                   // até que a quantidade necessária seja atendida.
                   while(rsLote.next() && quantidadeSolicitada > 0) {
                     float quantidadeLote = rsLote.getFloat("quantidade")
@@ -185,7 +185,7 @@ class Lote
                       }
                     // Neste caso a quantidade que havia no Lote não foi suficiente
                     // para atender a solicitação completamente, sendo necessário
-                    // extrair itens de outros lotes. 
+                    // extrair itens de outros lotes.
                       else
                       {
                         query = "update lote set quantidade = 0 where numero = " + rsLote.getInt("numero")
@@ -203,7 +203,7 @@ class Lote
                         itemRequisicaoInterna.obterRequisicaoInterna().definirStatus(RequisicaoInterna.STATUS_EMITIDO)
                           itemRequisicaoInterna.obterRequisicaoInterna().atualizarRequisicaoInterna(RequisicaoInterna.STATUS_EMITIDO)
                       }
-                  }   
+                  }
                   else
                   {
                     //A movimentação só é gerada se alguma quantidade tiver sido movimentada.
