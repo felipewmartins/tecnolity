@@ -1,7 +1,6 @@
 package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 
 import java.awt.print.*
-import java.util.*
 
 class Impressora
 {

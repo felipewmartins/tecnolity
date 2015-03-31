@@ -2,7 +2,6 @@ package org.esmerilprogramming.tecnolity.logistica
 
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
-import java.util.*
 
 class Despesa
 {

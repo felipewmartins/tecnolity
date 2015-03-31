@@ -1,6 +1,5 @@
 package org.esmerilprogramming.tecnolity.administracao
 
-import java.util.*
 import java.sql.*
 
 import org.esmerilprogramming.tecnolity.util.*

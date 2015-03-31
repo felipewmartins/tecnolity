@@ -3,7 +3,6 @@ package org.esmerilprogramming.tecnolity.aplicacao
 import javax.swing.*
 
 import java.awt.*
-import java.io.*
 import java.awt.print.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.util.*

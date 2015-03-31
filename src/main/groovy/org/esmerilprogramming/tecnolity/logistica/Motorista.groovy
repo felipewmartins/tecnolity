@@ -2,7 +2,6 @@ package org.esmerilprogramming.tecnolity.logistica
 
 import org.esmerilprogramming.tecnolity.administracao.Estado
 import org.esmerilprogramming.tecnolity.util.*
-import java.util.*
 import java.sql.*
 
 class Motorista

@@ -4,7 +4,6 @@ import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.util.*
 import org.esmerilprogramming.tecnolity.util.PessoaFisica
 import java.sql.*
-import java.util.Vector
 
 class Colaborador extends PessoaFisica {
   String matricula

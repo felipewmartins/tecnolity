@@ -3,17 +3,14 @@ package org.esmerilprogramming.tecnolity.logistica
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
-class Multa
-{
+class Multa {
 
-  private int codigo
-    private Veiculo veiculo
-    private String motivo
-    private float valor
-    private int responsabilidade
-    private String data
-
-    Multa(){}
+  int codigo
+  Veiculo veiculo
+  String motivo
+  float valor
+  int responsabilidade
+  String data
 
   Multa(int codigo) {
     definirCodigo(codigo)
@@ -68,10 +65,6 @@ class Multa
     catch(Exception e) {
       e.printStackTrace()
     }
-  }
-
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
   }
 
   void definirVeiculo(Veiculo veiculo) throws Exception
@@ -138,30 +131,6 @@ class Multa
           }
           else
             this.data = data
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  Veiculo obterVeiculo() {
-    return this.veiculo
-  }
-
-  String obterMotivo() {
-    return this.motivo
-  }
-
-  float obterValor() {
-    return this.valor
-  }
-
-  int obterResponsabilidade() {
-    return this.responsabilidade
-  }
-
-  String obterData() {
-    return this.data
   }
 
   void cadastrarMulta() throws Exception

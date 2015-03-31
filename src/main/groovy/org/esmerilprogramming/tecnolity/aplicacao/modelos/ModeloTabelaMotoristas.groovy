@@ -2,7 +2,6 @@ package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-
 class ModeloTabelaMotoristas extends ModeloTabela
 {
   ModeloTabelaMotoristas() {

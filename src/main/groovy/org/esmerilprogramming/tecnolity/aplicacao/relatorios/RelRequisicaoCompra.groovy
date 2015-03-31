@@ -1,6 +1,5 @@
 package org.esmerilprogramming.tecnolity.aplicacao.relatorios
 
-import java.util.*
 import org.esmerilprogramming.tecnolity.pedidos.*
 import org.esmerilprogramming.tecnolity.suprimentos.*
 import org.esmerilprogramming.tecnolity.util.*
