@@ -12,7 +12,6 @@ import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.administracao.ui.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.pedidos.*
-import org.esmerilprogramming.tecnolity.util.Endereco
 
 class DlgDadosCliente extends Dialogo implements ActionListener
 {
