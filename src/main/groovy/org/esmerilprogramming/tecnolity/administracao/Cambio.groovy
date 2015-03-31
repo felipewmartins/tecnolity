@@ -4,22 +4,12 @@ import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
 class Cambio {
-  private float dolar
-    private String data
-
-    Cambio() {}
+  float dolar
+  String data
 
   Cambio(float dolar, String data) {
     this.dolar = dolar
       this.data = data
-  }
-
-  float obterDolar() {
-    return this.dolar
-  }
-
-  String obterData() {
-    return this.data
   }
 
   void definirDolar(float dolar) throws Exception
@@ -30,10 +20,6 @@ class Cambio {
     }
     else
       this.dolar = dolar
-  }
-
-  void definirData(String data) {
-    this.data = data
   }
 
   void carregarCambio(Conexao conexao) throws Exception

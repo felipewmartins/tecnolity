@@ -5,8 +5,7 @@ import java.sql.*
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
 import org.esmerilprogramming.tecnolity.util.*
 
-class Permissao
-{
+class Permissao {
   static final char LEITURA = 'L'
     static final char ESCRITA = 'E'
     static final char SEM_ACESSO = 'S'
@@ -29,30 +28,6 @@ class Permissao
   Permissao(Interface tela, Colaborador colaborador) {
     definirTela(tela)
       definirColaborador(colaborador)
-  }
-
-  Interface obterTela() {
-    return this.tela
-  }
-
-  Colaborador obterColaborador() {
-    return this.colaborador
-  }
-
-  char obterTipoAcesso() {
-    return this.tipoAcesso
-  }
-
-  void definirTela(Interface tela) {
-    this.tela = tela
-  }
-
-  void definirColaborador(Colaborador colaborador) {
-    this.colaborador = colaborador
-  }
-
-  void definirTipoAcesso(char tipoAcesso) {
-    this.tipoAcesso = tipoAcesso
   }
 
   /** Verifica de o usuário tem permissão de leitura ou escrita na tela. Caso

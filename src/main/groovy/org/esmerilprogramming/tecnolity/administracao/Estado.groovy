@@ -4,8 +4,7 @@ import java.sql.*
 
 import org.esmerilprogramming.tecnolity.util.*
 
-class Estado extends org.esmerilprogramming.tecnolity.util.Estado
-{
+class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
   Estado(String sigla, String nome, Pais pais) throws Exception
   {
     super(sigla,nome,pais)
@@ -20,8 +19,6 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado
   {
     super(siglaEstado)
   }
-
-  Estado(){}
 
   void carregarEstado() throws Exception
   {

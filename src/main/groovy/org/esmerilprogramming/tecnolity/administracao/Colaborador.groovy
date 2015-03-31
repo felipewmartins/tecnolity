@@ -90,34 +90,6 @@ class Colaborador extends PessoaFisica {
     this.matricula = matricula
   }
 
-  char obterSexo() {
-    return super.getSexo()
-  }
-
-  void definirCpf(String cpf) throws Exception {
-    super.setCPF(cpf)
-  }
-
-  void definirLogradouro(String logradouro) throws Exception {
-    super.setLogradouro(logradouro)
-  }
-
-  void definirComplemento(String complemento) {
-    super.setComplemento(complemento)
-  }
-
-  void definirBairro(String bairro) {
-    super.setBairro(bairro)
-  }
-
-  void definirCidade(String cidade) throws Exception {
-    super.setCidade(cidade)
-  }
-
-  void definirCep(String cep) {
-    super.setCEP(cep)
-  }
-
   void definirTelefone(String telefone) throws Exception {
     if(telefone == null)
       return
@@ -142,10 +114,6 @@ class Colaborador extends PessoaFisica {
           Exception e = new Exception("Número de celular inválido. Informe somente números e sem espaço.")
             throw e
         }
-  }
-
-  void definirEmail(String email) throws Exception {
-    super.setEmail(email)
   }
 
   boolean autenticarColaborador() throws Exception {
@@ -248,10 +216,6 @@ class Colaborador extends PessoaFisica {
       permissao = new Permissao(tela, it.tipo_permissao.toCharArray()[0])
       permissoes.addElement(permissao)
     }
-  }
-
-  Vector obterPermissoes() {
-    return this.permissoes
   }
 
   void definirPermissoes(Vector permissoes) throws SQLException, Exception

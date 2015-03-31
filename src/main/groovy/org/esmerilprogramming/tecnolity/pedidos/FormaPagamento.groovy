@@ -2,17 +2,11 @@ package org.esmerilprogramming.tecnolity.pedidos
 
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
-import java.util.*
 
-class FormaPagamento
-{
-  private String sigla
-    private String siglaAntesAlteracao
-    private String formaPagamento
-
-    FormaPagamento() {
-
-    }
+class FormaPagamento {
+  String sigla
+  String siglaAntesAlteracao
+  String formaPagamento
 
   FormaPagamento(String sigla, String formaPagamento) {
     try
@@ -91,18 +85,6 @@ class FormaPagamento
       Exception e = new Exception("A Forma de Pagamento não foi informada corretamente.")
         throw e
     }
-  }
-
-  String obterSigla() {
-    return this.sigla
-  }
-
-  String obterSiglaAntesAlteracao() {
-    return this.siglaAntesAlteracao
-  }
-
-  String obterFormaPagamento() {
-    return this.formaPagamento
   }
 
   Vector carregarFormasPagamento(Conexao conexao) throws Exception

@@ -3,13 +3,10 @@ package org.esmerilprogramming.tecnolity.logistica
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
-class Despesa
-{
+class Despesa {
 
   private String placa, descricao, data, placaAntesAlteracao, dataAntesAlteracao
-    private float valor
-
-    Despesa(){}
+  private float valor
 
   Despesa(String data) {
     this.data = data
@@ -169,30 +166,6 @@ class Despesa
           }
           else
             this.data = data
-  }
-
-  String obterPlacaAntesAlteracao() {
-    return this.placaAntesAlteracao
-  }
-
-  String obterDataAntesAlteracao() {
-    return this.dataAntesAlteracao
-  }
-
-  String obterPlaca() {
-    return this.placa
-  }
-
-  String obterDescricao() {
-    return this.descricao
-  }
-
-  float obterValor() {
-    return this.valor
-  }
-
-  String obterData() {
-    return this.data
   }
 
   Vector carregarDatasDespesas(Conexao conexao) throws Exception

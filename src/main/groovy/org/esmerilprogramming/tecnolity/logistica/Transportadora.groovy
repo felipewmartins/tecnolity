@@ -1,15 +1,11 @@
 package org.esmerilprogramming.tecnolity.logistica
 
 import org.esmerilprogramming.tecnolity.util.*
-import java.util.Vector
 import java.sql.*
 
-class Transportadora
-{
-  private int codigo
-    private String transportadora
-
-    Transportadora(){}
+class Transportadora {
+  int codigo
+  String transportadora
 
   Transportadora(int codigo) {
     this.definirCodigo(codigo)
@@ -54,10 +50,6 @@ class Transportadora
       }
   }
 
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
-  }
-
   void definirTransportadora(String transportadora) throws Exception
   {
     if(!transportadora.equals("") && transportadora.length() <= 60)
@@ -67,13 +59,6 @@ class Transportadora
       Exception e = new Exception("A Transportadora não foi informada corretamente.")
         throw e
     }
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-  String obterNome() {
-    return this.transportadora
   }
 
   static Vector carregarTransportadoras(Conexao conexao) throws Exception
@@ -136,7 +121,4 @@ class Transportadora
       }
   }
 
-  String toString() {
-    return this.transportadora
-  }
 }
