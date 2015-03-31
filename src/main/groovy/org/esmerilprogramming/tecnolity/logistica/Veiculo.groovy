@@ -1,29 +1,24 @@
 package org.esmerilprogramming.tecnolity.logistica
 
 import org.esmerilprogramming.tecnolity.util.*
-import java.util.Vector
 import java.sql.*
 
-class Veiculo
-{
-  //dados de Veiculo
-  private String placa
-    private Transportadora transportadora
-    private String chassi
-    private String renavam
-    private String marca
-    private String modelo
-    private String ano
-    private String cor
-    private int numeroEixo
-    private float cubagem
-    private float tara
-    private float pesoBruto
-    private String combustivel
-    private float volumeCombustivel
-    private float mediaConsumo
-
-    Veiculo(){}
+class Veiculo {
+  String placa
+  Transportadora transportadora
+  String chassi
+  String renavam
+  String marca
+  String modelo
+  String ano
+  String cor
+  int numeroEixo
+  float cubagem
+  float tara
+  float pesoBruto
+  String combustivel
+  float volumeCombustivel
+  float mediaConsumo
 
   Veiculo(String placa) {
     try
@@ -245,66 +240,6 @@ class Veiculo
           }
           else
             this.mediaConsumo = mediaConsumo
-  }
-
-  String obterPlaca() {
-    return this.placa
-  }
-
-  Transportadora obterTransportadora() {
-    return this.transportadora
-  }
-
-  String obterChassi() {
-    return this.chassi
-  }
-
-  String obterRenavam() {
-    return this.renavam
-  }
-
-  String obterMarca() {
-    return this.marca
-  }
-
-  String obterModelo() {
-    return this.modelo
-  }
-
-  String obterAno() {
-    return this.ano
-  }
-
-  String obterCor() {
-    return this.cor
-  }
-
-  int obterNumeroEixo() {
-    return this.numeroEixo
-  }
-
-  float obterCubagem() {
-    return this.cubagem
-  }
-
-  float obterTara() {
-    return this.tara
-  }
-
-  float obterPesoBruto() {
-    return this.pesoBruto
-  }
-
-  String obterCombustivel() {
-    return this.combustivel
-  }
-
-  float obterVolumeCombustivel() {
-    return this.volumeCombustivel
-  }
-
-  float obterMediaConsumo() {
-    return this.mediaConsumo
   }
 
   void carregarDadosVeiculo(Conexao conexao) throws Exception

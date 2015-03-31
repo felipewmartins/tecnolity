@@ -10,31 +10,28 @@ import org.esmerilprogramming.tecnolity.producao.Produto
 import org.esmerilprogramming.tecnolity.suprimentos.Movimentacao
 import org.esmerilprogramming.tecnolity.util.*
 
- class Pedido
-{
-  private long codigo
-  private Cliente cliente
-  private String ordemCompra
-  private String dataEmissao
-  private String dataEntrega
-  private char tipoOperacao
-  private String status
-  private float valorTotal
-  private int numeroRegistros = 1
-  private String[] registros
-  private LocalEntrega localEntrega
-  private String esteira
-  private String observacao
-  private Vector produtosPedido
+class Pedido {
+  long codigo
+  Cliente cliente
+  String ordemCompra
+  String dataEmissao
+  String dataEntrega
+  char tipoOperacao
+  String status
+  float valorTotal
+  int numeroRegistros = 1
+  String[] registros
+  LocalEntrega localEntrega
+  String esteira
+  String observacao
+  Vector produtosPedido
 
-   static final String PENDENTE   = "1P"
-   static final String PRODUZINDO = "2P"
-   static final String FINALIZADO = "3F"
-   static final String ATRASADO   = "4A"
-   static final String PARALIZADO = "5P"
-   static final String CANCELADO  = "6C"
-
-  Pedido(){}
+  static final String PENDENTE   = "1P"
+  static final String PRODUZINDO = "2P"
+  static final String FINALIZADO = "3F"
+  static final String ATRASADO   = "4A"
+  static final String PARALIZADO = "5P"
+  static final String CANCELADO  = "6C"
 
   Pedido(long codigo) throws Exception
   {
@@ -64,14 +61,6 @@ import org.esmerilprogramming.tecnolity.util.*
     definirValorTotal(valorTotal)
   }
 
-   long obterCodigo() {
-    return this.codigo
-  }
-
-   String obterOrdemCompra() {
-    return this.ordemCompra
-  }
-
    void definirCodigo(long codigo) throws Exception
   {
     if(codigo < 0) {
@@ -79,18 +68,6 @@ import org.esmerilprogramming.tecnolity.util.*
       throw e
     }
     this.codigo = codigo
-  }
-
-   void definirObservacao(String observacao) {
-    this.observacao = observacao
-  }
-
-   void definirEsteira(String esteira) {
-    this.esteira = esteira
-  }
-
-   void definirLocalEntrega(LocalEntrega localEntrega) {
-    this.localEntrega = localEntrega
   }
 
    void definirCliente(Cliente cliente) throws Exception
@@ -150,46 +127,6 @@ import org.esmerilprogramming.tecnolity.util.*
     this.dataEntrega = dataEntrega
   }
 
-  void definirStatus(String status) {
-    this.status = status
-  }
-
-  void definirValorTotal(float valorTotal) {
-    this.valorTotal = valorTotal
-  }
-
-  int obterNumeroRegistros() {
-    return this.numeroRegistros
-  }
-
-  Cliente obterCliente() {
-    return this.cliente
-  }
-
-  char obterTipoOperacao() {
-    return this.tipoOperacao
-  }
-
-  String obterDataEmissao() {
-    return this.dataEmissao
-  }
-
-  String obterDataEntrega() {
-    return this.dataEntrega
-  }
-
-  String obterEsteira() {
-    return this.esteira
-  }
-
-  String obterObservacao() {
-    return this.observacao
-  }
-
-  Vector getProdutosPedido() {
-    return this.produtosPedido
-  }
-
   Vector obterNumeracaoProdutos(String referencia) {
     Vector numeros = new Vector()
     Matriz matriz
@@ -202,10 +139,6 @@ import org.esmerilprogramming.tecnolity.util.*
     }
 
     return numeros
-  }
-
-  LocalEntrega obterLocalEntrega() {
-    return this.localEntrega
   }
 
   /**

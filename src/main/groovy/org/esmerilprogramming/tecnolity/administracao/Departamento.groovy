@@ -4,53 +4,24 @@ import java.sql.*
 
 import org.esmerilprogramming.tecnolity.util.*
 
-class Departamento
-{
-  private int codigo
-    private String nomeDepartamento
-    private Colaborador responsavel
+class Departamento {
+  int codigo
+  String nomeDepartamento
+  Colaborador responsavel
 
-    Departamento(int codigo, String nomeDepartamento, Colaborador responsavel) {
-      this.codigo = codigo
-        this.nomeDepartamento = nomeDepartamento
-        this.responsavel = responsavel
-    }
+  Departamento(int codigo, String nomeDepartamento, Colaborador responsavel) {
+    this.codigo = codigo
+    this.nomeDepartamento = nomeDepartamento
+    this.responsavel = responsavel
+  }
 
   Departamento(int codigo, String nomeDepartamento) {
     this.codigo = codigo
-      this.nomeDepartamento = nomeDepartamento
+    this.nomeDepartamento = nomeDepartamento
   }
 
   Departamento(int codigo) {
     this.codigo = codigo
-  }
-
-  Departamento() {
-
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  String obterNomeDepartamento() {
-    return this.nomeDepartamento
-  }
-
-  Colaborador obterResponsavel() {
-    return this.responsavel
-  }
-
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
-  }
-
-  void definirNomeDepartamento(String nomeDepartamento) {
-    this.nomeDepartamento = nomeDepartamento
-  }
-
-  void definirResponsavel(Colaborador responsavel) {
-    this.responsavel = responsavel
   }
 
   void carregarDepartamento(Conexao conexao) throws Exception

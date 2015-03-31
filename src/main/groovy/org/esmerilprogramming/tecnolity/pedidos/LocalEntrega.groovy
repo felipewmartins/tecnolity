@@ -5,25 +5,24 @@ import java.sql.*
 import org.esmerilprogramming.tecnolity.administracao.Estado
 import org.esmerilprogramming.tecnolity.util.Conexao
 
-class LocalEntrega
-{
-  private long codigo
-    private Cliente cliente
-    private String descricaoLocal
-    private String logradouro
-    private String complemento
-    private String bairro
-    private String cidade
-    private Estado estado
-    private String cep
-    private String telefone
-    private String responsavelRecebimento
-    private boolean novoLocalEntrega // Quando um novo local de entrega for informado para inclusão.
-    private boolean invalido // Quando o local de entrega for selecionado para exclusão.
+class LocalEntrega {
+  long codigo
+  Cliente cliente
+  String descricaoLocal
+  String logradouro
+  String complemento
+  String bairro
+  String cidade
+  Estado estado
+  String cep
+  String telefone
+  String responsavelRecebimento
+  boolean novoLocalEntrega // Quando um novo local de entrega for informado para inclusão.
+  boolean invalido // Quando o local de entrega for selecionado para exclusão.
 
-    LocalEntrega() {
-      setNovoLocalEntrega(true)
-    }
+  LocalEntrega() {
+    setNovoLocalEntrega(true)
+  }
 
   LocalEntrega(long codigo,Cliente cliente, String descricaoLocal) throws Exception
   {
@@ -68,50 +67,6 @@ class LocalEntrega
       setNovoLocalEntrega(false)
   }
 
-  long obterCodigo() {
-    return this.codigo
-  }
-
-  String obterDescricaoLocal() {
-    return this.descricaoLocal
-  }
-
-  Cliente obterCliente() {
-    return this.cliente
-  }
-
-  String obterLogradouro() {
-    return this.logradouro
-  }
-
-  String obterComplemento() {
-    return this.complemento
-  }
-
-  String obterBairro() {
-    return this.bairro
-  }
-
-  String obterCidade() {
-    return this.cidade
-  }
-
-  Estado obterEstado() {
-    return this.estado
-  }
-
-  String obterCep() {
-    return this.cep
-  }
-
-  String obterTelefone() {
-    return this.telefone
-  }
-
-  String obterResponsavelRecebimento() {
-    return this.responsavelRecebimento
-  }
-
   void definirCodigo(long codigo) throws Exception
   {
     if(codigo <= 0) {
@@ -152,14 +107,6 @@ class LocalEntrega
     }
   }
 
-  void definirComplemento(String complemento) {
-    this.complemento = complemento
-  }
-
-  void definirBairro(String bairro) {
-    this.bairro = bairro
-  }
-
   void definirCidade(String cidade) throws Exception
   {
     if(!cidade.equals("")) {
@@ -183,18 +130,6 @@ class LocalEntrega
       Exception e = new Exception("O Estado não foi informado.")
         throw e
     }
-  }
-
-  void definirCep(String cep) {
-    this.cep = cep
-  }
-
-  void definirTelefone(String telefone) {
-    this.telefone = telefone
-  }
-
-  void definirResponsavelRecebimento(String responsavelRecebimento) {
-    this.responsavelRecebimento = responsavelRecebimento
   }
 
   void addLocalEntrega(Conexao conexao) throws Exception
@@ -227,19 +162,4 @@ class LocalEntrega
     return this.descricaoLocal
   }
 
-  boolean isNovoLocalEntrega() {
-    return novoLocalEntrega
-  }
-
-  void setNovoLocalEntrega(boolean b) {
-    novoLocalEntrega = b
-  }
-
-  boolean isInvalido() {
-    return invalido
-  }
-
-  void setInvalido(boolean b) {
-    invalido = b
-  }
 }

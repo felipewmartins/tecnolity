@@ -4,27 +4,24 @@ import org.esmerilprogramming.tecnolity.administracao.Estado
 import org.esmerilprogramming.tecnolity.util.*
 import java.sql.*
 
-class Motorista
-{
-  private int codigo
-    private String placa
-    private String motorista
-    private String identidade
-    private String orgaoEmissorIdentidade
-    private String cpf
-    private String habilitacao
-    private String categoria
-    private String validade
-    private String logradouro
-    private String complemento
-    private String bairro
-    private String cidade
-    private Estado estado
-    private String cep
-    private String telefone
-    private String celular
-
-    Motorista() {}
+class Motorista {
+  int codigo
+  String placa
+  String motorista
+  String identidade
+  String orgaoEmissorIdentidade
+  String cpf
+  String habilitacao
+  String categoria
+  String validade
+  String logradouro
+  String complemento
+  String bairro
+  String cidade
+  Estado estado
+  String cep
+  String telefone
+  String celular
 
   Motorista(int codigo,String motorista) {
     this.definirCodigo(codigo)
@@ -325,74 +322,6 @@ class Motorista
       Exception e = new Exception("O Celular não foi informado corretamente.")
         throw e
     }
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  String obterPlaca() {
-    return this.placa
-  }
-
-  String obterMotorista() {
-    return this.motorista
-  }
-
-  String obterIdentidade() {
-    return this.identidade
-  }
-
-  String obterOrgaoEmissorIdentidade() {
-    return this.orgaoEmissorIdentidade
-  }
-
-  String obterCpf() {
-    return this.cpf
-  }
-
-  String obterHabilitacao() {
-    return this.habilitacao
-  }
-
-  String obterCategoria() {
-    return this.categoria
-  }
-
-  String obterValidade() {
-    return this.validade
-  }
-
-  String obterLogradouro() {
-    return this.logradouro
-  }
-
-  String obterComplemento() {
-    return this.complemento
-  }
-
-  String obterBairro() {
-    return this.bairro
-  }
-
-  String obterCidade() {
-    return this.cidade
-  }
-
-  Estado obterEstado() {
-    return this.estado
-  }
-
-  String obterCep() {
-    return this.cep
-  }
-
-  String obterTelefone() {
-    return this.telefone
-  }
-
-  String obterCelular() {
-    return this.celular
   }
 
   Vector carregarMotoristas(Conexao conexao) throws Exception

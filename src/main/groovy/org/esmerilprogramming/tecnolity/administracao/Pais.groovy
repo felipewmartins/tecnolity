@@ -3,8 +3,7 @@ package org.esmerilprogramming.tecnolity.administracao
 import java.sql.*
 import org.esmerilprogramming.tecnolity.util.*
 
- class Pais extends org.esmerilprogramming.tecnolity.util.Pais
-{
+class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
    Pais(String siglaPais, String nomePais) throws Exception
   {
     super(siglaPais, nomePais)
@@ -14,8 +13,6 @@ import org.esmerilprogramming.tecnolity.util.*
   {
     super(siglaPais)
   }
-
-   Pais(){}
 
    static Vector carregarPaises(Conexao conexao) throws Exception
   {

@@ -1,36 +1,30 @@
 package org.esmerilprogramming.tecnolity.pedidos
 
 import java.sql.*
-import java.util.*
 
 import org.esmerilprogramming.tecnolity.administracao.Estado
 import org.esmerilprogramming.tecnolity.administracao.Pais
 import org.esmerilprogramming.tecnolity.util.*
 
-class Cliente
-{
-  private long codigo
-    private String razaoSocial
-    private String nomeFantasia
-    private String cnpj
-    private String inscricaoEstadual
-    private String logradouro
-    private String bairro
-    private String complemento
-    private String cidade
-    private Estado estado
-    private Pais pais
-    private String cep
-    private String telefone
-    private String fax
-    private String contatoComercial
-    private String contatoTecnico
-    private String email
-    private Vector locaisEntrega = new Vector()
-
-    Cliente() {
-
-    }
+class Cliente {
+  long codigo
+  String razaoSocial
+  String nomeFantasia
+  String cnpj
+  String inscricaoEstadual
+  String logradouro
+  String bairro
+  String complemento
+  String cidade
+  Estado estado
+  Pais pais
+  String cep
+  String telefone
+  String fax
+  String contatoComercial
+  String contatoTecnico
+  String email
+  Vector locaisEntrega = new Vector()
 
   Cliente(long codigo) throws Exception
   {
@@ -64,74 +58,6 @@ class Cliente
   {
     this.definirCodigo(codigo)
       this.definirRazaoSocial(razaoSocial)
-  }
-
-  long obterCodigo() {
-    return this.codigo
-  }
-
-  String obterRazaoSocial() {
-    return this.razaoSocial
-  }
-
-  String obterNomeFantasia() {
-    return this.nomeFantasia
-  }
-
-  String obterCnpj() {
-    return this.cnpj
-  }
-
-  String obterInscricaoEstadual() {
-    return this.inscricaoEstadual
-  }
-
-  String obterLogradouro() {
-    return this.logradouro
-  }
-
-  String obterBairro() {
-    return this.bairro
-  }
-
-  String obterComplemento() {
-    return this.complemento
-  }
-
-  String obterCidade() {
-    return this.cidade
-  }
-
-  Estado obterEstado() {
-    return this.estado
-  }
-
-  Pais obterPais() {
-    return this.pais
-  }
-
-  String obterCep() {
-    return this.cep
-  }
-
-  String obterTelefone() {
-    return this.telefone
-  }
-
-  String obterFax() {
-    return this.fax
-  }
-
-  String obterContatoComercial() {
-    return this.contatoComercial
-  }
-
-  String obterContatoTecnico() {
-    return this.contatoTecnico
-  }
-
-  String obterEmail() {
-    return this.email
   }
 
   void definirCodigo(long codigo) throws Exception
@@ -190,14 +116,6 @@ class Cliente
     this.logradouro = logradouro.trim().toUpperCase()
   }
 
-  void definirBairro(String bairro) {
-    this.bairro = bairro.trim().toUpperCase()
-  }
-
-  void definirComplemento(String complemento) {
-    this.complemento = complemento.trim().toUpperCase()
-  }
-
   void definirCidade(String cidade) throws Exception
   {
     if(cidade.equals("") || cidade == null) {
@@ -236,26 +154,6 @@ class Cliente
           throw e
       }
     }
-  }
-
-  void definirTelefone(String telefone) {
-    this.telefone = telefone
-  }
-
-  void definirFax(String fax) {
-    this.fax = fax
-  }
-
-  void definirContatoComercial(String contatoComercial) {
-    this.contatoComercial = contatoComercial
-  }
-
-  void definirContatoTecnico(String contatoTecnico) {
-    this.contatoTecnico = contatoTecnico.trim().toUpperCase()
-  }
-
-  void definirEmail(String email) {
-    this.email = email.trim().toLowerCase()
   }
 
   void carregarCliente(Conexao conexao) throws Exception
@@ -339,10 +237,6 @@ class Cliente
       return locaisEntrega
   }
 
-  Vector getLocaisEntrega() {
-    return this.locaisEntrega
-  }
-
   void cadastrarCliente(Conexao conexao) throws Exception
   {
     String query
@@ -390,7 +284,4 @@ class Cliente
       conexao.executarAtualizacao("delete from cliente where codigo = " + this.obterCodigo())
   }
 
-  void setLocaisEntrega(Vector vector) {
-    locaisEntrega = vector
-  }
 }
