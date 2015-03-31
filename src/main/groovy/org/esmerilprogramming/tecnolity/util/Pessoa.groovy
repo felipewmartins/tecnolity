@@ -1,6 +1,7 @@
 package org.esmerilprogramming.tecnolity.util
 
-
+import java.util.regex.Pattern
+import java.util.regex.Matcher
 
 class Pessoa {
   static final char PESSOAFISICA = 'F'
