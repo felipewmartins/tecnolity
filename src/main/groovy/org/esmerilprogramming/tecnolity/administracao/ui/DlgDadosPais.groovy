@@ -6,8 +6,7 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 
-class DlgDadosPais extends JDialog implements ActionListener
-{
+class DlgDadosPais extends JDialog implements ActionListener {
   final int IDENTIFICADOR = 23
 
     private Aplicacao aplicacao
@@ -22,13 +21,13 @@ class DlgDadosPais extends JDialog implements ActionListener
       super(aplicacao,true)
 
         // Define o título da janela
-        String tituloJanela = ""
+        String tituloJanela = ''
         if (modo == 'I')
-          tituloJanela = "Nova País"
+          tituloJanela = 'Nova País'
             if (modo == 'A')
-              tituloJanela = "País"
+              tituloJanela = 'País'
                 if (modo == 'V')
-                  tituloJanela = "País"
+                  tituloJanela = 'País'
                     this.setTitle(tituloJanela)
 
                     this.aplicacao = aplicacao
@@ -46,21 +45,21 @@ class DlgDadosPais extends JDialog implements ActionListener
                     gbc.insets.top = 2
 
                     JPanel pnlDados = new JPanel(gridbag)
-                    JLabel label = new JLabel("Nome do Pais")
+                    JLabel label = new JLabel('Nome do Pais')
                     adicionarComponente(pnlDados,label,0,0,1,1)
                     txtNomePais = new JTextField(20)
                     adicionarComponente(pnlDados,txtNomePais,1,0,1,1)
-                    label = new JLabel("Sigla")
+                    label = new JLabel('Sigla')
                     adicionarComponente(pnlDados,label,2,0,1,1)
                     txtSiglaPais = new JTextField(3)
                     adicionarComponente(pnlDados,txtSiglaPais,3,0,1,1)
                     this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
                     JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-                    btConfirmar = new JButton("Confirmar")
+                    btConfirmar = new JButton('Confirmar')
                     btConfirmar.addActionListener(this)
                     pnlComandos.add(btConfirmar)
-                    btCancelar = new JButton("Cancelar")
+                    btCancelar = new JButton('Cancelar')
                     btCancelar.addActionListener(this)
                     pnlComandos.add(btCancelar)
                     this.conteudo.add(pnlComandos, BorderLayout.SOUTH)
@@ -96,7 +95,7 @@ class DlgDadosPais extends JDialog implements ActionListener
             this.setVisible(false)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.WARNING_MESSAGE)
             e.printStackTrace()
         }
       }

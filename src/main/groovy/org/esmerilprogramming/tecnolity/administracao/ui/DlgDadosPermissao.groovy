@@ -8,8 +8,7 @@ import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
 
-class DlgDadosPermissao extends JDialog implements ActionListener
-{
+class DlgDadosPermissao extends JDialog implements ActionListener {
   final int IDENTIFICADOR = 25
 
     private Aplicacao aplicacao
@@ -25,7 +24,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
     DlgDadosPermissao(Aplicacao aplicacao, char modo) {
       super(aplicacao,true)
 
-        this.setTitle("Atribuição de Permissões")
+        this.setTitle('Atribuição de Permissões')
 
         this.aplicacao = aplicacao
         this.modo = modo
@@ -42,7 +41,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
         gbc.insets.top = 2
 
         JPanel pnlColaborador = new JPanel(new FlowLayout(FlowLayout.LEFT))
-        JLabel label = new JLabel("Colaborador:")
+        JLabel label = new JLabel('Colaborador:')
         pnlColaborador.add(label)
         cbxColaborador = new JComboBox()
         Colaborador colaborador = new Colaborador()
@@ -51,7 +50,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
           colaboradores = colaborador.carregarColaboradores(aplicacao.obterConexao())
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       carregarColaboradores()
@@ -60,7 +59,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
         conteudo.add(pnlColaborador, BorderLayout.NORTH)
 
         JPanel pnlInterfaces = new JPanel(new BorderLayout(5,5))
-        label = new JLabel("Interfaces")
+        label = new JLabel('Interfaces')
         pnlInterfaces.add(label,BorderLayout.NORTH)
         this.lstInterface = new JList()
 
@@ -72,16 +71,16 @@ class DlgDadosPermissao extends JDialog implements ActionListener
 
         JPanel pnlPermissaoLeitura = new JPanel(new BorderLayout())
         JPanel pnlComandosLeitura = new JPanel(gridbag)
-        btAdicionarLeitura = new JButton("Adicionar >>")
+        btAdicionarLeitura = new JButton('Adicionar >>')
         btAdicionarLeitura.addActionListener(this)
         adicionarComponente(pnlComandosLeitura,btAdicionarLeitura,0,0,1,1)
-        btRemoverLeitura = new JButton(" << Remover")
+        btRemoverLeitura = new JButton(' << Remover')
         btRemoverLeitura.addActionListener(this)
         adicionarComponente(pnlComandosLeitura,btRemoverLeitura,1,0,1,1)
         pnlPermissaoLeitura.add(pnlComandosLeitura,BorderLayout.WEST)
 
         JPanel pnlListaLeitura = new JPanel(gridbag)
-        label = new JLabel("Acesso de Leitura")
+        label = new JLabel('Acesso de Leitura')
         adicionarComponente(pnlListaLeitura,label,0,0,1,1)
         pnlPermissoes.add(pnlPermissaoLeitura,BorderLayout.NORTH)
         DefaultListModel modeloLista = new DefaultListModel()
@@ -94,16 +93,16 @@ class DlgDadosPermissao extends JDialog implements ActionListener
 
         JPanel pnlPermissaoEscrita = new JPanel(new BorderLayout())
         JPanel pnlComandosEscrita = new JPanel(gridbag)
-        btAdicionarEscrita = new JButton("Adicionar >>")
+        btAdicionarEscrita = new JButton('Adicionar >>')
         btAdicionarEscrita.addActionListener(this)
         adicionarComponente(pnlComandosEscrita,btAdicionarEscrita,0,0,1,1)
-        btRemoverEscrita   = new JButton(" << Remover")
+        btRemoverEscrita   = new JButton(' << Remover')
         btRemoverEscrita.addActionListener(this)
         adicionarComponente(pnlComandosEscrita,btRemoverEscrita,1,0,1,1)
         pnlPermissaoEscrita.add(pnlComandosEscrita,BorderLayout.WEST)
 
         JPanel pnlListaEscrita = new JPanel(gridbag)
-        label = new JLabel("Acesso de Escrita")
+        label = new JLabel('Acesso de Escrita')
         adicionarComponente(pnlListaEscrita,label,0,0,1,1)
         modeloLista = new DefaultListModel()
         lstInterfaceAcessoEscrita = new JList(modeloLista)
@@ -115,13 +114,13 @@ class DlgDadosPermissao extends JDialog implements ActionListener
         conteudo.add(pnlPermissoes,BorderLayout.CENTER)
 
         JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-        btAplicar = new JButton("Aplicar")
+        btAplicar = new JButton('Aplicar')
         btAplicar.addActionListener(this)
         pnlComandos.add(btAplicar)
-        btConfirmar = new JButton("Confirmar")
+        btConfirmar = new JButton('Confirmar')
         btConfirmar.addActionListener(this)
         pnlComandos.add(btConfirmar)
-        btCancelar = new JButton("Cancelar")
+        btCancelar = new JButton('Cancelar')
         btCancelar.addActionListener(this)
         pnlComandos.add(btCancelar)
         this.conteudo.add(pnlComandos, BorderLayout.SOUTH)
@@ -139,7 +138,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
 
   private void carregarColaboradores() {
     cbxColaborador.removeAllItems()
-      cbxColaborador.addItem("Selecione...")
+      cbxColaborador.addItem('Selecione...')
       for(int i = 1;i < colaboradores.size();i++) {
         cbxColaborador.addItem(((Colaborador)colaboradores.get(i)).getNome())
       }
@@ -149,7 +148,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
     DefaultListModel modeloLista = new DefaultListModel()
       this.lstInterface.setModel(modeloLista)
       for(int i = 0;i < interfaces.size();i++) {
-        modeloLista.addElement(((Interface)interfaces.get(i)).obterNomeInterface() + " ("+ ((Interface)interfaces.get(i)).obterIdentificador() +")")
+        modeloLista.addElement(((Interface)interfaces.get(i)).obterNomeInterface() + ' ('+ ((Interface)interfaces.get(i)).obterIdentificador() +')')
       }
   }
 
@@ -170,7 +169,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
   }
 
   /**
-   *  Alimenta as listas com as interfaces do sistema. Caso seja escolhido um 
+   *  Alimenta as listas com as interfaces do sistema. Caso seja escolhido um
    *  usuário que já possua permissões definidas no sistema, suas permissões
    *  de leitura e escrita serão apresentadas, ao mesmo tempo que as mesmas
    *  são retiradas da lista de interfaces.
@@ -190,7 +189,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
         interfaces = tela.carregarInterfaces(aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
     }
 
     if(colaborador != null) {
@@ -214,7 +213,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
           }
       }
       catch(SQLException e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: "+ e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: '+ e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
       }
     }
     this.carregarInterfaces()
@@ -251,7 +250,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione uma interface.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione uma interface.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -266,7 +265,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione uma interface com acesso de Leitura.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione uma interface com acesso de Leitura.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -281,7 +280,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione uma interface.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione uma interface.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -296,7 +295,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione uma interface com acesso de Escrita.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione uma interface com acesso de Escrita.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -314,12 +313,12 @@ class DlgDadosPermissao extends JDialog implements ActionListener
           ((Colaborador)colaboradores.get(cbxColaborador.getSelectedIndex())).definirPermissoes(permissoes)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Selecione um Colaborador antes de aplicar as alterações.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Selecione um Colaborador antes de aplicar as alterações.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -338,17 +337,17 @@ class DlgDadosPermissao extends JDialog implements ActionListener
             this.setVisible(false)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Selecione um Colaborador antes de confirmar as alterações.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Selecione um Colaborador antes de confirmar as alterações.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if(objeto == btCancelar) {
-      this.setVisible(false)	
+      this.setVisible(false)
     }
   }
 }

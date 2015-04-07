@@ -6,8 +6,7 @@ import javax.swing.*
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 
-class DlgDadosEstado extends JDialog implements ActionListener
-{
+class DlgDadosEstado extends JDialog implements ActionListener {
   final int IDENTIFICADOR = 14
 
     private Aplicacao aplicacao
@@ -25,13 +24,13 @@ class DlgDadosEstado extends JDialog implements ActionListener
       super(aplicacao,true)
 
         // Define o título da janela
-        String tituloJanela = ""
+        String tituloJanela = ''
         if (modo == 'I')
-          tituloJanela = "Novo Estado"
+          tituloJanela = 'Novo Estado'
             if (modo == 'A')
-              tituloJanela = "Estado"
+              tituloJanela = 'Estado'
                 if (modo == 'V')
-                  tituloJanela = "Estado"
+                  tituloJanela = 'Estado'
                     this.setTitle(tituloJanela)
 
                     this.aplicacao = aplicacao
@@ -49,15 +48,15 @@ class DlgDadosEstado extends JDialog implements ActionListener
                     gbc.insets.top = 2
 
                     JPanel pnlDados = new JPanel(gridbag)
-                    JLabel label = new JLabel("Nome do Estado")
+                    JLabel label = new JLabel('Nome do Estado')
                     adicionarComponente(pnlDados,label,0,0,1,1)
                     txtNomeEstado = new JTextField(20)
                     adicionarComponente(pnlDados,txtNomeEstado,1,0,1,1)
-                    label = new JLabel("Sigla")
+                    label = new JLabel('Sigla')
                     adicionarComponente(pnlDados,label,2,0,1,1)
                     txtSiglaEstado = new JTextField(3)
                     adicionarComponente(pnlDados,txtSiglaEstado,3,0,1,1)
-                    label = new JLabel("País")
+                    label = new JLabel('País')
                     adicionarComponente(pnlDados,label,4,0,1,1)
 
                     JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -68,13 +67,13 @@ class DlgDadosEstado extends JDialog implements ActionListener
                         carregarPaises()
                     }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Países.","Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Países.','Erro',JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       pnlSuporteCombo.add(cbxPais,BorderLayout.CENTER)
-        btNovoPais = new JButton(new ImageIcon("imagens/novo.jpg"))
+        btNovoPais = new JButton(new ImageIcon('imagens/novo.jpg'))
         btNovoPais.addActionListener(this)
-        btNovoPais.setToolTipText("Novo Pais")
+        btNovoPais.setToolTipText('Novo Pais')
         btNovoPais.setPreferredSize(new Dimension(22,20))
         pnlSuporteCombo.add(btNovoPais,BorderLayout.EAST)
 
@@ -82,10 +81,10 @@ class DlgDadosEstado extends JDialog implements ActionListener
         this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
         JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-        btConfirmar = new JButton("Confirmar")
+        btConfirmar = new JButton('Confirmar')
         btConfirmar.addActionListener(this)
         pnlComandos.add(btConfirmar)
-        btCancelar = new JButton("Cancelar")
+        btCancelar = new JButton('Cancelar')
         btCancelar.addActionListener(this)
         pnlComandos.add(btCancelar)
         this.conteudo.add(pnlComandos, BorderLayout.SOUTH)
@@ -101,7 +100,7 @@ class DlgDadosEstado extends JDialog implements ActionListener
 
   private void carregarPaises() {
     cbxPais.removeAllItems()
-      cbxPais.addItem("Selecione...")
+      cbxPais.addItem('Selecione...')
 
       for(int i = 1;i < paises.size();i++) {
         cbxPais.addItem(((Pais)paises.get(i)).getNome())
@@ -131,7 +130,7 @@ class DlgDadosEstado extends JDialog implements ActionListener
               carregarPaises()
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Países.","Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Países.','Erro',JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -144,13 +143,13 @@ class DlgDadosEstado extends JDialog implements ActionListener
           this.setVisible(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.WARNING_MESSAGE)
           e.printStackTrace()
       }
     }
 
     if(objeto == btCancelar) {
-      this.setVisible(false)	
+      this.setVisible(false)
     }
   }
 }
