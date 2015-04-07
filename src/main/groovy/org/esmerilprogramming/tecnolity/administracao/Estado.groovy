@@ -24,10 +24,10 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
   {
     Conexao conexao = new Conexao('C')
       if(conexao.abrirConexao()) {
-        ResultSet dadosEstado = conexao.executarConsulta("select * from estado where sigla_estado = '"+ this.getSigla() +"'")
+        ResultSet dadosEstado = conexao.executarConsulta('select * from estado where sigla_estado = ' + this.getSigla() +'')
           if(dadosEstado.next()) {
-            setNome(dadosEstado.getString("estado"))
-              setPais(new Pais(dadosEstado.getString("pais")))
+            setNome(dadosEstado.getString('estado'))
+              setPais(new Pais(dadosEstado.getString('pais')))
           }
         dadosEstado.close()
       }
@@ -40,10 +40,10 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
       Vector estados = new Vector()
       try
       {
-        dadosEstado = conexao.executarConsulta("select sigla_estado, estado from estado where pais = '"+ pais +"' order by estado asc")
+        dadosEstado = conexao.executarConsulta('select sigla_estado, estado from estado where pais = '+ pais +' order by estado asc')
           estados.addElement(null)
           while(dadosEstado.next()) {
-            estados.addElement(new Estado(dadosEstado.getString("sigla_estado"),dadosEstado.getString("estado")))
+            estados.addElement(new Estado(dadosEstado.getString('sigla_estado'),dadosEstado.getString('estado')))
           }
         dadosEstado.close()
       }
@@ -56,20 +56,20 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
   void cadastrarEstado() throws Exception
   {
     Conexao conexao = new Conexao('T')
-      String erro = ""
+      String erro = ''
       if (conexao.abrirConexao()) {
-        String query = "Select sigla_estado from estado where sigla_estado = '"+ this.getSigla() +"'"
+        String query = 'Select sigla_estado from estado where sigla_estado = ''+ this.getSigla() +'''
           try
           {
             ResultSet dadosEstado = conexao.executarConsulta(query)
               if(!dadosEstado.next()) {
-                query = "insert into estado (sigla_estado,estado,pais) values ('"+ this.getSigla() +"','"+ this.getNome() +"','"+ this.getPais().getSigla() +"')"
+                query = 'insert into estado (sigla_estado,estado,pais) values (''+ this.getSigla() +'',''+ this.getNome() +'',''+ this.getPais().getSigla() +'')'
                   conexao.executarAtualizacao(query)
                   conexao.fecharConexao()
               }
               else
               {
-                erro = "Não foi possível cadastrar o Estado Informado.\nVerifique se o mesmo já foi cadastrado."
+                erro = 'Não foi possível cadastrar o Estado Informado.\nVerifique se o mesmo já foi cadastrado.'
                   dadosEstado.close()
               }
           }
@@ -79,10 +79,10 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
       }
       else
       {
-        erro = "Não foi possível realizar uma conexão com o banco de dados."
+        erro = 'Não foi possível realizar uma conexão com o banco de dados.'
       }
 
-    if (!erro.equals("")) {
+    if (!erro.equals('')) {
       Exception e = new Exception(erro)
         throw e
     }

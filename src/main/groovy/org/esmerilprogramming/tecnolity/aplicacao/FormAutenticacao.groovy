@@ -22,7 +22,7 @@ class FormAutenticacao extends JDialog implements ActionListener {
     this.aplicacao = aplicacao
     Container conteudo = this.getContentPane()
     conteudo.setLayout(new BorderLayout())
-    JLabel lblImagem = new JLabel(new ImageIcon("imagens/splash.gif"))
+    JLabel lblImagem = new JLabel(new ImageIcon('imagens/splash.gif'))
     lblImagem.setSize(400,122)
     conteudo.add(lblImagem, BorderLayout.NORTH)
 
@@ -39,13 +39,13 @@ class FormAutenticacao extends JDialog implements ActionListener {
     gbc.insets.top = 2
 
     JPanel pnlAcesso = new JPanel(gridbag)
-    JLabel lblTexto = new JLabel("Usu·rio: ")
+    JLabel lblTexto = new JLabel('Usu√°rio: ')
     adicionarComponente(pnlAcesso, lblTexto, 0, 0, 1, 1)
     txtUsuario = new JTextField(10)
     txtUsuario.addActionListener(this)
     adicionarComponente(pnlAcesso, txtUsuario, 0, 1, 1, 1)
 
-    lblTexto = new JLabel("Senha: ")
+    lblTexto = new JLabel('Senha: ')
     adicionarComponente(pnlAcesso, lblTexto, 1, 0, 1, 1)
     txtSenha = new JPasswordField(10)
     txtSenha.addActionListener(this)
@@ -54,10 +54,10 @@ class FormAutenticacao extends JDialog implements ActionListener {
     conteudo.add(pnlAcesso, BorderLayout.CENTER)
 
     JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-    btAcessar = new JButton("Acessar")
+    btAcessar = new JButton('Acessar')
     btAcessar.addActionListener(this)
     pnlComandos.add(btAcessar)
-    btCancelar = new JButton("Cancelar")
+    btCancelar = new JButton('Cancelar')
     btCancelar.addActionListener(this)
     pnlComandos.add(btCancelar)
     conteudo.add(pnlComandos, BorderLayout.SOUTH)
@@ -82,9 +82,9 @@ class FormAutenticacao extends JDialog implements ActionListener {
         else
         {
           if(colaborador.colaboradorExiste()) {
-            JOptionPane.showMessageDialog(aplicacao,"Usu·rio ou senha inv·lida!","Problema de AutenticaÁ„o",JOptionPane.WARNING_MESSAGE)
-              this.txtUsuario.transferFocus()
-              this.txtUsuario.selectAll()
+            JOptionPane.showMessageDialog(aplicacao,'Usu√°rio ou senha inv√°lida!','Problema de Autentica√ß√£o',JOptionPane.WARNING_MESSAGE)
+            this.txtUsuario.transferFocus()
+            this.txtUsuario.selectAll()
           }
           else
           {
@@ -92,9 +92,8 @@ class FormAutenticacao extends JDialog implements ActionListener {
               dlgDadosColaborador.setVisible(true)
           }
         }
-    }
-    catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+    } catch(e) {
+      JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
   }

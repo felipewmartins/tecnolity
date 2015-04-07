@@ -18,11 +18,11 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
   {
     ResultSet dadosPais
     Vector paises = null
-    dadosPais = conexao.executarConsulta("select sigla_pais, pais from pais order by pais asc")
+    dadosPais = conexao.executarConsulta('select sigla_pais, pais from pais order by pais asc')
     paises = new Vector()
     paises.addElement(null)
     while(dadosPais.next()) {
-      paises.addElement(new Pais(dadosPais.getString("sigla_pais"),dadosPais.getString("pais")))
+      paises.addElement(new Pais(dadosPais.getString('sigla_pais'),dadosPais.getString('pais')))
     }
     dadosPais.close()
     return paises
@@ -31,20 +31,20 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
    void cadastrarPais() throws Exception
   {
     Conexao conexao = new Conexao('T')
-    String erro = ""
+    String erro = ''
     if (conexao.abrirConexao()) {
-      String query = "Select sigla_pais from pais where sigla_pais = '"+ getSigla() +"'"
+      String query = 'Select sigla_pais from pais where sigla_pais = ''+ getSigla() +'''
       try
       {
         ResultSet dadosPais = conexao.executarConsulta(query)
         if(!dadosPais.next()) {
-          query = "insert into pais (sigla_pais,pais) values ('"+ getSigla() +"','"+ getNome() +"')"
+          query = 'insert into pais (sigla_pais,pais) values (''+ getSigla() +'',''+ getNome() +'')'
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
         }
         else
         {
-          erro = "Não foi possível cadastrar o País Informado.\nVerifique se o mesmo já foi cadastrado."
+          erro = 'Não foi possível cadastrar o País Informado.\nVerifique se o mesmo já foi cadastrado.'
           dadosPais.close()
         }
       }
@@ -55,10 +55,10 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
     }
     else
     {
-      erro = "Não foi possível realizar uma conexão com o banco de dados."
+      erro = 'Não foi possível realizar uma conexão com o banco de dados.'
     }
 
-    if (!erro.equals("")) {
+    if (!erro.equals('')) {
       Exception e = new Exception(erro)
       throw e
     }
