@@ -23,28 +23,28 @@ class BarraMenu extends JMenuBar implements ActionListener {
   BarraMenu(Aplicacao aplicacao) {
     this.aplicacao = aplicacao
       // Itens e SubItens de Arquivo
-      mnArquivo = new JMenu("Arquivo")
+      mnArquivo = new JMenu('Arquivo')
       mnArquivo.setMnemonic('A')
-      mnArqDesconectar = new JMenuItem("Desconectar-se")
+      mnArqDesconectar = new JMenuItem('Desconectar-se')
       mnArqDesconectar.setMnemonic('D')
       mnArqDesconectar.addActionListener(this)
       mnArquivo.add(mnArqDesconectar)
       mnArquivo.addSeparator()
-      mnArqSair = new JMenuItem("Sair da Aplicação")
+      mnArqSair = new JMenuItem('Sair da Aplicação')
       mnArqSair.setMnemonic('S')
       mnArqSair.addActionListener(this)
       mnArquivo.add(mnArqSair)
       this.add(mnArquivo)
-      mnPreferencias = new JMenu("Preferências")
+      mnPreferencias = new JMenu('Preferências')
       mnPreferencias.setMnemonic('P')
-      mnPrefAparencia = new JMenu("Aparência")
-      mnPrefApPadrao = new JMenuItem("Padrão")
+      mnPrefAparencia = new JMenu('Aparência')
+      mnPrefApPadrao = new JMenuItem('Padrão')
       mnPrefApPadrao.setMnemonic('P')
       mnPrefApPadrao.addActionListener(this)
-      mnPrefApWindows = new JMenuItem("Windows")
+      mnPrefApWindows = new JMenuItem('Windows')
       mnPrefApWindows.setMnemonic('W')
       mnPrefApWindows.addActionListener(this)
-      mnPrefApUnix = new JMenuItem("Unix")
+      mnPrefApUnix = new JMenuItem('Unix')
       mnPrefApUnix.setMnemonic('U')
       mnPrefApUnix.addActionListener(this)
       mnPrefAparencia.add(mnPrefApPadrao)
@@ -52,11 +52,11 @@ class BarraMenu extends JMenuBar implements ActionListener {
       mnPrefAparencia.add(mnPrefApUnix)
       mnPreferencias.add(mnPrefAparencia)
       mnPreferencias.addSeparator()
-      mnPrefConfigurarImpressora = new JMenuItem("Impressão", new ImageIcon("imagens/ico_impressao.gif"))
+      mnPrefConfigurarImpressora = new JMenuItem('Impressão', new ImageIcon('imagens/ico_impressao.gif'))
       mnPrefConfigurarImpressora.setMnemonic('C')
       mnPrefConfigurarImpressora.addActionListener(this)
       mnPreferencias.add(mnPrefConfigurarImpressora)
-      mnPrefConfiguracoes = new JMenuItem("Configurações", new ImageIcon("imagens/ico_configuracoes.gif"))
+      mnPrefConfiguracoes = new JMenuItem('Configurações', new ImageIcon('imagens/ico_configuracoes.gif'))
       mnPrefConfiguracoes.setMnemonic('C')
       mnPrefConfiguracoes.addActionListener(this)
       mnPreferencias.add(mnPrefConfiguracoes)
@@ -74,41 +74,36 @@ class BarraMenu extends JMenuBar implements ActionListener {
       aplicacao.finalizarAplicacao()
     }
     if(objeto == mnPrefApPadrao) {
-      try
-      {
-        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel")
+      try {
+        UIManager.setLookAndFeel('javax.swing.plaf.metal.MetalLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)
       }catch(Exception e){}
     }
-    if(objeto == mnPrefApWindows)
-    {
-      try
-      {
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel")
-          SwingUtilities.updateComponentTreeUI(aplicacao)
-      }catch(Exception e){}
-    }
-
-    if(objeto == mnPrefApUnix)
-    {
-      try
-      {
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel")
+    if(objeto == mnPrefApWindows) {
+      try {
+        UIManager.setLookAndFeel('com.sun.java.swing.plaf.windows.WindowsLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)
       }catch(Exception e){}
     }
 
-    if(objeto == mnPrefConfigurarImpressora)
-    {
-      DlgConfiguracaoImpressora dlgConfiguracaoImpressora = new DlgConfiguracaoImpressora(this.aplicacao)
-        dlgConfiguracaoImpressora.setVisible(true)
-        this.aplicacao.definirFormatoPagina()
+    if(objeto == mnPrefApUnix) {
+      try {
+        UIManager.setLookAndFeel('com.sun.java.swing.plaf.motif.MotifLookAndFeel')
+          SwingUtilities.updateComponentTreeUI(aplicacao)
+      } catch(e){
+        e.printStackTrace()
+      }
     }
 
-    if(objeto == mnPrefConfiguracoes)
-    {
-      DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this.aplicacao, this.aplicacao.obterConfiguracao())
-        dlgConfiguracoes.setVisible(true)
+    if (objeto == mnPrefConfigurarImpressora) {
+      DlgConfiguracaoImpressora dlgConfiguracaoImpressora = new DlgConfiguracaoImpressora(aplicacao)
+      dlgConfiguracaoImpressora.setVisible(true)
+      aplicacao.definirFormatoPagina()
+    }
+
+    if (objeto == mnPrefConfiguracoes) {
+      DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(aplicacao, aplicacao.obterConfiguracao())
+      dlgConfiguracoes.setVisible(true)
     }
   }
 }

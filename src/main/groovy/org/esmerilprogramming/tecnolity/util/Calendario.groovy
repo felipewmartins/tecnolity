@@ -5,15 +5,14 @@ import java.util.regex.Matcher
 import java.text.*
 
 
- class Calendario extends GregorianCalendar
-{
-   static final String DOMINGO = "Dom"
-   static final String SEGUNDA = "Seg"
-   static final String TERCA = "Ter"
-   static final String QUARTA = "Qua"
-   static final String QUINTA = "Qui"
-   static final String SEXTA = "Sex"
-   static final String SABADO = "Sab"
+class Calendario extends GregorianCalendar {
+  static final String DOMINGO = 'Dom'
+  static final String SEGUNDA = 'Seg'
+  static final String TERCA = 'Ter'
+  static final String QUARTA = 'Qua'
+  static final String QUINTA = 'Qui'
+  static final String SEXTA = 'Sex'
+  static final String SABADO = 'Sab'
   private String dataAtual
   private static int[] numeroDiasMes
   private static String[] nomeDiasSemana
@@ -21,8 +20,8 @@ import java.text.*
 
   static {
     Calendario.numeroDiasMes = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
-    Calendario.nomeDiasSemana = [ "Domingo", "Segunda-feira", "Ter\u00e7a-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "S\u00e1bado" ]
-    Calendario.nomeMeses = [ "Janeiro", "Fevereiro", "Mar\u00e7o", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" ]
+    Calendario.nomeDiasSemana = [ 'Domingo', 'Segunda-feira', 'Ter\u00e7a-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'S\u00e1bado' ]
+    Calendario.nomeMeses = [ 'Janeiro', 'Fevereiro', 'Mar\u00e7o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ]
   }
 
    Calendario() {
@@ -44,27 +43,27 @@ import java.text.*
     int hora = 0
     int minuto = 0
     int segundo = 0
-    final int dia = Integer.parseInt(data.substring(0, data.indexOf("/")))
-    data = data.substring(data.indexOf("/") + 1)
-    final int mes = Integer.parseInt(data.substring(0, data.indexOf("/")))
-    data = data.substring(data.indexOf("/") + 1)
+    final int dia = Integer.parseInt(data.substring(0, data.indexOf('/')))
+    data = data.substring(data.indexOf('/') + 1)
+    final int mes = Integer.parseInt(data.substring(0, data.indexOf('/')))
+    data = data.substring(data.indexOf('/') + 1)
     int ano
-    if (data.indexOf(":") < 0 && data.indexOf(" ") < 0) {
+    if (data.indexOf(':') < 0 && data.indexOf(' ') < 0) {
       ano = Integer.parseInt(data)
     }
     else {
-      ano = Integer.parseInt(data.substring(0, data.indexOf(" ")))
-      data = data.substring(data.indexOf(" ") + 1)
+      ano = Integer.parseInt(data.substring(0, data.indexOf(' ')))
+      data = data.substring(data.indexOf(' ') + 1)
       data = data.trim()
-      if (data.indexOf(":") > 0) {
-        hora = Integer.parseInt(data.substring(0, data.indexOf(":")))
-        data = data.substring(data.indexOf(":") + 1)
-        if (data.indexOf(":") > 0) {
-          minuto = Integer.parseInt(data.substring(0, data.indexOf(":")))
-          data = data.substring(data.indexOf(":") + 1)
+      if (data.indexOf(':') > 0) {
+        hora = Integer.parseInt(data.substring(0, data.indexOf(':')))
+        data = data.substring(data.indexOf(':') + 1)
+        if (data.indexOf(':') > 0) {
+          minuto = Integer.parseInt(data.substring(0, data.indexOf(':')))
+          data = data.substring(data.indexOf(':') + 1)
           segundo = Integer.parseInt(data)
         }
-        else if (!data.equals("")) {
+        else if (!data.equals('')) {
           minuto = Integer.parseInt(data)
         }
       }
@@ -93,50 +92,50 @@ import java.text.*
 
    static Calendario getInstance(final String formato) {
     final Calendario calendario = new Calendario()
-    if (formato.indexOf("y") < 0) {
+    if (formato.indexOf('y') < 0) {
       calendario.set(1, 0)
     }
-    if (formato.indexOf("M") < 0) {
+    if (formato.indexOf('M') < 0) {
       calendario.set(2, 0)
     }
-    if (formato.indexOf("d") < 0) {
+    if (formato.indexOf('d') < 0) {
       calendario.set(5, 0)
     }
-    if (formato.indexOf("H") < 0 || formato.indexOf("h") < 0) {
+    if (formato.indexOf('H') < 0 || formato.indexOf('h') < 0) {
       calendario.set(10, 0)
     }
-    if (formato.indexOf("m") < 0) {
+    if (formato.indexOf('m') < 0) {
       calendario.set(12, 0)
     }
-    if (formato.indexOf("s") < 0) {
+    if (formato.indexOf('s') < 0) {
       calendario.set(13, 0)
     }
-    if (formato.indexOf("S") < 0) {
+    if (formato.indexOf('S') < 0) {
       calendario.set(14, 0)
     }
     return calendario
   }
 
    Calendario redefinirElementos(final String formato) {
-    if (formato.indexOf("y") < 0) {
+    if (formato.indexOf('y') < 0) {
       this.set(1, 0)
     }
-    if (formato.indexOf("M") < 0) {
+    if (formato.indexOf('M') < 0) {
       this.set(2, 0)
     }
-    if (formato.indexOf("d") < 0) {
+    if (formato.indexOf('d') < 0) {
       this.set(5, 0)
     }
-    if (formato.indexOf("H") < 0 && formato.indexOf("h") < 0) {
+    if (formato.indexOf('H') < 0 && formato.indexOf('h') < 0) {
       this.set(10, 0)
     }
-    if (formato.indexOf("m") < 0) {
+    if (formato.indexOf('m') < 0) {
       this.set(12, 0)
     }
-    if (formato.indexOf("s") < 0) {
+    if (formato.indexOf('s') < 0) {
       this.set(13, 0)
     }
-    if (formato.indexOf("S") < 0) {
+    if (formato.indexOf('S') < 0) {
       this.set(14, 0)
     }
     return this
@@ -147,12 +146,12 @@ import java.text.*
   }
 
    String getDataAtualPorExtenso() {
-    return "" + Calendario.nomeDiasSemana[this.get(7) - 1] + ", " + this.get(5) + " de " + Calendario.nomeMeses[this.get(2)] + " de " + this.get(1)
+    return '' + Calendario.nomeDiasSemana[this.get(7) - 1] + ', ' + this.get(5) + ' de ' + Calendario.nomeMeses[this.get(2)] + ' de ' + this.get(1)
   }
 
    static boolean compararDataMaiorIgual(final Calendario dataMaior, final Calendario dataMenor) {
-    String dMaior = dataMaior.get("dd-MM-yyyy")
-    String dMenor = dataMenor.get("dd-MM-yyyy")
+    String dMaior = dataMaior.get('dd-MM-yyyy')
+    String dMenor = dataMenor.get('dd-MM-yyyy')
     int ddMaior
     int mmMaior
     int aaaaMaior
@@ -160,15 +159,15 @@ import java.text.*
     int mmMenor
     int aaaaMenor
     try {
-      ddMaior = Integer.parseInt(dMaior.substring(0, dMaior.indexOf("-")))
-      dMaior = dMaior.substring(dMaior.indexOf("-") + 1)
-      mmMaior = Integer.parseInt(dMaior.substring(0, dMaior.indexOf("-")))
-      dMaior = dMaior.substring(dMaior.indexOf("-") + 1)
+      ddMaior = Integer.parseInt(dMaior.substring(0, dMaior.indexOf('-')))
+      dMaior = dMaior.substring(dMaior.indexOf('-') + 1)
+      mmMaior = Integer.parseInt(dMaior.substring(0, dMaior.indexOf('-')))
+      dMaior = dMaior.substring(dMaior.indexOf('-') + 1)
       aaaaMaior = Integer.parseInt(dMaior)
-      ddMenor = Integer.parseInt(dMenor.substring(0, dMenor.indexOf("-")))
-      dMenor = dMenor.substring(dMenor.indexOf("-") + 1)
-      mmMenor = Integer.parseInt(dMenor.substring(0, dMenor.indexOf("-")))
-      dMenor = dMenor.substring(dMenor.indexOf("-") + 1)
+      ddMenor = Integer.parseInt(dMenor.substring(0, dMenor.indexOf('-')))
+      dMenor = dMenor.substring(dMenor.indexOf('-') + 1)
+      mmMenor = Integer.parseInt(dMenor.substring(0, dMenor.indexOf('-')))
+      dMenor = dMenor.substring(dMenor.indexOf('-') + 1)
       aaaaMenor = Integer.parseInt(dMenor)
     }
     catch (NumberFormatException e) {
@@ -196,15 +195,15 @@ import java.text.*
    String getTratamento() {
     final int hora = this.get(11)
     if (hora >= 0 && hora < 12) {
-      return "Bom dia"
+      return 'Bom dia'
     }
     if (hora >= 12 && hora < 18) {
-      return "Boa tarde"
+      return 'Boa tarde'
     }
     if (hora >= 18 && hora <= 23) {
-      return "Boa noite"
+      return 'Boa noite'
     }
-    return ""
+    return ''
   }
 
    String getMesPorExtenso() {
@@ -387,12 +386,12 @@ import java.text.*
   }
 
    String getDataAtual() {
-    return this.dataAtual = new SimpleDateFormat("dd/MM/yyyy").format(this.getTime())
+    return this.dataAtual = new SimpleDateFormat('dd/MM/yyyy').format(this.getTime())
   }
 
    static boolean validarData(String data, final String separador) {
     try {
-      if (data.equals("")) {
+      if (data.equals('')) {
         return true
       }
       int dd
@@ -429,9 +428,9 @@ import java.text.*
   }
 
    static boolean compararHora(final Calendario horaMaior, final Calendario horaMenor) {
-    String hMaior = horaMaior.get("HH:mm")
-    String hMenor = horaMenor.get("HH:mm")
-    if (hMaior.equals("00:00")) {
+    String hMaior = horaMaior.get('HH:mm')
+    String hMenor = horaMenor.get('HH:mm')
+    if (hMaior.equals('00:00')) {
       return true
     }
     int hhMaior
@@ -439,11 +438,11 @@ import java.text.*
     int hhMenor
     int mmMenor
     try {
-      hhMaior = Integer.parseInt(hMaior.substring(0, hMaior.indexOf(":")))
-      hMaior = hMaior.substring(hMaior.indexOf(":") + 1)
+      hhMaior = Integer.parseInt(hMaior.substring(0, hMaior.indexOf(':')))
+      hMaior = hMaior.substring(hMaior.indexOf(':') + 1)
       mmMaior = Integer.parseInt(hMaior)
-      hhMenor = Integer.parseInt(hMenor.substring(0, hMenor.indexOf(":")))
-      hMenor = hMenor.substring(hMenor.indexOf(":") + 1)
+      hhMenor = Integer.parseInt(hMenor.substring(0, hMenor.indexOf(':')))
+      hMenor = hMenor.substring(hMenor.indexOf(':') + 1)
       mmMenor = Integer.parseInt(hMenor)
     }
     catch (NumberFormatException e) {
@@ -464,9 +463,9 @@ import java.text.*
   }
 
    static boolean compararHoraMaiorIgual(final Calendario horaMaior, final Calendario horaMenor) {
-    String hMaior = horaMaior.get("HH:mm")
-    String hMenor = horaMenor.get("HH:mm")
-    if (hMaior.equals("00:00")) {
+    String hMaior = horaMaior.get('HH:mm')
+    String hMenor = horaMenor.get('HH:mm')
+    if (hMaior.equals('00:00')) {
       return true
     }
     int hhMaior
@@ -474,11 +473,11 @@ import java.text.*
     int hhMenor
     int mmMenor
     try {
-      hhMaior = Integer.parseInt(hMaior.substring(0, hMaior.indexOf(":")))
-      hMaior = hMaior.substring(hMaior.indexOf(":") + 1)
+      hhMaior = Integer.parseInt(hMaior.substring(0, hMaior.indexOf(':')))
+      hMaior = hMaior.substring(hMaior.indexOf(':') + 1)
       mmMaior = Integer.parseInt(hMaior)
-      hhMenor = Integer.parseInt(hMenor.substring(0, hMenor.indexOf(":")))
-      hMenor = hMenor.substring(hMenor.indexOf(":") + 1)
+      hhMenor = Integer.parseInt(hMenor.substring(0, hMenor.indexOf(':')))
+      hMenor = hMenor.substring(hMenor.indexOf(':') + 1)
       mmMenor = Integer.parseInt(hMenor)
     }
     catch (NumberFormatException e) {
@@ -500,17 +499,17 @@ import java.text.*
 
    static String numeroParaHora(final double numero) {
     final long hora = (long)numero
-    String strHora = ""
+    String strHora = ''
     if (hora >= 0L) {
       final long minuto = Math.round((numero - hora) * 100.0) * 60L / 100L
       if (hora < 10L) {
-        strHora = "0" + hora + ":"
+        strHora = '0' + hora + ':'
       }
       else {
-        strHora = String.valueOf(String.valueOf(hora)) + ":"
+        strHora = String.valueOf(String.valueOf(hora)) + ':'
       }
       if (minuto < 10L) {
-        strHora = String.valueOf(strHora) + "0" + minuto
+        strHora = String.valueOf(strHora) + '0' + minuto
       }
       else {
         strHora = String.valueOf(strHora) + minuto
@@ -527,7 +526,7 @@ import java.text.*
   }
 
    static String inverterFormato(String data, final String separador) {
-    if (!data.equals("") && !separador.equals("")) {
+    if (!data.equals('') && !separador.equals('')) {
       final String dd = data.substring(0, data.indexOf(separador))
       data = data.substring(data.indexOf(separador) + 1)
       final String mm = data.substring(0, data.indexOf(separador))
@@ -535,45 +534,45 @@ import java.text.*
       data = (aaaa = data.substring(data.indexOf(separador) + 1))
       return String.valueOf(mm) + separador + dd + separador + aaaa
     }
-    return ""
+    return ''
   }
 
-   static String trocarSeparador(final String data, final char separadorAtual, final char separadorNovo) {
+  static String trocarSeparador(final String data, final char separadorAtual, final char separadorNovo) {
     String dataModificada = data
-    if (!dataModificada.equals("")) {
+    if (!dataModificada.equals('')) {
       dataModificada = dataModificada.replace(separadorAtual, separadorNovo)
     }
     return dataModificada
   }
 
-   static boolean anoBisexto(final int ano) {
-    return ano % 4 == 0
+  static boolean anoBisexto(final int ano) {
+    ano % 4 == 0
   }
 
    static Calendario converterStringHora(String hora) {
-    String hh = "0"
-    String mm = "0"
-    String ss = "0"
-    hh = hora.substring(0, hora.indexOf(":"))
-    hora = hora.substring(hora.indexOf(":") + 1)
-    if (hora.indexOf(":") >= 0) {
-      mm = hora.substring(0, hora.indexOf(":"))
-      hora = (ss = hora.substring(hora.indexOf(":") + 1))
+    String hh = '0'
+    String mm = '0'
+    String ss = '0'
+    hh = hora.substring(0, hora.indexOf(':'))
+    hora = hora.substring(hora.indexOf(':') + 1)
+    if (hora.indexOf(':') >= 0) {
+      mm = hora.substring(0, hora.indexOf(':'))
+      hora = (ss = hora.substring(hora.indexOf(':') + 1))
     }
     else {
       mm = hora
     }
-    return new Calendario(0, 0, 0, Integer.parseInt(hh), Integer.parseInt(mm), Integer.parseInt(ss))
+    new Calendario(0, 0, 0, Integer.parseInt(hh), Integer.parseInt(mm), Integer.parseInt(ss))
   }
 
    static Calendario stringParaCalendario(final String data) {
     if (data == null) {
       return null
     }
-    if (data.equals("")) {
+    if (data.equals('')) {
       return new Calendario()
     }
-    if (validarData(data, "/")) {
+    if (validarData(data, '/')) {
       final DateFormat dt = DateFormat.getInstance()
       try {
         return new Calendario(dt.parse(data))
@@ -591,11 +590,11 @@ import java.text.*
     busca.matches()
   }
 
-   static String getNomeMes(final int mes) {
-    return Calendario.nomeMeses[mes - 1]
+  static String getNomeMes(final int mes) {
+    Calendario.nomeMeses[mes - 1]
   }
 
-   String toString() {
-    return this.get("dd/MM/yyyy")
+  String toString() {
+    get('dd/MM/yyyy')
   }
 }

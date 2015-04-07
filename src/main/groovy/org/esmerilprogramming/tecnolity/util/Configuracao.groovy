@@ -1,30 +1,27 @@
 package org.esmerilprogramming.tecnolity.util
 
-
-
-
 class Configuracao extends Properties {
   String organizacaoRazaoSocial = ''
-  String organizacaoNomeFantasia = ""
-  String organizacaoCnpj = ""
-  String organizacaoLogradouro = ""
-  String organizacaoNumero = ""
-  String organizacaoComplemento = ""
-  String organizacaoBairro = ""
-  String organicacaoCidade = ""
-  String organizacaoEstado = ""
-  String organizacaoPais = ""
-  String organizacaoCep = ""
-  String organizacaoTelefone = ""
-  String organizacaoFax = ""
-  String repositorioConsultas = ""
-  String repositorioRelatorios = ""
-  String repositorioLogs = ""
-  String bancoDadosUsuario = ""
-  String bancoDadosSenha = ""
-  String bancoDadosDriver = ""
-  String bancoDadosURL = ""
-  String bancoDadosBaseDados = ""
+  String organizacaoNomeFantasia = ''
+  String organizacaoCnpj = ''
+  String organizacaoLogradouro = ''
+  String organizacaoNumero = ''
+  String organizacaoComplemento = ''
+  String organizacaoBairro = ''
+  String organicacaoCidade = ''
+  String organizacaoEstado = ''
+  String organizacaoPais = ''
+  String organizacaoCep = ''
+  String organizacaoTelefone = ''
+  String organizacaoFax = ''
+  String repositorioConsultas = ''
+  String repositorioRelatorios = ''
+  String repositorioLogs = ''
+  String bancoDadosUsuario = ''
+  String bancoDadosSenha = ''
+  String bancoDadosDriver = ''
+  String bancoDadosURL = ''
+  String bancoDadosBaseDados = ''
   // Propriedades de impressão
   int larguraPapel = 0
   int alturaPapel = 0
@@ -36,39 +33,39 @@ class Configuracao extends Properties {
   private boolean carregada
 
   void carregarConfiguracao() throws IOException {
-    FileInputStream entrada = new FileInputStream("config.properties")
+    FileInputStream entrada = new FileInputStream('config.properties')
     load(entrada)
     entrada.close()
 
-    organizacaoRazaoSocial = getProperty("organizacaoRazaoSocial")
-    organizacaoNomeFantasia = getProperty("organizacaoNomeFantasia")
-    organizacaoCnpj = getProperty("organizacaoCnpj")
-    organizacaoLogradouro = getProperty("organizacaoLogradouro")
-    organizacaoNumero = getProperty("organizacaoNumero")
-    organizacaoComplemento = getProperty("organizacaoComplemento")
-    organizacaoBairro = getProperty("organizacaoBairro")
-    organizacaoCidade = getProperty("organicacaoCidade")
-    organizacaoEstado = getProperty("organizacaoEstado")
-    organizacaoPais = getProperty("organizacaoPais")
-    organizacaoCep = getProperty("organizacaoCep")
-    organizacaoTelefone = getProperty("organizacaoTelefone")
-    organizacaoFax = getProperty("organizacaoFax")
-    repositorioConsultas = getProperty("repositorioConsultas")
-    repositorioRelatorios = getProperty("repositorioRelatorios")
-    repositorioLogs = getProperty("repositorioLogs")
-    bancoDadosUsuario = getProperty("bancoDadosUsuario")
-    bancoDadosSenha = getProperty("bancoDadosSenha")
-    bancoDadosDriver = getProperty("bancoDadosDriver")
-    bancoDadosURL = getProperty("bancoDadosURL")
-    bancoDadosBaseDados = getProperty("bancoDadosBaseDados")
+    organizacaoRazaoSocial = getProperty('organizacaoRazaoSocial')
+    organizacaoNomeFantasia = getProperty('organizacaoNomeFantasia')
+    organizacaoCnpj = getProperty('organizacaoCnpj')
+    organizacaoLogradouro = getProperty('organizacaoLogradouro')
+    organizacaoNumero = getProperty('organizacaoNumero')
+    organizacaoComplemento = getProperty('organizacaoComplemento')
+    organizacaoBairro = getProperty('organizacaoBairro')
+    organizacaoCidade = getProperty('organicacaoCidade')
+    organizacaoEstado = getProperty('organizacaoEstado')
+    organizacaoPais = getProperty('organizacaoPais')
+    organizacaoCep = getProperty('organizacaoCep')
+    organizacaoTelefone = getProperty('organizacaoTelefone')
+    organizacaoFax = getProperty('organizacaoFax')
+    repositorioConsultas = getProperty('repositorioConsultas')
+    repositorioRelatorios = getProperty('repositorioRelatorios')
+    repositorioLogs = getProperty('repositorioLogs')
+    bancoDadosUsuario = getProperty('bancoDadosUsuario')
+    bancoDadosSenha = getProperty('bancoDadosSenha')
+    bancoDadosDriver = getProperty('bancoDadosDriver')
+    bancoDadosURL = getProperty('bancoDadosURL')
+    bancoDadosBaseDados = getProperty('bancoDadosBaseDados')
     try {
-      larguraPapel = getProperty("larguraPapel") as int
-      alturaPapel = getProperty("alturaPapel") as int
-      orientacao = getProperty("orientacao") as int
-      margemEsquerda = getProperty("margemEsquerda") as int
-      margemDireita = getProperty("margemDireita") as int
-      margemSuperior = getProperty("margemSuperior") as int
-      margemInferior = getProperty("margemInferior") as int
+      larguraPapel = getProperty('larguraPapel') as int
+      alturaPapel = getProperty('alturaPapel') as int
+      orientacao = getProperty('orientacao') as int
+      margemEsquerda = getProperty('margemEsquerda') as int
+      margemDireita = getProperty('margemDireita') as int
+      margemSuperior = getProperty('margemSuperior') as int
+      margemInferior = getProperty('margemInferior') as int
     } catch(e) {
       e.printStackTrace()
     }
@@ -101,40 +98,40 @@ class Configuracao extends Properties {
 
   void salvarConfiguracao() {
     try {
-      put("organizacaoRazaoSocial", organizacaoRazaoSocial)
-      put("organizacaoNomeFantasia",organizacaoNomeFantasia)
-      put("organizacaoCnpj",organizacaoCnpj)
-      put("organizacaoLogradouro",organizacaoLogradouro)
-      put("organizacaoNumero",organizacaoNumero)
-      put("organizacaoComplemento",organizacaoComplemento)
-      put("organizacaoBairro",organizacaoBairro)
-      put("organicacaoCidade",organizacaoCidade)
-      put("organizacaoEstado",organizacaoEstado)
-      put("organizacaoPais",organizacaoPais)
-      put("organizacaoCep",organizacaoCep)
-      put("organizacaoTelefone",organizacaoTelefone)
-      put("organizacaoFax",organizacaoFax)
-      put("repositorioConsultas",repositorioConsultas)
-      put("repositorioRelatorios",repositorioRelatorios)
-      put("repositorioLogs",repositorioLogs)
-      put("bancoDadosUsuario",bancoDadosUsuario)
-      put("bancoDadosSenha",bancoDadosSenha)
-      put("bancoDadosDriver",bancoDadosDriver)
-      put("bancoDadosURL",bancoDadosURL)
-      put("bancoDadosBaseDados",bancoDadosBaseDados)
-      put("larguraPapel", larguraPapel)
-      put("alturaPapel", alturaPapel)
-      put("orientacao", orientacao)
-      put("margemEsquerda", margemEsquerda)
-      put("margemDireita",  margemDireita)
-      put("margemSuperior", margemSuperior)
-      put("margemInferior", margemInferior)
+      put('organizacaoRazaoSocial', organizacaoRazaoSocial)
+      put('organizacaoNomeFantasia',organizacaoNomeFantasia)
+      put('organizacaoCnpj',organizacaoCnpj)
+      put('organizacaoLogradouro',organizacaoLogradouro)
+      put('organizacaoNumero',organizacaoNumero)
+      put('organizacaoComplemento',organizacaoComplemento)
+      put('organizacaoBairro',organizacaoBairro)
+      put('organicacaoCidade',organizacaoCidade)
+      put('organizacaoEstado',organizacaoEstado)
+      put('organizacaoPais',organizacaoPais)
+      put('organizacaoCep',organizacaoCep)
+      put('organizacaoTelefone',organizacaoTelefone)
+      put('organizacaoFax',organizacaoFax)
+      put('repositorioConsultas',repositorioConsultas)
+      put('repositorioRelatorios',repositorioRelatorios)
+      put('repositorioLogs',repositorioLogs)
+      put('bancoDadosUsuario',bancoDadosUsuario)
+      put('bancoDadosSenha',bancoDadosSenha)
+      put('bancoDadosDriver',bancoDadosDriver)
+      put('bancoDadosURL',bancoDadosURL)
+      put('bancoDadosBaseDados',bancoDadosBaseDados)
+      put('larguraPapel', larguraPapel)
+      put('alturaPapel', alturaPapel)
+      put('orientacao', orientacao)
+      put('margemEsquerda', margemEsquerda)
+      put('margemDireita',  margemDireita)
+      put('margemSuperior', margemSuperior)
+      put('margemInferior', margemInferior)
 
-      FileOutputStream saida = new FileOutputStream("config.properties")
-      store(saida,"Configurações do Sistema")
+      FileOutputStream saida = new FileOutputStream('config.properties')
+      store(saida,'Configurações do Sistema')
       saida.close()
     } catch(e) {
-      System.err.println("Erro: " + e.getMessage())
+      println('Erro: ' + e.message)
     }
   }
 }

@@ -57,19 +57,19 @@ class CaixaSelecao extends JPanel implements ActionListener
     this.setLayout(new FlowLayout(0, 0, 0))
       (this.cbxSelecao = new JComboBox()).setEditable(this.editavel)
       if (!this.editavel) {
-        this.cbxSelecao.addItem("Selecione...")
+        this.cbxSelecao.addItem('Selecione...')
       }
       else {
-        this.cbxSelecao.addItem("")
+        this.cbxSelecao.addItem('')
       }
     if (this.itens.size() > 0) {
       this.addItens()
     }
     this.add(this.cbxSelecao)
       if (this.strDialogo != null) {
-        (this.btAdicionarItem = new JButton(new ImageIcon("imagens/novo_item.png"))).setBorderPainted(false)
+        (this.btAdicionarItem = new JButton(new ImageIcon('imagens/novo_item.png'))).setBorderPainted(false)
           this.btAdicionarItem.setPreferredSize(new Dimension(20, 20))
-          this.btAdicionarItem.setToolTipText("Adicionar um novo Item")
+          this.btAdicionarItem.setToolTipText('Adicionar um novo Item')
           this.btAdicionarItem.addActionListener(this)
           this.add(this.btAdicionarItem)
       }
@@ -83,10 +83,10 @@ class CaixaSelecao extends JPanel implements ActionListener
     catch (ClassCastException ex) {}
     this.cbxSelecao.removeAllItems()
       if (!this.editavel) {
-        this.cbxSelecao.addItem("Selecione...")
+        this.cbxSelecao.addItem('Selecione...')
       }
       else {
-        this.cbxSelecao.addItem("")
+        this.cbxSelecao.addItem('')
       }
     for (int i = 0 ; i < this.itens.size();  ++i) {
       this.cbxSelecao.addItem(this.itens.get(i))
@@ -96,10 +96,10 @@ class CaixaSelecao extends JPanel implements ActionListener
   void addItens() {
     this.cbxSelecao.removeAllItems()
       if (!this.editavel) {
-        this.cbxSelecao.addItem("Selecione...")
+        this.cbxSelecao.addItem('Selecione...')
       }
       else {
-        this.cbxSelecao.addItem("")
+        this.cbxSelecao.addItem('')
       }
     for (int i = 0;  i < this.itens.size() ; ++i) {
       this.cbxSelecao.addItem(this.itens.get(i))
@@ -110,10 +110,10 @@ class CaixaSelecao extends JPanel implements ActionListener
     this.itens.addAll(itens)
       this.cbxSelecao.removeAllItems()
       if (!this.editavel) {
-        this.cbxSelecao.addItem("Selecione...")
+        this.cbxSelecao.addItem('Selecione...')
       }
       else {
-        this.cbxSelecao.addItem("")
+        this.cbxSelecao.addItem('')
       }
     for (int i = 0;  i < itens.size();  ++i) {
       this.cbxSelecao.addItem(itens.get(i))
@@ -184,13 +184,13 @@ class CaixaSelecao extends JPanel implements ActionListener
             }
         }
         catch (ClassNotFoundException e) {
-          JOptionPane.showMessageDialog(this.aplicacao, "Di\u00e1logo informado n\u00e3o encontrado.", "Erro", 0)
+          JOptionPane.showMessageDialog(this.aplicacao, 'Di\u00e1logo informado n\u00e3o encontrado.', 'Erro', 0)
         }
         catch (InstantiationException ex) {
-          JOptionPane.showMessageDialog(this.aplicacao, "N\u00e3o foi poss\u00edvel instanciar o di\u00e1logo informado.", "Erro", 0)
+          JOptionPane.showMessageDialog(this.aplicacao, 'N\u00e3o foi poss\u00edvel instanciar o di\u00e1logo informado.', 'Erro', 0)
         }
         catch (IllegalAccessException ea) {
-          JOptionPane.showMessageDialog(this.aplicacao, "Acesso negado ao di\u00e1logo informado.", "Erro", 0)
+          JOptionPane.showMessageDialog(this.aplicacao, 'Acesso negado ao di\u00e1logo informado.', 'Erro', 0)
         }
       }
   }

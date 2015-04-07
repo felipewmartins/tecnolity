@@ -23,7 +23,7 @@ class Categoria {
   }
 
   boolean cadastrarCategoria(String nomeCategoria) {
-    String query = "insert into categoria_item (categoria) values ('"+ nomeCategoria +"')"
+    String query = 'insert into categoria_item (categoria) values (''+ nomeCategoria +'')'
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -38,15 +38,14 @@ class Categoria {
       Vector categorias = new Vector()
       Conexao conexao = aplicacao.obterConexao()
       comboBox.removeAllItems()
-      try
-      {
-        dadosCategoria = conexao.executarConsulta("select * from categoria_item order by categoria asc")
-          comboBox.addItem("Selecione...")
+      try {
+        dadosCategoria = conexao.executarConsulta('select * from categoria_item order by categoria asc')
+          comboBox.addItem('Selecione...')
           categorias = new Vector()
           categorias.addElement(null)
           int i = 1
           while(dadosCategoria.next()) {
-            categorias.addElement(new Categoria(dadosCategoria.getInt("codigo"),dadosCategoria.getString("categoria")))
+            categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'),dadosCategoria.getString('categoria')))
               comboBox.addItem(((Categoria)categorias.get(i)).obterNomeCategoria())
               i++
           }
@@ -60,19 +59,17 @@ class Categoria {
 
   Vector carregarCategorias(Conexao conexao) {
     ResultSet dadosCategoria
-      Vector categorias = new Vector()
-      try
-      {
-        dadosCategoria = conexao.executarConsulta("select * from categoria_item order by categoria asc")
-          categorias.addElement(null)
-          while(dadosCategoria.next()) {
-            categorias.addElement(new Categoria(dadosCategoria.getInt("codigo"),dadosCategoria.getString("categoria")))
-          }
-        dadosCategoria.close()
+    Vector categorias = new Vector()
+    try {
+      dadosCategoria = conexao.executarConsulta('select * from categoria_item order by categoria asc')
+      categorias.addElement(null)
+      while(dadosCategoria.next()) {
+        categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'),dadosCategoria.getString('categoria')))
       }
-    catch (SQLException e) {
+      dadosCategoria.close()
+    } catch (e) {
       e.printStackTrace()
     }
-    return categorias
+    categorias
   }
 }

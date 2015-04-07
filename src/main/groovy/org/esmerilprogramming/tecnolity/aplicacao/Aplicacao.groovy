@@ -23,12 +23,12 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   private Configuracao configuracao
 
   Aplicacao() {
-    super("Sistema de Planejamento e Controle da Produção")
+    super('Sistema de Planejamento e Controle da Produção')
     configuracao = new Configuracao()
     try {
       configuracao.carregarConfiguracao()
     } catch(e) {
-      JOptionPane.showMessageDialog(this,"Falha no carregamento das propriedades do sistema.","Falha",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this,'Falha no carregamento das propriedades do sistema.','Falha',JOptionPane.ERROR_MESSAGE)
       DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this, configuracao)
       dlgConfiguracoes.setVisible(true)
     }
@@ -41,7 +41,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     try {
       colaborador.carregarPermissoes(conexao)
     } catch(e) {
-      JOptionPane.showMessageDialog(this,"Não foi possível carregar as permissões do usuário.\n\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this,'Não foi possível carregar as permissões do usuário.\n\n' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
 
@@ -82,36 +82,35 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   void definirFormatoPagina() {
-    this.formatoPagina = new PageFormat()
+    formatoPagina = new PageFormat()
     Paper papel = new Paper()
     papel.setSize(Configuracao.getLarguraPapelPixel(), Configuracao.getAlturaPapelPixel())
     papel.setImageableArea(Configuracao.getMargemEsquerdaPixel(),
           Configuracao.getMargemSuperiorPixel(),
           Configuracao.getLarguraPapelPixel() - Configuracao.getMargemEsquerdaPixel() - Configuracao.getMargemDireitaPixel(),
           Configuracao.getAlturaPapelPixel() - Configuracao.getMargemSuperiorPixel() - Configuracao.getMargemInferiorPixel())
-      this.formatoPagina.setPaper(papel)
-      this.formatoPagina.setOrientation(Configuracao.getOrientacao())
+    formatoPagina.setPaper(papel)
+    formatoPagina.setOrientation(Configuracao.getOrientacao())
   }
 
   Configuracao obterConfiguracao() {
-    return this.configuracao
+    configuracao
   }
 
   PageFormat obterFormatoPagina() {
-    if(this.formatoPagina == null) {
+    if(formatoPagina == null) {
       definirFormatoPagina()
     }
-    return this.formatoPagina
+    formatoPagina
   }
 
   Conexao obterConexao() {
-    if(this.conexao.conexaoAberta() || this.conexao != null) {
-      return this.conexao
+    if(conexao.conexaoAberta() || conexao != null) {
+      return conexao
     }
-    else
-    {
+    else {
       abrirConexao()
-        return this.conexao
+      return conexao
     }
   }
 
@@ -126,7 +125,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       println 'LOG DE EVENTOS DO SISTEMA TECNOLITY'
       println '---------------------------------------------------------------'
       println 'Colaborador: ' + colaborador.matricula
-      println '  Acesso em: ' + new Date().format("dd/MM/yyyy 'as' HH:mm:ss")
+      println '  Acesso em: ' + new Date().format('dd/MM/yyyy \'as\' HH:mm:ss')
       println '---------------------------------------------------------------'
       println ''
     } catch(e) {
@@ -141,8 +140,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   boolean conectado() {
-    try
-    {
+    try {
       if(conexao == null)
         return false
       else if(conexao.conexaoAberta())
@@ -150,27 +148,26 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       else
         return false
     }
-    catch(Exception e) {
-      JOptionPane.showMessageDialog(this,"Erro:" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
-        return false
+    catch(e) {
+      JOptionPane.showMessageDialog(this,'Erro:' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      return false
     }
   }
 
   void finalizarAplicacao() {
     if(conectado()) {
-      try
-      {
+      try {
         conexao.fecharConexao()
-          LogAplicacao.stop()
+        LogAplicacao.stop()
       }
-      catch(Exception e) {
-        JOptionPane.showMessageDialog(this,"Erro:" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+      catch(e) {
+        JOptionPane.showMessageDialog(this,'Erro:' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
       }
     }
     super.finalizarAplicacao()
   }
 
   static String obterCaminho() {
-    return caminho
+    caminho
   }
 }

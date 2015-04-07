@@ -3,8 +3,7 @@ package org.esmerilprogramming.tecnolity.ui
 import java.awt.*
 import javax.swing.text.*
 
-class DocumentoTamanhoFixo extends PlainDocument
-{
+class DocumentoTamanhoFixo extends PlainDocument {
   private int tamanhoMaximo
 
   DocumentoTamanhoFixo(final int tamanhoMaximo) {

@@ -20,36 +20,33 @@ class Componente {
     this.nomeComponente = nomeComponente
   }
 
-  String obterNomeComponente(Conexao conexao) throws Exception
-  {
-    ResultSet dadosComponente = conexao.executarConsulta("select componente from componente where codigo = " + this.codigo)
-      if(dadosComponente.next()) {
-        this.nomeComponente = dadosComponente.getString("componente")
-      }
+  String obterNomeComponente(Conexao conexao) throws Exception {
+    ResultSet dadosComponente = conexao.executarConsulta('select componente from componente where codigo = ' + this.codigo)
+    if(dadosComponente.next()) {
+      this.nomeComponente = dadosComponente.getString('componente')
+    }
     dadosComponente.close()
-      return this.nomeComponente
+    return this.nomeComponente
   }
 
-  Vector carregarComponentes(Conexao conexao) throws Exception
-  {
+  Vector carregarComponentes(Conexao conexao) throws Exception {
     ResultSet dadosComponente
-      Vector componentes = new Vector()
-      dadosComponente = conexao.executarConsulta("select * from componente order by componente asc")
-      componentes.addElement(null)
-
-      while(dadosComponente.next()) {
-        componentes.addElement(new Componente(dadosComponente.getInt("codigo"),dadosComponente.getString("componente")))
-      }
+    Vector componentes = new Vector()
+    dadosComponente = conexao.executarConsulta('select * from componente order by componente asc')
+    componentes.addElement(null)
+    while(dadosComponente.next()) {
+      componentes.addElement(new Componente(dadosComponente.getInt('codigo'),dadosComponente.getString('componente')))
+    }
     dadosComponente.close()
-      return componentes
+    componentes
   }
 
   void cadastrarComponente() {
-    String query = "insert into componente (componente) values ('"+ this.nomeComponente +"')"
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
+    String query = 'insert into componente (componente) values (''+ this.nomeComponente +'')'
+    Conexao conexao = new Conexao('T')
+    if (conexao.abrirConexao()) {
+      conexao.executarAtualizacao(query)
+      conexao.fecharConexao()
+    }
   }
 }

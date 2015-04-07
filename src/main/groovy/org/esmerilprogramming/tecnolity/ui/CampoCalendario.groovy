@@ -41,8 +41,8 @@ class CampoCalendario extends JPanel implements ActionListener, KeyListener, Foc
 
   Calendario getData() {
     if (this.digitado) {
-      if (!this.txtData.getText().equals("dd/mm/aaaa")) {
-        this.calendario = Calendario.stringParaCalendario(String.valueOf(this.txtData.getText()) + " 0:0")
+      if (!this.txtData.getText().equals('dd/mm/aaaa')) {
+        this.calendario = Calendario.stringParaCalendario(String.valueOf(this.txtData.getText()) + ' 0:0')
       }
       else {
         this.calendario = null
@@ -54,19 +54,19 @@ class CampoCalendario extends JPanel implements ActionListener, KeyListener, Foc
   void setData(final Calendario calendario) {
     this.calendario = calendario
       if (calendario != null) {
-        this.txtData.setText(calendario.get("dd/MM/yyyy"))
+        this.txtData.setText(calendario.get('dd/MM/yyyy'))
       }
       else {
-        this.txtData.setText("dd/mm/aaaa")
+        this.txtData.setText('dd/mm/aaaa')
       }
   }
 
   void montarInterface() {
     this.setLayout(new FlowLayout(0))
-      (this.txtData = new CampoTexto("dd/mm/aaaa", this.tamanho, this.tamanhoMaximo)).addKeyListener(this)
+      (this.txtData = new CampoTexto('dd/mm/aaaa', this.tamanho, this.tamanhoMaximo)).addKeyListener(this)
       this.txtData.addFocusListener(this)
       this.add(this.txtData)
-      (this.btAbrirCalendario = new JButton(new ImageIcon("imagens/calendario_icone.gif"))).setPreferredSize(new Dimension(20, 20))
+      (this.btAbrirCalendario = new JButton(new ImageIcon('imagens/calendario_icone.gif'))).setPreferredSize(new Dimension(20, 20))
       this.btAbrirCalendario.addActionListener(this)
       this.add(this.btAbrirCalendario)
   }
@@ -99,7 +99,7 @@ class CampoCalendario extends JPanel implements ActionListener, KeyListener, Foc
         --this.numeroCaracteres
     }
     if (this.txtData.getText().length() == 2 || this.txtData.getText().length() == 5) {
-      this.txtData.setText(String.valueOf(this.txtData.getText()) + "/")
+      this.txtData.setText(String.valueOf(this.txtData.getText()) + '/')
         ++this.numeroCaracteres
         this.txtData.setCaretPosition(this.txtData.getText().length())
     }
@@ -109,8 +109,8 @@ class CampoCalendario extends JPanel implements ActionListener, KeyListener, Foc
   }
 
   void focusGained(final FocusEvent focusEvent) {
-    if (this.txtData.getText().equals("dd/mm/aaaa")) {
-      this.txtData.setText("")
+    if (this.txtData.getText().equals('dd/mm/aaaa')) {
+      this.txtData.setText('')
     }
     else {
       this.txtData.setSelectionStart(0)
@@ -119,8 +119,8 @@ class CampoCalendario extends JPanel implements ActionListener, KeyListener, Foc
   }
 
   void focusLost(final FocusEvent focusEvent) {
-    if (this.txtData.getText().trim().equals("")) {
-      this.txtData.setText("dd/mm/aaaa")
+    if (this.txtData.getText().trim().equals('')) {
+      this.txtData.setText('dd/mm/aaaa')
     }
   }
 

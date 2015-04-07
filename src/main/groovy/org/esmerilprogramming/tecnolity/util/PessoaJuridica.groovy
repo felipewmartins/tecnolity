@@ -9,20 +9,17 @@ class PessoaJuridica extends Pessoa {
   static String formatarCnpj(final String cnpj) {
     String cnpjFormatado = ""
       if (cnpj.length() == 14) {
-        cnpjFormatado = String.valueOf(cnpjFormatado) + cnpj.substring(0, 2) + "."
-        cnpjFormatado = String.valueOf(cnpjFormatado) + cnpj.substring(2, 5) + "."
-        cnpjFormatado = String.valueOf(cnpjFormatado) + cnpj.substring(5, 8) + "/"
-        cnpjFormatado = String.valueOf(cnpjFormatado) + cnpj.substring(8, 12) + "-"
-        cnpjFormatado = String.valueOf(cnpjFormatado) + cnpj.substring(12)
+        cnpjFormatado = cnpjFormatado + cnpj.substring(0, 2) + "."
+        cnpjFormatado = cnpjFormatado + cnpj.substring(2, 5) + "."
+        cnpjFormatado = cnpjFormatado + cnpj.substring(5, 8) + "/"
+        cnpjFormatado = cnpjFormatado + cnpj.substring(8, 12) + "-"
+        cnpjFormatado = cnpjFormatado + cnpj.substring(12)
       }
-    return cnpjFormatado
+    cnpjFormatado
   }
 
   static boolean validarCnpj(String cnpj) {
-    if (cnpj == null) {
-      return true
-    }
-    if (cnpj.equals("")) {
+    if (!cnpj) {
       return true
     }
     final char[] chrCnpj = cnpj.toCharArray()
@@ -84,14 +81,14 @@ class PessoaJuridica extends Pessoa {
 
   static String formatarCNPJ(final String cnpj) {
     String cnpjFormatado = ""
-      if (!cnpj.equals("")) {
-        cnpjFormatado = "-" + cnpj.substring(cnpj.length() - 2)
-        cnpjFormatado = "/" + cnpj.substring(cnpj.length() - 6, cnpj.length() - 2) + cnpjFormatado
-        cnpjFormatado = "." + cnpj.substring(cnpj.length() - 9, cnpj.length() - 6) + cnpjFormatado
-        cnpjFormatado = "." + cnpj.substring(cnpj.length() - 12, cnpj.length() - 9) + cnpjFormatado
-        cnpjFormatado = String.valueOf(cnpj.substring(0, cnpj.length() - 12)) + cnpjFormatado
-      }
-    return cnpjFormatado
+    if (!cnpj.equals("")) {
+      cnpjFormatado = "-" + cnpj.substring(cnpj.length() - 2)
+      cnpjFormatado = "/" + cnpj.substring(cnpj.length() - 6, cnpj.length() - 2) + cnpjFormatado
+      cnpjFormatado = "." + cnpj.substring(cnpj.length() - 9, cnpj.length() - 6) + cnpjFormatado
+      cnpjFormatado = "." + cnpj.substring(cnpj.length() - 12, cnpj.length() - 9) + cnpjFormatado
+      cnpjFormatado = String.valueOf(cnpj.substring(0, cnpj.length() - 12)) + cnpjFormatado
+    }
+    cnpjFormatado
   }
 
   static String formatarInscricaoMunicipal(final String inscricaoMunicipal) {
@@ -99,7 +96,7 @@ class PessoaJuridica extends Pessoa {
     inscricaoFormatada = "-" + inscricaoMunicipal.substring(inscricaoMunicipal.length() - 1)
     inscricaoFormatada = "." + inscricaoMunicipal.substring(inscricaoMunicipal.length() - 4, inscricaoMunicipal.length() - 1) + inscricaoFormatada
     inscricaoFormatada = String.valueOf(inscricaoMunicipal.substring(0, inscricaoMunicipal.length() - 4)) + inscricaoFormatada
-    return inscricaoFormatada
+    inscricaoFormatada
   }
 
 }

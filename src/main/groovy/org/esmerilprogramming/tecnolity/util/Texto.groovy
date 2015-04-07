@@ -1,7 +1,5 @@
 package org.esmerilprogramming.tecnolity.util
 
-
-
 class Texto {
   static String formatarTextoHTML(final String texto) {
     return texto.replaceAll("\n", "<br>")
