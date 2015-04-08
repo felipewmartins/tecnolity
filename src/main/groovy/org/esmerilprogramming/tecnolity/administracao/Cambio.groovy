@@ -13,18 +13,19 @@ class Cambio {
   }
 
   void definirDolar(float dolar) throws Exception {
-    if(dolar == 0.0f) {
+    if (dolar == 0.0f) {
       Exception e = new Exception('O valor do dólar não foi informado.')
       throw e
     }
-    else
+    else {
       this.dolar = dolar
+    }
   }
 
   void carregarCambio(Conexao conexao) throws Exception {
     ResultSet dadosCambio
     dadosCambio = conexao.executarConsulta('select distinct valor_dolar from cotacao_dolar where data = (select max(data) from cotacao_dolar)')
-    if(dadosCambio.next()) {
+    if (dadosCambio.next()) {
       definirDolar(dadosCambio.getFloat('valor_dolar'))
     }
     dadosCambio.close()
@@ -32,7 +33,7 @@ class Cambio {
 
   void cadastrarCambio() throws Exception {
     Conexao conexao = new Conexao('T')
-    if(conexao.abrirConexao()) {
+    if (conexao.abrirConexao()) {
       String query = 'insert into cotacao_dolar (valor_dolar) '
       query += 'values ('+ this.dolar +')'
       conexao.executarAtualizacao(query)

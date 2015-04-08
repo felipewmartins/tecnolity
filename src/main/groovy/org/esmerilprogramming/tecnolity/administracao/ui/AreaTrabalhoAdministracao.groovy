@@ -15,7 +15,7 @@ class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
   private InformacoesAdministracao tbpInformacoes
 
   AreaTrabalhoAdministracao(Aplicacao app) {
-    switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),app.colaborador, app.conexao)) {
+    switch (super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR), app.colaborador, app.conexao)) {
       case Permissao.SEM_ACESSO:
         JOptionPane.showMessageDialog(this, 'Acesso Negado.', 'Segurança', JOptionPane.WARNING_MESSAGE)
         break
@@ -26,7 +26,7 @@ class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
         pnlCabecalho.setBackground(Color.white)
         def img = ImageLoader.instance
         JLabel lblImagemSecao = new JLabel(img.icon('tit_administracao.gif'))
-        pnlCabecalho.add(lblImagemSecao,BorderLayout.WEST)
+        pnlCabecalho.add(lblImagemSecao, BorderLayout.WEST)
         lblImagemSecao = new JLabel(img.icon('logo_mentores.gif'))
         pnlCabecalho.add(lblImagemSecao, BorderLayout.EAST)
         this.add(pnlCabecalho, BorderLayout.NORTH)
