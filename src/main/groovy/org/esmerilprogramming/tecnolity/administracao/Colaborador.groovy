@@ -21,8 +21,8 @@ class Colaborador extends PessoaFisica {
         Departamento departamento, String logradouro, String complemento,
         String bairro, String cidade, Estado estado, String cep, String ddd,
         String telefone, String ramal, String celular, String email,
-        boolean senhaAlterada) throws Exception
-    {
+        boolean senhaAlterada) throws Exception {
+
       super(nomeCompleto, logradouro,"", complemento, bairro, cidade, estado,
           cep, telefone, celular, email, cpf, identidade,
           orgaoEmissorIdentidade, sexo)
@@ -44,8 +44,7 @@ class Colaborador extends PessoaFisica {
     this.senha = senha
   }
 
-  Colaborador(String matricula, Conexao conexao) throws Exception
-  {
+  Colaborador(String matricula, Conexao conexao) throws Exception {
     this.definirMatricula(matricula)
 
       ResultSet dadosColaborador, dadosDepartamento
@@ -157,7 +156,7 @@ class Colaborador extends PessoaFisica {
           conexao.fecharConexao()
         }
       } catch (SQLException e) {
-
+          e.printStackTrace()
     }
   }
 
@@ -181,13 +180,11 @@ class Colaborador extends PessoaFisica {
     return true
   }
 
-  Vector carregarColaboradores(Conexao conexao) throws Exception
-  {
+  Vector carregarColaboradores(Conexao conexao) throws Exception {
     ResultSet dadosColaborador
       Vector colaboradores = new Vector()
-      try
-      {
-        dadosColaborador = conexao.executarConsulta("select usuario, nome_completo, senha from usuario order by usuario asc")
+      try {
+          dadosColaborador = conexao.executarConsulta("select usuario, nome_completo, senha from usuario order by usuario asc")
           colaboradores.addElement(null)
           while(dadosColaborador.next()) {
             colaboradores.addElement(new Colaborador(dadosColaborador.getString("usuario"),dadosColaborador.getString("nome_completo"), dadosColaborador.getString("senha")))
@@ -216,8 +213,7 @@ class Colaborador extends PessoaFisica {
     }
   }
 
-  void definirPermissoes(Vector permissoes) throws SQLException, Exception
-  {
+  void definirPermissoes(Vector permissoes) throws SQLException, Exception {
     Conexao conexao = new Conexao('T')
       conexao.abrirConexao()
       ResultSet dadosColaborador
