@@ -13,8 +13,6 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
   private char modo // I = inhserir, A = alterar, V = visualizar
   private Vector estados, paises
   private Vector departamentos
-  private Pais pais = new Pais()
-  private Estado estado = new Estado()
   private Colaborador colaborador
   private Container conteudo
   private JPanel pnlAreaDados
@@ -29,7 +27,6 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
 
   private JPasswordField txpSenha, txpConfirmacaoSenha
   private JRadioButton rdbSexoMasculino, rdbSexoFeminino
-  private JComboBox cbxDepartamento, cbxEstado, cbxPais
 
   DlgDadosColaborador(Aplicacao aplicacao, char modo) {
     super(aplicacao, true)
@@ -267,8 +264,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
   private void carregarDepartamentos(JComboBox comboBox) {
     Departamento departamento = new Departamento()
       comboBox.removeAllItems()
-      try
-      {
+      try {
         departamentos = departamento.carregarDepartamentos(aplicacao.obterConexao())
           comboBox.addItem('Selecione...')
           for(int i=1;i < this.departamentos.size();i++) {
