@@ -142,8 +142,7 @@ class Colaborador extends PessoaFisica {
   void cadastrarColaborador() {
     Conexao conexao = new Conexao('T')
       boolean existente = false
-      try
-      {
+      try {
         if(conexao.abrirConexao()) {
           ResultSet colaborador = conexao.executarConsulta("select usuario from usuario where usuario = '"+ this.matricula +"'")
             if(colaborador.next()) {
@@ -157,8 +156,7 @@ class Colaborador extends PessoaFisica {
             }
           conexao.fecharConexao()
         }
-      }
-    catch (SQLException e) {
+      } catch (SQLException e) {
 
     }
   }

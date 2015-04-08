@@ -78,7 +78,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     gbc.insets.top = 2
     pnlAreaDados = new JPanel(gridbag)
     JLabel label = new JLabel('Nome Completo')
-    adicionarComponente(pnlAreaDados,label,0,0,3,1)
+    adicionarComponente(pnlAreaDados, label, 0, 0, 3, 1)
     JPanel pnlSexo = new JPanel()
     pnlSexo.setBorder(new TitledBorder('Sexo'))
     ButtonGroup grupo = new ButtonGroup()
