@@ -28,7 +28,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     try {
       configuracao.carregarConfiguracao()
     } catch(e) {
-      JOptionPane.showMessageDialog(this,'Falha no carregamento das propriedades do sistema.','Falha',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this, 'Falha no carregamento das propriedades do sistema.', 'Falha', JOptionPane.ERROR_MESSAGE)
       DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this, configuracao)
       dlgConfiguracoes.setVisible(true)
     }
@@ -41,14 +41,14 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     try {
       colaborador.carregarPermissoes(conexao)
     } catch(e) {
-      JOptionPane.showMessageDialog(this,'Não foi possível carregar as permissões do usuário.\n\n' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this, 'Não foi possível carregar as permissões do usuário.\n\n' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
 
     conteudo = this.getContentPane()
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
-    this.setBounds(0,0, screenSize.width as int, screenSize.height - 27 as int)
+    this.setBounds(0, 0, screenSize.width as int, screenSize.height - 27 as int)
     this.addWindowListener(this)
 
     BarraMenu barraMenu = new BarraMenu(this)
@@ -58,7 +58,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     conteudo.add(barraAplicacao, BorderLayout.NORTH)
 
     BarraStatus barraStatus = new BarraStatus(this)
-    conteudo.add(barraStatus,BorderLayout.SOUTH)
+    conteudo.add(barraStatus, BorderLayout.SOUTH)
   }
 
   void adicionarAreaTrabalho(JPanel areaTrabalho) {
@@ -66,7 +66,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       conteudo.remove(this.areaTrabalho)
     }
     this.areaTrabalho = areaTrabalho
-    conteudo.add(this.areaTrabalho,BorderLayout.CENTER)
+    conteudo.add(this.areaTrabalho, BorderLayout.CENTER)
     this.areaTrabalho.updateUI()
   }
 
@@ -149,7 +149,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         return false
     }
     catch(e) {
-      JOptionPane.showMessageDialog(this,'Erro:' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this, 'Erro:' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       return false
     }
   }
@@ -161,7 +161,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         LogAplicacao.stop()
       }
       catch(e) {
-        JOptionPane.showMessageDialog(this,'Erro:' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(this, 'Erro:' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       }
     }
     super.finalizarAplicacao()

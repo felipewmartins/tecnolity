@@ -9,8 +9,7 @@ class FormaPagamento {
   String formaPagamento
 
   FormaPagamento(String sigla, String formaPagamento) {
-    try
-    {
+    try {
       this.definirSigla(sigla)
         this.definirFormaPagamento(formaPagamento)
     }
@@ -20,8 +19,7 @@ class FormaPagamento {
   }
 
   FormaPagamento(String sigla) {
-    try
-    {
+    try {
       this.definirSigla(sigla)
     }
     catch(Exception e) {
@@ -31,8 +29,7 @@ class FormaPagamento {
 
   FormaPagamento(String sigla, Conexao conexao)throws Exception
   {
-    try
-    {
+    try {
       this.definirSigla(sigla)
         this.definirSiglaAntesAlteracao(sigla)
     }
@@ -44,8 +41,7 @@ class FormaPagamento {
       dadosFormaPagamento = conexao.executarConsulta("select * from forma_pagamento where sigla = '"+ this.sigla +"' ")
 
       if(dadosFormaPagamento.next()) {
-        try
-        {
+        try {
           this.definirFormaPagamento(dadosFormaPagamento.getString("forma_pagamento"))
         }
         catch(Exception e) {
@@ -95,7 +91,7 @@ class FormaPagamento {
       formas = new Vector()
       formas.addElement(null)
       while(formasPagamento.next()) {
-        formas.addElement(new FormaPagamento(formasPagamento.getString("sigla"),formasPagamento.getString("forma_pagamento")))
+        formas.addElement(new FormaPagamento(formasPagamento.getString("sigla"), formasPagamento.getString("forma_pagamento")))
       }
     formasPagamento.close()
       return formas
@@ -103,7 +99,7 @@ class FormaPagamento {
 
   void cadastrarFormaPagamento() throws Exception
   {
-    String query = "insert into forma_pagamento (sigla,forma_pagamento) values "
+    String query = "insert into forma_pagamento (sigla, forma_pagamento) values "
       query = query + "('"+ this.sigla+ "', '"+ this.formaPagamento +"')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {

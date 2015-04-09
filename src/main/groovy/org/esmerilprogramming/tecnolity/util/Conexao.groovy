@@ -65,9 +65,9 @@ create table interface (
 '''
 
     def params = [1, 'e', 'p', 1, 'Esmeril Programming', '999999999', 'ssp', '9999999999',
-    1,'universe','orion','space','gamma','ray','12345','111','88888888','111','88888888','ep@test.com', 0]
+    1, 'universe', 'orion', 'space', 'gamma', 'ray', '12345', '111', '88888888', '111', '88888888', 'ep@test.com', 0]
 
-    db.execute 'insert into usuario values (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', params
+    db.execute 'insert into usuario values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params
 
   }
 

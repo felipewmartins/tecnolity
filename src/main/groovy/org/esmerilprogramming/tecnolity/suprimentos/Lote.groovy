@@ -73,7 +73,7 @@ class Lote
   {
     String erro = ""
       if(!dataValidade.equals("")) {
-        if(!Calendario.validarData(dataValidade,"/"))
+        if(!Calendario.validarData(dataValidade, "/"))
           erro = "Data de Validade inválida."
       }
 
@@ -120,7 +120,7 @@ class Lote
             query = query + ", null"
 
               if(this.dataValidade != null)
-                query = query + ", '"+ Calendario.inverterFormato(this.dataValidade,"/") + "' "
+                query = query + ", '"+ Calendario.inverterFormato(this.dataValidade, "/") + "' "
               else
                 query = query + ", null"
 
@@ -161,7 +161,7 @@ class Lote
       float quantSolicitadaAux = quantidadeSolicitada
       if(conexao.abrirConexao()) {
         // Consulta a quantidade de determinado item em lotes distribuídos no estoque.
-        String query = "select isnull(sum(quantidade),-1) as quantidade_total from lote where item = " + itemRequisicaoInterna.obterItem().obterCodigo()
+        String query = "select isnull(sum(quantidade), -1) as quantidade_total from lote where item = " + itemRequisicaoInterna.obterItem().obterCodigo()
           ResultSet rsQuantidadeTotal = conexao.executarConsulta(query)
           float quantidadeTotal = 0.0f
           if(rsQuantidadeTotal.next())

@@ -23,7 +23,7 @@ class DlgDadosComponente extends JDialog implements ActionListener, FocusListene
     private GridBagConstraints gbc
 
     DlgDadosComponente(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         // Define o título da janela
         String tituloJanela = ""
@@ -55,9 +55,9 @@ class DlgDadosComponente extends JDialog implements ActionListener, FocusListene
 
       pnlAreaDados = new JPanel(gridbag)
       JLabel label = new JLabel("Nome do Componente")
-      adicionarComponente(pnlAreaDados,label,0,0,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 1, 1)
       txtComponente = new JTextField(20)
-      adicionarComponente(pnlAreaDados,txtComponente,1,0,1,1)
+      adicionarComponente(pnlAreaDados, txtComponente, 1, 0, 1, 1)
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -85,7 +85,7 @@ class DlgDadosComponente extends JDialog implements ActionListener, FocusListene
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 

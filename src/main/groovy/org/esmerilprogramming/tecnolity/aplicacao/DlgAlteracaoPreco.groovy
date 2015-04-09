@@ -19,7 +19,7 @@ class DlgAlteracaoPreco extends JDialog implements ActionListener
     private FornecedorItem fornecedorItem
 
     DlgAlteracaoPreco(Aplicacao aplicacao, FornecedorItem fornecedorItem) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         this.setTitle("Alteração de Preço")
 
@@ -37,13 +37,13 @@ class DlgAlteracaoPreco extends JDialog implements ActionListener
         gbc.insets.top = 2
 
         JPanel pnlDados = new JPanel(gridbag)
-        adicionarComponente(pnlDados,new JLabel("Fornecedor:"),0,0,1,1)
-        adicionarComponente(pnlDados,new JLabel(fornecedorItem.obterFornecedor().obterRazaoSocial()),0,1,1,1)
-        adicionarComponente(pnlDados,new JLabel("Item:"),1,0,1,1)
-        adicionarComponente(pnlDados,new JLabel(fornecedorItem.obterItem().obterDescricao()),1,1,1,1)
-        adicionarComponente(pnlDados,new JLabel("Valor:"),2,0,1,1)
-        txtValorItem = new JTextField(Numero.formatarValorMoeda(fornecedorItem.obterValorItem(),"").trim(),8)
-        adicionarComponente(pnlDados,txtValorItem,2,1,1,1)
+        adicionarComponente(pnlDados, new JLabel("Fornecedor:"), 0, 0, 1, 1)
+        adicionarComponente(pnlDados, new JLabel(fornecedorItem.obterFornecedor().obterRazaoSocial()), 0, 1, 1, 1)
+        adicionarComponente(pnlDados, new JLabel("Item:"), 1, 0, 1, 1)
+        adicionarComponente(pnlDados, new JLabel(fornecedorItem.obterItem().obterDescricao()), 1, 1, 1, 1)
+        adicionarComponente(pnlDados, new JLabel("Valor:"), 2, 0, 1, 1)
+        txtValorItem = new JTextField(Numero.formatarValorMoeda(fornecedorItem.obterValorItem(), "").trim(), 8)
+        adicionarComponente(pnlDados, txtValorItem, 2, 1, 1, 1)
         this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
         JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -71,7 +71,7 @@ class DlgAlteracaoPreco extends JDialog implements ActionListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -79,14 +79,13 @@ class DlgAlteracaoPreco extends JDialog implements ActionListener
     Object objeto = actionEvent.getSource()
 
       if(objeto == btConfirmar) {
-        try
-        {
+        try {
           this.fornecedorItem.definirValorItem(Float.parseFloat(Numero.inverterSeparador(txtValorItem.getText())))
             this.fornecedorItem.alterarValorItem()
             this.setVisible(false)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE)
             e.printStackTrace()
         }
       }

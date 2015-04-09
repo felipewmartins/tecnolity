@@ -38,8 +38,7 @@ class Departamento {
   {
     ResultSet dadosDepartamento
       Vector departamentos = new Vector()
-      try
-      {
+      try {
         dadosDepartamento = conexao.executarConsulta("select codigo, d.departamento, nome_completo as responsavel from departamento d, usuario u where responsavel *= usuario order by d.departamento asc")
           departamentos.addElement(null)
           String responsavel, nomeDepartamento
@@ -50,9 +49,9 @@ class Departamento {
               nomeDepartamento = dadosDepartamento.getString("departamento")
               responsavel = dadosDepartamento.getString("responsavel")
               if(responsavel == null)
-                departamentos.addElement(new Departamento(codigo,nomeDepartamento,null))
+                departamentos.addElement(new Departamento(codigo, nomeDepartamento, null))
               else
-                departamentos.addElement(new Departamento(codigo,nomeDepartamento,new Colaborador(responsavel)))
+                departamentos.addElement(new Departamento(codigo, nomeDepartamento, new Colaborador(responsavel)))
           }
         dadosDepartamento.close()
       }
@@ -69,7 +68,7 @@ class Departamento {
       dadosDepartamento = conexao.executarConsulta("select * from departamento order by departamento asc")
       departamentos.addElement("Selecione...")
       while(dadosDepartamento.next()) {
-        departamentos.addElement(new Departamento(dadosDepartamento.getInt("codigo"),dadosDepartamento.getString("departamento")))
+        departamentos.addElement(new Departamento(dadosDepartamento.getInt("codigo"), dadosDepartamento.getString("departamento")))
       }
     dadosDepartamento.close()
       return departamentos
@@ -77,7 +76,7 @@ class Departamento {
 
   void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
   {
-    String query = "insert into departamento (departamento, responsavel) values ('"+ nomeDepartamento +"',"+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") +")"
+    String query = "insert into departamento (departamento, responsavel) values ('"+ nomeDepartamento +"', "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") +")"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

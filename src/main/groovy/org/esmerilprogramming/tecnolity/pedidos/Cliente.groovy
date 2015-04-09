@@ -197,13 +197,12 @@ class Cliente {
   {
     ResultSet dadosCliente
       Vector clientes = new Vector()
-      try
-      {
+      try {
         dadosCliente = conexao.executarConsulta("select codigo, razao_social from cliente order by razao_social asc")
           clientes.addElement(null)
 
           while(dadosCliente.next()) {
-            clientes.addElement(new Cliente(dadosCliente.getLong("codigo"),dadosCliente.getString("razao_social")))
+            clientes.addElement(new Cliente(dadosCliente.getLong("codigo"), dadosCliente.getString("razao_social")))
           }
         dadosCliente.close()
       }
@@ -246,8 +245,8 @@ class Cliente {
           throw e
       }
     dadosCliente.close()
-      query = "insert into cliente (razao_social,nome_fantasia,cnpj,inscricao_estadual,logradouro,bairro,complemento,cidade,estado,pais,cep,telefone,fax,contato_comercial,contato_tecnico,email) values " +
-      "('"+ this.razaoSocial +"','"+ this.nomeFantasia +"','"+ this.cnpj +"','"+ this.inscricaoEstadual +"','"+ this.logradouro +"','"+ this.bairro +"','"+ this.complemento +"','"+ this.cidade +"','"+ ((this.estado == null)?"":this.estado.getSigla()) +"','"+ this.pais.getSigla() +"','"+ this.cep +"','"+ this.telefone +"','"+ this.fax +"','"+ this.contatoComercial +"','"+ this.contatoTecnico +"','"+ this.email +"')"
+      query = "insert into cliente (razao_social, nome_fantasia, cnpj, inscricao_estadual, logradouro, bairro, complemento, cidade, estado, pais, cep, telefone, fax, contato_comercial, contato_tecnico, email) values " +
+      "('"+ this.razaoSocial +"', '"+ this.nomeFantasia +"', '"+ this.cnpj +"', '"+ this.inscricaoEstadual +"', '"+ this.logradouro +"', '"+ this.bairro +"', '"+ this.complemento +"', '"+ this.cidade +"', '"+ ((this.estado == null)?"":this.estado.getSigla()) +"', '"+ this.pais.getSigla() +"', '"+ this.cep +"', '"+ this.telefone +"', '"+ this.fax +"', '"+ this.contatoComercial +"', '"+ this.contatoTecnico +"', '"+ this.email +"')"
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
       for(int i = 0;i < locaisEntrega.size();i++) {
@@ -263,7 +262,7 @@ class Cliente {
   void alterarCliente(Conexao conexao) throws Exception
   {
     String query
-      query = "update cliente set razao_social = '"+ this.razaoSocial +"',nome_fantasia = '"+ this.nomeFantasia +"',cnpj = '"+ this.cnpj +"',inscricao_estadual = '"+ this.inscricaoEstadual +"',logradouro = '"+ this.logradouro +"',bairro = '"+ this.bairro +"',complemento = '"+ this.complemento +"',cidade = '"+ this.cidade +"',estado = '"+ this.estado.getSigla() +"',pais = '"+ this.pais.getSigla() +"',cep = '"+ this.obterCep() +"',telefone = '"+ this.telefone +"',fax = '"+ this.fax +"',contato_comercial = '"+ this.contatoComercial +"',contato_tecnico = '"+ this.contatoTecnico +"',email = '"+ this.email +"' where codigo = " + this.codigo
+      query = "update cliente set razao_social = '"+ this.razaoSocial +"', nome_fantasia = '"+ this.nomeFantasia +"', cnpj = '"+ this.cnpj +"', inscricao_estadual = '"+ this.inscricaoEstadual +"', logradouro = '"+ this.logradouro +"', bairro = '"+ this.bairro +"', complemento = '"+ this.complemento +"', cidade = '"+ this.cidade +"', estado = '"+ this.estado.getSigla() +"', pais = '"+ this.pais.getSigla() +"', cep = '"+ this.obterCep() +"', telefone = '"+ this.telefone +"', fax = '"+ this.fax +"', contato_comercial = '"+ this.contatoComercial +"', contato_tecnico = '"+ this.contatoTecnico +"', email = '"+ this.email +"' where codigo = " + this.codigo
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
       for(int i = 0;i < locaisEntrega.size();i++) {

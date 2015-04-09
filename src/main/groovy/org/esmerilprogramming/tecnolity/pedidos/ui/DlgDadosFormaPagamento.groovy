@@ -26,7 +26,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
     private JButton btConfirmar, btCancelar
 
     DlgDadosFormaPagamento(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
         formaPagamento = new FormaPagamento()
 
         // Define o título da janela
@@ -42,13 +42,12 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
     }
 
   DlgDadosFormaPagamento(Aplicacao aplicacao, char modo, String sigla) {
-    super(aplicacao,true)
-      try
-      {
-        formaPagamento = new FormaPagamento(sigla,aplicacao.obterConexao())
+    super(aplicacao, true)
+      try {
+        formaPagamento = new FormaPagamento(sigla, aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar a Forma de Pagamento.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a Forma de Pagamento.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     this.sigla = sigla
@@ -81,19 +80,19 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
 
       pnlAreaDados = new JPanel(gridbag)
       JLabel label = new JLabel("Sigla")
-      adicionarComponente(pnlAreaDados,label,0,0,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 1, 1)
       label = new JLabel("Forma de Pagamento")
-      adicionarComponente(pnlAreaDados,label,0,1,2,1)
+      adicionarComponente(pnlAreaDados, label, 0, 1, 2, 1)
 
-      txtSigla = new JTextField(this.formaPagamento.obterSigla(),2)
+      txtSigla = new JTextField(this.formaPagamento.obterSigla(), 2)
       txtSigla.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtSigla,1,0,1,1)
+      adicionarComponente(pnlAreaDados, txtSigla, 1, 0, 1, 1)
 
-      txtFormaPagamento = new JTextField(this.formaPagamento.obterFormaPagamento(),30)
+      txtFormaPagamento = new JTextField(this.formaPagamento.obterFormaPagamento(), 30)
       txtFormaPagamento.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtFormaPagamento,1,1,2,1)
+      adicionarComponente(pnlAreaDados, txtFormaPagamento, 1, 1, 2, 1)
 
-      conteudo.add(pnlAreaDados,BorderLayout.CENTER)
+      conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
       btConfirmar = new JButton("Confirmar")
@@ -121,7 +120,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -133,27 +132,24 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
       }
 
     if(objeto == btConfirmar) {
-      try
-      {
+      try {
         if(modo == 'I') {
           boolean confirmado = true
-            try
-            {
+            try {
               this.formaPagamento.definirSigla(this.txtSigla.getText())
                 this.formaPagamento.definirFormaPagamento(this.txtFormaPagamento.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
           if(confirmado) {
-            try
-            {
+            try {
               this.formaPagamento.cadastrarFormaPagamento()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -161,23 +157,21 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
         }
         else if(modo == 'A') {
           boolean confirmado = true
-            try
-            {
+            try {
               this.formaPagamento.definirSigla(this.txtSigla.getText())
                 this.formaPagamento.definirFormaPagamento(this.txtFormaPagamento.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
           if(confirmado) {
-            try
-            {
+            try {
               this.formaPagamento.alterarFormaPagamento()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -185,7 +179,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
         }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

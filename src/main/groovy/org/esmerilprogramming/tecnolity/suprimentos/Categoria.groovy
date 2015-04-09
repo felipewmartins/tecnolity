@@ -45,7 +45,7 @@ class Categoria {
           categorias.addElement(null)
           int i = 1
           while(dadosCategoria.next()) {
-            categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'),dadosCategoria.getString('categoria')))
+            categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'), dadosCategoria.getString('categoria')))
               comboBox.addItem(((Categoria)categorias.get(i)).obterNomeCategoria())
               i++
           }
@@ -64,7 +64,7 @@ class Categoria {
       dadosCategoria = conexao.executarConsulta('select * from categoria_item order by categoria asc')
       categorias.addElement(null)
       while(dadosCategoria.next()) {
-        categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'),dadosCategoria.getString('categoria')))
+        categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'), dadosCategoria.getString('categoria')))
       }
       dadosCategoria.close()
     } catch (e) {

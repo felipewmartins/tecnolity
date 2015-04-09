@@ -35,7 +35,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
     // Objetos do painel de dados da movimentação
     private JPanel  pnlAbastecimento, pnlAbastecimentoConfirmacao, pnlConsumo, pnlVendas,
-            pnlDescarte, pnlDevolucao, pnlDevolucaoExterna,pnlDeposito, pnlRetiradaDeposito
+            pnlDescarte, pnlDevolucao, pnlDevolucaoExterna, pnlDeposito, pnlRetiradaDeposito
 
               // Objetos do painel de Abastecimento
               private JComboBox cbxRequisicaoAbastecimento
@@ -54,7 +54,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               private Vector codigosMovimentacoes = new Vector()
               private Vector movimentacoes
               private RequisicaoCompra requisicaoCompra
-              private String razaoSocial, departamentoSolicitante,transportadora,dataEmissao,
+              private String razaoSocial, departamentoSolicitante, transportadora, dataEmissao,
             dataLimiteEntrega, tipoFrete, numeroConhecimento, observacao
               private float valorConhecimento
               private Item item
@@ -90,7 +90,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblDepartSolicitanteDescarte, lblSolicitanteDescarte
               private JTextArea txaJustificativaDescarte
               private String dataEmissaoDescarte, dataLimiteEntregaDescarte,
-            departSolicitanteDescarte, solicitanteDescarte,justificativaDescarte
+            departSolicitanteDescarte, solicitanteDescarte, justificativaDescarte
 
               // Objetos do painel de Devolução
               private JComboBox cbxRequisicaoDevolucao
@@ -105,7 +105,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               private JComboBox cbxRequisicaoDevolucaoExterna
               private JTable tblItensDevolucaoExterna
               private JLabel lblDataEmissaoDevolucaoExterna, lblDataLimiteEntregaDevolucaoExterna,
-            lblDepartSolicitanteDevolucaoExterna,lblSolicitanteDevolucaoExterna
+            lblDepartSolicitanteDevolucaoExterna, lblSolicitanteDevolucaoExterna
               private JTextArea txaJustificativaDevolucaoExterna
               private Vector requisicoesInternasDevolucaoExterna
               private String dataEmissaoDevolucaoExterna, dataLimiteEntregaDevolucaoExterna,
@@ -128,7 +128,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               private JTextArea txaJustificativaRetiradaDeposito
 
               DlgDadosMovimentacao(Aplicacao aplicacao) {
-                super(aplicacao,true)
+                super(aplicacao, true)
                   this.setTitle('Movimentação')
 
                   this.aplicacao = aplicacao
@@ -150,8 +150,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
                   //usuário logado no sistema
                   String nomeResponsavel = ''
-                  try
-                  {
+                  try {
                     ResultSet responsavel = conexao.executarConsulta('select nome_completo from usuario where usuario = ''+ (aplicacao.obterColaborador()).obterMatricula() +'' ')
                       if(responsavel.next())
                         nomeResponsavel = responsavel.getString('nome_completo')
@@ -170,17 +169,17 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   // Cabeçalho do formulário
                   JPanel pnlCabecalho = new JPanel(gridbag)
                   JLabel label = new JLabel('Responsável')
-                  adicionarComponente(pnlCabecalho,label,0,0,1,1)
+                  adicionarComponente(pnlCabecalho, label, 0, 0, 1, 1)
                   label = new JLabel('Data')
-                  adicionarComponente(pnlCabecalho,label,0,1,1,1)
+                  adicionarComponente(pnlCabecalho, label, 0, 1, 1, 1)
                   lblUsuario = new JLabel(nomeResponsavel)
-                  lblUsuario.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlCabecalho,lblUsuario,1,0,1,1)
+                  lblUsuario.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlCabecalho, lblUsuario, 1, 0, 1, 1)
                   lblInstanteAtual = new JLabel(data)
-                  lblInstanteAtual.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlCabecalho,lblInstanteAtual,1,1,1,1)
+                  lblInstanteAtual.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlCabecalho, lblInstanteAtual, 1, 1, 1, 1)
                   label = new JLabel('Tipo de Movimentação: ')
-                  adicionarComponente(pnlCabecalho,label,2,0,1,1)
+                  adicionarComponente(pnlCabecalho, label, 2, 0, 1, 1)
                   cbxTipoMovimentacao = new JComboBox()
                   cbxTipoMovimentacao.addItem('Selecione...')
                   cbxTipoMovimentacao.addItem('Abastecimento')
@@ -201,7 +200,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   tiposMovimentacao.addElement(Movimentacao.DEVOLUCAO_EXTERNA)
                   tiposMovimentacao.addElement(Movimentacao.DEPOSITO)
                   tiposMovimentacao.addElement(Movimentacao.RETIRADA_DEPOSITO)
-                  adicionarComponente(pnlCabecalho,cbxTipoMovimentacao,2,1,1,1)
+                  adicionarComponente(pnlCabecalho, cbxTipoMovimentacao, 2, 1, 1, 1)
                   pnlAreaDados.add(pnlCabecalho, BorderLayout.NORTH)
 
                   card = new CardLayout()
@@ -212,119 +211,118 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   pnlAbastecimento = new JPanel(gridbag)
                   pnlAbastecimento.setBorder(new TitledBorder('Abastecimento'))
                   label = new JLabel('Requisição de Compra:')
-                  adicionarComponente(pnlAbastecimento,label,0,0,1,1)
+                  adicionarComponente(pnlAbastecimento, label, 0, 0, 1, 1)
                   cbxRequisicaoAbastecimento = new JComboBox()
                   cbxRequisicaoAbastecimento.addActionListener(this)
-                  try
-                  {
+                  try {
                     requisicaoCompra = new RequisicaoCompra()
                       requisicoesCompra = requisicaoCompra.carregarRequisicoesCompra(conexao)
                       carregarRequisicoesCompra()
                   }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Requisições de Compra. ','Erro', JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições de Compra. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
 
-                adicionarComponente(pnlAbastecimento,cbxRequisicaoAbastecimento,0,1,3,1)
+                adicionarComponente(pnlAbastecimento, cbxRequisicaoAbastecimento, 0, 1, 3, 1)
                   label = new JLabel('Fornecedor:')
-                  adicionarComponente(pnlAbastecimento,label,1,0,1,1)
+                  adicionarComponente(pnlAbastecimento, label, 1, 0, 1, 1)
                   lblFornecedor = new JLabel()
-                  lblFornecedor.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlAbastecimento,lblFornecedor,1,1,1,1)
+                  lblFornecedor.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlAbastecimento, lblFornecedor, 1, 1, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlAbastecimento,label,2,0,1,1)
+                  adicionarComponente(pnlAbastecimento, label, 2, 0, 1, 1)
                   lblDepartamentoSolicitante = new JLabel()
-                  lblDepartamentoSolicitante.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlAbastecimento,lblDepartamentoSolicitante,2,1,1,1)
+                  lblDepartamentoSolicitante.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlAbastecimento, lblDepartamentoSolicitante, 2, 1, 1, 1)
                   label = new JLabel('Transportadora:')
-                  adicionarComponente(pnlAbastecimento,label,3,0,1,1)
+                  adicionarComponente(pnlAbastecimento, label, 3, 0, 1, 1)
                   lblTransportadora = new JLabel()
-                  lblTransportadora.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlAbastecimento,lblTransportadora,3,1,1,1)
+                  lblTransportadora.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlAbastecimento, lblTransportadora, 3, 1, 1, 1)
                   label = new JLabel('Data de Emissão:')
-                  adicionarComponente(pnlAbastecimento,label,1,2,1,1)
+                  adicionarComponente(pnlAbastecimento, label, 1, 2, 1, 1)
                   lblDataEmissaoAbastecimento = new JLabel()
-                  lblDataEmissaoAbastecimento.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlAbastecimento,lblDataEmissaoAbastecimento,1,3,1,1)
+                  lblDataEmissaoAbastecimento.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlAbastecimento, lblDataEmissaoAbastecimento, 1, 3, 1, 1)
                   label = new JLabel('Limite de Entrega:')
-                  adicionarComponente(pnlAbastecimento,label,2,2,1,1)
+                  adicionarComponente(pnlAbastecimento, label, 2, 2, 1, 1)
                   lblLimiteEntregaAbastecimento = new JLabel()
-                  lblLimiteEntregaAbastecimento.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlAbastecimento,lblLimiteEntregaAbastecimento,2,3,1,1)
+                  lblLimiteEntregaAbastecimento.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlAbastecimento, lblLimiteEntregaAbastecimento, 2, 3, 1, 1)
                   label = new JLabel('Tipo de Frete:')
-                  adicionarComponente(pnlAbastecimento,label,3,2,1,1)
+                  adicionarComponente(pnlAbastecimento, label, 3, 2, 1, 1)
                   lblTipoFrete = new JLabel()
-                  lblTipoFrete.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlAbastecimento,lblTipoFrete,3,3,1,1)
+                  lblTipoFrete.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlAbastecimento, lblTipoFrete, 3, 3, 1, 1)
 
                   JPanel pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensAbastecimento = new Object[20][6]
-                  String[] colunaItensAbastecimento = ['Item','Quantidade','Valor Unit.','Total','IPI','Total + IPI']
+                  String[] colunaItensAbastecimento = ['Item', 'Quantidade', 'Valor Unit.', 'Total', 'IPI', 'Total + IPI']
                   tblItensAbastecimento = new JTable(dadosItensAbastecimento, colunaItensAbastecimento)
                   tblItensAbastecimento.setPreferredScrollableViewportSize(new Dimension(460, 100))
-                  tblItensAbastecimento.addRowSelectionInterval(0,0)
+                  tblItensAbastecimento.addRowSelectionInterval(0, 0)
                   JScrollPane scroll = new JScrollPane(tblItensAbastecimento)
                   pnlItens.add(scroll, BorderLayout.CENTER)
 
                   JPanel pnlComandosItem = new JPanel(new FlowLayout(FlowLayout.RIGHT))
                   label = new JLabel('Total Geral: ')
                   pnlComandosItem.add(label)
-                  lblTotalGeral = new JLabel('' + Numero.formatarValorMoeda(0.0f,'R$'))
+                  lblTotalGeral = new JLabel('' + Numero.formatarValorMoeda(0.0f, 'R$'))
                   pnlComandosItem.add(lblTotalGeral)
                   pnlItens.add(pnlComandosItem, BorderLayout.SOUTH)
 
-                  adicionarComponente(pnlAbastecimento,pnlItens,4,0,4,1)
+                  adicionarComponente(pnlAbastecimento, pnlItens, 4, 0, 4, 1)
 
                   pnlComandosItem = new JPanel(new FlowLayout(FlowLayout.RIGHT))
                   btProximo = new JButton('Próximo >>')
                   btProximo.addActionListener(this)
                   pnlComandosItem.add(btProximo)
-                  adicionarComponente(pnlAbastecimento,pnlComandosItem,5,0,4,1)
+                  adicionarComponente(pnlAbastecimento, pnlComandosItem, 5, 0, 4, 1)
 
                   // Continuação do Formulário da Movimentação de Abastecimento
                   pnlAbastecimentoConfirmacao = new JPanel(gridbag)
                   pnlAbastecimentoConfirmacao.setBorder(new TitledBorder('Abastecimento'))
                   label = new JLabel('Número da Requisição:')
-                  adicionarComponente(pnlAbastecimentoConfirmacao,label,0,0,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, label, 0, 0, 1, 1)
                   lblRequisicaoAbastecimento = new JLabel()
-                  lblRequisicaoAbastecimento.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlAbastecimentoConfirmacao,lblRequisicaoAbastecimento,0,1,1,1)
+                  lblRequisicaoAbastecimento.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlAbastecimentoConfirmacao, lblRequisicaoAbastecimento, 0, 1, 1, 1)
                   label = new JLabel('Número do Conhecimento:')
-                  adicionarComponente(pnlAbastecimentoConfirmacao,label,1,0,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, label, 1, 0, 1, 1)
                   txtNumeroConhecimento = new JTextField(8)
-                  adicionarComponente(pnlAbastecimentoConfirmacao,txtNumeroConhecimento,1,1,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, txtNumeroConhecimento, 1, 1, 1, 1)
                   label = new JLabel('Nota Fiscal:')
-                  adicionarComponente(pnlAbastecimentoConfirmacao,label,2,0,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, label, 2, 0, 1, 1)
                   txtNotaFiscal = new JTextField(8)
-                  adicionarComponente(pnlAbastecimentoConfirmacao,txtNotaFiscal,2,1,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, txtNotaFiscal, 2, 1, 1, 1)
                   label = new JLabel('Data de Despacho:')
-                  adicionarComponente(pnlAbastecimentoConfirmacao,label,0,2,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, label, 0, 2, 1, 1)
                   txtDataDespacho = new JTextField(8)
-                  adicionarComponente(pnlAbastecimentoConfirmacao,txtDataDespacho,0,3,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, txtDataDespacho, 0, 3, 1, 1)
                   label = new JLabel('Data de Recebimento:')
-                  adicionarComponente(pnlAbastecimentoConfirmacao,label,1,2,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, label, 1, 2, 1, 1)
                   txtDataRecebimento = new JTextField(8)
-                  adicionarComponente(pnlAbastecimentoConfirmacao,txtDataRecebimento,1,3,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, txtDataRecebimento, 1, 3, 1, 1)
                   label = new JLabel('Valor do Conhecimento:')
-                  adicionarComponente(pnlAbastecimentoConfirmacao,label,2,2,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, label, 2, 2, 1, 1)
                   txtValorConhecimento = new JTextField(8)
-                  adicionarComponente(pnlAbastecimentoConfirmacao,txtValorConhecimento,2,3,1,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, txtValorConhecimento, 2, 3, 1, 1)
                   label = new JLabel('Observação')
-                  adicionarComponente(pnlAbastecimentoConfirmacao,label,3,0,4,1)
-                  txaObservacao = new JTextArea(3,43)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, label, 3, 0, 4, 1)
+                  txaObservacao = new JTextArea(3, 43)
                   txaObservacao.setLineWrap(true)
                   txaObservacao.setWrapStyleWord(true)
                   scroll = new JScrollPane(txaObservacao)
-                  adicionarComponente(pnlAbastecimentoConfirmacao,scroll,4,0,4,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, scroll, 4, 0, 4, 1)
 
                   pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensAbastecimentoConfirmacao = new Object[20][6]
-                  String[] colunasItensAbastecimentoConfirmacao = ['Codigo','Item','Localização','Validade','Requisitado','Abastecido']
+                  String[] colunasItensAbastecimentoConfirmacao = ['Codigo', 'Item', 'Localização', 'Validade', 'Requisitado', 'Abastecido']
 
                   tblItensAbastecimentoConfirmacao = new JTable(dadosItensAbastecimentoConfirmacao, colunasItensAbastecimentoConfirmacao)
                   tblItensAbastecimentoConfirmacao.setPreferredScrollableViewportSize(new Dimension(550, 100))
-                  tblItensAbastecimentoConfirmacao.addRowSelectionInterval(0,0)
+                  tblItensAbastecimentoConfirmacao.addRowSelectionInterval(0, 0)
                   scroll = new JScrollPane(tblItensAbastecimentoConfirmacao)
                   pnlItens.add(scroll, BorderLayout.CENTER)
 
@@ -337,19 +335,18 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   pnlComandosItem.add(btDefinirLote)
                   pnlItens.add(pnlComandosItem, BorderLayout.SOUTH)
 
-                  adicionarComponente(pnlAbastecimentoConfirmacao,pnlItens,5,0,4,1)
+                  adicionarComponente(pnlAbastecimentoConfirmacao, pnlItens, 5, 0, 4, 1)
 
                   // Formulário da Movimentação de Consumo
                   pnlConsumo = new JPanel(gridbag)
                   label = new JLabel('Requisição Interna:')
-                  adicionarComponente(pnlConsumo,label,0,0,1,1)
-                  try
-                  {
-                    requisicoesInternasConsumo = RequisicaoInterna.carregarRequisicoesInternas(conexao,RequisicaoInterna.REQUISICAO_CONSUMO)
+                  adicionarComponente(pnlConsumo, label, 0, 0, 1, 1)
+                  try {
+                    requisicoesInternasConsumo = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_CONSUMO)
                       cbxRequisicaoConsumo = new JComboBox(requisicoesInternasConsumo)
                   }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Requisições Internas. ','Erro', JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 finally
@@ -358,58 +355,57 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     cbxRequisicaoConsumo = new JComboBox()
                 }
                 cbxRequisicaoConsumo.addActionListener(this)
-                  adicionarComponente(pnlConsumo,cbxRequisicaoConsumo,0,1,3,1)
+                  adicionarComponente(pnlConsumo, cbxRequisicaoConsumo, 0, 1, 3, 1)
                   label = new JLabel('Pedido do Cliente:')
-                  adicionarComponente(pnlConsumo,label,1,0,1,1)
+                  adicionarComponente(pnlConsumo, label, 1, 0, 1, 1)
                   lblPedidoClienteConsumo = new JLabel()
-                  lblPedidoClienteConsumo.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlConsumo,lblPedidoClienteConsumo,1,1,1,1)
+                  lblPedidoClienteConsumo.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlConsumo, lblPedidoClienteConsumo, 1, 1, 1, 1)
                   label = new JLabel('Data Limite Entrega:')
-                  adicionarComponente(pnlConsumo,label,1,2,1,1)
+                  adicionarComponente(pnlConsumo, label, 1, 2, 1, 1)
                   lblDataLimiteEntregaConsumo = new JLabel()
-                  lblDataLimiteEntregaConsumo.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlConsumo,lblDataLimiteEntregaConsumo,1,3,1,1)
+                  lblDataLimiteEntregaConsumo.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlConsumo, lblDataLimiteEntregaConsumo, 1, 3, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlConsumo,label,2,0,1,1)
+                  adicionarComponente(pnlConsumo, label, 2, 0, 1, 1)
                   lblDepartSolicitanteConsumo = new JLabel()
-                  lblDepartSolicitanteConsumo.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlConsumo,lblDepartSolicitanteConsumo,2,1,1,1)
+                  lblDepartSolicitanteConsumo.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlConsumo, lblDepartSolicitanteConsumo, 2, 1, 1, 1)
                   label = new JLabel('Solicitante:')
-                  adicionarComponente(pnlConsumo,label,2,2,1,1)
+                  adicionarComponente(pnlConsumo, label, 2, 2, 1, 1)
                   lblSolicitanteConsumo = new JLabel()
-                  lblSolicitanteConsumo.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlConsumo,lblSolicitanteConsumo,2,3,1,1)
+                  lblSolicitanteConsumo.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlConsumo, lblSolicitanteConsumo, 2, 3, 1, 1)
                   label = new JLabel('Justificativa')
-                  adicionarComponente(pnlConsumo,label,3,0,4,1)
-                  txaJustificativaConsumo = new JTextArea(3,43)
+                  adicionarComponente(pnlConsumo, label, 3, 0, 4, 1)
+                  txaJustificativaConsumo = new JTextArea(3, 43)
                   txaJustificativaConsumo.setLineWrap(true)
                   txaJustificativaConsumo.setWrapStyleWord(true)
                   scroll = new JScrollPane(txaJustificativaConsumo)
-                  adicionarComponente(pnlConsumo,scroll,4,0,4,1)
+                  adicionarComponente(pnlConsumo, scroll, 4, 0, 4, 1)
 
                   pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensConsumo = new Object[100][3]
-                  String[] colunasItensConsumo = ['Codigo','Item','Quantidade']
+                  String[] colunasItensConsumo = ['Codigo', 'Item', 'Quantidade']
 
                   tblItensConsumo = new JTable(dadosItensConsumo, colunasItensConsumo)
                   tblItensConsumo.setPreferredScrollableViewportSize(new Dimension(460, 100))
-                  tblItensConsumo.addRowSelectionInterval(0,0)
+                  tblItensConsumo.addRowSelectionInterval(0, 0)
                   scroll = new JScrollPane(tblItensConsumo)
                   pnlItens.add(scroll, BorderLayout.CENTER)
-                  adicionarComponente(pnlConsumo,pnlItens,5,0,4,1)
+                  adicionarComponente(pnlConsumo, pnlItens, 5, 0, 4, 1)
                   pnlConsumo.setBorder(new TitledBorder('Consumo'))
 
                   // Formulário da Movimentação de Vendas
                   pnlVendas = new JPanel(gridbag)
                   label = new JLabel('Requisição Interna:')
-                  adicionarComponente(pnlVendas,label,0,0,1,1)
-                  try
-                  {
-                    requisicoesInternasVendas = RequisicaoInterna.carregarRequisicoesInternas(conexao,RequisicaoInterna.REQUISICAO_VENDAS)
+                  adicionarComponente(pnlVendas, label, 0, 0, 1, 1)
+                  try {
+                    requisicoesInternasVendas = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_VENDAS)
                       cbxRequisicaoVenda = new JComboBox(requisicoesInternasVendas)
                   }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Requisições Internas. ','Erro', JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 finally
@@ -418,53 +414,52 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     cbxRequisicaoVenda = new JComboBox()
                 }
                 cbxRequisicaoVenda.addActionListener(this)
-                  adicionarComponente(pnlVendas,cbxRequisicaoVenda,0,1,3,1)
+                  adicionarComponente(pnlVendas, cbxRequisicaoVenda, 0, 1, 3, 1)
                   label = new JLabel('Data Limite Entrega:')
-                  adicionarComponente(pnlVendas,label,1,0,1,1)
+                  adicionarComponente(pnlVendas, label, 1, 0, 1, 1)
                   lblDataLimiteEntregaVendas = new JLabel()
-                  lblDataLimiteEntregaVendas.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlVendas,lblDataLimiteEntregaVendas,1,1,1,1)
+                  lblDataLimiteEntregaVendas.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlVendas, lblDataLimiteEntregaVendas, 1, 1, 1, 1)
                   label = new JLabel('Data de Emissão:')
-                  adicionarComponente(pnlVendas,label,1,2,1,1)
+                  adicionarComponente(pnlVendas, label, 1, 2, 1, 1)
                   lblDataEmissaoVendas = new JLabel()
-                  lblDataEmissaoVendas.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlVendas,lblDataEmissaoVendas,1,3,1,1)
+                  lblDataEmissaoVendas.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlVendas, lblDataEmissaoVendas, 1, 3, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlVendas,label,2,0,1,1)
+                  adicionarComponente(pnlVendas, label, 2, 0, 1, 1)
                   lblDepartSolicitanteVendas = new JLabel()
-                  lblDepartSolicitanteVendas.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlVendas,lblDepartSolicitanteVendas,2,1,1,1)
+                  lblDepartSolicitanteVendas.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlVendas, lblDepartSolicitanteVendas, 2, 1, 1, 1)
                   label = new JLabel('Solicitante:')
-                  adicionarComponente(pnlVendas,label,2,2,1,1)
+                  adicionarComponente(pnlVendas, label, 2, 2, 1, 1)
                   lblSolicitanteVendas = new JLabel()
-                  lblSolicitanteVendas.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlVendas,lblSolicitanteVendas,2,3,1,1)
+                  lblSolicitanteVendas.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlVendas, lblSolicitanteVendas, 2, 3, 1, 1)
 
                   pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensVenda = new Object[20][3]
-                  String[] colunasItensVenda = ['Codigo','Item','Quantidade']
+                  String[] colunasItensVenda = ['Codigo', 'Item', 'Quantidade']
 
                   tblItensVenda = new JTable(dadosItensVenda, colunasItensVenda)
                   tblItensVenda.setPreferredScrollableViewportSize(new Dimension(460, 100))
-                  tblItensVenda.addRowSelectionInterval(0,0)
+                  tblItensVenda.addRowSelectionInterval(0, 0)
                   scroll = new JScrollPane(tblItensVenda)
                   pnlItens.add(scroll, BorderLayout.CENTER)
-                  adicionarComponente(pnlVendas,pnlItens,3,0,4,1)
+                  adicionarComponente(pnlVendas, pnlItens, 3, 0, 4, 1)
 
                   pnlVendas.setBorder(new TitledBorder('Vendas'))
 
                   // Formulário da Movimentação de Descarte
                   pnlDescarte = new JPanel(gridbag)
                   label = new JLabel('Requisição Interna:')
-                  adicionarComponente(pnlDescarte,label,0,0,1,1)
+                  adicionarComponente(pnlDescarte, label, 0, 0, 1, 1)
 
-                  try
-                  {
-                    requisicoesInternasDescarte = RequisicaoInterna.carregarRequisicoesInternas(conexao,RequisicaoInterna.REQUISICAO_DESCARTE)
+                  try {
+                    requisicoesInternasDescarte = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_DESCARTE)
                       cbxRequisicaoDescarte = new JComboBox(requisicoesInternasDescarte)
                   }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Requisições Internas. ','Erro', JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 finally
@@ -473,45 +468,45 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     cbxRequisicaoDescarte = new JComboBox()
                 }
                 cbxRequisicaoDescarte.addActionListener(this)
-                  adicionarComponente(pnlDescarte,cbxRequisicaoDescarte,0,1,3,1)
+                  adicionarComponente(pnlDescarte, cbxRequisicaoDescarte, 0, 1, 3, 1)
                   label = new JLabel('Data Limite Entrega:')
-                  adicionarComponente(pnlDescarte,label,1,0,1,1)
+                  adicionarComponente(pnlDescarte, label, 1, 0, 1, 1)
                   lblDataLimiteEntregaDescarte = new JLabel()
-                  lblDataLimiteEntregaDescarte.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDescarte,lblDataLimiteEntregaDescarte,1,1,1,1)
+                  lblDataLimiteEntregaDescarte.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDescarte, lblDataLimiteEntregaDescarte, 1, 1, 1, 1)
                   label = new JLabel('Data de Emissão:')
-                  adicionarComponente(pnlDescarte,label,1,2,1,1)
+                  adicionarComponente(pnlDescarte, label, 1, 2, 1, 1)
                   lblDataEmissaoDescarte = new JLabel()
-                  lblDataEmissaoDescarte.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDescarte,lblDataEmissaoDescarte,1,3,1,1)
+                  lblDataEmissaoDescarte.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDescarte, lblDataEmissaoDescarte, 1, 3, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlDescarte,label,2,0,1,1)
+                  adicionarComponente(pnlDescarte, label, 2, 0, 1, 1)
                   lblDepartSolicitanteDescarte = new JLabel()
-                  lblDepartSolicitanteDescarte.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDescarte,lblDepartSolicitanteDescarte,2,1,1,1)
+                  lblDepartSolicitanteDescarte.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDescarte, lblDepartSolicitanteDescarte, 2, 1, 1, 1)
                   label = new JLabel('Solicitante:')
-                  adicionarComponente(pnlDescarte,label,2,2,1,1)
+                  adicionarComponente(pnlDescarte, label, 2, 2, 1, 1)
                   lblSolicitanteDescarte = new JLabel()
-                  lblSolicitanteDescarte.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDescarte,lblSolicitanteDescarte,2,3,1,1)
+                  lblSolicitanteDescarte.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDescarte, lblSolicitanteDescarte, 2, 3, 1, 1)
                   label = new JLabel('Justificativa')
-                  adicionarComponente(pnlDescarte,label,3,0,4,1)
-                  txaJustificativaDescarte = new JTextArea(3,43)
+                  adicionarComponente(pnlDescarte, label, 3, 0, 4, 1)
+                  txaJustificativaDescarte = new JTextArea(3, 43)
                   txaJustificativaDescarte.setLineWrap(true)
                   txaJustificativaDescarte.setWrapStyleWord(true)
                   scroll = new JScrollPane(txaJustificativaDescarte)
-                  adicionarComponente(pnlDescarte,scroll,4,0,4,1)
+                  adicionarComponente(pnlDescarte, scroll, 4, 0, 4, 1)
 
                   pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensDescarte = new Object[20][3]
-                  String[] colunasItensDescarte = ['Codigo','Item','Quantidade']
+                  String[] colunasItensDescarte = ['Codigo', 'Item', 'Quantidade']
 
                   tblItensDescarte = new JTable(dadosItensDescarte, colunasItensDescarte)
                   tblItensDescarte.setPreferredScrollableViewportSize(new Dimension(460, 100))
-                  tblItensDescarte.addRowSelectionInterval(0,0)
+                  tblItensDescarte.addRowSelectionInterval(0, 0)
                   scroll = new JScrollPane(tblItensDescarte)
                   pnlItens.add(scroll, BorderLayout.CENTER)
-                  adicionarComponente(pnlDescarte,pnlItens,6,0,4,1)
+                  adicionarComponente(pnlDescarte, pnlItens, 6, 0, 4, 1)
 
                   pnlDescarte.setBorder(new TitledBorder('Descarte'))
 
@@ -519,14 +514,13 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   pnlDevolucao = new JPanel(gridbag)
 
                   label = new JLabel('Requisição Interna:')
-                  adicionarComponente(pnlDevolucao,label,0,0,1,1)
-                  try
-                  {
-                    requisicoesDevolucao = RequisicaoInterna.carregarRequisicoesInternas(aplicacao.obterConexao(),RequisicaoInterna.REQUISICAO_DEVOLUCAO)
+                  adicionarComponente(pnlDevolucao, label, 0, 0, 1, 1)
+                  try {
+                    requisicoesDevolucao = RequisicaoInterna.carregarRequisicoesInternas(aplicacao.obterConexao(), RequisicaoInterna.REQUISICAO_DEVOLUCAO)
                       cbxRequisicaoDevolucao = new JComboBox(requisicoesDevolucao)
                   }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Requisições de Devolução.','Erro',JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições de Devolução.', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 finally
@@ -535,59 +529,58 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     cbxRequisicaoDevolucao = new JComboBox()
                 }
                 cbxRequisicaoDevolucao.addActionListener(this)
-                  adicionarComponente(pnlDevolucao,cbxRequisicaoDevolucao,0,1,1,1)
+                  adicionarComponente(pnlDevolucao, cbxRequisicaoDevolucao, 0, 1, 1, 1)
                   label = new JLabel('Data de Emissão:')
-                  adicionarComponente(pnlDevolucao,label,0,2,1,1)
+                  adicionarComponente(pnlDevolucao, label, 0, 2, 1, 1)
                   lblDataEmissaoDevolucao = new JLabel('')
-                  lblDataEmissaoDevolucao.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucao,lblDataEmissaoDevolucao,0,3,1,1)
+                  lblDataEmissaoDevolucao.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucao, lblDataEmissaoDevolucao, 0, 3, 1, 1)
                   label = new JLabel('Data Limite Entrega:')
-                  adicionarComponente(pnlDevolucao,label,1,0,1,1)
+                  adicionarComponente(pnlDevolucao, label, 1, 0, 1, 1)
                   lblDataLimiteEntregaDevolucao = new JLabel('')
-                  lblDataLimiteEntregaDevolucao.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucao,lblDataLimiteEntregaDevolucao,1,1,1,1)
+                  lblDataLimiteEntregaDevolucao.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucao, lblDataLimiteEntregaDevolucao, 1, 1, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlDevolucao,label,2,0,1,1)
+                  adicionarComponente(pnlDevolucao, label, 2, 0, 1, 1)
                   lblDepartSolicitanteDevolucao = new JLabel('')
-                  lblDepartSolicitanteDevolucao.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucao,lblDepartSolicitanteDevolucao,2,1,1,1)
+                  lblDepartSolicitanteDevolucao.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucao, lblDepartSolicitanteDevolucao, 2, 1, 1, 1)
                   label = new JLabel('Solicitante:')
-                  adicionarComponente(pnlDevolucao,label,2,2,1,1)
+                  adicionarComponente(pnlDevolucao, label, 2, 2, 1, 1)
                   lblSolicitanteDevolucao = new JLabel('')
-                  lblSolicitanteDevolucao.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucao,lblSolicitanteDevolucao,2,3,1,1)
+                  lblSolicitanteDevolucao.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucao, lblSolicitanteDevolucao, 2, 3, 1, 1)
                   label = new JLabel('Justificativa')
-                  adicionarComponente(pnlDevolucao,label,3,0,4,1)
-                  txaJustificativaDevolucao = new JTextArea(3,43)
+                  adicionarComponente(pnlDevolucao, label, 3, 0, 4, 1)
+                  txaJustificativaDevolucao = new JTextArea(3, 43)
                   txaJustificativaDevolucao.setLineWrap(true)
                   txaJustificativaDevolucao.setWrapStyleWord(true)
                   scroll = new JScrollPane(txaJustificativaDevolucao)
-                  adicionarComponente(pnlDevolucao,scroll,4,0,4,1)
+                  adicionarComponente(pnlDevolucao, scroll, 4, 0, 4, 1)
 
                   pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensDevolucao = new Object[20][3]
-                  String[] colunasItensDevolucao = ['Codigo','Item','Quantidade']
+                  String[] colunasItensDevolucao = ['Codigo', 'Item', 'Quantidade']
 
                   tblItensDevolucao = new JTable(dadosItensDevolucao, colunasItensDevolucao)
                   tblItensDevolucao.setPreferredScrollableViewportSize(new Dimension(460, 100))
-                  tblItensDevolucao.addRowSelectionInterval(0,0)
+                  tblItensDevolucao.addRowSelectionInterval(0, 0)
                   scroll = new JScrollPane(tblItensDevolucao)
                   pnlItens.add(scroll, BorderLayout.CENTER)
-                  adicionarComponente(pnlDevolucao,pnlItens,5,0,4,1)
+                  adicionarComponente(pnlDevolucao, pnlItens, 5, 0, 4, 1)
 
                   pnlDevolucao.setBorder(new TitledBorder('Devolução'))
 
                   // Formulário da Movimentação de Devolução Externa
                   pnlDevolucaoExterna = new JPanel(gridbag)
                   label = new JLabel('Requisição Interna:')
-                  adicionarComponente(pnlDevolucaoExterna,label,0,0,4,1)
-                  try
-                  {
-                    requisicoesInternasDevolucaoExterna = RequisicaoInterna.carregarRequisicoesInternas(conexao,RequisicaoInterna.REQUISICAO_DEVOLUCAO_EXTERNA)
+                  adicionarComponente(pnlDevolucaoExterna, label, 0, 0, 4, 1)
+                  try {
+                    requisicoesInternasDevolucaoExterna = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_DEVOLUCAO_EXTERNA)
                       cbxRequisicaoDevolucaoExterna = new JComboBox(requisicoesInternasDevolucaoExterna)
                   }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Requisições Internas. ','Erro', JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 finally
@@ -596,142 +589,142 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     cbxRequisicaoDevolucaoExterna = new JComboBox()
                 }
                 cbxRequisicaoDevolucaoExterna.addActionListener(this)
-                  adicionarComponente(pnlDevolucaoExterna,cbxRequisicaoDevolucaoExterna,0,1,4,1)
+                  adicionarComponente(pnlDevolucaoExterna, cbxRequisicaoDevolucaoExterna, 0, 1, 4, 1)
                   label = new JLabel('Data Limite Entrega:')
-                  adicionarComponente(pnlDevolucaoExterna,label,1,0,1,1)
+                  adicionarComponente(pnlDevolucaoExterna, label, 1, 0, 1, 1)
                   lblDataLimiteEntregaDevolucaoExterna = new JLabel()
-                  lblDataLimiteEntregaDevolucaoExterna.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucaoExterna,lblDataLimiteEntregaDevolucaoExterna,1,1,1,1)
+                  lblDataLimiteEntregaDevolucaoExterna.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucaoExterna, lblDataLimiteEntregaDevolucaoExterna, 1, 1, 1, 1)
                   label = new JLabel('Data de Emissão:')
-                  adicionarComponente(pnlDevolucaoExterna,label,1,2,1,1)
+                  adicionarComponente(pnlDevolucaoExterna, label, 1, 2, 1, 1)
                   lblDataEmissaoDevolucaoExterna = new JLabel()
-                  lblDataEmissaoDevolucaoExterna.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucaoExterna,lblDataEmissaoDevolucaoExterna,1,3,1,1)
+                  lblDataEmissaoDevolucaoExterna.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucaoExterna, lblDataEmissaoDevolucaoExterna, 1, 3, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlDevolucaoExterna,label,2,0,1,1)
+                  adicionarComponente(pnlDevolucaoExterna, label, 2, 0, 1, 1)
                   lblDepartSolicitanteDevolucaoExterna = new JLabel()
-                  lblDepartSolicitanteDevolucaoExterna.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucaoExterna,lblDepartSolicitanteDevolucaoExterna,2,1,1,1)
+                  lblDepartSolicitanteDevolucaoExterna.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucaoExterna, lblDepartSolicitanteDevolucaoExterna, 2, 1, 1, 1)
                   label = new JLabel('Solicitante:')
-                  adicionarComponente(pnlDevolucaoExterna,label,2,2,1,1)
+                  adicionarComponente(pnlDevolucaoExterna, label, 2, 2, 1, 1)
                   lblSolicitanteDevolucaoExterna = new JLabel()
-                  lblSolicitanteDevolucaoExterna.setFont(new Font('Arial',Font.PLAIN,12))
-                  adicionarComponente(pnlDevolucaoExterna,lblSolicitanteDevolucaoExterna,2,3,1,1)
+                  lblSolicitanteDevolucaoExterna.setFont(new Font('Arial', Font.PLAIN, 12))
+                  adicionarComponente(pnlDevolucaoExterna, lblSolicitanteDevolucaoExterna, 2, 3, 1, 1)
                   label = new JLabel('Justificativa')
-                  adicionarComponente(pnlDevolucaoExterna,label,3,0,4,1)
-                  txaJustificativaDevolucaoExterna = new JTextArea(3,43)
+                  adicionarComponente(pnlDevolucaoExterna, label, 3, 0, 4, 1)
+                  txaJustificativaDevolucaoExterna = new JTextArea(3, 43)
                   txaJustificativaDevolucaoExterna.setLineWrap(true)
                   txaJustificativaDevolucaoExterna.setWrapStyleWord(true)
                   scroll = new JScrollPane(txaJustificativaDevolucaoExterna)
-                  adicionarComponente(pnlDevolucaoExterna,scroll,4,0,4,1)
+                  adicionarComponente(pnlDevolucaoExterna, scroll, 4, 0, 4, 1)
 
                   pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensDevolucaoExterna = new Object[20][3]
-                  String[] colunasItensDevolucaoExterna = ['Codigo','Item','Quantidade']
+                  String[] colunasItensDevolucaoExterna = ['Codigo', 'Item', 'Quantidade']
 
                   tblItensDevolucaoExterna = new JTable(dadosItensDevolucaoExterna, colunasItensDevolucaoExterna)
                   tblItensDevolucaoExterna.setPreferredScrollableViewportSize(new Dimension(460, 100))
-                  tblItensDevolucaoExterna.addRowSelectionInterval(0,0)
+                  tblItensDevolucaoExterna.addRowSelectionInterval(0, 0)
                   scroll = new JScrollPane(tblItensDevolucaoExterna)
                   pnlItens.add(scroll, BorderLayout.CENTER)
-                  adicionarComponente(pnlDevolucaoExterna,pnlItens,6,0,4,1)
+                  adicionarComponente(pnlDevolucaoExterna, pnlItens, 6, 0, 4, 1)
                   pnlDevolucaoExterna.setBorder(new TitledBorder('Devolução Externa'))
 
                   // Formulário da Movimentação de Depósito
                   pnlDeposito = new JPanel(gridbag)
                   label = new JLabel('Requisição Interna:')
-                  adicionarComponente(pnlDeposito,label,0,0,1,1)
+                  adicionarComponente(pnlDeposito, label, 0, 0, 1, 1)
                   cbxRequisicaoDeposito = new JComboBox()
                   cbxRequisicaoDeposito.addItem('Selecione...')
-                  adicionarComponente(pnlDeposito,cbxRequisicaoDeposito,0,1,1,1)
+                  adicionarComponente(pnlDeposito, cbxRequisicaoDeposito, 0, 1, 1, 1)
                   label = new JLabel('Data de Emissão:')
-                  adicionarComponente(pnlDeposito,label,0,2,1,1)
+                  adicionarComponente(pnlDeposito, label, 0, 2, 1, 1)
                   lblDataEmissaoDeposito = new JLabel('')
-                  adicionarComponente(pnlDeposito,lblDataEmissaoDeposito,0,3,1,1)
+                  adicionarComponente(pnlDeposito, lblDataEmissaoDeposito, 0, 3, 1, 1)
                   label = new JLabel('Data Limite Entrega:')
-                  adicionarComponente(pnlDeposito,label,1,0,1,1)
+                  adicionarComponente(pnlDeposito, label, 1, 0, 1, 1)
                   lblDataLimiteEntregaDeposito = new JLabel('')
-                  adicionarComponente(pnlDeposito,lblDataLimiteEntregaDeposito,1,1,1,1)
+                  adicionarComponente(pnlDeposito, lblDataLimiteEntregaDeposito, 1, 1, 1, 1)
                   label = new JLabel('Hora Limite Entrega:')
-                  adicionarComponente(pnlDeposito,label,1,2,1,1)
+                  adicionarComponente(pnlDeposito, label, 1, 2, 1, 1)
                   lblHoraLimiteEntregaDeposito = new JLabel('')
-                  adicionarComponente(pnlDeposito,lblHoraLimiteEntregaDeposito,1,3,1,1)
+                  adicionarComponente(pnlDeposito, lblHoraLimiteEntregaDeposito, 1, 3, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlDeposito,label,2,0,1,1)
+                  adicionarComponente(pnlDeposito, label, 2, 0, 1, 1)
                   lblDepartSolicitanteDeposito = new JLabel('')
-                  adicionarComponente(pnlDeposito,lblDepartSolicitanteDeposito,2,1,1,1)
+                  adicionarComponente(pnlDeposito, lblDepartSolicitanteDeposito, 2, 1, 1, 1)
                   label = new JLabel('Solicitante:')
-                  adicionarComponente(pnlDeposito,label,2,2,1,1)
+                  adicionarComponente(pnlDeposito, label, 2, 2, 1, 1)
                   lblSolicitanteDeposito = new JLabel('')
-                  adicionarComponente(pnlDeposito,lblSolicitanteDeposito,2,3,1,1)
+                  adicionarComponente(pnlDeposito, lblSolicitanteDeposito, 2, 3, 1, 1)
                   label = new JLabel('Descrição:')
-                  adicionarComponente(pnlDeposito,label,3,0,1,1)
+                  adicionarComponente(pnlDeposito, label, 3, 0, 1, 1)
                   lblDescricaoDeposito = new JLabel('')
-                  adicionarComponente(pnlDeposito,lblDescricaoDeposito,3,1,1,1)
+                  adicionarComponente(pnlDeposito, lblDescricaoDeposito, 3, 1, 1, 1)
                   label = new JLabel('Justificativa')
-                  adicionarComponente(pnlDeposito,label,4,0,4,1)
-                  txaJustificativaDeposito = new JTextArea(3,43)
+                  adicionarComponente(pnlDeposito, label, 4, 0, 4, 1)
+                  txaJustificativaDeposito = new JTextArea(3, 43)
                   txaJustificativaDeposito.setLineWrap(true)
                   txaJustificativaDeposito.setWrapStyleWord(true)
                   scroll = new JScrollPane(txaJustificativaDeposito)
-                  adicionarComponente(pnlDeposito,scroll,5,0,4,1)
+                  adicionarComponente(pnlDeposito, scroll, 5, 0, 4, 1)
                   pnlDeposito.setBorder(new TitledBorder('Depósito'))
 
                   // Formulário da Movimentação de Retirada do Depósito
                   pnlRetiradaDeposito = new JPanel(gridbag)
                   label = new JLabel('Requisição Interna:')
-                  adicionarComponente(pnlRetiradaDeposito,label,0,0,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, label, 0, 0, 1, 1)
                   cbxRequisicaoRetiradaDeposito = new JComboBox()
                   cbxRequisicaoRetiradaDeposito.addItem('Selecione...')
-                  adicionarComponente(pnlRetiradaDeposito,cbxRequisicaoRetiradaDeposito,0,1,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, cbxRequisicaoRetiradaDeposito, 0, 1, 1, 1)
                   label = new JLabel('Data de Emissão:')
-                  adicionarComponente(pnlRetiradaDeposito,label,0,2,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, label, 0, 2, 1, 1)
                   lblDataEmissaoRetiradaDeposito = new JLabel('')
-                  adicionarComponente(pnlRetiradaDeposito,lblDataEmissaoRetiradaDeposito,0,3,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, lblDataEmissaoRetiradaDeposito, 0, 3, 1, 1)
                   label = new JLabel('Data Limite Entrega:')
-                  adicionarComponente(pnlRetiradaDeposito,label,1,0,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, label, 1, 0, 1, 1)
                   lblDataLimiteEntregaRetiradaDeposito = new JLabel('')
-                  adicionarComponente(pnlRetiradaDeposito,lblDataLimiteEntregaRetiradaDeposito,1,1,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, lblDataLimiteEntregaRetiradaDeposito, 1, 1, 1, 1)
                   label = new JLabel('Hora Limite Entrega:')
-                  adicionarComponente(pnlRetiradaDeposito,label,1,2,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, label, 1, 2, 1, 1)
                   lblHoraLimiteEntregaRetiradaDeposito = new JLabel('')
-                  adicionarComponente(pnlRetiradaDeposito,lblHoraLimiteEntregaRetiradaDeposito,1,3,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, lblHoraLimiteEntregaRetiradaDeposito, 1, 3, 1, 1)
                   label = new JLabel('Departamento Solicitante:')
-                  adicionarComponente(pnlRetiradaDeposito,label,2,0,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, label, 2, 0, 1, 1)
                   lblDepartSolicitanteRetiradaDeposito = new JLabel('')
-                  adicionarComponente(pnlRetiradaDeposito,lblDepartSolicitanteRetiradaDeposito,2,1,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, lblDepartSolicitanteRetiradaDeposito, 2, 1, 1, 1)
                   label = new JLabel('Solicitante:')
-                  adicionarComponente(pnlRetiradaDeposito,label,2,2,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, label, 2, 2, 1, 1)
                   lblSolicitanteRetiradaDeposito = new JLabel('')
-                  adicionarComponente(pnlRetiradaDeposito,lblSolicitanteRetiradaDeposito,2,3,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, lblSolicitanteRetiradaDeposito, 2, 3, 1, 1)
                   label = new JLabel('Descrição:')
-                  adicionarComponente(pnlRetiradaDeposito,label,3,0,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, label, 3, 0, 1, 1)
                   lblDescricaoRetiradaDeposito = new JLabel('')
-                  adicionarComponente(pnlRetiradaDeposito,lblDescricaoRetiradaDeposito,3,1,1,1)
+                  adicionarComponente(pnlRetiradaDeposito, lblDescricaoRetiradaDeposito, 3, 1, 1, 1)
                   label = new JLabel('Justificativa')
-                  adicionarComponente(pnlRetiradaDeposito,label,4,0,4,1)
-                  txaJustificativaRetiradaDeposito = new JTextArea(3,43)
+                  adicionarComponente(pnlRetiradaDeposito, label, 4, 0, 4, 1)
+                  txaJustificativaRetiradaDeposito = new JTextArea(3, 43)
                   txaJustificativaRetiradaDeposito.setLineWrap(true)
                   txaJustificativaRetiradaDeposito.setWrapStyleWord(true)
                   scroll = new JScrollPane(txaJustificativaRetiradaDeposito)
-                  adicionarComponente(pnlRetiradaDeposito,scroll,5,0,4,1)
+                  adicionarComponente(pnlRetiradaDeposito, scroll, 5, 0, 4, 1)
                   pnlRetiradaDeposito.setBorder(new TitledBorder('Retirada do Depósito'))
 
                   JPanel pnlBranco = new JPanel()
-                  pnlAreaMovimentacao.add(pnlBranco,'Selecione...')
-                  pnlAreaMovimentacao.add(pnlAbastecimento,'Abastecimento')
-                  pnlAreaMovimentacao.add(pnlAbastecimentoConfirmacao,'Abastecimento Confirmação')
-                  pnlAreaMovimentacao.add(pnlConsumo,'Consumo')
-                  pnlAreaMovimentacao.add(pnlVendas,'Vendas')
-                  pnlAreaMovimentacao.add(pnlDescarte,'Descarte')
-                  pnlAreaMovimentacao.add(pnlDevolucao,'Devolução')
-                  pnlAreaMovimentacao.add(pnlDevolucaoExterna,'Devolução Externa')
-                  pnlAreaMovimentacao.add(pnlDeposito,'Depósito')
-                  pnlAreaMovimentacao.add(pnlRetiradaDeposito,'Retirada do Depósito')
+                  pnlAreaMovimentacao.add(pnlBranco, 'Selecione...')
+                  pnlAreaMovimentacao.add(pnlAbastecimento, 'Abastecimento')
+                  pnlAreaMovimentacao.add(pnlAbastecimentoConfirmacao, 'Abastecimento Confirmação')
+                  pnlAreaMovimentacao.add(pnlConsumo, 'Consumo')
+                  pnlAreaMovimentacao.add(pnlVendas, 'Vendas')
+                  pnlAreaMovimentacao.add(pnlDescarte, 'Descarte')
+                  pnlAreaMovimentacao.add(pnlDevolucao, 'Devolução')
+                  pnlAreaMovimentacao.add(pnlDevolucaoExterna, 'Devolução Externa')
+                  pnlAreaMovimentacao.add(pnlDeposito, 'Depósito')
+                  pnlAreaMovimentacao.add(pnlRetiradaDeposito, 'Retirada do Depósito')
 
                   pnlAreaDados.add(pnlAreaMovimentacao, BorderLayout.CENTER)
 
-                  conteudo.add(pnlAreaDados,BorderLayout.CENTER)
+                  conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
                   JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
 
@@ -763,7 +756,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -781,22 +774,21 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
   private void carregarItensRequisicaoCompra() {
     for(int i = 0 ;i < itensRequisicaoCompra.size();i++) {
-      tblItensAbastecimento.setValueAt('',i,0)
-        tblItensAbastecimento.setValueAt('',i,1)
-        tblItensAbastecimento.setValueAt('',i,2)
-        tblItensAbastecimento.setValueAt('',i,3)
-        tblItensAbastecimento.setValueAt('',i,4)
-        tblItensAbastecimento.setValueAt('',i,5)
-        tblItensAbastecimentoConfirmacao.setValueAt('',i,0)
-        tblItensAbastecimentoConfirmacao.setValueAt('',i,1)
-        tblItensAbastecimentoConfirmacao.setValueAt('',i,2)
-        tblItensAbastecimentoConfirmacao.setValueAt('',i,3)
-        tblItensAbastecimentoConfirmacao.setValueAt('',i,4)
-        tblItensAbastecimentoConfirmacao.setValueAt('',i,5)
+      tblItensAbastecimento.setValueAt('', i, 0)
+        tblItensAbastecimento.setValueAt('', i, 1)
+        tblItensAbastecimento.setValueAt('', i, 2)
+        tblItensAbastecimento.setValueAt('', i, 3)
+        tblItensAbastecimento.setValueAt('', i, 4)
+        tblItensAbastecimento.setValueAt('', i, 5)
+        tblItensAbastecimentoConfirmacao.setValueAt('', i, 0)
+        tblItensAbastecimentoConfirmacao.setValueAt('', i, 1)
+        tblItensAbastecimentoConfirmacao.setValueAt('', i, 2)
+        tblItensAbastecimentoConfirmacao.setValueAt('', i, 3)
+        tblItensAbastecimentoConfirmacao.setValueAt('', i, 4)
+        tblItensAbastecimentoConfirmacao.setValueAt('', i, 5)
     }
 
-    try
-    {
+    try {
       requisicaoCompraSelecionada = (RequisicaoCompra)requisicoesCompra.get(cbxRequisicaoAbastecimento.getSelectedIndex())
         requisicaoCompraSelecionada.carregarItensRequisicao(aplicacao.obterConexao())
         itensRequisicaoCompra = requisicaoCompraSelecionada.obterItensRequisicao()
@@ -804,53 +796,51 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         float totalGeral = 0
         for(int i = 0;i < itensRequisicaoCompra.size();i++) {
           itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
-            tblItensAbastecimento.setValueAt(itemRequisicao.obterItem().obterDescricao(),i,0)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.getQuantidadeItem()),i,1)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorUnitario()),i,2)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorTotal()),i,3)
-            tblItensAbastecimento.setValueAt(''+ itemRequisicao.obterPercentualIPI(),i,4)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorTotalComIPI()),i,5)
+            tblItensAbastecimento.setValueAt(itemRequisicao.obterItem().obterDescricao(), i, 0)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.getQuantidadeItem()), i, 1)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorUnitario()), i, 2)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorTotal()), i, 3)
+            tblItensAbastecimento.setValueAt(''+ itemRequisicao.obterPercentualIPI(), i, 4)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorTotalComIPI()), i, 5)
             totalGeral += itemRequisicao.obterValorTotalComIPI()
             lblTotalGeral.setText(Numero.inverterSeparador('' + totalGeral))
         }
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
     }
   }
 
   private void carregarItensRequisicaoInternaVendas() {
     for(int i = 0; i < numeroItens;i++) {
-      tblItensVenda.setValueAt('',i,0)
-        tblItensVenda.setValueAt('',i,1)
-        tblItensVenda.setValueAt('',i,2)
+      tblItensVenda.setValueAt('', i, 0)
+        tblItensVenda.setValueAt('', i, 1)
+        tblItensVenda.setValueAt('', i, 2)
     }
 
     numeroItens = 0
       requisicaoInterna = (RequisicaoInterna)requisicoesInternasVendas.get(cbxRequisicaoVenda.getSelectedIndex())
-      String query = 'select iri.item,i.descricao,iri.quantidade, d.codigo, d.departamento, iri.status ' +
-      'from item_requisicao_interna iri,item i, departamento d ' +
+      String query = 'select iri.item, i.descricao, iri.quantidade, d.codigo, d.departamento, iri.status ' +
+      'from item_requisicao_interna iri, item i, departamento d ' +
       'where iri.item = i.codigo and d.codigo = iri.destino and iri.requisicao_interna = '+ requisicaoInterna.obterCodigo() + ' ' +
       'order by iri.item asc'
-      try
-      {
+      try {
         ResultSet resultadoItensRequisicaoInterna = conexao.executarConsulta(query)
-          try
-          {
+          try {
             while(resultadoItensRequisicaoInterna.next()) {
               int codigoItem = resultadoItensRequisicaoInterna.getInt('item')
                 String item = resultadoItensRequisicaoInterna.getString('descricao')
                 float quantidadeItem = resultadoItensRequisicaoInterna.getFloat('quantidade')
-                itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(codigoItem,item),this.requisicaoInterna,quantidadeItem,new Departamento(resultadoItensRequisicaoInterna.getInt('codigo'),resultadoItensRequisicaoInterna.getString('departamento')),resultadoItensRequisicaoInterna.getString('status')))
+                itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(codigoItem, item), this.requisicaoInterna, quantidadeItem, new Departamento(resultadoItensRequisicaoInterna.getInt('codigo'), resultadoItensRequisicaoInterna.getString('departamento')), resultadoItensRequisicaoInterna.getString('status')))
 
-                tblItensVenda.setValueAt(''+codigoItem,numeroItens,0)
-                tblItensVenda.setValueAt(item,numeroItens,1)
-                tblItensVenda.setValueAt(Numero.inverterSeparador(''+quantidadeItem),numeroItens,2)
+                tblItensVenda.setValueAt(''+codigoItem, numeroItens, 0)
+                tblItensVenda.setValueAt(item, numeroItens, 1)
+                tblItensVenda.setValueAt(Numero.inverterSeparador(''+quantidadeItem), numeroItens, 2)
                 numeroItens++
             }
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         resultadoItensRequisicaoInterna.close()
@@ -861,36 +851,34 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
   void carregarItensRequisicaoInternaDevolucaoExterna() {
     for(int i = 0; i < numeroItens;i++) {
-      tblItensDevolucaoExterna.setValueAt('',i,0)
-        tblItensDevolucaoExterna.setValueAt('',i,1)
-        tblItensDevolucaoExterna.setValueAt('',i,2)
+      tblItensDevolucaoExterna.setValueAt('', i, 0)
+        tblItensDevolucaoExterna.setValueAt('', i, 1)
+        tblItensDevolucaoExterna.setValueAt('', i, 2)
     }
 
     numeroItens = 0
       requisicaoInterna = (RequisicaoInterna)requisicoesInternasDevolucaoExterna.get(cbxRequisicaoDevolucaoExterna.getSelectedIndex())
-      String query = 'select iri.item,i.descricao,iri.quantidade, d.codigo, d.departamento ' +
-      'from item_requisicao_interna iri,item i, departamento d ' +
+      String query = 'select iri.item, i.descricao, iri.quantidade, d.codigo, d.departamento ' +
+      'from item_requisicao_interna iri, item i, departamento d ' +
       'where iri.item = i.codigo and d.codigo = iri.destino and iri.requisicao_interna = '+ requisicaoInterna.obterCodigo() + ' ' +
       'order by iri.item asc'
-      try
-      {
+      try {
         ResultSet resultadoItensRequisicaoInterna = conexao.executarConsulta(query)
-          try
-          {
+          try {
             while(resultadoItensRequisicaoInterna.next()) {
               int codigoItem = resultadoItensRequisicaoInterna.getInt('item')
                 String item = resultadoItensRequisicaoInterna.getString('descricao')
                 float quantidadeItem = resultadoItensRequisicaoInterna.getFloat('quantidade')
-                itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(codigoItem,item),this.requisicaoInterna,quantidadeItem,new Departamento(resultadoItensRequisicaoInterna.getInt('codigo'),resultadoItensRequisicaoInterna.getString('departamento')),resultadoItensRequisicaoInterna.getString('status')))
+                itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(codigoItem, item), this.requisicaoInterna, quantidadeItem, new Departamento(resultadoItensRequisicaoInterna.getInt('codigo'), resultadoItensRequisicaoInterna.getString('departamento')), resultadoItensRequisicaoInterna.getString('status')))
 
-                tblItensDevolucaoExterna.setValueAt(''+codigoItem,numeroItens,0)
-                tblItensDevolucaoExterna.setValueAt(item,numeroItens,1)
-                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador(''+quantidadeItem),numeroItens,2)
+                tblItensDevolucaoExterna.setValueAt(''+codigoItem, numeroItens, 0)
+                tblItensDevolucaoExterna.setValueAt(item, numeroItens, 1)
+                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador(''+quantidadeItem), numeroItens, 2)
                 numeroItens++
             }
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         resultadoItensRequisicaoInterna.close()
@@ -904,18 +892,17 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
   void carregarDadosRequisicaoCompra() {
     requisicaoCompraSelecionada = (RequisicaoCompra)requisicoesCompra.get(cbxRequisicaoAbastecimento.getSelectedIndex())
       String query = 'select observacao, fornecedor.razao_social as razao_social from requisicao_compra, fornecedor where requisicao_compra.codigo = '+ requisicaoCompraSelecionada.obterCodigo() +' and fornecedor.codigo = requisicao_compra.fornecedor '
-      try
-      {
+      try {
         ResultSet dadosRequisicaoCompra = conexao.executarConsulta(query)
           if(dadosRequisicaoCompra.next()) {
             observacao = dadosRequisicaoCompra.getString('observacao')
               txaObservacao.setText(observacao)
               lblRequisicaoAbastecimento.setText(''+ requisicaoCompraSelecionada.obterCodigo() + ' - '+ dadosRequisicaoCompra.getString('razao_social'))
               for(int i = 0; i < itensRequisicaoCompra.size(); i++) {
-                tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterCodigo(),i,0)
-                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterDescricao(),i,1)
-                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeItem(),i,4)
-                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeAbastecida(),i,5)
+                tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterCodigo(), i, 0)
+                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterDescricao(), i, 1)
+                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeItem(), i, 4)
+                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeAbastecida(), i, 5)
               }
           }
         dadosRequisicaoCompra.close()
@@ -927,16 +914,15 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
   }
 
   void atualizarTabelaItensAbastecimentoConfirmacao() {
-    try
-    {
+    try {
       ItemRequisicao itemRequisicao = null
         for(int i = 0;i < itensRequisicaoCompra.size();i++) {
           itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
             if(itemRequisicao.obterItem().obterLote() != null) {
-              tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.obterItem().obterLote().obterLocalizacao(),i,2)
-                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.obterItem().obterLote().obterDataValidade(),i,3)
-                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.getQuantidadeItem(),i,4)
-                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.getQuantidadeAbastecida(),i,5)
+              tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.obterItem().obterLote().obterLocalizacao(), i, 2)
+                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.obterItem().obterLote().obterDataValidade(), i, 3)
+                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.getQuantidadeItem(), i, 4)
+                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.getQuantidadeAbastecida(), i, 5)
             }
         }
     }
@@ -958,9 +944,8 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             txtValorConhecimento.setText('')
             txaObservacao.setText('')
             requisicaoCompraSelecionada = (RequisicaoCompra)requisicoesCompra.get(cbxRequisicaoAbastecimento.getSelectedIndex())
-            String query = 'select fornecedor.razao_social, departamento.departamento, transportadora.transportadora, data_emissao, data_limite_entrega, (case tipo_frete when 'C' then 'CIF' when 'F' then 'FOB' when 'P' then 'PRÓPRIO' end) as tipo_frete from requisicao_compra, fornecedor,departamento, transportadora where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo and requisicao_compra.transportadora *= transportadora.codigo and requisicao_compra.codigo = '+ requisicaoCompraSelecionada.obterCodigo() +' '
-            try
-            {
+            String query = 'select fornecedor.razao_social, departamento.departamento, transportadora.transportadora, data_emissao, data_limite_entrega, (case tipo_frete when 'C' then 'CIF' when 'F' then 'FOB' when 'P' then 'PRÓPRIO' end) as tipo_frete from requisicao_compra, fornecedor, departamento, transportadora where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo and requisicao_compra.transportadora *= transportadora.codigo and requisicao_compra.codigo = '+ requisicaoCompraSelecionada.obterCodigo() +' '
+            try {
               ResultSet dadosRequisicaoCompra = conexao.executarConsulta(query)
                 if(dadosRequisicaoCompra.next()) {
                   razaoSocial = dadosRequisicaoCompra.getString('razao_social')
@@ -1001,26 +986,25 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             txaJustificativaConsumo.setText(requisicaoInterna.obterJustificativa())
 
             for(int i = 0; i < numeroItens;i++) {
-              tblItensConsumo.setValueAt('',i,0)
-                tblItensConsumo.setValueAt('',i,1)
-                tblItensConsumo.setValueAt('',i,2)
+              tblItensConsumo.setValueAt('', i, 0)
+                tblItensConsumo.setValueAt('', i, 1)
+                tblItensConsumo.setValueAt('', i, 2)
             }
-        try
-        {
+        try {
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensConsumo.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(),numeroItens,0)
-                tblItensConsumo.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(),numeroItens,1)
-                tblItensConsumo.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()),numeroItens,2)
+                tblItensConsumo.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensConsumo.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
+                tblItensConsumo.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os itens da Requisição Interna.','Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         redimencionar()
@@ -1039,26 +1023,25 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblSolicitanteVendas.setText(requisicaoInterna.obterSolicitante().getNome())
 
             for(int i = 0; i < numeroItens;i++) {
-              tblItensVenda.setValueAt('',i,0)
-                tblItensVenda.setValueAt('',i,1)
-                tblItensVenda.setValueAt('',i,2)
+              tblItensVenda.setValueAt('', i, 0)
+                tblItensVenda.setValueAt('', i, 1)
+                tblItensVenda.setValueAt('', i, 2)
             }
-        try
-        {
+        try {
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensVenda.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(),numeroItens,0)
-                tblItensVenda.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(),numeroItens,1)
-                tblItensVenda.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()),numeroItens,2)
+                tblItensVenda.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensVenda.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
+                tblItensVenda.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os itens da Requisição Interna.','Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         redimencionar()
@@ -1077,26 +1060,25 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblSolicitanteDescarte.setText(requisicaoInterna.obterSolicitante().getNome())
             txaJustificativaDescarte.setText(requisicaoInterna.obterJustificativa())
             for(int i = 0; i < numeroItens;i++) {
-              tblItensDescarte.setValueAt('',i,0)
-                tblItensDescarte.setValueAt('',i,1)
-                tblItensDescarte.setValueAt('',i,2)
+              tblItensDescarte.setValueAt('', i, 0)
+                tblItensDescarte.setValueAt('', i, 1)
+                tblItensDescarte.setValueAt('', i, 2)
             }
-        try
-        {
+        try {
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensDescarte.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(),numeroItens,0)
-                tblItensDescarte.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(),numeroItens,1)
-                tblItensDescarte.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()),numeroItens,2)
+                tblItensDescarte.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensDescarte.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
+                tblItensDescarte.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os itens da Requisição Interna.','Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         redimencionar()
@@ -1118,25 +1100,24 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             txaJustificativaDevolucao.setText(requisicaoInterna.obterJustificativa())
 
             for(int i = 0; i < numeroItens;i++) {
-              tblItensDevolucao.setValueAt('',i,0)
-                tblItensDevolucao.setValueAt('',i,1)
-                tblItensDevolucao.setValueAt('',i,2)
+              tblItensDevolucao.setValueAt('', i, 0)
+                tblItensDevolucao.setValueAt('', i, 1)
+                tblItensDevolucao.setValueAt('', i, 2)
             }
-        try
-        {
+        try {
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
-                tblItensDevolucao.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(),numeroItens,0)
-                tblItensDevolucao.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(),numeroItens,1)
-                tblItensDevolucao.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()),numeroItens,2)
+                tblItensDevolucao.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensDevolucao.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
+                tblItensDevolucao.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os itens da Requisição Interna.','Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         redimencionar()
@@ -1150,9 +1131,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           txaJustificativaDevolucao.setText('')
 
           for(int i = 0; i < numeroItens;i++) {
-            tblItensDevolucao.setValueAt('',i,0)
-              tblItensDevolucao.setValueAt('',i,1)
-              tblItensDevolucao.setValueAt('',i,2)
+            tblItensDevolucao.setValueAt('', i, 0)
+              tblItensDevolucao.setValueAt('', i, 1)
+              tblItensDevolucao.setValueAt('', i, 2)
           }
       }
     }
@@ -1169,26 +1150,25 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblSolicitanteDevolucaoExterna.setText(requisicaoInterna.obterSolicitante().getNome())
             txaJustificativaDevolucaoExterna.setText(requisicaoInterna.obterJustificativa())
             for(int i = 0; i < numeroItens;i++) {
-              tblItensDevolucaoExterna.setValueAt('',i,0)
-                tblItensDevolucaoExterna.setValueAt('',i,1)
-                tblItensDevolucaoExterna.setValueAt('',i,2)
+              tblItensDevolucaoExterna.setValueAt('', i, 0)
+                tblItensDevolucaoExterna.setValueAt('', i, 1)
+                tblItensDevolucaoExterna.setValueAt('', i, 2)
             }
-        try
-        {
+        try {
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensDevolucaoExterna.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(),numeroItens,0)
-                tblItensDevolucaoExterna.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(),numeroItens,1)
-                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()),numeroItens,2)
+                tblItensDevolucaoExterna.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensDevolucaoExterna.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
+                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os itens da Requisição Interna.','Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         redimencionar()
@@ -1196,16 +1176,15 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     }
 
     if(objeto == cbxTipoMovimentacao) {
-      card.show(pnlAreaMovimentacao,(String)cbxTipoMovimentacao.getSelectedItem())
+      card.show(pnlAreaMovimentacao, (String)cbxTipoMovimentacao.getSelectedItem())
         this.pack()
         tipoMovimentacao = (String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex())
     }
 
     if(objeto == btProximo) {
       if(cbxRequisicaoAbastecimento.getSelectedIndex() > 0) {
-        card.show(pnlAreaMovimentacao,'Abastecimento Confirmação')
-          try
-          {
+        card.show(pnlAreaMovimentacao, 'Abastecimento Confirmação')
+          try {
             // Carrega os itens da movimentacao pelos itens da requisicao de compras.
             movimentacoes = new Vector()
               for(int i = 0; i < itensRequisicaoCompra.size(); i++) {
@@ -1215,24 +1194,23 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               }
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         }
         this.redimencionar()
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,'Erro: A Requisição de Compra não foi informada.','Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: A Requisição de Compra não foi informada.', 'Erro', JOptionPane.ERROR_MESSAGE)
       }
     }
 
     if(objeto == btAnterior) {
-      card.show(pnlAreaMovimentacao,'Abastecimento')
+      card.show(pnlAreaMovimentacao, 'Abastecimento')
     }
 
     if(objeto == btConfirmar) {
       if(tipoMovimentacao == Movimentacao.ABASTECIMENTO) {
-        try
-        {
+        try {
           //Definir o status da requisição de compra com base nos status dos itens da requisição.
           ItemRequisicao itemRequisicao
             for(int i = 0;i < itensRequisicaoCompra.size();i++) {
@@ -1265,7 +1243,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -1279,8 +1257,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       else if(tipoMovimentacao == Movimentacao.CONSUMO || tipoMovimentacao == Movimentacao.VENDAS || tipoMovimentacao == Movimentacao.DESCARTE || tipoMovimentacao == Movimentacao.DEVOLUCAO_EXTERNA) {
         String statusDefinido = ''
           for(int i = 0; i < itensRequisicaoInterna.size(); i++) {
-            try
-            {
+            try {
               Movimentacao movimentacao = new Movimentacao((String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()),
                   (ItemRequisicaoInterna)itensRequisicaoInterna.get(i),
                   requisicaoInterna,
@@ -1288,13 +1265,12 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 Lote.retirarItem(movimentacao, (ItemRequisicaoInterna)itensRequisicaoInterna.get(i))
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
           }
         // Atualiza o status da Movimentação Interna
-        try
-        {
+        try {
           for(int i = 0;i < itensRequisicaoInterna.size();i++) {
             if(((ItemRequisicaoInterna)itensRequisicaoInterna.get(i)).obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE)) {
               requisicaoInterna.definirStatus(RequisicaoInterna.STATUS_PENDENTE)
@@ -1316,13 +1292,13 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   if(item.obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE))
                     mensagem += '' + (i + 1) + '. ' + item.obterItem().obterDescricao() + ' ('+ item.obterQuantidadeItem() +')\n'
               }
-            JOptionPane.showMessageDialog(aplicacao,mensagem,'Atenção',JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, mensagem, 'Atenção', JOptionPane.WARNING_MESSAGE)
           }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível finalizar a Requisição Interna. \n' +
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n' +
               'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n' +
-              'a requisição poderá ser processada novamente sem necessidade.','Erro',
+              'a requisição poderá ser processada novamente sem necessidade.', 'Erro',
               JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1331,8 +1307,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
        * da entrada de um novo lote. */
       else if(tipoMovimentacao == Movimentacao.DEVOLUCAO) {
         for(int i = 0; i < itensRequisicaoInterna.size(); i++) {
-          try
-          {
+          try {
             ItemRequisicaoInterna itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
               Movimentacao movimentacao = new Movimentacao((String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()),
                   itemRequisicaoInterna,
@@ -1345,21 +1320,20 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               lote.cadastrarLote()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível registrar a movimentação. \n' +
-                'O banco de dados pode estar inconsistente. Entre em contato com o administrador.','Erro',
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível registrar a movimentação. \n' +
+                'O banco de dados pode estar inconsistente. Entre em contato com o administrador.', 'Erro',
                 JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
         // Atualiza o status da Movimentação Interna
-        try
-        {
+        try {
           requisicaoInterna.atualizarRequisicaoInterna(RequisicaoInterna.STATUS_CONFIRMADO)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível finalizar a Requisição Interna. \n' +
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n' +
               'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n' +
-              'a requisição poderá ser processada novamente sem necessidade.','Erro',
+              'a requisição poderá ser processada novamente sem necessidade.', 'Erro',
               JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1375,13 +1349,13 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       if(tblItensAbastecimentoConfirmacao.getSelectedRow() >=0) {
         ItemRequisicao itemSelecionado = (ItemRequisicao)itensRequisicaoCompra.get(tblItensAbastecimentoConfirmacao.getSelectedRow())
           Movimentacao movimentacaoItem = (Movimentacao)movimentacoes.get(tblItensAbastecimentoConfirmacao.getSelectedRow())
-          DlgDadosLote dlgDadosLote = new DlgDadosLote(aplicacao,itemSelecionado,movimentacaoItem)
+          DlgDadosLote dlgDadosLote = new DlgDadosLote(aplicacao, itemSelecionado, movimentacaoItem)
           dlgDadosLote.setVisible(true)
           atualizarTabelaItensAbastecimentoConfirmacao()
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,'Atenção: Selecione um Item da tabela para definir um lote.','Atenção', JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione um Item da tabela para definir um lote.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
       btConfirmar.setEnabled(true)
     }

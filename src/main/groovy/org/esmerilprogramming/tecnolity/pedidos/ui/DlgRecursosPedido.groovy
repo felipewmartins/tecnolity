@@ -23,7 +23,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
     private ModeloTabela modeloTabelaRecursos
 
     DlgRecursosPedido(Aplicacao aplicacao, Pedido pedido) {
-      super(aplicacao,true)
+      super(aplicacao, true)
         this.setTitle("Recursos Necessários para produção do Pedido")
 
         this.aplicacao = aplicacao
@@ -33,7 +33,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
     }
 
   DlgRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos) {
-    super(aplicacao,true)
+    super(aplicacao, true)
       this.setTitle("Recursos Necessários para produção do Pedido")
 
       this.aplicacao = aplicacao
@@ -51,11 +51,11 @@ class DlgRecursosPedido extends JDialog implements ActionListener
             strLabel += ", "
       }
 
-    conteudo.add(new JLabel(strLabel),BorderLayout.NORTH)
+    conteudo.add(new JLabel(strLabel), BorderLayout.NORTH)
 
       modeloTabelaRecursos = new ModeloTabela()
       modeloTabelaRecursos.definirConexao(aplicacao.obterConexao())
-      String query =  "select i.codigo,i.descricao,i.quantidade as disponivel,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria,(i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
+      String query =  "select i.codigo, i.descricao, i.quantidade as disponivel, (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria, (i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp " +
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
       for(int i = 0;i < pedidos.length;i++) {
@@ -63,13 +63,13 @@ class DlgRecursosPedido extends JDialog implements ActionListener
           if((i+1) < pedidos.length)
             query += " or "
       }
-    query += ") group by i.codigo,i.descricao,i.quantidade,i.percentual_perda"
+    query += ") group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
       modeloTabelaRecursos.definirConsulta(query)
       tblRecursos = new JTable(modeloTabelaRecursos)
       tblRecursos.setPreferredScrollableViewportSize(new Dimension(500, 250))
-      tblRecursos.addRowSelectionInterval(0,0)
+      tblRecursos.addRowSelectionInterval(0, 0)
       JScrollPane scroll = new JScrollPane(tblRecursos)
-      conteudo.add(scroll,BorderLayout.CENTER)
+      conteudo.add(scroll, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
 
@@ -95,9 +95,9 @@ class DlgRecursosPedido extends JDialog implements ActionListener
       this.pack()
 
       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
-      this.setBounds((screenSize.width/2) - (this.getBounds().width/2),
-          (screenSize.height/2) - (this.getBounds().height/2) - 30,
-          this.getBounds().width,
+      this.setBounds((screenSize.width/2) - (this.getBounds().width/2), 
+          (screenSize.height/2) - (this.getBounds().height/2) - 30, 
+          this.getBounds().width, 
           this.getBounds().height)
   }
 
@@ -110,20 +110,20 @@ class DlgRecursosPedido extends JDialog implements ActionListener
             int linha = tblRecursos.getSelectedRow()
             try
             {
-              itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(Integer.parseInt((String)tblRecursos.getValueAt(linha,0)),
-                      (String)tblRecursos.getValueAt(linha,1)),
-                    Float.parseFloat((String)tblRecursos.getValueAt(linha,3))))
-                DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao,this.pedidos[0],itensRequisicaoInterna)
+              itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(Integer.parseInt((String)tblRecursos.getValueAt(linha, 0)), 
+                      (String)tblRecursos.getValueAt(linha, 1)), 
+                    Float.parseFloat((String)tblRecursos.getValueAt(linha, 3))))
+                DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao, this.pedidos[0], itensRequisicaoInterna)
                 dlgDadosRequisicaoInterna.setVisible(true)
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione apenas um item da lista.","Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione apenas um item da lista.", "Atenção", JOptionPane.WARNING_MESSAGE)
         }
       }
 
@@ -132,22 +132,22 @@ class DlgRecursosPedido extends JDialog implements ActionListener
         for(int i = 0;i < tblRecursos.getRowCount();i++) {
           try
           {
-            itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(Integer.parseInt((String)tblRecursos.getValueAt(i,0)),
-                    (String)tblRecursos.getValueAt(i,1)),
-                  Float.parseFloat((String)tblRecursos.getValueAt(i,3))))
+            itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(Integer.parseInt((String)tblRecursos.getValueAt(i, 0)), 
+                    (String)tblRecursos.getValueAt(i, 1)), 
+                  Float.parseFloat((String)tblRecursos.getValueAt(i, 3))))
 
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
-      DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao,this.pedidos[0],itensRequisicaoInterna)
+      DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao, this.pedidos[0], itensRequisicaoInterna)
         dlgDadosRequisicaoInterna.setVisible(true)
     }
 
     if(objeto == btImprimir) {
-      RelRecursosPedido relRecursosPedido = new RelRecursosPedido(aplicacao,pedidos)
+      RelRecursosPedido relRecursosPedido = new RelRecursosPedido(aplicacao, pedidos)
         relRecursosPedido.imprimir()
     }
 

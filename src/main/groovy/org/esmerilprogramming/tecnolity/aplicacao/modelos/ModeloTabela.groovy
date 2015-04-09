@@ -38,8 +38,7 @@ import org.esmerilprogramming.tecnolity.util.*
 
    void definirConsulta(String consulta) {
     cache = new Vector()
-    try
-    {
+    try {
       resultado = conexao.executarConsulta(consulta)
       if (resultado.next()) {
         ResultSetMetaData meta = resultado.getMetaData()

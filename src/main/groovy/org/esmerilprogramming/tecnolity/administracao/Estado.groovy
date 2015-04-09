@@ -7,12 +7,12 @@ import org.esmerilprogramming.tecnolity.util.*
 class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
   Estado(String sigla, String nome, Pais pais) throws Exception
   {
-    super(sigla,nome,pais)
+    super(sigla, nome, pais)
   }
 
   Estado(String siglaEstado, String nomeEstado) throws Exception
   {
-    super(siglaEstado,nomeEstado)
+    super(siglaEstado, nomeEstado)
   }
 
   Estado(String siglaEstado) throws Exception
@@ -34,16 +34,15 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
     conexao.fecharConexao()
   }
 
-  static Vector carregarEstados(String pais,Conexao conexao) throws Exception
+  static Vector carregarEstados(String pais, Conexao conexao) throws Exception
   {
     ResultSet dadosEstado
       Vector estados = new Vector()
-      try
-      {
+      try {
         dadosEstado = conexao.executarConsulta('select sigla_estado, estado from estado where pais = '+ pais +' order by estado asc')
           estados.addElement(null)
           while(dadosEstado.next()) {
-            estados.addElement(new Estado(dadosEstado.getString('sigla_estado'),dadosEstado.getString('estado')))
+            estados.addElement(new Estado(dadosEstado.getString('sigla_estado'), dadosEstado.getString('estado')))
           }
         dadosEstado.close()
       }
@@ -59,11 +58,10 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
       String erro = ''
       if (conexao.abrirConexao()) {
         String query = 'Select sigla_estado from estado where sigla_estado = ''+ this.getSigla() +'''
-          try
-          {
+          try {
             ResultSet dadosEstado = conexao.executarConsulta(query)
               if(!dadosEstado.next()) {
-                query = 'insert into estado (sigla_estado,estado,pais) values (''+ this.getSigla() +'',''+ this.getNome() +'',''+ this.getPais().getSigla() +'')'
+                query = 'insert into estado (sigla_estado, estado, pais) values (''+ this.getSigla() +'', ''+ this.getNome() +'', ''+ this.getPais().getSigla() +'')'
                   conexao.executarAtualizacao(query)
                   conexao.fecharConexao()
               }

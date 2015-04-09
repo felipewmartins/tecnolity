@@ -30,14 +30,13 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
     private JPanel pnlAreaDados
     private JButton btConfirmar, btCancelar
 
-    DlgDadosLote(Aplicacao aplicacao,ItemRequisicao itemRequisicao, Movimentacao movimentacaoItem) {
-      super(aplicacao,true)
-        try
-        {
+    DlgDadosLote(Aplicacao aplicacao, ItemRequisicao itemRequisicao, Movimentacao movimentacaoItem) {
+      super(aplicacao, true)
+        try {
           lote = new Lote()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar o Lote.','Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar o Lote.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       this.itemRequisicao = itemRequisicao
@@ -64,44 +63,44 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
 
       pnlAreaDados = new JPanel(gridbag)
       JLabel label = new JLabel('Item')
-      adicionarComponente(pnlAreaDados,label,0,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 2, 1)
       label = new JLabel('Data Validade')
-      adicionarComponente(pnlAreaDados,label,0,2,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 2, 1, 1)
 
       lblItem = new JLabel(itemRequisicao.obterItem().obterDescricao())
-      adicionarComponente(pnlAreaDados,lblItem,1,0,2,1)
+      adicionarComponente(pnlAreaDados, lblItem, 1, 0, 2, 1)
 
       txtDataValidade = new JTextField(8)
       txtDataValidade.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtDataValidade,1,2,1,1)
+      adicionarComponente(pnlAreaDados, txtDataValidade, 1, 2, 1, 1)
 
       label = new JLabel('Localização')
-      adicionarComponente(pnlAreaDados,label,2,0,1,1)
+      adicionarComponente(pnlAreaDados, label, 2, 0, 1, 1)
       label = new JLabel('Quant. Requisitada')
-      adicionarComponente(pnlAreaDados,label,2,1,1,1)
+      adicionarComponente(pnlAreaDados, label, 2, 1, 1, 1)
       label = new JLabel('Quant. a Abastecer')
-      adicionarComponente(pnlAreaDados,label,2,2,1,1)
+      adicionarComponente(pnlAreaDados, label, 2, 2, 1, 1)
 
       localizacoes = (new Categoria()).carregarCategorias(aplicacao.obterConexao())
       cbxLocalizacao = new JComboBox()
       carregarLocalizacoes()
-      adicionarComponente(pnlAreaDados,cbxLocalizacao,3,0,1,1)
+      adicionarComponente(pnlAreaDados, cbxLocalizacao, 3, 0, 1, 1)
 
-      txtQuantidade = new JTextField('' + Numero.inverterSeparador(itemRequisicao.getQuantidadeItem()),8)
+      txtQuantidade = new JTextField('' + Numero.inverterSeparador(itemRequisicao.getQuantidadeItem()), 8)
       txtQuantidade.setEditable(false)
-      adicionarComponente(pnlAreaDados,txtQuantidade,3,1,1,1)
+      adicionarComponente(pnlAreaDados, txtQuantidade, 3, 1, 1, 1)
 
-      txtQuantidadeRecebida = new JTextField('' + Numero.inverterSeparador(itemRequisicao.getQuantidadePendente()),8)
-      adicionarComponente(pnlAreaDados,txtQuantidadeRecebida,3,2,1,1)
+      txtQuantidadeRecebida = new JTextField('' + Numero.inverterSeparador(itemRequisicao.getQuantidadePendente()), 8)
+      adicionarComponente(pnlAreaDados, txtQuantidadeRecebida, 3, 2, 1, 1)
 
       label = new JLabel('Descrição')
-      adicionarComponente(pnlAreaDados,label,4,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 4, 0, 2, 1)
 
       txtDescricao = new JTextField(30)
       txtDescricao.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtDescricao,5,0,3,1)
+      adicionarComponente(pnlAreaDados, txtDescricao, 5, 0, 3, 1)
 
-      conteudo.add(pnlAreaDados,BorderLayout.CENTER)
+      conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
       btConfirmar = new JButton('Confirmar')
@@ -140,7 +139,7 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -161,8 +160,7 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
           itemRequisicao.definirStatus(ItemRequisicao.ABASTECIDO_TOTALMENTE)
             // Define o lote para o item requisitado.
             if(itemRequisicao.getQuantidadePendente() >= Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText()))) {
-              try
-              {
+              try {
                 lote.definirItem(itemRequisicao.obterItem())
                   lote.definirMovimentacao(movimentacaoItem)
                   lote.definirDataValidade(txtDataValidade.getText())
@@ -174,19 +172,19 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
                   this.itemRequisicao.obterItem().definirLote(this.lote)
               }
               catch(Exception e) {
-                JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+                JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                   e.printStackTrace()
               }
               this.setVisible(false)
             }
             else
             {
-              JOptionPane.showMessageDialog(aplicacao,'Erro: A quantidade a abastecer é maior que a requisitada.','Erro',JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: A quantidade a abastecer é maior que a requisitada.', 'Erro', JOptionPane.ERROR_MESSAGE)
             }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,'Erro: A quantidade a Abastecer não foi informada.','Erro',JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: A quantidade a Abastecer não foi informada.', 'Erro', JOptionPane.ERROR_MESSAGE)
       }
     }
   }

@@ -19,7 +19,7 @@ class DlgDadosCategoria extends JDialog implements ActionListener {
   private JButton btConfirmar, btCancelar
 
   DlgDadosCategoria(Aplicacao aplicacao, char modo) {
-    super(aplicacao,true)
+    super(aplicacao, true)
     String tituloJanela = ''
     if (modo == 'I') {
       tituloJanela = 'Nova Categoria'
@@ -44,9 +44,9 @@ class DlgDadosCategoria extends JDialog implements ActionListener {
     gbc.insets.top = 2
     JPanel pnlDados = new JPanel(gridbag)
     JLabel label = new JLabel('Nome da Categoria')
-    adicionarComponente(pnlDados,label,0,0,1,1)
+    adicionarComponente(pnlDados, label, 0, 0, 1, 1)
     txtNomeCategoria = new JTextField(20)
-    adicionarComponente(pnlDados,txtNomeCategoria,1,0,1,1)
+    adicionarComponente(pnlDados, txtNomeCategoria, 1, 0, 1, 1)
     this.conteudo.add(pnlDados, BorderLayout.CENTER)
     JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
     btConfirmar = new JButton('Confirmar')
@@ -69,7 +69,7 @@ class DlgDadosCategoria extends JDialog implements ActionListener {
     gbc.gridy = linha
     gbc.gridwidth = largura
     gbc.gridheight = altura
-    gridbag.setConstraints(c,gbc)
+    gridbag.setConstraints(c, gbc)
     painel.add(c)
   }
 
@@ -81,7 +81,7 @@ class DlgDadosCategoria extends JDialog implements ActionListener {
       if(categoria.cadastrarCategoria(txtNomeCategoria.getText())) {
         this.setVisible(false)
       } else {
-        JOptionPane.showMessageDialog(aplicacao,'Não foi possível cadastrar a Categoria informada!','Erro',JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Não foi possível cadastrar a Categoria informada!', 'Erro', JOptionPane.WARNING_MESSAGE)
       }
 
       if(objeto == btCancelar) {

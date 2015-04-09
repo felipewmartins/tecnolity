@@ -16,7 +16,7 @@ class ItemRequisicaoInterna
     private float quantidadeItem
     private Departamento destino
 
-    ItemRequisicaoInterna(Item item, RequisicaoInterna requisicaoInterna, float quantidadeItem,Departamento destino, String status) throws Exception
+    ItemRequisicaoInterna(Item item, RequisicaoInterna requisicaoInterna, float quantidadeItem, Departamento destino, String status) throws Exception
     {
       this.definirItem(item)
         this.definirRequisicaoInterna(requisicaoInterna)
@@ -98,7 +98,7 @@ class ItemRequisicaoInterna
   {
     Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
-        String query = "insert into item_requisicao_interna (item,requisicao_interna,status,quantidade,destino) values ("+ this.item.obterCodigo() +","+ this.requisicaoInterna.obterCodigo() +",'EM',"+ this.quantidadeItem +","+ this.destino.obterCodigo() +")"
+        String query = "insert into item_requisicao_interna (item, requisicao_interna, status, quantidade, destino) values ("+ this.item.obterCodigo() +", "+ this.requisicaoInterna.obterCodigo() +", 'EM', "+ this.quantidadeItem +", "+ this.destino.obterCodigo() +")"
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }

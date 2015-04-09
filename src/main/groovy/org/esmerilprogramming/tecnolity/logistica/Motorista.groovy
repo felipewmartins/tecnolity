@@ -23,10 +23,9 @@ class Motorista {
   String telefone
   String celular
 
-  Motorista(int codigo,String motorista) {
+  Motorista(int codigo, String motorista) {
     this.definirCodigo(codigo)
-      try
-      {
+      try {
         this.definirMotorista(motorista)
       }
     catch(Exception e) {
@@ -46,8 +45,7 @@ class Motorista {
       dadosMotorista = conexao.executarConsulta("select * from motorista where codigo = "+ this.codigo +" ")
 
       if(dadosMotorista.next()) {
-        try
-        {
+        try {
           this.definirPlaca(dadosMotorista.getString("placa"))
             this.definirMotorista(dadosMotorista.getString("motorista"))
             this.definirIdentidade(dadosMotorista.getString("identidade"))
@@ -74,14 +72,13 @@ class Motorista {
       }
   }
 
-  Motorista(String placa,String motorista,String identidade,
-      String orgaoEmissorIdentidade,String cpf,String habilitacao,
-      String categoria,String validade,String logradouro,
-      String complemento,String bairro,String cidade,Estado estado,
-      String cep,String telefone,String celular) throws Exception
+  Motorista(String placa, String motorista, String identidade,
+      String orgaoEmissorIdentidade, String cpf, String habilitacao,
+      String categoria, String validade, String logradouro,
+      String complemento, String bairro, String cidade, Estado estado,
+      String cep, String telefone, String celular) throws Exception
   {
-    try
-    {
+    try {
       this.definirPlaca(placa)
         this.definirMotorista(motorista)
         this.definirIdentidade(identidade)
@@ -104,15 +101,14 @@ class Motorista {
     }
   }
 
-  Motorista(int codigo,String placa,String motorista,String identidade,
-      String orgaoEmissorIdentidade,String cpf,String habilitacao,
-      String categoria,String validade,String logradouro,
-      String complemento,String bairro,String cidade,Estado estado,
-      String cep,String telefone,String celular) throws Exception
+  Motorista(int codigo, String placa, String motorista, String identidade,
+      String orgaoEmissorIdentidade, String cpf, String habilitacao,
+      String categoria, String validade, String logradouro,
+      String complemento, String bairro, String cidade, Estado estado,
+      String cep, String telefone, String celular) throws Exception
   {
     this.definirCodigo(codigo)
-      try
-      {
+      try {
         this.definirPlaca(placa)
           this.definirMotorista(motorista)
           this.definirIdentidade(identidade)
@@ -222,7 +218,7 @@ class Motorista {
       if(validade.equals(""))
         erro = "A Data de Validade não foi informada."
       else if(validade.length() == 10) {
-        if(!Calendario.validarData(validade,"/"))
+        if(!Calendario.validarData(validade, "/"))
           erro = "Data de Validade inválida."
       }
       else
@@ -328,13 +324,12 @@ class Motorista {
   {
     ResultSet dadosMotorista
       Vector motoristas = null
-      try
-      {
-        dadosMotorista = conexao.executarConsulta("select codigo,motorista from motorista order by motorista asc")
+      try {
+        dadosMotorista = conexao.executarConsulta("select codigo, motorista from motorista order by motorista asc")
           motoristas = new Vector()
           motoristas.addElement(null)
           while(dadosMotorista.next()) {
-            motoristas.addElement(new Motorista(dadosMotorista.getInt("codigo"),dadosMotorista.getString("motorista")))
+            motoristas.addElement(new Motorista(dadosMotorista.getInt("codigo"), dadosMotorista.getString("motorista")))
           }
         dadosMotorista.close()
       }
@@ -346,8 +341,8 @@ class Motorista {
 
   void cadastrarMotorista() throws Exception
   {
-    String query = "insert into motorista (placa,motorista,identidade,orgao_emissor,cpf,habilitacao,categoria,validade,logradouro,complemento,bairro,cidade,estado,cep,telefone,celular) values "
-      query = query + "('"+ this.placa +"', '"+ this.motorista +"', '"+ this.identidade +"', '"+ this.orgaoEmissorIdentidade +"','"+ this.cpf +"','"+ this.habilitacao +"','"+ this.categoria +"','"+ Calendario.inverterFormato(this.validade,"/") +"','"+ this.logradouro +"','"+ this.complemento +"','"+ this.bairro +"','"+ this.cidade +"','"+ this.estado.getSigla() +"','"+ this.cep +"','"+ this.telefone +"','"+ this.celular +"')"
+    String query = "insert into motorista (placa, motorista, identidade, orgao_emissor, cpf, habilitacao, categoria, validade, logradouro, complemento, bairro, cidade, estado, cep, telefone, celular) values "
+      query = query + "('"+ this.placa +"', '"+ this.motorista +"', '"+ this.identidade +"', '"+ this.orgaoEmissorIdentidade +"', '"+ this.cpf +"', '"+ this.habilitacao +"', '"+ this.categoria +"', '"+ Calendario.inverterFormato(this.validade, "/") +"', '"+ this.logradouro +"', '"+ this.complemento +"', '"+ this.bairro +"', '"+ this.cidade +"', '"+ this.estado.getSigla() +"', '"+ this.cep +"', '"+ this.telefone +"', '"+ this.celular +"')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -362,7 +357,7 @@ class Motorista {
 
   void alterarMotorista() throws Exception
   {
-    String query = "update motorista set placa = '"+ this.placa +"',motorista = '"+ this.motorista +"',identidade = '"+ this.identidade +"',orgao_emissor = '"+ this.orgaoEmissorIdentidade +"',cpf = '"+ this.cpf +"',habilitacao = '"+ this.habilitacao +"',categoria = '"+ this.categoria +"',validade = '"+ Calendario.inverterFormato(this.validade,"/") +"',logradouro = '"+ this.logradouro +"',complemento = '"+ this.complemento +"',bairro = '"+ this.bairro +"',cidade = '"+ this.cidade +"',estado = '"+ this.estado.getSigla() +"',cep = '"+ this.cep +"',telefone = '"+ this.telefone +"',celular = '"+ this.celular +"' where codigo = "+ this.codigo +" "
+    String query = "update motorista set placa = '"+ this.placa +"', motorista = '"+ this.motorista +"', identidade = '"+ this.identidade +"', orgao_emissor = '"+ this.orgaoEmissorIdentidade +"', cpf = '"+ this.cpf +"', habilitacao = '"+ this.habilitacao +"', categoria = '"+ this.categoria +"', validade = '"+ Calendario.inverterFormato(this.validade, "/") +"', logradouro = '"+ this.logradouro +"', complemento = '"+ this.complemento +"', bairro = '"+ this.bairro +"', cidade = '"+ this.cidade +"', estado = '"+ this.estado.getSigla() +"', cep = '"+ this.cep +"', telefone = '"+ this.telefone +"', celular = '"+ this.celular +"' where codigo = "+ this.codigo +" "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

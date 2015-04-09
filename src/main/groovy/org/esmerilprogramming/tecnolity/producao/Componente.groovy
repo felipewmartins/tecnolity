@@ -35,7 +35,7 @@ class Componente {
     dadosComponente = conexao.executarConsulta('select * from componente order by componente asc')
     componentes.addElement(null)
     while(dadosComponente.next()) {
-      componentes.addElement(new Componente(dadosComponente.getInt('codigo'),dadosComponente.getString('componente')))
+      componentes.addElement(new Componente(dadosComponente.getInt('codigo'), dadosComponente.getString('componente')))
     }
     dadosComponente.close()
     componentes

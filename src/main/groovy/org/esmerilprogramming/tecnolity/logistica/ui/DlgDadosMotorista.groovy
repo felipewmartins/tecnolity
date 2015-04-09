@@ -15,7 +15,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
   final int IDENTIFICADOR = 20
 
     private Aplicacao aplicacao
-    private Vector veiculos,categorias,estados
+    private Vector veiculos, categorias, estados
     private GridBagLayout gridbag
     private GridBagConstraints gbc
     private Veiculo veiculo = new Veiculo()
@@ -24,19 +24,19 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
     private String validade
 
     private JPanel pnlDadosDespesa
-    private JComboBox cbxVeiculo,cbxCategoria,cbxEstado
-    private JTextField txtMotorista,txtIdentidade,txtOrgaoEmissor,txtCpf,
-            txtHabilitacao,txtValidade,txtLogradouro,txtComplemento,
-            txtBairro,txtCidade,txtCep,txtTelefone,
+    private JComboBox cbxVeiculo, cbxCategoria, cbxEstado
+    private JTextField txtMotorista, txtIdentidade, txtOrgaoEmissor, txtCpf,
+            txtHabilitacao, txtValidade, txtLogradouro, txtComplemento,
+            txtBairro, txtCidade, txtCep, txtTelefone,
             txtCelular
-              private JButton btNovoVeiculo,btNovoEstado
+              private JButton btNovoVeiculo, btNovoEstado
 
               private Container conteudo
               private JPanel pnlAreaDados
               private JButton btConfirmar, btCancelar
 
               DlgDadosMotorista(Aplicacao aplicacao, char modo) {
-                super(aplicacao,true)
+                super(aplicacao, true)
                   motorista = new Motorista()
 
                   this.setTitle("Motorista")
@@ -47,13 +47,12 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               }
 
   DlgDadosMotorista(Aplicacao aplicacao, char modo, int codigo) {
-    super(aplicacao,true)
-      try
-      {
-        motorista = new Motorista(codigo,aplicacao.obterConexao())
+    super(aplicacao, true)
+      try {
+        motorista = new Motorista(codigo, aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar o Motorista.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o Motorista.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     this.codigoMotorista = codigo
@@ -82,52 +81,51 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       pnlAreaDados = new JPanel(gridbag)
 
       JLabel label = new JLabel("Nome Completo")
-      adicionarComponente(pnlAreaDados,label,0,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 2, 1)
 
-      txtMotorista = new JTextField((this.motorista.obterMotorista())==null?"":this.motorista.obterMotorista().trim(),20)
-      adicionarComponente(pnlAreaDados,txtMotorista,1,0,2,1)
+      txtMotorista = new JTextField((this.motorista.obterMotorista())==null?"":this.motorista.obterMotorista().trim(), 20)
+      adicionarComponente(pnlAreaDados, txtMotorista, 1, 0, 2, 1)
 
       label = new JLabel("Veículo")
-      adicionarComponente(pnlAreaDados,label,0,2,2,1)
+      adicionarComponente(pnlAreaDados, label, 0, 2, 2, 1)
 
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
-      try
-      {
+      try {
         veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
           cbxVeiculo = new JComboBox(veiculos)
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos. ","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos. ", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
-    pnlSuporteCombo.add(cbxVeiculo,BorderLayout.CENTER)
+    pnlSuporteCombo.add(cbxVeiculo, BorderLayout.CENTER)
       btNovoVeiculo = new JButton(new ImageIcon("imagens/novo.jpg"))
       btNovoVeiculo.addActionListener(this)
       btNovoVeiculo.setToolTipText("Novo Veículo")
-      btNovoVeiculo.setPreferredSize(new Dimension(22,20))
-      pnlSuporteCombo.add(btNovoVeiculo,BorderLayout.EAST)
-      adicionarComponente(pnlAreaDados,pnlSuporteCombo,1,2,2,1)
+      btNovoVeiculo.setPreferredSize(new Dimension(22, 20))
+      pnlSuporteCombo.add(btNovoVeiculo, BorderLayout.EAST)
+      adicionarComponente(pnlAreaDados, pnlSuporteCombo, 1, 2, 2, 1)
 
       label = new JLabel("Identidade")
-      adicionarComponente(pnlAreaDados,label,2,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 2, 0, 2, 1)
       label = new JLabel("Órgão Emissor")
-      adicionarComponente(pnlAreaDados,label,2,2,1,1)
+      adicionarComponente(pnlAreaDados, label, 2, 2, 1, 1)
       label = new JLabel("CPF")
-      adicionarComponente(pnlAreaDados,label,2,3,1,1)
-      txtIdentidade = new JTextField((this.motorista.obterIdentidade())==null?"":this.motorista.obterIdentidade().trim(),15)
-      adicionarComponente(pnlAreaDados,txtIdentidade,3,0,2,1)
-      txtOrgaoEmissor = new JTextField((this.motorista.obterOrgaoEmissorIdentidade())==null?"":this.motorista.obterOrgaoEmissorIdentidade().trim(),10)
-      adicionarComponente(pnlAreaDados,txtOrgaoEmissor,3,2,1,1)
-      txtCpf = new JTextField((this.motorista.obterCpf())==null?"":this.motorista.obterCpf().trim(),10)
-      adicionarComponente(pnlAreaDados,txtCpf,3,3,1,1)
+      adicionarComponente(pnlAreaDados, label, 2, 3, 1, 1)
+      txtIdentidade = new JTextField((this.motorista.obterIdentidade())==null?"":this.motorista.obterIdentidade().trim(), 15)
+      adicionarComponente(pnlAreaDados, txtIdentidade, 3, 0, 2, 1)
+      txtOrgaoEmissor = new JTextField((this.motorista.obterOrgaoEmissorIdentidade())==null?"":this.motorista.obterOrgaoEmissorIdentidade().trim(), 10)
+      adicionarComponente(pnlAreaDados, txtOrgaoEmissor, 3, 2, 1, 1)
+      txtCpf = new JTextField((this.motorista.obterCpf())==null?"":this.motorista.obterCpf().trim(), 10)
+      adicionarComponente(pnlAreaDados, txtCpf, 3, 3, 1, 1)
 
       label = new JLabel("Categoria")
-      adicionarComponente(pnlAreaDados,label,4,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 4, 0, 2, 1)
       label = new JLabel("Habilitação")
-      adicionarComponente(pnlAreaDados,label,4,2,1,1)
+      adicionarComponente(pnlAreaDados, label, 4, 2, 1, 1)
       label = new JLabel("Data de Validade")
-      adicionarComponente(pnlAreaDados,label,4,3,1,1)
+      adicionarComponente(pnlAreaDados, label, 4, 3, 1, 1)
 
       pnlSuporteCombo = new JPanel(new BorderLayout())
       cbxCategoria = new JComboBox()
@@ -148,68 +146,67 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
         }
       }
     cbxCategoria.setSelectedIndex(indiceCategoria)
-      adicionarComponente(pnlAreaDados,cbxCategoria,5,0,2,1)
+      adicionarComponente(pnlAreaDados, cbxCategoria, 5, 0, 2, 1)
 
-      txtHabilitacao = new JTextField((this.motorista.obterHabilitacao())==null?"":this.motorista.obterHabilitacao().trim(),10)
-      adicionarComponente(pnlAreaDados,txtHabilitacao,5,2,1,1)
-      txtValidade = new JTextField(this.validade,10)
-      adicionarComponente(pnlAreaDados,txtValidade,5,3,1,1)
+      txtHabilitacao = new JTextField((this.motorista.obterHabilitacao())==null?"":this.motorista.obterHabilitacao().trim(), 10)
+      adicionarComponente(pnlAreaDados, txtHabilitacao, 5, 2, 1, 1)
+      txtValidade = new JTextField(this.validade, 10)
+      adicionarComponente(pnlAreaDados, txtValidade, 5, 3, 1, 1)
 
       JPanel pnlContato = new JPanel(gridbag)
       pnlContato.setBorder(new TitledBorder("Contato"))
       label = new JLabel("Logradouro")
-      adicionarComponente(pnlContato,label,0,0,2,1)
+      adicionarComponente(pnlContato, label, 0, 0, 2, 1)
       label = new JLabel("Complemento")
-      adicionarComponente(pnlContato,label,0,2,1,1)
+      adicionarComponente(pnlContato, label, 0, 2, 1, 1)
       label = new JLabel("Bairro")
-      adicionarComponente(pnlContato,label,0,3,1,1)
-      txtLogradouro = new JTextField((this.motorista.obterLogradouro())==null?"":this.motorista.obterLogradouro().trim(),20)
-      adicionarComponente(pnlContato,txtLogradouro,1,0,2,1)
-      txtComplemento = new JTextField((this.motorista.obterComplemento())==null?"":this.motorista.obterComplemento().trim(),10)
-      adicionarComponente(pnlContato,txtComplemento,1,2,1,1)
-      txtBairro = new JTextField((this.motorista.obterBairro())==null?"":this.motorista.obterBairro().trim(),10)
-      adicionarComponente(pnlContato,txtBairro,1,3,1,1)
+      adicionarComponente(pnlContato, label, 0, 3, 1, 1)
+      txtLogradouro = new JTextField((this.motorista.obterLogradouro())==null?"":this.motorista.obterLogradouro().trim(), 20)
+      adicionarComponente(pnlContato, txtLogradouro, 1, 0, 2, 1)
+      txtComplemento = new JTextField((this.motorista.obterComplemento())==null?"":this.motorista.obterComplemento().trim(), 10)
+      adicionarComponente(pnlContato, txtComplemento, 1, 2, 1, 1)
+      txtBairro = new JTextField((this.motorista.obterBairro())==null?"":this.motorista.obterBairro().trim(), 10)
+      adicionarComponente(pnlContato, txtBairro, 1, 3, 1, 1)
 
       label = new JLabel("Cidade")
-      adicionarComponente(pnlContato,label,2,0,1,1)
+      adicionarComponente(pnlContato, label, 2, 0, 1, 1)
       label = new JLabel("Estado")
-      adicionarComponente(pnlContato,label,2,1,2,1)
+      adicionarComponente(pnlContato, label, 2, 1, 2, 1)
       label = new JLabel("CEP")
-      adicionarComponente(pnlContato,label,2,3,1,1)
-      txtCidade = new JTextField((this.motorista.obterCidade())==null?"":this.motorista.obterCidade().trim(),10)
-      adicionarComponente(pnlContato,txtCidade,3,0,1,1)
+      adicionarComponente(pnlContato, label, 2, 3, 1, 1)
+      txtCidade = new JTextField((this.motorista.obterCidade())==null?"":this.motorista.obterCidade().trim(), 10)
+      adicionarComponente(pnlContato, txtCidade, 3, 0, 1, 1)
       pnlSuporteCombo = new JPanel(new BorderLayout())
       cbxEstado = new JComboBox()
-      try
-      {
-        estados = Estado.carregarEstados("BRA",aplicacao.obterConexao())
+      try {
+        estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
           carregarEstados()
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
-    pnlSuporteCombo.add(cbxEstado,BorderLayout.CENTER)
+    pnlSuporteCombo.add(cbxEstado, BorderLayout.CENTER)
       btNovoEstado = new JButton(new ImageIcon("imagens/novo.jpg"))
       btNovoEstado.addActionListener(this)
       btNovoEstado.setToolTipText("Novo Estado")
-      btNovoEstado.setPreferredSize(new Dimension(22,20))
-      pnlSuporteCombo.add(btNovoEstado,BorderLayout.EAST)
-      adicionarComponente(pnlContato,pnlSuporteCombo,3,1,2,1)
-      txtCep = new JTextField((this.motorista.obterCep())==null?"":this.motorista.obterCep().trim(),8)
-      adicionarComponente(pnlContato,txtCep,3,3,1,1)
+      btNovoEstado.setPreferredSize(new Dimension(22, 20))
+      pnlSuporteCombo.add(btNovoEstado, BorderLayout.EAST)
+      adicionarComponente(pnlContato, pnlSuporteCombo, 3, 1, 2, 1)
+      txtCep = new JTextField((this.motorista.obterCep())==null?"":this.motorista.obterCep().trim(), 8)
+      adicionarComponente(pnlContato, txtCep, 3, 3, 1, 1)
 
       label = new JLabel("Telefone")
-      adicionarComponente(pnlContato,label,4,0,1,1)
+      adicionarComponente(pnlContato, label, 4, 0, 1, 1)
       label = new JLabel("Celular")
-      adicionarComponente(pnlContato,label,4,1,1,1)
-      txtTelefone = new JTextField((this.motorista.obterTelefone())==null?"":this.motorista.obterTelefone().trim(),8)
-      adicionarComponente(pnlContato,txtTelefone,5,0,1,1)
-      txtCelular = new JTextField((this.motorista.obterCelular())==null?"":this.motorista.obterCelular().trim(),8)
-      adicionarComponente(pnlContato,txtCelular,5,1,1,1)
+      adicionarComponente(pnlContato, label, 4, 1, 1, 1)
+      txtTelefone = new JTextField((this.motorista.obterTelefone())==null?"":this.motorista.obterTelefone().trim(), 8)
+      adicionarComponente(pnlContato, txtTelefone, 5, 0, 1, 1)
+      txtCelular = new JTextField((this.motorista.obterCelular())==null?"":this.motorista.obterCelular().trim(), 8)
+      adicionarComponente(pnlContato, txtCelular, 5, 1, 1, 1)
 
-      adicionarComponente(pnlAreaDados,pnlContato,6,0,4,1)
+      adicionarComponente(pnlAreaDados, pnlContato, 6, 0, 4, 1)
 
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
@@ -241,7 +238,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -267,15 +264,14 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
     Object objeto = actionEvent.getSource()
 
       if(objeto == btNovoEstado) {
-        DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao,'I')
+        DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao, 'I')
           dlgDadosEstado.setVisible(true)
-          try
-          {
-            estados = Estado.carregarEstados("BRA",aplicacao.obterConexao())
+          try {
+            estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
               carregarEstados()
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Estados","Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -283,13 +279,12 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
     if(objeto == btNovoVeiculo) {
       DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao)
         dlgDadosVeiculo.setVisible(true)
-        try
-        {
+        try {
           veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
             carregarVeiculos()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos","Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -301,8 +296,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
     if(objeto == btConfirmar) {
       if(motorista == null) {
         boolean confirmado = true
-          try
-          {
+          try {
             motorista.definirMotorista(this.txtMotorista.getText())
               motorista.definirPlaca(((Veiculo)veiculos.get(this.cbxVeiculo.getSelectedIndex()))==null?"":((Veiculo)veiculos.get(this.cbxVeiculo.getSelectedIndex())).obterPlaca())
               motorista.definirIdentidade(this.txtIdentidade.getText())
@@ -321,17 +315,16 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirCelular(this.txtCelular.getText())
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
         }
         if(confirmado) {
-          try
-          {
+          try {
             this.motorista.cadastrarMotorista()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
           this.setVisible(false)
@@ -340,8 +333,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       else
       {
         boolean confirmado = true
-          try
-          {
+          try {
             motorista.definirCodigo(this.codigoMotorista)
               motorista.definirPlaca(((Veiculo)veiculos.get(this.cbxVeiculo.getSelectedIndex())).obterPlaca())
               motorista.definirMotorista(this.txtMotorista.getText())
@@ -361,17 +353,16 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirCelular(this.txtCelular.getText())
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
         }
         if(confirmado) {
-          try
-          {
+          try {
             this.motorista.alterarMotorista()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
           this.setVisible(false)

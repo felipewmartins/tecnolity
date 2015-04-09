@@ -13,8 +13,7 @@ class Transportadora {
 
   Transportadora(int codigo, String transportadora) {
     this.definirCodigo(codigo)
-      try
-      {
+      try {
         this.definirTransportadora(transportadora)
       }
     catch(Exception e) {
@@ -23,8 +22,7 @@ class Transportadora {
   }
 
   Transportadora(String transportadora) {
-    try
-    {
+    try {
       this.definirTransportadora(transportadora)
     }
     catch(Exception e) {
@@ -40,8 +38,7 @@ class Transportadora {
       dadosTransportadora = conexao.executarConsulta("select * from transportadora where codigo = "+ this.codigo +" ")
 
       if(dadosTransportadora.next()) {
-        try
-        {
+        try {
           this.definirTransportadora(dadosTransportadora.getString("transportadora"))
         }
         catch(Exception e) {
@@ -69,7 +66,7 @@ class Transportadora {
       transportadoras = new Vector()
       transportadoras.addElement("Selecione...")
       while(dadosTransportadora.next()) {
-        transportadoras.addElement(new Transportadora(dadosTransportadora.getInt("codigo"),dadosTransportadora.getString("transportadora")))
+        transportadoras.addElement(new Transportadora(dadosTransportadora.getInt("codigo"), dadosTransportadora.getString("transportadora")))
       }
     dadosTransportadora.close()
       return transportadoras

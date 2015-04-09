@@ -16,7 +16,7 @@ class Impressora
   void addPaginas(Vector paginas, PageFormat formato) {
     numeroPaginas = paginas.size()
       for(int i = 0;i < numeroPaginas;i++) {
-        livro.append((Pagina)paginas.get(i),formato)
+        livro.append((Pagina)paginas.get(i), formato)
       }
   }
 

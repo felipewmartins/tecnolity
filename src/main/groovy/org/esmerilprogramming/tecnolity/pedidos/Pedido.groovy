@@ -104,7 +104,7 @@ class Pedido {
 
    void definirDataEmissao(String dataEmissao) throws Exception
   {
-    if(dataEmissao.equals("") || !Calendario.validarData(dataEmissao,"/")) {
+    if(dataEmissao.equals("") || !Calendario.validarData(dataEmissao, "/")) {
       Exception e = new Exception("A Data de Emissão não foi informada.")
       throw e
     }
@@ -114,7 +114,7 @@ class Pedido {
    void definirDataEntrega(String dataEntrega) throws Exception
   {
     if(!dataEntrega.equals("") && dataEntrega != null) {
-      if(!Calendario.compararData(dataEntrega,this.dataEmissao,"/")) {
+      if(!Calendario.compararData(dataEntrega, this.dataEmissao, "/")) {
         Exception e = new Exception("A Data de Emissão deve ser menor que a Data de Entrega")
         throw e
       }
@@ -187,7 +187,7 @@ class Pedido {
    */
   private void importarRegistro() throws Exception
   {
-    String cnpjCliente,anteriorOrdemCompra, proximaOrdemCompra, remessa, dataEmissao, tipoOperacao, 
+    String cnpjCliente, anteriorOrdemCompra, proximaOrdemCompra, remessa, dataEmissao, tipoOperacao, 
            dataEntrega, localEntrega, fabrica, codigoProduto, unidadeMedida,
            moeda, condicaoPagamento, drawback, observacao, cnpjFornecedor,
            sequencia, transferenciaICMS, quantidade, precoUnitario, resumo
@@ -197,31 +197,31 @@ class Pedido {
     if(conexao.abrirConexao()) {
       anteriorOrdemCompra = ""
       for(int i = 0; i < registros.length; i++) {
-        cnpjCliente = registros[i].substring(0,14).trim()
-        proximaOrdemCompra = registros[i].substring(14,24).trim()
-        sequencia = registros[i].substring(24,26).trim()
-        remessa = registros[i].substring(26,32).trim()
-        dataEmissao = registros[i].substring(32,40).trim()
-        tipoOperacao = registros[i].substring(40,41).trim()
-        dataEntrega = registros[i].substring(41,49).trim()
-        localEntrega = registros[i].substring(49,51).trim()
-        fabrica = registros[i].substring(51,55).trim()
-        codigoProduto = registros[i].substring(55,70).trim()
-        quantidade = registros[i].substring(70,79).trim()
-        unidadeMedida = registros[i].substring(79,82).trim()
-        transferenciaICMS = registros[i].substring(82,85).trim()
-        precoUnitario = registros[i].substring(85,99).trim()
-        moeda = registros[i].substring(99,102).trim()
-        condicaoPagamento = registros[i].substring(102,117).trim()
-        drawback = registros[i].substring(117,118).trim()
-        observacao = registros[i].substring(118,179).trim()
-        cnpjFornecedor = registros[i].substring(179,192).trim()
+        cnpjCliente = registros[i].substring(0, 14).trim()
+        proximaOrdemCompra = registros[i].substring(14, 24).trim()
+        sequencia = registros[i].substring(24, 26).trim()
+        remessa = registros[i].substring(26, 32).trim()
+        dataEmissao = registros[i].substring(32, 40).trim()
+        tipoOperacao = registros[i].substring(40, 41).trim()
+        dataEntrega = registros[i].substring(41, 49).trim()
+        localEntrega = registros[i].substring(49, 51).trim()
+        fabrica = registros[i].substring(51, 55).trim()
+        codigoProduto = registros[i].substring(55, 70).trim()
+        quantidade = registros[i].substring(70, 79).trim()
+        unidadeMedida = registros[i].substring(79, 82).trim()
+        transferenciaICMS = registros[i].substring(82, 85).trim()
+        precoUnitario = registros[i].substring(85, 99).trim()
+        moeda = registros[i].substring(99, 102).trim()
+        condicaoPagamento = registros[i].substring(102, 117).trim()
+        drawback = registros[i].substring(117, 118).trim()
+        observacao = registros[i].substring(118, 179).trim()
+        cnpjFornecedor = registros[i].substring(179, 192).trim()
         resumo = registros[i].substring(192).trim()
 
         if(true) {
           /*Verifica a existência do cliente no sistema.*/
           if(!clienteVerificado) {
-            ResultSet cliente = conexao.executarConsulta("select codigo,cnpj from cliente where cnpj = '"+ cnpjCliente +"'") 
+            ResultSet cliente = conexao.executarConsulta("select codigo, cnpj from cliente where cnpj = '"+ cnpjCliente +"'") 
             if(cliente.next()) {
               codigoCliente = cliente.getInt("codigo")
             }
@@ -245,8 +245,8 @@ class Pedido {
             }
             pedidoCliente.close()
             /* Cria o novo pedido no banco de dados */
-            conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao,ordem_compra,cliente,local_entrega,sequencia,data_emissao,data_entrega,status,moeda,esteira_cliente,remessa,drawback) " +
-                "values ('"+ tipoOperacao +"','"+ proximaOrdemCompra +"',"+ codigoCliente +","+ localEntrega +","+ Integer.parseInt(sequencia) +",'"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEmissao,"/"),"/") +"','"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEntrega,"/"),"/") +"','PD','"+ moeda +"','"+ fabrica +"','"+ remessa +"','"+ drawback +"')")
+            conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao, ordem_compra, cliente, local_entrega, sequencia, data_emissao, data_entrega, status, moeda, esteira_cliente, remessa, drawback) " +
+                "values ('"+ tipoOperacao +"', '"+ proximaOrdemCompra +"', "+ codigoCliente +", "+ localEntrega +", "+ Integer.parseInt(sequencia) +", '"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEmissao, "/"), "/") +"', '"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEntrega, "/"), "/") +"', 'PD', '"+ moeda +"', '"+ fabrica +"', '"+ remessa +"', '"+ drawback +"')")
 
             /* Obtém o código do pedido para realizar integridade */
             pedidoCliente = conexao.executarConsulta("select codigo from pedido_cliente where tipo_operacao = '"+ tipoOperacao +"' and ordem_compra = '"+ proximaOrdemCompra +"' and cliente = "+ codigoCliente)
@@ -265,8 +265,8 @@ class Pedido {
               codigoModelo = modelos.getInt("codigo")
 
               /* Cadastra o pedido do produto no banco de dados */
-              conexao.executarAtualizacao("insert into modelo_pedido (pedido,modelo,quantidade,observacao,transferencia_icms,valor_negociado,moeda,resumo) values " + 
-                  "("+ codigoPedido +","+ codigoModelo +","+ Numero.separarInteiroDecimal(quantidade,3) +",'"+ observacao +"',"+ transferenciaICMS +","+ Numero.separarInteiroDecimal(precoUnitario,2) +",'"+ moeda +"','"+ resumo +"')")
+              conexao.executarAtualizacao("insert into modelo_pedido (pedido, modelo, quantidade, observacao, transferencia_icms, valor_negociado, moeda, resumo) values " + 
+                  "("+ codigoPedido +", "+ codigoModelo +", "+ Numero.separarInteiroDecimal(quantidade, 3) +", '"+ observacao +"', "+ transferenciaICMS +", "+ Numero.separarInteiroDecimal(precoUnitario, 2) +", '"+ moeda +"', '"+ resumo +"')")
             }
             else
             {
@@ -295,13 +295,13 @@ class Pedido {
   {
     Conexao conexao = new Conexao('T')
     if(conexao.abrirConexao()) {
-      conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao,ordem_compra,cliente,local_entrega,data_emissao,data_entrega,status,esteira_cliente,observacao) " + 
-          "values ('"+ this.tipoOperacao +"','"+ this.ordemCompra +"',"+ this.cliente.obterCodigo() +","+ this.localEntrega.obterCodigo() +",'"+ Calendario.inverterFormato(this.dataEmissao,"/") +"','"+ Calendario.inverterFormato(this.dataEntrega,"/") +"','"+ Pedido.PENDENTE +"','"+ this.esteira +"','"+ this.observacao +"')")
+      conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao, ordem_compra, cliente, local_entrega, data_emissao, data_entrega, status, esteira_cliente, observacao) " + 
+          "values ('"+ this.tipoOperacao +"', '"+ this.ordemCompra +"', "+ this.cliente.obterCodigo() +", "+ this.localEntrega.obterCodigo() +", '"+ Calendario.inverterFormato(this.dataEmissao, "/") +"', '"+ Calendario.inverterFormato(this.dataEntrega, "/") +"', '"+ Pedido.PENDENTE +"', '"+ this.esteira +"', '"+ this.observacao +"')")
       ResultSet pedidoInserido = conexao.executarConsulta("select codigo from pedido_cliente where tipo_operacao = '"+ this.tipoOperacao +"' and ordem_compra = '"+ this.ordemCompra +"' and cliente = " + this.cliente.obterCodigo())
       if(pedidoInserido.next()) {
         this.codigo = pedidoInserido.getLong("codigo")
       }
-      conexao.executarAtualizacao("insert into historico_status_pedido values ("+ this.codigo +",'"+ Pedido.PENDENTE +"',getdate())")
+      conexao.executarAtualizacao("insert into historico_status_pedido values ("+ this.codigo +", '"+ Pedido.PENDENTE +"', getdate())")
       pedidoInserido.close()
       conexao.fecharConexao()
     }
@@ -311,9 +311,9 @@ class Pedido {
   {
     Conexao conexao = new Conexao('T')
     if(conexao.abrirConexao()) {
-      conexao.executarAtualizacao("update pedido_cliente set tipo_operacao = '"+ this.tipoOperacao +"', ordem_compra = '"+ this.ordemCompra +"',cliente = "+ this.cliente.obterCodigo() +
-          ",local_entrega = "+ this.localEntrega.obterCodigo() +",data_emissao = '"+ Calendario.inverterFormato(this.dataEmissao,"/") +
-          "',data_entrega = '"+ Calendario.inverterFormato(this.dataEntrega,"/") +"',esteira_cliente = '"+ this.esteira +"',observacao = '"+ this.observacao +
+      conexao.executarAtualizacao("update pedido_cliente set tipo_operacao = '"+ this.tipoOperacao +"', ordem_compra = '"+ this.ordemCompra +"', cliente = "+ this.cliente.obterCodigo() +
+          ", local_entrega = "+ this.localEntrega.obterCodigo() +", data_emissao = '"+ Calendario.inverterFormato(this.dataEmissao, "/") +
+          "', data_entrega = '"+ Calendario.inverterFormato(this.dataEntrega, "/") +"', esteira_cliente = '"+ this.esteira +"', observacao = '"+ this.observacao +
           "' where codigo = " + this.codigo)
       conexao.fecharConexao()
     }
@@ -328,7 +328,7 @@ class Pedido {
       if(rsStatus.next())
         conexao.executarAtualizacao("update historico_status_pedido set data = getdate() where pedido = "+ this.codigo + " and status = '"+ this.status +"'")
       else
-        conexao.executarAtualizacao("insert into historico_status_pedido values ("+ this.codigo +",'"+ this.status +"',getdate())")
+        conexao.executarAtualizacao("insert into historico_status_pedido values ("+ this.codigo +", '"+ this.status +"', getdate())")
       conexao.fecharConexao()
     }
   }
@@ -366,8 +366,8 @@ class Pedido {
         }
         else
         {
-          query = "insert into modelo_pedido (pedido,modelo,referencia,numero_sola,quantidade,observacao,transferencia_icms,valor_negociado,moeda) " + 
-            "values ("+ this.codigo +","+ produtoPedido.obterProduto().obterCodigo() +",'"+ produtoPedido.obterMatriz().obterReferencia() +"',"+ produtoPedido.obterMatriz().obterNumeroSola() +","+ produtoPedido.obterQuantidade() +",'"+ produtoPedido.obterObservacao() +"',"+ produtoPedido.obterTransferenciaICMS() +","+ produtoPedido.obterValorNegociado() +",'"+ produtoPedido.obterMoeda() +"')"
+          query = "insert into modelo_pedido (pedido, modelo, referencia, numero_sola, quantidade, observacao, transferencia_icms, valor_negociado, moeda) " + 
+            "values ("+ this.codigo +", "+ produtoPedido.obterProduto().obterCodigo() +", '"+ produtoPedido.obterMatriz().obterReferencia() +"', "+ produtoPedido.obterMatriz().obterNumeroSola() +", "+ produtoPedido.obterQuantidade() +", '"+ produtoPedido.obterObservacao() +"', "+ produtoPedido.obterTransferenciaICMS() +", "+ produtoPedido.obterValorNegociado() +", '"+ produtoPedido.obterMoeda() +"')"
           conexao.executarAtualizacao(query)
         }
         rsProdutoPedido.close()
@@ -380,23 +380,22 @@ class Pedido {
     String query = "select c.codigo as codigo_cliente, c.razao_social , pc.tipo_operacao, pc.ordem_compra, pc.data_emissao, pc.data_entrega, le.codigo_local, le.descricao_local, le.logradouro, le.complemento, le.bairro, le.cidade, le.estado, le.cep, le.telefone, le.responsavel_recebimento, pc.esteira_cliente, pc.observacao " +
       "from pedido_cliente pc, cliente c, local_entrega le " +
       "where pc.cliente = c.codigo and c.codigo = le.cliente and pc.local_entrega = le.codigo_local and pc.codigo =" + this.obterCodigo()
-    try
-    {
+    try {
       ResultSet rsPedido = conexao.executarConsulta(query)
       if(rsPedido.next()) {
-        this.definirCliente(new Cliente(rsPedido.getLong("codigo_cliente"),rsPedido.getString("razao_social")))
+        this.definirCliente(new Cliente(rsPedido.getLong("codigo_cliente"), rsPedido.getString("razao_social")))
         this.definirTipoOperacao(rsPedido.getString("tipo_operacao").charAt(0))
         this.definirOrdemCompra(rsPedido.getString("ordem_compra"))
         this.definirDataEmissao(Calendario.ajustarFormatoDataBanco(rsPedido.getString("data_emissao")))
         this.definirDataEntrega(Calendario.ajustarFormatoDataBanco(rsPedido.getString("data_entrega")))
-        this.definirLocalEntrega(new LocalEntrega(this.cliente,rsPedido.getString("descricao_local"),rsPedido.getString("logradouro"),rsPedido.getString("complemento"),rsPedido.getString("bairro"),rsPedido.getString("cidade"),new Estado(rsPedido.getString("estado")),rsPedido.getString("cep"),rsPedido.getString("telefone"),rsPedido.getString("responsavel_recebimento")))
+        this.definirLocalEntrega(new LocalEntrega(this.cliente, rsPedido.getString("descricao_local"), rsPedido.getString("logradouro"), rsPedido.getString("complemento"), rsPedido.getString("bairro"), rsPedido.getString("cidade"), new Estado(rsPedido.getString("estado")), rsPedido.getString("cep"), rsPedido.getString("telefone"), rsPedido.getString("responsavel_recebimento")))
         this.definirEsteira(rsPedido.getString("esteira_cliente"))
         this.definirObservacao(rsPedido.getString("observacao"))
         rsPedido.close()
         rsPedido = null
       }
 
-      query = "select mp.modelo as codigo_modelo,m.referencia_cliente, m.modelo, mp.referencia, mp.numero_sola,mp.quantidade, mp.transferencia_icms, mp.moeda, m.valor, mp.observacao " +
+      query = "select mp.modelo as codigo_modelo, m.referencia_cliente, m.modelo, mp.referencia, mp.numero_sola, mp.quantidade, mp.transferencia_icms, mp.moeda, m.valor, mp.observacao " +
         "from modelo_pedido mp, modelo m, matriz_modelo mm " +
         "where mp.modelo = m.codigo and mp.referencia = mm.referencia and mp.numero_sola = mm.numero_sola and mp.pedido = " + this.codigo + " " +
         "order by mm.referencia, mp.modelo asc"
@@ -404,8 +403,8 @@ class Pedido {
       produtosPedido = new Vector()
       while(rsModeloPedido.next()) {
         ProdutoPedido produtoPedido = new ProdutoPedido(this,
-            new Produto(rsModeloPedido.getInt("codigo_modelo"),rsModeloPedido.getString("referencia_cliente"),rsModeloPedido.getString("modelo")),
-            new Matriz(rsModeloPedido.getString("referencia"),rsModeloPedido.getInt("numero_sola")),
+            new Produto(rsModeloPedido.getInt("codigo_modelo"), rsModeloPedido.getString("referencia_cliente"), rsModeloPedido.getString("modelo")),
+            new Matriz(rsModeloPedido.getString("referencia"), rsModeloPedido.getInt("numero_sola")),
             rsModeloPedido.getFloat("quantidade"),
             rsModeloPedido.getInt("transferencia_icms"),
             rsModeloPedido.getString("moeda"), 
@@ -431,10 +430,10 @@ class Pedido {
   {
     ResultSet dadosPedido
     Vector pedidos = new Vector()
-    dadosPedido = conexao.executarConsulta("select codigo,ordem_compra from pedido_cliente where status <> '"+ Pedido.CANCELADO +"' and status <> '"+ Pedido.FINALIZADO +"' order by codigo asc")
+    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status <> '"+ Pedido.CANCELADO +"' and status <> '"+ Pedido.FINALIZADO +"' order by codigo asc")
     pedidos.addElement("Selecione...")
     while(dadosPedido.next()) {
-      pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"),dadosPedido.getString("ordem_compra")))
+      pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"), dadosPedido.getString("ordem_compra")))
     }
     dadosPedido.close()
     return pedidos
@@ -444,9 +443,9 @@ class Pedido {
   {
     ResultSet dadosPedido
     Vector pedidos = new Vector()
-    dadosPedido = conexao.executarConsulta("select codigo,ordem_compra from pedido_cliente where status = '"+ Pedido.PENDENTE +"' order by codigo asc")
+    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status = '"+ Pedido.PENDENTE +"' order by codigo asc")
     while(dadosPedido.next()) {
-      pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"),dadosPedido.getString("ordem_compra")))
+      pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"), dadosPedido.getString("ordem_compra")))
     }
     dadosPedido.close()
     return pedidos
@@ -456,9 +455,9 @@ class Pedido {
   {
     ResultSet dadosPedido
     Vector pedidos = new Vector()
-    dadosPedido = conexao.executarConsulta("select codigo,ordem_compra from pedido_cliente where status = '"+ Pedido.PRODUZINDO +"' order by codigo asc")
+    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status = '"+ Pedido.PRODUZINDO +"' order by codigo asc")
     while(dadosPedido.next()) {
-      pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"),dadosPedido.getString("ordem_compra")))
+      pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"), dadosPedido.getString("ordem_compra")))
     }
     dadosPedido.close()
     return pedidos
@@ -476,10 +475,10 @@ class Pedido {
   static String[][] carregarRecursosPedido(Conexao conexao, Pedido pedido) throws Exception
   {
     String[][] dadosRecursos = new String[40][6]
-    String query = "select i.codigo,i.descricao,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria "+
+    String query = "select i.codigo, i.descricao, (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria "+
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp "+
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and mp.pedido = " + pedido.obterCodigo() + " " +
-      "group by i.codigo,i.descricao,i.quantidade,i.percentual_perda"
+      "group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
     ResultSet rsItensPedido = conexao.executarConsulta(query)
     ResultSet rsItensRequisitados
     ResultSet rsItensDisponiveis
@@ -495,7 +494,7 @@ class Pedido {
       if(rsItensRequisitados.next()) {
         float quantidade = rsItensRequisitados.getFloat("quantidade")
         dadosRecursos[linha][2] = "" + Numero.inverterSeparador(quantidade)
-        dadosRecursos[linha][3] = "" + Numero.formatarValorNumerico(((quantidade * 100)/necessario),2,",") + "%"
+        dadosRecursos[linha][3] = "" + Numero.formatarValorNumerico(((quantidade * 100)/necessario), 2, ", ") + "%"
         rsItensRequisitados.close()
       }
       query = "select i.codigo, i.descricao, sum(mi.quantidade) as quantidade " +
@@ -506,7 +505,7 @@ class Pedido {
       if(rsItensDisponiveis.next()) {
         float quantidade = rsItensDisponiveis.getFloat("quantidade")
         dadosRecursos[linha][4] = "" + Numero.inverterSeparador(quantidade)
-        dadosRecursos[linha][5] = "" + Numero.formatarValorNumerico(((quantidade * 100)/necessario),2,",") + "%"
+        dadosRecursos[linha][5] = "" + Numero.formatarValorNumerico(((quantidade * 100)/necessario), 2, ", ") + "%"
         rsItensDisponiveis.close()
       }
       linha++
@@ -521,7 +520,7 @@ class Pedido {
     Vector historico = new Vector()
     rsHistorico = conexao.executarConsulta("select * from historico_status_pedido where pedido = "+ this.obterCodigo() +" order by status")
     while(rsHistorico.next()) {
-      historico.addElement(new RegistroHistoricoStatusPedido(rsHistorico.getString("status"),rsHistorico.getString("data")))
+      historico.addElement(new RegistroHistoricoStatusPedido(rsHistorico.getString("status"), rsHistorico.getString("data")))
     }
     rsHistorico.close()
     return historico

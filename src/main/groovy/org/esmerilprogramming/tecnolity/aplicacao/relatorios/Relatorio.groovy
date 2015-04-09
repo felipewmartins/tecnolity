@@ -19,7 +19,7 @@ class Relatorio
             for(int i = 0;i < totalLinhasPagina;i++) {
               posicaoFimLinha = conteudoAImprimir.indexOf("\n")
                 if(posicaoFimLinha >= 0) {
-                  linha = conteudoAImprimir.substring(0,posicaoFimLinha + 1)
+                  linha = conteudoAImprimir.substring(0, posicaoFimLinha + 1)
                     conteudoAImprimir = (conteudoAImprimir.length() > 1?conteudoAImprimir.substring(posicaoFimLinha + 1):"")
                 }
                 else

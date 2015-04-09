@@ -98,7 +98,7 @@ class RequisicaoInterna
   {
     String erro = ""
       if(!dataLimiteEntrega.equals("")) {
-        if(Calendario.validarData(dataLimiteEntrega,"/")) {
+        if(Calendario.validarData(dataLimiteEntrega, "/")) {
           this.dataLimiteEntrega = dataLimiteEntrega
         }
         else
@@ -118,7 +118,7 @@ class RequisicaoInterna
     String erro = ""
       if(data.equals(""))
         erro = "A Data não foi informada."
-      else if(!Calendario.validarData(data,"/"))
+      else if(!Calendario.validarData(data, "/"))
         erro = "Data inválida."
           if(!erro.equals("")) {
             Exception e = new Exception(erro)
@@ -285,8 +285,8 @@ class RequisicaoInterna
         this.definirTipoSolicitacao(dadosRequisicaoInterna.getString("tipo_solicitacao"))
           this.definirDataLimiteEntrega(dadosRequisicaoInterna.getString("datahora_limite_entrega"))
           this.definirData(dadosRequisicaoInterna.getString("datahora"))
-          this.definirDepartamento(new Departamento(dadosRequisicaoInterna.getInt("codigo_departamento"),dadosRequisicaoInterna.getString("departamento")))
-          this.definirSolicitante(new Colaborador(dadosRequisicaoInterna.getString("usuario"),dadosRequisicaoInterna.getString("nome_completo"),"-"))
+          this.definirDepartamento(new Departamento(dadosRequisicaoInterna.getInt("codigo_departamento"), dadosRequisicaoInterna.getString("departamento")))
+          this.definirSolicitante(new Colaborador(dadosRequisicaoInterna.getString("usuario"), dadosRequisicaoInterna.getString("nome_completo"), "-"))
           this.definirPedidoCliente(new Pedido(dadosRequisicaoInterna.getInt("pedido_cliente")))
           this.definirJustificativa(dadosRequisicaoInterna.getString("justificativa"))
           this.definirResponsavelAutorizacao(new Colaborador(dadosRequisicaoInterna.getString("responsavel_autorizacao")))
@@ -309,15 +309,15 @@ class RequisicaoInterna
     Vector requisicoesInternas = new Vector()
       ResultSet dadosRequisicaoInterna
       requisicoesInternas.addElement("Selecione...")
-      String query = "select ri.codigo,ri.datahora, ri.datahora_limite_entrega, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, pc.ordem_compra, ri.justificativa, ri.status from requisicao_interna ri, departamento d, usuario u, pedido_cliente pc where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.tipo_solicitacao = '"+ tipoSolicitacao +"' and (ri.status = '"+ STATUS_EMITIDO +"' or ri.status = '"+ STATUS_PENDENTE +"') and ri.pedido_cliente *= pc.codigo order by datahora_limite_entrega desc"
+      String query = "select ri.codigo, ri.datahora, ri.datahora_limite_entrega, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, pc.ordem_compra, ri.justificativa, ri.status from requisicao_interna ri, departamento d, usuario u, pedido_cliente pc where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.tipo_solicitacao = '"+ tipoSolicitacao +"' and (ri.status = '"+ STATUS_EMITIDO +"' or ri.status = '"+ STATUS_PENDENTE +"') and ri.pedido_cliente *= pc.codigo order by datahora_limite_entrega desc"
       dadosRequisicaoInterna = conexao.executarConsulta(query)
       while(dadosRequisicaoInterna.next()) {
         requisicoesInternas.addElement(new RequisicaoInterna(dadosRequisicaoInterna.getInt("codigo"),
               Calendario.ajustarFormatoDataBanco(dadosRequisicaoInterna.getString("datahora")),
               Calendario.ajustarFormatoDataBanco(dadosRequisicaoInterna.getString("datahora_limite_entrega")),
-              new Departamento(dadosRequisicaoInterna.getInt("codigo_departamento"),dadosRequisicaoInterna.getString("departamento")),
-              new Colaborador(dadosRequisicaoInterna.getString("usuario"),dadosRequisicaoInterna.getString("nome_completo"),""),
-              new Pedido(dadosRequisicaoInterna.getInt("pedido_cliente"),dadosRequisicaoInterna.getString("ordem_compra")),
+              new Departamento(dadosRequisicaoInterna.getInt("codigo_departamento"), dadosRequisicaoInterna.getString("departamento")),
+              new Colaborador(dadosRequisicaoInterna.getString("usuario"), dadosRequisicaoInterna.getString("nome_completo"), ""),
+              new Pedido(dadosRequisicaoInterna.getInt("pedido_cliente"), dadosRequisicaoInterna.getString("ordem_compra")),
               dadosRequisicaoInterna.getString("justificativa"),
               dadosRequisicaoInterna.getString("status")))
       }
@@ -329,7 +329,7 @@ class RequisicaoInterna
   {
     itensRequisicaoInterna = new Vector()
       ResultSet rsItensRequisicaoInterna
-      String query = "select i.codigo as codigo_item,i.descricao as descricao_item,iri.requisicao_interna,iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status " +
+      String query = "select i.codigo as codigo_item, i.descricao as descricao_item, iri.requisicao_interna, iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status " +
       "from item_requisicao_interna iri, item i, departamento d " +
       "where i.codigo = iri.item and " +
       "iri.destino = d.codigo and " +
@@ -337,10 +337,10 @@ class RequisicaoInterna
       "iri.requisicao_interna = " + this.obterCodigo()
       rsItensRequisicaoInterna = conexao.executarConsulta(query)
       while(rsItensRequisicaoInterna.next()) {
-        itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(rsItensRequisicaoInterna.getInt("codigo_item"),rsItensRequisicaoInterna.getString("descricao_item")),
+        itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(rsItensRequisicaoInterna.getInt("codigo_item"), rsItensRequisicaoInterna.getString("descricao_item")),
               this,
               rsItensRequisicaoInterna.getFloat("quantidade"),
-              new Departamento(rsItensRequisicaoInterna.getInt("codigo_departamento"),rsItensRequisicaoInterna.getString("departamento")),
+              new Departamento(rsItensRequisicaoInterna.getInt("codigo_departamento"), rsItensRequisicaoInterna.getString("departamento")),
               rsItensRequisicaoInterna.getString("status")))
       }
     return itensRequisicaoInterna
@@ -352,7 +352,7 @@ class RequisicaoInterna
   {
     itensRequisicaoInterna = new Vector()
       ResultSet rsItensRequisicaoInterna
-      String query = "select i.codigo as codigo_item,i.descricao as descricao_item,iri.requisicao_interna,iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status " +
+      String query = "select i.codigo as codigo_item, i.descricao as descricao_item, iri.requisicao_interna, iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status " +
       "from item_requisicao_interna iri, item i, departamento d " +
       "where i.codigo = iri.item and " +
       "iri.destino = d.codigo and " +
@@ -361,10 +361,10 @@ class RequisicaoInterna
 
       rsItensRequisicaoInterna = conexao.executarConsulta(query)
       while(rsItensRequisicaoInterna.next()) {
-        itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(rsItensRequisicaoInterna.getInt("codigo_item"),rsItensRequisicaoInterna.getString("descricao_item")),
+        itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(rsItensRequisicaoInterna.getInt("codigo_item"), rsItensRequisicaoInterna.getString("descricao_item")),
               this,
               rsItensRequisicaoInterna.getFloat("quantidade"),
-              new Departamento(rsItensRequisicaoInterna.getInt("codigo_departamento"),rsItensRequisicaoInterna.getString("departamento")),
+              new Departamento(rsItensRequisicaoInterna.getInt("codigo_departamento"), rsItensRequisicaoInterna.getString("departamento")),
               rsItensRequisicaoInterna.getString("status")))
       }
     return itensRequisicaoInterna
@@ -372,17 +372,17 @@ class RequisicaoInterna
 
   void cadastrarRequisicaoInterna() throws Exception
   {
-    String query = "insert into requisicao_interna (tipo_solicitacao,datahora_limite_entrega,departamento,solicitante,pedido_cliente,justificativa,status) values ('"+ this.tipoSolicitacao +"',"
+    String query = "insert into requisicao_interna (tipo_solicitacao, datahora_limite_entrega, departamento, solicitante, pedido_cliente, justificativa, status) values ('"+ this.tipoSolicitacao +"', "
       if(!this.dataLimiteEntrega.equals(""))
-        query += "'"+ Calendario.inverterFormato(this.dataLimiteEntrega,"/") +"',"
+        query += "'"+ Calendario.inverterFormato(this.dataLimiteEntrega, "/") +"', "
       else
-        query += "'',"
-          query += this.departamento.obterCodigo() +",'"+ this.solicitante.obterMatricula() +"',"
+        query += "'', "
+          query += this.departamento.obterCodigo() +", '"+ this.solicitante.obterMatricula() +"', "
           if(this.pedidoCliente != null)
-            query += this.pedidoCliente.obterCodigo() +","
+            query += this.pedidoCliente.obterCodigo() +", "
           else
-            query += "null,"
-              query += "'"+ this.justificativa +"','"+ STATUS_EMITIDO +"') "
+            query += "null, "
+              query += "'"+ this.justificativa +"', '"+ STATUS_EMITIDO +"') "
 
               Conexao conexao = new Conexao('T')
               if (conexao.abrirConexao()) {
@@ -412,7 +412,7 @@ class RequisicaoInterna
             irAtual = (ItemRequisicaoInterna)this.itensRequisicaoInterna.get(i)
               ((ItemRequisicaoInterna)itensRequisicaoInterna.get(i)).registrarItemRequisicaoInterna()
               for(int j = 0;j < pedidos.size();j++) {
-                query = "insert into pedido_requisicao_interna (pedido,item,requisicao_interna) values ("+ ((Pedido)pedidos.get(j)).obterCodigo() +","+ irAtual.obterItem().obterCodigo() +","+ this.obterCodigo() +")"
+                query = "insert into pedido_requisicao_interna (pedido, item, requisicao_interna) values ("+ ((Pedido)pedidos.get(j)).obterCodigo() +", "+ irAtual.obterItem().obterCodigo() +", "+ this.obterCodigo() +")"
                   conexao.executarAtualizacao(query)
               }
           }

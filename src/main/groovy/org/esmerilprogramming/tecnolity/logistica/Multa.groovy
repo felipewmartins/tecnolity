@@ -24,8 +24,7 @@ class Multa {
       dadosMulta = conexao.executarConsulta("select * from multa where codigo = "+ this.codigo +" ")
 
       if(dadosMulta.next()) {
-        try
-        {
+        try {
           this.definirVeiculo(new Veiculo(dadosMulta.getString("placa")))
             this.definirMotivo(dadosMulta.getString("motivo"))
             this.definirValor(dadosMulta.getFloat("valor"))
@@ -39,8 +38,7 @@ class Multa {
   }
 
   Multa(Veiculo veiculo, String motivo, float valor, int responsabilidade, String data) {
-    try
-    {
+    try {
       this.definirVeiculo(veiculo)
         this.definirMotivo(motivo)
         this.definirValor(valor)
@@ -54,8 +52,7 @@ class Multa {
 
   Multa(int codigo, Veiculo veiculo, String motivo, float valor, int responsabilidade, String data) {
     this.definirCodigo(codigo)
-      try
-      {
+      try {
         this.definirVeiculo(veiculo)
           this.definirMotivo(motivo)
           this.definirValor(valor)
@@ -119,7 +116,7 @@ class Multa {
       if(data.equals(""))
         erro = "A Data não foi informada."
       else if(data.length() == 10) {
-        if(!Calendario.validarData(data,"/"))
+        if(!Calendario.validarData(data, "/"))
           erro = "Data inválida."
       }
       else
@@ -135,8 +132,8 @@ class Multa {
 
   void cadastrarMulta() throws Exception
   {
-    String query = "insert into multa (placa,motivo,valor,responsabilidade,datahora) values "
-      query = query + "('"+ this.veiculo.obterPlaca() +"', '"+ this.motivo +"', "+ this.valor +", "+ this.responsabilidade +", '"+ Calendario.inverterFormato(this.data,"/") +"')"
+    String query = "insert into multa (placa, motivo, valor, responsabilidade, datahora) values "
+      query = query + "('"+ this.veiculo.obterPlaca() +"', '"+ this.motivo +"', "+ this.valor +", "+ this.responsabilidade +", '"+ Calendario.inverterFormato(this.data, "/") +"')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -151,7 +148,7 @@ class Multa {
 
   void alterarMulta() throws Exception
   {
-    String query = "update multa set placa = '"+ this.veiculo.obterPlaca() +"',motivo = '"+ this.motivo +"',valor = "+ this.valor +",responsabilidade = "+ this.responsabilidade +",datahora = '"+ Calendario.inverterFormato(this.data,"/") +"' where codigo = "+ this.codigo +" "
+    String query = "update multa set placa = '"+ this.veiculo.obterPlaca() +"', motivo = '"+ this.motivo +"', valor = "+ this.valor +", responsabilidade = "+ this.responsabilidade +", datahora = '"+ Calendario.inverterFormato(this.data, "/") +"' where codigo = "+ this.codigo +" "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

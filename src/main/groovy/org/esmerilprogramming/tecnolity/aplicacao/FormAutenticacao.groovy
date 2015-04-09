@@ -18,12 +18,12 @@ class FormAutenticacao extends JDialog implements ActionListener {
   private Aplicacao aplicacao
 
   FormAutenticacao(Aplicacao aplicacao) {
-    super(aplicacao,true)
+    super(aplicacao, true)
     this.aplicacao = aplicacao
     Container conteudo = this.getContentPane()
     conteudo.setLayout(new BorderLayout())
     JLabel lblImagem = new JLabel(new ImageIcon('imagens/splash.gif'))
-    lblImagem.setSize(400,122)
+    lblImagem.setSize(400, 122)
     conteudo.add(lblImagem, BorderLayout.NORTH)
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
@@ -68,7 +68,7 @@ class FormAutenticacao extends JDialog implements ActionListener {
     gbc.gridy = linha
     gbc.gridwidth = largura
     gbc.gridheight = altura
-    gridbag.setConstraints(c,gbc)
+    gridbag.setConstraints(c, gbc)
     painel.add(c)
   }
 
@@ -82,18 +82,18 @@ class FormAutenticacao extends JDialog implements ActionListener {
         else
         {
           if(colaborador.colaboradorExiste()) {
-            JOptionPane.showMessageDialog(aplicacao,'Usuário ou senha inválida!','Problema de Autenticação',JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Usuário ou senha inválida!', 'Problema de Autenticação', JOptionPane.WARNING_MESSAGE)
             this.txtUsuario.transferFocus()
             this.txtUsuario.selectAll()
           }
           else
           {
-            DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao,'I')
+            DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao, 'I')
               dlgDadosColaborador.setVisible(true)
           }
         }
     } catch(e) {
-      JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
   }

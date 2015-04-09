@@ -22,7 +22,7 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
     paises = new Vector()
     paises.addElement(null)
     while(dadosPais.next()) {
-      paises.addElement(new Pais(dadosPais.getString('sigla_pais'),dadosPais.getString('pais')))
+      paises.addElement(new Pais(dadosPais.getString('sigla_pais'), dadosPais.getString('pais')))
     }
     dadosPais.close()
     return paises
@@ -34,11 +34,10 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
     String erro = ''
     if (conexao.abrirConexao()) {
       String query = 'Select sigla_pais from pais where sigla_pais = ''+ getSigla() +'''
-      try
-      {
+      try {
         ResultSet dadosPais = conexao.executarConsulta(query)
         if(!dadosPais.next()) {
-          query = 'insert into pais (sigla_pais,pais) values (''+ getSigla() +'',''+ getNome() +'')'
+          query = 'insert into pais (sigla_pais, pais) values (''+ getSigla() +'', ''+ getNome() +'')'
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
         }

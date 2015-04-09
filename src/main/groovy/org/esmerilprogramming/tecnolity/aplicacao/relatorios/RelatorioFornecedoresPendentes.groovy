@@ -27,7 +27,7 @@ class RelatorioFornecedoresPendentes extends Relatorio
       String quantMinima = ""
       for(int i = 0 ; i < fornecedores.size() ; i++) {
         Fornecedor fornecedor = (Fornecedor)fornecedores.get(i)
-          conteudo.append("" + Texto.obterNumeroTamanhoFixo("" + fornecedor.obterCodigo(),6,"0") +"|"+ fornecedor.obterRazaoSocial())
+          conteudo.append("" + Texto.obterNumeroTamanhoFixo("" + fornecedor.obterCodigo(), 6, "0") +"|"+ fornecedor.obterRazaoSocial())
           conteudo.append(QUEBRA)
       }
     conteudo.append("----------------------------------------------------------------------------------------")

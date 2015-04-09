@@ -19,7 +19,7 @@ class DlgDadosUnidade extends JDialog implements ActionListener
     private JButton btConfirmar, btCancelar
 
     DlgDadosUnidade(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         // Define o título da janela
         String tituloJanela = ''
@@ -47,9 +47,9 @@ class DlgDadosUnidade extends JDialog implements ActionListener
 
                     JPanel pnlDados = new JPanel(gridbag)
                     JLabel label = new JLabel('Nome da Unidade')
-                    adicionarComponente(pnlDados,label,0,0,1,1)
+                    adicionarComponente(pnlDados, label, 0, 0, 1, 1)
                     txtNomeUnidade = new JTextField(20)
-                    adicionarComponente(pnlDados,txtNomeUnidade,1,0,1,1)
+                    adicionarComponente(pnlDados, txtNomeUnidade, 1, 0, 1, 1)
                     this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
                     JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -77,7 +77,7 @@ class DlgDadosUnidade extends JDialog implements ActionListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -89,7 +89,7 @@ class DlgDadosUnidade extends JDialog implements ActionListener
           if(unidade.cadastrarUnidade(txtNomeUnidade.getText()))
             this.setVisible(false)
           else
-            JOptionPane.showMessageDialog(aplicacao,'Não foi possível cadastrar a Unidade informada!','Erro',JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Não foi possível cadastrar a Unidade informada!', 'Erro', JOptionPane.WARNING_MESSAGE)
       }
 
     if(objeto == btCancelar) {

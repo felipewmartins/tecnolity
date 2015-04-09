@@ -24,7 +24,7 @@ class DlgBancoDados extends JDialog implements ActionListener
     private ModeloTabelaVisualizacao modeloTabelaVisualizacao
 
     DlgBancoDados(Aplicacao aplicacao) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         this.setTitle("Comandos de Banco de Dados")
 
@@ -43,20 +43,20 @@ class DlgBancoDados extends JDialog implements ActionListener
 
         JPanel pnlDados = new JPanel(gridbag)
         JLabel label = new JLabel("Comando SQL")
-        adicionarComponente(pnlDados,label,1,0,1,1)
+        adicionarComponente(pnlDados, label, 1, 0, 1, 1)
         label = new JLabel("Importar Arquivo:")
-        adicionarComponente(pnlDados,label,0,0,2,1)
+        adicionarComponente(pnlDados, label, 0, 0, 2, 1)
         txtCaminhoArquivo = new JTextField(20)
         txtCaminhoArquivo.setEditable(false)
-        adicionarComponente(pnlDados,txtCaminhoArquivo,0,2,1,1)
+        adicionarComponente(pnlDados, txtCaminhoArquivo, 0, 2, 1, 1)
         btAbrir = new JButton("Abrir...")
         btAbrir.addActionListener(this)
-        adicionarComponente(pnlDados,btAbrir,0,3,1,1)
-        txaComandos = new JTextArea(4,40)
+        adicionarComponente(pnlDados, btAbrir, 0, 3, 1, 1)
+        txaComandos = new JTextArea(4, 40)
         txaComandos.setLineWrap(true)
         txaComandos.setWrapStyleWord(true)
         JScrollPane scroll = new JScrollPane(txaComandos)
-        adicionarComponente(pnlDados,scroll,2,0,4,1)
+        adicionarComponente(pnlDados, scroll, 2, 0, 4, 1)
 
         JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
         btExecutar = new JButton("Executar")
@@ -65,15 +65,15 @@ class DlgBancoDados extends JDialog implements ActionListener
         btLimpar = new JButton("Limpar")
         btLimpar.addActionListener(this)
         pnlComandos.add(btLimpar)
-        adicionarComponente(pnlDados,pnlComandos,3,0,4,1)
+        adicionarComponente(pnlDados, pnlComandos, 3, 0, 4, 1)
 
         label = new JLabel("Resultado")
-        adicionarComponente(pnlDados,label,4,0,1,1)
-        txaResultados = new JTextArea(2,40)
+        adicionarComponente(pnlDados, label, 4, 0, 1, 1)
+        txaResultados = new JTextArea(2, 40)
         txaResultados.setLineWrap(true)
         txaResultados.setWrapStyleWord(true)
         scroll = new JScrollPane(txaResultados)
-        adicionarComponente(pnlDados,scroll,5,0,4,1)
+        adicionarComponente(pnlDados, scroll, 5, 0, 4, 1)
 
         this.conteudo.add(pnlDados, BorderLayout.NORTH)
 
@@ -106,14 +106,13 @@ class DlgBancoDados extends JDialog implements ActionListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
   void importarArquivoComandoSQL() {
     StringBuffer conteudoArquivo = new StringBuffer()
-      try
-      {
+      try {
         FileReader entrada = new FileReader(arqComandos)
           int indiceRegistro = 0
           while((indiceRegistro = entrada.read()) != -1) {
@@ -122,11 +121,11 @@ class DlgBancoDados extends JDialog implements ActionListener
         txaComandos.setText(conteudoArquivo.toString())
       }
     catch(FileNotFoundException e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Arquivo informado não encontrado.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Arquivo informado não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     catch(IOException ex) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível ler o arquivo informado.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível ler o arquivo informado.", "Erro", JOptionPane.ERROR_MESSAGE)
         ex.printStackTrace()
     }
   }
@@ -155,8 +154,7 @@ class DlgBancoDados extends JDialog implements ActionListener
       }
 
     if(objeto == btExecutar) {
-      try
-      {
+      try {
         txaComandos.setText(txaComandos.getText().toUpperCase())
           char tipoComando = reconhecerTipoComando(txaComandos.getText())
           if(tipoComando == 'C') {

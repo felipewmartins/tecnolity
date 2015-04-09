@@ -24,10 +24,10 @@ class BarraAplicacao extends JPanel implements ActionListener {
 
       def img = ImageLoader.instance
 
-      JPanel pnlComandos = new JPanel(new GridLayout(1,5))
+      JPanel pnlComandos = new JPanel(new GridLayout(1, 5))
 
       btSuprimentos = new JButton("Suprimentos", img.icon('ico_suprimentos.gif'))
-      btSuprimentos.setFont(new Font("Arial",Font.PLAIN,11))
+      btSuprimentos.setFont(new Font("Arial", Font.PLAIN, 11))
       btSuprimentos.addActionListener(this)
       btSuprimentos.setMnemonic('S')
       btSuprimentos.setVerticalTextPosition(SwingConstants.BOTTOM)
@@ -35,7 +35,7 @@ class BarraAplicacao extends JPanel implements ActionListener {
       pnlComandos.add(btSuprimentos)
 
       btProducao = new JButton("Produção", img.icon('ico_producao.gif'))
-      btProducao.setFont(new Font("Arial",Font.PLAIN,11))
+      btProducao.setFont(new Font("Arial", Font.PLAIN, 11))
       btProducao.addActionListener(this)
       btProducao.setMnemonic('P')
       btProducao.setVerticalTextPosition(SwingConstants.BOTTOM)
@@ -43,7 +43,7 @@ class BarraAplicacao extends JPanel implements ActionListener {
       pnlComandos.add(btProducao)
 
       btPedidos = new JButton("Pedidos", img.icon('ico_pedidos.gif'))
-      btPedidos.setFont(new Font("Arial",Font.PLAIN,11))
+      btPedidos.setFont(new Font("Arial", Font.PLAIN, 11))
       btPedidos.addActionListener(this)
       btPedidos.setMnemonic('d')
       btPedidos.setVerticalTextPosition(SwingConstants.BOTTOM)
@@ -51,7 +51,7 @@ class BarraAplicacao extends JPanel implements ActionListener {
       pnlComandos.add(btPedidos)
 
       btLogistica = new JButton("Logística", img.icon('ico_logistica.gif'))
-      btLogistica.setFont(new Font("Arial",Font.PLAIN,11))
+      btLogistica.setFont(new Font("Arial", Font.PLAIN, 11))
       btLogistica.addActionListener(this)
       btLogistica.setMnemonic('L')
       btLogistica.setVerticalTextPosition(SwingConstants.BOTTOM)
@@ -59,7 +59,7 @@ class BarraAplicacao extends JPanel implements ActionListener {
       pnlComandos.add(btLogistica)
 
       btAdministracao = new JButton("Administração", img.icon('ico_administracao.gif'))
-      btAdministracao.setFont(new Font("Arial",Font.PLAIN,11))
+      btAdministracao.setFont(new Font("Arial", Font.PLAIN, 11))
       btAdministracao.addActionListener(this)
       btAdministracao.setMnemonic('d')
       btAdministracao.setVerticalTextPosition(SwingConstants.BOTTOM)

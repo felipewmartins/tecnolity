@@ -26,7 +26,7 @@ class Produto {
   char destino
   Vector materiasPrimas
 
-  Produto(Conexao conexao,long codigo) throws Exception
+  Produto(Conexao conexao, long codigo) throws Exception
   {
     definirCodigo(codigo)
       this.carregarProduto(conexao)
@@ -189,8 +189,8 @@ class Produto {
       String query
 
       if(conexao.abrirConexao()) {
-        query = "insert into modelo (referencia_cliente,componente,modelo,valor,custo_fabricacao,cliente,tipo_producao,especificacao_inserto,acabamentos,lavagem,pintura,exportacao) values " +
-          "('"+ this.referenciaCliente +"',"+ this.componente.obterCodigo() +",'"+ this.nomeModelo +"',"+ this.valor +","+ this.custoFabricacao +","+ this.cliente.obterCodigo() +","+ this.tipoProducao.obterCodigo() +",'"+ this.especificacaoInserto +"','"+ this.acabamento +"','"+ this.lavagem +"','"+ this.pintura +"','"+ this.destino +"')"
+        query = "insert into modelo (referencia_cliente, componente, modelo, valor, custo_fabricacao, cliente, tipo_producao, especificacao_inserto, acabamentos, lavagem, pintura, exportacao) values " +
+          "('"+ this.referenciaCliente +"', "+ this.componente.obterCodigo() +", '"+ this.nomeModelo +"', "+ this.valor +", "+ this.custoFabricacao +", "+ this.cliente.obterCodigo() +", "+ this.tipoProducao.obterCodigo() +", '"+ this.especificacaoInserto +"', '"+ this.acabamento +"', '"+ this.lavagem +"', '"+ this.pintura +"', '"+ this.destino +"')"
           ResultSet modelo = conexao.executarConsulta("select codigo from modelo where modelo = '"+ this.nomeModelo +"' and referencia_cliente = '"+ this.referenciaCliente +"' and componente = "+ this.componente.obterCodigo() +" and cliente = "+ this.cliente.obterCodigo() +"")
           if(modelo.next()) {
             Exception e = new Exception("Já existe um produto cadastrado com esta referência")
@@ -246,11 +246,11 @@ class Produto {
         conexao.executarAtualizacao("delete from quantidade_materia_prima where produto = "+ this.obterCodigo())
           for(int i = 0;i < materiasPrimas.size();i++) {
             materiaPrima = (MateriaPrima)materiasPrimas.get(i)
-              query = "insert into quantidade_materia_prima (item, referencia, numero_sola, quantidade,produto) "
+              query = "insert into quantidade_materia_prima (item, referencia, numero_sola, quantidade, produto) "
               query += "values ("+ materiaPrima.obterItem().obterCodigo()
-              query += ",'"+ materiaPrima.obterMatriz().obterReferencia() +"',"
+              query += ", '"+ materiaPrima.obterMatriz().obterReferencia() +"', "
               query += materiaPrima.obterMatriz().obterNumeroSola()
-              query += ","+ materiaPrima.obterQuantidade() +","
+              query += ", "+ materiaPrima.obterQuantidade() +", "
               query += this.obterCodigo() + ")"
               conexao.executarAtualizacao(query)
           }
@@ -261,13 +261,12 @@ class Produto {
   static Vector carregarProdutos(Cliente cliente, Conexao conexao) {
     ResultSet dadosProduto
       Vector produtos = new Vector()
-      try
-      {
-        dadosProduto = conexao.executarConsulta("select codigo,referencia_cliente,modelo,valor,moeda from modelo where cliente = "+ cliente.obterCodigo() +" order by modelo asc")
+      try {
+        dadosProduto = conexao.executarConsulta("select codigo, referencia_cliente, modelo, valor, moeda from modelo where cliente = "+ cliente.obterCodigo() +" order by modelo asc")
           produtos.addElement(null)
 
           while(dadosProduto.next()) {
-            produtos.addElement(new Produto(dadosProduto.getLong("codigo"),dadosProduto.getString("referencia_cliente"),dadosProduto.getString("modelo"),dadosProduto.getFloat("valor"),dadosProduto.getString("moeda")))
+            produtos.addElement(new Produto(dadosProduto.getLong("codigo"), dadosProduto.getString("referencia_cliente"), dadosProduto.getString("modelo"), dadosProduto.getFloat("valor"), dadosProduto.getString("moeda")))
           }
         dadosProduto.close()
       }
@@ -281,13 +280,12 @@ class Produto {
   Vector carregarProdutos(Conexao conexao) {
     ResultSet dadosProduto
       Vector produtos = new Vector()
-      try
-      {
-        dadosProduto = conexao.executarConsulta("select codigo,referencia_cliente,modelo,valor,moeda from modelo order by modelo asc")
+      try {
+        dadosProduto = conexao.executarConsulta("select codigo, referencia_cliente, modelo, valor, moeda from modelo order by modelo asc")
           produtos.addElement(null)
 
           while(dadosProduto.next()) {
-            produtos.addElement(new Produto(dadosProduto.getLong("codigo"),dadosProduto.getString("referencia_cliente"),dadosProduto.getString("modelo"),dadosProduto.getFloat("valor"),dadosProduto.getString("moeda")))
+            produtos.addElement(new Produto(dadosProduto.getLong("codigo"), dadosProduto.getString("referencia_cliente"), dadosProduto.getString("modelo"), dadosProduto.getFloat("valor"), dadosProduto.getString("moeda")))
           }
         dadosProduto.close()
       }
@@ -309,13 +307,13 @@ class Produto {
       if(dadosProduto.next()) {
         this.definirCodigo(dadosProduto.getLong("codigo_modelo"))
           this.definirReferenciaCliente(dadosProduto.getString("referencia_cliente"))
-          this.definirComponente(new Componente(dadosProduto.getInt("codigo_componente"),dadosProduto.getString("componente")))
+          this.definirComponente(new Componente(dadosProduto.getInt("codigo_componente"), dadosProduto.getString("componente")))
           this.definirNomeModelo(dadosProduto.getString("modelo"))
           this.definirValor(dadosProduto.getFloat("valor"))
           this.definirCustoFabricacao(dadosProduto.getFloat("custo_fabricacao"))
           this.definirMoeda(dadosProduto.getString("moeda"))
-          this.definirCliente(new Cliente(dadosProduto.getLong("codigo_cliente"),dadosProduto.getString("razao_social")))
-          this.definirTipoProducao(new TipoProducao(dadosProduto.getInt("codigo_tipo_producao"),dadosProduto.getString("tipo_producao")))
+          this.definirCliente(new Cliente(dadosProduto.getLong("codigo_cliente"), dadosProduto.getString("razao_social")))
+          this.definirTipoProducao(new TipoProducao(dadosProduto.getInt("codigo_tipo_producao"), dadosProduto.getString("tipo_producao")))
           this.definirEspecificacaoInserto(dadosProduto.getString("especificacao_inserto"))
           this.definirAcabamento(dadosProduto.getString("acabamentos"))
           this.definirLavagem(dadosProduto.getString("lavagem"))
@@ -324,14 +322,14 @@ class Produto {
       }
     dadosProduto.close()
       query = "select i.codigo as codigo_item, i.descricao as descricao_item, mm.referencia, mm.numero_sola, mm.quantidade as quantidade_matriz, mm.tempo_forma, mm.tempo_injecao, mm.dureza, mm.densidade, mm.peso, mm.volume, qmp.quantidade " +
-      "from matriz_modelo mm, quantidade_materia_prima qmp,item i " +
+      "from matriz_modelo mm, quantidade_materia_prima qmp, item i " +
       "where mm.referencia = qmp.referencia and mm.numero_sola = qmp.numero_sola and qmp.item = i.codigo and qmp.produto = " + this.codigo +
       " order by mm.numero_sola, i.descricao"
       ResultSet dadosMateriaPrima = conexao.executarConsulta(query)
       materiasPrimas = new Vector()
       while(dadosMateriaPrima.next()) {
-        MateriaPrima materiaPrima = new MateriaPrima(new Item(dadosMateriaPrima.getInt("codigo_item"),dadosMateriaPrima.getString("descricao_item")),
-            new Matriz(dadosMateriaPrima.getString("referencia"),dadosMateriaPrima.getInt("numero_sola"),dadosMateriaPrima.getInt("quantidade_matriz"),dadosMateriaPrima.getInt("tempo_forma"), dadosMateriaPrima.getFloat("tempo_injecao"),dadosMateriaPrima.getFloat("dureza"),dadosMateriaPrima.getFloat("densidade"),dadosMateriaPrima.getFloat("peso"),dadosMateriaPrima.getFloat("volume")),
+        MateriaPrima materiaPrima = new MateriaPrima(new Item(dadosMateriaPrima.getInt("codigo_item"), dadosMateriaPrima.getString("descricao_item")),
+            new Matriz(dadosMateriaPrima.getString("referencia"), dadosMateriaPrima.getInt("numero_sola"), dadosMateriaPrima.getInt("quantidade_matriz"), dadosMateriaPrima.getInt("tempo_forma"), dadosMateriaPrima.getFloat("tempo_injecao"), dadosMateriaPrima.getFloat("dureza"), dadosMateriaPrima.getFloat("densidade"), dadosMateriaPrima.getFloat("peso"), dadosMateriaPrima.getFloat("volume")),
             dadosMateriaPrima.getFloat("quantidade"))
           materiasPrimas.addElement(materiaPrima)
       }

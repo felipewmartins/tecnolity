@@ -35,13 +35,13 @@ class RelRequisicaoCompra extends Relatorio
       conteudo.append(QUEBRA)
       conteudo.append("===========================================================================================")
       conteudo.append(QUEBRA)
-      conteudo.append("    Fornecedor: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterFornecedor().obterRazaoSocial(),42) + "   No.: " + Texto.obterNumeroTamanhoFixo("" + this.requisicaoCompra.obterCodigo(),5,"0"))
+      conteudo.append("    Fornecedor: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterFornecedor().obterRazaoSocial(), 42) + "   No.: " + Texto.obterNumeroTamanhoFixo("" + this.requisicaoCompra.obterCodigo(), 5, "0"))
       conteudo.append(QUEBRA)
-      conteudo.append("Transportadora: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterTransportadora().obterNome(),34) + "   Dt. Emissão: " + this.requisicaoCompra.obterDataEmissao())
+      conteudo.append("Transportadora: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterTransportadora().obterNome(), 34) + "   Dt. Emissão: " + this.requisicaoCompra.obterDataEmissao())
       conteudo.append(QUEBRA)
-      conteudo.append("         Frete: " + Texto.obterStringTamanhoFixo((this.requisicaoCompra.obterTipoFrete().equals("C")?"CIF":this.requisicaoCompra.obterTipoFrete().equals("F")?"FOB":"Próprio"),7) + "                         Dt. Lim. Entrega: " + this.requisicaoCompra.obterDataLimiteEntrega())
+      conteudo.append("         Frete: " + Texto.obterStringTamanhoFixo((this.requisicaoCompra.obterTipoFrete().equals("C")?"CIF":this.requisicaoCompra.obterTipoFrete().equals("F")?"FOB":"Próprio"), 7) + "                         Dt. Lim. Entrega: " + this.requisicaoCompra.obterDataLimiteEntrega())
       conteudo.append(QUEBRA)
-      conteudo.append("Cnd. Pagamento: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterCondicaoPagamento(),29) + "    Forma Pagamento: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterFormaPagamento().obterFormaPagamento(),10))
+      conteudo.append("Cnd. Pagamento: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterCondicaoPagamento(), 29) + "    Forma Pagamento: " + Texto.obterStringTamanhoFixo(this.requisicaoCompra.obterFormaPagamento().obterFormaPagamento(), 10))
       conteudo.append(QUEBRA)
       conteudo.append("       Pedidos: ")
       for(int i = 0;i < pedidos.size();i++) {
@@ -59,12 +59,12 @@ class RelRequisicaoCompra extends Relatorio
       float totalRequisicao = 0.0f, totalIPI = 0.0f
       for(int i = 0;i < itens.size();i++) {
         ItemRequisicao irAtual = (ItemRequisicao)itens.get(i)
-          conteudo.append(Texto.obterStringTamanhoFixo(irAtual.obterItem().obterDescricao(),32) + "|" + 
-              Texto.obterStringTamanhoFixo("" + irAtual.obterItem().obterFornecedorItem().obterReferenciaFornecedor(),14) + "|" + 
-              Texto.obterNumeroTamanhoFixo(Numero.formatarValorNumerico(irAtual.getQuantidadeItem(),3,","),10," ") + "|" +
-              Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(irAtual.obterValorUnitario(),""),11," ") + "|" +
-              Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(irAtual.obterValorTotal(),""),11," ") + "|" +
-              Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(irAtual.obterValorIPI(),""),8," "))
+          conteudo.append(Texto.obterStringTamanhoFixo(irAtual.obterItem().obterDescricao(), 32) + "|" + 
+              Texto.obterStringTamanhoFixo("" + irAtual.obterItem().obterFornecedorItem().obterReferenciaFornecedor(), 14) + "|" + 
+              Texto.obterNumeroTamanhoFixo(Numero.formatarValorNumerico(irAtual.getQuantidadeItem(), 3, ", "), 10, " ") + "|" +
+              Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(irAtual.obterValorUnitario(), ""), 11, " ") + "|" +
+              Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(irAtual.obterValorTotal(), ""), 11, " ") + "|" +
+              Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(irAtual.obterValorIPI(), ""), 8, " "))
           conteudo.append(QUEBRA)
           totalRequisicao += irAtual.obterValorTotal()
           totalIPI += irAtual.obterValorIPI()
@@ -72,13 +72,13 @@ class RelRequisicaoCompra extends Relatorio
       }
     conteudo.append("-------------------------------------------------------------------------------------------")
       conteudo.append(QUEBRA)
-      conteudo.append("                                                               Total: |"+ Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalRequisicao,""),11," ") +"|"+ Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalIPI,""),8," "))
+      conteudo.append("                                                               Total: |"+ Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalRequisicao, ""), 11, " ") +"|"+ Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalIPI, ""), 8, " "))
       conteudo.append(QUEBRA)
       conteudo.append("-------------------------------------------------------------------------------------------")
       conteudo.append(QUEBRA)
       conteudo.append("Observação: ")
       conteudo.append(QUEBRA)
-      String[] texto = Texto.obterTextoAlinhado(requisicaoCompra.obterObservacao(),92)
+      String[] texto = Texto.obterTextoAlinhado(requisicaoCompra.obterObservacao(), 92)
       for(int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)

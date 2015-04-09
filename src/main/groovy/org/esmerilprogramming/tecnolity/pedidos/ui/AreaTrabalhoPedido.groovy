@@ -18,21 +18,21 @@ class AreaTrabalhoPedido extends ModeloAreaTrabalho
 
     AreaTrabalhoPedido(Aplicacao aplicacao) {
       this.aplicacao = aplicacao
-        switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),aplicacao.obterColaborador(),aplicacao.obterConexao())) {
+        switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR), aplicacao.obterColaborador(), aplicacao.obterConexao())) {
           case Permissao.SEM_ACESSO:
-            JOptionPane.showMessageDialog(this,"Acesso Negado.","Segurança",JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(this, "Acesso Negado.", "Segurança", JOptionPane.WARNING_MESSAGE)
               break
           default:
               this.setLayout(new BorderLayout())
 
-                pnlCabecalho = new JPanel(new BorderLayout(5,5))
-                pnlCabecalho.setBorder(new EmptyBorder(3,3,3,3))
+                pnlCabecalho = new JPanel(new BorderLayout(5, 5))
+                pnlCabecalho.setBorder(new EmptyBorder(3, 3, 3, 3))
                 pnlCabecalho.setBackground(Color.white)
                 JLabel lblImagemSecao = new JLabel(new ImageIcon("imagens/tit_pedidos.gif"))
-                pnlCabecalho.add(lblImagemSecao,BorderLayout.WEST)
+                pnlCabecalho.add(lblImagemSecao, BorderLayout.WEST)
                 lblImagemSecao = new JLabel(new ImageIcon("imagens/logo_mentores.gif"))
-                pnlCabecalho.add(lblImagemSecao,BorderLayout.EAST)
-                this.add(pnlCabecalho,BorderLayout.NORTH)
+                pnlCabecalho.add(lblImagemSecao, BorderLayout.EAST)
+                this.add(pnlCabecalho, BorderLayout.NORTH)
 
                 pnlInformacoes = new JPanel(new BorderLayout())
                 tbpInformacoes = new InformacoesPedido(aplicacao)

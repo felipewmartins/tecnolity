@@ -29,7 +29,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
   private JComboBox   cbxEstado, cbxPais
 
   DlgDadosFornecedor(Aplicacao aplicacao, char modo) {
-    super(aplicacao,true)
+    super(aplicacao, true)
     fornecedor = new Fornecedor()
     String tituloJanela = ''
     if (modo == 'I') {
@@ -48,11 +48,11 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
     }
 
   DlgDadosFornecedor(Aplicacao aplicacao, char modo, int codigoFornecedor) {
-    super(aplicacao,true)
+    super(aplicacao, true)
     try {
       fornecedor = new Fornecedor(codigoFornecedor)
     } catch(e) {
-      JOptionPane.showMessageDialog(aplicacao,'Erro: '+e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: '+e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
 
@@ -84,39 +84,39 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
     gbc.insets.top = 2
     pnlAreaDados = new JPanel(gridbag)
     JLabel label = new JLabel('Razão Social')
-    adicionarComponente(pnlAreaDados,label,0,0,3,1)
+    adicionarComponente(pnlAreaDados, label, 0, 0, 3, 1)
     label = new JLabel('CNPJ (Somente Números)')
-    adicionarComponente(pnlAreaDados,label,0,3,1,1)
-    txtRazaoSocial = new JTextField((this.fornecedor.obterRazaoSocial())==null?'':this.fornecedor.obterRazaoSocial().trim(),28)
-    adicionarComponente(pnlAreaDados,txtRazaoSocial,1,0,3,1)
-    txtCnpj = new JTextField((this.fornecedor.obterCnpj())==null?'':this.fornecedor.obterCnpj().trim(),10)
-    adicionarComponente(pnlAreaDados,txtCnpj,1,3,1,1)
-    conteudo.add(pnlAreaDados,BorderLayout.CENTER)
+    adicionarComponente(pnlAreaDados, label, 0, 3, 1, 1)
+    txtRazaoSocial = new JTextField((this.fornecedor.obterRazaoSocial())==null?'':this.fornecedor.obterRazaoSocial().trim(), 28)
+    adicionarComponente(pnlAreaDados, txtRazaoSocial, 1, 0, 3, 1)
+    txtCnpj = new JTextField((this.fornecedor.obterCnpj())==null?'':this.fornecedor.obterCnpj().trim(), 10)
+    adicionarComponente(pnlAreaDados, txtCnpj, 1, 3, 1, 1)
+    conteudo.add(pnlAreaDados, BorderLayout.CENTER)
     label = new JLabel('ICMS (%)')
-    adicionarComponente(pnlAreaDados,label,2,0,1,1)
-    txtPercentualICMS = new JTextField(''+this.fornecedor.obterPercentualICMS(),3)
+    adicionarComponente(pnlAreaDados, label, 2, 0, 1, 1)
+    txtPercentualICMS = new JTextField(''+this.fornecedor.obterPercentualICMS(), 3)
     txtPercentualICMS.addFocusListener(this)
-    adicionarComponente(pnlAreaDados,txtPercentualICMS,3,0,1,1)
+    adicionarComponente(pnlAreaDados, txtPercentualICMS, 3, 0, 1, 1)
     JPanel pnlEndereco = new JPanel(gridbag)
     pnlEndereco.setBorder(new TitledBorder('Endereço'))
     label = new JLabel('Logradouro')
-    adicionarComponente(pnlEndereco,label,0,0,2,1)
+    adicionarComponente(pnlEndereco, label, 0, 0, 2, 1)
     label = new JLabel('Complemento')
-    adicionarComponente(pnlEndereco,label,0,2,1,1)
+    adicionarComponente(pnlEndereco, label, 0, 2, 1, 1)
     label = new JLabel('Bairro')
-    adicionarComponente(pnlEndereco,label,0,3,1,1)
-    txtLogradouro = new JTextField((this.fornecedor.obterLogradouro())==null?'':this.fornecedor.obterLogradouro().trim(),20)
-    adicionarComponente(pnlEndereco,txtLogradouro,1,0,2,1)
-    txtComplemento = new JTextField((this.fornecedor.obterComplemento())==null?'':this.fornecedor.obterComplemento().trim(),10)
-    adicionarComponente(pnlEndereco,txtComplemento,1,2,1,1)
-    txtBairro = new JTextField((this.fornecedor.obterBairro())==null?'':this.fornecedor.obterBairro().trim(),10)
-    adicionarComponente(pnlEndereco,txtBairro,1,3,1,1)
+    adicionarComponente(pnlEndereco, label, 0, 3, 1, 1)
+    txtLogradouro = new JTextField((this.fornecedor.obterLogradouro())==null?'':this.fornecedor.obterLogradouro().trim(), 20)
+    adicionarComponente(pnlEndereco, txtLogradouro, 1, 0, 2, 1)
+    txtComplemento = new JTextField((this.fornecedor.obterComplemento())==null?'':this.fornecedor.obterComplemento().trim(), 10)
+    adicionarComponente(pnlEndereco, txtComplemento, 1, 2, 1, 1)
+    txtBairro = new JTextField((this.fornecedor.obterBairro())==null?'':this.fornecedor.obterBairro().trim(), 10)
+    adicionarComponente(pnlEndereco, txtBairro, 1, 3, 1, 1)
     label = new JLabel('Cidade')
-    adicionarComponente(pnlEndereco,label,2,0,2,1)
+    adicionarComponente(pnlEndereco, label, 2, 0, 2, 1)
     label = new JLabel('País')
-    adicionarComponente(pnlEndereco,label,2,2,2,1)
-    txtCidade = new JTextField((this.fornecedor.obterCidade())==null?'':this.fornecedor.obterCidade().trim(),20)
-    adicionarComponente(pnlEndereco,txtCidade,3,0,2,1)
+    adicionarComponente(pnlEndereco, label, 2, 2, 2, 1)
+    txtCidade = new JTextField((this.fornecedor.obterCidade())==null?'':this.fornecedor.obterCidade().trim(), 20)
+    adicionarComponente(pnlEndereco, txtCidade, 3, 0, 2, 1)
     JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
     cbxPais = new JComboBox()
     cbxPais.addActionListener(this)
@@ -125,7 +125,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
       carregarPaises()
     }
       catch(e) {
-        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Países.','Erro',JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
 
@@ -137,72 +137,71 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
         }
       cbxPais.setSelectedIndex(indicePais)
         
-        pnlSuporteCombo.add(cbxPais,BorderLayout.CENTER)
+        pnlSuporteCombo.add(cbxPais, BorderLayout.CENTER)
         btNovoPais = new JButton(new ImageIcon('imagens/novo.jpg'))
         btNovoPais.addActionListener(this)
         btNovoPais.setToolTipText('Novo Pais')
-        btNovoPais.setPreferredSize(new Dimension(22,20))
-        pnlSuporteCombo.add(btNovoPais,BorderLayout.EAST)
+        btNovoPais.setPreferredSize(new Dimension(22, 20))
+        pnlSuporteCombo.add(btNovoPais, BorderLayout.EAST)
        
-        adicionarComponente(pnlEndereco,pnlSuporteCombo,3,2,2,1)
+        adicionarComponente(pnlEndereco, pnlSuporteCombo, 3, 2, 2, 1)
         label = new JLabel('Estado')
-        adicionarComponente(pnlEndereco,label,4,0,2,1)
+        adicionarComponente(pnlEndereco, label, 4, 0, 2, 1)
         label = new JLabel('CEP (Somente Números)')
-        adicionarComponente(pnlEndereco,label,4,2,2,1)
+        adicionarComponente(pnlEndereco, label, 4, 2, 2, 1)
         
         pnlSuporteCombo = new JPanel(new BorderLayout())
         cbxEstado = new JComboBox()
-        try
-        {
-          estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?'BRA':(String)(this.fornecedor.obterPais()).getSigla(),aplicacao.obterConexao())
+        try {
+          estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?'BRA':(String)(this.fornecedor.obterPais()).getSigla(), aplicacao.obterConexao())
             carregarEstados()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Estados','Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       
-        pnlSuporteCombo.add(cbxEstado,BorderLayout.CENTER)
+        pnlSuporteCombo.add(cbxEstado, BorderLayout.CENTER)
         btNovoEstado = new JButton(new ImageIcon('imagens/novo.jpg'))
         btNovoEstado.addActionListener(this)
         btNovoEstado.setToolTipText('Novo Estado')
-        btNovoEstado.setPreferredSize(new Dimension(22,20))
-        pnlSuporteCombo.add(btNovoEstado,BorderLayout.EAST)
+        btNovoEstado.setPreferredSize(new Dimension(22, 20))
+        pnlSuporteCombo.add(btNovoEstado, BorderLayout.EAST)
         
-        adicionarComponente(pnlEndereco,pnlSuporteCombo,5,0,2,1)
-        txtCep = new JTextField((this.fornecedor.obterCep())==null?'':this.fornecedor.obterCep().trim(),10)
-        adicionarComponente(pnlEndereco,txtCep,5,2,2,1)
+        adicionarComponente(pnlEndereco, pnlSuporteCombo, 5, 0, 2, 1)
+        txtCep = new JTextField((this.fornecedor.obterCep())==null?'':this.fornecedor.obterCep().trim(), 10)
+        adicionarComponente(pnlEndereco, txtCep, 5, 2, 2, 1)
         
-        adicionarComponente(pnlAreaDados,pnlEndereco,4,0,4,1)
+        adicionarComponente(pnlAreaDados, pnlEndereco, 4, 0, 4, 1)
         
         JPanel pnlContato = new JPanel(gridbag)
         pnlContato.setBorder(new TitledBorder('Contato'))
         label = new JLabel('DDD')
-        adicionarComponente(pnlContato,label,0,0,1,1)
+        adicionarComponente(pnlContato, label, 0, 0, 1, 1)
         label = new JLabel('Telefone')
-        adicionarComponente(pnlContato,label,0,1,1,1)
+        adicionarComponente(pnlContato, label, 0, 1, 1, 1)
         label = new JLabel('Ramal')
-        adicionarComponente(pnlContato,label,0,2,1,1)
+        adicionarComponente(pnlContato, label, 0, 2, 1, 1)
         label = new JLabel('Fax')
-        adicionarComponente(pnlContato,label,0,3,1,1)
-        txtDdd = new JTextField((this.fornecedor.obterDdd())==null?'':this.fornecedor.obterDdd().trim(),9)
-        adicionarComponente(pnlContato,txtDdd,1,0,1,1)
-        txtTelefone = new JTextField((this.fornecedor.obterTelefone())==null?'':this.fornecedor.obterTelefone().trim(),10)
-        adicionarComponente(pnlContato,txtTelefone,1,1,1,1)
-        txtRamal = new JTextField((this.fornecedor.obterRamal())==null?'':this.fornecedor.obterRamal().trim(),10)
-        adicionarComponente(pnlContato,txtRamal,1,2,1,1)
-        txtFax = new JTextField((this.fornecedor.obterFax())==null?'':this.fornecedor.obterFax().trim(),10)
-        adicionarComponente(pnlContato,txtFax,1,3,1,1)
+        adicionarComponente(pnlContato, label, 0, 3, 1, 1)
+        txtDdd = new JTextField((this.fornecedor.obterDdd())==null?'':this.fornecedor.obterDdd().trim(), 9)
+        adicionarComponente(pnlContato, txtDdd, 1, 0, 1, 1)
+        txtTelefone = new JTextField((this.fornecedor.obterTelefone())==null?'':this.fornecedor.obterTelefone().trim(), 10)
+        adicionarComponente(pnlContato, txtTelefone, 1, 1, 1, 1)
+        txtRamal = new JTextField((this.fornecedor.obterRamal())==null?'':this.fornecedor.obterRamal().trim(), 10)
+        adicionarComponente(pnlContato, txtRamal, 1, 2, 1, 1)
+        txtFax = new JTextField((this.fornecedor.obterFax())==null?'':this.fornecedor.obterFax().trim(), 10)
+        adicionarComponente(pnlContato, txtFax, 1, 3, 1, 1)
         label = new JLabel('E-mail')
-        adicionarComponente(pnlContato,label,2,0,2,1)
+        adicionarComponente(pnlContato, label, 2, 0, 2, 1)
         label = new JLabel('Web Site')
-        adicionarComponente(pnlContato,label,2,2,2,1)
-        txtEmail = new JTextField((this.fornecedor.obterEmail())==null?'':this.fornecedor.obterEmail().trim(),20)
-        adicionarComponente(pnlContato,txtEmail,3,0,2,1)
-        txtWebSite = new JTextField((this.fornecedor.obterWebsite())==null?'':this.fornecedor.obterWebsite().trim(),20)
-        adicionarComponente(pnlContato,txtWebSite,3,2,2,1)
+        adicionarComponente(pnlContato, label, 2, 2, 2, 1)
+        txtEmail = new JTextField((this.fornecedor.obterEmail())==null?'':this.fornecedor.obterEmail().trim(), 20)
+        adicionarComponente(pnlContato, txtEmail, 3, 0, 2, 1)
+        txtWebSite = new JTextField((this.fornecedor.obterWebsite())==null?'':this.fornecedor.obterWebsite().trim(), 20)
+        adicionarComponente(pnlContato, txtWebSite, 3, 2, 2, 1)
         
-        adicionarComponente(pnlAreaDados,pnlContato,5,0,4,1)
+        adicionarComponente(pnlAreaDados, pnlContato, 5, 0, 4, 1)
         
         JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
         
@@ -219,9 +218,9 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
         this.pack()
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
-        this.setBounds((screenSize.width/2) - (this.getBounds().width/2),
-            (screenSize.height/2) - (this.getBounds().height/2) - 30,
-            this.getBounds().width,
+        this.setBounds((screenSize.width/2) - (this.getBounds().width/2), 
+            (screenSize.height/2) - (this.getBounds().height/2) - 30, 
+            this.getBounds().width, 
             this.getBounds().height)
     }
   
@@ -250,7 +249,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
         gbc.gridwidth = largura
         gbc.gridheight = altura
         
-        gridbag.setConstraints(c,gbc)
+        gridbag.setConstraints(c, gbc)
         painel.add(c)
     }
   
@@ -261,18 +260,18 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           if(cbxEstado != null) {
             try
             {
-              estados = Estado.carregarEstados(((Pais)paises.get(cbxPais.getSelectedIndex())).getSigla(),aplicacao.obterConexao())
+              estados = Estado.carregarEstados(((Pais)paises.get(cbxPais.getSelectedIndex())).getSigla(), aplicacao.obterConexao())
                 carregarEstados()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Estados','Erro', JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
           }
         }
       
         if(objeto == btNovoPais) {
-          DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao,'I')
+          DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao, 'I')
             dlgDadosPais.setVisible(true)
             try
             {
@@ -281,22 +280,22 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 carregarPaises()
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Países.','Erro',JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
       
         if(objeto == btNovoEstado) {
-          DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao,'I')
+          DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao, 'I')
             dlgDadosEstado.setVisible(true)
             try
             {
               Estado estado = new Estado()
-                estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?'BRA':(String)(this.fornecedor.obterPais()).getSigla(),aplicacao.obterConexao())
+                estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?'BRA':(String)(this.fornecedor.obterPais()).getSigla(), aplicacao.obterConexao())
                 carregarEstados()
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Estados','Erro', JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -326,7 +325,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                     fornecedor.definirWebsite(txtWebSite.getText())
                 }
               catch(Exception e) {
-                JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+                JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                   e.printStackTrace()
                   confirmado = false
               }
@@ -336,7 +335,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                   fornecedor.cadastrarFornecedor()
                 }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 this.setVisible(false)
@@ -365,7 +364,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                     fornecedor.definirWebsite(txtWebSite.getText())
                 }
               catch(e) {
-                JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+                JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
                 confirmado = false
               }
@@ -374,7 +373,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                   fornecedor.alterarFornecedor()
                 }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 this.setVisible(false)
@@ -382,10 +381,10 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
             }
           }
           catch(NumberFormatException n) {
-            JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
               n.printStackTrace()
           } catch(e) {
-            JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
           }
         }

@@ -25,7 +25,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
     private JButton btConfirmar, btCancelar
 
     DlgDadosTransportadora(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
         transportadora = new Transportadora()
 
         // Define o título da janela
@@ -41,13 +41,12 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
     }
 
   DlgDadosTransportadora(Aplicacao aplicacao, char modo, int codigoTransportadora) {
-    super(aplicacao,true)
-      try
-      {
-        transportadora = new Transportadora(codigoTransportadora,aplicacao.obterConexao())
+    super(aplicacao, true)
+      try {
+        transportadora = new Transportadora(codigoTransportadora, aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar a Transportadora.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a Transportadora.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     this.codigoTransportadora = codigoTransportadora
@@ -80,13 +79,13 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
 
       pnlAreaDados = new JPanel(gridbag)
       JLabel label = new JLabel("Transportadora")
-      adicionarComponente(pnlAreaDados,label,0,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 2, 1)
 
-      txtTransportadora = new JTextField(this.transportadora.obterNome(),30)
+      txtTransportadora = new JTextField(this.transportadora.obterNome(), 30)
       txtTransportadora.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtTransportadora,1,0,2,1)
+      adicionarComponente(pnlAreaDados, txtTransportadora, 1, 0, 2, 1)
 
-      conteudo.add(pnlAreaDados,BorderLayout.CENTER)
+      conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
       btConfirmar = new JButton("Confirmar")
@@ -114,7 +113,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -126,26 +125,23 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
       }
 
     if(objeto == btConfirmar) {
-      try
-      {
+      try {
         if(modo == 'I') {
           boolean confirmado = true
-            try
-            {
+            try {
               transportadora.definirTransportadora(this.txtTransportadora.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
           if(confirmado) {
-            try
-            {
+            try {
               this.transportadora.cadastrarTransportadora()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -153,23 +149,21 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
         }
         else if(modo == 'A') {
           boolean confirmado = true
-            try
-            {
+            try {
               transportadora.definirCodigo(this.codigoTransportadora)
                 transportadora.definirTransportadora(this.txtTransportadora.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
           if(confirmado) {
-            try
-            {
+            try {
               this.transportadora.alterarTransportadora()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -177,7 +171,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
         }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

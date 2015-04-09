@@ -14,7 +14,7 @@ class BarraStatus extends JPanel {
     JPanel pnlUsuario = new JPanel()
     lblUsuario =  new JLabel('Usuário: ' + app.colaborador.matricula)
     pnlUsuario.add(lblUsuario)
-    add(pnlUsuario,BorderLayout.WEST)
+    add(pnlUsuario, BorderLayout.WEST)
 
     JPanel pnlMensagem = new JPanel()
     lblMensagem = new JLabel('Seja bem vindo ao sistema!!!')
@@ -24,6 +24,6 @@ class BarraStatus extends JPanel {
     JPanel pnlDataHoraAcesso = new JPanel()
     lblDataHoraAcesso = new JLabel('Acesso em: ' + new Date().format("dd/MM/yyyy 'as' HH:mm:ss"))
     pnlDataHoraAcesso.add(lblDataHoraAcesso)
-    add(pnlDataHoraAcesso,BorderLayout.EAST)
+    add(pnlDataHoraAcesso, BorderLayout.EAST)
   }
 }

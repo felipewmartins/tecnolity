@@ -23,7 +23,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
 
     private JPanel pnlDadosMulta
     private JComboBox cbxPlaca, cbxMotorista
-    private JTextField txtValor,txtData
+    private JTextField txtValor, txtData
     private JTextArea txaMotivo
     private JButton btNovoVeiculo, btNovoMotorista
 
@@ -32,7 +32,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
     private JButton btConfirmar, btCancelar
 
     DlgDadosMulta(Aplicacao aplicacao) {
-      super(aplicacao,true)
+      super(aplicacao, true)
         this.setTitle("Multa")
 
         this.aplicacao = aplicacao
@@ -41,7 +41,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
     }
 
   DlgDadosMulta(Aplicacao aplicacao, Multa multa) {
-    super(aplicacao,true)
+    super(aplicacao, true)
       this.multa = multa
 
       // Define o título da janela
@@ -66,50 +66,48 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
 
       pnlAreaDados = new JPanel(gridbag)
       JLabel label = new JLabel("Placa")
-      adicionarComponente(pnlAreaDados,label,0,0,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 1, 1)
       label = new JLabel('Valor (R$)')
-      adicionarComponente(pnlAreaDados,label,0,1,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 1, 1, 1)
 
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
 
-      try
-      {
+      try {
         veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
           cbxPlaca = new JComboBox(veiculos)
           if(multa != null)
             cbxPlaca.setSelectedItem(multa.obterVeiculo())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos. ","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos. ", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
-    pnlSuporteCombo.add(cbxPlaca,BorderLayout.CENTER)
+    pnlSuporteCombo.add(cbxPlaca, BorderLayout.CENTER)
       btNovoVeiculo = new JButton(new ImageIcon("imagens/novo.jpg"))
       btNovoVeiculo.addActionListener(this)
       btNovoVeiculo.setToolTipText("Novo Veículo")
-      btNovoVeiculo.setPreferredSize(new Dimension(22,20))
-      pnlSuporteCombo.add(btNovoVeiculo,BorderLayout.EAST)
-      adicionarComponente(pnlAreaDados,pnlSuporteCombo,1,0,1,1)
+      btNovoVeiculo.setPreferredSize(new Dimension(22, 20))
+      pnlSuporteCombo.add(btNovoVeiculo, BorderLayout.EAST)
+      adicionarComponente(pnlAreaDados, pnlSuporteCombo, 1, 0, 1, 1)
 
-      txtValor = new JTextField(Numero.inverterSeparador(""+this.multa.obterValor()),8)
+      txtValor = new JTextField(Numero.inverterSeparador(""+this.multa.obterValor()), 8)
       txtValor.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtValor,1,1,1,1)
+      adicionarComponente(pnlAreaDados, txtValor, 1, 1, 1, 1)
 
       label = new JLabel("Motorista")
-      adicionarComponente(pnlAreaDados,label,2,0,1,1)
+      adicionarComponente(pnlAreaDados, label, 2, 0, 1, 1)
       label = new JLabel("Data")
-      adicionarComponente(pnlAreaDados,label,2,1,1,1)
+      adicionarComponente(pnlAreaDados, label, 2, 1, 1, 1)
 
       pnlSuporteCombo = new JPanel(new BorderLayout())
       cbxMotorista = new JComboBox()
-      try
-      {
+      try {
         motoristas = motorista.carregarMotoristas(aplicacao.obterConexao())
           carregarMotoristas()
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Motoristas.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Motoristas.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
@@ -121,29 +119,29 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
       }
     cbxMotorista.setSelectedIndex(indiceMotorista)
 
-      pnlSuporteCombo.add(cbxMotorista,BorderLayout.CENTER)
+      pnlSuporteCombo.add(cbxMotorista, BorderLayout.CENTER)
       btNovoMotorista = new JButton(new ImageIcon("imagens/novo.jpg"))
       btNovoMotorista.addActionListener(this)
       btNovoMotorista.setToolTipText("Novo Motorista")
-      btNovoMotorista.setPreferredSize(new Dimension(22,20))
-      pnlSuporteCombo.add(btNovoMotorista,BorderLayout.EAST)
-      adicionarComponente(pnlAreaDados,pnlSuporteCombo,3,0,1,1)
+      btNovoMotorista.setPreferredSize(new Dimension(22, 20))
+      pnlSuporteCombo.add(btNovoMotorista, BorderLayout.EAST)
+      adicionarComponente(pnlAreaDados, pnlSuporteCombo, 3, 0, 1, 1)
 
       Calendario calendario = new Calendario()
-      txtData = new JTextField(calendario.dataHoje("dd/MM/aaaa"),10)
+      txtData = new JTextField(calendario.dataHoje("dd/MM/aaaa"), 10)
       txtData.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtData,3,1,1,1)
+      adicionarComponente(pnlAreaDados, txtData, 3, 1, 1, 1)
 
       label = new JLabel("Motivo")
-      adicionarComponente(pnlAreaDados,label,4,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 4, 0, 2, 1)
 
-      txaMotivo = new JTextArea(this.multa.obterMotivo(),4,20)
+      txaMotivo = new JTextArea(this.multa.obterMotivo(), 4, 20)
       txaMotivo.setLineWrap(true)
       txaMotivo.setWrapStyleWord(true)
       JScrollPane scroll = new JScrollPane(txaMotivo)
-      adicionarComponente(pnlAreaDados,scroll,5,0,2,1)
+      adicionarComponente(pnlAreaDados, scroll, 5, 0, 2, 1)
 
-      conteudo.add(pnlAreaDados,BorderLayout.CENTER)
+      conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
       btConfirmar = new JButton("Confirmar")
@@ -171,7 +169,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -199,28 +197,26 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
       if(objeto == btNovoVeiculo) {
         DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao)
           dlgDadosVeiculo.setVisible(true)
-          try
-          {
+          try {
             veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
               carregarVeiculos()
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos","Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
 
     if(objeto == btNovoMotorista) {
-      DlgDadosMotorista dlgDadosMotorista = new DlgDadosMotorista(aplicacao,'I')
+      DlgDadosMotorista dlgDadosMotorista = new DlgDadosMotorista(aplicacao, 'I')
         dlgDadosMotorista.setVisible(true)
-        try
-        {
+        try {
           Motorista motorista = new Motorista()
             motoristas = motorista.carregarMotoristas(aplicacao.obterConexao())
             carregarMotoristas()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Motoristas","Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Motoristas", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -231,8 +227,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
 
     if(objeto == btConfirmar) {
       if(multa == null) {
-        try
-        {
+        try {
           multa = new Multa()
             multa.definirVeiculo((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex()))
             multa.definirValor(Float.parseFloat(Numero.inverterSeparador(this.txtValor.getText())))
@@ -242,15 +237,14 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             this.multa.cadastrarMulta()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         this.setVisible(false)
       }
       else
       {
-        try
-        {
+        try {
           multa.definirVeiculo(((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex())))
             multa.definirValor(Float.parseFloat(Numero.inverterSeparador(this.txtValor.getText())))
             multa.definirResponsabilidade(((Motorista)motoristas.get(this.cbxMotorista.getSelectedIndex()))==null?0:((Motorista)motoristas.get(this.cbxMotorista.getSelectedIndex())).obterCodigo())
@@ -259,7 +253,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             this.multa.alterarMulta()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         this.setVisible(false)

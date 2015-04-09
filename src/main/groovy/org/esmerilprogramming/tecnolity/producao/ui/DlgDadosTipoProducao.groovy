@@ -23,7 +23,7 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
     private GridBagConstraints gbc
 
     DlgDadosTipoProducao(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         // Define o título da janela
         String tituloJanela = ""
@@ -56,19 +56,18 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
 
       pnlAreaDados = new JPanel(gridbag)
       JLabel label = new JLabel("Tipo da Produção")
-      adicionarComponente(pnlAreaDados,label,0,0,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 1, 1)
       txtTipoProducao = new JTextField(20)
-      adicionarComponente(pnlAreaDados,txtTipoProducao,1,0,1,1)
+      adicionarComponente(pnlAreaDados, txtTipoProducao, 1, 0, 1, 1)
       label = new JLabel("Identificador")
-      adicionarComponente(pnlAreaDados,label,2,0,1,1)
-      try
-      {
-        txtIdentificador = new JTextField("" + tipoProducao.obterUltimoIdentificador(aplicacao.obterConexao()),10)
+      adicionarComponente(pnlAreaDados, label, 2, 0, 1, 1)
+      try {
+        txtIdentificador = new JTextField("" + tipoProducao.obterUltimoIdentificador(aplicacao.obterConexao()), 10)
       }
     catch(Exception e) {
       e.printStackTrace()
     }
-    adicionarComponente(pnlAreaDados,txtIdentificador,3,0,1,1)
+    adicionarComponente(pnlAreaDados, txtIdentificador, 3, 0, 1, 1)
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -96,7 +95,7 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 

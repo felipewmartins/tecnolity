@@ -25,7 +25,7 @@ class Pessoa {
   String caixaPostal
 
   static boolean validarEmail(final String email) {
-    final Pattern padrao = Pattern.compile("[a-z][a-z\\p{Punct}0-9]+@([a-z0-9]+\\p{Punct})+[a-z]{2,3}(\\p{Punct}[a-z]{2})?")
+    final Pattern padrao = Pattern.compile("[a-z][a-z\\p{Punct}0-9]+@([a-z0-9]+\\p{Punct})+[a-z]{2, 3}(\\p{Punct}[a-z]{2})?")
     final Matcher busca = padrao.matcher(email)
     busca.matches()
   }

@@ -21,7 +21,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
     private JButton btConfirmar, btCancelar
 
     DlgConfiguracaoImpressora(Aplicacao aplicacao) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         this.setTitle("Configurações de Impressão")
 
@@ -42,13 +42,12 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
 
       JPanel pnlDados = new JPanel(gridbag)
       JLabel label = new JLabel("Tamanho do Papel")
-      adicionarComponente(pnlDados,label,0,0,1,1)
+      adicionarComponente(pnlDados, label, 0, 0, 1, 1)
       cbxTamanhoPapel = new JComboBox()
-      cbxTamanhoPapel.setFont(new Font("Arial",Font.PLAIN,12))
+      cbxTamanhoPapel.setFont(new Font("Arial", Font.PLAIN, 12))
       cbxTamanhoPapel.addItem("A4 (210 x 297mm)")
       cbxTamanhoPapel.addItem("Carta (216 x 280 mm)")
-      try
-      {
+      try {
         if(Configuracao.getLarguraPapel() == 210 &&
             Configuracao.getAlturaPapel() == 297) {
           cbxTamanhoPapel.setSelectedIndex(0)
@@ -62,19 +61,18 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       cbxTamanhoPapel.setSelectedIndex(0)
     }
     cbxTamanhoPapel.addActionListener(this)
-      adicionarComponente(pnlDados,cbxTamanhoPapel,1,0,1,1)
+      adicionarComponente(pnlDados, cbxTamanhoPapel, 1, 0, 1, 1)
       label = new JLabel("Orientação")
-      adicionarComponente(pnlDados,label,2,0,1,1)
+      adicionarComponente(pnlDados, label, 2, 0, 1, 1)
       JPanel pnlOrientacao = new JPanel()
       ButtonGroup grupo = new ButtonGroup()
       rdbOrientacaoRetrato = new JRadioButton("Retrato")
-      rdbOrientacaoRetrato.setFont(new Font("Arial",Font.PLAIN,12))
+      rdbOrientacaoRetrato.setFont(new Font("Arial", Font.PLAIN, 12))
       grupo.add(rdbOrientacaoRetrato)
       pnlOrientacao.add(rdbOrientacaoRetrato)
       rdbOrientacaoPaisagem = new JRadioButton("Paisagem")
-      rdbOrientacaoPaisagem.setFont(new Font("Arial",Font.PLAIN,12))
-      try
-      {
+      rdbOrientacaoPaisagem.setFont(new Font("Arial", Font.PLAIN, 12))
+      try {
         if(Configuracao.getOrientacao() == PageFormat.PORTRAIT) {
           rdbOrientacaoRetrato.setSelected(true)
         }
@@ -90,39 +88,39 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       rdbOrientacaoPaisagem.addActionListener(this)
       grupo.add(rdbOrientacaoPaisagem)
       pnlOrientacao.add(rdbOrientacaoPaisagem)
-      adicionarComponente(pnlDados,pnlOrientacao,3,0,1,1)
+      adicionarComponente(pnlDados, pnlOrientacao, 3, 0, 1, 1)
       label = new JLabel("Margens")
-      adicionarComponente(pnlDados,label,4,0,1,1)
-      JPanel pnlMargens = new JPanel(new GridLayout(2,4,5,5))
+      adicionarComponente(pnlDados, label, 4, 0, 1, 1)
+      JPanel pnlMargens = new JPanel(new GridLayout(2, 4, 5, 5))
       label = new JLabel("Esquerda")
-      label.setFont(new Font("Arial",Font.PLAIN,12))
+      label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemEsquerda = new JTextField("" + Configuracao.getMargemEsquerda(),2)
+      txtMargemEsquerda = new JTextField("" + Configuracao.getMargemEsquerda(), 2)
       txtMargemEsquerda.addFocusListener(this)
       pnlMargens.add(txtMargemEsquerda)
       label = new JLabel("Direita")
-      label.setFont(new Font("Arial",Font.PLAIN,12))
+      label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemDireita = new JTextField("" + Configuracao.getMargemDireita(),2)
+      txtMargemDireita = new JTextField("" + Configuracao.getMargemDireita(), 2)
       txtMargemDireita.addFocusListener(this)
       pnlMargens.add(txtMargemDireita)
       label = new JLabel("Superior")
-      label.setFont(new Font("Arial",Font.PLAIN,12))
+      label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemSuperior = new JTextField("" + Configuracao.getMargemSuperior(),2)
+      txtMargemSuperior = new JTextField("" + Configuracao.getMargemSuperior(), 2)
       txtMargemSuperior.addFocusListener(this)
       pnlMargens.add(txtMargemSuperior)
       label = new JLabel("Inferior")
-      label.setFont(new Font("Arial",Font.PLAIN,12))
+      label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemInferior = new JTextField("" + Configuracao.getMargemInferior(),2)
+      txtMargemInferior = new JTextField("" + Configuracao.getMargemInferior(), 2)
       txtMargemInferior.addFocusListener(this)
       pnlMargens.add(txtMargemInferior)
-      adicionarComponente(pnlDados,pnlMargens,5,0,1,1)
-      pnlAmostra = new PainelDesenho(111,157,0,0,0,0,1)
-      pnlAmostra.setPreferredSize(new Dimension(180,180))
+      adicionarComponente(pnlDados, pnlMargens, 5, 0, 1, 1)
+      pnlAmostra = new PainelDesenho(111, 157, 0, 0, 0, 0, 1)
+      pnlAmostra.setPreferredSize(new Dimension(180, 180))
       pnlAmostra.setBorder(new TitledBorder(" Amostra "))
-      adicionarComponente(pnlDados,pnlAmostra,0,1,1,6)
+      adicionarComponente(pnlDados, pnlAmostra, 0, 1, 1, 6)
       this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -151,7 +149,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -212,8 +210,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
         this.aplicacao.obterConfiguracao().setLarguraPapel(216)
           this.aplicacao.obterConfiguracao().setAlturaPapel(280)
       }
-      try
-      {
+      try {
         this.aplicacao.obterConfiguracao().setOrientacao(rdbOrientacaoRetrato.isSelected()?1:0)
           this.aplicacao.obterConfiguracao().setMargemEsquerda(Integer.parseInt(txtMargemEsquerda.getText()))
           this.aplicacao.obterConfiguracao().setMargemDireita(Integer.parseInt(txtMargemDireita.getText()))
@@ -222,7 +219,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
           this.aplicacao.obterConfiguracao().salvarConfiguracao()
       }
       catch(NumberFormatException e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Informe somente números inteiros nas margens da página.","Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: Informe somente números inteiros nas margens da página.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       this.setVisible(false)
@@ -246,7 +243,7 @@ class PainelDesenho extends JPanel
 {
   int altura, largura, margemEsquerda, margemDireita, margemSuperior, margemInferior, orientacao
 
-    PainelDesenho(int largura,int altura,int margemEsquerda,int margemDireita,int margemSuperior,int margemInferior,int orientacao) {
+    PainelDesenho(int largura, int altura, int margemEsquerda, int margemDireita, int margemSuperior, int margemInferior, int orientacao) {
       this.setLargura(largura)
         this.setAltura(altura)
         this.setMargemEsquerda(margemEsquerda)
@@ -260,7 +257,7 @@ class PainelDesenho extends JPanel
     super.paintComponent(g)
       if(orientacao == 1) {
         g.setColor(Color.white)
-          g.fillRect(((this.getWidth()/2) - (largura/2)),16,largura,altura)
+          g.fillRect(((this.getWidth()/2) - (largura/2)), 16, largura, altura)
           g.setColor(Color.BLACK)
           g.drawRect(((this.getWidth()/2) - (largura/2)) + margemEsquerda,
               16 + margemSuperior,
@@ -269,7 +266,7 @@ class PainelDesenho extends JPanel
       }
       else if(orientacao == 0) {
         g.setColor(Color.WHITE)
-          g.fillRect(((this.getWidth()/2) - (altura/2)),16,altura,largura)
+          g.fillRect(((this.getWidth()/2) - (altura/2)), 16, altura, largura)
           g.setColor(Color.BLACK)
           g.drawRect(((this.getWidth()/2) - (altura/2)) + margemEsquerda,
               16 + margemSuperior,

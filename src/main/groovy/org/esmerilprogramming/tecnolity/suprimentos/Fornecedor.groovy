@@ -25,11 +25,11 @@ class Fornecedor {
   String email
   String website
 
-    Fornecedor(int codigo,String razaoSocial,String cnpj,
-        int percentualICMS,String logradouro,String complemento,
-        String bairro,String cidade,Estado estado,
-        Pais pais,String cep,String ddd,String telefone,
-        String ramal,String fax,String email,String website) {
+    Fornecedor(int codigo, String razaoSocial, String cnpj,
+        int percentualICMS, String logradouro, String complemento,
+        String bairro, String cidade, Estado estado,
+        Pais pais, String cep, String ddd, String telefone,
+        String ramal, String fax, String email, String website) {
       this.codigo = codigo
         this.razaoSocial = razaoSocial
         this.cnpj = cnpj
@@ -49,11 +49,11 @@ class Fornecedor {
         this.website = website
     }
 
-  Fornecedor(String razaoSocial,String cnpj,
-      int percentualICMS,String logradouro,String complemento,
-      String bairro,String cidade,Estado estado,
-      Pais pais,String cep,String ddd,String telefone,
-      String ramal,String fax,String email,String website) {
+  Fornecedor(String razaoSocial, String cnpj,
+      int percentualICMS, String logradouro, String complemento,
+      String bairro, String cidade, Estado estado,
+      Pais pais, String cep, String ddd, String telefone,
+      String ramal, String fax, String email, String website) {
     this.razaoSocial = razaoSocial
       this.cnpj = cnpj
       this.percentualICMS = percentualICMS
@@ -72,13 +72,13 @@ class Fornecedor {
       this.website = website
   }
 
-  Fornecedor(int codigo,String razaoSocial, String cnpj) {
+  Fornecedor(int codigo, String razaoSocial, String cnpj) {
     this.codigo = codigo
       this.razaoSocial = razaoSocial
       this.cnpj = cnpj
   }
 
-  Fornecedor(int codigo,String razaoSocial) {
+  Fornecedor(int codigo, String razaoSocial) {
     this.codigo = codigo
       this.razaoSocial = razaoSocial
   }
@@ -280,8 +280,7 @@ class Fornecedor {
   private void carregarFornecedor(Conexao conexao) throws Exception
   {
     String query = "select * from fornecedor where codigo = " + this.codigo + " "
-      try
-      {
+      try {
         ResultSet resultado = conexao.executarConsulta(query)
           if(resultado.next()) {
             this.razaoSocial = resultado.getString("razao_social")
@@ -292,8 +291,7 @@ class Fornecedor {
               this.bairro = resultado.getString("bairro")
               this.cidade = resultado.getString("cidade")
               this.estado = new Estado(resultado.getString("estado"))
-              try
-              {
+              try {
                 this.pais = new Pais(resultado.getString("pais"))
               }
             catch(Exception e) {
@@ -318,10 +316,10 @@ class Fornecedor {
   {
     ResultSet dadosFornecedor
       Vector fornecedores = new Vector()
-      dadosFornecedor = conexao.executarConsulta("select codigo,razao_social,cnpj from fornecedor order by razao_social asc")
+      dadosFornecedor = conexao.executarConsulta("select codigo, razao_social, cnpj from fornecedor order by razao_social asc")
       fornecedores.addElement(null)
       while(dadosFornecedor.next()) {
-        fornecedores.addElement(new Fornecedor(dadosFornecedor.getInt("codigo"),dadosFornecedor.getString("razao_social"),dadosFornecedor.getString("cnpj")))
+        fornecedores.addElement(new Fornecedor(dadosFornecedor.getInt("codigo"), dadosFornecedor.getString("razao_social"), dadosFornecedor.getString("cnpj")))
       }
     dadosFornecedor.close()
       return fornecedores
@@ -329,8 +327,8 @@ class Fornecedor {
 
   void cadastrarFornecedor() throws Exception
   {
-    String query = "insert into fornecedor (razao_social,cnpj,percentual_icms,logradouro,complemento,bairro,cidade,estado,pais,cep,ddd,telefone,ramal,fax,email,website) values "
-      query = query + "('"+ razaoSocial +"','"+ cnpj +"',"+ percentualICMS +",'"+ logradouro +"','"+ complemento +"','"+ bairro +"','"+ cidade +"','"+ estado.getSigla() +"','"+ pais.getSigla() +"','"+ cep +"','"+ ddd +"','"+ telefone +"','"+ ramal +"','"+ fax +"','"+ email +"','"+ website +"')"
+    String query = "insert into fornecedor (razao_social, cnpj, percentual_icms, logradouro, complemento, bairro, cidade, estado, pais, cep, ddd, telefone, ramal, fax, email, website) values "
+      query = query + "('"+ razaoSocial +"', '"+ cnpj +"', "+ percentualICMS +", '"+ logradouro +"', '"+ complemento +"', '"+ bairro +"', '"+ cidade +"', '"+ estado.getSigla() +"', '"+ pais.getSigla() +"', '"+ cep +"', '"+ ddd +"', '"+ telefone +"', '"+ ramal +"', '"+ fax +"', '"+ email +"', '"+ website +"')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         ResultSet dadosFornecedor = conexao.executarConsulta("select cnpj from fornecedor where cnpj = '"+ this.cnpj +"'")
@@ -353,7 +351,7 @@ class Fornecedor {
 
   void alterarFornecedor() throws Exception
   {
-    String query = "update fornecedor set razao_social = '"+ razaoSocial +"',cnpj = '"+ cnpj +"',percentual_icms = "+ percentualICMS +",logradouro = '"+ logradouro +"',complemento = '"+ complemento +"',bairro = '"+ bairro +"',cidade = '"+ cidade +"',estado = '"+ estado.getSigla() +"',pais = '"+ pais.getSigla() +"',cep = '"+ cep +"',ddd = '"+ ddd +"',telefone = '"+ telefone +"',ramal = '"+ ramal +"',fax = '"+ fax +"',email = '"+ email +"',website = '"+ website +"' "
+    String query = "update fornecedor set razao_social = '"+ razaoSocial +"', cnpj = '"+ cnpj +"', percentual_icms = "+ percentualICMS +", logradouro = '"+ logradouro +"', complemento = '"+ complemento +"', bairro = '"+ bairro +"', cidade = '"+ cidade +"', estado = '"+ estado.getSigla() +"', pais = '"+ pais.getSigla() +"', cep = '"+ cep +"', ddd = '"+ ddd +"', telefone = '"+ telefone +"', ramal = '"+ ramal +"', fax = '"+ fax +"', email = '"+ email +"', website = '"+ website +"' "
       query = query + " where codigo = "+ codigo +" "
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {

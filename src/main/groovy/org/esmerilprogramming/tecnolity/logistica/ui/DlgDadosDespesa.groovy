@@ -34,7 +34,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
     private JButton btConfirmar, btCancelar
 
     DlgDadosDespesa(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
         despesa = new Despesa()
 
         // Define o título da janela
@@ -53,13 +53,12 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
     }
 
   DlgDadosDespesa(Aplicacao aplicacao, char modo, String placa, String data) {
-    super(aplicacao,true)
-      try
-      {
-        despesa = new Despesa(placa,data,aplicacao.obterConexao())
+    super(aplicacao, true)
+      try {
+        despesa = new Despesa(placa, data, aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar a Despesa.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a Despesa.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
@@ -93,19 +92,18 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
 
       pnlAreaDados = new JPanel(gridbag)
       JLabel label = new JLabel("Placa")
-      adicionarComponente(pnlAreaDados,label,0,0,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 0, 1, 1)
       label = new JLabel('Valor (R$)')
-      adicionarComponente(pnlAreaDados,label,0,1,1,1)
+      adicionarComponente(pnlAreaDados, label, 0, 1, 1, 1)
 
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
       cbxPlaca = new JComboBox()
-      try
-      {
+      try {
         veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
           carregarVeiculos()
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos. ","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos. ", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
@@ -117,35 +115,35 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
       }
     cbxPlaca.setSelectedIndex(indicePlaca)
 
-      pnlSuporteCombo.add(cbxPlaca,BorderLayout.CENTER)
+      pnlSuporteCombo.add(cbxPlaca, BorderLayout.CENTER)
       btNovoVeiculo = new JButton(new ImageIcon("imagens/novo.jpg"))
       btNovoVeiculo.addActionListener(this)
       btNovoVeiculo.setToolTipText("Novo Veículo")
-      btNovoVeiculo.setPreferredSize(new Dimension(22,20))
-      pnlSuporteCombo.add(btNovoVeiculo,BorderLayout.EAST)
-      adicionarComponente(pnlAreaDados,pnlSuporteCombo,1,0,1,1)
+      btNovoVeiculo.setPreferredSize(new Dimension(22, 20))
+      pnlSuporteCombo.add(btNovoVeiculo, BorderLayout.EAST)
+      adicionarComponente(pnlAreaDados, pnlSuporteCombo, 1, 0, 1, 1)
 
-      txtValor = new JTextField(Numero.inverterSeparador(""+this.despesa.obterValor()),8)
+      txtValor = new JTextField(Numero.inverterSeparador(""+this.despesa.obterValor()), 8)
       txtValor.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtValor,1,1,1,1)
+      adicionarComponente(pnlAreaDados, txtValor, 1, 1, 1, 1)
 
       label = new JLabel("Data")
-      adicionarComponente(pnlAreaDados,label,2,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 2, 0, 2, 1)
 
-      txtData = new JTextField(this.dataDespesa,10)
+      txtData = new JTextField(this.dataDespesa, 10)
       txtData.addFocusListener(this)
-      adicionarComponente(pnlAreaDados,txtData,3,0,2,1)
+      adicionarComponente(pnlAreaDados, txtData, 3, 0, 2, 1)
 
       label = new JLabel("Descrição")
-      adicionarComponente(pnlAreaDados,label,4,0,2,1)
+      adicionarComponente(pnlAreaDados, label, 4, 0, 2, 1)
 
-      txaDescricao = new JTextArea(this.despesa.obterDescricao(),4,20)
+      txaDescricao = new JTextArea(this.despesa.obterDescricao(), 4, 20)
       txaDescricao.setLineWrap(true)
       txaDescricao.setWrapStyleWord(true)
       JScrollPane scroll = new JScrollPane(txaDescricao)
-      adicionarComponente(pnlAreaDados,scroll,5,0,2,1)
+      adicionarComponente(pnlAreaDados, scroll, 5, 0, 2, 1)
 
-      conteudo.add(pnlAreaDados,BorderLayout.CENTER)
+      conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
       btConfirmar = new JButton("Confirmar")
@@ -173,7 +171,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -192,13 +190,12 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
       if(objeto == btNovoVeiculo) {
         DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao)
           dlgDadosVeiculo.setVisible(true)
-          try
-          {
+          try {
             veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
               carregarVeiculos()
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Veículos","Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -208,29 +205,26 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
     }
 
     if(objeto == btConfirmar) {
-      try
-      {
+      try {
         if(modo == 'I') {
           boolean confirmado = true
-            try
-            {
+            try {
               despesa.definirPlaca(((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex()))==null?"":((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex())).obterPlaca())
                 despesa.definirValor(Float.parseFloat(Numero.inverterSeparador(this.txtValor.getText())))
                 despesa.definirData(this.txtData.getText())
                 despesa.definirDescricao(this.txaDescricao.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
           if(confirmado) {
-            try
-            {
+            try {
               this.despesa.cadastrarDespesa()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -238,25 +232,23 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
         }
         else if(modo == 'A') {
           boolean confirmado = true
-            try
-            {
+            try {
               despesa.definirPlaca(((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex()))==null?"":((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex())).obterPlaca())
                 despesa.definirValor(Float.parseFloat(Numero.inverterSeparador(this.txtValor.getText())))
                 despesa.definirData(this.txtData.getText())
                 despesa.definirDescricao(this.txaDescricao.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
           if(confirmado) {
-            try
-            {
+            try {
               this.despesa.alterarDespesa()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -265,7 +257,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
 
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

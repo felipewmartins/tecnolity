@@ -174,7 +174,7 @@ class Numero extends DecimalFormat {
 
   static String formatarNumero(final double numero, final String padrao, final int casasDecimais) {
     final DecimalFormatSymbols dfs = new DecimalFormatSymbols()
-      dfs.setDecimalSeparator(',')
+      dfs.setDecimalSeparator(', ')
       dfs.setGroupingSeparator('.')
       final DecimalFormat df = new DecimalFormat(padrao, dfs)
       df.setMinimumFractionDigits(casasDecimais)
@@ -206,10 +206,10 @@ class Numero extends DecimalFormat {
   static String inverterSeparador(String numero) {
     if (!numero.equals("")) {
       if (numero.indexOf(".") >= 0) {
-        return numero.replace('.', ',')
+        return numero.replace('.', ', ')
       }
-      if (numero.indexOf(",") >= 0) {
-        return numero.replace(',', '.')
+      if (numero.indexOf(", ") >= 0) {
+        return numero.replace(', ', '.')
       }
     }
     else {

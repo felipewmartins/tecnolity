@@ -90,7 +90,7 @@ class Item {
       this.definirQuantidadeMinima(quantidadeMinima)
   }
 
-  Item(int codigo, String descricao,Unidade unidade) throws Exception
+  Item(int codigo, String descricao, Unidade unidade) throws Exception
   {
     this.definirCodigo(codigo)
       this.definirDescricao(descricao)
@@ -120,8 +120,7 @@ class Item {
   {
     this.codigo = codigo
       if (conexao.abrirConexao()) {
-        try
-        {
+        try {
           this.carregarItem(conexao)
             this.carregarDepartamentos(conexao)
             this.carregarFornecedores(conexao)
@@ -154,15 +153,14 @@ class Item {
 
   private void carregarItem(Conexao conexao) throws Exception
   {
-    String query = "select descricao,i.categoria as categoria_codigo,c.categoria as categoria,armazenamento,i.unidade as unidade_codigo,u.unidade as unidade,temperatura,seguranca,quantidade,quantidade_minima,quantidade_maxima,percentual_ipi, percentual_perda,ativo,independente from item i, unidade u, categoria_item c where i.unidade = u.codigo and i.categoria = c.codigo and i.codigo = " + this.codigo + " "
-      try
-      {
+    String query = "select descricao, i.categoria as categoria_codigo, c.categoria as categoria, armazenamento, i.unidade as unidade_codigo, u.unidade as unidade, temperatura, seguranca, quantidade, quantidade_minima, quantidade_maxima, percentual_ipi, percentual_perda, ativo, independente from item i, unidade u, categoria_item c where i.unidade = u.codigo and i.categoria = c.codigo and i.codigo = " + this.codigo + " "
+      try {
         ResultSet resultado = conexao.executarConsulta(query)
           if(resultado.next()) {
             descricao = resultado.getString("descricao")
-              categoria = new Categoria(resultado.getInt("categoria_codigo"),resultado.getString("categoria"))
+              categoria = new Categoria(resultado.getInt("categoria_codigo"), resultado.getString("categoria"))
               armazenamento = resultado.getString("armazenamento")
-              unidade = new Unidade(resultado.getInt("unidade_codigo"),resultado.getString("unidade"))
+              unidade = new Unidade(resultado.getInt("unidade_codigo"), resultado.getString("unidade"))
               temperatura = resultado.getFloat("temperatura")
               seguranca = resultado.getString("seguranca")
               quantidade = resultado.getFloat("quantidade")
@@ -187,7 +185,7 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade,i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
       "from item i, categoria_item ci, unidade u, departamento_item di " +
       "where i.independente = 1 and i.unidade = u.codigo and ci.codigo = i.categoria and i.codigo = di.item and di.departamento = " + departamento.obterCodigo() +
       "order by i.descricao, ci.categoria"
@@ -196,7 +194,7 @@ class Item {
         itens.addElement(new Item(dadosItem.getInt("codigo"),
               dadosItem.getString("descricao"),
               new Categoria(dadosItem.getInt("codigo_categoria"), dadosItem.getString("categoria")),
-              new Unidade(dadosItem.getInt("codigo_unidade"),dadosItem.getString("unidade")),
+              new Unidade(dadosItem.getInt("codigo_unidade"), dadosItem.getString("unidade")),
               dadosItem.getFloat("quantidade"),
               dadosItem.getFloat("quantidade_minima")))
       }
@@ -210,7 +208,7 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade,i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
       "from item i, categoria_item ci, unidade u " +
       "where i.independente = 1 and i.unidade = u.codigo and ci.codigo = i.categoria "+
       "order by i.descricao, ci.categoria"
@@ -219,7 +217,7 @@ class Item {
         itens.addElement(new Item(dadosItem.getInt("codigo"),
               dadosItem.getString("descricao"),
               new Categoria(dadosItem.getInt("codigo_categoria"), dadosItem.getString("categoria")),
-              new Unidade(dadosItem.getInt("codigo_unidade"),dadosItem.getString("unidade")),
+              new Unidade(dadosItem.getInt("codigo_unidade"), dadosItem.getString("unidade")),
               dadosItem.getFloat("quantidade"),
               dadosItem.getFloat("quantidade_minima")))
       }
@@ -233,7 +231,7 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade,i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
       "from item i, categoria_item ci, unidade u, fornecedor_item fi, fornecedor f " +
       "where i.independente = 1 and i.quantidade_minima > i.quantidade and i.unidade = u.codigo and ci.codigo = i.categoria and fi.item = i.codigo and fi.fornecedor = f.codigo "+
       "order by i.descricao, ci.categoria"
@@ -242,7 +240,7 @@ class Item {
         itens.addElement(new Item(dadosItem.getInt("codigo"),
               dadosItem.getString("descricao"),
               new Categoria(dadosItem.getInt("codigo_categoria"), dadosItem.getString("categoria")),
-              new Unidade(dadosItem.getInt("codigo_unidade"),dadosItem.getString("unidade")),
+              new Unidade(dadosItem.getInt("codigo_unidade"), dadosItem.getString("unidade")),
               dadosItem.getFloat("quantidade"),
               dadosItem.getFloat("quantidade_minima")))
       }
@@ -262,8 +260,8 @@ class Item {
       dadosItem = conexao.executarConsulta(query)
       Item item
       while(dadosItem.next()) {
-        item = new Item(dadosItem.getInt("codigo_item"),dadosItem.getString("descricao"),dadosItem.getFloat("quantidade"), dadosItem.getFloat("quantidade_minima"))
-          FornecedorItem fornecedorItem = new FornecedorItem(fornecedor,item,dadosItem.getFloat("valor_item"))
+        item = new Item(dadosItem.getInt("codigo_item"), dadosItem.getString("descricao"), dadosItem.getFloat("quantidade"), dadosItem.getFloat("quantidade_minima"))
+          FornecedorItem fornecedorItem = new FornecedorItem(fornecedor, item, dadosItem.getFloat("valor_item"))
           item.definirFornecedorItem(fornecedorItem)
           itens.addElement(item)
 
@@ -278,17 +276,17 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo as codigo,i.descricao as descricao,ci.codigo as codigo_categoria, ci.categoria as categoria,u.codigo as codigo_unidade,u.unidade as unidade, sum(l.quantidade) as quantidade " +
+      String query = "select i.codigo as codigo, i.descricao as descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, sum(l.quantidade) as quantidade " +
       "from item i, unidade u, categoria_item ci, lote l " +
       "where u.codigo = i.unidade and ci.codigo = i.categoria and i.codigo *= l.item " +
-      "group by i.codigo,i.descricao,u.codigo,u.unidade,ci.codigo, ci.categoria " +
+      "group by i.codigo, i.descricao, u.codigo, u.unidade, ci.codigo, ci.categoria " +
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
       while(dadosItem.next()) {
         itens.addElement(new Item(dadosItem.getInt("codigo"),
               dadosItem.getString("descricao"),
               new Categoria(dadosItem.getInt("codigo_categoria"), dadosItem.getString("categoria")),
-              new Unidade(dadosItem.getInt("codigo_unidade"),dadosItem.getString("unidade")),
+              new Unidade(dadosItem.getInt("codigo_unidade"), dadosItem.getString("unidade")),
               dadosItem.getFloat("quantidade")))
       }
     dadosItem.close()
@@ -300,7 +298,7 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade,i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
       "where i.categoria = ci.codigo and i.unidade = u.codigo and i.quantidade > 0 " +
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
@@ -308,7 +306,7 @@ class Item {
         itens.addElement(new Item(dadosItem.getInt("codigo"),
               dadosItem.getString("descricao"),
               new Categoria(dadosItem.getInt("codigo_categoria"), dadosItem.getString("categoria")),
-              new Unidade(dadosItem.getInt("codigo_unidade"),dadosItem.getString("unidade")),
+              new Unidade(dadosItem.getInt("codigo_unidade"), dadosItem.getString("unidade")),
               dadosItem.getFloat("quantidade"),
               dadosItem.getFloat("quantidade_minima")))
       }
@@ -322,7 +320,7 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade,i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
       "where i.categoria = ci.codigo and i.unidade = u.codigo and i.ativo = 0 " +
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
@@ -330,7 +328,7 @@ class Item {
         itens.addElement(new Item(dadosItem.getInt("codigo"),
               dadosItem.getString("descricao"),
               new Categoria(dadosItem.getInt("codigo_categoria"), dadosItem.getString("categoria")),
-              new Unidade(dadosItem.getInt("codigo_unidade"),dadosItem.getString("unidade")),
+              new Unidade(dadosItem.getInt("codigo_unidade"), dadosItem.getString("unidade")),
               dadosItem.getFloat("quantidade"),
               dadosItem.getFloat("quantidade_minima")))
       }
@@ -352,7 +350,7 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade,i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
       "where i.categoria = ci.codigo and i.unidade = u.codigo and "
       for(int i = 0;i < codigos.length;i++) {
         if(i == 0)
@@ -366,8 +364,8 @@ class Item {
         itens.addElement(new Item(dadosItem.getInt("codigo"),
               dadosItem.getString("descricao"),
               new Categoria(dadosItem.getInt("codigo_categoria"), dadosItem.getString("categoria")),
-              new Unidade(dadosItem.getInt("codigo_unidade"),dadosItem.getString("unidade")),
-              dadosItem.getFloat("quantidade"),dadosItem.getFloat("quantidade_minima")))
+              new Unidade(dadosItem.getInt("codigo_unidade"), dadosItem.getString("unidade")),
+              dadosItem.getFloat("quantidade"), dadosItem.getFloat("quantidade_minima")))
       }
     if(!dadosItem.wasNull())
       dadosItem.close()
@@ -380,7 +378,7 @@ class Item {
       Vector itens = new Vector()
       String query = ""
       if(pedidos != null) {
-        query = "select i.codigo,i.descricao " +
+        query = "select i.codigo, i.descricao " +
           "from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi " +
           "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and " +
           "qmp.item = i.codigo and i.codigo = fi.item "
@@ -399,20 +397,20 @@ class Item {
                     query += ") "
                   }
               }
-        query += "group by i.codigo,i.descricao,i.quantidade,i.percentual_perda"
+        query += "group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
       }
       else
       {
-        query = "select i.codigo,i.descricao from item i, fornecedor_item fi " +
+        query = "select i.codigo, i.descricao from item i, fornecedor_item fi " +
           "where i.codigo = fi.item "
           if(fornecedor != null)
             query += "and fi.fornecedor = "+ fornecedor.obterCodigo() +" "
-              query += "group by i.codigo,i.descricao,i.quantidade,i.percentual_perda"
+              query += "group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
       }
     dadosItem = conexao.executarConsulta(query)
       itens.addElement(null)
       while(dadosItem.next()) {
-        itens.addElement(new Item(dadosItem.getInt("codigo"),dadosItem.getString("descricao")))
+        itens.addElement(new Item(dadosItem.getInt("codigo"), dadosItem.getString("descricao")))
       }
     dadosItem.close()
       return itens
@@ -436,7 +434,7 @@ class Item {
       dadosItem = conexao.executarConsulta(query)
       itens.addElement(null)
       while(dadosItem.next()) {
-        itens.addElement(new Item(dadosItem.getInt("codigo"),dadosItem.getString("descricao")))
+        itens.addElement(new Item(dadosItem.getInt("codigo"), dadosItem.getString("descricao")))
       }
     dadosItem.close()
       return itens
@@ -455,14 +453,14 @@ class Item {
   {
     ResultSet dadosItem
       Vector itens = new Vector()
-      String query = "select i.codigo,i.descricao " +
+      String query = "select i.codigo, i.descricao " +
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp, departamento_item di " +
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and i.codigo = di.item and di.departamento = "+ departamento.obterCodigo() +" and mp.pedido = "+ pedido.obterCodigo() +" " +
-      "group by i.codigo,i.descricao"
+      "group by i.codigo, i.descricao"
       dadosItem = conexao.executarConsulta(query)
       itens.addElement("Selecione...")
       while(dadosItem.next()) {
-        itens.addElement(new Item(dadosItem.getInt("codigo"),dadosItem.getString("descricao")))
+        itens.addElement(new Item(dadosItem.getInt("codigo"), dadosItem.getString("descricao")))
       }
     dadosItem.close()
       return itens
@@ -473,10 +471,10 @@ class Item {
   {
     ResultSet dadosItem
       Vector itens = new Vector()
-      dadosItem = conexao.executarConsulta("select distinct item.codigo,item.descricao from item, lote, movimentacao_item, requisicao_compra where requisicao_compra.pedido_cliente = "+ pedidoCliente.obterCodigo() +" and requisicao_compra.codigo = movimentacao_item.requisicao_compra and movimentacao_item.item = item.codigo or item.independente = 0 order by item.descricao asc")
+      dadosItem = conexao.executarConsulta("select distinct item.codigo, item.descricao from item, lote, movimentacao_item, requisicao_compra where requisicao_compra.pedido_cliente = "+ pedidoCliente.obterCodigo() +" and requisicao_compra.codigo = movimentacao_item.requisicao_compra and movimentacao_item.item = item.codigo or item.independente = 0 order by item.descricao asc")
       itens.addElement(null)
       while(dadosItem.next()) {
-        itens.addElement(new Item(dadosItem.getInt("codigo"),dadosItem.getString("descricao")))
+        itens.addElement(new Item(dadosItem.getInt("codigo"), dadosItem.getString("descricao")))
       }
     dadosItem.close()
       return itens
@@ -485,8 +483,7 @@ class Item {
   private void carregarDepartamentos(Conexao conexao) {
     String query = "select * from departamento_item where item = " + this.codigo + " "
       departamentos = new Vector()
-      try
-      {
+      try {
         ResultSet resultado = conexao.executarConsulta(query)
           while(resultado.next()) {
             int depto = resultado.getInt("departamento")
@@ -500,16 +497,14 @@ class Item {
   }
 
   private void carregarFornecedores(Conexao conexao) {
-    String query = "select fi.fornecedor,i.codigo,i.descricao,fi.data_atualizacao_valor,fi.unidade,fi.valor_item, fi.moeda, fi.referencia_fornecedor from fornecedor_item fi, item i where fi.item = i.codigo and fi.item = " + this.codigo + " "
-      try
-      {
+    String query = "select fi.fornecedor, i.codigo, i.descricao, fi.data_atualizacao_valor, fi.unidade, fi.valor_item, fi.moeda, fi.referencia_fornecedor from fornecedor_item fi, item i where fi.item = i.codigo and fi.item = " + this.codigo + " "
+      try {
         fornecedoresItem = new Vector()
           ResultSet resultado = conexao.executarConsulta(query)
           while(resultado.next()) {
-            try
-            {
+            try {
               fornecedoresItem.addElement(new FornecedorItem(new Fornecedor(resultado.getInt("fornecedor")),
-                    new Item(this.codigo,resultado.getString("descricao")),
+                    new Item(this.codigo, resultado.getString("descricao")),
                     resultado.getString("data_atualizacao_valor"),
                     new Unidade(resultado.getInt("unidade")),
                     resultado.getFloat("valor_item"),
@@ -560,7 +555,7 @@ class Item {
     }
     else
     {
-      fornecedoresItem.setElementAt(fornecedorItem,0)
+      fornecedoresItem.setElementAt(fornecedorItem, 0)
     }
   }
 
@@ -669,8 +664,8 @@ class Item {
 
   void cadastrarItem() throws Exception
   {
-    String query = "insert into item (descricao,categoria,armazenamento,unidade,temperatura,seguranca,quantidade,quantidade_minima,quantidade_maxima,percentual_ipi,percentual_perda,ativo,independente) values "
-      query = query + "('"+ descricao +"',"+ categoria.obterCodigo() +",'"+ armazenamento +"',"+ unidade.obterCodigo() +","+ temperatura +",'"+ seguranca +"',0,"+ quantidadeMinima +","+ quantidadeMaxima +","+ percentualIPI +","+ percentualPerda +","+ ((this.ativo)?1:0) +","+ ((this.independente)?1:0) +")"
+    String query = "insert into item (descricao, categoria, armazenamento, unidade, temperatura, seguranca, quantidade, quantidade_minima, quantidade_maxima, percentual_ipi, percentual_perda, ativo, independente) values "
+      query = query + "('"+ descricao +"', "+ categoria.obterCodigo() +", '"+ armazenamento +"', "+ unidade.obterCodigo() +", "+ temperatura +", '"+ seguranca +"', 0, "+ quantidadeMinima +", "+ quantidadeMaxima +", "+ percentualIPI +", "+ percentualPerda +", "+ ((this.ativo)?1:0) +", "+ ((this.independente)?1:0) +")"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         ResultSet dadosItem = conexao.executarConsulta("select descricao from item where descricao = '"+ this.descricao +"'")
@@ -684,7 +679,7 @@ class Item {
           dadosItem = conexao.executarConsulta("select codigo from item where descricao = '"+ descricao +"'")
           if(dadosItem.next()) {
             this.definirCodigo(dadosItem.getInt("codigo"))
-              conexao.executarAtualizacao("insert into lote (item,quantidade,lote_basico) values ("+ this.obterCodigo() +","+ this.obterQuantidade() +",'"+ Lote.LOTE_BASICO +"')")
+              conexao.executarAtualizacao("insert into lote (item, quantidade, lote_basico) values ("+ this.obterCodigo() +", "+ this.obterQuantidade() +", '"+ Lote.LOTE_BASICO +"')")
               dadosItem.close()
           }
         conexao.fecharConexao()
@@ -704,7 +699,7 @@ class Item {
         String query = ""
         if(numDepartamentos > 0 && conexao.abrirConexao()) {
           for(int i = 0;i < numDepartamentos;i++) {
-            query = "insert into departamento_item (departamento,item) values ("+ ((Departamento)departamentos.get(i)).obterCodigo() +","+ this.obterCodigo() +")"
+            query = "insert into departamento_item (departamento, item) values ("+ ((Departamento)departamentos.get(i)).obterCodigo() +", "+ this.obterCodigo() +")"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -722,7 +717,7 @@ class Item {
         if(numFornecedores > 0 && conexao.abrirConexao()) {
           for(int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = "insert into fornecedor_item (fornecedor,item,unidade,valor_item,data_atualizacao_valor,moeda,referencia_fornecedor) values ("+ fiAtual.obterFornecedor().obterCodigo() +","+ fiAtual.obterItem().obterCodigo() +","+ fiAtual.obterUnidade().obterCodigo() +","+ fiAtual.obterValorItem() +",'"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(),"/") +"','"+ fiAtual.obterMoeda() +"','"+ fiAtual.obterReferenciaFornecedor() +"')"
+              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values ("+ fiAtual.obterFornecedor().obterCodigo() +", "+ fiAtual.obterItem().obterCodigo() +", "+ fiAtual.obterUnidade().obterCodigo() +", "+ fiAtual.obterValorItem() +", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") +"', '"+ fiAtual.obterMoeda() +"', '"+ fiAtual.obterReferenciaFornecedor() +"')"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -738,7 +733,7 @@ class Item {
       if (conexao.abrirConexao()) {
         ResultSet itemSelecionado = conexao.executarConsulta(query)
           if(itemSelecionado.next()) {
-            query = "update item set descricao = '"+ descricao +"',categoria = "+ categoria.obterCodigo() +",armazenamento = '"+ armazenamento +"',unidade = "+ unidade.obterCodigo() +",temperatura = "+ temperatura +",seguranca = '"+ seguranca +"',quantidade = "+ quantidade +",quantidade_minima = "+ quantidadeMinima +",quantidade_maxima = "+ quantidadeMaxima +",percentual_ipi = "+ percentualIPI +",percentual_perda = "+ percentualPerda +",ativo = "+ ((this.ativo)?1:0) +",independente = "+ ((this.independente)?1:0) +" where codigo = "+ codigo
+            query = "update item set descricao = '"+ descricao +"', categoria = "+ categoria.obterCodigo() +", armazenamento = '"+ armazenamento +"', unidade = "+ unidade.obterCodigo() +", temperatura = "+ temperatura +", seguranca = '"+ seguranca +"', quantidade = "+ quantidade +", quantidade_minima = "+ quantidadeMinima +", quantidade_maxima = "+ quantidadeMaxima +", percentual_ipi = "+ percentualIPI +", percentual_perda = "+ percentualPerda +", ativo = "+ ((this.ativo)?1:0) +", independente = "+ ((this.independente)?1:0) +" where codigo = "+ codigo
               conexao.executarAtualizacao(query)
               query = "update lote set quantidade = "+ quantidade +" where item = " + codigo + " and lote_basico = '"+ Lote.LOTE_BASICO +"'"
               conexao.executarAtualizacao(query)
@@ -746,7 +741,7 @@ class Item {
           }
           else
           {
-            query = "update item set descricao = '"+ descricao +"',categoria = "+ categoria.obterCodigo() +",armazenamento = '"+ armazenamento +"',unidade = "+ unidade.obterCodigo() +",temperatura = "+ temperatura +",seguranca = '"+ seguranca +"',quantidade_minima = "+ quantidadeMinima +",quantidade_maxima = "+ quantidadeMaxima +",percentual_ipi = "+ percentualIPI +",percentual_perda = "+ percentualPerda +",ativo = "+ ((this.ativo)?1:0) +",independente = "+ ((this.independente)?1:0) +" where codigo = "+ codigo
+            query = "update item set descricao = '"+ descricao +"', categoria = "+ categoria.obterCodigo() +", armazenamento = '"+ armazenamento +"', unidade = "+ unidade.obterCodigo() +", temperatura = "+ temperatura +", seguranca = '"+ seguranca +"', quantidade_minima = "+ quantidadeMinima +", quantidade_maxima = "+ quantidadeMaxima +", percentual_ipi = "+ percentualIPI +", percentual_perda = "+ percentualPerda +", ativo = "+ ((this.ativo)?1:0) +", independente = "+ ((this.independente)?1:0) +" where codigo = "+ codigo
               conexao.executarAtualizacao(query)
           }
         conexao.fecharConexao()
@@ -770,7 +765,7 @@ class Item {
             conexao.executarAtualizacao(query)
 
             for(int i = 0;i < numDepartamentos;i++) {
-              query = "insert into departamento_item (departamento,item) values ("+ ((Departamento)departamentos.get(i)).obterCodigo() +","+ this.obterCodigo() +")"
+              query = "insert into departamento_item (departamento, item) values ("+ ((Departamento)departamentos.get(i)).obterCodigo() +", "+ this.obterCodigo() +")"
                 conexao.executarAtualizacao(query)
             }
           conexao.fecharConexao()
@@ -792,7 +787,7 @@ class Item {
           }
           for(int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = "insert into fornecedor_item (fornecedor,item,unidade,valor_item,data_atualizacao_valor,moeda,referencia_fornecedor) values ("+ fiAtual.obterFornecedor().obterCodigo() +","+ fiAtual.obterItem().obterCodigo() +","+ fiAtual.obterUnidade().obterCodigo() +","+ fiAtual.obterValorItem() +",'"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(),"/") +"','"+ fiAtual.obterMoeda() +"','"+ fiAtual.obterReferenciaFornecedor() +"')"
+              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values ("+ fiAtual.obterFornecedor().obterCodigo() +", "+ fiAtual.obterItem().obterCodigo() +", "+ fiAtual.obterUnidade().obterCodigo() +", "+ fiAtual.obterValorItem() +", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") +"', '"+ fiAtual.obterMoeda() +"', '"+ fiAtual.obterReferenciaFornecedor() +"')"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()

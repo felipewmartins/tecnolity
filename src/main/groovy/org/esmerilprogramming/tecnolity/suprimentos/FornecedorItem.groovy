@@ -69,7 +69,7 @@ class FornecedorItem {
     String erro = ""
       if(data.equals(""))
         erro = "Data de Atualização não foi informada."
-      else if(!Calendario.validarData(data,"/"))
+      else if(!Calendario.validarData(data, "/"))
         erro = "Data inválida."
           if(!erro.equals("")) {
             Exception e = new Exception(erro)

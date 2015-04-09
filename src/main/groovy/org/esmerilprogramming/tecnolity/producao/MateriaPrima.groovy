@@ -57,8 +57,7 @@ class MateriaPrima implements Cloneable {
 
   MateriaPrima clonar() {
     MateriaPrima materiaPrima = null
-      try
-      {
+      try {
         materiaPrima = (MateriaPrima)super.clone()
       } 
     catch (CloneNotSupportedException e) {

@@ -13,8 +13,7 @@ class Despesa {
   }
 
   Despesa(String placa, String data) {
-    try
-    {
+    try {
       this.definirPlaca(placa)
         this.definirData(data)
     }
@@ -25,8 +24,7 @@ class Despesa {
 
   Despesa(String placa, String data, Conexao conexao)throws Exception
   {
-    try
-    {
+    try {
       this.definirPlaca(placa)
         this.definirData(data)
         this.definirPlacaAntesAlteracao(placa)
@@ -37,11 +35,10 @@ class Despesa {
     }
 
     ResultSet dadosDespesa
-      dadosDespesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data,"/") +"' ")
+      dadosDespesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data, "/") +"' ")
 
       if(dadosDespesa.next()) {
-        try
-        {
+        try {
           this.definirDescricao(dadosDespesa.getString("descricao"))
             this.definirValor(dadosDespesa.getFloat("valor"))
         }
@@ -52,8 +49,7 @@ class Despesa {
   }
 
   Despesa(String placa, String descricao, float valor, String data) {
-    try
-    {
+    try {
       this.definirPlaca(placa)
         this.definirDescricao(descricao)
         this.definirValor(valor)
@@ -65,8 +61,7 @@ class Despesa {
   }
 
   Despesa(String placa, String descricao, float valor, String data, String placaAntesAlteracao, String dataAntesAlteracao) {
-    try
-    {
+    try {
       this.definirPlaca(placa)
         this.definirPlacaAntesAlteracao(placaAntesAlteracao)
         this.definirDescricao(descricao)
@@ -97,7 +92,7 @@ class Despesa {
       if(dataAntesAlteracao.equals(""))
         erro = "A Data não foi informada."
       else if(dataAntesAlteracao.length() == 10) {
-        if(!Calendario.validarData(dataAntesAlteracao,"/"))
+        if(!Calendario.validarData(dataAntesAlteracao, "/"))
           erro = "Data inválida."
       }
       else if(dataAntesAlteracao.length() < 10)
@@ -154,7 +149,7 @@ class Despesa {
       if(data.equals(""))
         erro = "A Data não foi informada."
       else if(data.length() == 10) {
-        if(!Calendario.validarData(data,"/"))
+        if(!Calendario.validarData(data, "/"))
           erro = "Data inválida."
       }
       else
@@ -183,13 +178,13 @@ class Despesa {
 
   void cadastrarDespesa() throws Exception
   {
-    String query = "insert into despesa_veiculo (veiculo,datahora,descricao,valor) values "
-      query = query + "('"+ this.placa +"', '"+ Calendario.inverterFormato(this.data,"/") +"', '"+ this.descricao +"', "+ this.valor +")"
+    String query = "insert into despesa_veiculo (veiculo, datahora, descricao, valor) values "
+      query = query + "('"+ this.placa +"', '"+ Calendario.inverterFormato(this.data, "/") +"', '"+ this.descricao +"', "+ this.valor +")"
       Conexao conexao = new Conexao('T')
       boolean existente = false
 
       if (conexao.abrirConexao()) {
-        ResultSet despesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data,"/") +"' ")
+        ResultSet despesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data, "/") +"' ")
           if(despesa.next()) {
             existente = true
               Exception e = new Exception("Já existe uma despesa associada a este veículo na data informada. Não foi possível realizar o cadastro.")
@@ -210,7 +205,7 @@ class Despesa {
 
   void alterarDespesa() throws Exception
   {
-    String query = "update despesa_veiculo set veiculo = '"+ this.placa +"',datahora = '"+ Calendario.inverterFormato(this.data,"/") +"',descricao = '"+ this.descricao +"',valor = "+ this.valor +" where veiculo = '"+ this.placaAntesAlteracao +"' and datahora = '"+ Calendario.inverterFormato(this.dataAntesAlteracao,"/") +"' "
+    String query = "update despesa_veiculo set veiculo = '"+ this.placa +"', datahora = '"+ Calendario.inverterFormato(this.data, "/") +"', descricao = '"+ this.descricao +"', valor = "+ this.valor +" where veiculo = '"+ this.placaAntesAlteracao +"' and datahora = '"+ Calendario.inverterFormato(this.dataAntesAlteracao, "/") +"' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -225,7 +220,7 @@ class Despesa {
 
   void excluirDespesa() throws Exception
   {
-    String query = "delete from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data,"/") +"' "
+    String query = "delete from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data, "/") +"' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
