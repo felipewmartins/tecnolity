@@ -14,8 +14,6 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
   private def estados
   private def paises
   private def departamentos
-  private Pais pais = new Pais()
-  private Estado estado = new Estado()
   private Colaborador colaborador
   private Container conteudo
   private JPanel pnlAreaDados
@@ -30,7 +28,6 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
 
   private JPasswordField txpSenha, txpConfirmacaoSenha
   private JRadioButton rdbSexoMasculino, rdbSexoFeminino
-  private JComboBox cbxDepartamento, cbxEstado, cbxPais
 
   DlgDadosColaborador(Aplicacao aplicacao, char modo) {
     super(aplicacao, true)
