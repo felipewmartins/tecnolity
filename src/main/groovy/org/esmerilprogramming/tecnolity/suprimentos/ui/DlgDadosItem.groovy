@@ -56,7 +56,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
                 super(aplicacao,true)
                   item = new Item()
 
-                  this.setTitle("Item")
+                  this.setTitle('Item')
 
                   this.aplicacao = aplicacao
 
@@ -70,11 +70,11 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         item = new Item(codigo, aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: '+e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
-    this.setTitle("Item")
+    this.setTitle('Item')
 
       this.aplicacao = aplicacao
 
@@ -99,10 +99,10 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       card = new CardLayout()
       pnlAreaDados.setLayout(card)
       pnlDadosItem = new JPanel(gridbag)
-      pnlDadosItem.setBorder(new TitledBorder("Dados do Item"))
-      JLabel label = new JLabel("Descrição")
+      pnlDadosItem.setBorder(new TitledBorder('Dados do Item'))
+      JLabel label = new JLabel('Descrição')
       adicionarComponente(pnlDadosItem,label,0,0,3,1)
-      label = new JLabel("Unidade Tecnolity")
+      label = new JLabel('Unidade Tecnolity')
       adicionarComponente(pnlDadosItem,label,0,3,1,1)
       txtDescricao = new JTextField(this.item.obterDescricao(),30)
       adicionarComponente(pnlDadosItem,txtDescricao,1,0,3,1)
@@ -113,23 +113,23 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
       int indiceUnidade = 0
       for(int i = 1; i < unidades.size(); i++) {
-        if((((Unidade)unidades.get(i)).obterNomeUnidade()).equals((this.item.obterUnidade())==null?"":(this.item.obterUnidade()).obterNomeUnidade())) {
+        if((((Unidade)unidades.get(i)).obterNomeUnidade()).equals((this.item.obterUnidade())==null?'':(this.item.obterUnidade()).obterNomeUnidade())) {
           indiceUnidade = i
         }
       }
     cbxUnidadeTecnolity.setSelectedIndex(indiceUnidade)
 
       pnlSuporteCombo.add(cbxUnidadeTecnolity,BorderLayout.CENTER)
-      btNovaUnidadeTecnolity = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovaUnidadeTecnolity = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovaUnidadeTecnolity.addActionListener(this)
-      btNovaUnidadeTecnolity.setToolTipText("Nova Unidade")
+      btNovaUnidadeTecnolity.setToolTipText('Nova Unidade')
       btNovaUnidadeTecnolity.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovaUnidadeTecnolity,BorderLayout.EAST)
       adicionarComponente(pnlDadosItem,pnlSuporteCombo,1,3,1,1)
 
-      label = new JLabel("Categoria")
+      label = new JLabel('Categoria')
       adicionarComponente(pnlDadosItem,label,2,0,2,1)
-      label = new JLabel("Temperatura (C°)")
+      label = new JLabel('Temperatura (C°)')
       adicionarComponente(pnlDadosItem,label,2,2,1,1)
 
       pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -138,70 +138,70 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
       int indiceCategoria = 0
       for(int i = 1; i < categorias.size(); i++) {
-        if((((Categoria)categorias.get(i)).obterNomeCategoria()).equals((this.item.obterCategoria())==null?"":(this.item.obterCategoria()).obterNomeCategoria())) {
+        if((((Categoria)categorias.get(i)).obterNomeCategoria()).equals((this.item.obterCategoria())==null?'':(this.item.obterCategoria()).obterNomeCategoria())) {
           indiceCategoria = i
         }
       }
     cbxCategoria.setSelectedIndex(indiceCategoria)
 
       pnlSuporteCombo.add(cbxCategoria,BorderLayout.CENTER)
-      btNovaCategoria = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovaCategoria = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovaCategoria.addActionListener(this)
-      btNovaCategoria.setToolTipText("Nova Categoria")
+      btNovaCategoria.setToolTipText('Nova Categoria')
       btNovaCategoria.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovaCategoria,BorderLayout.EAST)
       adicionarComponente(pnlDadosItem,pnlSuporteCombo,3,0,2,1)
 
-      txtTemperatura = new JTextField(""+Numero.inverterSeparador(""+this.item.obterTemperatura()),8)
+      txtTemperatura = new JTextField(''+Numero.inverterSeparador(''+this.item.obterTemperatura()),8)
       txtTemperatura.addFocusListener(this)
       adicionarComponente(pnlDadosItem,txtTemperatura,3,2,1,1)
-      chbReservavel = new JCheckBox("Independente")
+      chbReservavel = new JCheckBox('Independente')
       adicionarComponente(pnlDadosItem,chbReservavel,3,3,1,1)
       if(this.item.obterIndependente())
         chbReservavel.setSelected(true)
       else
         chbReservavel.setSelected(false)
-          label = new JLabel("Quantidade")
+          label = new JLabel('Quantidade')
           adicionarComponente(pnlDadosItem,label,4,0,1,1)
-          label = new JLabel("Quant.Mínima")
+          label = new JLabel('Quant.Mínima')
           adicionarComponente(pnlDadosItem,label,4,1,1,1)
-          label = new JLabel("Quant.Máxima")
+          label = new JLabel('Quant.Máxima')
           adicionarComponente(pnlDadosItem,label,4,2,1,1)
           JPanel pnlSituacao = new JPanel()
-          pnlSituacao.setBorder(new TitledBorder("Situação"))
+          pnlSituacao.setBorder(new TitledBorder('Situação'))
           ButtonGroup grupo = new ButtonGroup()
-          rdbSituacaoAtiva = new JRadioButton("Ativo")
+          rdbSituacaoAtiva = new JRadioButton('Ativo')
           if(this.item.obterAtivo())
             rdbSituacaoAtiva.setSelected(true)
               grupo.add(rdbSituacaoAtiva)
               pnlSituacao.add(rdbSituacaoAtiva)
-              rdbSituacaoDesativa = new JRadioButton("Inativo")
+              rdbSituacaoDesativa = new JRadioButton('Inativo')
               if(!this.item.obterAtivo())
                 rdbSituacaoDesativa.setSelected(true)
                   grupo.add(rdbSituacaoDesativa)
                   pnlSituacao.add(rdbSituacaoDesativa)
                   adicionarComponente(pnlDadosItem,pnlSituacao,4,3,1,2)
-                  txtQuantidade = new JTextField(""+Numero.inverterSeparador(""+this.item.obterQuantidade()),10)
+                  txtQuantidade = new JTextField(''+Numero.inverterSeparador(''+this.item.obterQuantidade()),10)
                   txtQuantidade.addFocusListener(this)
                   adicionarComponente(pnlDadosItem,txtQuantidade,5,0,1,1)
-                  txtQuantMinima = new JTextField(""+Numero.inverterSeparador(""+this.item.obterQuantidadeMinima()),10)
+                  txtQuantMinima = new JTextField(''+Numero.inverterSeparador(''+this.item.obterQuantidadeMinima()),10)
                   txtQuantMinima.addFocusListener(this)
                   adicionarComponente(pnlDadosItem,txtQuantMinima,5,1,1,1)
-                  txtQuantMaxima = new JTextField(""+Numero.inverterSeparador(""+this.item.obterQuantidadeMaxima()),10)
+                  txtQuantMaxima = new JTextField(''+Numero.inverterSeparador(''+this.item.obterQuantidadeMaxima()),10)
                   txtQuantMaxima.addFocusListener(this)
                   adicionarComponente(pnlDadosItem,txtQuantMaxima,5,2,1,1)
-                  label = new JLabel("IPI (%)")
+                  label = new JLabel('IPI (%)')
                   adicionarComponente(pnlDadosItem,label,6,0,1,1)
-                  label = new JLabel("Perda (%)")
+                  label = new JLabel('Perda (%)')
                   adicionarComponente(pnlDadosItem,label,6,1,1,1)
-                  txtPercentualIPI = new JTextField(""+Numero.inverterSeparador(""+this.item.obterPercentualIPI()),3)
+                  txtPercentualIPI = new JTextField(''+Numero.inverterSeparador(''+this.item.obterPercentualIPI()),3)
                   txtPercentualIPI.addFocusListener(this)
                   adicionarComponente(pnlDadosItem,txtPercentualIPI,7,0,1,1)
-                  txtPercentualPerda = new JTextField(""+ this.item.obterPercentualPerda(),3)
+                  txtPercentualPerda = new JTextField(''+ this.item.obterPercentualPerda(),3)
                   adicionarComponente(pnlDadosItem,txtPercentualPerda,7,1,1,1)
-                  label = new JLabel("Armazenamento")
+                  label = new JLabel('Armazenamento')
                   adicionarComponente(pnlDadosItem,label,8,0,2,1)
-                  label = new JLabel("Segurança")
+                  label = new JLabel('Segurança')
                   adicionarComponente(pnlDadosItem,label,8,2,2,1)
                   txaArmazenamento = new JTextArea(this.item.obterArmazenamento(),4,20)
                   txaArmazenamento.setLineWrap(true)
@@ -216,19 +216,19 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
                   fornecedoresItem = new Vector()
                   pnlDadosFornecedor = new JPanel(gridbag)
-                  pnlDadosFornecedor.setBorder(new TitledBorder("Dados do Fornecedor"))
-                  label = new JLabel("Fornecedores")
+                  pnlDadosFornecedor.setBorder(new TitledBorder('Dados do Fornecedor'))
+                  label = new JLabel('Fornecedores')
                   adicionarComponente(pnlDadosFornecedor,label,0,0,3,1)
-                  label = new JLabel("Unidade do Fornecedor")
+                  label = new JLabel('Unidade do Fornecedor')
                   adicionarComponente(pnlDadosFornecedor,label,0,3,1,1)
 
                   pnlSuporteCombo = new JPanel(new BorderLayout())
                   cbxFornecedor = new JComboBox()
                   carregarFornecedores(cbxFornecedor)
                   pnlSuporteCombo.add(cbxFornecedor,BorderLayout.CENTER)
-                  btNovoFornecedor = new JButton(new ImageIcon("imagens/novo.jpg"))
+                  btNovoFornecedor = new JButton(new ImageIcon('imagens/novo.jpg'))
                   btNovoFornecedor.addActionListener(this)
-                  btNovoFornecedor.setToolTipText("Novo Fornecedor")
+                  btNovoFornecedor.setToolTipText('Novo Fornecedor')
                   btNovoFornecedor.setPreferredSize(new Dimension(22,20))
                   pnlSuporteCombo.add(btNovoFornecedor,BorderLayout.EAST)
 
@@ -238,49 +238,49 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
                   cbxUnidadeFornecedor = new JComboBox()
                   carregarUnidades(cbxUnidadeFornecedor)
                   pnlSuporteCombo.add(cbxUnidadeFornecedor,BorderLayout.CENTER)
-                  btNovaUnidadeFornecedor = new JButton(new ImageIcon("imagens/novo.jpg"))
+                  btNovaUnidadeFornecedor = new JButton(new ImageIcon('imagens/novo.jpg'))
                   btNovaUnidadeFornecedor.addActionListener(this)
-                  btNovaUnidadeFornecedor.setToolTipText("Nova Unidade")
+                  btNovaUnidadeFornecedor.setToolTipText('Nova Unidade')
                   btNovaUnidadeFornecedor.setPreferredSize(new Dimension(22,20))
                   pnlSuporteCombo.add(btNovaUnidadeFornecedor,BorderLayout.EAST)
 
                   adicionarComponente(pnlDadosFornecedor,pnlSuporteCombo,1,3,1,1)
-                  label = new JLabel("Moeda")
+                  label = new JLabel('Moeda')
                   adicionarComponente(pnlDadosFornecedor,label,2,0,1,1)
-                  label = new JLabel("Valor Unitário")
+                  label = new JLabel('Valor Unitário')
                   adicionarComponente(pnlDadosFornecedor,label,2,1,1,1)
-                  label = new JLabel("Dt. Atualização (dd/mm/aaaa)")
+                  label = new JLabel('Dt. Atualização (dd/mm/aaaa)')
                   adicionarComponente(pnlDadosFornecedor,label,2,2,1,1)
-                  label = new JLabel("Referência do Fornecedor")
+                  label = new JLabel('Referência do Fornecedor')
                   adicionarComponente(pnlDadosFornecedor,label,2,3,1,1)
                   cbxMoeda = new JComboBox()
                   cbxMoeda.addItem('R$')
                   cbxMoeda.addItem('US$')
                   adicionarComponente(pnlDadosFornecedor,cbxMoeda,3,0,1,1)
-                  txtValorUnitario = new JTextField("000,00",10)
+                  txtValorUnitario = new JTextField('000,00',10)
                   txtValorUnitario.addFocusListener(this)
                   adicionarComponente(pnlDadosFornecedor,txtValorUnitario,3,1,1,1)
                   calendario = new Calendario()
-                  txtDataAtualizacao = new JTextField(calendario.dataHoje("dd/MM/yyyy"),10)
+                  txtDataAtualizacao = new JTextField(calendario.dataHoje('dd/MM/yyyy'),10)
                   txtDataAtualizacao.addFocusListener(this)
                   adicionarComponente(pnlDadosFornecedor,txtDataAtualizacao,3,2,1,1)
                   txtReferenciaFornecedor = new JTextField(10)
                   adicionarComponente(pnlDadosFornecedor,txtReferenciaFornecedor,3,3,1,1)
                   JPanel pnlFornecedores = new JPanel(new BorderLayout())
                   JPanel pnlComandoFornecedor = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-                  btConfirmarAlteracao = new JButton("Confirmar Alteração")
+                  btConfirmarAlteracao = new JButton('Confirmar Alteração')
                   btConfirmarAlteracao.addActionListener(this)
                   btConfirmarAlteracao.setEnabled(false)
                   pnlComandoFornecedor.add(btConfirmarAlteracao)
-                  btAdicionarFornecedor = new JButton("Adicionar")
+                  btAdicionarFornecedor = new JButton('Adicionar')
                   btAdicionarFornecedor.addActionListener(this)
                   pnlComandoFornecedor.add(btAdicionarFornecedor)
-                  btCancelarFornecedor = new JButton("Cancelar")
+                  btCancelarFornecedor = new JButton('Cancelar')
                   btCancelarFornecedor.addActionListener(this)
                   pnlComandoFornecedor.add(btCancelarFornecedor)
                   pnlFornecedores.add(pnlComandoFornecedor, BorderLayout.NORTH)
                   Object[][] dados = new Object[20][5]
-                  String[] nomeColunas = ["Fornecedor","Unidade","Valor Unitário","Atualização"]
+                  String[] nomeColunas = ['Fornecedor','Unidade','Valor Unitário','Atualização']
                   tblFornecedores = new JTable(dados, nomeColunas)
                   tblFornecedores.setPreferredScrollableViewportSize(new Dimension(460, 100))
                   tblFornecedores.addRowSelectionInterval(0,0)
@@ -288,11 +288,11 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
                   pnlFornecedores.add(scroll, BorderLayout.CENTER)
                   pnlComandoFornecedor = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-                  btAlterarFornecedor = new JButton("Alterar Selecionado")
+                  btAlterarFornecedor = new JButton('Alterar Selecionado')
                   btAlterarFornecedor.addActionListener(this)
                   btAlterarFornecedor.setEnabled(false)
                   pnlComandoFornecedor.add(btAlterarFornecedor)
-                  btExcluirFornecedor = new JButton("Excluir Selecionado")
+                  btExcluirFornecedor = new JButton('Excluir Selecionado')
                   btExcluirFornecedor.addActionListener(this)
                   btExcluirFornecedor.setEnabled(false)
                   pnlComandoFornecedor.add(btExcluirFornecedor)
@@ -301,10 +301,10 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
                   departamentosSelecionados = new Vector()
                   pnlAssociacaoDepartamento = new JPanel(gridbag)
-                  pnlAssociacaoDepartamento.setBorder(new TitledBorder("Departamentos"))
-                  label = new JLabel("Departamentos")
+                  pnlAssociacaoDepartamento.setBorder(new TitledBorder('Departamentos'))
+                  label = new JLabel('Departamentos')
                   adicionarComponente(pnlAssociacaoDepartamento,label,0,0,1,1)
-                  label = new JLabel("Departamentos Selecionados")
+                  label = new JLabel('Departamentos Selecionados')
                   adicionarComponente(pnlAssociacaoDepartamento,label,0,2,1,1)
                   lstDepartamento = new JList()
                   lstDepartamento.setFixedCellWidth(180)
@@ -317,34 +317,34 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
                   scroll = new JScrollPane(lstDepartamentoSelecionado)
                   adicionarComponente(pnlAssociacaoDepartamento,scroll,1,2,1,4)
-                  btAdicionarDepartamento = new JButton("Adicionar >>")
+                  btAdicionarDepartamento = new JButton('Adicionar >>')
                   btAdicionarDepartamento.addActionListener(this)
                   adicionarComponente(pnlAssociacaoDepartamento,btAdicionarDepartamento,1,1,1,1)
-                  btExcluirDepartamento = new JButton("  << Excluir  ")
+                  btExcluirDepartamento = new JButton('  << Excluir  ')
                   btExcluirDepartamento.addActionListener(this)
                   adicionarComponente(pnlAssociacaoDepartamento,btExcluirDepartamento,2,1,1,1)
 
-                  pnlAreaDados.add(pnlDadosItem,"Itens")
-                  pnlAreaDados.add(pnlDadosFornecedor,"Fornecedor")
-                  pnlAreaDados.add(pnlAssociacaoDepartamento,"Departamento")
+                  pnlAreaDados.add(pnlDadosItem,'Itens')
+                  pnlAreaDados.add(pnlDadosFornecedor,'Fornecedor')
+                  pnlAreaDados.add(pnlAssociacaoDepartamento,'Departamento')
                   conteudo.add(pnlAreaDados,BorderLayout.CENTER)
 
                   JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-                  btAnterior = new JButton("<< Anterior")
+                  btAnterior = new JButton('<< Anterior')
                   btAnterior.addActionListener(this)
                   btAnterior.setEnabled(false)
                   pnlComandos.add(btAnterior)
 
-                  btProximo = new JButton("Próximo >>")
+                  btProximo = new JButton('Próximo >>')
                   btProximo.addActionListener(this)
                   pnlComandos.add(btProximo)
 
-                  btConfirmar = new JButton("Confirmar")
+                  btConfirmar = new JButton('Confirmar')
                   btConfirmar.addActionListener(this)
                   btConfirmar.setEnabled(false)
                   pnlComandos.add(btConfirmar)
 
-                  btCancelar = new JButton("Cancelar")
+                  btCancelar = new JButton('Cancelar')
                   btCancelar.addActionListener(this)
                   pnlComandos.add(btCancelar)
 
@@ -379,13 +379,13 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       comboBox.removeAllItems()
       try
       {
-        dadosUnidade = conexao.executarConsulta("select * from unidade order by unidade asc")
-          comboBox.addItem("Selecione...")
+        dadosUnidade = conexao.executarConsulta('select * from unidade order by unidade asc')
+          comboBox.addItem('Selecione...')
           unidades = new Vector()
           unidades.addElement(null)
           int i = 1
           while(dadosUnidade.next()) {
-            unidades.addElement(new Unidade(dadosUnidade.getInt("codigo"),dadosUnidade.getString("unidade")))
+            unidades.addElement(new Unidade(dadosUnidade.getInt('codigo'),dadosUnidade.getString('unidade')))
               comboBox.addItem(((Unidade)unidades.get(i)).obterNomeUnidade())
               i++
           }
@@ -403,17 +403,17 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       comboBox.removeAllItems()
       try
       {
-        dadosFornecedor = conexao.executarConsulta("select codigo, razao_social, cnpj from fornecedor order by razao_social asc")
-          comboBox.addItem("Selecione...")
+        dadosFornecedor = conexao.executarConsulta('select codigo, razao_social, cnpj from fornecedor order by razao_social asc')
+          comboBox.addItem('Selecione...')
           fornecedores = new Vector()
           fornecedores.addElement(null)
           int i = 1
           String cnpj, razaoSocial
           while(dadosFornecedor.next()) {
-            fornecedores.addElement(new Fornecedor(dadosFornecedor.getInt("codigo"),dadosFornecedor.getString("razao_social"),dadosFornecedor.getString("cnpj")))
+            fornecedores.addElement(new Fornecedor(dadosFornecedor.getInt('codigo'),dadosFornecedor.getString('razao_social'),dadosFornecedor.getString('cnpj')))
               cnpj = (((Fornecedor)fornecedores.get(i)).obterCnpj()).trim()
               razaoSocial = (((Fornecedor)fornecedores.get(i)).obterRazaoSocial()).trim()
-              comboBox.addItem(cnpj + " - " + razaoSocial.substring(0,((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?"":" . . ."))
+              comboBox.addItem(cnpj + ' - ' + razaoSocial.substring(0,((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?'':' . . .'))
               i++
           }
         dadosFornecedor.close()
@@ -431,14 +431,14 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       try
       {
         if(item.obterCodigo() == 0)
-          dadosDepartamento = conexao.executarConsulta("select codigo, departamento from departamento order by departamento asc")
+          dadosDepartamento = conexao.executarConsulta('select codigo, departamento from departamento order by departamento asc')
         else
-          dadosDepartamento = conexao.executarConsulta("select distinct departamento.codigo, departamento.departamento from departamento, departamento_item where departamento.codigo not in (select departamento from departamento_item where item = "+ this.item.obterCodigo() +") and departamento_item.item = "+ this.item.obterCodigo() +" order by departamento.departamento asc")
+          dadosDepartamento = conexao.executarConsulta('select distinct departamento.codigo, departamento.departamento from departamento, departamento_item where departamento.codigo not in (select departamento from departamento_item where item = '+ this.item.obterCodigo() +') and departamento_item.item = '+ this.item.obterCodigo() +' order by departamento.departamento asc')
             departamentos = new Vector()
             int i = 0
             list.setModel(modeloLista)
             while(dadosDepartamento.next()) {
-              departamentos.addElement(new Departamento(dadosDepartamento.getInt("codigo"),dadosDepartamento.getString("departamento")))
+              departamentos.addElement(new Departamento(dadosDepartamento.getInt('codigo'),dadosDepartamento.getString('departamento')))
                 modeloLista.addElement(((Departamento)departamentos.get(i)).obterNomeDepartamento())
                 i++
             }
@@ -456,12 +456,12 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       DefaultListModel modeloLista = new DefaultListModel()
       try
       {
-        dadosDepartamento = conexao.executarConsulta("select departamento.codigo,departamento.departamento from departamento, departamento_item where departamento.codigo = departamento_item.departamento and departamento_item.item = "+ this.item.obterCodigo() +" order by departamento.departamento asc")
+        dadosDepartamento = conexao.executarConsulta('select departamento.codigo,departamento.departamento from departamento, departamento_item where departamento.codigo = departamento_item.departamento and departamento_item.item = '+ this.item.obterCodigo() +' order by departamento.departamento asc')
           departamentosSelecionados = new Vector()
           int i = 0
           list.setModel(modeloLista)
           while(dadosDepartamento.next()) {
-            departamentosSelecionados.addElement(new Departamento(dadosDepartamento.getInt("codigo"),dadosDepartamento.getString("departamento")))
+            departamentosSelecionados.addElement(new Departamento(dadosDepartamento.getInt('codigo'),dadosDepartamento.getString('departamento')))
               modeloLista.addElement(((Departamento)departamentosSelecionados.get(i)).obterNomeDepartamento())
               i++
           }
@@ -476,7 +476,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
   private void carregarFornecedorItem() {
     numeroFornecedores = 0
       Conexao conexao = aplicacao.obterConexao()
-      String query = "select f.codigo as fornecedor_codigo, f.cnpj as cnpj_fornecedor,razao_social,data_atualizacao_valor,fi.unidade as unidade_codigo,u.unidade as unidade,valor_item,moeda,referencia_fornecedor from fornecedor_item fi, fornecedor f, unidade u where fi.fornecedor = f.codigo and fi.unidade = u.codigo and fi.item = " + this.item.obterCodigo() + " order by razao_social "
+      String query = 'select f.codigo as fornecedor_codigo, f.cnpj as cnpj_fornecedor,razao_social,data_atualizacao_valor,fi.unidade as unidade_codigo,u.unidade as unidade,valor_item,moeda,referencia_fornecedor from fornecedor_item fi, fornecedor f, unidade u where fi.fornecedor = f.codigo and fi.unidade = u.codigo and fi.item = ' + this.item.obterCodigo() + ' order by razao_social '
       try
       {
         ResultSet resultado = conexao.executarConsulta(query)
@@ -493,27 +493,27 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               String referenciaFornecedor
 
               while(resultado.next()) {
-                codigoFornecedor = resultado.getInt("fornecedor_codigo")
-                  cnpj = resultado.getString("cnpj_fornecedor")
-                  razaoSocialFornecedor = resultado.getString("razao_social")
-                  dataAtualizacaoValor = Calendario.ajustarFormatoDataBanco(resultado.getString("data_atualizacao_valor"))
-                  codigoUnidade = resultado.getInt("unidade_codigo")
-                  nomeUnidade = resultado.getString("unidade")
-                  valorItem = resultado.getFloat("valor_item")
-                  moeda = resultado.getString("moeda")
-                  referenciaFornecedor = resultado.getString("referencia_fornecedor")
+                codigoFornecedor = resultado.getInt('fornecedor_codigo')
+                  cnpj = resultado.getString('cnpj_fornecedor')
+                  razaoSocialFornecedor = resultado.getString('razao_social')
+                  dataAtualizacaoValor = Calendario.ajustarFormatoDataBanco(resultado.getString('data_atualizacao_valor'))
+                  codigoUnidade = resultado.getInt('unidade_codigo')
+                  nomeUnidade = resultado.getString('unidade')
+                  valorItem = resultado.getFloat('valor_item')
+                  moeda = resultado.getString('moeda')
+                  referenciaFornecedor = resultado.getString('referencia_fornecedor')
 
                   fornecedoresItem.addElement(new FornecedorItem(new Fornecedor(codigoFornecedor,razaoSocialFornecedor,cnpj),(Item)this.item,dataAtualizacaoValor,new Unidade(codigoUnidade,nomeUnidade),valorItem,moeda,referenciaFornecedor))
 
                   tblFornecedores.setValueAt(razaoSocialFornecedor,numeroFornecedores,0)
                   tblFornecedores.setValueAt(nomeUnidade,numeroFornecedores,1)
-                  tblFornecedores.setValueAt(moeda + " " + Numero.inverterSeparador(""+valorItem),numeroFornecedores,2)
+                  tblFornecedores.setValueAt(moeda + ' ' + Numero.inverterSeparador(''+valorItem),numeroFornecedores,2)
                   tblFornecedores.setValueAt(dataAtualizacaoValor,numeroFornecedores,3)
                   numeroFornecedores++
               }
           }
         catch(Exception ex) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + ex.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
             ex.printStackTrace()
         }
         resultado.close()
@@ -530,9 +530,9 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
   private void cancelarFornecedor() {
     cbxFornecedor.setSelectedIndex(0)
       cbxUnidadeFornecedor.setSelectedIndex(0)
-      txtValorUnitario.setText("000,00")
-      txtDataAtualizacao.setText(calendario.dataHoje("dd/MM/yyyy"))
-      txtReferenciaFornecedor.setText("")
+      txtValorUnitario.setText('000,00')
+      txtDataAtualizacao.setText(calendario.dataHoje('dd/MM/yyyy'))
+      txtReferenciaFornecedor.setText('')
   }
 
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
@@ -579,15 +579,15 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: O Fornecedor informado já foi associado ao Item.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: O Fornecedor informado já foi associado ao Item.','Erro',JOptionPane.ERROR_MESSAGE)
           }
       }
       catch(NumberFormatException n) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       btConfirmarAlteracao.setEnabled(false)
@@ -614,15 +614,15 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: O Fornecedor informado já foi associado ao Item.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: O Fornecedor informado já foi associado ao Item.','Erro',JOptionPane.ERROR_MESSAGE)
           }
         }
         catch(NumberFormatException n) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         if (numeroFornecedores > 0) {
@@ -667,10 +667,10 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
     if(objeto == btExcluirFornecedor) {
       int linhaSelecionada = tblFornecedores.getSelectedRow()
         fornecedoresItem.removeElementAt(linhaSelecionada)
-        tblFornecedores.setValueAt("",linhaSelecionada,0)
-        tblFornecedores.setValueAt("",linhaSelecionada,1)
-        tblFornecedores.setValueAt("",linhaSelecionada,2)
-        tblFornecedores.setValueAt("",linhaSelecionada,3)
+        tblFornecedores.setValueAt('',linhaSelecionada,0)
+        tblFornecedores.setValueAt('',linhaSelecionada,1)
+        tblFornecedores.setValueAt('',linhaSelecionada,2)
+        tblFornecedores.setValueAt('',linhaSelecionada,3)
 
         if(linhaSelecionada < (numeroFornecedores -1)) {
           for(int i = linha;Selecionada < (numeroFornecedores -1);i++) {
@@ -679,10 +679,10 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1,2),i,2)
               tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1,3),i,3)
           }
-          tblFornecedores.setValueAt("",numeroFornecedores -1,0)
-            tblFornecedores.setValueAt("",numeroFornecedores -1,1)
-            tblFornecedores.setValueAt("",numeroFornecedores -1,2)
-            tblFornecedores.setValueAt("",numeroFornecedores -1,3)
+          tblFornecedores.setValueAt('',numeroFornecedores -1,0)
+            tblFornecedores.setValueAt('',numeroFornecedores -1,1)
+            tblFornecedores.setValueAt('',numeroFornecedores -1,2)
+            tblFornecedores.setValueAt('',numeroFornecedores -1,3)
         }
       numeroFornecedores--
 
@@ -705,7 +705,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione um departamento.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione um departamento.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -723,7 +723,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione um departamento.","Erro",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione um departamento.','Erro',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -747,12 +747,12 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               this.item.definirSeguranca(this.txaSeguranca.getText())
           }
           catch(NumberFormatException n) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
               n.printStackTrace()
               confirmado = false
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -797,7 +797,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

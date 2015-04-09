@@ -18,7 +18,7 @@ class DlgDadosPais extends JDialog implements ActionListener {
     private JButton btConfirmar, btCancelar
 
     DlgDadosPais(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         // Define o título da janela
         String tituloJanela = ''
@@ -46,13 +46,13 @@ class DlgDadosPais extends JDialog implements ActionListener {
 
                     JPanel pnlDados = new JPanel(gridbag)
                     JLabel label = new JLabel('Nome do Pais')
-                    adicionarComponente(pnlDados,label,0,0,1,1)
+                    adicionarComponente(pnlDados, label, 0, 0, 1, 1)
                     txtNomePais = new JTextField(20)
-                    adicionarComponente(pnlDados,txtNomePais,1,0,1,1)
+                    adicionarComponente(pnlDados, txtNomePais, 1, 0, 1, 1)
                     label = new JLabel('Sigla')
-                    adicionarComponente(pnlDados,label,2,0,1,1)
+                    adicionarComponente(pnlDados, label, 2, 0, 1, 1)
                     txtSiglaPais = new JTextField(3)
-                    adicionarComponente(pnlDados,txtSiglaPais,3,0,1,1)
+                    adicionarComponente(pnlDados, txtSiglaPais, 3, 0, 1, 1)
                     this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
                     JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -80,7 +80,7 @@ class DlgDadosPais extends JDialog implements ActionListener {
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -88,14 +88,13 @@ class DlgDadosPais extends JDialog implements ActionListener {
     Object objeto = actionEvent.getSource()
 
       if(objeto == btConfirmar) {
-        try
-        {
-          Pais pais = new Pais(txtSiglaPais.getText(),txtNomePais.getText())
+        try {
+          Pais pais = new Pais(txtSiglaPais.getText(), txtNomePais.getText())
             pais.cadastrarPais()
             this.setVisible(false)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.WARNING_MESSAGE)
             e.printStackTrace()
         }
       }

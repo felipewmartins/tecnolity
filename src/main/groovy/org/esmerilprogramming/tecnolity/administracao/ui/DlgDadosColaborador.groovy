@@ -8,11 +8,12 @@ import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 
 class DlgDadosColaborador extends JDialog implements ActionListener, FocusListener {
-  final int IDENTIFICADOR = 10
+  private static final int IDENTIFICADOR = 10
   private Aplicacao aplicacao
   private char modo // I = inhserir, A = alterar, V = visualizar
-  private Vector estados, paises
-  private Vector departamentos
+  private def estados
+  private def paises
+  private def departamentos
   private Pais pais = new Pais()
   private Estado estado = new Estado()
   private Colaborador colaborador
@@ -78,12 +79,12 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     gbc.insets.top = 2
     pnlAreaDados = new JPanel(gridbag)
     JLabel label = new JLabel('Nome Completo')
-    adicionarComponente(pnlAreaDados,label,0,0,3,1)
+    adicionarComponente(pnlAreaDados, label, 0, 0, 3, 1)
     JPanel pnlSexo = new JPanel()
     pnlSexo.setBorder(new TitledBorder('Sexo'))
     ButtonGroup grupo = new ButtonGroup()
     rdbSexoMasculino = new JRadioButton('Masculino')
-    if (colaborador != null) 
+    if (colaborador)
         if(this.colaborador.obterSexo() == 'M' || this.colaborador.obterSexo() == '\u0000')
           rdbSexoMasculino.setSelected(true)
             grupo.add(rdbSexoMasculino)
@@ -94,29 +95,29 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
                 rdbSexoFeminino.setSelected(true)
                   grupo.add(rdbSexoFeminino)
                   pnlSexo.add(rdbSexoFeminino)
-                  adicionarComponente(pnlAreaDados,pnlSexo,0,2,2,2)
+                  adicionarComponente(pnlAreaDados, pnlSexo, 0, 2, 2, 2)
 
 
-                  txtNomeCompleto = new JTextField(this.colaborador.getNome(),20)
-                  adicionarComponente(pnlAreaDados,txtNomeCompleto,1,0,2,1)
+                  txtNomeCompleto = new JTextField(this.colaborador.getNome(), 20)
+                  adicionarComponente(pnlAreaDados, txtNomeCompleto, 1, 0, 2, 1)
 
                   label = new JLabel('Identidade')
-                  adicionarComponente(pnlAreaDados,label,2,0,2,1)
+                  adicionarComponente(pnlAreaDados, label, 2, 0, 2, 1)
                   label = new JLabel('Órgão Emissor')
-                  adicionarComponente(pnlAreaDados,label,2,2,1,1)
+                  adicionarComponente(pnlAreaDados, label, 2, 2, 1, 1)
                   label = new JLabel('CPF')
-                  adicionarComponente(pnlAreaDados,label,2,3,1,1)
-                  txtIdentidade = new JTextField(this.colaborador.getIdentidade(),20)
-                  adicionarComponente(pnlAreaDados,txtIdentidade,3,0,2,1)
-                  txtOrgaoEmissor = new JTextField(this.colaborador.getOrgaoIdentidade(),10)
-                  adicionarComponente(pnlAreaDados,txtOrgaoEmissor,3,2,1,1)
-                  txtCpf = new JTextField(this.colaborador.getCPF(),10)
-                  adicionarComponente(pnlAreaDados,txtCpf,3,3,1,1)
+                  adicionarComponente(pnlAreaDados, label, 2, 3, 1, 1)
+                  txtIdentidade = new JTextField(this.colaborador.getIdentidade(), 20)
+                  adicionarComponente(pnlAreaDados, txtIdentidade, 3, 0, 2, 1)
+                  txtOrgaoEmissor = new JTextField(this.colaborador.getOrgaoIdentidade(), 10)
+                  adicionarComponente(pnlAreaDados, txtOrgaoEmissor, 3, 2, 1, 1)
+                  txtCpf = new JTextField(this.colaborador.getCPF(), 10)
+                  adicionarComponente(pnlAreaDados, txtCpf, 3, 3, 1, 1)
 
                   label = new JLabel('Departamento')
-                  adicionarComponente(pnlAreaDados,label,4,0,2,1)
+                  adicionarComponente(pnlAreaDados, label, 4, 0, 2, 1)
                   label = new JLabel('E-mail')
-                  adicionarComponente(pnlAreaDados,label,4,2,2,1)
+                  adicionarComponente(pnlAreaDados, label, 4, 2, 2, 1)
 
                   JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
                   cbxDepartamento = new JComboBox()
@@ -130,48 +131,48 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
                   }
     cbxDepartamento.setSelectedIndex(indiceDepartamento)
 
-      pnlSuporteCombo.add(cbxDepartamento,BorderLayout.CENTER)
+      pnlSuporteCombo.add(cbxDepartamento, BorderLayout.CENTER)
       btNovoDepartamento = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoDepartamento.addActionListener(this)
       btNovoDepartamento.setToolTipText('Novo Departamento')
-      btNovoDepartamento.setPreferredSize(new Dimension(22,20))
-      pnlSuporteCombo.add(btNovoDepartamento,BorderLayout.EAST)
-      adicionarComponente(pnlAreaDados,pnlSuporteCombo,5,0,2,1)
+      btNovoDepartamento.setPreferredSize(new Dimension(22, 20))
+      pnlSuporteCombo.add(btNovoDepartamento, BorderLayout.EAST)
+      adicionarComponente(pnlAreaDados, pnlSuporteCombo, 5, 0, 2, 1)
 
-      txtEmail = new JTextField(this.colaborador.getEmail(),20)
-      adicionarComponente(pnlAreaDados,txtEmail,5,2,2,1)
+      txtEmail = new JTextField(this.colaborador.getEmail(), 20)
+      adicionarComponente(pnlAreaDados, txtEmail, 5, 2, 2, 1)
 
       JPanel pnlContato = new JPanel(gridbag)
       pnlContato.setBorder(new TitledBorder('Contato'))
       label = new JLabel('Logradouro')
-      adicionarComponente(pnlContato,label,0,0,2,1)
+      adicionarComponente(pnlContato, label, 0, 0, 2, 1)
       label = new JLabel('Complemento')
-      adicionarComponente(pnlContato,label,0,2,1,1)
+      adicionarComponente(pnlContato, label, 0, 2, 1, 1)
       label = new JLabel('Bairro')
-      adicionarComponente(pnlContato,label,0,3,1,1)
-      txtLogradouro = new JTextField(this.colaborador.getLogradouro(),19)
-      adicionarComponente(pnlContato,txtLogradouro,1,0,2,1)
-      txtComplemento = new JTextField(this.colaborador.getComplemento(),10)
-      adicionarComponente(pnlContato,txtComplemento,1,2,1,1)
-      txtBairro = new JTextField(this.colaborador.getBairro(),10)
-      adicionarComponente(pnlContato,txtBairro,1,3,1,1)
+      adicionarComponente(pnlContato, label, 0, 3, 1, 1)
+      txtLogradouro = new JTextField(this.colaborador.getLogradouro(), 19)
+      adicionarComponente(pnlContato, txtLogradouro, 1, 0, 2, 1)
+      txtComplemento = new JTextField(this.colaborador.getComplemento(), 10)
+      adicionarComponente(pnlContato, txtComplemento, 1, 2, 1, 1)
+      txtBairro = new JTextField(this.colaborador.getBairro(), 10)
+      adicionarComponente(pnlContato, txtBairro, 1, 3, 1, 1)
 
       label = new JLabel('Cidade')
-      adicionarComponente(pnlContato,label,2,0,1,1)
+      adicionarComponente(pnlContato, label, 2, 0, 1, 1)
       label = new JLabel('Estado')
-      adicionarComponente(pnlContato,label,2,1,2,1)
+      adicionarComponente(pnlContato, label, 2, 1, 2, 1)
       label = new JLabel('CEP')
-      adicionarComponente(pnlContato,label,2,3,1,1)
-      txtCidade = new JTextField(this.colaborador.getCidade(),10)
-      adicionarComponente(pnlContato,txtCidade,3,0,1,1)
+      adicionarComponente(pnlContato, label, 2, 3, 1, 1)
+      txtCidade = new JTextField(this.colaborador.getCidade(), 10)
+      adicionarComponente(pnlContato, txtCidade, 3, 0, 1, 1)
       pnlSuporteCombo = new JPanel(new BorderLayout())
       cbxEstado = new JComboBox()
       try {
-        estados = Estado.carregarEstados('BRA',aplicacao.obterConexao())
+        estados = Estado.carregarEstados('BRA', aplicacao.obterConexao())
           carregarEstados()
       }
     catch(e) {
-      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Estados','Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
@@ -183,54 +184,54 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       }
     cbxEstado.setSelectedIndex(indiceEstado)
 
-      pnlSuporteCombo.add(cbxEstado,BorderLayout.CENTER)
+      pnlSuporteCombo.add(cbxEstado, BorderLayout.CENTER)
       btNovoEstado = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoEstado.addActionListener(this)
       btNovoEstado.setToolTipText('Novo Estado')
-      btNovoEstado.setPreferredSize(new Dimension(22,20))
-      pnlSuporteCombo.add(btNovoEstado,BorderLayout.EAST)
-      adicionarComponente(pnlContato,pnlSuporteCombo,3,1,2,1)
-      txtCep = new JTextField(this.colaborador.getCEP(),10)
-      adicionarComponente(pnlContato,txtCep,3,3,1,1)
+      btNovoEstado.setPreferredSize(new Dimension(22, 20))
+      pnlSuporteCombo.add(btNovoEstado, BorderLayout.EAST)
+      adicionarComponente(pnlContato, pnlSuporteCombo, 3, 1, 2, 1)
+      txtCep = new JTextField(this.colaborador.getCEP(), 10)
+      adicionarComponente(pnlContato, txtCep, 3, 3, 1, 1)
 
       label = new JLabel('DDD')
-      adicionarComponente(pnlContato,label,4,0,1,1)
+      adicionarComponente(pnlContato, label, 4, 0, 1, 1)
       label = new JLabel('Telefone')
-      adicionarComponente(pnlContato,label,4,1,1,1)
+      adicionarComponente(pnlContato, label, 4, 1, 1, 1)
       label = new JLabel('Ramal')
-      adicionarComponente(pnlContato,label,4,2,1,1)
+      adicionarComponente(pnlContato, label, 4, 2, 1, 1)
       label = new JLabel('Celular')
-      adicionarComponente(pnlContato,label,4,3,1,1)
-      txtDdd = new JTextField(this.colaborador.getDDD(),4)
-      adicionarComponente(pnlContato,txtDdd,5,0,1,1)
-      txtTelefone = new JTextField(this.colaborador.getTelefone(),8)
-      adicionarComponente(pnlContato,txtTelefone,5,1,1,1)
-      txtRamal = new JTextField(this.colaborador.obterRamal(),6)
-      adicionarComponente(pnlContato,txtRamal,5,2,1,1)
-      txtCelular = new JTextField(this.colaborador.getCelular(),8)
-      adicionarComponente(pnlContato,txtCelular,5,3,1,1)
+      adicionarComponente(pnlContato, label, 4, 3, 1, 1)
+      txtDdd = new JTextField(this.colaborador.getDDD(), 4)
+      adicionarComponente(pnlContato, txtDdd, 5, 0, 1, 1)
+      txtTelefone = new JTextField(this.colaborador.getTelefone(), 8)
+      adicionarComponente(pnlContato, txtTelefone, 5, 1, 1, 1)
+      txtRamal = new JTextField(this.colaborador.obterRamal(), 6)
+      adicionarComponente(pnlContato, txtRamal, 5, 2, 1, 1)
+      txtCelular = new JTextField(this.colaborador.getCelular(), 8)
+      adicionarComponente(pnlContato, txtCelular, 5, 3, 1, 1)
 
-      adicionarComponente(pnlAreaDados,pnlContato,6,0,4,1)
+      adicionarComponente(pnlAreaDados, pnlContato, 6, 0, 4, 1)
 
       JPanel pnlAutenticacao = new JPanel(gridbag)
       pnlAutenticacao.setBorder(new TitledBorder('Identificação'))
       label = new JLabel('Usuário')
-      adicionarComponente(pnlAutenticacao,label,0,0,1,1)
+      adicionarComponente(pnlAutenticacao, label, 0, 0, 1, 1)
       label = new JLabel('Senha')
-      adicionarComponente(pnlAutenticacao,label,0,1,1,1)
+      adicionarComponente(pnlAutenticacao, label, 0, 1, 1, 1)
       label = new JLabel('Confirmação de Senha')
-      adicionarComponente(pnlAutenticacao,label,0,2,1,1)
-      txtMatricula = new JTextField(this.colaborador.obterMatricula(),10)
+      adicionarComponente(pnlAutenticacao, label, 0, 2, 1, 1)
+      txtMatricula = new JTextField(this.colaborador.obterMatricula(), 10)
       if(modo == 'A') {
         txtMatricula.setEditable(false)
       }
-    adicionarComponente(pnlAutenticacao,txtMatricula,1,0,1,1)
-      txpSenha = new JPasswordField(this.colaborador.obterSenha(),10)
-      adicionarComponente(pnlAutenticacao,txpSenha,1,1,1,1)
-      txpConfirmacaoSenha = new JPasswordField(this.colaborador.obterSenha(),10)
-      adicionarComponente(pnlAutenticacao,txpConfirmacaoSenha,1,2,1,1)
+    adicionarComponente(pnlAutenticacao, txtMatricula, 1, 0, 1, 1)
+      txpSenha = new JPasswordField(this.colaborador.obterSenha(), 10)
+      adicionarComponente(pnlAutenticacao, txpSenha, 1, 1, 1, 1)
+      txpConfirmacaoSenha = new JPasswordField(this.colaborador.obterSenha(), 10)
+      adicionarComponente(pnlAutenticacao, txpConfirmacaoSenha, 1, 2, 1, 1)
 
-      adicionarComponente(pnlAreaDados,pnlAutenticacao,7,0,4,1)
+      adicionarComponente(pnlAreaDados, pnlAutenticacao, 7, 0, 4, 1)
 
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
@@ -267,8 +268,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
   private void carregarDepartamentos(JComboBox comboBox) {
     Departamento departamento = new Departamento()
       comboBox.removeAllItems()
-      try
-      {
+      try {
         departamentos = departamento.carregarDepartamentos(aplicacao.obterConexao())
           comboBox.addItem('Selecione...')
           for(int i=1;i < this.departamentos.size();i++) {
@@ -276,7 +276,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
           }
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
@@ -286,7 +286,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     gbc.gridy = linha
     gbc.gridwidth = largura
     gbc.gridheight = altura
-    gridbag.setConstraints(c,gbc)
+    gridbag.setConstraints(c, gbc)
     painel.add(c)
   }
 
@@ -299,7 +299,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
         estados = Estado.carregarEstados('BRA', aplicacao.conexao)
         carregarEstados()
       } catch(e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados','Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
     }

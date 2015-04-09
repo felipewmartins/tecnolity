@@ -5,8 +5,6 @@ apply plugin: 'codenarc'
 
 mainClassName = 'org.esmerilprogramming.tecnolity.aplicacao.Aplicacao'
 
-//mainClassName = System.getProperty("mc")
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 

@@ -1,8 +1,8 @@
 package org.esmerilprogramming.tecnolity.administracao.ui
 
-import java.awt.*
-import javax.swing.*
-import javax.swing.border.*
+import java.awt.BorderLayout
+import javax.swing.JOptionPane
+import javax.swing.border.EmptyBorder
 import org.esmerilprogramming.tecnolity.administracao.Permissao
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 import org.esmerilprogramming.tecnolity.aplicacao.Interface
@@ -10,12 +10,12 @@ import org.esmerilprogramming.tecnolity.aplicacao.modelos.ModeloAreaTrabalho
 import org.esmerilprogramming.tecnolity.ui.img.ImageLoader
 
 class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
-  final int IDENTIFICADOR = 1
-  private JPanel pnlCabecalho, pnlInformacoes
-  private InformacoesAdministracao tbpInformacoes
+  private static final int IDENTIFICADOR = 1
+  private final JPanel pnlCabecalho, pnlInformacoes
+  private final InformacoesAdministracao tbpInformacoes
 
   AreaTrabalhoAdministracao(Aplicacao app) {
-    switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR),app.colaborador, app.conexao)) {
+    switch (super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR), app.colaborador, app.conexao)) {
       case Permissao.SEM_ACESSO:
         JOptionPane.showMessageDialog(this, 'Acesso Negado.', 'Segurança', JOptionPane.WARNING_MESSAGE)
         break
@@ -26,7 +26,7 @@ class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
         pnlCabecalho.setBackground(Color.white)
         def img = ImageLoader.instance
         JLabel lblImagemSecao = new JLabel(img.icon('tit_administracao.gif'))
-        pnlCabecalho.add(lblImagemSecao,BorderLayout.WEST)
+        pnlCabecalho.add(lblImagemSecao, BorderLayout.WEST)
         lblImagemSecao = new JLabel(img.icon('logo_mentores.gif'))
         pnlCabecalho.add(lblImagemSecao, BorderLayout.EAST)
         this.add(pnlCabecalho, BorderLayout.NORTH)

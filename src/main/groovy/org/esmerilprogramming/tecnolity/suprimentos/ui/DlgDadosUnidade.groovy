@@ -22,13 +22,13 @@ class DlgDadosUnidade extends JDialog implements ActionListener
       super(aplicacao,true)
 
         // Define o título da janela
-        String tituloJanela = ""
+        String tituloJanela = ''
         if (modo == 'I')
-          tituloJanela = "Nova Unidade"
+          tituloJanela = 'Nova Unidade'
             if (modo == 'A')
-              tituloJanela = "Unidade"
+              tituloJanela = 'Unidade'
                 if (modo == 'V')
-                  tituloJanela = "Unidade"
+                  tituloJanela = 'Unidade'
                     this.setTitle(tituloJanela)
 
                     this.aplicacao = aplicacao
@@ -46,17 +46,17 @@ class DlgDadosUnidade extends JDialog implements ActionListener
                     gbc.insets.top = 2
 
                     JPanel pnlDados = new JPanel(gridbag)
-                    JLabel label = new JLabel("Nome da Unidade")
+                    JLabel label = new JLabel('Nome da Unidade')
                     adicionarComponente(pnlDados,label,0,0,1,1)
                     txtNomeUnidade = new JTextField(20)
                     adicionarComponente(pnlDados,txtNomeUnidade,1,0,1,1)
                     this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
                     JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-                    btConfirmar = new JButton("Confirmar")
+                    btConfirmar = new JButton('Confirmar')
                     btConfirmar.addActionListener(this)
                     pnlComandos.add(btConfirmar)
-                    btCancelar = new JButton("Cancelar")
+                    btCancelar = new JButton('Cancelar')
                     btCancelar.addActionListener(this)
                     pnlComandos.add(btCancelar)
                     this.conteudo.add(pnlComandos, BorderLayout.SOUTH)
@@ -89,7 +89,7 @@ class DlgDadosUnidade extends JDialog implements ActionListener
           if(unidade.cadastrarUnidade(txtNomeUnidade.getText()))
             this.setVisible(false)
           else
-            JOptionPane.showMessageDialog(aplicacao,"Não foi possível cadastrar a Unidade informada!","Erro",JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Não foi possível cadastrar a Unidade informada!','Erro',JOptionPane.WARNING_MESSAGE)
       }
 
     if(objeto == btCancelar) {

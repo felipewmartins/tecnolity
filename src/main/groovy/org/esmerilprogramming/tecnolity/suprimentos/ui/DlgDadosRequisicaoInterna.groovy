@@ -58,7 +58,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               DlgDadosRequisicaoInterna(Aplicacao aplicacao) {
                 super(aplicacao,true)
 
-                  this.setTitle("Requisição Interna")
+                  this.setTitle('Requisição Interna')
                   this.aplicacao = aplicacao
                   this.solicitante = aplicacao.obterColaborador()
                   this.pedidosSelecionados = new Vector()
@@ -68,7 +68,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
 
   DlgDadosRequisicaoInterna(Aplicacao aplicacao, Pedido pedido, Vector itensRequisicaoInterna) {
     super(aplicacao,true)
-      this.setTitle("Requisição Interna")
+      this.setTitle('Requisição Interna')
       this.aplicacao = aplicacao
       this.solicitante = aplicacao.obterColaborador()
       this.pedidoCliente = pedido
@@ -94,7 +94,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         ItemRequisicaoInterna itemRequisicaoInterna = ((ItemRequisicaoInterna)itensRequisicaoInterna.get(i))
           itemRequisicaoInterna.definirRequisicaoInterna(this.requisicaoInterna)
           this.tblItens.setValueAt(itemRequisicaoInterna.obterItem(),i,0)
-          this.tblItens.setValueAt("" + itemRequisicaoInterna.obterQuantidadeItem(),i,1)
+          this.tblItens.setValueAt('' + itemRequisicaoInterna.obterQuantidadeItem(),i,1)
           itemRequisicaoInterna.definirDestino(this.solicitante.obterDepartamento())
       }
 
@@ -104,7 +104,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
 
   DlgDadosRequisicaoInterna(Aplicacao aplicacao, RequisicaoInterna requisicaoInterna) {
     super(aplicacao,true)
-      this.setTitle("Requisição Interna")
+      this.setTitle('Requisição Interna')
       this.aplicacao = aplicacao
       this.requisicaoInterna = requisicaoInterna
 
@@ -121,19 +121,19 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
                 cbxDepartamento.setSelectedIndex(i)
             }
           txaJustificativa.setText(requisicaoInterna.obterJustificativa())
-            String query = "select i.descricao,iri.quantidade as necessaria from item i, item_requisicao_interna iri " +
-            "where i.codigo = iri.item and iri.requisicao_interna = " + requisicaoInterna.obterCodigo()
+            String query = 'select i.descricao,iri.quantidade as necessaria from item i, item_requisicao_interna iri ' +
+            'where i.codigo = iri.item and iri.requisicao_interna = ' + requisicaoInterna.obterCodigo()
             ResultSet rsItensPedidos = this.aplicacao.obterConexao().executarConsulta(query)
             int numeroItens = 0
             while(rsItensPedidos.next()) {
-              this.tblItens.setValueAt(rsItensPedidos.getString("descricao"),numeroItens,0)
-                this.tblItens.setValueAt("" + rsItensPedidos.getFloat("necessaria"),numeroItens,1)
+              this.tblItens.setValueAt(rsItensPedidos.getString('descricao'),numeroItens,0)
+                this.tblItens.setValueAt('' + rsItensPedidos.getFloat('necessaria'),numeroItens,1)
                 numeroItens++
             }
           rsItensPedidos.close()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar a requisição interna. ","Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar a requisição interna. ','Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -156,21 +156,21 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       card = new CardLayout()
       pnlAreaDados.setLayout(card)
       pnlDadosRequisicaoInterna = new JPanel(gridbag)
-      pnlDadosRequisicaoInterna.setBorder(new TitledBorder("Dados da Requisição Interna"))
+      pnlDadosRequisicaoInterna.setBorder(new TitledBorder('Dados da Requisição Interna'))
 
-      JLabel label = new JLabel("Tipo de Solicitação")
+      JLabel label = new JLabel('Tipo de Solicitação')
       adicionarComponente(pnlDadosRequisicaoInterna,label,0,0,2,1)
-      label = new JLabel("Dt. Limite Entrega (dd/mm/aaaa)")
+      label = new JLabel('Dt. Limite Entrega (dd/mm/aaaa)')
       adicionarComponente(pnlDadosRequisicaoInterna,label,0,2,2,1)
 
       cbxTipoSolicitacao = new JComboBox()
       cbxTipoSolicitacao.addActionListener(this)
-      cbxTipoSolicitacao.addItem("Selecione...")
-      cbxTipoSolicitacao.addItem("Consumo")
-      cbxTipoSolicitacao.addItem("Vendas")
-      cbxTipoSolicitacao.addItem("Descarte")
-      cbxTipoSolicitacao.addItem("Devolução")
-      cbxTipoSolicitacao.addItem("Devolução Externa")
+      cbxTipoSolicitacao.addItem('Selecione...')
+      cbxTipoSolicitacao.addItem('Consumo')
+      cbxTipoSolicitacao.addItem('Vendas')
+      cbxTipoSolicitacao.addItem('Descarte')
+      cbxTipoSolicitacao.addItem('Devolução')
+      cbxTipoSolicitacao.addItem('Devolução Externa')
       tiposSolicitacoes = new Vector()
       tiposSolicitacoes.addElement(null)
       tiposSolicitacoes.addElement(RequisicaoInterna.REQUISICAO_CONSUMO)
@@ -185,7 +185,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       txtDataLimiteEntrega.addFocusListener(this)
       adicionarComponente(pnlDadosRequisicaoInterna,txtDataLimiteEntrega,1,2,2,1)
 
-      label = new JLabel("Departamento")
+      label = new JLabel('Departamento')
       adicionarComponente(pnlDadosRequisicaoInterna,label,2,0,2,1)
 
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -195,27 +195,27 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           cbxDepartamento = new JComboBox(departamentos)
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Departamentos. ","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Departamentos. ','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     finally
     {
       if(cbxDepartamento == null) {
         cbxDepartamento = new JComboBox()
-          cbxDepartamento.addItem("Selecione...")
+          cbxDepartamento.addItem('Selecione...')
       }
       cbxDepartamento.addActionListener(this)
     }
 
     pnlSuporteCombo.add(cbxDepartamento,BorderLayout.CENTER)
-      btNovoDepartamento = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoDepartamento = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoDepartamento.addActionListener(this)
-      btNovoDepartamento.setToolTipText("Novo Departamento")
+      btNovoDepartamento.setToolTipText('Novo Departamento')
       btNovoDepartamento.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovoDepartamento,BorderLayout.EAST)
       adicionarComponente(pnlDadosRequisicaoInterna,pnlSuporteCombo,3,0,2,1)
 
-      label = new JLabel("Justificativa")
+      label = new JLabel('Justificativa')
       adicionarComponente(pnlDadosRequisicaoInterna,label,4,0,4,1)
 
       txaJustificativa = new JTextArea(4,30)
@@ -228,7 +228,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       pnlPedidosClientes = new JPanel(new BorderLayout())
 
       JPanel pnlPedidos = new JPanel(new BorderLayout())
-      pnlPedidos.add(new JLabel("Pedidos"), BorderLayout.NORTH)
+      pnlPedidos.add(new JLabel('Pedidos'), BorderLayout.NORTH)
       try
       {
         this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
@@ -243,22 +243,22 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           pnlPedidosClientes.add(pnlPedidos, BorderLayout.WEST)
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os pedidos.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os pedidos.','Erro',JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     JPanel pnlSuporteComandos = new JPanel()
       JPanel pnlComandosPedidos = new JPanel(new GridLayout(2,1,5,5))
-      btAdicionar = new JButton("Adicionar >>")
+      btAdicionar = new JButton('Adicionar >>')
       btAdicionar.addActionListener(this)
       pnlComandosPedidos.add(btAdicionar)
-      btRemover = new JButton("<< Remover")
+      btRemover = new JButton('<< Remover')
       btRemover.addActionListener(this)
       pnlComandosPedidos.add(btRemover)
       pnlSuporteComandos.add(pnlComandosPedidos)
       pnlPedidosClientes.add(pnlSuporteComandos, BorderLayout.CENTER)
 
       JPanel pnlPedidosSelecionados = new JPanel(new BorderLayout())
-      pnlPedidosSelecionados.add(new JLabel("Pedidos Selecionados"), BorderLayout.NORTH)
+      pnlPedidosSelecionados.add(new JLabel('Pedidos Selecionados'), BorderLayout.NORTH)
       modeloListaPedidosSelecionados = new DefaultListModel()
       lstPedidosSelecionados = new JList(modeloListaPedidosSelecionados)
       if(this.pedidosSelecionados != null) {
@@ -276,11 +276,11 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       if(itensRequisicaoInterna == null)
         itensRequisicaoInterna = new Vector()
           pnlDadosItensRequisicaoInterna = new JPanel(gridbag)
-          pnlDadosItensRequisicaoInterna.setBorder(new TitledBorder("Item da Requisição Interna"))
+          pnlDadosItensRequisicaoInterna.setBorder(new TitledBorder('Item da Requisição Interna'))
 
-          label = new JLabel("Item")
+          label = new JLabel('Item')
           adicionarComponente(pnlDadosItensRequisicaoInterna,label,0,0,1,1)
-          label = new JLabel("Quantidade")
+          label = new JLabel('Quantidade')
           adicionarComponente(pnlDadosItensRequisicaoInterna,label,0,1,1,1)
 
           pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -288,9 +288,9 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           cbxItem.addActionListener(this)
 
           pnlSuporteCombo.add(cbxItem,BorderLayout.CENTER)
-          btNovoItem = new JButton(new ImageIcon("imagens/novo.jpg"))
+          btNovoItem = new JButton(new ImageIcon('imagens/novo.jpg'))
           btNovoItem.addActionListener(this)
-          btNovoItem.setToolTipText("Novo Item")
+          btNovoItem.setToolTipText('Novo Item')
           btNovoItem.setPreferredSize(new Dimension(22,20))
           pnlSuporteCombo.add(btNovoItem,BorderLayout.EAST)
           adicionarComponente(pnlDadosItensRequisicaoInterna,pnlSuporteCombo,1,0,1,1)
@@ -301,15 +301,15 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
 
           JPanel pnlItens = new JPanel(new BorderLayout())
           JPanel pnlComandoItem = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-          btAdicionarItem = new JButton("Adicionar")
+          btAdicionarItem = new JButton('Adicionar')
           btAdicionarItem.addActionListener(this)
           pnlComandoItem.add(btAdicionarItem)
-          btCancelarItem = new JButton("Cancelar")
+          btCancelarItem = new JButton('Cancelar')
           btCancelarItem.addActionListener(this)
           pnlComandoItem.add(btCancelarItem)
           pnlItens.add(pnlComandoItem, BorderLayout.NORTH)
           Object[][] dados = new Object[100][2]
-          String[] nomeColunas = ["Item","Quantidade"]
+          String[] nomeColunas = ['Item','Quantidade']
           tblItens = new JTable(dados, nomeColunas)
           tblItens.setPreferredScrollableViewportSize(new Dimension(460, 100))
           tblItens.addRowSelectionInterval(0,0)
@@ -317,25 +317,25 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
 
           pnlItens.add(scroll, BorderLayout.CENTER)
           pnlComandoItem = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-          btExcluirItem = new JButton("Excluir Selecionado")
+          btExcluirItem = new JButton('Excluir Selecionado')
           btExcluirItem.addActionListener(this)
           pnlComandoItem.add(btExcluirItem)
           pnlItens.add(pnlComandoItem, BorderLayout.SOUTH)
           adicionarComponente(pnlDadosItensRequisicaoInterna,pnlItens,4,0,4,1)
 
-          pnlAreaDados.add(pnlDadosRequisicaoInterna,"Requisição Interna")
-          pnlAreaDados.add(pnlPedidosClientes,"Pedidos Clientes")
-          pnlAreaDados.add(pnlDadosItensRequisicaoInterna,"Itens da Requisição Interna")
+          pnlAreaDados.add(pnlDadosRequisicaoInterna,'Requisição Interna')
+          pnlAreaDados.add(pnlPedidosClientes,'Pedidos Clientes')
+          pnlAreaDados.add(pnlDadosItensRequisicaoInterna,'Itens da Requisição Interna')
           conteudo.add(pnlAreaDados,BorderLayout.CENTER)
 
           JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-          btAnterior = new JButton("<< Anterior")
+          btAnterior = new JButton('<< Anterior')
           btAnterior.addActionListener(this)
           btAnterior.setEnabled(false)
           pnlComandos.add(btAnterior)
 
-          btProximo = new JButton("Próximo >>")
-          btProximoLeitura = new JButton("Próximo >>")
+          btProximo = new JButton('Próximo >>')
+          btProximoLeitura = new JButton('Próximo >>')
           if(requisicaoInterna == null) {
             btProximo.addActionListener(this)
               pnlComandos.add(btProximo)
@@ -346,13 +346,13 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               pnlComandos.add(btProximoLeitura)
           }
 
-    btConfirmar = new JButton("Confirmar")
+    btConfirmar = new JButton('Confirmar')
       if(requisicaoInterna == null) {
         btConfirmar.addActionListener(this)
           pnlComandos.add(btConfirmar)
       }
 
-    btCancelar = new JButton("Cancelar")
+    btCancelar = new JButton('Cancelar')
       btCancelar.addActionListener(this)
       pnlComandos.add(btCancelar)
 
@@ -390,14 +390,14 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         }
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Departamentos.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Departamentos.','Erro',JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
 
   private void carregarItens() {
     cbxItem.removeAllItems()
-      cbxItem.addItem("Selecione...")
+      cbxItem.addItem('Selecione...')
       for(int i = 1;i < itens.size();i++) {
         cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
       }
@@ -406,7 +406,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
   /** Reinicia o formulário para inserção de um novo item. */
   private void cancelarItem() {
     this.cbxItem.setSelectedIndex(0)
-      this.txtQuantidade.setText("0,000")
+      this.txtQuantidade.setText('0,000')
   }
 
   private void carregarPedidosPendentes() {
@@ -419,7 +419,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         }
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar pedidos em produção.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar pedidos em produção.','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
@@ -434,7 +434,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         }
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar pedidos em produção.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar pedidos em produção.','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
@@ -453,14 +453,14 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         dlgDadosItem.setVisible(true)
         try
         {
-          if(tiposSolicitacoes.get(cbxTipoSolicitacao.getSelectedIndex()) == "CS")
+          if(tiposSolicitacoes.get(cbxTipoSolicitacao.getSelectedIndex()) == 'CS')
             this.itens = Item.carregarItensIndependentes(aplicacao.obterConexao())
           else
             this.itens = Item.carregarItens(aplicacao.obterConexao())
               this.carregarItens()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Ítens.","Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Ítens.','Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -476,7 +476,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               this.carregarItens()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Ítens.","Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Ítens.','Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -486,7 +486,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       if(cbxDepartamento.getSelectedIndex() > 0) {
         try
         {
-          if(tiposSolicitacoes.get(cbxTipoSolicitacao.getSelectedIndex()) == "CS")
+          if(tiposSolicitacoes.get(cbxTipoSolicitacao.getSelectedIndex()) == 'CS')
             itens = Item.carregarItensIndependentes((Departamento)departamentos.get(cbxDepartamento.getSelectedIndex()),aplicacao.obterConexao())
           else
             this.itens = Item.carregarItens((Departamento)departamentos.get(cbxDepartamento.getSelectedIndex()),aplicacao.obterConexao())
@@ -494,7 +494,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               redimencionar()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possivel carregar os itens.","Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possivel carregar os itens.','Erro',JOptionPane.ERROR_MESSAGE)
         }
       }
     }
@@ -510,7 +510,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione um pedido.","Atenção",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione um pedido.','Atenção',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -525,7 +525,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione um Pedido.","Atenção",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione um Pedido.','Atenção',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -551,15 +551,15 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: O Item informado já foi associado a Requisição Interna.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: O Item informado já foi associado a Requisição Interna.','Erro',JOptionPane.ERROR_MESSAGE)
           }
         }
         catch(NumberFormatException n) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         if (itensRequisicaoInterna.size() > 0) {
@@ -580,16 +580,16 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
       int linhaSelecionada = this.tblItens.getSelectedRow()
         this.itensRequisicaoInterna.removeElementAt(linhaSelecionada)
 
-        this.tblItens.setValueAt("",linhaSelecionada,0)
-        this.tblItens.setValueAt("",linhaSelecionada,1)
+        this.tblItens.setValueAt('',linhaSelecionada,0)
+        this.tblItens.setValueAt('',linhaSelecionada,1)
 
         if(linhaSelecionada < itensRequisicaoInterna.size()) {
           for(int i = linhaSelecionada;i < itensRequisicaoInterna.size();i++) {
             this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,0),i,0)
               this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,1),i,1)
           }
-          this.tblItens.setValueAt("",this.itensRequisicaoInterna.size(),0)
-            this.tblItens.setValueAt("",this.itensRequisicaoInterna.size(),1)
+          this.tblItens.setValueAt('',this.itensRequisicaoInterna.size(),0)
+            this.tblItens.setValueAt('',this.itensRequisicaoInterna.size(),1)
         }
 
       if (itensRequisicaoInterna.size() == 0) {
@@ -620,19 +620,19 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         if(indiceCard == 0) {
           try
           {
-            this.requisicaoInterna.definirTipoSolicitacao(((String)this.tiposSolicitacoes.get(this.cbxTipoSolicitacao.getSelectedIndex()))==null?"":(String)this.tiposSolicitacoes.get(this.cbxTipoSolicitacao.getSelectedIndex()))
+            this.requisicaoInterna.definirTipoSolicitacao(((String)this.tiposSolicitacoes.get(this.cbxTipoSolicitacao.getSelectedIndex()))==null?'':(String)this.tiposSolicitacoes.get(this.cbxTipoSolicitacao.getSelectedIndex()))
               this.requisicaoInterna.definirDataLimiteEntrega(txtDataLimiteEntrega.getText())
               this.requisicaoInterna.definirDepartamento(this.departamentos.get(this.cbxDepartamento.getSelectedIndex()) instanceof Departamento?(Departamento)this.departamentos.get(this.cbxDepartamento.getSelectedIndex()):null)
               this.requisicaoInterna.definirSolicitante(this.solicitante)
               this.requisicaoInterna.definirJustificativa(txaJustificativa.getText())
           }
           catch(NumberFormatException n) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
               n.printStackTrace()
               confirmado = false
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -648,44 +648,44 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               /*do
                 {
                 if(excluirPedidosRequisitados) {
-                query = "delete from pedido_requisicao_interna "
+                query = 'delete from pedido_requisicao_interna '
                 for(int i = 0i < pedidosSelecionados.size()i++) {
                 if(i == 0)
-                query += "where "
-                query += "pedido = " + ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
+                query += 'where '
+                query += 'pedido = ' + ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
                 if((i+1) < pedidosSelecionados.size())
-                query += " or "
+                query += ' or '
                 }
                 if(pedidosSelecionados.size() > 0) {
                 this.aplicacao.obterConexao().executarAtualizacao(query)
                 }
                 }
-                query = "select i.codigo,i.descricao,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria " +
-                "from item i, modelo_pedido mp, quantidade_materia_prima qmp " +
-                "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo "
+                query = 'select i.codigo,i.descricao,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria ' +
+                'from item i, modelo_pedido mp, quantidade_materia_prima qmp ' +
+                'where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo '
 
                 for(int i = 0i < pedidosSelecionados.size()i++) {
                 if(i == 0)
-                query += "and ("
-                query += "mp.pedido = "+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
+                query += 'and ('
+                query += 'mp.pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
                 if((i+1) < pedidosSelecionados.size())
-                query += " or "
+                query += ' or '
                 if((i + 1) == pedidosSelecionados.size())
-                query += ") "
+                query += ') '
                 }
-                query += "and i.codigo not in (select distinct item from pedido_requisicao_interna "
+                query += 'and i.codigo not in (select distinct item from pedido_requisicao_interna '
                 for(int i = 0i < pedidosSelecionados.size()i++) {
                 if(i == 0)
-                query += "where "
-                query += "pedido = "+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
+                query += 'where '
+                query += 'pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
                 if((i+1) < pedidosSelecionados.size())
-                query += " or "
+                query += ' or '
                 }
-                query += ") group by i.codigo,i.descricao,i.percentual_perda,i.percentual_ipi"
+                query += ') group by i.codigo,i.descricao,i.percentual_perda,i.percentual_ipi'
 
                 for(int i = 0i < 100i++) {
-                this.tblItens.setValueAt("",i,0)
-                this.tblItens.setValueAt("",i,1)
+                this.tblItens.setValueAt('',i,0)
+                this.tblItens.setValueAt('',i,1)
                 }
 
                 try
@@ -695,20 +695,20 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
                 int numeroItens = 0
                 itensRequisicaoInterna.removeAllElements()
                 while(rsItensPedidos.next()) {
-                Item item = new Item(rsItensPedidos.getInt("codigo"),rsItensPedidos.getString("descricao"))
-                float quantidadeNecessaria = rsItensPedidos.getFloat("necessaria")
+                Item item = new Item(rsItensPedidos.getInt('codigo'),rsItensPedidos.getString('descricao'))
+                float quantidadeNecessaria = rsItensPedidos.getFloat('necessaria')
                 ItemRequisicaoInterna itemRequisicaoInterna = new ItemRequisicaoInterna(item,this.requisicaoInterna,quantidadeNecessaria,(Departamento)departamentos.get(cbxDepartamento.getSelectedIndex()),ItemRequisicaoInterna.STATUS_EMITIDO)
                 itensRequisicaoInterna.addElement(itemRequisicaoInterna)
 
                 this.tblItens.setValueAt(item.obterDescricao(),numeroItens,0)
-                this.tblItens.setValueAt("" + itemRequisicaoInterna.obterQuantidadeItem(),numeroItens,1)
+                this.tblItens.setValueAt('' + itemRequisicaoInterna.obterQuantidadeItem(),numeroItens,1)
                 numeroItens++
                 }
                 rsItensPedidos.close()
                 proceguir = true
                 }
                 catch(SQLException e) {
-              if(JOptionPane.showConfirmDialog(aplicacao,"Os ítens para este pedido já foram requisitados anteriormente.\n Tem certeza que deseja requisitar novamente?\n Aviso: Isso pode comprometer a produção de outros pedidos.","Atenção",JOptionPane.YES_NO_OPTION) == 0) {
+              if(JOptionPane.showConfirmDialog(aplicacao,'Os ítens para este pedido já foram requisitados anteriormente.\n Tem certeza que deseja requisitar novamente?\n Aviso: Isso pode comprometer a produção de outros pedidos.','Atenção',JOptionPane.YES_NO_OPTION) == 0) {
                 confirmado = true
                   proceguir = false
                   excluirPedidosRequisitados = true
@@ -722,7 +722,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             e.printStackTrace()
           }
           catch(Exception ex) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: ' + ex.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
               confirmado = false
               ex.printStackTrace()
           }
@@ -766,13 +766,13 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             this.requisicaoInterna.associarItens(itensRequisicaoInterna,pedidosSelecionados)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         this.setVisible(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

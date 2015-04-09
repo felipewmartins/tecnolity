@@ -21,7 +21,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
     private JButton btNovoPais, btConfirmar, btCancelar
 
     DlgDadosEstado(Aplicacao aplicacao, char modo) {
-      super(aplicacao,true)
+      super(aplicacao, true)
 
         // Define o título da janela
         String tituloJanela = ''
@@ -49,35 +49,34 @@ class DlgDadosEstado extends JDialog implements ActionListener {
 
                     JPanel pnlDados = new JPanel(gridbag)
                     JLabel label = new JLabel('Nome do Estado')
-                    adicionarComponente(pnlDados,label,0,0,1,1)
+                    adicionarComponente(pnlDados, label, 0, 0, 1, 1)
                     txtNomeEstado = new JTextField(20)
-                    adicionarComponente(pnlDados,txtNomeEstado,1,0,1,1)
+                    adicionarComponente(pnlDados, txtNomeEstado, 1, 0, 1, 1)
                     label = new JLabel('Sigla')
-                    adicionarComponente(pnlDados,label,2,0,1,1)
+                    adicionarComponente(pnlDados, label, 2, 0, 1, 1)
                     txtSiglaEstado = new JTextField(3)
-                    adicionarComponente(pnlDados,txtSiglaEstado,3,0,1,1)
+                    adicionarComponente(pnlDados, txtSiglaEstado, 3, 0, 1, 1)
                     label = new JLabel('País')
-                    adicionarComponente(pnlDados,label,4,0,1,1)
+                    adicionarComponente(pnlDados, label, 4, 0, 1, 1)
 
                     JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
                     cbxPais = new JComboBox()
-                    try
-                    {
+                    try {
                       paises = Pais.carregarPaises(aplicacao.obterConexao())
                         carregarPaises()
                     }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Países.','Erro',JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
-      pnlSuporteCombo.add(cbxPais,BorderLayout.CENTER)
+      pnlSuporteCombo.add(cbxPais, BorderLayout.CENTER)
         btNovoPais = new JButton(new ImageIcon('imagens/novo.jpg'))
         btNovoPais.addActionListener(this)
         btNovoPais.setToolTipText('Novo Pais')
-        btNovoPais.setPreferredSize(new Dimension(22,20))
-        pnlSuporteCombo.add(btNovoPais,BorderLayout.EAST)
+        btNovoPais.setPreferredSize(new Dimension(22, 20))
+        pnlSuporteCombo.add(btNovoPais, BorderLayout.EAST)
 
-        adicionarComponente(pnlDados,pnlSuporteCombo,5,0,1,1)
+        adicionarComponente(pnlDados, pnlSuporteCombo, 5, 0, 1, 1)
         this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
         JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
@@ -114,7 +113,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
       gbc.gridwidth = largura
       gbc.gridheight = altura
 
-      gridbag.setConstraints(c,gbc)
+      gridbag.setConstraints(c, gbc)
       painel.add(c)
   }
 
@@ -122,28 +121,26 @@ class DlgDadosEstado extends JDialog implements ActionListener {
     Object objeto = actionEvent.getSource()
 
       if(objeto == btNovoPais) {
-        DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao,'I')
+        DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao, 'I')
           dlgDadosPais.setVisible(true)
-          try
-          {
+          try {
             paises = Pais.carregarPaises(aplicacao.obterConexao())
               carregarPaises()
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Países.','Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
 
     if(objeto == btConfirmar) {
-      try
-      {
-        Estado estado = new Estado(txtSiglaEstado.getText(),txtNomeEstado.getText(),(Pais)paises.get(cbxPais.getSelectedIndex()))
+      try {
+        Estado estado = new Estado(txtSiglaEstado.getText(), txtNomeEstado.getText(), (Pais)paises.get(cbxPais.getSelectedIndex()))
           estado.cadastrarEstado()
           this.setVisible(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.WARNING_MESSAGE)
           e.printStackTrace()
       }
     }

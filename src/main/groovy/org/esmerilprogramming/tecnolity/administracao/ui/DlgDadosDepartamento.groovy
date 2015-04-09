@@ -20,7 +20,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
   private Departamento departamento
 
   DlgDadosDepartamento(Aplicacao aplicacao) {
-    super(aplicacao,true)
+    super(aplicacao, true)
     this.setTitle('Novo Departamento')
     this.aplicacao = aplicacao
     this.departamento = new Departamento()
@@ -28,7 +28,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
   }
 
   DlgDadosDepartamento(Aplicacao aplicacao, Departamento departamento) {
-    super(aplicacao,true)
+    super(aplicacao, true)
     this.setTitle('Novo Departamento')
     this.aplicacao = aplicacao
     this.departamento = departamento
@@ -49,21 +49,21 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
 
     JPanel pnlDados = new JPanel(gridbag)
     JLabel label = new JLabel('Nome do Departamento')
-    adicionarComponente(pnlDados,label,0,0,1,1)
-    txtNomeDepartamento = new JTextField(departamento.obterNomeDepartamento(),20)
-    adicionarComponente(pnlDados,txtNomeDepartamento,1,0,1,1)
+    adicionarComponente(pnlDados, label, 0, 0, 1, 1)
+    txtNomeDepartamento = new JTextField(departamento.obterNomeDepartamento(), 20)
+    adicionarComponente(pnlDados, txtNomeDepartamento, 1, 0, 1, 1)
     label = new JLabel('Responsável')
-    adicionarComponente(pnlDados,label,2,0,1,1)
+    adicionarComponente(pnlDados, label, 2, 0, 1, 1)
     cbxResponsavel = new JComboBox()
     Colaborador colaborador = new Colaborador()
     try {
       responsaveis = colaborador.carregarColaboradores(aplicacao.obterConexao())
       carregarResponsaveis()
     } catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
-    adicionarComponente(pnlDados,cbxResponsavel,3,0,1,1)
+    adicionarComponente(pnlDados, cbxResponsavel, 3, 0, 1, 1)
 
     this.conteudo.add(pnlDados, BorderLayout.CENTER)
 
@@ -108,7 +108,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
     gbc.gridy = linha
     gbc.gridwidth = largura
     gbc.gridheight = altura
-    gridbag.setConstraints(c,gbc)
+    gridbag.setConstraints(c, gbc)
     painel.add(c)
   }
 
@@ -118,18 +118,18 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
     if(objeto == btConfirmar) {
       if(departamento.obterCodigo() > 0) {
         try {
-          departamento.alterarDepartamento(txtNomeDepartamento.getText(),(Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
+          departamento.alterarDepartamento(txtNomeDepartamento.getText(), (Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
           this.setVisible(false)
         } catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }
       } else {
         try {
-          departamento.cadastrarDepartamento(txtNomeDepartamento.getText(),(Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
+          departamento.cadastrarDepartamento(txtNomeDepartamento.getText(), (Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
           this.setVisible(false)
         } catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }
       }

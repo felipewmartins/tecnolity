@@ -60,7 +60,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
               DlgDadosRequisicaoCompra(Aplicacao aplicacao) {
                 super(aplicacao,true)
-                  this.setTitle("Nova Requisição de Compra")
+                  this.setTitle('Nova Requisição de Compra')
                   this.aplicacao = aplicacao
                   this.responsavelEmissao = (aplicacao.obterColaborador()).obterMatricula()
                   this.pedidosSelecionados = new Vector()
@@ -70,7 +70,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
   DlgDadosRequisicaoCompra(Aplicacao aplicacao, RequisicaoCompra requisicaoCompra) {
     super(aplicacao,true)
-      this.setTitle("Requisição de Compra")
+      this.setTitle('Requisição de Compra')
       this.aplicacao = aplicacao
       this.requisicaoCompra = requisicaoCompra
       this.responsavelEmissao = (aplicacao.obterColaborador()).obterMatricula()
@@ -93,27 +93,27 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           }
         }
         // Carrega os pedidos atendidos pela requisição de compra.
-        String query = "select distinct pc.codigo, pc.ordem_compra from pedido_requisicao_compra prc, pedido_cliente pc " +
-          "where prc.pedido = pc.codigo and prc.requisicao_compra = " + requisicaoCompra.obterCodigo()
+        String query = 'select distinct pc.codigo, pc.ordem_compra from pedido_requisicao_compra prc, pedido_cliente pc ' +
+          'where prc.pedido = pc.codigo and prc.requisicao_compra = ' + requisicaoCompra.obterCodigo()
           ResultSet rsPedidos = aplicacao.obterConexao().executarConsulta(query)
 
           while(rsPedidos.next()) {
-            modeloListaPedidosSelecionados.addElement(new Pedido(rsPedidos.getInt("codigo"),rsPedidos.getString("ordem_compra")))
+            modeloListaPedidosSelecionados.addElement(new Pedido(rsPedidos.getInt('codigo'),rsPedidos.getString('ordem_compra')))
           }
         rsPedidos.close()
           // Carrega os itens solicitados na requisição de compra.
-          query = "select i.descricao,ir.quantidade,ir.valor_item,(ir.quantidade * ir.valor_item) as valor_total, i.percentual_ipi, (((ir.quantidade * ir.valor_item) * i.percentual_ipi)/100) as ipi " +
-          "from item i, item_requisicao ir " +
-          "where i.codigo = ir.item and ir.requisicao_compra = " + requisicaoCompra.obterCodigo()
+          query = 'select i.descricao,ir.quantidade,ir.valor_item,(ir.quantidade * ir.valor_item) as valor_total, i.percentual_ipi, (((ir.quantidade * ir.valor_item) * i.percentual_ipi)/100) as ipi ' +
+          'from item i, item_requisicao ir ' +
+          'where i.codigo = ir.item and ir.requisicao_compra = ' + requisicaoCompra.obterCodigo()
           ResultSet rsItensRequisicao = aplicacao.obterConexao().executarConsulta(query)
           int posItem = 0
           while(rsItensRequisicao.next()) {
-            this.tblItens.setValueAt(rsItensRequisicao.getString("descricao"),posItem,0)
-              this.tblItens.setValueAt(rsItensRequisicao.getString("quantidade"),posItem,1)
-              this.tblItens.setValueAt(rsItensRequisicao.getString("valor_item"),posItem,2)
-              this.tblItens.setValueAt(rsItensRequisicao.getString("valor_total"),posItem,3)
-              this.tblItens.setValueAt(rsItensRequisicao.getString("percentual_ipi"),posItem,4)
-              this.tblItens.setValueAt(rsItensRequisicao.getString("ipi"),posItem,5)
+            this.tblItens.setValueAt(rsItensRequisicao.getString('descricao'),posItem,0)
+              this.tblItens.setValueAt(rsItensRequisicao.getString('quantidade'),posItem,1)
+              this.tblItens.setValueAt(rsItensRequisicao.getString('valor_item'),posItem,2)
+              this.tblItens.setValueAt(rsItensRequisicao.getString('valor_total'),posItem,3)
+              this.tblItens.setValueAt(rsItensRequisicao.getString('percentual_ipi'),posItem,4)
+              this.tblItens.setValueAt(rsItensRequisicao.getString('ipi'),posItem,5)
               posItem++
           }
         rsItensRequisicao.close()
@@ -139,9 +139,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       card = new CardLayout()
       pnlAreaDados.setLayout(card)
       pnlDadosRequisicaoCompra = new JPanel(gridbag)
-      pnlDadosRequisicaoCompra.setBorder(new TitledBorder("Dados da Requisição de Compra"))
+      pnlDadosRequisicaoCompra.setBorder(new TitledBorder('Dados da Requisição de Compra'))
 
-      JLabel label = new JLabel("Fornecedor")
+      JLabel label = new JLabel('Fornecedor')
       adicionarComponente(pnlDadosRequisicaoCompra,label,0,0,2,1)
 
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -153,24 +153,24 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           carregarFornecedores()
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Fornecedores. ","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Fornecedores. ','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
     pnlSuporteCombo.add(cbxFornecedor,BorderLayout.CENTER)
-      btNovoFornecedor = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoFornecedor = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoFornecedor.addActionListener(this)
-      btNovoFornecedor.setToolTipText("Novo Fornecedor")
+      btNovoFornecedor.setToolTipText('Novo Fornecedor')
       btNovoFornecedor.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovoFornecedor,BorderLayout.EAST)
       adicionarComponente(pnlDadosRequisicaoCompra,pnlSuporteCombo,1,0,3,1)
 
-      label = new JLabel("Condição de Pagamento")
+      label = new JLabel('Condição de Pagamento')
       adicionarComponente(pnlDadosRequisicaoCompra,label,2,0,1,1)
-      label = new JLabel("Forma de Pagamento")
+      label = new JLabel('Forma de Pagamento')
       adicionarComponente(pnlDadosRequisicaoCompra,label,2,1,1,1)
 
-      txtCondicoesPagamento = new JTextField((this.requisicaoCompra==null?"":this.requisicaoCompra.obterCondicaoPagamento().trim()),15)
+      txtCondicoesPagamento = new JTextField((this.requisicaoCompra==null?'':this.requisicaoCompra.obterCondicaoPagamento().trim()),15)
       txtCondicoesPagamento.addFocusListener(this)
       adicionarComponente(pnlDadosRequisicaoCompra,txtCondicoesPagamento,3,0,1,1)
 
@@ -182,23 +182,23 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           carregarFormasPagamento()
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Formas de Pagamento. ","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Formas de Pagamento. ','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
     pnlSuporteCombo.add(cbxFormaPagamento,BorderLayout.CENTER)
-      btNovaFormaPagamento = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovaFormaPagamento = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovaFormaPagamento.addActionListener(this)
-      btNovaFormaPagamento.setToolTipText("Nova Forma de Pagamento")
+      btNovaFormaPagamento.setToolTipText('Nova Forma de Pagamento')
       btNovaFormaPagamento.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovaFormaPagamento,BorderLayout.EAST)
       adicionarComponente(pnlDadosRequisicaoCompra,pnlSuporteCombo,3,1,1,1)
 
-      label = new JLabel("Transportadora")
+      label = new JLabel('Transportadora')
       adicionarComponente(pnlDadosRequisicaoCompra,label,4,0,1,1)
-      label = new JLabel("Limite Entrega")
+      label = new JLabel('Limite Entrega')
       adicionarComponente(pnlDadosRequisicaoCompra,label,4,1,1,1)
-      label = new JLabel("Frete")
+      label = new JLabel('Frete')
       adicionarComponente(pnlDadosRequisicaoCompra,label,4,2,1,1)
 
       pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -209,7 +209,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           carregarTransportadoras()
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Transportadoras. ","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Transportadoras. ','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
@@ -222,26 +222,26 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     cbxTransportadora.setSelectedIndex(indiceTransportadora)
 
       pnlSuporteCombo.add(cbxTransportadora,BorderLayout.CENTER)
-      btNovaTransportadora = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovaTransportadora = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovaTransportadora.addActionListener(this)
-      btNovaTransportadora.setToolTipText("Nova Transportadora")
+      btNovaTransportadora.setToolTipText('Nova Transportadora')
       btNovaTransportadora.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovaTransportadora,BorderLayout.EAST)
       adicionarComponente(pnlDadosRequisicaoCompra,pnlSuporteCombo,5,0,1,1)
 
-      txtDataLimiteEntrega = new JTextField(this.requisicaoCompra==null?"":Calendario.ajustarFormatoDataBanco(this.requisicaoCompra.obterDataLimiteEntrega().trim()),8)
+      txtDataLimiteEntrega = new JTextField(this.requisicaoCompra==null?'':Calendario.ajustarFormatoDataBanco(this.requisicaoCompra.obterDataLimiteEntrega().trim()),8)
       txtDataLimiteEntrega.addFocusListener(this)
       adicionarComponente(pnlDadosRequisicaoCompra,txtDataLimiteEntrega,5,1,1,1)
 
       cbxFrete = new JComboBox()
-      cbxFrete.addItem("CIF")
-      cbxFrete.addItem("FOB")
-      cbxFrete.addItem("Próprio")
+      cbxFrete.addItem('CIF')
+      cbxFrete.addItem('FOB')
+      cbxFrete.addItem('Próprio')
       adicionarComponente(pnlDadosRequisicaoCompra,cbxFrete,5,2,1,1)
 
-      label = new JLabel("Observações")
+      label = new JLabel('Observações')
       adicionarComponente(pnlDadosRequisicaoCompra,label,6,0,4,1)
-      txaObservacoes = new JTextArea(this.requisicaoCompra==null?"":this.requisicaoCompra.obterObservacao(),4,30)
+      txaObservacoes = new JTextArea(this.requisicaoCompra==null?'':this.requisicaoCompra.obterObservacao(),4,30)
       txaObservacoes.setLineWrap(true)
       txaObservacoes.setWrapStyleWord(true)
       JScrollPane scroll = new JScrollPane(txaObservacoes)
@@ -251,19 +251,19 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       pnlPedidosClientes = new JPanel(new BorderLayout())
       JPanel pnlTipoPedido = new JPanel()
       ButtonGroup grupo = new ButtonGroup()
-      rdbProducaoNaoIniciada = new JRadioButton("Pedidos Pendentes")
+      rdbProducaoNaoIniciada = new JRadioButton('Pedidos Pendentes')
       rdbProducaoNaoIniciada.setSelected(true)
       rdbProducaoNaoIniciada.addActionListener(this)
       grupo.add(rdbProducaoNaoIniciada)
       pnlTipoPedido.add(rdbProducaoNaoIniciada)
-      rdbProducaoIniciada = new JRadioButton("Pedidos Iniciados")
+      rdbProducaoIniciada = new JRadioButton('Pedidos Iniciados')
       rdbProducaoIniciada.addActionListener(this)
       grupo.add(rdbProducaoIniciada)
       pnlTipoPedido.add(rdbProducaoIniciada)
       pnlPedidosClientes.add(pnlTipoPedido, BorderLayout.NORTH)
 
       JPanel pnlPedidos = new JPanel(new BorderLayout())
-      pnlPedidos.add(new JLabel("Pedidos"), BorderLayout.NORTH)
+      pnlPedidos.add(new JLabel('Pedidos'), BorderLayout.NORTH)
       try
       {
         this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
@@ -278,22 +278,22 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           pnlPedidosClientes.add(pnlPedidos, BorderLayout.WEST)
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os pedidos.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os pedidos.','Erro',JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     JPanel pnlSuporteComandos = new JPanel()
       JPanel pnlComandosPedidos = new JPanel(new GridLayout(2,1,5,5))
-      btAdicionar = new JButton("Adicionar >>")
+      btAdicionar = new JButton('Adicionar >>')
       btAdicionar.addActionListener(this)
       pnlComandosPedidos.add(btAdicionar)
-      btRemover = new JButton("<< Remover")
+      btRemover = new JButton('<< Remover')
       btRemover.addActionListener(this)
       pnlComandosPedidos.add(btRemover)
       pnlSuporteComandos.add(pnlComandosPedidos)
       pnlPedidosClientes.add(pnlSuporteComandos, BorderLayout.CENTER)
 
       JPanel pnlPedidosSelecionados = new JPanel(new BorderLayout())
-      pnlPedidosSelecionados.add(new JLabel("Pedidos Selecionados"), BorderLayout.NORTH)
+      pnlPedidosSelecionados.add(new JLabel('Pedidos Selecionados'), BorderLayout.NORTH)
       modeloListaPedidosSelecionados = new DefaultListModel()
       lstPedidosSelecionados = new JList(modeloListaPedidosSelecionados)
       lstPedidosSelecionados.setFixedCellWidth(200)
@@ -304,11 +304,11 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       //Painel Itens da Requisição
       itensRequisicao = new Vector()
       pnlDadosItensRequisicao = new JPanel(gridbag)
-      pnlDadosItensRequisicao.setBorder(new TitledBorder("Item da Requisição"))
+      pnlDadosItensRequisicao.setBorder(new TitledBorder('Item da Requisição'))
 
-      label = new JLabel("Item")
+      label = new JLabel('Item')
       adicionarComponente(pnlDadosItensRequisicao,label,0,0,1,1)
-      label = new JLabel("Quantidade")
+      label = new JLabel('Quantidade')
       adicionarComponente(pnlDadosItensRequisicao,label,0,1,1,1)
       label = new JLabel('Valor Unitário (R$)')
       adicionarComponente(pnlDadosItensRequisicao,label,0,2,1,1)
@@ -318,33 +318,33 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       cbxItem.addActionListener(this)
 
       pnlSuporteCombo.add(cbxItem,BorderLayout.CENTER)
-      btNovoItem = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoItem = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoItem.addActionListener(this)
-      btNovoItem.setToolTipText("Novo Item")
+      btNovoItem.setToolTipText('Novo Item')
       btNovoItem.setPreferredSize(new Dimension(22,20))
       pnlSuporteCombo.add(btNovoItem,BorderLayout.EAST)
       adicionarComponente(pnlDadosItensRequisicao,pnlSuporteCombo,1,0,1,1)
 
-      txtQuantidade = new JTextField("",5)
+      txtQuantidade = new JTextField('',5)
       txtQuantidade.addFocusListener(this)
       adicionarComponente(pnlDadosItensRequisicao,txtQuantidade,1,1,1,1)
 
-      txtValorUnitario = new JTextField("",5)
+      txtValorUnitario = new JTextField('',5)
       txtValorUnitario.addFocusListener(this)
       adicionarComponente(pnlDadosItensRequisicao,txtValorUnitario,1,2,1,1)
 
       label = new JLabel('Total (R$)')
       adicionarComponente(pnlDadosItensRequisicao,label,2,0,1,1)
-      label = new JLabel("IPI (%)")
+      label = new JLabel('IPI (%)')
       adicionarComponente(pnlDadosItensRequisicao,label,2,1,1,1)
-      label = new JLabel("IPI")
+      label = new JLabel('IPI')
       adicionarComponente(pnlDadosItensRequisicao,label,2,2,1,1)
 
-      txtTotal = new JTextField("",10)
+      txtTotal = new JTextField('',10)
       txtTotal.addFocusListener(this)
       txtTotal.setEditable(false)
       adicionarComponente(pnlDadosItensRequisicao,txtTotal,3,0,1,1)
-      txtPercentualIpi = new JTextField("",5)
+      txtPercentualIpi = new JTextField('',5)
       txtPercentualIpi.addFocusListener(this)
       txtPercentualIpi.setEditable(false)
       adicionarComponente(pnlDadosItensRequisicao,txtPercentualIpi,3,1,1,1)
@@ -355,19 +355,19 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
       JPanel pnlItens = new JPanel(new BorderLayout())
       JPanel pnlComandoItem = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-      btConfirmarAlteracao = new JButton("Confirmar Alteração")
+      btConfirmarAlteracao = new JButton('Confirmar Alteração')
       btConfirmarAlteracao.addActionListener(this)
       btConfirmarAlteracao.setEnabled(false)
       pnlComandoItem.add(btConfirmarAlteracao)
-      btAdicionarItem = new JButton("Adicionar")
+      btAdicionarItem = new JButton('Adicionar')
       btAdicionarItem.addActionListener(this)
       pnlComandoItem.add(btAdicionarItem)
-      btCancelarItem = new JButton("Cancelar")
+      btCancelarItem = new JButton('Cancelar')
       btCancelarItem.addActionListener(this)
       pnlComandoItem.add(btCancelarItem)
       pnlItens.add(pnlComandoItem, BorderLayout.NORTH)
       Object[][] dados = new Object[100][6]
-      String[] nomeColunas = ["Item","Quant.","Vl. Unit.","Vl. Total","IPI %","IPI"]
+      String[] nomeColunas = ['Item','Quant.','Vl. Unit.','Vl. Total','IPI %','IPI']
       tblItens = new JTable(dados, nomeColunas)
       tblItens.setPreferredScrollableViewportSize(new Dimension(460, 100))
       tblItens.addRowSelectionInterval(0,0)
@@ -375,28 +375,28 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
       pnlItens.add(scroll, BorderLayout.CENTER)
       pnlComandoItem = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-      btAlterarItem = new JButton("Alterar Selecionado")
+      btAlterarItem = new JButton('Alterar Selecionado')
       btAlterarItem.addActionListener(this)
       pnlComandoItem.add(btAlterarItem)
-      btExcluirItem = new JButton("Excluir Selecionado")
+      btExcluirItem = new JButton('Excluir Selecionado')
       btExcluirItem.addActionListener(this)
       pnlComandoItem.add(btExcluirItem)
       pnlItens.add(pnlComandoItem, BorderLayout.SOUTH)
       adicionarComponente(pnlDadosItensRequisicao,pnlItens,4,0,4,1)
 
-      pnlAreaDados.add(this.pnlDadosRequisicaoCompra,"Requisição de Compra")
-      pnlAreaDados.add(this.pnlPedidosClientes,"Pedidos dos Clientes")
-      pnlAreaDados.add(this.pnlDadosItensRequisicao,"Itens da Requisição")
+      pnlAreaDados.add(this.pnlDadosRequisicaoCompra,'Requisição de Compra')
+      pnlAreaDados.add(this.pnlPedidosClientes,'Pedidos dos Clientes')
+      pnlAreaDados.add(this.pnlDadosItensRequisicao,'Itens da Requisição')
       conteudo.add(pnlAreaDados,BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-      btAnterior = new JButton("<< Anterior")
+      btAnterior = new JButton('<< Anterior')
       btAnterior.addActionListener(this)
       btAnterior.setEnabled(false)
       pnlComandos.add(btAnterior)
 
-      btProximoLeitura = new JButton("Próximo >>")
-      btProximo = new JButton("Próximo >>")
+      btProximoLeitura = new JButton('Próximo >>')
+      btProximo = new JButton('Próximo >>')
       if(requisicaoCompra == null) {
         btProximo.addActionListener(this)
           pnlComandos.add(btProximo)
@@ -408,14 +408,14 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
 
 
-    btConfirmar = new JButton("Confirmar")
+    btConfirmar = new JButton('Confirmar')
       if(requisicaoCompra == null) {
         btConfirmar.addActionListener(this)
           btConfirmar.setEnabled(false)
           pnlComandos.add(btConfirmar)
       }
 
-    btCancelar = new JButton("Cancelar")
+    btCancelar = new JButton('Cancelar')
       btCancelar.addActionListener(this)
       pnlComandos.add(btCancelar)
 
@@ -446,7 +446,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
   private void carregarTransportadoras() {
     cbxTransportadora.removeAllItems()
-      cbxTransportadora.addItem("Selecione...")
+      cbxTransportadora.addItem('Selecione...')
 
       for(int i = 1;i < transportadoras.size();i++) {
         cbxTransportadora.addItem(((Transportadora)transportadoras.get(i)).obterNome())
@@ -455,19 +455,19 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
   private void carregarFornecedores() {
     cbxFornecedor.removeAllItems()
-      cbxFornecedor.addItem("Selecione...")
+      cbxFornecedor.addItem('Selecione...')
       String cnpj,razaoSocial
 
       for(int i = 1;i < fornecedores.size();i++) {
         cnpj = (((Fornecedor)fornecedores.get(i)).obterCnpj()).trim()
           razaoSocial = (((Fornecedor)fornecedores.get(i)).obterRazaoSocial()).trim()
-          cbxFornecedor.addItem(cnpj + " - " + razaoSocial.substring(0,((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?"":" . . ."))
+          cbxFornecedor.addItem(cnpj + ' - ' + razaoSocial.substring(0,((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?'':' . . .'))
       }
   }
 
   private void carregarFormasPagamento() {
     cbxFormaPagamento.removeAllItems()
-      cbxFormaPagamento.addItem("Selecione...")
+      cbxFormaPagamento.addItem('Selecione...')
 
       for(int i = 1;i < formasPagamento.size();i++) {
         cbxFormaPagamento.addItem(((FormaPagamento)formasPagamento.get(i)).obterFormaPagamento())
@@ -484,7 +484,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         }
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar pedidos em produção.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar pedidos em produção.','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
@@ -499,14 +499,14 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         }
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar pedidos em produção.","Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar pedidos em produção.','Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
 
   private void carregarItens() {
     cbxItem.removeAllItems()
-      cbxItem.addItem("Selecione...")
+      cbxItem.addItem('Selecione...')
 
       for(int i = 1;i < itens.size();i++) {
         cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
@@ -515,19 +515,19 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
   private void cancelarItem() {
     this.cbxItem.setSelectedIndex(0)
-      this.txtQuantidade.setText("0")
-      this.txtValorUnitario.setText("0,0")
-      this.txtTotal.setText("0,0")
-      this.txtPercentualIpi.setText("0")
-      this.txtIpi.setText("0")
+      this.txtQuantidade.setText('0')
+      this.txtValorUnitario.setText('0,0')
+      this.txtTotal.setText('0,0')
+      this.txtPercentualIpi.setText('0')
+      this.txtIpi.setText('0')
   }
 
   private int obterDepartamentoSolicitante() throws Exception
   {
     Conexao conexao = aplicacao.obterConexao()
-      ResultSet departamentoSolicitante = conexao.executarConsulta("select departamento from usuario where usuario = '"+ this.responsavelEmissao +"' ")
+      ResultSet departamentoSolicitante = conexao.executarConsulta('select departamento from usuario where usuario = ''+ this.responsavelEmissao +'' ')
       if(departamentoSolicitante.next())
-        return departamentoSolicitante.getInt("departamento")
+        return departamentoSolicitante.getInt('departamento')
       else
         return 0
   }
@@ -538,9 +538,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       float percentualIpi = Float.parseFloat(Numero.inverterSeparador(this.txtPercentualIpi.getText()))
       if(quantidadeItem != 0.0f && valorItem != 0.0f) {
         float totalItem = quantidadeItem * valorItem
-          this.txtTotal.setText(""+Numero.inverterSeparador(""+totalItem))
+          this.txtTotal.setText(''+Numero.inverterSeparador(''+totalItem))
           float ipi = ((percentualIpi)/100) * totalItem
-          this.txtIpi.setText(""+Numero.inverterSeparador(""+ipi))
+          this.txtIpi.setText(''+Numero.inverterSeparador(''+ipi))
       }
   }
 
@@ -557,7 +557,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               btRemover.setEnabled(true)
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os itens do fornecedor","Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os itens do fornecedor','Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -573,7 +573,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             carregarTransportadoras()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Transportadoras","Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Transportadoras','Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -587,7 +587,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             this.carregarItens()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Ítens.","Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Ítens.','Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -601,7 +601,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             this.carregarFornecedores()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar os Fornecedores.","Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar os Fornecedores.','Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -616,7 +616,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             this.carregarFormasPagamento()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar as Formas de Pagamento.","Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: Não foi possível carregar as Formas de Pagamento.','Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -624,15 +624,15 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     if(objeto == cbxItem) {
       if(cbxItem.getSelectedIndex() > 0) {
         this.item = (Item)itens.get(cbxItem.getSelectedIndex())
-          String query = "select fi.valor_item,i.percentual_ipi from item i,fornecedor_item fi where fi.item = i.codigo and i.codigo = "+ this.item.obterCodigo()
+          String query = 'select fi.valor_item,i.percentual_ipi from item i,fornecedor_item fi where fi.item = i.codigo and i.codigo = '+ this.item.obterCodigo()
           try
           {
             Conexao conexao = aplicacao.obterConexao()
               ResultSet dadosItem = conexao.executarConsulta(query)
               if(dadosItem.next()) {
-                txtQuantidade.setText(""+Numero.inverterSeparador(item.obterQuantidadeMinima()))
-                  txtValorUnitario.setText(""+Numero.inverterSeparador(dadosItem.getFloat("valor_item")))
-                  txtPercentualIpi.setText(""+dadosItem.getInt("percentual_ipi"))
+                txtQuantidade.setText(''+Numero.inverterSeparador(item.obterQuantidadeMinima()))
+                  txtValorUnitario.setText(''+Numero.inverterSeparador(dadosItem.getFloat('valor_item')))
+                  txtPercentualIpi.setText(''+dadosItem.getInt('percentual_ipi'))
               }
           }
         catch(SQLException e) {
@@ -660,7 +660,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione um pedido.","Atenção",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione um pedido.','Atenção',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -675,7 +675,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Selecione um Pedido.","Atenção",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Selecione um Pedido.','Atenção',JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -697,9 +697,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               int percentualIpi = Integer.parseInt(this.txtPercentualIpi.getText())
               if(quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
                 float totalItem = quantidadeItem * valorItem
-                  this.txtTotal.setText(""+Numero.inverterSeparador(""+totalItem))
+                  this.txtTotal.setText(''+Numero.inverterSeparador(''+totalItem))
                   float ipi = ((percentualIpi)/100) * totalItem
-                  this.txtIpi.setText(""+Numero.inverterSeparador(""+ipi))
+                  this.txtIpi.setText(''+Numero.inverterSeparador(''+ipi))
               }
 
             itensRequisicao.addElement(new ItemRequisicao((Item)itens.get(cbxItem.getSelectedIndex()), this.requisicaoCompra,Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())),Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())),0.0f,Float.parseFloat(Numero.inverterSeparador(this.txtValorUnitario.getText())),percentualIpi))
@@ -714,15 +714,15 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: O Item informado já foi associado a Requisição de Compra.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: O Item informado já foi associado a Requisição de Compra.','Erro',JOptionPane.ERROR_MESSAGE)
           }
         }
         catch(NumberFormatException n) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         if (numeroItens > 0) {
@@ -745,9 +745,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         int percentualIpi = Integer.parseInt(this.txtPercentualIpi.getText())
         if(quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
           float totalItem = quantidadeItem * valorItem
-            this.txtTotal.setText(""+Numero.inverterSeparador(""+totalItem))
+            this.txtTotal.setText(''+Numero.inverterSeparador(''+totalItem))
             float ipi = ((percentualIpi)/100) * totalItem
-            this.txtIpi.setText(""+Numero.inverterSeparador(""+ipi))
+            this.txtIpi.setText(''+Numero.inverterSeparador(''+ipi))
         }
       itensRequisicao.setElementAt(new ItemRequisicao((Item)itens.get(cbxItem.getSelectedIndex()), this.requisicaoCompra,Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())),Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())),0.0f,Float.parseFloat(Numero.inverterSeparador(this.txtValorUnitario.getText())),percentualIpi),linhaAAlterar)
         this.tblItens.setValueAt(cbxItem.getSelectedItem(),linhaAAlterar,0)
@@ -779,12 +779,12 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       int linhaSelecionada = this.tblItens.getSelectedRow()
         this.itensRequisicao.removeElementAt(linhaSelecionada)
 
-        this.tblItens.setValueAt("",linhaSelecionada,0)
-        this.tblItens.setValueAt("",linhaSelecionada,1)
-        this.tblItens.setValueAt("",linhaSelecionada,2)
-        this.tblItens.setValueAt("",linhaSelecionada,3)
-        this.tblItens.setValueAt("",linhaSelecionada,4)
-        this.tblItens.setValueAt("",linhaSelecionada,5)
+        this.tblItens.setValueAt('',linhaSelecionada,0)
+        this.tblItens.setValueAt('',linhaSelecionada,1)
+        this.tblItens.setValueAt('',linhaSelecionada,2)
+        this.tblItens.setValueAt('',linhaSelecionada,3)
+        this.tblItens.setValueAt('',linhaSelecionada,4)
+        this.tblItens.setValueAt('',linhaSelecionada,5)
 
         if(linhaSelecionada < (numeroItens -1)) {
           for(int i = linhaSelecionada;i < (numeroItens -1);i++) {
@@ -795,12 +795,12 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,4),i,4)
               this.tblItens.setValueAt(this.tblItens.getValueAt(i+1,5),i,5)
           }
-          this.tblItens.setValueAt("",numeroItens -1,0)
-            this.tblItens.setValueAt("",numeroItens -1,1)
-            this.tblItens.setValueAt("",numeroItens -1,2)
-            this.tblItens.setValueAt("",numeroItens -1,3)
-            this.tblItens.setValueAt("",numeroItens -1,4)
-            this.tblItens.setValueAt("",numeroItens -1,5)
+          this.tblItens.setValueAt('',numeroItens -1,0)
+            this.tblItens.setValueAt('',numeroItens -1,1)
+            this.tblItens.setValueAt('',numeroItens -1,2)
+            this.tblItens.setValueAt('',numeroItens -1,3)
+            this.tblItens.setValueAt('',numeroItens -1,4)
+            this.tblItens.setValueAt('',numeroItens -1,5)
         }
       numeroItens--
 
@@ -848,22 +848,22 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               this.requisicaoCompra.definirDataLimiteEntrega(this.txtDataLimiteEntrega.getText())
               this.requisicaoCompra.definirTipoFrete(freteSelecionado)
               Calendario calendario = new Calendario()
-              this.requisicaoCompra.definirDataEmissao(calendario.dataHoje("dd/MM/yyyy"))
+              this.requisicaoCompra.definirDataEmissao(calendario.dataHoje('dd/MM/yyyy'))
               this.requisicaoCompra.definirObservacao(this.txaObservacoes.getText())
 
               if(this.requisicaoCompra.obterFornecedor().possuiApenasItensIndependentes(this.aplicacao.obterConexao())) {
-                JOptionPane.showMessageDialog(aplicacao,"Atenção: O fornecedor selecionado só oferece itens independentes de pedidos do cliente.\n A seleção de pedidos será desabilitada.","Atenção",JOptionPane.WARNING_MESSAGE)
+                JOptionPane.showMessageDialog(aplicacao,'Atenção: O fornecedor selecionado só oferece itens independentes de pedidos do cliente.\n A seleção de pedidos será desabilitada.','Atenção',JOptionPane.WARNING_MESSAGE)
                   btAdicionar.setEnabled(false)
                   btRemover.setEnabled(false)
               }
           }
           catch(NumberFormatException n) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: Valor incorreto.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: Valor incorreto.','Erro',JOptionPane.ERROR_MESSAGE)
               confirmado = false
               n.printStackTrace()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
               confirmado = false
               e.printStackTrace()
           }
@@ -871,36 +871,36 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       // Seleção dos pedidos dos clientes.
       if(indiceCard == 1) {
         // Seleciona a necessidade dos itens a serem requisitados.
-        String query =  "select i.codigo,i.descricao,fi.valor_item,fi.referencia_fornecedor,i.percentual_ipi,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria " +
-          "from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi " +
-          "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo "
+        String query =  'select i.codigo,i.descricao,fi.valor_item,fi.referencia_fornecedor,i.percentual_ipi,(sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria ' +
+          'from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi ' +
+          'where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo '
 
           for(int i = 0;i < pedidosSelecionados.size();i++) {
             if(i == 0)
-              query += "and ("
-                query += "mp.pedido = "+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
+              query += 'and ('
+                query += 'mp.pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
                 if((i+1) < pedidosSelecionados.size())
-                  query += " or "
+                  query += ' or '
                     if((i + 1) == pedidosSelecionados.size())
-                      query += ") "
+                      query += ') '
           }
-        query += "and i.codigo = fi.item and fi.fornecedor = "+ ((Fornecedor)this.fornecedores.get(cbxFornecedor.getSelectedIndex())).obterCodigo() + " and i.codigo not in (select distinct item_requisicao from pedido_requisicao_compra "
+        query += 'and i.codigo = fi.item and fi.fornecedor = '+ ((Fornecedor)this.fornecedores.get(cbxFornecedor.getSelectedIndex())).obterCodigo() + ' and i.codigo not in (select distinct item_requisicao from pedido_requisicao_compra '
           for(int i = 0;i < pedidosSelecionados.size();i++) {
             if(i == 0)
-              query += "where "
-                query += "pedido = "+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
+              query += 'where '
+                query += 'pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
                 if((i+1) < pedidosSelecionados.size())
-                  query += " or "
+                  query += ' or '
           }
-        query += ") group by i.codigo,i.descricao,i.percentual_perda,fi.valor_item,fi.referencia_fornecedor,i.percentual_ipi"
+        query += ') group by i.codigo,i.descricao,i.percentual_perda,fi.valor_item,fi.referencia_fornecedor,i.percentual_ipi'
           numeroItens = 0
           for(int i = 0;i < 100;i++) {
-            this.tblItens.setValueAt("",i,0)
-              this.tblItens.setValueAt("",i,1)
-              this.tblItens.setValueAt("",i,2)
-              this.tblItens.setValueAt("",i,3)
-              this.tblItens.setValueAt("",i,4)
-              this.tblItens.setValueAt("",i,5)
+            this.tblItens.setValueAt('',i,0)
+              this.tblItens.setValueAt('',i,1)
+              this.tblItens.setValueAt('',i,2)
+              this.tblItens.setValueAt('',i,3)
+              this.tblItens.setValueAt('',i,4)
+              this.tblItens.setValueAt('',i,5)
           }
         if(pedidosSelecionados.size() > 0) {
           try
@@ -909,30 +909,30 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               itensRequisicao.removeAllElements()
               // Associa cada item a requisição de compra
               while(rsItensPedidos.next()) {
-                Item item = new Item(rsItensPedidos.getInt("codigo"),rsItensPedidos.getString("descricao"),new FornecedorItem(rsItensPedidos.getFloat("valor_item"),rsItensPedidos.getString("referencia_fornecedor")))
+                Item item = new Item(rsItensPedidos.getInt('codigo'),rsItensPedidos.getString('descricao'),new FornecedorItem(rsItensPedidos.getFloat('valor_item'),rsItensPedidos.getString('referencia_fornecedor')))
                   float valorItem = item.obterFornecedorItem().obterValorItem()
-                  int percentualIPI = rsItensPedidos.getInt("percentual_ipi")
-                  float quantidadeNecessaria = rsItensPedidos.getFloat("necessaria")
+                  int percentualIPI = rsItensPedidos.getInt('percentual_ipi')
+                  float quantidadeNecessaria = rsItensPedidos.getFloat('necessaria')
                   ItemRequisicao itemRequisicao = new ItemRequisicao(item,this.requisicaoCompra,quantidadeNecessaria,quantidadeNecessaria,0.0f,valorItem,percentualIPI)
                   itensRequisicao.addElement(itemRequisicao)
 
                   this.tblItens.setValueAt(item.obterDescricao(),numeroItens,0)
-                  this.tblItens.setValueAt("" + itemRequisicao.getQuantidadeItem(),numeroItens,1)
-                  this.tblItens.setValueAt("" + itemRequisicao.obterValorUnitario(),numeroItens,2)
-                  this.tblItens.setValueAt("" + itemRequisicao.obterValorTotal(),numeroItens,3)
-                  this.tblItens.setValueAt("" + itemRequisicao.obterPercentualIPI(),numeroItens,4)
-                  this.tblItens.setValueAt("" + itemRequisicao.obterValorTotalComIPI(),numeroItens,5)
+                  this.tblItens.setValueAt('' + itemRequisicao.getQuantidadeItem(),numeroItens,1)
+                  this.tblItens.setValueAt('' + itemRequisicao.obterValorUnitario(),numeroItens,2)
+                  this.tblItens.setValueAt('' + itemRequisicao.obterValorTotal(),numeroItens,3)
+                  this.tblItens.setValueAt('' + itemRequisicao.obterPercentualIPI(),numeroItens,4)
+                  this.tblItens.setValueAt('' + itemRequisicao.obterValorTotalComIPI(),numeroItens,5)
                   numeroItens++
               }
             rsItensPedidos.close()
           }
           catch(SQLException e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: As quantidades necessárias para os pedidos selecionados \n já foram atendidas em uma requisicao anterior.","Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: As quantidades necessárias para os pedidos selecionados \n já foram atendidas em uma requisicao anterior.','Erro',JOptionPane.ERROR_MESSAGE)
               confirmado = false
               e.printStackTrace()
           }
           catch(Exception ex) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: " + ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao,'Erro: ' + ex.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
               //confirmado = false
               ex.printStackTrace()
           }
@@ -968,19 +968,19 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           this.requisicaoCompra.associarItens(itensRequisicao,pedidosSelecionados)
           this.setVisible(false)
 
-          RelatorioRequisicaoCompra relRequisicaoCompra = new RelatorioRequisicaoCompra(this.requisicaoCompra,this.pedidosSelecionados,"ESTOQUE")
+          RelatorioRequisicaoCompra relRequisicaoCompra = new RelatorioRequisicaoCompra(this.requisicaoCompra,this.pedidosSelecionados,'ESTOQUE')
           Vector paginas = relRequisicaoCompra.paginar(aplicacao.obterFormatoPagina())
           Impressora impressora = new Impressora()
           impressora.addPaginas(paginas,aplicacao.obterFormatoPagina())
           impressora.imprimir()
-          relRequisicaoCompra = new RelatorioRequisicaoCompra(this.requisicaoCompra,this.pedidosSelecionados,"COMPRAS")
+          relRequisicaoCompra = new RelatorioRequisicaoCompra(this.requisicaoCompra,this.pedidosSelecionados,'COMPRAS')
           paginas = relRequisicaoCompra.paginar(aplicacao.obterFormatoPagina())
           impressora = new Impressora()
           impressora.addPaginas(paginas,aplicacao.obterFormatoPagina())
           impressora.imprimir()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao,'Erro: ' + e.getMessage(),'Erro',JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

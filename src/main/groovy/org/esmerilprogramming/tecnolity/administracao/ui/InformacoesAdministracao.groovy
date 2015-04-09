@@ -68,7 +68,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     pnlUsuarios = new JPanel(new BorderLayout())
 
     JPanel pnlAreaComandos = new JPanel()
-    JPanel pnlComandos = new JPanel(new GridLayout(4,1,5,5))
+    JPanel pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
     btAdicionarUsuario = new JButton("Adicionar Colaborador")
     btAdicionarUsuario.addActionListener(this)
     pnlComandos.add(btAdicionarUsuario)
@@ -86,17 +86,17 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
     modeloTabelaColaboradores = new ModeloTabela()
     modeloTabelaColaboradores.definirConexao(aplicacao.obterConexao())
-    modeloTabelaColaboradores.definirConsulta("select usuario as 'usuário', nome_completo as 'nome completo',telefone,ramal,email as 'e-mail' from usuario order by usuario asc")
+    modeloTabelaColaboradores.definirConsulta("select usuario as 'usuário', nome_completo as 'nome completo', telefone, ramal, email as 'e-mail' from usuario order by usuario asc")
     tblColaboradores = new JTable(modeloTabelaColaboradores)
     JScrollPane scrollColaboradores = new JScrollPane(tblColaboradores)
     pnlUsuarios.add(scrollColaboradores, BorderLayout.CENTER)
-    tbpEmpresa.addTab("Colaboradores",pnlUsuarios)
+    tbpEmpresa.addTab("Colaboradores", pnlUsuarios)
 
     // Conteúdo da SubAba Departamentos
     pnlDepartamentos = new JPanel(new BorderLayout())
 
     pnlAreaComandos = new JPanel()
-    pnlComandos = new JPanel(new GridLayout(4,1,5,5))
+    pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
     btAdicionarDepartamento = new JButton("Adicionar Departamento")
     btAdicionarDepartamento.addActionListener(this)
     pnlComandos.add(btAdicionarDepartamento)
@@ -118,16 +118,15 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     tblDepartamentos = new JTable(modeloTabelaDepartamentos)
     JScrollPane scrollDepartamentos = new JScrollPane(tblDepartamentos)
     pnlDepartamentos.add(scrollDepartamentos, BorderLayout.CENTER)
-    tbpEmpresa.addTab("Departamentos",pnlDepartamentos)
-    this.addTab("Empresa",tbpEmpresa)
+    tbpEmpresa.addTab("Departamentos", pnlDepartamentos)
+    this.addTab("Empresa", tbpEmpresa)
 
     // Conteúdo da Aba Permissoes
     pnlPermissoes = new JPanel(new BorderLayout())
 
     JPanel pnlParametro = new JPanel(new FlowLayout(FlowLayout.LEFT))
     JLabel label
-    try
-    {
+    try {
       label = new JLabel("Colaborador:")
       pnlParametro.add(label)
       cbxColaboradores = new JComboBox()
@@ -138,13 +137,13 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       pnlPermissoes.add(pnlParametro, BorderLayout.NORTH)
     }
     catch (Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.WARNING_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE)
       e.printStackTrace()
     }
     pnlPermissoes.add(pnlParametro, BorderLayout.NORTH)
 
     pnlAreaComandos = new JPanel()
-    pnlComandos = new JPanel(new GridLayout(4,1,5,5))
+    pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
     btAtribuirPermissao = new JButton("Atribuir Permissão")
     btAtribuirPermissao.addActionListener(this)
     pnlComandos.add(btAtribuirPermissao)
@@ -161,26 +160,25 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
     JScrollPane scrollPermissoes = new JScrollPane(tblPermissoes)
     pnlPermissoes.add(scrollPermissoes, BorderLayout.CENTER)
-    this.addTab("Segurança",pnlPermissoes)
+    this.addTab("Segurança", pnlPermissoes)
 
     // Conteúdo da Aba Propriedades
     this.cambio = new Cambio()
-    try
-    {
+    try {
       this.cambio.carregarCambio(aplicacao.obterConexao())
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível carregar a cotação do dólar.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a cotação do dólar.", "Erro", JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
     pnlPropriedades = new JPanel(new BorderLayout())
     JPanel pnlValoresPropriedades = new JPanel(gridbag)
     label = new JLabel('Cotação do Dólar (R$):')
-    adicionarComponente(pnlValoresPropriedades,label,0,0,1,1)
-    txtCotacaoDolar = new JTextField(Numero.inverterSeparador(""+this.cambio.obterDolar()),5)
+    adicionarComponente(pnlValoresPropriedades, label, 0, 0, 1, 1)
+    txtCotacaoDolar = new JTextField(Numero.inverterSeparador(""+this.cambio.obterDolar()), 5)
     txtCotacaoDolar.setEnabled(false)
-    adicionarComponente(pnlValoresPropriedades,txtCotacaoDolar,0,1,1,1)
-    pnlPropriedades.add(pnlValoresPropriedades,BorderLayout.CENTER)
+    adicionarComponente(pnlValoresPropriedades, txtCotacaoDolar, 0, 1, 1, 1)
+    pnlPropriedades.add(pnlValoresPropriedades, BorderLayout.CENTER)
     JPanel pnlComandosPropriedades = new JPanel(new FlowLayout(FlowLayout.RIGHT))
     btEditar = new JButton("Editar")
     btEditar.addActionListener(this)
@@ -193,16 +191,16 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     btDesfazer.setEnabled(false)
     btDesfazer.addActionListener(this)
     pnlComandosPropriedades.add(btDesfazer)
-    pnlPropriedades.add(pnlComandosPropriedades,BorderLayout.SOUTH)
-    this.addTab("Propriedades",pnlPropriedades)
+    pnlPropriedades.add(pnlComandosPropriedades, BorderLayout.SOUTH)
+    this.addTab("Propriedades", pnlPropriedades)
 
     pnlGeracaoInformacoes = new JPanel(new BorderLayout())
     JPanel pnlAreaComando = new JPanel(new BorderLayout())
     JPanel pnlConteudoComando = new JPanel(new BorderLayout())
 
     pnlConteudoComando.add(new JLabel("Comando/Consulta"), BorderLayout.NORTH)
-    txaComandos = new JTextArea(4,40)
-    txaComandos.setFont(new Font("Courier New",Font.PLAIN,12))
+    txaComandos = new JTextArea(4, 40)
+    txaComandos.setFont(new Font("Courier New", Font.PLAIN, 12))
     txaComandos.setForeground(Color.DARK_GRAY)
     txaComandos.addKeyListener(this)
     txaComandos.setLineWrap(true)
@@ -253,13 +251,13 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     pnlGeracaoInformacoes.add(scroll, BorderLayout.CENTER)
 
     JPanel pnlComandoInfo = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-    btSalvar = new JButton("Salvar Consulta",new ImageIcon("org.esmerilprogramming.tecnolity/aplicacao/recursos/imagens/salvar.gif"))
+    btSalvar = new JButton("Salvar Consulta", new ImageIcon("org.esmerilprogramming.tecnolity/aplicacao/recursos/imagens/salvar.gif"))
     btSalvar.addActionListener(this)
     btSalvar.setEnabled(false)
     pnlComandoInfo.add(btSalvar)
     pnlGeracaoInformacoes.add(pnlComandoInfo, BorderLayout.SOUTH)
 
-    this.addTab("Geração de Informações",pnlGeracaoInformacoes)
+    this.addTab("Geração de Informações", pnlGeracaoInformacoes)
   }
 
   private void carregarColaboradores() {
@@ -277,12 +275,12 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     gbc.gridwidth = largura
     gbc.gridheight = altura
 
-    gridbag.setConstraints(c,gbc)
+    gridbag.setConstraints(c, gbc)
     painel.add(c)
   }
 
   private void atualizarTabelaColaborador() {
-    modeloTabelaColaboradores.definirConsulta("select usuario as 'usuário', nome_completo as 'nome completo',telefone,ramal,email as 'e-mail' from usuario order by usuario asc")
+    modeloTabelaColaboradores.definirConsulta("select usuario as 'usuário', nome_completo as 'nome completo', telefone, ramal, email as 'e-mail' from usuario order by usuario asc")
     tblColaboradores.setModel(modeloTabelaColaboradores)
     tblColaboradores.updateUI()
   }
@@ -294,7 +292,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   }
 
   private void atualizarTabelaPermissoes(Colaborador colaborador) {
-    String query = "select nome_completo,i.interface,case permissao when 'E' then 'Escrita' when 'L' then 'Leitura' end as permissao from permissao p, usuario u, interface i where	p.usuario = u.usuario and "
+    String query = "select nome_completo, i.interface, case permissao when 'E' then 'Escrita' when 'L' then 'Leitura' end as permissao from permissao p, usuario u, interface i where	p.usuario = u.usuario and "
     if(colaborador != null)
       query += "u.usuario = '"+ colaborador.obterMatricula() +"' and "
     query += "p.interface = i.identificador order by nome_completo asc"
@@ -306,8 +304,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
    void importarArquivoComandoSQL() {
     StringBuffer conteudoArquivo = new StringBuffer()
-    try
-    {
+    try {
       FileReader entrada = new FileReader(arqComandos)
       int indiceRegistro = 0
       while((indiceRegistro = entrada.read()) != -1) {
@@ -316,11 +313,11 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       txaComandos.setText(conteudoArquivo.toString())
     }
     catch(FileNotFoundException e) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Arquivo informado não encontrado.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Arquivo informado não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
     catch(IOException ex) {
-      JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível ler o arquivo informado.","Erro",JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível ler o arquivo informado.", "Erro", JOptionPane.ERROR_MESSAGE)
       ex.printStackTrace()
     }
   }
@@ -335,8 +332,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   }
 
   private void executarComandoSQL() {
-    try
-    {
+    try {
       if(txaComandos.getSelectedText() == null) {
         txaComandos.setSelectionStart(0)
         txaComandos.setSelectionEnd(txaComandos.getText().length())
@@ -372,7 +368,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     Object objeto = actionEvent.getSource()
 
     if(objeto == btAdicionarUsuario) {
-      DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao,'I')
+      DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao, 'I')
       dlgDadosColaborador.setVisible(true)
       atualizarTabelaColaborador()
     }
@@ -384,7 +380,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     }
 
     if(objeto == btAtribuirPermissao) {
-      DlgDadosPermissao dlgDadosPermissao = new DlgDadosPermissao(aplicacao,'I')
+      DlgDadosPermissao dlgDadosPermissao = new DlgDadosPermissao(aplicacao, 'I')
       dlgDadosPermissao.setVisible(true)
       if(colaboradores.get(cbxColaboradores.getSelectedIndex()) != null) {
         atualizarTabelaPermissoes((Colaborador)colaboradores.get(cbxColaboradores.getSelectedIndex()))
@@ -405,20 +401,18 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     }
 
     if(objeto == btConfirmar) {
-      try
-      {
+      try {
         this.cambio.definirDolar(Float.parseFloat(Numero.inverterSeparador(txtCotacaoDolar.getText())))
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
-      try
-      {
+      try {
         this.cambio.cadastrarCambio()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível registrar o câmbio atual.","Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível registrar o câmbio atual.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
       txtCotacaoDolar.setEnabled(false)
@@ -434,28 +428,27 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     if(objeto == btAlterarUsuario) {
       if(this.tblColaboradores.getSelectedRow() >= 0) {
         int linha = this.tblColaboradores.getSelectedRow()
-        String usuarioColaborador = (String)this.tblColaboradores.getValueAt(linha,0)
-        DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao,'A',usuarioColaborador)
+        String usuarioColaborador = (String)this.tblColaboradores.getValueAt(linha, 0)
+        DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao, 'A', usuarioColaborador)
         dlgDadosColaborador.setVisible(true)
         atualizarTabelaColaborador()
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para alterar os dados do item.","Atenção",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para alterar os dados do item.", "Atenção", JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if(objeto == btExcluirUsuario) {
       if(tblColaboradores.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao,"Atenção: Tem certeza que deseja excluir o colaborador selecionado?","Atenção",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == 0) {
+        if(JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o colaborador selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblColaboradores.getSelectedRow()
-          String usuarioColaborador = (String)this.tblColaboradores.getValueAt(linha,0)
-          try
-          {
+          String usuarioColaborador = (String)this.tblColaboradores.getValueAt(linha, 0)
+          try {
             colaborador = new Colaborador(usuarioColaborador)
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao,"Erro: "+e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
           }
           colaborador.excluirColaborador()
@@ -464,7 +457,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao,"Atenção: Selecione uma linha da visão para excluir um colaborador.","Atenção",JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para excluir um colaborador.", "Atenção", JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -481,16 +474,15 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
     if(objeto == btAlterarDepartamento) {
       int linhaSelecionada = tblDepartamentos.getSelectedRow()
-      Departamento departamento = new Departamento(Integer.parseInt((String)tblDepartamentos.getValueAt(linhaSelecionada,0)))
-      try
-      {
+      Departamento departamento = new Departamento(Integer.parseInt((String)tblDepartamentos.getValueAt(linhaSelecionada, 0)))
+      try {
         departamento.carregarDepartamento(aplicacao.obterConexao())
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: não foi possível carregar o Departamento.","Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: não foi possível carregar o Departamento.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
-      DlgDadosDepartamento dlgDadosDepartamento = new DlgDadosDepartamento(aplicacao,departamento)
+      DlgDadosDepartamento dlgDadosDepartamento = new DlgDadosDepartamento(aplicacao, departamento)
       dlgDadosDepartamento.setVisible(true)
       dlgDadosDepartamento = null
       atualizarTabelaDepartamento()
@@ -498,14 +490,13 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
     if(objeto == btExcluirDepartamento) {
       int linhaSelecionada = tblDepartamentos.getSelectedRow()
-      Departamento departamento = new Departamento(Integer.parseInt((String)tblDepartamentos.getValueAt(linhaSelecionada,0)))
-      try
-      {
+      Departamento departamento = new Departamento(Integer.parseInt((String)tblDepartamentos.getValueAt(linhaSelecionada, 0)))
+      try {
         departamento.excluirDepartamento()
         atualizarTabelaDepartamento()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao,"Erro: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
     }
@@ -539,8 +530,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       JFileChooser dlgSalvamento = new JFileChooser(Configuracao.getRepositorioRelatorios())
       int status = dlgSalvamento.showSaveDialog(aplicacao)
       if(status == JFileChooser.APPROVE_OPTION) {
-        try
-        {
+        try {
           File arquivo = dlgSalvamento.getSelectedFile()
           FileWriter saida = new FileWriter(arquivo)
           saida.write("---- CONSULTA -----\n\n" + txaComandos.getText())
@@ -549,15 +539,15 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
           for(int i = 0;i < tblResultado.getColumnCount();i++) {
             tabs[i] = 1
             for(int j = 0;j < tblResultado.getRowCount();j++) {
-              if(tabs[i] <= (((String)(tblResultado.getValueAt(j,i) != null?tblResultado.getValueAt(j,i):"")).length()/6.0f))
+              if(tabs[i] <= (((String)(tblResultado.getValueAt(j, i) != null?tblResultado.getValueAt(j, i):"")).length()/6.0f))
                 tabs[i]++
             }
           }
           String linha = ""
           for(int i = 0;i < tblResultado.getRowCount();i++) {
             for(int j = 0;j < tblResultado.getColumnCount();j++) {
-              linha += (tblResultado.getValueAt(i,j) != null?tblResultado.getValueAt(i,j):"")
-              for(int l = 0;l < (tabs[j] - ((String)(tblResultado.getValueAt(i,j) != null?tblResultado.getValueAt(i,j):"")).length()/6);l++) {
+              linha += (tblResultado.getValueAt(i, j) != null?tblResultado.getValueAt(i, j):"")
+              for(int l = 0;l < (tabs[j] - ((String)(tblResultado.getValueAt(i, j) != null?tblResultado.getValueAt(i, j):"")).length()/6);l++) {
                 linha += "\t"
               }
             }
@@ -567,7 +557,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
           saida.close()
         }
         catch(IOException e) {
-          JOptionPane.showMessageDialog(aplicacao,"Erro: Não foi possível salvar o arquivo.\n" + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível salvar o arquivo.\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }
       }
