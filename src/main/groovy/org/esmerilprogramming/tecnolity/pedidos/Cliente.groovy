@@ -159,7 +159,7 @@ class Cliente {
   void carregarCliente(Conexao conexao) throws Exception
   {
     if(codigo > 0) {
-      ResultSet dadosCliente = conexao.executarConsulta("select * from cliente where codigo = " + this.codigo)
+      ResultSet dadosCliente = conexao.executarConsulta("select * from cliente where codigo = "  +  this.codigo)
         if(dadosCliente.next()) {
           this.definirRazaoSocial(dadosCliente.getString("razao_social"))
             this.definirNomeFantasia(dadosCliente.getString("nome_fantasia"))
@@ -216,7 +216,7 @@ class Cliente {
   {
     ResultSet dadosLocalEntrega
       Vector locaisEntrega = new Vector()
-      String query = "select * from local_entrega where cliente = "+ cliente.obterCodigo() +" order by descricao_local asc"
+      String query = "select * from local_entrega where cliente = " +  cliente.obterCodigo() + " order by descricao_local asc"
       dadosLocalEntrega = conexao.executarConsulta(query)
       while(dadosLocalEntrega.next()) {
         locaisEntrega.addElement(new LocalEntrega(cliente,
@@ -239,21 +239,21 @@ class Cliente {
   void cadastrarCliente(Conexao conexao) throws Exception
   {
     String query
-      ResultSet dadosCliente = conexao.executarConsulta("select cnpj from cliente where cnpj = '"+ this.cnpj +"'")
+      ResultSet dadosCliente = conexao.executarConsulta("select cnpj from cliente where cnpj = '" +  this.cnpj + "'")
       if(dadosCliente.next()) {
         Exception e = new Exception("Já existe um cliente com este CNPJ.")
           throw e
       }
     dadosCliente.close()
-      query = "insert into cliente (razao_social, nome_fantasia, cnpj, inscricao_estadual, logradouro, bairro, complemento, cidade, estado, pais, cep, telefone, fax, contato_comercial, contato_tecnico, email) values " +
-      "('"+ this.razaoSocial +"', '"+ this.nomeFantasia +"', '"+ this.cnpj +"', '"+ this.inscricaoEstadual +"', '"+ this.logradouro +"', '"+ this.bairro +"', '"+ this.complemento +"', '"+ this.cidade +"', '"+ ((this.estado == null)?"":this.estado.getSigla()) +"', '"+ this.pais.getSigla() +"', '"+ this.cep +"', '"+ this.telefone +"', '"+ this.fax +"', '"+ this.contatoComercial +"', '"+ this.contatoTecnico +"', '"+ this.email +"')"
+      query = "insert into cliente (razao_social, nome_fantasia, cnpj, inscricao_estadual, logradouro, bairro, complemento, cidade, estado, pais, cep, telefone, fax, contato_comercial, contato_tecnico, email) values "  + 
+      "('" +  this.razaoSocial + "', '"+ this.nomeFantasia + "', '"+ this.cnpj + "', '"+ this.inscricaoEstadual + "', '"+ this.logradouro + "', '"+ this.bairro + "', '"+ this.complemento + "', '"+ this.cidade + "', '"+ ((this.estado == null)?"":this.estado.getSigla()) + "', '"+ this.pais.getSigla() + "', '"+ this.cep + "', '"+ this.telefone + "', '"+ this.fax + "', '"+ this.contatoComercial + "', '"+ this.contatoTecnico + "', '"+ this.email + "')"
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
-      for(int i = 0;i < locaisEntrega.size();i++) {
+      for(int i = 0;i < locaisEntrega.size(); i++) {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
           localEntrega.addLocalEntrega(conexao)
       }
-    dadosCliente = conexao.executarConsulta("select codigo from cliente where razao_social = '"+ this.razaoSocial +"' and cnpj = '"+ this.cnpj +"'")
+    dadosCliente = conexao.executarConsulta("select codigo from cliente where razao_social = '" +  this.razaoSocial + "' and cnpj = '"+ this.cnpj + "'")
       if(dadosCliente.next()) {
         this.codigo = dadosCliente.getInt("codigo")
       }
@@ -262,10 +262,10 @@ class Cliente {
   void alterarCliente(Conexao conexao) throws Exception
   {
     String query
-      query = "update cliente set razao_social = '"+ this.razaoSocial +"', nome_fantasia = '"+ this.nomeFantasia +"', cnpj = '"+ this.cnpj +"', inscricao_estadual = '"+ this.inscricaoEstadual +"', logradouro = '"+ this.logradouro +"', bairro = '"+ this.bairro +"', complemento = '"+ this.complemento +"', cidade = '"+ this.cidade +"', estado = '"+ this.estado.getSigla() +"', pais = '"+ this.pais.getSigla() +"', cep = '"+ this.obterCep() +"', telefone = '"+ this.telefone +"', fax = '"+ this.fax +"', contato_comercial = '"+ this.contatoComercial +"', contato_tecnico = '"+ this.contatoTecnico +"', email = '"+ this.email +"' where codigo = " + this.codigo
+      query = "update cliente set razao_social = '" +  this.razaoSocial + "', nome_fantasia = '"+ this.nomeFantasia + "', cnpj = '"+ this.cnpj + "', inscricao_estadual = '"+ this.inscricaoEstadual + "', logradouro = '"+ this.logradouro + "', bairro = '"+ this.bairro + "', complemento = '"+ this.complemento + "', cidade = '"+ this.cidade + "', estado = '"+ this.estado.getSigla() + "', pais = '"+ this.pais.getSigla() + "', cep = '"+ this.obterCep() + "', telefone = '"+ this.telefone + "', fax = '"+ this.fax + "', contato_comercial = '"+ this.contatoComercial + "', contato_tecnico = '"+ this.contatoTecnico + "', email = '"+ this.email + "' where codigo = " + this.codigo
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
-      for(int i = 0;i < locaisEntrega.size();i++) {
+      for(int i = 0;i < locaisEntrega.size(); i++) {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
           localEntrega.addLocalEntrega(conexao)
       }
@@ -273,14 +273,14 @@ class Cliente {
 
   void excluirCliente(Conexao conexao) throws Exception
   {
-    ResultSet dadosModelo = conexao.executarConsulta("select codigo from modelo where cliente = "+ this.obterCodigo())
+    ResultSet dadosModelo = conexao.executarConsulta("select codigo from modelo where cliente = " +  this.obterCodigo())
       while(dadosModelo.next()) {
-        conexao.executarAtualizacao("delete from materia_prima where modelo =" + dadosModelo.getInt("codigo"))
+        conexao.executarAtualizacao("delete from materia_prima where modelo ="  +  dadosModelo.getInt("codigo"))
       }
     dadosModelo.close()
-      conexao.executarAtualizacao("delete from modelo where cliente = " + this.obterCodigo())
-      conexao.executarAtualizacao("delete from local_entrega where cliente =" + this.obterCodigo())
-      conexao.executarAtualizacao("delete from cliente where codigo = " + this.obterCodigo())
+      conexao.executarAtualizacao("delete from modelo where cliente = "  +  this.obterCodigo())
+      conexao.executarAtualizacao("delete from local_entrega where cliente ="  +  this.obterCodigo())
+      conexao.executarAtualizacao("delete from cliente where codigo = "  +  this.obterCodigo())
   }
 
 }

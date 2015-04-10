@@ -52,7 +52,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
     try {
       fornecedor = new Fornecedor(codigoFornecedor)
     } catch(e) {
-      JOptionPane.showMessageDialog(aplicacao, 'Erro: '+e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
 
@@ -94,7 +94,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
     conteudo.add(pnlAreaDados, BorderLayout.CENTER)
     label = new JLabel('ICMS (%)')
     adicionarComponente(pnlAreaDados, label, 2, 0, 1, 1)
-    txtPercentualICMS = new JTextField(''+this.fornecedor.obterPercentualICMS(), 3)
+    txtPercentualICMS = new JTextField('' + this.fornecedor.obterPercentualICMS(), 3)
     txtPercentualICMS.addFocusListener(this)
     adicionarComponente(pnlAreaDados, txtPercentualICMS, 3, 0, 1, 1)
     JPanel pnlEndereco = new JPanel(gridbag)
@@ -325,7 +325,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                     fornecedor.definirWebsite(txtWebSite.getText())
                 }
               catch(Exception e) {
-                JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+                JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                   e.printStackTrace()
                   confirmado = false
               }
@@ -335,7 +335,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                   fornecedor.cadastrarFornecedor()
                 }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 this.setVisible(false)
@@ -364,7 +364,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                     fornecedor.definirWebsite(txtWebSite.getText())
                 }
               catch(e) {
-                JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+                JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
                 confirmado = false
               }
@@ -373,7 +373,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                   fornecedor.alterarFornecedor()
                 }
                 catch(Exception e) {
-                  JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 this.setVisible(false)
@@ -384,7 +384,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
               n.printStackTrace()
           } catch(e) {
-            JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
           }
         }

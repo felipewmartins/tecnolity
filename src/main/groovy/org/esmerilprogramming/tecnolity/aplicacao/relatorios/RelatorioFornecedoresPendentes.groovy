@@ -18,7 +18,7 @@ class RelatorioFornecedoresPendentes extends Relatorio
       conteudo.append(QUEBRA)
       conteudo.append("========================================================================================")
       conteudo.append(QUEBRA)
-      conteudo.append("                                                                        Data: " + calendario.dataHoje("dd/MM/yyyy"))
+      conteudo.append("                                                                        Data: "  +  calendario.dataHoje("dd/MM/yyyy"))
       conteudo.append(QUEBRA)
       conteudo.append("Cod.  | Fornecedor")
       conteudo.append(QUEBRA)
@@ -27,7 +27,7 @@ class RelatorioFornecedoresPendentes extends Relatorio
       String quantMinima = ""
       for(int i = 0 ; i < fornecedores.size() ; i++) {
         Fornecedor fornecedor = (Fornecedor)fornecedores.get(i)
-          conteudo.append("" + Texto.obterNumeroTamanhoFixo("" + fornecedor.obterCodigo(), 6, "0") +"|"+ fornecedor.obterRazaoSocial())
+          conteudo.append(""  +  Texto.obterNumeroTamanhoFixo("" + fornecedor.obterCodigo(), 6, "0") + "|"+ fornecedor.obterRazaoSocial())
           conteudo.append(QUEBRA)
       }
     conteudo.append("----------------------------------------------------------------------------------------")

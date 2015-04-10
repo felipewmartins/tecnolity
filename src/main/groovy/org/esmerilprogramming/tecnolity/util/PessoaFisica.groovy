@@ -24,7 +24,7 @@ class PessoaFisica extends Pessoa {
       String numerosCpf = ""
       for (int i = 0;  i < chrCpf.length; ++i) {
         if (Character.isDigit(chrCpf[i])) {
-          numerosCpf = String.valueOf(numerosCpf) + chrCpf[i]
+          numerosCpf = String.valueOf(numerosCpf)  +  chrCpf[i]
         }
       }
     cpf = numerosCpf
@@ -45,7 +45,7 @@ class PessoaFisica extends Pessoa {
     digitos[8] = cpf.substring(8, 9) as int
     digitos[9] = cpf.substring(9, 10) as int
     digitos[10] = cpf.substring(10) as int
-    soma = 10 * digitos[0] + 9 * digitos[1] + 8 * digitos[2] + 7 * digitos[3] + 6 * digitos[4] + 5 * digitos[5] + 4 * digitos[6] + 3 * digitos[7] + 2 * digitos[8]
+    soma = 10 * digitos[0]  +  9 * digitos[1] + 8 * digitos[2] + 7 * digitos[3] + 6 * digitos[4] + 5 * digitos[5] + 4 * digitos[6] + 3 * digitos[7] + 2 * digitos[8]
     soma -= 11 * soma / 11
     int resultado
     if (soma == 0 || soma == 1) {
@@ -55,7 +55,7 @@ class PessoaFisica extends Pessoa {
       resultado = 11 - soma
     }
     if (resultado == digitos[9]) {
-      soma = digitos[0] * 11 + digitos[1] * 10 + digitos[2] * 9 + digitos[3] * 8 + digitos[4] * 7 + digitos[5] * 6 + digitos[6] * 5 + digitos[7] * 4 + digitos[8] * 3 + digitos[9] * 2
+      soma = digitos[0] * 11  +  digitos[1] * 10 + digitos[2] * 9 + digitos[3] * 8 + digitos[4] * 7 + digitos[5] * 6 + digitos[6] * 5 + digitos[7] * 4 + digitos[8] * 3 + digitos[9] * 2
       soma -= 11 * (soma / 11)
       int resultadoDv
       if (soma == 0 || soma == 1) {
@@ -72,10 +72,10 @@ class PessoaFisica extends Pessoa {
   static String formatarCPF(final String cpf) {
     if (cpf) {
       String cpfFormatado = ''
-      cpfFormatado = "-" + cpf.substring(cpf.length() - 2)
-      cpfFormatado = "." + cpf.substring(cpf.length() - 5, cpf.length() - 2) + cpfFormatado
-      cpfFormatado = "." + cpf.substring(cpf.length() - 8, cpf.length() - 5) + cpfFormatado
-      cpfFormatado = String.valueOf(cpf.substring(0, cpf.length() - 8)) + cpfFormatado
+      cpfFormatado = "-"  +  cpf.substring(cpf.length() - 2)
+      cpfFormatado = "."  +  cpf.substring(cpf.length() - 5, cpf.length() - 2) + cpfFormatado
+      cpfFormatado = "."  +  cpf.substring(cpf.length() - 8, cpf.length() - 5) + cpfFormatado
+      cpfFormatado = String.valueOf(cpf.substring(0, cpf.length() - 8))  +  cpfFormatado
       return cpfFormatado
     }
     return ''

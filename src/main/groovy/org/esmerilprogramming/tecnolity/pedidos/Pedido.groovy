@@ -131,10 +131,10 @@ class Pedido {
     Vector numeros = new Vector()
     Matriz matriz
     int j = 0
-    for(int i = 0; i < produtosPedido.size() ;i++) {
+    for(int i = 0; i < produtosPedido.size() ; i++) {
       matriz = ((ProdutoPedido)produtosPedido.get(i)).obterMatriz()
       if(matriz.obterReferencia().equals(referencia)) {
-        numeros.addElement("" + matriz.obterNumeroSola())
+        numeros.addElement(""  +  matriz.obterNumeroSola())
       }
     }
 
@@ -221,7 +221,7 @@ class Pedido {
         if(true) {
           /*Verifica a existência do cliente no sistema.*/
           if(!clienteVerificado) {
-            ResultSet cliente = conexao.executarConsulta("select codigo, cnpj from cliente where cnpj = '"+ cnpjCliente +"'") 
+            ResultSet cliente = conexao.executarConsulta("select codigo, cnpj from cliente where cnpj = '" +  cnpjCliente + "'") 
             if(cliente.next()) {
               codigoCliente = cliente.getInt("codigo")
             }
@@ -237,7 +237,7 @@ class Pedido {
 
           /* Verifica a existencia de pedidos do cliente com a mesma ordem de compra */
           if(!anteriorOrdemCompra.equals(proximaOrdemCompra)) {
-            ResultSet pedidoCliente = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where ordem_compra = '"+ proximaOrdemCompra +"' and cliente = "+ codigoCliente +" and tipo_operacao = 'V'")
+            ResultSet pedidoCliente = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where ordem_compra = '" +  proximaOrdemCompra + "' and cliente = "+ codigoCliente + " and tipo_operacao = 'V'")
             /* Se um pedido for encontrado com a mesma ordem de compra um erro ocorrerá */
             if(pedidoCliente.next()) {
               Exception excecao = new Exception("Este arquivo EDI já foi importado.")
@@ -245,11 +245,11 @@ class Pedido {
             }
             pedidoCliente.close()
             /* Cria o novo pedido no banco de dados */
-            conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao, ordem_compra, cliente, local_entrega, sequencia, data_emissao, data_entrega, status, moeda, esteira_cliente, remessa, drawback) " +
-                "values ('"+ tipoOperacao +"', '"+ proximaOrdemCompra +"', "+ codigoCliente +", "+ localEntrega +", "+ Integer.parseInt(sequencia) +", '"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEmissao, "/"), "/") +"', '"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEntrega, "/"), "/") +"', 'PD', '"+ moeda +"', '"+ fabrica +"', '"+ remessa +"', '"+ drawback +"')")
+            conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao, ordem_compra, cliente, local_entrega, sequencia, data_emissao, data_entrega, status, moeda, esteira_cliente, remessa, drawback) "  + 
+                "values ('" +  tipoOperacao + "', '"+ proximaOrdemCompra + "', "+ codigoCliente + ", "+ localEntrega + ", "+ Integer.parseInt(sequencia) + ", '"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEmissao, "/"), "/") + "', '"+ Calendario.inverterFormato(Calendario.formatarAAAAMMDD(dataEntrega, "/"), "/") + "', 'PD', '"+ moeda + "', '"+ fabrica + "', '"+ remessa + "', '"+ drawback + "')")
 
             /* Obtém o código do pedido para realizar integridade */
-            pedidoCliente = conexao.executarConsulta("select codigo from pedido_cliente where tipo_operacao = '"+ tipoOperacao +"' and ordem_compra = '"+ proximaOrdemCompra +"' and cliente = "+ codigoCliente)
+            pedidoCliente = conexao.executarConsulta("select codigo from pedido_cliente where tipo_operacao = '" +  tipoOperacao + "' and ordem_compra = '"+ proximaOrdemCompra + "' and cliente = "+ codigoCliente)
             if(pedidoCliente.next()) {
               codigoPedido = pedidoCliente.getInt("codigo")
             }
@@ -260,13 +260,13 @@ class Pedido {
           /* Se o código do Pedido for obtido o sistema seguirá cadastrando os produtos solicitados. */
           if(codigoPedido > 0) {
             /* Obtém o código do produto para realizar relacionamento com pedido */
-            ResultSet modelos = conexao.executarConsulta("select codigo from modelo where referencia_cliente = '"+ codigoProduto +"'")
+            ResultSet modelos = conexao.executarConsulta("select codigo from modelo where referencia_cliente = '" +  codigoProduto + "'")
             if(modelos.next()) {
               codigoModelo = modelos.getInt("codigo")
 
               /* Cadastra o pedido do produto no banco de dados */
-              conexao.executarAtualizacao("insert into modelo_pedido (pedido, modelo, quantidade, observacao, transferencia_icms, valor_negociado, moeda, resumo) values " + 
-                  "("+ codigoPedido +", "+ codigoModelo +", "+ Numero.separarInteiroDecimal(quantidade, 3) +", '"+ observacao +"', "+ transferenciaICMS +", "+ Numero.separarInteiroDecimal(precoUnitario, 2) +", '"+ moeda +"', '"+ resumo +"')")
+              conexao.executarAtualizacao("insert into modelo_pedido (pedido, modelo, quantidade, observacao, transferencia_icms, valor_negociado, moeda, resumo) values "  +  
+                  "(" +  codigoPedido + ", "+ codigoModelo + ", "+ Numero.separarInteiroDecimal(quantidade, 3) + ", '"+ observacao + "', "+ transferenciaICMS + ", "+ Numero.separarInteiroDecimal(precoUnitario, 2) + ", '"+ moeda + "', '"+ resumo + "')")
             }
             else
             {
@@ -295,13 +295,13 @@ class Pedido {
   {
     Conexao conexao = new Conexao('T')
     if(conexao.abrirConexao()) {
-      conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao, ordem_compra, cliente, local_entrega, data_emissao, data_entrega, status, esteira_cliente, observacao) " + 
-          "values ('"+ this.tipoOperacao +"', '"+ this.ordemCompra +"', "+ this.cliente.obterCodigo() +", "+ this.localEntrega.obterCodigo() +", '"+ Calendario.inverterFormato(this.dataEmissao, "/") +"', '"+ Calendario.inverterFormato(this.dataEntrega, "/") +"', '"+ Pedido.PENDENTE +"', '"+ this.esteira +"', '"+ this.observacao +"')")
-      ResultSet pedidoInserido = conexao.executarConsulta("select codigo from pedido_cliente where tipo_operacao = '"+ this.tipoOperacao +"' and ordem_compra = '"+ this.ordemCompra +"' and cliente = " + this.cliente.obterCodigo())
+      conexao.executarAtualizacao("insert into pedido_cliente (tipo_operacao, ordem_compra, cliente, local_entrega, data_emissao, data_entrega, status, esteira_cliente, observacao) "  +  
+          "values ('" +  this.tipoOperacao + "', '"+ this.ordemCompra + "', "+ this.cliente.obterCodigo() + ", "+ this.localEntrega.obterCodigo() + ", '"+ Calendario.inverterFormato(this.dataEmissao, "/") + "', '"+ Calendario.inverterFormato(this.dataEntrega, "/") + "', '"+ Pedido.PENDENTE + "', '"+ this.esteira + "', '"+ this.observacao + "')")
+      ResultSet pedidoInserido = conexao.executarConsulta("select codigo from pedido_cliente where tipo_operacao = '" +  this.tipoOperacao + "' and ordem_compra = '"+ this.ordemCompra + "' and cliente = " + this.cliente.obterCodigo())
       if(pedidoInserido.next()) {
         this.codigo = pedidoInserido.getLong("codigo")
       }
-      conexao.executarAtualizacao("insert into historico_status_pedido values ("+ this.codigo +", '"+ Pedido.PENDENTE +"', getdate())")
+      conexao.executarAtualizacao("insert into historico_status_pedido values (" +  this.codigo + ", '"+ Pedido.PENDENTE + "', getdate())")
       pedidoInserido.close()
       conexao.fecharConexao()
     }
@@ -311,10 +311,10 @@ class Pedido {
   {
     Conexao conexao = new Conexao('T')
     if(conexao.abrirConexao()) {
-      conexao.executarAtualizacao("update pedido_cliente set tipo_operacao = '"+ this.tipoOperacao +"', ordem_compra = '"+ this.ordemCompra +"', cliente = "+ this.cliente.obterCodigo() +
-          ", local_entrega = "+ this.localEntrega.obterCodigo() +", data_emissao = '"+ Calendario.inverterFormato(this.dataEmissao, "/") +
-          "', data_entrega = '"+ Calendario.inverterFormato(this.dataEntrega, "/") +"', esteira_cliente = '"+ this.esteira +"', observacao = '"+ this.observacao +
-          "' where codigo = " + this.codigo)
+      conexao.executarAtualizacao("update pedido_cliente set tipo_operacao = '" +  this.tipoOperacao + "', ordem_compra = '"+ this.ordemCompra + "', cliente = "+ this.cliente.obterCodigo() +
+          ", local_entrega = " +  this.localEntrega.obterCodigo() + ", data_emissao = '"+ Calendario.inverterFormato(this.dataEmissao, "/") +
+          "', data_entrega = '" +  Calendario.inverterFormato(this.dataEntrega, "/") + "', esteira_cliente = '"+ this.esteira + "', observacao = '"+ this.observacao +
+          "' where codigo = "  +  this.codigo)
       conexao.fecharConexao()
     }
   }
@@ -323,12 +323,12 @@ class Pedido {
   {
     Conexao conexao = new Conexao('T')
     if(conexao.abrirConexao()) {
-      conexao.executarAtualizacao("update pedido_cliente set status = '"+ this.status +"' where codigo = " + this.codigo)
-      ResultSet rsStatus = conexao.executarConsulta("select status from historico_status_pedido where status = '"+ this.status +"' and pedido = "+ this.codigo)
+      conexao.executarAtualizacao("update pedido_cliente set status = '" +  this.status + "' where codigo = " + this.codigo)
+      ResultSet rsStatus = conexao.executarConsulta("select status from historico_status_pedido where status = '" +  this.status + "' and pedido = "+ this.codigo)
       if(rsStatus.next())
-        conexao.executarAtualizacao("update historico_status_pedido set data = getdate() where pedido = "+ this.codigo + " and status = '"+ this.status +"'")
+        conexao.executarAtualizacao("update historico_status_pedido set data = getdate() where pedido = " +  this.codigo + " and status = '"+ this.status + "'")
       else
-        conexao.executarAtualizacao("insert into historico_status_pedido values ("+ this.codigo +", '"+ this.status +"', getdate())")
+        conexao.executarAtualizacao("insert into historico_status_pedido values (" +  this.codigo + ", '"+ this.status + "', getdate())")
       conexao.fecharConexao()
     }
   }
@@ -338,7 +338,7 @@ class Pedido {
   {
     Conexao conexao = new Conexao('T')
     if(conexao.abrirConexao()) {
-      conexao.executarAtualizacao("update pedido_cliente set status = '"+ CANCELADO +"' where codigo = " + this.codigo)
+      conexao.executarAtualizacao("update pedido_cliente set status = '" +  CANCELADO + "' where codigo = " + this.codigo)
       conexao.fecharConexao()
     }
   }
@@ -354,20 +354,20 @@ class Pedido {
     ResultSet rsProdutoPedido
     if(conexao.abrirConexao()) {
       //Exclui todos os produtos do pedido e os insere novamente.
-      String query = "delete from modelo_pedido where pedido = " + this.codigo
+      String query = "delete from modelo_pedido where pedido = "  +  this.codigo
       conexao.executarAtualizacao(query)
       for(int i = 0 ; i < produtosPedido.size() ; i++) {
         produtoPedido = (ProdutoPedido)produtosPedido.get(i)
-        query = "select * from modelo_pedido where pedido = "+ this.codigo +" and modelo = "+ produtoPedido.obterProduto().obterCodigo() +" and referencia = '"+ produtoPedido.obterMatriz().obterReferencia() +"' and numero_sola = " + produtoPedido.obterMatriz().obterNumeroSola()
+        query = "select * from modelo_pedido where pedido = " +  this.codigo + " and modelo = "+ produtoPedido.obterProduto().obterCodigo() + " and referencia = '"+ produtoPedido.obterMatriz().obterReferencia() + "' and numero_sola = " + produtoPedido.obterMatriz().obterNumeroSola()
         rsProdutoPedido = conexao.executarConsulta(query)
         if(rsProdutoPedido.next()) {
-          Exception e = new Exception("O produto " + produtoPedido.obterProduto().obterNomeModelo() + "\nde referência " + produtoPedido.obterMatriz().obterReferencia() + " e número " + produtoPedido.obterMatriz().obterNumeroSola() + "\njá foi registrado anteriormente no pedido "+ this.codigo +".")
+          Exception e = new Exception("O produto "  +  produtoPedido.obterProduto().obterNomeModelo() + "\nde referência " + produtoPedido.obterMatriz().obterReferencia() + " e número " + produtoPedido.obterMatriz().obterNumeroSola() + "\njá foi registrado anteriormente no pedido "+ this.codigo + ".")
           throw e
         }
         else
         {
-          query = "insert into modelo_pedido (pedido, modelo, referencia, numero_sola, quantidade, observacao, transferencia_icms, valor_negociado, moeda) " + 
-            "values ("+ this.codigo +", "+ produtoPedido.obterProduto().obterCodigo() +", '"+ produtoPedido.obterMatriz().obterReferencia() +"', "+ produtoPedido.obterMatriz().obterNumeroSola() +", "+ produtoPedido.obterQuantidade() +", '"+ produtoPedido.obterObservacao() +"', "+ produtoPedido.obterTransferenciaICMS() +", "+ produtoPedido.obterValorNegociado() +", '"+ produtoPedido.obterMoeda() +"')"
+          query = "insert into modelo_pedido (pedido, modelo, referencia, numero_sola, quantidade, observacao, transferencia_icms, valor_negociado, moeda) "  +  
+            "values (" +  this.codigo + ", "+ produtoPedido.obterProduto().obterCodigo() + ", '"+ produtoPedido.obterMatriz().obterReferencia() + "', "+ produtoPedido.obterMatriz().obterNumeroSola() + ", "+ produtoPedido.obterQuantidade() + ", '"+ produtoPedido.obterObservacao() + "', "+ produtoPedido.obterTransferenciaICMS() + ", "+ produtoPedido.obterValorNegociado() + ", '"+ produtoPedido.obterMoeda() + "')"
           conexao.executarAtualizacao(query)
         }
         rsProdutoPedido.close()
@@ -377,9 +377,9 @@ class Pedido {
   }
 
   void carregarPedido(Conexao conexao) {
-    String query = "select c.codigo as codigo_cliente, c.razao_social , pc.tipo_operacao, pc.ordem_compra, pc.data_emissao, pc.data_entrega, le.codigo_local, le.descricao_local, le.logradouro, le.complemento, le.bairro, le.cidade, le.estado, le.cep, le.telefone, le.responsavel_recebimento, pc.esteira_cliente, pc.observacao " +
-      "from pedido_cliente pc, cliente c, local_entrega le " +
-      "where pc.cliente = c.codigo and c.codigo = le.cliente and pc.local_entrega = le.codigo_local and pc.codigo =" + this.obterCodigo()
+    String query = "select c.codigo as codigo_cliente, c.razao_social , pc.tipo_operacao, pc.ordem_compra, pc.data_emissao, pc.data_entrega, le.codigo_local, le.descricao_local, le.logradouro, le.complemento, le.bairro, le.cidade, le.estado, le.cep, le.telefone, le.responsavel_recebimento, pc.esteira_cliente, pc.observacao "  + 
+      "from pedido_cliente pc, cliente c, local_entrega le "  + 
+      "where pc.cliente = c.codigo and c.codigo = le.cliente and pc.local_entrega = le.codigo_local and pc.codigo ="  +  this.obterCodigo()
     try {
       ResultSet rsPedido = conexao.executarConsulta(query)
       if(rsPedido.next()) {
@@ -395,9 +395,9 @@ class Pedido {
         rsPedido = null
       }
 
-      query = "select mp.modelo as codigo_modelo, m.referencia_cliente, m.modelo, mp.referencia, mp.numero_sola, mp.quantidade, mp.transferencia_icms, mp.moeda, m.valor, mp.observacao " +
-        "from modelo_pedido mp, modelo m, matriz_modelo mm " +
-        "where mp.modelo = m.codigo and mp.referencia = mm.referencia and mp.numero_sola = mm.numero_sola and mp.pedido = " + this.codigo + " " +
+      query = "select mp.modelo as codigo_modelo, m.referencia_cliente, m.modelo, mp.referencia, mp.numero_sola, mp.quantidade, mp.transferencia_icms, mp.moeda, m.valor, mp.observacao "  + 
+        "from modelo_pedido mp, modelo m, matriz_modelo mm "  + 
+        "where mp.modelo = m.codigo and mp.referencia = mm.referencia and mp.numero_sola = mm.numero_sola and mp.pedido = "  +  this.codigo + " " +
         "order by mm.referencia, mp.modelo asc"
       ResultSet rsModeloPedido = conexao.executarConsulta(query)
       produtosPedido = new Vector()
@@ -430,7 +430,7 @@ class Pedido {
   {
     ResultSet dadosPedido
     Vector pedidos = new Vector()
-    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status <> '"+ Pedido.CANCELADO +"' and status <> '"+ Pedido.FINALIZADO +"' order by codigo asc")
+    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status <> '" +  Pedido.CANCELADO + "' and status <> '"+ Pedido.FINALIZADO + "' order by codigo asc")
     pedidos.addElement("Selecione...")
     while(dadosPedido.next()) {
       pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"), dadosPedido.getString("ordem_compra")))
@@ -443,7 +443,7 @@ class Pedido {
   {
     ResultSet dadosPedido
     Vector pedidos = new Vector()
-    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status = '"+ Pedido.PENDENTE +"' order by codigo asc")
+    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status = '" +  Pedido.PENDENTE + "' order by codigo asc")
     while(dadosPedido.next()) {
       pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"), dadosPedido.getString("ordem_compra")))
     }
@@ -455,7 +455,7 @@ class Pedido {
   {
     ResultSet dadosPedido
     Vector pedidos = new Vector()
-    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status = '"+ Pedido.PRODUZINDO +"' order by codigo asc")
+    dadosPedido = conexao.executarConsulta("select codigo, ordem_compra from pedido_cliente where status = '" +  Pedido.PRODUZINDO + "' order by codigo asc")
     while(dadosPedido.next()) {
       pedidos.addElement(new Pedido(dadosPedido.getLong("codigo"), dadosPedido.getString("ordem_compra")))
     }
@@ -475,9 +475,9 @@ class Pedido {
   static String[][] carregarRecursosPedido(Conexao conexao, Pedido pedido) throws Exception
   {
     String[][] dadosRecursos = new String[40][6]
-    String query = "select i.codigo, i.descricao, (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria "+
-      "from item i, modelo_pedido mp, quantidade_materia_prima qmp "+
-      "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and mp.pedido = " + pedido.obterCodigo() + " " +
+    String query = "select i.codigo, i.descricao, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria "+
+      "from item i, modelo_pedido mp, quantidade_materia_prima qmp " + 
+      "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and mp.pedido = "  +  pedido.obterCodigo() + " " +
       "group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
     ResultSet rsItensPedido = conexao.executarConsulta(query)
     ResultSet rsItensRequisitados
@@ -487,25 +487,25 @@ class Pedido {
       int codigo = rsItensPedido.getInt("codigo")
       dadosRecursos[linha][0] = rsItensPedido.getString("descricao")
       float necessario = rsItensPedido.getFloat("necessaria")
-      dadosRecursos[linha][1] = "" + Numero.inverterSeparador(necessario)
-      query = "select sum(ir.quantidade) as quantidade from requisicao_compra rc, item_requisicao ir " +
-        "where rc.codigo = ir.requisicao_compra and rc.pedido_cliente = "+ pedido.obterCodigo() +" and ir.item = " + codigo
+      dadosRecursos[linha][1] = ""  +  Numero.inverterSeparador(necessario)
+      query = "select sum(ir.quantidade) as quantidade from requisicao_compra rc, item_requisicao ir "  + 
+        "where rc.codigo = ir.requisicao_compra and rc.pedido_cliente = " +  pedido.obterCodigo() + " and ir.item = " + codigo
       rsItensRequisitados = conexao.executarConsulta(query)
       if(rsItensRequisitados.next()) {
         float quantidade = rsItensRequisitados.getFloat("quantidade")
-        dadosRecursos[linha][2] = "" + Numero.inverterSeparador(quantidade)
-        dadosRecursos[linha][3] = "" + Numero.formatarValorNumerico(((quantidade * 100)/necessario), 2, ", ") + "%"
+        dadosRecursos[linha][2] = ""  +  Numero.inverterSeparador(quantidade)
+        dadosRecursos[linha][3] = ""  +  Numero.formatarValorNumerico(((quantidade * 100)/necessario), 2, ", ") + "%"
         rsItensRequisitados.close()
       }
-      query = "select i.codigo, i.descricao, sum(mi.quantidade) as quantidade " +
-        "from movimentacao_item mi, item i, requisicao_compra rc " +
-        "where tipo_movimento = '"+ Movimentacao.ABASTECIMENTO +"' and i.codigo = mi.item and mi.requisicao_compra = rc.codigo and rc.pedido_cliente = "+ pedido.obterCodigo() +" and mi.item = "+ codigo +" " +
+      query = "select i.codigo, i.descricao, sum(mi.quantidade) as quantidade "  + 
+        "from movimentacao_item mi, item i, requisicao_compra rc "  + 
+        "where tipo_movimento = '" +  Movimentacao.ABASTECIMENTO + "' and i.codigo = mi.item and mi.requisicao_compra = rc.codigo and rc.pedido_cliente = "+ pedido.obterCodigo() + " and mi.item = "+ codigo + " " +
         "group by i.codigo, i.descricao"
       rsItensDisponiveis = conexao.executarConsulta(query)
       if(rsItensDisponiveis.next()) {
         float quantidade = rsItensDisponiveis.getFloat("quantidade")
-        dadosRecursos[linha][4] = "" + Numero.inverterSeparador(quantidade)
-        dadosRecursos[linha][5] = "" + Numero.formatarValorNumerico(((quantidade * 100)/necessario), 2, ", ") + "%"
+        dadosRecursos[linha][4] = ""  +  Numero.inverterSeparador(quantidade)
+        dadosRecursos[linha][5] = ""  +  Numero.formatarValorNumerico(((quantidade * 100)/necessario), 2, ", ") + "%"
         rsItensDisponiveis.close()
       }
       linha++
@@ -518,7 +518,7 @@ class Pedido {
   {
     ResultSet rsHistorico
     Vector historico = new Vector()
-    rsHistorico = conexao.executarConsulta("select * from historico_status_pedido where pedido = "+ this.obterCodigo() +" order by status")
+    rsHistorico = conexao.executarConsulta("select * from historico_status_pedido where pedido = " +  this.obterCodigo() + " order by status")
     while(rsHistorico.next()) {
       historico.addElement(new RegistroHistoricoStatusPedido(rsHistorico.getString("status"), rsHistorico.getString("data")))
     }
@@ -527,6 +527,6 @@ class Pedido {
   }
 
   String toString() {
-    return "" + this.codigo + " - " + this.ordemCompra
+    return ""  +  this.codigo + " - " + this.ordemCompra
   }
 }

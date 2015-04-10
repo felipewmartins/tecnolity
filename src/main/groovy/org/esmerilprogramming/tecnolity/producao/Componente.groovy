@@ -21,7 +21,7 @@ class Componente {
   }
 
   String obterNomeComponente(Conexao conexao) throws Exception {
-    ResultSet dadosComponente = conexao.executarConsulta('select componente from componente where codigo = ' + this.codigo)
+    ResultSet dadosComponente = conexao.executarConsulta('select componente from componente where codigo = '  +  this.codigo)
     if(dadosComponente.next()) {
       this.nomeComponente = dadosComponente.getString('componente')
     }
@@ -42,7 +42,7 @@ class Componente {
   }
 
   void cadastrarComponente() {
-    String query = 'insert into componente (componente) values (''+ this.nomeComponente +'')'
+    String query = 'insert into componente (componente) values ('' +  this.nomeComponente +'')'
     Conexao conexao = new Conexao('T')
     if (conexao.abrirConexao()) {
       conexao.executarAtualizacao(query)

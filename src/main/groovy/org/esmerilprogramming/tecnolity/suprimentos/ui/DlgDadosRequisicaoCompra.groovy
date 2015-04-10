@@ -92,8 +92,8 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           }
         }
         // Carrega os pedidos atendidos pela requisição de compra.
-        String query = 'select distinct pc.codigo, pc.ordem_compra from pedido_requisicao_compra prc, pedido_cliente pc ' +
-          'where prc.pedido = pc.codigo and prc.requisicao_compra = ' + requisicaoCompra.obterCodigo()
+        String query = 'select distinct pc.codigo, pc.ordem_compra from pedido_requisicao_compra prc, pedido_cliente pc '  + 
+          'where prc.pedido = pc.codigo and prc.requisicao_compra = '  +  requisicaoCompra.obterCodigo()
           ResultSet rsPedidos = aplicacao.obterConexao().executarConsulta(query)
 
           while(rsPedidos.next()) {
@@ -101,9 +101,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           }
         rsPedidos.close()
           // Carrega os itens solicitados na requisição de compra.
-          query = 'select i.descricao, ir.quantidade, ir.valor_item, (ir.quantidade * ir.valor_item) as valor_total, i.percentual_ipi, (((ir.quantidade * ir.valor_item) * i.percentual_ipi)/100) as ipi ' +
-          'from item i, item_requisicao ir ' +
-          'where i.codigo = ir.item and ir.requisicao_compra = ' + requisicaoCompra.obterCodigo()
+          query = 'select i.descricao, ir.quantidade, ir.valor_item, (ir.quantidade * ir.valor_item) as valor_total, i.percentual_ipi, (((ir.quantidade * ir.valor_item) * i.percentual_ipi)/100) as ipi '  + 
+          'from item i, item_requisicao ir '  + 
+          'where i.codigo = ir.item and ir.requisicao_compra = '  +  requisicaoCompra.obterCodigo()
           ResultSet rsItensRequisicao = aplicacao.obterConexao().executarConsulta(query)
           int posItem = 0
           while(rsItensRequisicao.next()) {
@@ -456,7 +456,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       for(int i = 1;i < fornecedores.size();i++) {
         cnpj = (((Fornecedor)fornecedores.get(i)).obterCnpj()).trim()
           razaoSocial = (((Fornecedor)fornecedores.get(i)).obterRazaoSocial()).trim()
-          cbxFornecedor.addItem(cnpj + ' - ' + razaoSocial.substring(0, ((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?'':' . . .'))
+          cbxFornecedor.addItem(cnpj  +  ' - ' + razaoSocial.substring(0, ((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?'':' . . .'))
       }
   }
 
@@ -518,7 +518,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
   private int obterDepartamentoSolicitante() throws Exception
   {
     Conexao conexao = aplicacao.obterConexao()
-      ResultSet departamentoSolicitante = conexao.executarConsulta('select departamento from usuario where usuario = '+ this.responsavelEmissao +' ')
+      ResultSet departamentoSolicitante = conexao.executarConsulta('select departamento from usuario where usuario = ' +  this.responsavelEmissao +' ')
       if(departamentoSolicitante.next())
         return departamentoSolicitante.getInt('departamento')
       else
@@ -531,9 +531,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       float percentualIpi = Float.parseFloat(Numero.inverterSeparador(this.txtPercentualIpi.getText()))
       if(quantidadeItem != 0.0f && valorItem != 0.0f) {
         float totalItem = quantidadeItem * valorItem
-          this.txtTotal.setText(''+Numero.inverterSeparador(''+totalItem))
+          this.txtTotal.setText('' + Numero.inverterSeparador(''+totalItem))
           float ipi = ((percentualIpi)/100) * totalItem
-          this.txtIpi.setText(''+Numero.inverterSeparador(''+ipi))
+          this.txtIpi.setText('' + Numero.inverterSeparador(''+ipi))
       }
   }
 
@@ -612,14 +612,14 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     if(objeto == cbxItem) {
       if(cbxItem.getSelectedIndex() > 0) {
         this.item = (Item)itens.get(cbxItem.getSelectedIndex())
-          String query = 'select fi.valor_item, i.percentual_ipi from item i, fornecedor_item fi where fi.item = i.codigo and i.codigo = '+ this.item.obterCodigo()
+          String query = 'select fi.valor_item, i.percentual_ipi from item i, fornecedor_item fi where fi.item = i.codigo and i.codigo = ' +  this.item.obterCodigo()
           try {
             Conexao conexao = aplicacao.obterConexao()
               ResultSet dadosItem = conexao.executarConsulta(query)
               if(dadosItem.next()) {
-                txtQuantidade.setText(''+Numero.inverterSeparador(item.obterQuantidadeMinima()))
-                  txtValorUnitario.setText(''+Numero.inverterSeparador(dadosItem.getFloat('valor_item')))
-                  txtPercentualIpi.setText(''+dadosItem.getInt('percentual_ipi'))
+                txtQuantidade.setText('' + Numero.inverterSeparador(item.obterQuantidadeMinima()))
+                  txtValorUnitario.setText('' + Numero.inverterSeparador(dadosItem.getFloat('valor_item')))
+                  txtPercentualIpi.setText('' + dadosItem.getInt('percentual_ipi'))
               }
           }
         catch(SQLException e) {
@@ -683,9 +683,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               int percentualIpi = Integer.parseInt(this.txtPercentualIpi.getText())
               if(quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
                 float totalItem = quantidadeItem * valorItem
-                  this.txtTotal.setText(''+Numero.inverterSeparador(''+totalItem))
+                  this.txtTotal.setText('' + Numero.inverterSeparador(''+totalItem))
                   float ipi = ((percentualIpi)/100) * totalItem
-                  this.txtIpi.setText(''+Numero.inverterSeparador(''+ipi))
+                  this.txtIpi.setText('' + Numero.inverterSeparador(''+ipi))
               }
 
             itensRequisicao.addElement(new ItemRequisicao((Item)itens.get(cbxItem.getSelectedIndex()), this.requisicaoCompra, Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())), Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())), 0.0f, Float.parseFloat(Numero.inverterSeparador(this.txtValorUnitario.getText())), percentualIpi))
@@ -708,7 +708,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             n.printStackTrace()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         if (numeroItens > 0) {
@@ -731,9 +731,9 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         int percentualIpi = Integer.parseInt(this.txtPercentualIpi.getText())
         if(quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
           float totalItem = quantidadeItem * valorItem
-            this.txtTotal.setText(''+Numero.inverterSeparador(''+totalItem))
+            this.txtTotal.setText('' + Numero.inverterSeparador(''+totalItem))
             float ipi = ((percentualIpi)/100) * totalItem
-            this.txtIpi.setText(''+Numero.inverterSeparador(''+ipi))
+            this.txtIpi.setText('' + Numero.inverterSeparador(''+ipi))
         }
       itensRequisicao.setElementAt(new ItemRequisicao((Item)itens.get(cbxItem.getSelectedIndex()), this.requisicaoCompra, Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())), Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText())), 0.0f, Float.parseFloat(Numero.inverterSeparador(this.txtValorUnitario.getText())), percentualIpi), linhaAAlterar)
         this.tblItens.setValueAt(cbxItem.getSelectedItem(), linhaAAlterar, 0)
@@ -774,12 +774,12 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
         if(linhaSelecionada < (numeroItens -1)) {
           for(int i = linhaSelecionada;i < (numeroItens -1);i++) {
-            this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 0), i, 0)
-              this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 1), i, 1)
-              this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 2), i, 2)
-              this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 3), i, 3)
-              this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 4), i, 4)
-              this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 5), i, 5)
+            this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 0), i, 0)
+              this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 1), i, 1)
+              this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 2), i, 2)
+              this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 3), i, 3)
+              this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 4), i, 4)
+              this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 5), i, 5)
           }
           this.tblItens.setValueAt('', numeroItens -1, 0)
             this.tblItens.setValueAt('', numeroItens -1, 1)
@@ -848,7 +848,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               n.printStackTrace()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               confirmado = false
               e.printStackTrace()
           }
@@ -856,17 +856,17 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       // Seleção dos pedidos dos clientes.
       if(indiceCard == 1) {
         // Seleciona a necessidade dos itens a serem requisitados.
-        String query =  'select i.codigo, i.descricao, fi.valor_item, fi.referencia_fornecedor, i.percentual_ipi, (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria ' +
-          'from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi ' +
+        String query =  'select i.codigo, i.descricao, fi.valor_item, fi.referencia_fornecedor, i.percentual_ipi, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria ' +
+          'from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi '  + 
           'where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo '
 
           for(int i = 0;i < pedidosSelecionados.size();i++) {
             if(i == 0)
               query += 'and ('
                 query += 'mp.pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
-                if((i+1) < pedidosSelecionados.size())
+                if((i + 1) < pedidosSelecionados.size())
                   query += ' or '
-                    if((i + 1) == pedidosSelecionados.size())
+                    if((i  +  1) == pedidosSelecionados.size())
                       query += ') '
           }
         query += 'and i.codigo = fi.item and fi.fornecedor = '+ ((Fornecedor)this.fornecedores.get(cbxFornecedor.getSelectedIndex())).obterCodigo() + ' and i.codigo not in (select distinct item_requisicao from pedido_requisicao_compra '
@@ -874,7 +874,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             if(i == 0)
               query += 'where '
                 query += 'pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
-                if((i+1) < pedidosSelecionados.size())
+                if((i + 1) < pedidosSelecionados.size())
                   query += ' or '
           }
         query += ') group by i.codigo, i.descricao, i.percentual_perda, fi.valor_item, fi.referencia_fornecedor, i.percentual_ipi'
@@ -901,11 +901,11 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
                   itensRequisicao.addElement(itemRequisicao)
 
                   this.tblItens.setValueAt(item.obterDescricao(), numeroItens, 0)
-                  this.tblItens.setValueAt('' + itemRequisicao.getQuantidadeItem(), numeroItens, 1)
-                  this.tblItens.setValueAt('' + itemRequisicao.obterValorUnitario(), numeroItens, 2)
-                  this.tblItens.setValueAt('' + itemRequisicao.obterValorTotal(), numeroItens, 3)
-                  this.tblItens.setValueAt('' + itemRequisicao.obterPercentualIPI(), numeroItens, 4)
-                  this.tblItens.setValueAt('' + itemRequisicao.obterValorTotalComIPI(), numeroItens, 5)
+                  this.tblItens.setValueAt(''  +  itemRequisicao.getQuantidadeItem(), numeroItens, 1)
+                  this.tblItens.setValueAt(''  +  itemRequisicao.obterValorUnitario(), numeroItens, 2)
+                  this.tblItens.setValueAt(''  +  itemRequisicao.obterValorTotal(), numeroItens, 3)
+                  this.tblItens.setValueAt(''  +  itemRequisicao.obterPercentualIPI(), numeroItens, 4)
+                  this.tblItens.setValueAt(''  +  itemRequisicao.obterValorTotalComIPI(), numeroItens, 5)
                   numeroItens++
               }
             rsItensPedidos.close()
@@ -916,7 +916,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               e.printStackTrace()
           }
           catch(Exception ex) {
-            JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               //confirmado = false
               ex.printStackTrace()
           }
@@ -963,7 +963,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           impressora.imprimir()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

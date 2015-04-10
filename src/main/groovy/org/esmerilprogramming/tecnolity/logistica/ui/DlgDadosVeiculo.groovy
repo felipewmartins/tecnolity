@@ -138,13 +138,13 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       label = new JLabel("Peso Bruto")
       adicionarComponente(pnlDadosVeiculo, label, 6, 3, 1, 1)
 
-      txtNumeroEixo = new JTextField((this.veiculo != null?"" + this.veiculo.obterNumeroEixo():""), 10)
+      txtNumeroEixo = new JTextField((this.veiculo != null?""  +  this.veiculo.obterNumeroEixo():""), 10)
       adicionarComponente(pnlDadosVeiculo, txtNumeroEixo, 7, 0, 1, 1)
-      txtCubagem = new JTextField((this.veiculo != null?Numero.inverterSeparador(""+this.veiculo.obterCubagem()):""), 8)
+      txtCubagem = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterCubagem()):""), 8)
       adicionarComponente(pnlDadosVeiculo, txtCubagem, 7, 1, 1, 1)
-      txtTara = new JTextField((this.veiculo != null?Numero.inverterSeparador(""+this.veiculo.obterTara()):""), 8)
+      txtTara = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterTara()):""), 8)
       adicionarComponente(pnlDadosVeiculo, txtTara, 7, 2, 1, 1)
-      txtPesoBruto = new JTextField((this.veiculo != null?Numero.inverterSeparador(""+this.veiculo.obterPesoBruto()):""), 8)
+      txtPesoBruto = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterPesoBruto()):""), 8)
       adicionarComponente(pnlDadosVeiculo, txtPesoBruto, 7, 3, 1, 1)
 
       label = new JLabel("Combustível")
@@ -156,9 +156,9 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
 
       txtCombustivel = new JTextField((this.veiculo == null?"":this.veiculo.obterCombustivel().trim()), 20)
       adicionarComponente(pnlDadosVeiculo, txtCombustivel, 9, 0, 2, 1)
-      txtVolumeCombustivel = new JTextField((this.veiculo != null?Numero.inverterSeparador(""+this.veiculo.obterVolumeCombustivel()):""), 8)
+      txtVolumeCombustivel = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterVolumeCombustivel()):""), 8)
       adicionarComponente(pnlDadosVeiculo, txtVolumeCombustivel, 9, 2, 1, 1)
-      txtMediaConsumo= new JTextField((this.veiculo != null?Numero.inverterSeparador(""+this.veiculo.obterMediaConsumo()):""), 8)
+      txtMediaConsumo= new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterMediaConsumo()):""), 8)
       adicionarComponente(pnlDadosVeiculo, txtMediaConsumo, 9, 3, 1, 1)
       conteudo.add(pnlDadosVeiculo, BorderLayout.CENTER)
 
@@ -257,7 +257,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
           n.printStackTrace()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

@@ -153,7 +153,7 @@ class Item {
 
   private void carregarItem(Conexao conexao) throws Exception
   {
-    String query = "select descricao, i.categoria as categoria_codigo, c.categoria as categoria, armazenamento, i.unidade as unidade_codigo, u.unidade as unidade, temperatura, seguranca, quantidade, quantidade_minima, quantidade_maxima, percentual_ipi, percentual_perda, ativo, independente from item i, unidade u, categoria_item c where i.unidade = u.codigo and i.categoria = c.codigo and i.codigo = " + this.codigo + " "
+    String query = "select descricao, i.categoria as categoria_codigo, c.categoria as categoria, armazenamento, i.unidade as unidade_codigo, u.unidade as unidade, temperatura, seguranca, quantidade, quantidade_minima, quantidade_maxima, percentual_ipi, percentual_perda, ativo, independente from item i, unidade u, categoria_item c where i.unidade = u.codigo and i.categoria = c.codigo and i.codigo = "  +  this.codigo + " "
       try {
         ResultSet resultado = conexao.executarConsulta(query)
           if(resultado.next()) {
@@ -185,9 +185,9 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
-      "from item i, categoria_item ci, unidade u, departamento_item di " +
-      "where i.independente = 1 and i.unidade = u.codigo and ci.codigo = i.categoria and i.codigo = di.item and di.departamento = " + departamento.obterCodigo() +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente "  + 
+      "from item i, categoria_item ci, unidade u, departamento_item di "  + 
+      "where i.independente = 1 and i.unidade = u.codigo and ci.codigo = i.categoria and i.codigo = di.item and di.departamento = "  +  departamento.obterCodigo() +
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
       while(dadosItem.next()) {
@@ -208,9 +208,9 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
-      "from item i, categoria_item ci, unidade u " +
-      "where i.independente = 1 and i.unidade = u.codigo and ci.codigo = i.categoria "+
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente "  + 
+      "from item i, categoria_item ci, unidade u "  + 
+      "where i.independente = 1 and i.unidade = u.codigo and ci.codigo = i.categoria " + 
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
       while(dadosItem.next()) {
@@ -231,9 +231,9 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente " +
-      "from item i, categoria_item ci, unidade u, fornecedor_item fi, fornecedor f " +
-      "where i.independente = 1 and i.quantidade_minima > i.quantidade and i.unidade = u.codigo and ci.codigo = i.categoria and fi.item = i.codigo and fi.fornecedor = f.codigo "+
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente "  + 
+      "from item i, categoria_item ci, unidade u, fornecedor_item fi, fornecedor f "  + 
+      "where i.independente = 1 and i.quantidade_minima > i.quantidade and i.unidade = u.codigo and ci.codigo = i.categoria and fi.item = i.codigo and fi.fornecedor = f.codigo " + 
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
       while(dadosItem.next()) {
@@ -254,9 +254,9 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo as codigo_item, i.descricao, i.quantidade, i.quantidade_minima, f.codigo as codigo_fornecedor, f.razao_social, fi.valor_item " +
-      "from item i, fornecedor_item fi, fornecedor f " +
-      "where independente = 1 and quantidade_minima > quantidade and fi.item = i.codigo and fi.fornecedor = f.codigo and f.codigo = " + fornecedor.obterCodigo()
+      String query = "select i.codigo as codigo_item, i.descricao, i.quantidade, i.quantidade_minima, f.codigo as codigo_fornecedor, f.razao_social, fi.valor_item "  + 
+      "from item i, fornecedor_item fi, fornecedor f "  + 
+      "where independente = 1 and quantidade_minima > quantidade and fi.item = i.codigo and fi.fornecedor = f.codigo and f.codigo = "  +  fornecedor.obterCodigo()
       dadosItem = conexao.executarConsulta(query)
       Item item
       while(dadosItem.next()) {
@@ -276,10 +276,10 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo as codigo, i.descricao as descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, sum(l.quantidade) as quantidade " +
-      "from item i, unidade u, categoria_item ci, lote l " +
-      "where u.codigo = i.unidade and ci.codigo = i.categoria and i.codigo *= l.item " +
-      "group by i.codigo, i.descricao, u.codigo, u.unidade, ci.codigo, ci.categoria " +
+      String query = "select i.codigo as codigo, i.descricao as descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, sum(l.quantidade) as quantidade "  + 
+      "from item i, unidade u, categoria_item ci, lote l "  + 
+      "where u.codigo = i.unidade and ci.codigo = i.categoria and i.codigo *= l.item "  + 
+      "group by i.codigo, i.descricao, u.codigo, u.unidade, ci.codigo, ci.categoria "  + 
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
       while(dadosItem.next()) {
@@ -298,8 +298,8 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
-      "where i.categoria = ci.codigo and i.unidade = u.codigo and i.quantidade > 0 " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u "  + 
+      "where i.categoria = ci.codigo and i.unidade = u.codigo and i.quantidade > 0 "  + 
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
       while(dadosItem.next()) {
@@ -320,8 +320,8 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
-      "where i.categoria = ci.codigo and i.unidade = u.codigo and i.ativo = 0 " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u "  + 
+      "where i.categoria = ci.codigo and i.unidade = u.codigo and i.ativo = 0 "  + 
       "order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
       while(dadosItem.next()) {
@@ -350,13 +350,13 @@ class Item {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)
-      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u " +
+      String query = "select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u "  + 
       "where i.categoria = ci.codigo and i.unidade = u.codigo and "
       for(int i = 0;i < codigos.length;i++) {
         if(i == 0)
-          query += "(i.codigo = "+ codigos[i] +" "
+          query += "(i.codigo = "+ codigos[i] + " "
         else
-          query += "or i.codigo = "+ codigos[i] +" "
+          query += "or i.codigo = "+ codigos[i] + " "
       }
     query += ") order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
@@ -378,9 +378,9 @@ class Item {
       Vector itens = new Vector()
       String query = ""
       if(pedidos != null) {
-        query = "select i.codigo, i.descricao " +
-          "from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi " +
-          "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and " +
+        query = "select i.codigo, i.descricao "  + 
+          "from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi "  + 
+          "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and "  + 
           "qmp.item = i.codigo and i.codigo = fi.item "
           if(fornecedor != null)
             query += "and fi.fornecedor = "+ fornecedor.obterCodigo()
@@ -401,10 +401,10 @@ class Item {
       }
       else
       {
-        query = "select i.codigo, i.descricao from item i, fornecedor_item fi " +
+        query = "select i.codigo, i.descricao from item i, fornecedor_item fi "  + 
           "where i.codigo = fi.item "
           if(fornecedor != null)
-            query += "and fi.fornecedor = "+ fornecedor.obterCodigo() +" "
+            query += "and fi.fornecedor = "+ fornecedor.obterCodigo() + " "
               query += "group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
       }
     dadosItem = conexao.executarConsulta(query)
@@ -428,8 +428,8 @@ class Item {
   {
     ResultSet dadosItem
       Vector itens = new Vector()
-      String query = "select i.codigo, i.descricao from item i, departamento_item di, departamento d " +
-      "where di.item = i.codigo and di.departamento = d.codigo and d.codigo = "+ departamento.obterCodigo() +
+      String query = "select i.codigo, i.descricao from item i, departamento_item di, departamento d "  + 
+      "where di.item = i.codigo and di.departamento = d.codigo and d.codigo = " +  departamento.obterCodigo() +
       "order by i.descricao asc"
       dadosItem = conexao.executarConsulta(query)
       itens.addElement(null)
@@ -453,9 +453,9 @@ class Item {
   {
     ResultSet dadosItem
       Vector itens = new Vector()
-      String query = "select i.codigo, i.descricao " +
-      "from item i, modelo_pedido mp, quantidade_materia_prima qmp, departamento_item di " +
-      "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and i.codigo = di.item and di.departamento = "+ departamento.obterCodigo() +" and mp.pedido = "+ pedido.obterCodigo() +" " +
+      String query = "select i.codigo, i.descricao "  + 
+      "from item i, modelo_pedido mp, quantidade_materia_prima qmp, departamento_item di "  + 
+      "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and i.codigo = di.item and di.departamento = " +  departamento.obterCodigo() + " and mp.pedido = "+ pedido.obterCodigo() + " " +
       "group by i.codigo, i.descricao"
       dadosItem = conexao.executarConsulta(query)
       itens.addElement("Selecione...")
@@ -471,7 +471,7 @@ class Item {
   {
     ResultSet dadosItem
       Vector itens = new Vector()
-      dadosItem = conexao.executarConsulta("select distinct item.codigo, item.descricao from item, lote, movimentacao_item, requisicao_compra where requisicao_compra.pedido_cliente = "+ pedidoCliente.obterCodigo() +" and requisicao_compra.codigo = movimentacao_item.requisicao_compra and movimentacao_item.item = item.codigo or item.independente = 0 order by item.descricao asc")
+      dadosItem = conexao.executarConsulta("select distinct item.codigo, item.descricao from item, lote, movimentacao_item, requisicao_compra where requisicao_compra.pedido_cliente = " +  pedidoCliente.obterCodigo() + " and requisicao_compra.codigo = movimentacao_item.requisicao_compra and movimentacao_item.item = item.codigo or item.independente = 0 order by item.descricao asc")
       itens.addElement(null)
       while(dadosItem.next()) {
         itens.addElement(new Item(dadosItem.getInt("codigo"), dadosItem.getString("descricao")))
@@ -481,7 +481,7 @@ class Item {
   }
 
   private void carregarDepartamentos(Conexao conexao) {
-    String query = "select * from departamento_item where item = " + this.codigo + " "
+    String query = "select * from departamento_item where item = "  +  this.codigo + " "
       departamentos = new Vector()
       try {
         ResultSet resultado = conexao.executarConsulta(query)
@@ -497,7 +497,7 @@ class Item {
   }
 
   private void carregarFornecedores(Conexao conexao) {
-    String query = "select fi.fornecedor, i.codigo, i.descricao, fi.data_atualizacao_valor, fi.unidade, fi.valor_item, fi.moeda, fi.referencia_fornecedor from fornecedor_item fi, item i where fi.item = i.codigo and fi.item = " + this.codigo + " "
+    String query = "select fi.fornecedor, i.codigo, i.descricao, fi.data_atualizacao_valor, fi.unidade, fi.valor_item, fi.moeda, fi.referencia_fornecedor from fornecedor_item fi, item i where fi.item = i.codigo and fi.item = "  +  this.codigo + " "
       try {
         fornecedoresItem = new Vector()
           ResultSet resultado = conexao.executarConsulta(query)
@@ -665,10 +665,10 @@ class Item {
   void cadastrarItem() throws Exception
   {
     String query = "insert into item (descricao, categoria, armazenamento, unidade, temperatura, seguranca, quantidade, quantidade_minima, quantidade_maxima, percentual_ipi, percentual_perda, ativo, independente) values "
-      query = query + "('"+ descricao +"', "+ categoria.obterCodigo() +", '"+ armazenamento +"', "+ unidade.obterCodigo() +", "+ temperatura +", '"+ seguranca +"', 0, "+ quantidadeMinima +", "+ quantidadeMaxima +", "+ percentualIPI +", "+ percentualPerda +", "+ ((this.ativo)?1:0) +", "+ ((this.independente)?1:0) +")"
+      query = query  +  "('"+ descricao + "', "+ categoria.obterCodigo() + ", '"+ armazenamento + "', "+ unidade.obterCodigo() + ", "+ temperatura + ", '"+ seguranca + "', 0, "+ quantidadeMinima + ", "+ quantidadeMaxima + ", "+ percentualIPI + ", "+ percentualPerda + ", "+ ((this.ativo)?1:0) + ", "+ ((this.independente)?1:0) + ")"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        ResultSet dadosItem = conexao.executarConsulta("select descricao from item where descricao = '"+ this.descricao +"'")
+        ResultSet dadosItem = conexao.executarConsulta("select descricao from item where descricao = '" +  this.descricao + "'")
           if(dadosItem.next()) {
             Exception e = new Exception("Já existem um item com esta descrição.")
               throw e
@@ -676,10 +676,10 @@ class Item {
         dadosItem.close()
           conexao.executarAtualizacao(query)
           // definir o código do ítem e cria um lote basico para suportar sua quantidade atual.
-          dadosItem = conexao.executarConsulta("select codigo from item where descricao = '"+ descricao +"'")
+          dadosItem = conexao.executarConsulta("select codigo from item where descricao = '" +  descricao + "'")
           if(dadosItem.next()) {
             this.definirCodigo(dadosItem.getInt("codigo"))
-              conexao.executarAtualizacao("insert into lote (item, quantidade, lote_basico) values ("+ this.obterCodigo() +", "+ this.obterQuantidade() +", '"+ Lote.LOTE_BASICO +"')")
+              conexao.executarAtualizacao("insert into lote (item, quantidade, lote_basico) values (" +  this.obterCodigo() + ", "+ this.obterQuantidade() + ", '"+ Lote.LOTE_BASICO + "')")
               dadosItem.close()
           }
         conexao.fecharConexao()
@@ -699,7 +699,7 @@ class Item {
         String query = ""
         if(numDepartamentos > 0 && conexao.abrirConexao()) {
           for(int i = 0;i < numDepartamentos;i++) {
-            query = "insert into departamento_item (departamento, item) values ("+ ((Departamento)departamentos.get(i)).obterCodigo() +", "+ this.obterCodigo() +")"
+            query = "insert into departamento_item (departamento, item) values (" +  ((Departamento)departamentos.get(i)).obterCodigo() + ", "+ this.obterCodigo() + ")"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -717,7 +717,7 @@ class Item {
         if(numFornecedores > 0 && conexao.abrirConexao()) {
           for(int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values ("+ fiAtual.obterFornecedor().obterCodigo() +", "+ fiAtual.obterItem().obterCodigo() +", "+ fiAtual.obterUnidade().obterCodigo() +", "+ fiAtual.obterValorItem() +", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") +"', '"+ fiAtual.obterMoeda() +"', '"+ fiAtual.obterReferenciaFornecedor() +"')"
+              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (" +  fiAtual.obterFornecedor().obterCodigo() + ", "+ fiAtual.obterItem().obterCodigo() + ", "+ fiAtual.obterUnidade().obterCodigo() + ", "+ fiAtual.obterValorItem() + ", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") + "', '"+ fiAtual.obterMoeda() + "', '"+ fiAtual.obterReferenciaFornecedor() + "')"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -729,19 +729,19 @@ class Item {
   {
     float quantidadeAtual = 0.0f
       Conexao conexao = new Conexao('T')
-      String query = "select quantidade from item where codigo not in (select item from lote where lote_basico is null) and codigo = " + codigo
+      String query = "select quantidade from item where codigo not in (select item from lote where lote_basico is null) and codigo = "  +  codigo
       if (conexao.abrirConexao()) {
         ResultSet itemSelecionado = conexao.executarConsulta(query)
           if(itemSelecionado.next()) {
-            query = "update item set descricao = '"+ descricao +"', categoria = "+ categoria.obterCodigo() +", armazenamento = '"+ armazenamento +"', unidade = "+ unidade.obterCodigo() +", temperatura = "+ temperatura +", seguranca = '"+ seguranca +"', quantidade = "+ quantidade +", quantidade_minima = "+ quantidadeMinima +", quantidade_maxima = "+ quantidadeMaxima +", percentual_ipi = "+ percentualIPI +", percentual_perda = "+ percentualPerda +", ativo = "+ ((this.ativo)?1:0) +", independente = "+ ((this.independente)?1:0) +" where codigo = "+ codigo
+            query = "update item set descricao = '" +  descricao + "', categoria = "+ categoria.obterCodigo() + ", armazenamento = '"+ armazenamento + "', unidade = "+ unidade.obterCodigo() + ", temperatura = "+ temperatura + ", seguranca = '"+ seguranca + "', quantidade = "+ quantidade + ", quantidade_minima = "+ quantidadeMinima + ", quantidade_maxima = "+ quantidadeMaxima + ", percentual_ipi = "+ percentualIPI + ", percentual_perda = "+ percentualPerda + ", ativo = "+ ((this.ativo)?1:0) + ", independente = "+ ((this.independente)?1:0) + " where codigo = "+ codigo
               conexao.executarAtualizacao(query)
-              query = "update lote set quantidade = "+ quantidade +" where item = " + codigo + " and lote_basico = '"+ Lote.LOTE_BASICO +"'"
+              query = "update lote set quantidade = " +  quantidade + " where item = " + codigo + " and lote_basico = '"+ Lote.LOTE_BASICO + "'"
               conexao.executarAtualizacao(query)
               itemSelecionado.close()
           }
           else
           {
-            query = "update item set descricao = '"+ descricao +"', categoria = "+ categoria.obterCodigo() +", armazenamento = '"+ armazenamento +"', unidade = "+ unidade.obterCodigo() +", temperatura = "+ temperatura +", seguranca = '"+ seguranca +"', quantidade_minima = "+ quantidadeMinima +", quantidade_maxima = "+ quantidadeMaxima +", percentual_ipi = "+ percentualIPI +", percentual_perda = "+ percentualPerda +", ativo = "+ ((this.ativo)?1:0) +", independente = "+ ((this.independente)?1:0) +" where codigo = "+ codigo
+            query = "update item set descricao = '" +  descricao + "', categoria = "+ categoria.obterCodigo() + ", armazenamento = '"+ armazenamento + "', unidade = "+ unidade.obterCodigo() + ", temperatura = "+ temperatura + ", seguranca = '"+ seguranca + "', quantidade_minima = "+ quantidadeMinima + ", quantidade_maxima = "+ quantidadeMaxima + ", percentual_ipi = "+ percentualIPI + ", percentual_perda = "+ percentualPerda + ", ativo = "+ ((this.ativo)?1:0) + ", independente = "+ ((this.independente)?1:0) + " where codigo = "+ codigo
               conexao.executarAtualizacao(query)
           }
         conexao.fecharConexao()
@@ -761,11 +761,11 @@ class Item {
         String query = ""
 
         if(numDepartamentos > 0 && conexao.abrirConexao()) {
-          query = "delete from departamento_item where item = "+ this.obterCodigo() +" "
+          query = "delete from departamento_item where item = " +  this.obterCodigo() + " "
             conexao.executarAtualizacao(query)
 
             for(int i = 0;i < numDepartamentos;i++) {
-              query = "insert into departamento_item (departamento, item) values ("+ ((Departamento)departamentos.get(i)).obterCodigo() +", "+ this.obterCodigo() +")"
+              query = "insert into departamento_item (departamento, item) values (" +  ((Departamento)departamentos.get(i)).obterCodigo() + ", "+ this.obterCodigo() + ")"
                 conexao.executarAtualizacao(query)
             }
           conexao.fecharConexao()
@@ -782,12 +782,12 @@ class Item {
         FornecedorItem fiAtual = null
         if(numFornecedores >= 0 && conexao.abrirConexao()) {
           if(this.obterCodigo() > 0) {
-            query = "delete from fornecedor_item where item = "+ this.obterCodigo()
+            query = "delete from fornecedor_item where item = " +  this.obterCodigo()
               conexao.executarAtualizacao(query)
           }
           for(int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values ("+ fiAtual.obterFornecedor().obterCodigo() +", "+ fiAtual.obterItem().obterCodigo() +", "+ fiAtual.obterUnidade().obterCodigo() +", "+ fiAtual.obterValorItem() +", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") +"', '"+ fiAtual.obterMoeda() +"', '"+ fiAtual.obterReferenciaFornecedor() +"')"
+              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (" +  fiAtual.obterFornecedor().obterCodigo() + ", "+ fiAtual.obterItem().obterCodigo() + ", "+ fiAtual.obterUnidade().obterCodigo() + ", "+ fiAtual.obterValorItem() + ", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") + "', '"+ fiAtual.obterMoeda() + "', '"+ fiAtual.obterReferenciaFornecedor() + "')"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -797,7 +797,7 @@ class Item {
 
   void excluirFornecedorItem(int codigo) throws Exception
   {
-    String query = "delete from fornecedor_item where item = "+ codigo +" "
+    String query = "delete from fornecedor_item where item = " +  codigo + " "
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -812,7 +812,7 @@ class Item {
 
   void excluirDepartamentoItem(int codigo) throws Exception
   {
-    String query = "delete from departamento_item where item = "+ codigo +" "
+    String query = "delete from departamento_item where item = " +  codigo + " "
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -827,7 +827,7 @@ class Item {
 
   void excluirItem(int codigo) throws Exception
   {
-    String query = "delete from item where codigo = "+ codigo +" "
+    String query = "delete from item where codigo = " +  codigo + " "
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

@@ -46,24 +46,24 @@ class DlgRecursosPedido extends JDialog implements ActionListener
 
       String strLabel = "Recursos Necessários para a produção do pedido No. "
       for(int i = 0;i < pedidos.length;i++) {
-        strLabel += "" + pedidos[i].obterCodigo()
-          if((i+1) < pedidos.length)
-            strLabel += ", "
+        strLabel  += "" + pedidos[i].obterCodigo()
+          if((i + 1) < pedidos.length)
+            strLabel  += ", "
       }
 
     conteudo.add(new JLabel(strLabel), BorderLayout.NORTH)
 
       modeloTabelaRecursos = new ModeloTabela()
       modeloTabelaRecursos.definirConexao(aplicacao.obterConexao())
-      String query =  "select i.codigo, i.descricao, i.quantidade as disponivel, (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria, (i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
-      "from item i, modelo_pedido mp, quantidade_materia_prima qmp " +
+      String query =  "select i.codigo, i.descricao, i.quantidade as disponivel, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria, (i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
+      "from item i, modelo_pedido mp, quantidade_materia_prima qmp "  + 
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
       for(int i = 0;i < pedidos.length;i++) {
-        query += "mp.pedido = "+ pedidos[i].obterCodigo()
-          if((i+1) < pedidos.length)
-            query += " or "
+        query  += "mp.pedido = "+ pedidos[i].obterCodigo()
+          if((i + 1) < pedidos.length)
+            query  += " or "
       }
-    query += ") group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
+    query  += ") group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
       modeloTabelaRecursos.definirConsulta(query)
       tblRecursos = new JTable(modeloTabelaRecursos)
       tblRecursos.setPreferredScrollableViewportSize(new Dimension(500, 250))
@@ -117,7 +117,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
                 dlgDadosRequisicaoInterna.setVisible(true)
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -138,7 +138,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
 
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }

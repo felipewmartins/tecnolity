@@ -35,7 +35,7 @@ class Despesa {
     }
 
     ResultSet dadosDespesa
-      dadosDespesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data, "/") +"' ")
+      dadosDespesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '" +  this.placa + "' and datahora = '"+ Calendario.inverterFormato(this.data, "/") + "' ")
 
       if(dadosDespesa.next()) {
         try {
@@ -167,7 +167,7 @@ class Despesa {
   {
     ResultSet dadosDespesas
       Vector datasDespesas = null
-      dadosDespesas = conexao.executarConsulta("select datahora from despesa_veiculo where veiculo = '"+ this.placa +"' order by datahora desc")
+      dadosDespesas = conexao.executarConsulta("select datahora from despesa_veiculo where veiculo = '" +  this.placa + "' order by datahora desc")
       datasDespesas = new Vector()
       while(dadosDespesas.next()) {
         datasDespesas.addElement(new Despesa(dadosDespesas.getString("datahora")))
@@ -179,12 +179,12 @@ class Despesa {
   void cadastrarDespesa() throws Exception
   {
     String query = "insert into despesa_veiculo (veiculo, datahora, descricao, valor) values "
-      query = query + "('"+ this.placa +"', '"+ Calendario.inverterFormato(this.data, "/") +"', '"+ this.descricao +"', "+ this.valor +")"
+      query = query  +  "('"+ this.placa + "', '"+ Calendario.inverterFormato(this.data, "/") + "', '"+ this.descricao + "', "+ this.valor + ")"
       Conexao conexao = new Conexao('T')
       boolean existente = false
 
       if (conexao.abrirConexao()) {
-        ResultSet despesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data, "/") +"' ")
+        ResultSet despesa = conexao.executarConsulta("select * from despesa_veiculo where veiculo = '" +  this.placa + "' and datahora = '"+ Calendario.inverterFormato(this.data, "/") + "' ")
           if(despesa.next()) {
             existente = true
               Exception e = new Exception("Já existe uma despesa associada a este veículo na data informada. Não foi possível realizar o cadastro.")
@@ -205,7 +205,7 @@ class Despesa {
 
   void alterarDespesa() throws Exception
   {
-    String query = "update despesa_veiculo set veiculo = '"+ this.placa +"', datahora = '"+ Calendario.inverterFormato(this.data, "/") +"', descricao = '"+ this.descricao +"', valor = "+ this.valor +" where veiculo = '"+ this.placaAntesAlteracao +"' and datahora = '"+ Calendario.inverterFormato(this.dataAntesAlteracao, "/") +"' "
+    String query = "update despesa_veiculo set veiculo = '" +  this.placa + "', datahora = '"+ Calendario.inverterFormato(this.data, "/") + "', descricao = '"+ this.descricao + "', valor = "+ this.valor + " where veiculo = '"+ this.placaAntesAlteracao + "' and datahora = '"+ Calendario.inverterFormato(this.dataAntesAlteracao, "/") + "' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -220,7 +220,7 @@ class Despesa {
 
   void excluirDespesa() throws Exception
   {
-    String query = "delete from despesa_veiculo where veiculo = '"+ this.placa +"' and datahora = '"+ Calendario.inverterFormato(this.data, "/") +"' "
+    String query = "delete from despesa_veiculo where veiculo = '" +  this.placa + "' and datahora = '"+ Calendario.inverterFormato(this.data, "/") + "' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

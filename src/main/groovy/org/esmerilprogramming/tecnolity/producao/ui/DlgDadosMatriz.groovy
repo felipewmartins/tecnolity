@@ -49,7 +49,7 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
         this.matriz.carregarMatriz(aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro:" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro:"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     carregarInterface()
@@ -76,9 +76,9 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
       adicionarComponente(pnlDados, label, 0, 2, 1, 1)
       txtReferencia = new JTextField(matriz.obterReferencia(), 10)
       adicionarComponente(pnlDados, txtReferencia, 1, 0, 1, 1)
-      txtNumeroSola = new JTextField("" + matriz.obterNumeroSola(), 3)
+      txtNumeroSola = new JTextField(""  +  matriz.obterNumeroSola(), 3)
       adicionarComponente(pnlDados, txtNumeroSola, 1, 1, 1, 1)
-      txtQuantidade = new JTextField("" + matriz.obterQuantidade(), 5)
+      txtQuantidade = new JTextField(""  +  matriz.obterQuantidade(), 5)
       adicionarComponente(pnlDados, txtQuantidade, 1, 2, 1, 1)
       label = new JLabel("Dureza")
       adicionarComponente(pnlDados, label, 2, 0, 1, 1)
@@ -88,21 +88,21 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
       adicionarComponente(pnlDados, label, 2, 2, 1, 1)
       label = new JLabel("Volume (cm3)")
       adicionarComponente(pnlDados, label, 2, 3, 1, 1)
-      txtDureza = new JTextField(Numero.inverterSeparador("" + matriz.obterDureza()), 5)
+      txtDureza = new JTextField(Numero.inverterSeparador(""  +  matriz.obterDureza()), 5)
       adicionarComponente(pnlDados, txtDureza, 3, 0, 1, 1)
-      txtDensidade = new JTextField(Numero.inverterSeparador("" + matriz.obterDensidade()), 5)
+      txtDensidade = new JTextField(Numero.inverterSeparador(""  +  matriz.obterDensidade()), 5)
       adicionarComponente(pnlDados, txtDensidade, 3, 1, 1, 1)
-      txtPeso = new JTextField(Numero.inverterSeparador("" + matriz.obterPeso()), 5)
+      txtPeso = new JTextField(Numero.inverterSeparador(""  +  matriz.obterPeso()), 5)
       adicionarComponente(pnlDados, txtPeso, 3, 2, 1, 1)
-      txtVolume = new JTextField(Numero.inverterSeparador("" + matriz.obterVolume()), 5)
+      txtVolume = new JTextField(Numero.inverterSeparador(""  +  matriz.obterVolume()), 5)
       adicionarComponente(pnlDados, txtVolume, 3, 3, 1, 1)
       label = new JLabel("Tempo Injeção (seg)")
       adicionarComponente(pnlDados, label, 4, 0, 1, 1)
-      txtTempoInjecao = new JTextField(Numero.inverterSeparador("" + matriz.obterTempoInjecao()), 5)
+      txtTempoInjecao = new JTextField(Numero.inverterSeparador(""  +  matriz.obterTempoInjecao()), 5)
       adicionarComponente(pnlDados, txtTempoInjecao, 5, 0, 1, 1)
       label = new JLabel("Tempo de Forma (seg)")
       adicionarComponente(pnlDados, label, 4, 1, 1, 1)
-      txtTempoForma = new JTextField("" + matriz.obterTempoForma(), 5)
+      txtTempoForma = new JTextField(""  +  matriz.obterTempoForma(), 5)
       adicionarComponente(pnlDados, txtTempoForma, 5, 1, 1, 1)
       label = new JLabel("Modificações")
       adicionarComponente(pnlDados, label, 6, 0, 1, 1)
@@ -151,34 +151,34 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
         try {
           if(matriz.obterReferencia() == null) {
             matriz = new Matriz(txtReferencia.getText(),
-                Integer.parseInt("0" + txtNumeroSola.getText()),
-                Integer.parseInt("0" + txtQuantidade.getText()),
+                Integer.parseInt("0"  +  txtNumeroSola.getText()),
+                Integer.parseInt("0"  +  txtQuantidade.getText()),
                 Float.parseFloat(Numero.inverterSeparador(txtDureza.getText())),
                 Float.parseFloat(Numero.inverterSeparador(txtDensidade.getText())),
                 Float.parseFloat(Numero.inverterSeparador(txtPeso.getText())),
                 Float.parseFloat(Numero.inverterSeparador(txtVolume.getText())),
                 Float.parseFloat(Numero.inverterSeparador(txtTempoInjecao.getText())),
-                Integer.parseInt("0" + txtTempoForma.getText()),
+                Integer.parseInt("0"  +  txtTempoForma.getText()),
                 txaModificacoes.getText())
               matriz.cadastrarMatriz()
           }
           else
           {
             matriz.definirReferencia(txtReferencia.getText())
-              matriz.definirNumeroSola(Integer.parseInt("0" + txtNumeroSola.getText()))
-              matriz.definirQuantidade(Integer.parseInt("0" + txtQuantidade.getText()))
+              matriz.definirNumeroSola(Integer.parseInt("0"  +  txtNumeroSola.getText()))
+              matriz.definirQuantidade(Integer.parseInt("0"  +  txtQuantidade.getText()))
               matriz.definirDureza(Float.parseFloat(Numero.inverterSeparador(txtDureza.getText())))
               matriz.definirDensidade(Float.parseFloat(Numero.inverterSeparador(txtDensidade.getText())))
               matriz.definirPeso(Float.parseFloat(Numero.inverterSeparador(txtPeso.getText())))
               matriz.definirVolume(Float.parseFloat(Numero.inverterSeparador(txtVolume.getText())))
               matriz.definirTempoInjecao(Float.parseFloat(Numero.inverterSeparador(txtTempoInjecao.getText())))
-              matriz.definirTempoForma(Integer.parseInt("0" + txtTempoForma.getText()))
+              matriz.definirTempoForma(Integer.parseInt("0"  +  txtTempoForma.getText()))
               matriz.alterarMatriz()
           }
           this.setVisible(false)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }

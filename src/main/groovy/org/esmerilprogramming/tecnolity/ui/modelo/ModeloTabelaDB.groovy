@@ -50,7 +50,7 @@ class ModeloTabelaDB extends ModeloTabela {
             /*do {
               final String[] dados = new String[this.numeroColunas]
                 for (int j = 0  j < this.numeroColunas  ++j) {
-                  dados[j] = this.resultado.getString(j + 1)
+                  dados[j] = this.resultado.getString(j  +  1)
                 }
               this.cache.addElement(dados)
             } while (this.resultado.next())*/

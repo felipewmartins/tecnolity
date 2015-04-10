@@ -151,7 +151,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   //usuário logado no sistema
                   String nomeResponsavel = ''
                   try {
-                    ResultSet responsavel = conexao.executarConsulta('select nome_completo from usuario where usuario = '+ (aplicacao.obterColaborador()).obterMatricula() +' ')
+                    ResultSet responsavel = conexao.executarConsulta('select nome_completo from usuario where usuario = ' +  (aplicacao.obterColaborador()).obterMatricula() +' ')
                       if(responsavel.next())
                         nomeResponsavel = responsavel.getString('nome_completo')
                           responsavel.close()
@@ -258,7 +258,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
                   JPanel pnlItens = new JPanel(new BorderLayout())
                   Object[][] dadosItensAbastecimento = new Object[20][6]
-                  String[] colunaItensAbastecimento = ['Item', 'Quantidade', 'Valor Unit.', 'Total', 'IPI', 'Total + IPI']
+                  String[] colunaItensAbastecimento = ['Item', 'Quantidade', 'Valor Unit.', 'Total', 'IPI', 'Total  +  IPI']
                   tblItensAbastecimento = new JTable(dadosItensAbastecimento, colunaItensAbastecimento)
                   tblItensAbastecimento.setPreferredScrollableViewportSize(new Dimension(460, 100))
                   tblItensAbastecimento.addRowSelectionInterval(0, 0)
@@ -268,7 +268,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   JPanel pnlComandosItem = new JPanel(new FlowLayout(FlowLayout.RIGHT))
                   label = new JLabel('Total Geral: ')
                   pnlComandosItem.add(label)
-                  lblTotalGeral = new JLabel('' + Numero.formatarValorMoeda(0.0f, 'R$'))
+                  lblTotalGeral = new JLabel(''  +  Numero.formatarValorMoeda(0.0f, 'R$'))
                   pnlComandosItem.add(lblTotalGeral)
                   pnlItens.add(pnlComandosItem, BorderLayout.SOUTH)
 
@@ -767,7 +767,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       int fornecedor
 
       for(int i = 1;i < this.requisicoesCompra.size();i++) {
-        cbxRequisicaoAbastecimento.addItem(''+ ((RequisicaoCompra)requisicoesCompra.get(i)).obterCodigo() + ' - '+
+        cbxRequisicaoAbastecimento.addItem('' +  ((RequisicaoCompra)requisicoesCompra.get(i)).obterCodigo() + ' - '+
             ((RequisicaoCompra)requisicoesCompra.get(i)).obterFornecedor().obterRazaoSocial())
       }
   }
@@ -797,17 +797,17 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         for(int i = 0;i < itensRequisicaoCompra.size();i++) {
           itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
             tblItensAbastecimento.setValueAt(itemRequisicao.obterItem().obterDescricao(), i, 0)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.getQuantidadeItem()), i, 1)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorUnitario()), i, 2)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorTotal()), i, 3)
-            tblItensAbastecimento.setValueAt(''+ itemRequisicao.obterPercentualIPI(), i, 4)
-            tblItensAbastecimento.setValueAt(Numero.inverterSeparador(''+ itemRequisicao.obterValorTotalComIPI()), i, 5)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador('' +  itemRequisicao.getQuantidadeItem()), i, 1)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador('' +  itemRequisicao.obterValorUnitario()), i, 2)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador('' +  itemRequisicao.obterValorTotal()), i, 3)
+            tblItensAbastecimento.setValueAt('' +  itemRequisicao.obterPercentualIPI(), i, 4)
+            tblItensAbastecimento.setValueAt(Numero.inverterSeparador('' +  itemRequisicao.obterValorTotalComIPI()), i, 5)
             totalGeral += itemRequisicao.obterValorTotalComIPI()
-            lblTotalGeral.setText(Numero.inverterSeparador('' + totalGeral))
+            lblTotalGeral.setText(Numero.inverterSeparador(''  +  totalGeral))
         }
     }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
     }
   }
 
@@ -820,9 +820,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
     numeroItens = 0
       requisicaoInterna = (RequisicaoInterna)requisicoesInternasVendas.get(cbxRequisicaoVenda.getSelectedIndex())
-      String query = 'select iri.item, i.descricao, iri.quantidade, d.codigo, d.departamento, iri.status ' +
-      'from item_requisicao_interna iri, item i, departamento d ' +
-      'where iri.item = i.codigo and d.codigo = iri.destino and iri.requisicao_interna = '+ requisicaoInterna.obterCodigo() + ' ' +
+      String query = 'select iri.item, i.descricao, iri.quantidade, d.codigo, d.departamento, iri.status '  + 
+      'from item_requisicao_interna iri, item i, departamento d '  + 
+      'where iri.item = i.codigo and d.codigo = iri.destino and iri.requisicao_interna = ' +  requisicaoInterna.obterCodigo() + ' ' +
       'order by iri.item asc'
       try {
         ResultSet resultadoItensRequisicaoInterna = conexao.executarConsulta(query)
@@ -833,14 +833,14 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 float quantidadeItem = resultadoItensRequisicaoInterna.getFloat('quantidade')
                 itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(codigoItem, item), this.requisicaoInterna, quantidadeItem, new Departamento(resultadoItensRequisicaoInterna.getInt('codigo'), resultadoItensRequisicaoInterna.getString('departamento')), resultadoItensRequisicaoInterna.getString('status')))
 
-                tblItensVenda.setValueAt(''+codigoItem, numeroItens, 0)
+                tblItensVenda.setValueAt('' + codigoItem, numeroItens, 0)
                 tblItensVenda.setValueAt(item, numeroItens, 1)
-                tblItensVenda.setValueAt(Numero.inverterSeparador(''+quantidadeItem), numeroItens, 2)
+                tblItensVenda.setValueAt(Numero.inverterSeparador('' + quantidadeItem), numeroItens, 2)
                 numeroItens++
             }
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         resultadoItensRequisicaoInterna.close()
@@ -858,9 +858,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
     numeroItens = 0
       requisicaoInterna = (RequisicaoInterna)requisicoesInternasDevolucaoExterna.get(cbxRequisicaoDevolucaoExterna.getSelectedIndex())
-      String query = 'select iri.item, i.descricao, iri.quantidade, d.codigo, d.departamento ' +
-      'from item_requisicao_interna iri, item i, departamento d ' +
-      'where iri.item = i.codigo and d.codigo = iri.destino and iri.requisicao_interna = '+ requisicaoInterna.obterCodigo() + ' ' +
+      String query = 'select iri.item, i.descricao, iri.quantidade, d.codigo, d.departamento '  + 
+      'from item_requisicao_interna iri, item i, departamento d '  + 
+      'where iri.item = i.codigo and d.codigo = iri.destino and iri.requisicao_interna = ' +  requisicaoInterna.obterCodigo() + ' ' +
       'order by iri.item asc'
       try {
         ResultSet resultadoItensRequisicaoInterna = conexao.executarConsulta(query)
@@ -871,14 +871,14 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 float quantidadeItem = resultadoItensRequisicaoInterna.getFloat('quantidade')
                 itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(codigoItem, item), this.requisicaoInterna, quantidadeItem, new Departamento(resultadoItensRequisicaoInterna.getInt('codigo'), resultadoItensRequisicaoInterna.getString('departamento')), resultadoItensRequisicaoInterna.getString('status')))
 
-                tblItensDevolucaoExterna.setValueAt(''+codigoItem, numeroItens, 0)
+                tblItensDevolucaoExterna.setValueAt('' + codigoItem, numeroItens, 0)
                 tblItensDevolucaoExterna.setValueAt(item, numeroItens, 1)
-                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador(''+quantidadeItem), numeroItens, 2)
+                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador('' + quantidadeItem), numeroItens, 2)
                 numeroItens++
             }
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         resultadoItensRequisicaoInterna.close()
@@ -891,18 +891,18 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
   void carregarDadosRequisicaoCompra() {
     requisicaoCompraSelecionada = (RequisicaoCompra)requisicoesCompra.get(cbxRequisicaoAbastecimento.getSelectedIndex())
-      String query = 'select observacao, fornecedor.razao_social as razao_social from requisicao_compra, fornecedor where requisicao_compra.codigo = '+ requisicaoCompraSelecionada.obterCodigo() +' and fornecedor.codigo = requisicao_compra.fornecedor '
+      String query = 'select observacao, fornecedor.razao_social as razao_social from requisicao_compra, fornecedor where requisicao_compra.codigo = ' +  requisicaoCompraSelecionada.obterCodigo() +' and fornecedor.codigo = requisicao_compra.fornecedor '
       try {
         ResultSet dadosRequisicaoCompra = conexao.executarConsulta(query)
           if(dadosRequisicaoCompra.next()) {
             observacao = dadosRequisicaoCompra.getString('observacao')
               txaObservacao.setText(observacao)
-              lblRequisicaoAbastecimento.setText(''+ requisicaoCompraSelecionada.obterCodigo() + ' - '+ dadosRequisicaoCompra.getString('razao_social'))
+              lblRequisicaoAbastecimento.setText('' +  requisicaoCompraSelecionada.obterCodigo() + ' - '+ dadosRequisicaoCompra.getString('razao_social'))
               for(int i = 0; i < itensRequisicaoCompra.size(); i++) {
-                tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterCodigo(), i, 0)
-                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterDescricao(), i, 1)
-                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeItem(), i, 4)
-                  tblItensAbastecimentoConfirmacao.setValueAt(''+((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeAbastecida(), i, 5)
+                tblItensAbastecimentoConfirmacao.setValueAt('' + ((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterCodigo(), i, 0)
+                  tblItensAbastecimentoConfirmacao.setValueAt('' + ((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterDescricao(), i, 1)
+                  tblItensAbastecimentoConfirmacao.setValueAt('' + ((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeItem(), i, 4)
+                  tblItensAbastecimentoConfirmacao.setValueAt('' + ((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeAbastecida(), i, 5)
               }
           }
         dadosRequisicaoCompra.close()
@@ -919,10 +919,10 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         for(int i = 0;i < itensRequisicaoCompra.size();i++) {
           itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
             if(itemRequisicao.obterItem().obterLote() != null) {
-              tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.obterItem().obterLote().obterLocalizacao(), i, 2)
-                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.obterItem().obterLote().obterDataValidade(), i, 3)
-                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.getQuantidadeItem(), i, 4)
-                tblItensAbastecimentoConfirmacao.setValueAt(''+ itemRequisicao.getQuantidadeAbastecida(), i, 5)
+              tblItensAbastecimentoConfirmacao.setValueAt('' +  itemRequisicao.obterItem().obterLote().obterLocalizacao(), i, 2)
+                tblItensAbastecimentoConfirmacao.setValueAt('' +  itemRequisicao.obterItem().obterLote().obterDataValidade(), i, 3)
+                tblItensAbastecimentoConfirmacao.setValueAt('' +  itemRequisicao.getQuantidadeItem(), i, 4)
+                tblItensAbastecimentoConfirmacao.setValueAt('' +  itemRequisicao.getQuantidadeAbastecida(), i, 5)
             }
         }
     }
@@ -944,7 +944,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             txtValorConhecimento.setText('')
             txaObservacao.setText('')
             requisicaoCompraSelecionada = (RequisicaoCompra)requisicoesCompra.get(cbxRequisicaoAbastecimento.getSelectedIndex())
-            String query = 'select fornecedor.razao_social, departamento.departamento, transportadora.transportadora, data_emissao, data_limite_entrega, (case tipo_frete when 'C' then 'CIF' when 'F' then 'FOB' when 'P' then 'PROPRIO' end) as tipo_frete from requisicao_compra, fornecedor, departamento, transportadora where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo and requisicao_compra.transportadora *= transportadora.codigo and requisicao_compra.codigo = '+ requisicaoCompraSelecionada.obterCodigo() +' '
+            String query = 'select fornecedor.razao_social, departamento.departamento, transportadora.transportadora, data_emissao, data_limite_entrega, (case tipo_frete when 'C' then 'CIF' when 'F' then 'FOB' when 'P' then 'PROPRIO' end) as tipo_frete from requisicao_compra, fornecedor, departamento, transportadora where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo and requisicao_compra.transportadora *= transportadora.codigo and requisicao_compra.codigo = ' +  requisicaoCompraSelecionada.obterCodigo() +' '
             try {
               ResultSet dadosRequisicaoCompra = conexao.executarConsulta(query)
                 if(dadosRequisicaoCompra.next()) {
@@ -979,7 +979,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna.removeAllElements()
             requisicaoInterna = (RequisicaoInterna)requisicoesInternasConsumo.get(cbxRequisicaoConsumo.getSelectedIndex())
 
-            lblPedidoClienteConsumo.setText((requisicaoInterna.obterPedidoCliente() != null)?'' + requisicaoInterna.obterPedidoCliente().obterOrdemCompra():'')
+            lblPedidoClienteConsumo.setText((requisicaoInterna.obterPedidoCliente() != null)?''  +  requisicaoInterna.obterPedidoCliente().obterOrdemCompra():'')
             lblDataLimiteEntregaConsumo.setText(requisicaoInterna.obterDataLimiteEntrega())
             lblDepartSolicitanteConsumo.setText(requisicaoInterna.obterDepartamento().obterNomeDepartamento())
             lblSolicitanteConsumo.setText(requisicaoInterna.obterSolicitante().getNome())
@@ -997,9 +997,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensConsumo.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensConsumo.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
                 tblItensConsumo.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
-                tblItensConsumo.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
+                tblItensConsumo.setValueAt(Numero.inverterSeparador('' +  itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
@@ -1034,9 +1034,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensVenda.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensVenda.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
                 tblItensVenda.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
-                tblItensVenda.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
+                tblItensVenda.setValueAt(Numero.inverterSeparador('' +  itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
@@ -1071,9 +1071,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensDescarte.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensDescarte.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
                 tblItensDescarte.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
-                tblItensDescarte.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
+                tblItensDescarte.setValueAt(Numero.inverterSeparador('' +  itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
@@ -1110,9 +1110,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             ItemRequisicaoInterna itemRequisicaoInterna
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
-                tblItensDevolucao.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensDevolucao.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
                 tblItensDevolucao.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
-                tblItensDevolucao.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
+                tblItensDevolucao.setValueAt(Numero.inverterSeparador('' +  itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
@@ -1161,9 +1161,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             for(int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
-                tblItensDevolucaoExterna.setValueAt(''+ itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
+                tblItensDevolucaoExterna.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
                 tblItensDevolucaoExterna.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
-                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador(''+ itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
+                tblItensDevolucaoExterna.setValueAt(Numero.inverterSeparador('' +  itemRequisicaoInterna.obterQuantidadeItem()), numeroItens, 2)
                 numeroItens++
             }
         }
@@ -1194,7 +1194,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               }
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         }
         this.redimencionar()
       }
@@ -1243,7 +1243,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -1265,7 +1265,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 Lote.retirarItem(movimentacao, (ItemRequisicaoInterna)itensRequisicaoInterna.get(i))
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
           }
@@ -1296,8 +1296,8 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           }
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n' +
-              'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n' +
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n'  + 
+              'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n'  + 
               'a requisição poderá ser processada novamente sem necessidade.', 'Erro',
               JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
@@ -1320,7 +1320,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               lote.cadastrarLote()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível registrar a movimentação. \n' +
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível registrar a movimentação. \n'  + 
                 'O banco de dados pode estar inconsistente. Entre em contato com o administrador.', 'Erro',
                 JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
@@ -1331,8 +1331,8 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           requisicaoInterna.atualizarRequisicaoInterna(RequisicaoInterna.STATUS_CONFIRMADO)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n' +
-              'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n' +
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n'  + 
+              'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n'  + 
               'a requisição poderá ser processada novamente sem necessidade.', 'Erro',
               JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()

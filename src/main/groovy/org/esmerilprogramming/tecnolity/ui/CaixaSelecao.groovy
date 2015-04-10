@@ -148,7 +148,7 @@ class CaixaSelecao extends JPanel implements ActionListener
     if (objeto != null) {
       for (int i = 0;  i < this.itens.size();  ++i) {
         if (this.itens.get(i).toString().equals(objeto.toString())) {
-          this.cbxSelecao.setSelectedIndex(i + 1)
+          this.cbxSelecao.setSelectedIndex(i  +  1)
             break
         }
       }

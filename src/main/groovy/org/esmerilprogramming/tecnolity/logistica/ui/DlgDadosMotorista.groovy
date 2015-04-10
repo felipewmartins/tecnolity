@@ -315,7 +315,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirCelular(this.txtCelular.getText())
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
         }
@@ -324,7 +324,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
             this.motorista.cadastrarMotorista()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
           this.setVisible(false)
@@ -353,7 +353,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirCelular(this.txtCelular.getText())
           }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
         }
@@ -362,7 +362,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
             this.motorista.alterarMotorista()
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
           this.setVisible(false)

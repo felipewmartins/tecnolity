@@ -42,7 +42,7 @@ class TipoProducao {
       try {
         dadosTipoProducao = conexao.executarConsulta("select max(codigo) as identificador_maior from tipo_producao")
           if(dadosTipoProducao.next()) {
-            return dadosTipoProducao.getInt("identificador_maior") + 1
+            return dadosTipoProducao.getInt("identificador_maior")  +  1
           }
         dadosTipoProducao.close()
       }
@@ -53,7 +53,7 @@ class TipoProducao {
   }
 
   void cadastrarTipoProducao() {
-    String query = "insert into tipo_producao (codigo, tipo_producao) values ("+ this.codigo +", '"+ this.tipoProducao +"')"
+    String query = "insert into tipo_producao (codigo, tipo_producao) values (" +  this.codigo + ", '"+ this.tipoProducao + "')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

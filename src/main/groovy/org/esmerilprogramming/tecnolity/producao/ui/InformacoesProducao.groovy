@@ -101,9 +101,9 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   JPanel pnlDadosPedido = new JPanel(new BorderLayout())
                   modeloTabelaProducao = new ModeloTabela()
                   modeloTabelaProducao.definirConexao(aplicacao.obterConexao())
-                  /*String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '"+ Pedido.PENDENTE +"' then 'Pendente' when '"+ Pedido.PRODUZINDO+"' then 'Produzindo' when '"+ Pedido.FINALIZADO +"' then 'Finalizado' when '"+ Pedido.ATRASADO +"' then 'Atrasado' when '"+ Pedido.CANCELADO +"' then 'Cancelado' when '"+ Pedido.PARALIZADO +"' then 'Paralizado' end) as status " +
-                    "from pedido_cliente pc, cliente c, local_entrega le " +
-                    "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega " +
+                  /*String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '"+ Pedido.PRODUZINDO+ "' then 'Produzindo' when '"+ Pedido.FINALIZADO + "' then 'Finalizado' when '"+ Pedido.ATRASADO + "' then 'Atrasado' when '"+ Pedido.CANCELADO + "' then 'Cancelado' when '"+ Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
+                    "from pedido_cliente pc, cliente c, local_entrega le "  + 
+                    "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "  + 
                     "order by pc.codigo desc"
                     modeloTabelaProducao.definirConsulta(query)*/
                   tblProducao = new JTable(modeloTabelaProducao)
@@ -243,8 +243,8 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
   }
 
   private void atualizarTabelaProducao() {
-    String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '"+ Pedido.PENDENTE +"' then 'Pendente' when '"+ Pedido.PRODUZINDO+"' then 'Produzindo' when '"+ Pedido.FINALIZADO +"' then 'Finalizado' when '"+ Pedido.ATRASADO +"' then 'Atrasado' when '"+ Pedido.CANCELADO +"' then 'Cancelado' when '"+ Pedido.PARALIZADO +"' then 'Paralizado' end) as status " +
-      "from pedido_cliente pc, cliente c, local_entrega le " +
+    String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '"+ Pedido.PRODUZINDO+ "' then 'Produzindo' when '"+ Pedido.FINALIZADO + "' then 'Finalizado' when '"+ Pedido.ATRASADO + "' then 'Atrasado' when '"+ Pedido.CANCELADO + "' then 'Cancelado' when '"+ Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
+      "from pedido_cliente pc, cliente c, local_entrega le "  + 
       "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "
       if(cbxSituacao.getSelectedIndex() > 0) {
         query += "and pc.status = '" + statusPedido[cbxSituacao.getSelectedIndex() - 1] + "'"
@@ -287,7 +287,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
   private void atualizarTabelaProduto() {
     if(cbxCliente.getSelectedIndex() > 0)
-      modeloTabelaProduto.definirConsulta("select m.codigo, m.modelo, c.componente, tp.tipo_producao, m.referencia_cliente from modelo m, componente c, tipo_producao tp where m.componente = c.codigo and m.tipo_producao = tp.codigo and m.cliente = "+ ((Cliente)clientes.get(cbxCliente.getSelectedIndex())).obterCodigo() +" order by m.modelo asc")
+      modeloTabelaProduto.definirConsulta("select m.codigo, m.modelo, c.componente, tp.tipo_producao, m.referencia_cliente from modelo m, componente c, tipo_producao tp where m.componente = c.codigo and m.tipo_producao = tp.codigo and m.cliente = " +  ((Cliente)clientes.get(cbxCliente.getSelectedIndex())).obterCodigo() + " order by m.modelo asc")
     else
       modeloTabelaProduto.definirConsulta("select m.codigo, m.modelo, cl.razao_social, c.componente, tp.tipo_producao, m.referencia_cliente from modelo m, componente c, tipo_producao tp, cliente cl where m.cliente = cl.codigo and m.componente = c.codigo and m.tipo_producao = tp.codigo order by m.modelo asc")
         tblProduto.setModel(modeloTabelaProduto)
@@ -296,7 +296,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
   private void atualizarTabelaMatriz() {
     if(cbxProduto.getSelectedIndex() > 0)
-      modeloTabelaMatriz.definirConsulta("select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo where referencia in (select distinct referencia from quantidade_materia_prima where produto = "+ ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterCodigo() +")")
+      modeloTabelaMatriz.definirConsulta("select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo where referencia in (select distinct referencia from quantidade_materia_prima where produto = " +  ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterCodigo() + ")")
     else
       modeloTabelaMatriz.definirConsulta("select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo")
         tblMatriz.setModel(modeloTabelaMatriz)
@@ -327,7 +327,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -346,7 +346,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -365,7 +365,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -384,7 +384,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -403,7 +403,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -486,7 +486,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
               dlgDadosProduto.setVisible(true)
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro:" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro:"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -505,7 +505,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProduto()
@@ -527,7 +527,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             impressora.imprimir()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -540,10 +540,10 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
     if(objeto == btAlterarMatriz) {
       int linhaSelecionada = tblMatriz.getSelectedRow()
         if(linhaSelecionada >= 0) {
-          String query = "select referencia, numero_sola " +
-            "from matriz_modelo " +
-            "where referencia = '"+ ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() +"' and " +
-            "numero_sola = " + ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
+          String query = "select referencia, numero_sola "  + 
+            "from matriz_modelo "  + 
+            "where referencia = '" +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + "' and " +
+            "numero_sola = "  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
             try {
               ResultSet dadosMatriz = aplicacao.obterConexao().executarConsulta(query)
                 if(dadosMatriz.next()) {
@@ -567,10 +567,10 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
       int linhaSelecionada = tblMatriz.getSelectedRow()
         if(linhaSelecionada >= 0) {
 
-          String query = "select referencia, numero_sola " +
-            "from matriz_modelo " +
-            "where referencia = '"+ ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() +"' and " +
-            "numero_sola = " + ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
+          String query = "select referencia, numero_sola "  + 
+            "from matriz_modelo "  + 
+            "where referencia = '" +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + "' and " +
+            "numero_sola = "  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
             ResultSet dadosMatriz = aplicacao.obterConexao().executarConsulta(query)
             try {
               if(dadosMatriz.next()) {

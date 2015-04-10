@@ -123,7 +123,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
       pnlSuporteCombo.add(btNovoVeiculo, BorderLayout.EAST)
       adicionarComponente(pnlAreaDados, pnlSuporteCombo, 1, 0, 1, 1)
 
-      txtValor = new JTextField(Numero.inverterSeparador(""+this.despesa.obterValor()), 8)
+      txtValor = new JTextField(Numero.inverterSeparador("" + this.despesa.obterValor()), 8)
       txtValor.addFocusListener(this)
       adicionarComponente(pnlAreaDados, txtValor, 1, 1, 1, 1)
 
@@ -215,7 +215,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
                 despesa.definirDescricao(this.txaDescricao.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -224,7 +224,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
               this.despesa.cadastrarDespesa()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -239,7 +239,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
                 despesa.definirDescricao(this.txaDescricao.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -248,7 +248,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
               this.despesa.alterarDespesa()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -257,7 +257,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
 
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

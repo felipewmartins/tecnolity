@@ -23,7 +23,7 @@ class Categoria {
   }
 
   boolean cadastrarCategoria(String nomeCategoria) {
-    String query = 'insert into categoria_item (categoria) values (''+ nomeCategoria +'')'
+    String query = 'insert into categoria_item (categoria) values ('' +  nomeCategoria +'')'
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

@@ -16,11 +16,11 @@ class RelatorioItens extends Relatorio
   String gerarRelatorio() {
     Calendario calendario = new Calendario()
       conteudo = new StringBuffer()
-      conteudo.append(Texto.obterStringTamanhoFixo(titulo, 29) + "                                 TECNOLITY DO NORDESTE LTDA")
+      conteudo.append(Texto.obterStringTamanhoFixo(titulo, 29)  +  "                                 TECNOLITY DO NORDESTE LTDA")
       conteudo.append(QUEBRA)
       conteudo.append("========================================================================================")
       conteudo.append(QUEBRA)
-      conteudo.append("                                                                        Data: " + calendario.dataHoje("dd/MM/yyyy"))
+      conteudo.append("                                                                        Data: "  +  calendario.dataHoje("dd/MM/yyyy"))
       conteudo.append(QUEBRA)
       conteudo.append("Cod.  | Item                             | Unid. | Categoria    | Quant.    | Q. Mínima ")
       conteudo.append(QUEBRA)
@@ -34,9 +34,9 @@ class RelatorioItens extends Relatorio
             quantMinima = "*"
           else
             quantMinima = ""
-              conteudo.append("" + Texto.obterNumeroTamanhoFixo("" + item.obterCodigo(), 6, "0") +"|"+ Texto.obterStringTamanhoFixo(item.obterDescricao(), 34) +"|"+ Texto.obterStringTamanhoFixo(item.obterUnidade().obterNomeUnidade(), 7) +"|"+ Texto.obterStringTamanhoFixo(item.obterCategoria().obterNomeCategoria(), 14) + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidade(), 3, ", "), 11, " ") + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidadeMinima(), 3, ", "), 11, " ") + quantMinima)
+              conteudo.append(""  +  Texto.obterNumeroTamanhoFixo("" + item.obterCodigo(), 6, "0") + "|"+ Texto.obterStringTamanhoFixo(item.obterDescricao(), 34) + "|"+ Texto.obterStringTamanhoFixo(item.obterUnidade().obterNomeUnidade(), 7) + "|"+ Texto.obterStringTamanhoFixo(item.obterCategoria().obterNomeCategoria(), 14) + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidade(), 3, ", "), 11, " ") + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidadeMinima(), 3, ", "), 11, " ") + quantMinima)
               conteudo.append(QUEBRA)
-              alturaItens = linha + (i * 10)
+              alturaItens = linha  +  (i * 10)
       }
     conteudo.append("----------------------------------------------------------------------------------------")
       return conteudo.toString()

@@ -49,7 +49,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
           colaboradores = colaborador.carregarColaboradores(aplicacao.obterConexao())
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       carregarColaboradores()
@@ -147,7 +147,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
     DefaultListModel modeloLista = new DefaultListModel()
       this.lstInterface.setModel(modeloLista)
       for(int i = 0;i < interfaces.size();i++) {
-        modeloLista.addElement(((Interface)interfaces.get(i)).obterNomeInterface() + ' ('+ ((Interface)interfaces.get(i)).obterIdentificador() +')')
+        modeloLista.addElement(((Interface)interfaces.get(i)).obterNomeInterface()  +  ' ('+ ((Interface)interfaces.get(i)).obterIdentificador() +')')
       }
   }
 
@@ -187,7 +187,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
         interfaces = tela.carregarInterfaces(aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
     }
 
     if(colaborador != null) {
@@ -210,7 +210,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
           }
       }
       catch(SQLException e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: '+ e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       }
     }
     this.carregarInterfaces()
@@ -309,7 +309,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
           ((Colaborador)colaboradores.get(cbxColaborador.getSelectedIndex())).definirPermissoes(permissoes)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         }
       }
       else
@@ -332,7 +332,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
             this.setVisible(false)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         }
       }
       else

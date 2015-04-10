@@ -279,7 +279,7 @@ class Fornecedor {
 
   private void carregarFornecedor(Conexao conexao) throws Exception
   {
-    String query = "select * from fornecedor where codigo = " + this.codigo + " "
+    String query = "select * from fornecedor where codigo = "  +  this.codigo + " "
       try {
         ResultSet resultado = conexao.executarConsulta(query)
           if(resultado.next()) {
@@ -328,10 +328,10 @@ class Fornecedor {
   void cadastrarFornecedor() throws Exception
   {
     String query = "insert into fornecedor (razao_social, cnpj, percentual_icms, logradouro, complemento, bairro, cidade, estado, pais, cep, ddd, telefone, ramal, fax, email, website) values "
-      query = query + "('"+ razaoSocial +"', '"+ cnpj +"', "+ percentualICMS +", '"+ logradouro +"', '"+ complemento +"', '"+ bairro +"', '"+ cidade +"', '"+ estado.getSigla() +"', '"+ pais.getSigla() +"', '"+ cep +"', '"+ ddd +"', '"+ telefone +"', '"+ ramal +"', '"+ fax +"', '"+ email +"', '"+ website +"')"
+      query = query  +  "('"+ razaoSocial + "', '"+ cnpj + "', "+ percentualICMS + ", '"+ logradouro + "', '"+ complemento + "', '"+ bairro + "', '"+ cidade + "', '"+ estado.getSigla() + "', '"+ pais.getSigla() + "', '"+ cep + "', '"+ ddd + "', '"+ telefone + "', '"+ ramal + "', '"+ fax + "', '"+ email + "', '"+ website + "')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        ResultSet dadosFornecedor = conexao.executarConsulta("select cnpj from fornecedor where cnpj = '"+ this.cnpj +"'")
+        ResultSet dadosFornecedor = conexao.executarConsulta("select cnpj from fornecedor where cnpj = '" +  this.cnpj + "'")
           if(dadosFornecedor.next()) {
             Exception e = new Exception("Já existe um Fornecedor com o CNPJ informado.")
               throw e
@@ -351,8 +351,8 @@ class Fornecedor {
 
   void alterarFornecedor() throws Exception
   {
-    String query = "update fornecedor set razao_social = '"+ razaoSocial +"', cnpj = '"+ cnpj +"', percentual_icms = "+ percentualICMS +", logradouro = '"+ logradouro +"', complemento = '"+ complemento +"', bairro = '"+ bairro +"', cidade = '"+ cidade +"', estado = '"+ estado.getSigla() +"', pais = '"+ pais.getSigla() +"', cep = '"+ cep +"', ddd = '"+ ddd +"', telefone = '"+ telefone +"', ramal = '"+ ramal +"', fax = '"+ fax +"', email = '"+ email +"', website = '"+ website +"' "
-      query = query + " where codigo = "+ codigo +" "
+    String query = "update fornecedor set razao_social = '" +  razaoSocial + "', cnpj = '"+ cnpj + "', percentual_icms = "+ percentualICMS + ", logradouro = '"+ logradouro + "', complemento = '"+ complemento + "', bairro = '"+ bairro + "', cidade = '"+ cidade + "', estado = '"+ estado.getSigla() + "', pais = '"+ pais.getSigla() + "', cep = '"+ cep + "', ddd = '"+ ddd + "', telefone = '"+ telefone + "', ramal = '"+ ramal + "', fax = '"+ fax + "', email = '"+ email + "', website = '"+ website + "' "
+      query = query  +  " where codigo = "+ codigo + " "
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -367,12 +367,12 @@ class Fornecedor {
 
   void excluirFornecedor(int codigo) throws Exception
   {
-    String query = "delete from fornecedor where codigo = "+ codigo +" "
+    String query = "delete from fornecedor where codigo = " +  codigo + " "
       Conexao conexao = new Conexao('T')
       boolean existente = false
 
       if (conexao.abrirConexao()) {
-        ResultSet fornecedor = conexao.executarConsulta("select * from fornecedor_item where fornecedor = "+ codigo +" ")
+        ResultSet fornecedor = conexao.executarConsulta("select * from fornecedor_item where fornecedor = " +  codigo + " ")
           if(fornecedor.next()) {
             existente = true
               Exception e = new Exception("Existe um item associado a este fornecedor. Não foi possível realizar a exclusão.")
@@ -400,9 +400,9 @@ class Fornecedor {
    */
   boolean possuiApenasItensIndependentes(Conexao conexao) throws Exception
   {
-    String query = "select count(i.independente) " +
-      "from fornecedor f, item i, fornecedor_item fi " +
-      "where f.codigo = fi.fornecedor and i.codigo = fi.item and f.codigo = "+ this.obterCodigo() +" and i.independente = 0 "
+    String query = "select count(i.independente) "  + 
+      "from fornecedor f, item i, fornecedor_item fi "  + 
+      "where f.codigo = fi.fornecedor and i.codigo = fi.item and f.codigo = " +  this.obterCodigo() + " and i.independente = 0 "
       ResultSet rsItensIndependentes = conexao.executarConsulta(query)
       if(rsItensIndependentes.next()) {
         if(rsItensIndependentes.getInt(1) > 0)

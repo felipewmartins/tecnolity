@@ -136,8 +136,8 @@ class LocalEntrega {
   {
     String query = ""
       if(isNovoLocalEntrega() && !isInvalido()) {
-        query = "insert into local_entrega (cliente, descricao_local, logradouro, complemento, bairro, cidade, estado, cep, telefone, responsavel_recebimento) " +
-          "values ("+ this.obterCliente().obterCodigo() +", '"+ this.obterDescricaoLocal() +"', '"+ this.obterLogradouro() +"', '"+ this.obterComplemento() +"', '"+ this.obterBairro() +"', '"+ this.obterCidade() +"', '"+ this.obterEstado().getSigla() +"', '"+ this.obterCep() +"', '"+ this.obterTelefone() +"', '"+ this.obterResponsavelRecebimento() +"')"
+        query = "insert into local_entrega (cliente, descricao_local, logradouro, complemento, bairro, cidade, estado, cep, telefone, responsavel_recebimento) "  + 
+          "values (" +  this.obterCliente().obterCodigo() + ", '"+ this.obterDescricaoLocal() + "', '"+ this.obterLogradouro() + "', '"+ this.obterComplemento() + "', '"+ this.obterBairro() + "', '"+ this.obterCidade() + "', '"+ this.obterEstado().getSigla() + "', '"+ this.obterCep() + "', '"+ this.obterTelefone() + "', '"+ this.obterResponsavelRecebimento() + "')"
           conexao.executarAtualizacao(query)
           return
       }
@@ -148,13 +148,13 @@ class LocalEntrega {
 
   void deleteLocalEntrega(Conexao conexao) throws Exception
   {
-    ResultSet rsLocalEntrega = conexao.executarConsulta("select * from pedido_cliente where local_entrega = " + this.codigo)
+    ResultSet rsLocalEntrega = conexao.executarConsulta("select * from pedido_cliente where local_entrega = "  +  this.codigo)
       if(rsLocalEntrega.next()) {
         Exception e = new Exception("Não foi possível excluir o local de entrega por estar associado a um pedido cadastrado.")
           throw e
       }
       else
-        conexao.executarAtualizacao("delete from local_entrega where codigo_local = " + this.codigo)
+        conexao.executarAtualizacao("delete from local_entrega where codigo_local = "  +  this.codigo)
           rsLocalEntrega.close()
   }
 

@@ -11,7 +11,7 @@ class DocumentoTamanhoFixo extends PlainDocument {
   }
 
   void insertString(final int offset, final String str, final AttributeSet a) throws BadLocationException {
-    if (this.getLength() + str.length() > this.tamanhoMaximo) {
+    if (this.getLength()  +  str.length() > this.tamanhoMaximo) {
       Toolkit.getDefaultToolkit().beep()
     }
     else {

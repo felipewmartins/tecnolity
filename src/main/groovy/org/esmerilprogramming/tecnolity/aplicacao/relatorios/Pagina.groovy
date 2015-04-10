@@ -22,7 +22,7 @@ class Pagina implements Printable
         posicaoFimLinha = conteudoAImprimir.indexOf("\n")
           if(posicaoFimLinha >= 0) {
             linha = conteudoAImprimir.substring(0, posicaoFimLinha)
-              conteudoAImprimir = conteudoAImprimir.substring(posicaoFimLinha + 1)
+              conteudoAImprimir = conteudoAImprimir.substring(posicaoFimLinha  +  1)
           }
           else
           {

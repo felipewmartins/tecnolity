@@ -26,7 +26,7 @@ class Departamento {
 
   void carregarDepartamento(Conexao conexao) throws Exception
   {
-    ResultSet dadosDepartamento = conexao.executarConsulta("select * from departamento where codigo = " + this.codigo)
+    ResultSet dadosDepartamento = conexao.executarConsulta("select * from departamento where codigo = "  +  this.codigo)
       if(dadosDepartamento.next()) {
         this.definirNomeDepartamento(dadosDepartamento.getString("departamento"))
           String responsavel = dadosDepartamento.getString("responsavel")
@@ -76,7 +76,7 @@ class Departamento {
 
   void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
   {
-    String query = "insert into departamento (departamento, responsavel) values ('"+ nomeDepartamento +"', "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") +")"
+    String query = "insert into departamento (departamento, responsavel) values ('" +  nomeDepartamento + "', "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + ")"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -91,7 +91,7 @@ class Departamento {
 
   void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
   {
-    String query = "update departamento set departamento = '"+ nomeDepartamento +"', responsavel = "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() +"'") + " where codigo = " + this.codigo
+    String query = "update departamento set departamento = '" +  nomeDepartamento + "', responsavel = "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + " where codigo = " + this.codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -106,7 +106,7 @@ class Departamento {
 
   void excluirDepartamento() throws Exception
   {
-    String query = "delete from departamento where codigo = " + this.codigo
+    String query = "delete from departamento where codigo = "  +  this.codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

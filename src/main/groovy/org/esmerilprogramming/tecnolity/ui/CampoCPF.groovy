@@ -67,12 +67,12 @@ import java.awt.*
     
      void keyReleased(final KeyEvent e) {
         this.s = KeyEvent.getKeyText(e.getKeyCode())
-        this.numeros = String.valueOf(this.numeros) + KeyEvent.getKeyText(e.getKeyCode())
+        this.numeros = String.valueOf(this.numeros)  +  KeyEvent.getKeyText(e.getKeyCode())
         this.setFormatarNumero(e)
     }
     
      void keyTyped(final KeyEvent e) {
-        this.s = '' + e.getKeyChar()
+        this.s = ''  +  e.getKeyChar()
     }
     
      void setFormatarNumero(final KeyEvent e) {
@@ -83,23 +83,23 @@ import java.awt.*
             if (this.numeros != null) {
                 if (this.i < 2) {
                     if (this.i < 1) {
-                        this.d = String.valueOf(this.d) + KeyEvent.getKeyText(e.getKeyCode())
+                        this.d = String.valueOf(this.d)  +  KeyEvent.getKeyText(e.getKeyCode())
                     }
                     if (this.i == 1) {
-                        this.f = String.valueOf(this.f) + KeyEvent.getKeyText(e.getKeyCode())
-                        this.g = String.valueOf(this.d) + this.f
+                        this.f = String.valueOf(this.f)  +  KeyEvent.getKeyText(e.getKeyCode())
+                        this.g = String.valueOf(this.d)  +  this.f
                     }
                     this.setText(this.numeros)
                     ++this.i
                     formatar.addElement(this.s)
                     this.b = KeyEvent.getKeyText(e.getKeyCode())
-                    this.c = String.valueOf(this.c) + KeyEvent.getKeyText(e.getKeyCode())
+                    this.c = String.valueOf(this.c)  +  KeyEvent.getKeyText(e.getKeyCode())
                 }
                 else if (this.i == 2) {
-                    this.setText(this.numeros = String.valueOf(this.d) + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                    this.setText(this.numeros = String.valueOf(this.d)  +  '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
                     this.b = KeyEvent.getKeyText(e.getKeyCode())
-                    this.h = String.valueOf(this.h) + this.b
-                    this.l = String.valueOf(this.l) + this.g + this.b
+                    this.h = String.valueOf(this.h)  +  this.b
+                    this.l = String.valueOf(this.l)  +  this.g + this.b
                     ++this.i
                 }
                 else if (this.i >= 3 && this.i < 5) {
@@ -108,70 +108,70 @@ import java.awt.*
                     this.j = 0
                     while (this.a < formatar.size()) {
                         if (this.a == this.j) {
-                            this.setText(this.numeros = String.valueOf(this.c) + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                            this.setText(this.numeros = String.valueOf(this.c)  +  '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
                             ++this.i
-                            this.c = String.valueOf(this.c) + this.b
-                            this.f = String.valueOf(this.f) + this.b
+                            this.c = String.valueOf(this.c)  +  this.b
+                            this.f = String.valueOf(this.f)  +  this.b
                             ++this.j
                             this.b = KeyEvent.getKeyText(e.getKeyCode())
-                            this.h = String.valueOf(this.h) + this.b
-                            this.k = String.valueOf(this.k) + this.b
+                            this.h = String.valueOf(this.h)  +  this.b
+                            this.k = String.valueOf(this.k)  +  this.b
                         }
                         ++this.a
                     }
                 }
                 else if (this.i == 5) {
-                    this.setText(this.numeros = String.valueOf(this.d) + '.' + this.f + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
-                    this.m = String.valueOf(this.m) + this.b
+                    this.setText(this.numeros = String.valueOf(this.d)  +  '.' + this.f + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                    this.m = String.valueOf(this.m)  +  this.b
                     this.b = KeyEvent.getKeyText(e.getKeyCode())
-                    this.k = String.valueOf(this.k) + this.b
-                    this.m = String.valueOf(this.m) + this.b
-                    this.o = String.valueOf(this.o) + this.b
+                    this.k = String.valueOf(this.k)  +  this.b
+                    this.m = String.valueOf(this.m)  +  this.b
+                    this.o = String.valueOf(this.o)  +  this.b
                     ++this.i
                 }
                 else if (this.i == 6) {
-                    this.setText(this.numeros = String.valueOf(this.g) + '.' + this.h + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                    this.setText(this.numeros = String.valueOf(this.g)  +  '.' + this.h + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
                     this.b = KeyEvent.getKeyText(e.getKeyCode())
-                    this.m = String.valueOf(this.m) + this.b
-                    this.o = String.valueOf(this.o) + this.b
-                    this.p = String.valueOf(this.p) + this.b
+                    this.m = String.valueOf(this.m)  +  this.b
+                    this.o = String.valueOf(this.o)  +  this.b
+                    this.p = String.valueOf(this.p)  +  this.b
                     ++this.i
                 }
                 else if (this.i == 7) {
-                    this.setText(this.numeros = String.valueOf(this.l) + '.' + this.k + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                    this.setText(this.numeros = String.valueOf(this.l)  +  '.' + this.k + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
                     this.b = KeyEvent.getKeyText(e.getKeyCode())
-                    this.o = String.valueOf(this.o) + this.b
-                    this.p = String.valueOf(this.p) + this.b
-                    this.q = String.valueOf(this.q) + this.b
+                    this.o = String.valueOf(this.o)  +  this.b
+                    this.p = String.valueOf(this.p)  +  this.b
+                    this.q = String.valueOf(this.q)  +  this.b
                     ++this.i
                 }
                 else if (this.i == 8) {
-                    this.setText(this.numeros = String.valueOf(this.d) + '.' + this.f + '.' + this.m + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                    this.setText(this.numeros = String.valueOf(this.d)  +  '.' + this.f + '.' + this.m + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
                     this.b = KeyEvent.getKeyText(e.getKeyCode())
-                    this.p = String.valueOf(this.p) + this.b
-                    this.q = String.valueOf(this.q) + this.b
-                    this.r = String.valueOf(this.r) + this.b
+                    this.p = String.valueOf(this.p)  +  this.b
+                    this.q = String.valueOf(this.q)  +  this.b
+                    this.r = String.valueOf(this.r)  +  this.b
                     ++this.i
                 }
                 else if (this.i == 9) {
-                    this.setText(this.numeros = String.valueOf(this.g) + '.' + this.h + '.' + this.o + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                    this.setText(this.numeros = String.valueOf(this.g)  +  '.' + this.h + '.' + this.o + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
                     this.b = KeyEvent.getKeyText(e.getKeyCode())
-                    this.q = String.valueOf(this.q) + this.b
-                    this.r = String.valueOf(this.r) + this.b
-                    this.t = String.valueOf(this.t) + this.b
+                    this.q = String.valueOf(this.q)  +  this.b
+                    this.r = String.valueOf(this.r)  +  this.b
+                    this.t = String.valueOf(this.t)  +  this.b
                     ++this.i
                 }
                 else if (this.i == 10) {
-                    this.setText(this.numeros = String.valueOf(this.l) + '.' + this.k + '.' + this.p + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
-                    this.b = String.valueOf(this.b) + KeyEvent.getKeyText(e.getKeyCode())
-                    this.r = String.valueOf(this.r) + this.b
-                    this.t = String.valueOf(this.t) + this.b
-                    this.u = String.valueOf(this.u) + this.b
+                    this.setText(this.numeros = String.valueOf(this.l)  +  '.' + this.k + '.' + this.p + '-' + this.b + KeyEvent.getKeyText(e.getKeyCode()))
+                    this.b = String.valueOf(this.b)  +  KeyEvent.getKeyText(e.getKeyCode())
+                    this.r = String.valueOf(this.r)  +  this.b
+                    this.t = String.valueOf(this.t)  +  this.b
+                    this.u = String.valueOf(this.u)  +  this.b
                     ++this.i
                 }
                 else if (this.i > 10) {
                     JOptionPane.showMessageDialog(null, execao)
-                    this.setText(this.numeros = String.valueOf(this.l) + '.' + this.k + '.' + this.p + '-' + this.b)
+                    this.setText(this.numeros = String.valueOf(this.l)  +  '.' + this.k + '.' + this.p + '-' + this.b)
                 }
             }
         }

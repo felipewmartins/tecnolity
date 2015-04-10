@@ -44,23 +44,23 @@ class Calendario extends GregorianCalendar {
     int minuto = 0
     int segundo = 0
     final int dia = Integer.parseInt(data.substring(0, data.indexOf('/')))
-    data = data.substring(data.indexOf('/') + 1)
+    data = data.substring(data.indexOf('/')  +  1)
     final int mes = Integer.parseInt(data.substring(0, data.indexOf('/')))
-    data = data.substring(data.indexOf('/') + 1)
+    data = data.substring(data.indexOf('/')  +  1)
     int ano
     if (data.indexOf(':') < 0 && data.indexOf(' ') < 0) {
       ano = Integer.parseInt(data)
     }
     else {
       ano = Integer.parseInt(data.substring(0, data.indexOf(' ')))
-      data = data.substring(data.indexOf(' ') + 1)
+      data = data.substring(data.indexOf(' ')  +  1)
       data = data.trim()
       if (data.indexOf(':') > 0) {
         hora = Integer.parseInt(data.substring(0, data.indexOf(':')))
-        data = data.substring(data.indexOf(':') + 1)
+        data = data.substring(data.indexOf(':')  +  1)
         if (data.indexOf(':') > 0) {
           minuto = Integer.parseInt(data.substring(0, data.indexOf(':')))
-          data = data.substring(data.indexOf(':') + 1)
+          data = data.substring(data.indexOf(':')  +  1)
           segundo = Integer.parseInt(data)
         }
         else if (!data.equals('')) {
@@ -146,7 +146,7 @@ class Calendario extends GregorianCalendar {
   }
 
    String getDataAtualPorExtenso() {
-    return '' + Calendario.nomeDiasSemana[this.get(7) - 1] + ', ' + this.get(5) + ' de ' + Calendario.nomeMeses[this.get(2)] + ' de ' + this.get(1)
+    return ''  +  Calendario.nomeDiasSemana[this.get(7) - 1] + ', ' + this.get(5) + ' de ' + Calendario.nomeMeses[this.get(2)] + ' de ' + this.get(1)
   }
 
    static boolean compararDataMaiorIgual(final Calendario dataMaior, final Calendario dataMenor) {
@@ -160,14 +160,14 @@ class Calendario extends GregorianCalendar {
     int aaaaMenor
     try {
       ddMaior = Integer.parseInt(dMaior.substring(0, dMaior.indexOf('-')))
-      dMaior = dMaior.substring(dMaior.indexOf('-') + 1)
+      dMaior = dMaior.substring(dMaior.indexOf('-')  +  1)
       mmMaior = Integer.parseInt(dMaior.substring(0, dMaior.indexOf('-')))
-      dMaior = dMaior.substring(dMaior.indexOf('-') + 1)
+      dMaior = dMaior.substring(dMaior.indexOf('-')  +  1)
       aaaaMaior = Integer.parseInt(dMaior)
       ddMenor = Integer.parseInt(dMenor.substring(0, dMenor.indexOf('-')))
-      dMenor = dMenor.substring(dMenor.indexOf('-') + 1)
+      dMenor = dMenor.substring(dMenor.indexOf('-')  +  1)
       mmMenor = Integer.parseInt(dMenor.substring(0, dMenor.indexOf('-')))
-      dMenor = dMenor.substring(dMenor.indexOf('-') + 1)
+      dMenor = dMenor.substring(dMenor.indexOf('-')  +  1)
       aaaaMenor = Integer.parseInt(dMenor)
     }
     catch (NumberFormatException e) {
@@ -399,9 +399,9 @@ class Calendario extends GregorianCalendar {
       int aaaa
       try {
         dd = Integer.parseInt(data.substring(0, data.indexOf(separador)))
-        data = data.substring(data.indexOf(separador) + 1)
+        data = data.substring(data.indexOf(separador)  +  1)
         mm = Integer.parseInt(data.substring(0, data.indexOf(separador)))
-        data = data.substring(data.indexOf(separador) + 1)
+        data = data.substring(data.indexOf(separador)  +  1)
         aaaa = Integer.parseInt(data)
       }
       catch (NumberFormatException e) {
@@ -439,10 +439,10 @@ class Calendario extends GregorianCalendar {
     int mmMenor
     try {
       hhMaior = Integer.parseInt(hMaior.substring(0, hMaior.indexOf(':')))
-      hMaior = hMaior.substring(hMaior.indexOf(':') + 1)
+      hMaior = hMaior.substring(hMaior.indexOf(':')  +  1)
       mmMaior = Integer.parseInt(hMaior)
       hhMenor = Integer.parseInt(hMenor.substring(0, hMenor.indexOf(':')))
-      hMenor = hMenor.substring(hMenor.indexOf(':') + 1)
+      hMenor = hMenor.substring(hMenor.indexOf(':')  +  1)
       mmMenor = Integer.parseInt(hMenor)
     }
     catch (NumberFormatException e) {
@@ -474,10 +474,10 @@ class Calendario extends GregorianCalendar {
     int mmMenor
     try {
       hhMaior = Integer.parseInt(hMaior.substring(0, hMaior.indexOf(':')))
-      hMaior = hMaior.substring(hMaior.indexOf(':') + 1)
+      hMaior = hMaior.substring(hMaior.indexOf(':')  +  1)
       mmMaior = Integer.parseInt(hMaior)
       hhMenor = Integer.parseInt(hMenor.substring(0, hMenor.indexOf(':')))
-      hMenor = hMenor.substring(hMenor.indexOf(':') + 1)
+      hMenor = hMenor.substring(hMenor.indexOf(':')  +  1)
       mmMenor = Integer.parseInt(hMenor)
     }
     catch (NumberFormatException e) {
@@ -503,16 +503,16 @@ class Calendario extends GregorianCalendar {
     if (hora >= 0L) {
       final long minuto = Math.round((numero - hora) * 100.0) * 60L / 100L
       if (hora < 10L) {
-        strHora = '0' + hora + ':'
+        strHora = '0'  +  hora + ':'
       }
       else {
-        strHora = String.valueOf(String.valueOf(hora)) + ':'
+        strHora = String.valueOf(String.valueOf(hora))  +  ':'
       }
       if (minuto < 10L) {
-        strHora = String.valueOf(strHora) + '0' + minuto
+        strHora = String.valueOf(strHora)  +  '0' + minuto
       }
       else {
-        strHora = String.valueOf(strHora) + minuto
+        strHora = String.valueOf(strHora)  +  minuto
       }
     }
     return strHora
@@ -528,11 +528,11 @@ class Calendario extends GregorianCalendar {
    static String inverterFormato(String data, final String separador) {
     if (!data.equals('') && !separador.equals('')) {
       final String dd = data.substring(0, data.indexOf(separador))
-      data = data.substring(data.indexOf(separador) + 1)
+      data = data.substring(data.indexOf(separador)  +  1)
       final String mm = data.substring(0, data.indexOf(separador))
       final String aaaa
-      data = (aaaa = data.substring(data.indexOf(separador) + 1))
-      return String.valueOf(mm) + separador + dd + separador + aaaa
+      data = (aaaa = data.substring(data.indexOf(separador)  +  1))
+      return String.valueOf(mm)  +  separador + dd + separador + aaaa
     }
     return ''
   }
@@ -554,10 +554,10 @@ class Calendario extends GregorianCalendar {
     String mm = '0'
     String ss = '0'
     hh = hora.substring(0, hora.indexOf(':'))
-    hora = hora.substring(hora.indexOf(':') + 1)
+    hora = hora.substring(hora.indexOf(':')  +  1)
     if (hora.indexOf(':') >= 0) {
       mm = hora.substring(0, hora.indexOf(':'))
-      hora = (ss = hora.substring(hora.indexOf(':') + 1))
+      hora = (ss = hora.substring(hora.indexOf(':')  +  1))
     }
     else {
       mm = hora

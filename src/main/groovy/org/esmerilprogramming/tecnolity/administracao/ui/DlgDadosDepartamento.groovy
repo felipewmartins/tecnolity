@@ -60,7 +60,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
       responsaveis = colaborador.carregarColaboradores(aplicacao.obterConexao())
       carregarResponsaveis()
     } catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
     adicionarComponente(pnlDados, cbxResponsavel, 3, 0, 1, 1)
@@ -121,7 +121,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
           departamento.alterarDepartamento(txtNomeDepartamento.getText(), (Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
           this.setVisible(false)
         } catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }
       } else {
@@ -129,7 +129,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
           departamento.cadastrarDepartamento(txtNomeDepartamento.getText(), (Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
           this.setVisible(false)
         } catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }
       }

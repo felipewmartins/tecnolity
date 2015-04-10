@@ -91,7 +91,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
       pnlSuporteCombo.add(btNovoVeiculo, BorderLayout.EAST)
       adicionarComponente(pnlAreaDados, pnlSuporteCombo, 1, 0, 1, 1)
 
-      txtValor = new JTextField(Numero.inverterSeparador(""+this.multa.obterValor()), 8)
+      txtValor = new JTextField(Numero.inverterSeparador("" + this.multa.obterValor()), 8)
       txtValor.addFocusListener(this)
       adicionarComponente(pnlAreaDados, txtValor, 1, 1, 1, 1)
 
@@ -237,7 +237,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             this.multa.cadastrarMulta()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         this.setVisible(false)
@@ -253,7 +253,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             this.multa.alterarMulta()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         this.setVisible(false)

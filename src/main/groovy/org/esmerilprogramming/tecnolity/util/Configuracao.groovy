@@ -131,7 +131,7 @@ class Configuracao extends Properties {
       store(saida, 'Configurações do Sistema')
       saida.close()
     } catch(e) {
-      println('Erro: ' + e.message)
+      println('Erro: '  +  e.message)
     }
   }
 }

@@ -140,7 +140,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
                 this.formaPagamento.definirFormaPagamento(this.txtFormaPagamento.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -149,7 +149,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
               this.formaPagamento.cadastrarFormaPagamento()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -162,7 +162,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
                 this.formaPagamento.definirFormaPagamento(this.txtFormaPagamento.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -171,7 +171,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
               this.formaPagamento.alterarFormaPagamento()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -179,7 +179,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
         }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

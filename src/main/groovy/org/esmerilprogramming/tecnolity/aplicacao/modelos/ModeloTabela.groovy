@@ -51,7 +51,7 @@ import org.esmerilprogramming.tecnolity.util.*
         {
           String[] dados = new String[numeroColunas]
           for(int i = 0 i < numeroColunas i++) {
-            dados[i] = resultado.getString(i + 1)
+            dados[i] = resultado.getString(i  +  1)
           }
           cache.addElement(dados)
         }

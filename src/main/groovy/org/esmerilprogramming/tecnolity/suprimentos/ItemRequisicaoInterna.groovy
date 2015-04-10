@@ -98,7 +98,7 @@ class ItemRequisicaoInterna
   {
     Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
-        String query = "insert into item_requisicao_interna (item, requisicao_interna, status, quantidade, destino) values ("+ this.item.obterCodigo() +", "+ this.requisicaoInterna.obterCodigo() +", 'EM', "+ this.quantidadeItem +", "+ this.destino.obterCodigo() +")"
+        String query = "insert into item_requisicao_interna (item, requisicao_interna, status, quantidade, destino) values (" +  this.item.obterCodigo() + ", "+ this.requisicaoInterna.obterCodigo() + ", 'EM', "+ this.quantidadeItem + ", "+ this.destino.obterCodigo() + ")"
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }
@@ -115,7 +115,7 @@ class ItemRequisicaoInterna
   {
     Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
-        String query = "update item_requisicao_interna set status = '"+ status +"', quantidade = '"+ this.quantidadeItem +"' where item = " + this.obterItem().obterCodigo() + " and requisicao_interna = " + this.obterRequisicaoInterna().obterCodigo()
+        String query = "update item_requisicao_interna set status = '" +  status + "', quantidade = '"+ this.quantidadeItem + "' where item = " + this.obterItem().obterCodigo() + " and requisicao_interna = " + this.obterRequisicaoInterna().obterCodigo()
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }

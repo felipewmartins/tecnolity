@@ -137,7 +137,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       pnlPermissoes.add(pnlParametro, BorderLayout.NORTH)
     }
     catch (Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE)
       e.printStackTrace()
     }
     pnlPermissoes.add(pnlParametro, BorderLayout.NORTH)
@@ -175,7 +175,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     JPanel pnlValoresPropriedades = new JPanel(gridbag)
     label = new JLabel('Cotação do Dólar (R$):')
     adicionarComponente(pnlValoresPropriedades, label, 0, 0, 1, 1)
-    txtCotacaoDolar = new JTextField(Numero.inverterSeparador(""+this.cambio.obterDolar()), 5)
+    txtCotacaoDolar = new JTextField(Numero.inverterSeparador("" + this.cambio.obterDolar()), 5)
     txtCotacaoDolar.setEnabled(false)
     adicionarComponente(pnlValoresPropriedades, txtCotacaoDolar, 0, 1, 1, 1)
     pnlPropriedades.add(pnlValoresPropriedades, BorderLayout.CENTER)
@@ -294,7 +294,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   private void atualizarTabelaPermissoes(Colaborador colaborador) {
     String query = "select nome_completo, i.interface, case permissao when 'E' then 'Escrita' when 'L' then 'Leitura' end as permissao from permissao p, usuario u, interface i where	p.usuario = u.usuario and "
     if(colaborador != null)
-      query += "u.usuario = '"+ colaborador.obterMatricula() +"' and "
+      query += "u.usuario = '"+ colaborador.obterMatricula() + "' and "
     query += "p.interface = i.identificador order by nome_completo asc"
 
     modeloTabelaPermissoes.definirConsulta(query)
@@ -359,7 +359,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     }
     catch(SQLException e) {
       lblStatusResultado.setForeground(Color.RED)
-      lblStatusResultado.setText("Erro Nº:" + e.getErrorCode() + " - " + e.getMessage())
+      lblStatusResultado.setText("Erro Nº:"  +  e.getErrorCode() + " - " + e.getMessage())
       e.printStackTrace()
     }
   }
@@ -405,7 +405,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
         this.cambio.definirDolar(Float.parseFloat(Numero.inverterSeparador(txtCotacaoDolar.getText())))
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
       try {
@@ -422,7 +422,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     }
 
     if(objeto == btDesfazer) {
-      txtCotacaoDolar.setText(Numero.inverterSeparador(""+this.cambio.obterDolar()))
+      txtCotacaoDolar.setText(Numero.inverterSeparador("" + this.cambio.obterDolar()))
     }
 
     if(objeto == btAlterarUsuario) {
@@ -448,7 +448,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
             colaborador = new Colaborador(usuarioColaborador)
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: "+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
           }
           colaborador.excluirColaborador()
@@ -496,7 +496,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
         atualizarTabelaDepartamento()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
     }
@@ -533,7 +533,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
         try {
           File arquivo = dlgSalvamento.getSelectedFile()
           FileWriter saida = new FileWriter(arquivo)
-          saida.write("---- CONSULTA -----\n\n" + txaComandos.getText())
+          saida.write("---- CONSULTA -----\n\n"  +  txaComandos.getText())
           saida.write("\n\n---- RESULTADO ----")
           int[] tabs = new int[tblResultado.getColumnCount()]
           for(int i = 0;i < tblResultado.getColumnCount();i++) {
@@ -551,13 +551,13 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
                 linha += "\t"
               }
             }
-            saida.write("\n" + linha)
+            saida.write("\n"  +  linha)
             linha = ""
           }
           saida.close()
         }
         catch(IOException e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível salvar o arquivo.\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível salvar o arquivo.\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }
       }

@@ -59,7 +59,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           dimencionar()
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
@@ -181,7 +181,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
 
       boolean localEntregaClienteExistente = false
       if(cliente != null) {
-        for(int i = 0;i < cliente.getLocaisEntrega().size();i++) {
+        for(int i = 0;i < cliente.getLocaisEntrega().size(); i++) {
           if(cliente.obterRazaoSocial().equals((LocalEntrega)cliente.getLocaisEntrega().get(i))) {
             localEntregaClienteExistente = true
               break
@@ -297,7 +297,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       cbxPais.addItem("Selecione...")
       String siglaPais
       int indicePais = 0
-      for(int i = 1;i < paises.size();i++) {
+      for(int i = 1;i < paises.size(); i++) {
         if(cliente != null) {
           siglaPais = ((Pais)paises.get(i)).getSigla()
             if(cliente.obterPais().getSigla().equals(siglaPais)) {
@@ -315,7 +315,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       cbxEstado.addItem("Selecione...")
       String siglaEstado
       int indiceEstado = 0
-      for(int i = 1;i < estados.size();i++) {
+      for(int i = 1;i < estados.size(); i++) {
         if(cliente != null) {
           siglaEstado = ((Estado)estados.get(i)).getSigla()
             if(cliente.obterEstado().getSigla().equals(siglaEstado)) {
@@ -358,7 +358,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         modeloTblLocaisEntrega.setTamanhoColunas(tblLocaisEntrega, tamanhoColunas)
     }
     catch(Exception ex) {
-      JOptionPane.showMessageDialog(this.aplicacao, "Não foi possível carregar os locais de entrega. " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this.aplicacao, "Não foi possível carregar os locais de entrega. "  +  ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         ex.printStackTrace()
     }
   }
@@ -453,7 +453,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           btExcluirLocal.setEnabled(true)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -502,7 +502,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
             btProximo.setEnabled(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "+ e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: " +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -533,7 +533,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
               this.setVisible(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

@@ -306,7 +306,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
     if(objeto == cbxVeiculoDespesas) {
       Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoDespesas.getSelectedIndex())
-        String sql = "select veiculo as 'veículo', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = '" + ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' order by datahora desc"
+        String sql = "select veiculo as 'veículo', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' order by datahora desc"
         modeloTabelaDespesas.definirConsulta(sql)
 
         this.tblDespesas = new JTable(modeloTabelaDespesas)
@@ -317,7 +317,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
     if(objeto == cbxVeiculoMultas) {
       Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoMultas.getSelectedIndex())
-        String sql = "select multa.codigo, multa.placa, motivo, valor, motorista from multa, motorista where multa.placa = '" + ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' and multa.responsabilidade = motorista.codigo order by motorista asc"
+        String sql = "select multa.codigo, multa.placa, motivo, valor, motorista from multa, motorista where multa.placa = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' and multa.responsabilidade = motorista.codigo order by motorista asc"
         modeloTabelaMultas.definirConsulta(sql)
 
         this.tblMultas = new JTable(modeloTabelaMultas)
@@ -341,7 +341,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             dlgDadosVeiculo.setVisible(true)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         }
       }
       else
@@ -474,7 +474,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
     if(objeto == btAtualizarDespesa) {
       if(((Veiculo)veiculos.get(this.cbxVeiculoDespesas.getSelectedIndex()))!=null) {
         Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoDespesas.getSelectedIndex())
-          String sql = "select veiculo as 'placa', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = '" + ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' order by datahora desc"
+          String sql = "select veiculo as 'placa', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' order by datahora desc"
           modeloTabelaDespesas.definirConsulta(sql)
           tblDespesas.setModel(modeloTabelaDespesas)
           tblDespesas.updateUI()
@@ -534,7 +534,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
     if(objeto == btAtualizarMulta) {
       if(((Veiculo)veiculos.get(this.cbxVeiculoMultas.getSelectedIndex()))!=null) {
         Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoMultas.getSelectedIndex())
-          String sql = "select multa.codigo, multa.placa, motivo, valor, motorista.motorista from multa, motorista where multa.placa = '" + ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' and multa.responsabilidade = motorista.codigo order by motorista.motorista asc"
+          String sql = "select multa.codigo, multa.placa, motivo, valor, motorista.motorista from multa, motorista where multa.placa = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' and multa.responsabilidade = motorista.codigo order by motorista.motorista asc"
           modeloTabelaMultas.definirConsulta(sql)
           tblMultas.setModel(modeloTabelaMultas)
           tblMultas.updateUI()

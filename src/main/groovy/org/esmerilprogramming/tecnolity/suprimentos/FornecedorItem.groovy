@@ -113,7 +113,7 @@ class FornecedorItem {
 
   void alterarValorItem() throws Exception
   {
-    String query = "update fornecedor_item set valor_item = "+ this.valorItem +" where fornecedor = "+ this.fornecedor.obterCodigo() +" and item = " + this.item.obterCodigo()
+    String query = "update fornecedor_item set valor_item = " +  this.valorItem + " where fornecedor = "+ this.fornecedor.obterCodigo() + " and item = " + this.item.obterCodigo()
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

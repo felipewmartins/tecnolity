@@ -62,7 +62,7 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
       label = new JLabel("Identificador")
       adicionarComponente(pnlAreaDados, label, 2, 0, 1, 1)
       try {
-        txtIdentificador = new JTextField("" + tipoProducao.obterUltimoIdentificador(aplicacao.obterConexao()), 10)
+        txtIdentificador = new JTextField(""  +  tipoProducao.obterUltimoIdentificador(aplicacao.obterConexao()), 10)
       }
     catch(Exception e) {
       e.printStackTrace()

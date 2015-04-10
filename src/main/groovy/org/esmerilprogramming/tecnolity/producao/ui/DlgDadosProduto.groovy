@@ -75,7 +75,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
         this.produto.carregarProduto(aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os dados do Produto.\n\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os dados do Produto.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     montarInterface()
@@ -199,7 +199,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       if(this.produto != null) {
         try
         {
-          label = new JLabel("Valor atualizado em: " + produto.getDataUltimaAlteracaoValor(this.aplicacao.obterConexao()))
+          label = new JLabel("Valor atualizado em: "  +  produto.getDataUltimaAlteracaoValor(this.aplicacao.obterConexao()))
             label.setFont(new Font("Arial", Font.PLAIN, 10))
             adicionarComponente(pnlDadosProduto, label, 6, 2, 2, 1)
         }
@@ -536,7 +536,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             carregarTiposProducao()
         }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os tipos de produção.\n\n Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os tipos de produção.\n\n Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -586,7 +586,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               indiceTabela++
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -605,7 +605,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               indiceTabela++
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -637,7 +637,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           inicializarFormMateriaPrima()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -653,7 +653,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           btAlterarMateriaPrima.setEnabled(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -686,9 +686,9 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
             if(linhaSelecionada < (indiceTabela - 1)) {
               for(int i = linhaSelecionada;i < (indiceTabela - 1);i++) {
-                tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i+1, 0), i, 0)
-                  tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i+1, 1), i, 1)
-                  tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i+1, 2), i, 2)
+                tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 0), i, 0)
+                  tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 1), i, 1)
+                  tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 2), i, 2)
               }
               tblMateriaPrima.setValueAt("", indiceTabela -1, 0)
                 tblMateriaPrima.setValueAt("", indiceTabela -1, 1)
@@ -740,7 +740,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           this.setVisible(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -778,7 +778,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             }
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível cadastrar o Produto.\n\n Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível cadastrar o Produto.\n\n Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
           break
@@ -789,7 +789,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
                 this.setVisible(false)
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             break
@@ -806,7 +806,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           impressora.imprimir()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

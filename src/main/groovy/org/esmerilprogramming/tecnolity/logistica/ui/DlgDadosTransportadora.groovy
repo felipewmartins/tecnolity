@@ -132,7 +132,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               transportadora.definirTransportadora(this.txtTransportadora.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -141,7 +141,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               this.transportadora.cadastrarTransportadora()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -154,7 +154,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
                 transportadora.definirTransportadora(this.txtTransportadora.getText())
             }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -163,7 +163,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               this.transportadora.alterarTransportadora()
             }
             catch(Exception e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -171,7 +171,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
         }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

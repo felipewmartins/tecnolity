@@ -33,11 +33,11 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
     Conexao conexao = new Conexao('T')
     String erro = ''
     if (conexao.abrirConexao()) {
-      String query = 'Select sigla_pais from pais where sigla_pais = ''+ getSigla() +'''
+      String query = 'Select sigla_pais from pais where sigla_pais = '' +  getSigla() +'''
       try {
         ResultSet dadosPais = conexao.executarConsulta(query)
         if(!dadosPais.next()) {
-          query = 'insert into pais (sigla_pais, pais) values (''+ getSigla() +'', ''+ getNome() +'')'
+          query = 'insert into pais (sigla_pais, pais) values ('' +  getSigla() +'', ''+ getNome() +'')'
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
         }

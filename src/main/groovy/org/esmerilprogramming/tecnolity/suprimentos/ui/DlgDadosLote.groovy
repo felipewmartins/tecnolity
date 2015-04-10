@@ -86,11 +86,11 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
       carregarLocalizacoes()
       adicionarComponente(pnlAreaDados, cbxLocalizacao, 3, 0, 1, 1)
 
-      txtQuantidade = new JTextField('' + Numero.inverterSeparador(itemRequisicao.getQuantidadeItem()), 8)
+      txtQuantidade = new JTextField(''  +  Numero.inverterSeparador(itemRequisicao.getQuantidadeItem()), 8)
       txtQuantidade.setEditable(false)
       adicionarComponente(pnlAreaDados, txtQuantidade, 3, 1, 1, 1)
 
-      txtQuantidadeRecebida = new JTextField('' + Numero.inverterSeparador(itemRequisicao.getQuantidadePendente()), 8)
+      txtQuantidadeRecebida = new JTextField(''  +  Numero.inverterSeparador(itemRequisicao.getQuantidadePendente()), 8)
       adicionarComponente(pnlAreaDados, txtQuantidadeRecebida, 3, 2, 1, 1)
 
       label = new JLabel('Descrição')
@@ -166,13 +166,13 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
                   lote.definirDataValidade(txtDataValidade.getText())
                   lote.definirLocalizacao((Categoria)localizacoes.get(cbxLocalizacao.getSelectedIndex()))
                   lote.definirQuantidade(Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
-                  itemRequisicao.setQuantidadeAbastecida(itemRequisicao.getQuantidadeAbastecida() + Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
+                  itemRequisicao.setQuantidadeAbastecida(itemRequisicao.getQuantidadeAbastecida()  +  Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
                   movimentacaoItem.definirQuantidadeItem(Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
                   lote.definirDescricao(txtDescricao.getText())
                   this.itemRequisicao.obterItem().definirLote(this.lote)
               }
               catch(Exception e) {
-                JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+                JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                   e.printStackTrace()
               }
               this.setVisible(false)

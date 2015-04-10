@@ -48,7 +48,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     try {
       colaborador = new Colaborador(usuario, aplicacao.conexao)
     } catch(e) {
-      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
     String tituloJanela = ''
@@ -273,7 +273,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
           }
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
@@ -308,7 +308,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
         departamentos = new Departamento().carregarDepartamentos(aplicacao.conexao)
         carregarDepartamentos(cbxDepartamento)
       } catch(e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
     }
@@ -343,7 +343,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
         }
         setVisible(false)
       } catch(e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
     }

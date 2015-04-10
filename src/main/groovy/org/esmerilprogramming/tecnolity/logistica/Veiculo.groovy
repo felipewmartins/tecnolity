@@ -245,7 +245,7 @@ class Veiculo {
   {
     ResultSet dadosVeiculo
 
-      dadosVeiculo = conexao.executarConsulta("select t.codigo as codigo_transportadora, t.transportadora, v.chassi, v.renavam, v.marca, v.modelo, v.ano, v.cor, v.numero_eixo, v.cubagem, v.tara, v.peso_bruto, v.combustivel, v.volume_combustivel, v.media_consumo from transportadora t, veiculo v where v.transportadora = t.codigo and placa = '"+ this.placa +"'")
+      dadosVeiculo = conexao.executarConsulta("select t.codigo as codigo_transportadora, t.transportadora, v.chassi, v.renavam, v.marca, v.modelo, v.ano, v.cor, v.numero_eixo, v.cubagem, v.tara, v.peso_bruto, v.combustivel, v.volume_combustivel, v.media_consumo from transportadora t, veiculo v where v.transportadora = t.codigo and placa = '" +  this.placa + "'")
 
       if(dadosVeiculo.next()) {
         this.definirTransportadora(new Transportadora(dadosVeiculo.getInt("codigo_transportadora"), dadosVeiculo.getString("transportadora")))
@@ -281,12 +281,12 @@ class Veiculo {
   void cadastrarDadosVeiculo() throws Exception
   {
     String query = "insert into veiculo (placa, transportadora, chassi, renavam, marca, modelo, ano, cor, numero_eixo, cubagem, tara, peso_bruto, combustivel, volume_combustivel, media_consumo) values "
-      query += "('"+ this.placa +"', "+ this.transportadora.obterCodigo() +", '"+ this.chassi +"', '"+ this.renavam +"', '"+ this.marca +"', '"+ this.modelo +"', '"+ this.ano +"', '"+ this.cor +"', "+ this.numeroEixo +", "+ this.cubagem +", "+ this.tara +", "+ this.pesoBruto +", '"+ this.combustivel +"', "+ this.volumeCombustivel +", "+ this.mediaConsumo +") "
+      query += "('"+ this.placa + "', "+ this.transportadora.obterCodigo() + ", '"+ this.chassi + "', '"+ this.renavam + "', '"+ this.marca + "', '"+ this.modelo + "', '"+ this.ano + "', '"+ this.cor + "', "+ this.numeroEixo + ", "+ this.cubagem + ", "+ this.tara + ", "+ this.pesoBruto + ", '"+ this.combustivel + "', "+ this.volumeCombustivel + ", "+ this.mediaConsumo + ") "
       Conexao conexao = new Conexao('T')
       boolean existente = false
 
       if (conexao.abrirConexao()) {
-        ResultSet veiculo = conexao.executarConsulta("select * from veiculo where placa = '"+ this.placa +"' ")
+        ResultSet veiculo = conexao.executarConsulta("select * from veiculo where placa = '" +  this.placa + "' ")
           if(veiculo.next()) {
             existente = true
               Exception e = new Exception("Já existe um veículo com a placa informada. Não foi possível realizar o cadastro.")
@@ -307,7 +307,7 @@ class Veiculo {
 
   void alterarDadosVeiculo() throws Exception
   {
-    String query = "update veiculo set transportadora = "+ this.transportadora.obterCodigo() +", chassi = '"+ this.chassi +"', renavam = '"+ this.renavam +"', marca = '"+ this.marca +"', modelo = '"+ this.modelo +"', ano = '"+ this.ano +"', cor = '"+ this.cor +"', numero_eixo = "+ this.numeroEixo +", cubagem = "+ this.cubagem +", tara = "+ this.tara +", peso_bruto = "+ this.pesoBruto +", combustivel = '"+ this.combustivel +"', volume_combustivel = "+ this.volumeCombustivel +", media_consumo = "+ this.mediaConsumo +" where placa =  '"+ this.placa +"' "
+    String query = "update veiculo set transportadora = " +  this.transportadora.obterCodigo() + ", chassi = '"+ this.chassi + "', renavam = '"+ this.renavam + "', marca = '"+ this.marca + "', modelo = '"+ this.modelo + "', ano = '"+ this.ano + "', cor = '"+ this.cor + "', numero_eixo = "+ this.numeroEixo + ", cubagem = "+ this.cubagem + ", tara = "+ this.tara + ", peso_bruto = "+ this.pesoBruto + ", combustivel = '"+ this.combustivel + "', volume_combustivel = "+ this.volumeCombustivel + ", media_consumo = "+ this.mediaConsumo + " where placa =  '"+ this.placa + "' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -322,7 +322,7 @@ class Veiculo {
 
   void excluirVeiculo() throws Exception
   {
-    String queryVeiculo = "delete from veiculo where placa = '"+ this.placa +"' "
+    String queryVeiculo = "delete from veiculo where placa = '" +  this.placa + "' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(queryVeiculo)
@@ -336,6 +336,6 @@ class Veiculo {
   }
 
   String toString() {
-    return this.placa + " " + modelo
+    return this.placa  +  " " + modelo
   }
 }

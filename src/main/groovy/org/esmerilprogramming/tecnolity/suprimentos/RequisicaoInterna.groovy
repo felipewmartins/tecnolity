@@ -236,9 +236,9 @@ class RequisicaoInterna
   Vector obterPedidosCliente(Conexao conexao) throws Exception
   {
     Vector pedidosRequisicao = new Vector()
-      String query = "select distinct p.codigo, p.ordem_compra " +
-      "from pedido_cliente p, pedido_requisicao_interna pri " +
-      "where p.codigo = pri.pedido and pri.requisicao_interna = " + this.codigo
+      String query = "select distinct p.codigo, p.ordem_compra "  + 
+      "from pedido_cliente p, pedido_requisicao_interna pri "  + 
+      "where p.codigo = pri.pedido and pri.requisicao_interna = "  +  this.codigo
       ResultSet rsPedidosRequisicao = conexao.executarConsulta(query)
       while(rsPedidosRequisicao.next()) {
         pedidosRequisicao.addElement(new Pedido(rsPedidosRequisicao.getInt("codigo"), rsPedidosRequisicao.getString("ordem_compra")))
@@ -277,9 +277,9 @@ class RequisicaoInterna
   void carregarRequisicaoInterna(Conexao conexao) throws Exception
   {
     ResultSet dadosRequisicaoInterna
-      String query = "select ri.tipo_solicitacao, ri.datahora_limite_entrega, ri.datahora, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, ri.justificativa, ri.responsavel_autorizacao, ri.status " +
-      "from requisicao_interna ri, departamento d, usuario u " +
-      "where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.codigo = " + this.codigo
+      String query = "select ri.tipo_solicitacao, ri.datahora_limite_entrega, ri.datahora, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, ri.justificativa, ri.responsavel_autorizacao, ri.status "  + 
+      "from requisicao_interna ri, departamento d, usuario u "  + 
+      "where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.codigo = "  +  this.codigo
       dadosRequisicaoInterna = conexao.executarConsulta(query)
       if(dadosRequisicaoInterna.next()) {
         this.definirTipoSolicitacao(dadosRequisicaoInterna.getString("tipo_solicitacao"))
@@ -309,7 +309,7 @@ class RequisicaoInterna
     Vector requisicoesInternas = new Vector()
       ResultSet dadosRequisicaoInterna
       requisicoesInternas.addElement("Selecione...")
-      String query = "select ri.codigo, ri.datahora, ri.datahora_limite_entrega, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, pc.ordem_compra, ri.justificativa, ri.status from requisicao_interna ri, departamento d, usuario u, pedido_cliente pc where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.tipo_solicitacao = '"+ tipoSolicitacao +"' and (ri.status = '"+ STATUS_EMITIDO +"' or ri.status = '"+ STATUS_PENDENTE +"') and ri.pedido_cliente *= pc.codigo order by datahora_limite_entrega desc"
+      String query = "select ri.codigo, ri.datahora, ri.datahora_limite_entrega, d.codigo as codigo_departamento, d.departamento, u.usuario, u.nome_completo, ri.pedido_cliente, pc.ordem_compra, ri.justificativa, ri.status from requisicao_interna ri, departamento d, usuario u, pedido_cliente pc where ri.departamento = d.codigo and ri.solicitante = u.usuario and ri.tipo_solicitacao = '" +  tipoSolicitacao + "' and (ri.status = '"+ STATUS_EMITIDO + "' or ri.status = '"+ STATUS_PENDENTE + "') and ri.pedido_cliente *= pc.codigo order by datahora_limite_entrega desc"
       dadosRequisicaoInterna = conexao.executarConsulta(query)
       while(dadosRequisicaoInterna.next()) {
         requisicoesInternas.addElement(new RequisicaoInterna(dadosRequisicaoInterna.getInt("codigo"),
@@ -329,12 +329,12 @@ class RequisicaoInterna
   {
     itensRequisicaoInterna = new Vector()
       ResultSet rsItensRequisicaoInterna
-      String query = "select i.codigo as codigo_item, i.descricao as descricao_item, iri.requisicao_interna, iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status " +
-      "from item_requisicao_interna iri, item i, departamento d " +
-      "where i.codigo = iri.item and " +
-      "iri.destino = d.codigo and " +
-      "(iri.status = '"+ STATUS_EMITIDO +"' or iri.status = '"+ STATUS_PENDENTE +"') and " +
-      "iri.requisicao_interna = " + this.obterCodigo()
+      String query = "select i.codigo as codigo_item, i.descricao as descricao_item, iri.requisicao_interna, iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status "  + 
+      "from item_requisicao_interna iri, item i, departamento d "  + 
+      "where i.codigo = iri.item and "  + 
+      "iri.destino = d.codigo and "  + 
+      "(iri.status = '" +  STATUS_EMITIDO + "' or iri.status = '"+ STATUS_PENDENTE + "') and " +
+      "iri.requisicao_interna = "  +  this.obterCodigo()
       rsItensRequisicaoInterna = conexao.executarConsulta(query)
       while(rsItensRequisicaoInterna.next()) {
         itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(rsItensRequisicaoInterna.getInt("codigo_item"), rsItensRequisicaoInterna.getString("descricao_item")),
@@ -352,12 +352,12 @@ class RequisicaoInterna
   {
     itensRequisicaoInterna = new Vector()
       ResultSet rsItensRequisicaoInterna
-      String query = "select i.codigo as codigo_item, i.descricao as descricao_item, iri.requisicao_interna, iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status " +
-      "from item_requisicao_interna iri, item i, departamento d " +
-      "where i.codigo = iri.item and " +
-      "iri.destino = d.codigo and " +
-      "(iri.status = '"+ STATUS_EMITIDO +"' or iri.status = '"+ STATUS_PENDENTE +"' or iri.status = '"+ STATUS_CONFIRMADO +"' or iri.status = '"+ STATUS_CANCELADO +"') and " +
-      "iri.requisicao_interna = " + this.obterCodigo()
+      String query = "select i.codigo as codigo_item, i.descricao as descricao_item, iri.requisicao_interna, iri.quantidade, d.codigo as codigo_departamento, d.departamento, iri.status "  + 
+      "from item_requisicao_interna iri, item i, departamento d "  + 
+      "where i.codigo = iri.item and "  + 
+      "iri.destino = d.codigo and "  + 
+      "(iri.status = '" +  STATUS_EMITIDO + "' or iri.status = '"+ STATUS_PENDENTE + "' or iri.status = '"+ STATUS_CONFIRMADO + "' or iri.status = '"+ STATUS_CANCELADO + "') and " +
+      "iri.requisicao_interna = "  +  this.obterCodigo()
 
       rsItensRequisicaoInterna = conexao.executarConsulta(query)
       while(rsItensRequisicaoInterna.next()) {
@@ -372,22 +372,22 @@ class RequisicaoInterna
 
   void cadastrarRequisicaoInterna() throws Exception
   {
-    String query = "insert into requisicao_interna (tipo_solicitacao, datahora_limite_entrega, departamento, solicitante, pedido_cliente, justificativa, status) values ('"+ this.tipoSolicitacao +"', "
+    String query = "insert into requisicao_interna (tipo_solicitacao, datahora_limite_entrega, departamento, solicitante, pedido_cliente, justificativa, status) values ('" +  this.tipoSolicitacao + "', "
       if(!this.dataLimiteEntrega.equals(""))
-        query += "'"+ Calendario.inverterFormato(this.dataLimiteEntrega, "/") +"', "
+        query += "'"+ Calendario.inverterFormato(this.dataLimiteEntrega, "/") + "', "
       else
         query += "'', "
-          query += this.departamento.obterCodigo() +", '"+ this.solicitante.obterMatricula() +"', "
+          query += this.departamento.obterCodigo() + ", '"+ this.solicitante.obterMatricula() + "', "
           if(this.pedidoCliente != null)
-            query += this.pedidoCliente.obterCodigo() +", "
+            query += this.pedidoCliente.obterCodigo() + ", "
           else
             query += "null, "
-              query += "'"+ this.justificativa +"', '"+ STATUS_EMITIDO +"') "
+              query += "'"+ this.justificativa + "', '"+ STATUS_EMITIDO + "') "
 
               Conexao conexao = new Conexao('T')
               if (conexao.abrirConexao()) {
                 conexao.executarAtualizacao(query)
-                  ResultSet codigoRequisicao = conexao.executarConsulta("select max(codigo) as codigo from requisicao_interna where solicitante = '"+ this.solicitante.obterMatricula() +"'")
+                  ResultSet codigoRequisicao = conexao.executarConsulta("select max(codigo) as codigo from requisicao_interna where solicitante = '" +  this.solicitante.obterMatricula() + "'")
                   if (codigoRequisicao.next())
                     definirCodigo(codigoRequisicao.getInt("codigo"))
                       conexao.fecharConexao()
@@ -412,7 +412,7 @@ class RequisicaoInterna
             irAtual = (ItemRequisicaoInterna)this.itensRequisicaoInterna.get(i)
               ((ItemRequisicaoInterna)itensRequisicaoInterna.get(i)).registrarItemRequisicaoInterna()
               for(int j = 0;j < pedidos.size();j++) {
-                query = "insert into pedido_requisicao_interna (pedido, item, requisicao_interna) values ("+ ((Pedido)pedidos.get(j)).obterCodigo() +", "+ irAtual.obterItem().obterCodigo() +", "+ this.obterCodigo() +")"
+                query = "insert into pedido_requisicao_interna (pedido, item, requisicao_interna) values (" +  ((Pedido)pedidos.get(j)).obterCodigo() + ", "+ irAtual.obterItem().obterCodigo() + ", "+ this.obterCodigo() + ")"
                   conexao.executarAtualizacao(query)
               }
           }
@@ -423,7 +423,7 @@ class RequisicaoInterna
 
   void cancelarRequisicaoInterna() throws Exception
   {
-    String queryCancelarRequisicaoInterna = "update requisicao_interna set status = 'CL' where codigo = "+ this.codigo +" "
+    String queryCancelarRequisicaoInterna = "update requisicao_interna set status = 'CL' where codigo = " +  this.codigo + " "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(queryCancelarRequisicaoInterna)
@@ -438,7 +438,7 @@ class RequisicaoInterna
 
   void mudarStatusRequisicaoInterna(String status) throws Exception
   {
-    String queryCancelarRequisicaoInterna = "update requisicao_interna set status = '"+ status +"' where codigo = "+ this.codigo +" "
+    String queryCancelarRequisicaoInterna = "update requisicao_interna set status = '" +  status + "' where codigo = "+ this.codigo + " "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(queryCancelarRequisicaoInterna)
@@ -470,7 +470,7 @@ class RequisicaoInterna
       if(this.status.equals(STATUS_CONFIRMADO)) {
         Calendario calendario = new Calendario()
           if(conexao.abrirConexao()) {
-            String query = "update requisicao_interna set data_entrega = '"+ calendario.dataHoje("MM/dd/yyyy HH:mm:ss") +"', status = '"+ STATUS_CONFIRMADO +"' where codigo = " + this.obterCodigo()
+            String query = "update requisicao_interna set data_entrega = '" +  calendario.dataHoje("MM/dd/yyyy HH:mm:ss") + "', status = '"+ STATUS_CONFIRMADO + "' where codigo = " + this.obterCodigo()
               conexao.executarAtualizacao(query)
               conexao.fecharConexao()
           }
@@ -483,7 +483,7 @@ class RequisicaoInterna
       else
       {
         if(conexao.abrirConexao()) {
-          String query = "update requisicao_interna set status = '"+ this.status +"' where codigo = " + this.obterCodigo()
+          String query = "update requisicao_interna set status = '" +  this.status + "' where codigo = " + this.obterCodigo()
             conexao.executarAtualizacao(query)
             conexao.fecharConexao()
         }
@@ -497,6 +497,6 @@ class RequisicaoInterna
   }
 
   String toString() {
-    return "" + this.codigo + " - " + this.departamento.obterNomeDepartamento()
+    return ""  +  this.codigo + " - " + this.departamento.obterNomeDepartamento()
   }
 }

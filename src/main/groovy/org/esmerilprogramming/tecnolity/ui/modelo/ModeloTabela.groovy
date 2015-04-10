@@ -62,8 +62,8 @@ class ModeloTabela extends AbstractTableModel {
       }
       for (int i = posLinha;  i < this.numeroRegistros - 1;  ++i) {
         for (int j = 0 ; j < this.getColumnCount() ; ++j) {
-          this.setValueAt(this.getValueAt(i + 1, j), i, j)
-            this.setValueAt("", i + 1, j)
+          this.setValueAt(this.getValueAt(i  +  1, j), i, j)
+            this.setValueAt("", i  +  1, j)
         }
       }
       --this.numeroRegistros

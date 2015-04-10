@@ -69,7 +69,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         item = new Item(codigo, aplicacao.obterConexao())
       }
     catch(Exception e) {
-      JOptionPane.showMessageDialog(aplicacao, 'Erro: '+e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
@@ -151,7 +151,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       pnlSuporteCombo.add(btNovaCategoria, BorderLayout.EAST)
       adicionarComponente(pnlDadosItem, pnlSuporteCombo, 3, 0, 2, 1)
 
-      txtTemperatura = new JTextField(''+Numero.inverterSeparador(''+this.item.obterTemperatura()), 8)
+      txtTemperatura = new JTextField('' + Numero.inverterSeparador(''+this.item.obterTemperatura()), 8)
       txtTemperatura.addFocusListener(this)
       adicionarComponente(pnlDadosItem, txtTemperatura, 3, 2, 1, 1)
       chbReservavel = new JCheckBox('Independente')
@@ -180,23 +180,23 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
                   grupo.add(rdbSituacaoDesativa)
                   pnlSituacao.add(rdbSituacaoDesativa)
                   adicionarComponente(pnlDadosItem, pnlSituacao, 4, 3, 1, 2)
-                  txtQuantidade = new JTextField(''+Numero.inverterSeparador(''+this.item.obterQuantidade()), 10)
+                  txtQuantidade = new JTextField('' + Numero.inverterSeparador(''+this.item.obterQuantidade()), 10)
                   txtQuantidade.addFocusListener(this)
                   adicionarComponente(pnlDadosItem, txtQuantidade, 5, 0, 1, 1)
-                  txtQuantMinima = new JTextField(''+Numero.inverterSeparador(''+this.item.obterQuantidadeMinima()), 10)
+                  txtQuantMinima = new JTextField('' + Numero.inverterSeparador(''+this.item.obterQuantidadeMinima()), 10)
                   txtQuantMinima.addFocusListener(this)
                   adicionarComponente(pnlDadosItem, txtQuantMinima, 5, 1, 1, 1)
-                  txtQuantMaxima = new JTextField(''+Numero.inverterSeparador(''+this.item.obterQuantidadeMaxima()), 10)
+                  txtQuantMaxima = new JTextField('' + Numero.inverterSeparador(''+this.item.obterQuantidadeMaxima()), 10)
                   txtQuantMaxima.addFocusListener(this)
                   adicionarComponente(pnlDadosItem, txtQuantMaxima, 5, 2, 1, 1)
                   label = new JLabel('IPI (%)')
                   adicionarComponente(pnlDadosItem, label, 6, 0, 1, 1)
                   label = new JLabel('Perda (%)')
                   adicionarComponente(pnlDadosItem, label, 6, 1, 1, 1)
-                  txtPercentualIPI = new JTextField(''+Numero.inverterSeparador(''+this.item.obterPercentualIPI()), 3)
+                  txtPercentualIPI = new JTextField('' + Numero.inverterSeparador(''+this.item.obterPercentualIPI()), 3)
                   txtPercentualIPI.addFocusListener(this)
                   adicionarComponente(pnlDadosItem, txtPercentualIPI, 7, 0, 1, 1)
-                  txtPercentualPerda = new JTextField(''+ this.item.obterPercentualPerda(), 3)
+                  txtPercentualPerda = new JTextField('' +  this.item.obterPercentualPerda(), 3)
                   adicionarComponente(pnlDadosItem, txtPercentualPerda, 7, 1, 1, 1)
                   label = new JLabel('Armazenamento')
                   adicionarComponente(pnlDadosItem, label, 8, 0, 2, 1)
@@ -410,7 +410,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
             fornecedores.addElement(new Fornecedor(dadosFornecedor.getInt('codigo'), dadosFornecedor.getString('razao_social'), dadosFornecedor.getString('cnpj')))
               cnpj = (((Fornecedor)fornecedores.get(i)).obterCnpj()).trim()
               razaoSocial = (((Fornecedor)fornecedores.get(i)).obterRazaoSocial()).trim()
-              comboBox.addItem(cnpj + ' - ' + razaoSocial.substring(0, ((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?'':' . . .'))
+              comboBox.addItem(cnpj  +  ' - ' + razaoSocial.substring(0, ((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?'':' . . .'))
               i++
           }
         dadosFornecedor.close()
@@ -429,7 +429,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         if(item.obterCodigo() == 0)
           dadosDepartamento = conexao.executarConsulta('select codigo, departamento from departamento order by departamento asc')
         else
-          dadosDepartamento = conexao.executarConsulta('select distinct departamento.codigo, departamento.departamento from departamento, departamento_item where departamento.codigo not in (select departamento from departamento_item where item = '+ this.item.obterCodigo() +') and departamento_item.item = '+ this.item.obterCodigo() +' order by departamento.departamento asc')
+          dadosDepartamento = conexao.executarConsulta('select distinct departamento.codigo, departamento.departamento from departamento, departamento_item where departamento.codigo not in (select departamento from departamento_item where item = ' +  this.item.obterCodigo() +') and departamento_item.item = '+ this.item.obterCodigo() +' order by departamento.departamento asc')
             departamentos = new Vector()
             int i = 0
             list.setModel(modeloLista)
@@ -451,7 +451,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       Conexao conexao = aplicacao.obterConexao()
       DefaultListModel modeloLista = new DefaultListModel()
       try {
-        dadosDepartamento = conexao.executarConsulta('select departamento.codigo, departamento.departamento from departamento, departamento_item where departamento.codigo = departamento_item.departamento and departamento_item.item = '+ this.item.obterCodigo() +' order by departamento.departamento asc')
+        dadosDepartamento = conexao.executarConsulta('select departamento.codigo, departamento.departamento from departamento, departamento_item where departamento.codigo = departamento_item.departamento and departamento_item.item = ' +  this.item.obterCodigo() +' order by departamento.departamento asc')
           departamentosSelecionados = new Vector()
           int i = 0
           list.setModel(modeloLista)
@@ -471,7 +471,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
   private void carregarFornecedorItem() {
     numeroFornecedores = 0
       Conexao conexao = aplicacao.obterConexao()
-      String query = 'select f.codigo as fornecedor_codigo, f.cnpj as cnpj_fornecedor, razao_social, data_atualizacao_valor, fi.unidade as unidade_codigo, u.unidade as unidade, valor_item, moeda, referencia_fornecedor from fornecedor_item fi, fornecedor f, unidade u where fi.fornecedor = f.codigo and fi.unidade = u.codigo and fi.item = ' + this.item.obterCodigo() + ' order by razao_social '
+      String query = 'select f.codigo as fornecedor_codigo, f.cnpj as cnpj_fornecedor, razao_social, data_atualizacao_valor, fi.unidade as unidade_codigo, u.unidade as unidade, valor_item, moeda, referencia_fornecedor from fornecedor_item fi, fornecedor f, unidade u where fi.fornecedor = f.codigo and fi.unidade = u.codigo and fi.item = '  +  this.item.obterCodigo() + ' order by razao_social '
       try {
         ResultSet resultado = conexao.executarConsulta(query)
           try {
@@ -500,13 +500,13 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
                   tblFornecedores.setValueAt(razaoSocialFornecedor, numeroFornecedores, 0)
                   tblFornecedores.setValueAt(nomeUnidade, numeroFornecedores, 1)
-                  tblFornecedores.setValueAt(moeda + ' ' + Numero.inverterSeparador(''+valorItem), numeroFornecedores, 2)
+                  tblFornecedores.setValueAt(moeda  +  ' ' + Numero.inverterSeparador(''+valorItem), numeroFornecedores, 2)
                   tblFornecedores.setValueAt(dataAtualizacaoValor, numeroFornecedores, 3)
                   numeroFornecedores++
               }
           }
         catch(Exception ex) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             ex.printStackTrace()
         }
         resultado.close()
@@ -579,7 +579,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           n.printStackTrace()
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       btConfirmarAlteracao.setEnabled(false)
@@ -613,7 +613,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
             n.printStackTrace()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         if (numeroFornecedores > 0) {
@@ -665,10 +665,10 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
 
         if(linhaSelecionada < (numeroFornecedores -1)) {
           for(int i = linha;Selecionada < (numeroFornecedores -1);i++) {
-            tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1, 0), i, 0)
-              tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1, 1), i, 1)
-              tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1, 2), i, 2)
-              tblFornecedores.setValueAt(tblFornecedores.getValueAt(i+1, 3), i, 3)
+            tblFornecedores.setValueAt(tblFornecedores.getValueAt(i + 1, 0), i, 0)
+              tblFornecedores.setValueAt(tblFornecedores.getValueAt(i + 1, 1), i, 1)
+              tblFornecedores.setValueAt(tblFornecedores.getValueAt(i + 1, 2), i, 2)
+              tblFornecedores.setValueAt(tblFornecedores.getValueAt(i + 1, 3), i, 3)
           }
           tblFornecedores.setValueAt('', numeroFornecedores -1, 0)
             tblFornecedores.setValueAt('', numeroFornecedores -1, 1)
@@ -742,7 +742,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               confirmado = false
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -786,7 +786,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         }
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

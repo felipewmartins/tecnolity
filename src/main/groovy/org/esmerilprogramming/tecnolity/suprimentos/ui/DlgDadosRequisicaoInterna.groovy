@@ -94,7 +94,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         ItemRequisicaoInterna itemRequisicaoInterna = ((ItemRequisicaoInterna)itensRequisicaoInterna.get(i))
           itemRequisicaoInterna.definirRequisicaoInterna(this.requisicaoInterna)
           this.tblItens.setValueAt(itemRequisicaoInterna.obterItem(), i, 0)
-          this.tblItens.setValueAt('' + itemRequisicaoInterna.obterQuantidadeItem(), i, 1)
+          this.tblItens.setValueAt(''  +  itemRequisicaoInterna.obterQuantidadeItem(), i, 1)
           itemRequisicaoInterna.definirDestino(this.solicitante.obterDepartamento())
       }
 
@@ -120,13 +120,13 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
                 cbxDepartamento.setSelectedIndex(i)
             }
           txaJustificativa.setText(requisicaoInterna.obterJustificativa())
-            String query = 'select i.descricao, iri.quantidade as necessaria from item i, item_requisicao_interna iri ' +
-            'where i.codigo = iri.item and iri.requisicao_interna = ' + requisicaoInterna.obterCodigo()
+            String query = 'select i.descricao, iri.quantidade as necessaria from item i, item_requisicao_interna iri '  + 
+            'where i.codigo = iri.item and iri.requisicao_interna = '  +  requisicaoInterna.obterCodigo()
             ResultSet rsItensPedidos = this.aplicacao.obterConexao().executarConsulta(query)
             int numeroItens = 0
             while(rsItensPedidos.next()) {
               this.tblItens.setValueAt(rsItensPedidos.getString('descricao'), numeroItens, 0)
-                this.tblItens.setValueAt('' + rsItensPedidos.getFloat('necessaria'), numeroItens, 1)
+                this.tblItens.setValueAt(''  +  rsItensPedidos.getFloat('necessaria'), numeroItens, 1)
                 numeroItens++
             }
           rsItensPedidos.close()
@@ -549,7 +549,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             n.printStackTrace()
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         if (itensRequisicaoInterna.size() > 0) {
@@ -575,8 +575,8 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
 
         if(linhaSelecionada < itensRequisicaoInterna.size()) {
           for(int i = linhaSelecionada;i < itensRequisicaoInterna.size();i++) {
-            this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 0), i, 0)
-              this.tblItens.setValueAt(this.tblItens.getValueAt(i+1, 1), i, 1)
+            this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 0), i, 0)
+              this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 1), i, 1)
           }
           this.tblItens.setValueAt('', this.itensRequisicaoInterna.size(), 0)
             this.tblItens.setValueAt('', this.itensRequisicaoInterna.size(), 1)
@@ -621,7 +621,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               confirmado = false
           }
           catch(Exception e) {
-            JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -642,24 +642,24 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
                 if(i == 0)
                 query += 'where '
                 query += 'pedido = ' + ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
-                if((i+1) < pedidosSelecionados.size())
+                if((i + 1) < pedidosSelecionados.size())
                 query += ' or '
                 }
                 if(pedidosSelecionados.size() > 0) {
                 this.aplicacao.obterConexao().executarAtualizacao(query)
                 }
                 }
-                query = 'select i.codigo, i.descricao, (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria ' +
-                'from item i, modelo_pedido mp, quantidade_materia_prima qmp ' +
+                query = 'select i.codigo, i.descricao, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria ' +
+                'from item i, modelo_pedido mp, quantidade_materia_prima qmp '  + 
                 'where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo '
 
                 for(int i = 0i < pedidosSelecionados.size()i++) {
                 if(i == 0)
                 query += 'and ('
                 query += 'mp.pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
-                if((i+1) < pedidosSelecionados.size())
+                if((i + 1) < pedidosSelecionados.size())
                 query += ' or '
-                if((i + 1) == pedidosSelecionados.size())
+                if((i  +  1) == pedidosSelecionados.size())
                 query += ') '
                 }
                 query += 'and i.codigo not in (select distinct item from pedido_requisicao_interna '
@@ -667,7 +667,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
                 if(i == 0)
                 query += 'where '
                 query += 'pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
-                if((i+1) < pedidosSelecionados.size())
+                if((i + 1) < pedidosSelecionados.size())
                 query += ' or '
                 }
                 query += ') group by i.codigo, i.descricao, i.percentual_perda, i.percentual_ipi'
@@ -689,7 +689,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
                 itensRequisicaoInterna.addElement(itemRequisicaoInterna)
 
                 this.tblItens.setValueAt(item.obterDescricao(), numeroItens, 0)
-                this.tblItens.setValueAt('' + itemRequisicaoInterna.obterQuantidadeItem(), numeroItens, 1)
+                this.tblItens.setValueAt(''  +  itemRequisicaoInterna.obterQuantidadeItem(), numeroItens, 1)
                 numeroItens++
                 }
                 rsItensPedidos.close()
@@ -710,7 +710,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             e.printStackTrace()
           }
           catch(Exception ex) {
-            JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               confirmado = false
               ex.printStackTrace()
           }
@@ -752,13 +752,13 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             this.requisicaoInterna.associarItens(itensRequisicaoInterna, pedidosSelecionados)
         }
         catch(Exception e) {
-          JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         this.setVisible(false)
       }
       catch(Exception e) {
-        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

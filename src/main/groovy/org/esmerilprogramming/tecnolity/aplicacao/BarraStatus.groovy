@@ -12,7 +12,7 @@ class BarraStatus extends JPanel {
     setLayout(new BorderLayout())
     aplicacao = app
     JPanel pnlUsuario = new JPanel()
-    lblUsuario =  new JLabel('Usuário: ' + app.colaborador.matricula)
+    lblUsuario =  new JLabel('Usuário: '  +  app.colaborador.matricula)
     pnlUsuario.add(lblUsuario)
     add(pnlUsuario, BorderLayout.WEST)
 
@@ -22,7 +22,7 @@ class BarraStatus extends JPanel {
     add(pnlMensagem, BorderLayout.CENTER)
 
     JPanel pnlDataHoraAcesso = new JPanel()
-    lblDataHoraAcesso = new JLabel('Acesso em: ' + new Date().format("dd/MM/yyyy 'as' HH:mm:ss"))
+    lblDataHoraAcesso = new JLabel('Acesso em: '  +  new Date().format("dd/MM/yyyy 'as' HH:mm:ss"))
     pnlDataHoraAcesso.add(lblDataHoraAcesso)
     add(pnlDataHoraAcesso, BorderLayout.EAST)
   }

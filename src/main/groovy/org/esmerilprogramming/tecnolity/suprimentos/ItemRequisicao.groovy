@@ -102,7 +102,7 @@ class ItemRequisicao {
   }
 
   float obterValorTotalComIPI() {
-    return obterValorTotal() + ((obterValorTotal() * percentualIPI)/100)
+    return obterValorTotal()  +  ((obterValorTotal() * percentualIPI)/100)
   }
 
   float obterValorIPI() {

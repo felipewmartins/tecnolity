@@ -9,11 +9,11 @@ class PessoaJuridica extends Pessoa {
   static String formatarCnpj(final String cnpj) {
     String cnpjFormatado = ""
       if (cnpj.length() == 14) {
-        cnpjFormatado = cnpjFormatado + cnpj.substring(0, 2) + "."
-        cnpjFormatado = cnpjFormatado + cnpj.substring(2, 5) + "."
-        cnpjFormatado = cnpjFormatado + cnpj.substring(5, 8) + "/"
-        cnpjFormatado = cnpjFormatado + cnpj.substring(8, 12) + "-"
-        cnpjFormatado = cnpjFormatado + cnpj.substring(12)
+        cnpjFormatado = cnpjFormatado  +  cnpj.substring(0, 2) + "."
+        cnpjFormatado = cnpjFormatado  +  cnpj.substring(2, 5) + "."
+        cnpjFormatado = cnpjFormatado  +  cnpj.substring(5, 8) + "/"
+        cnpjFormatado = cnpjFormatado  +  cnpj.substring(8, 12) + "-"
+        cnpjFormatado = cnpjFormatado  +  cnpj.substring(12)
       }
     cnpjFormatado
   }
@@ -28,7 +28,7 @@ class PessoaJuridica extends Pessoa {
       String numerosCnpj = ""
       for (int i = 0 ; i < chrCnpj.length;  ++i) {
         if (Character.isDigit(chrCnpj[i])) {
-          numerosCnpj = String.valueOf(numerosCnpj) + chrCnpj[i]
+          numerosCnpj = String.valueOf(numerosCnpj)  +  chrCnpj[i]
         }
       }
     cnpj = numerosCnpj
@@ -55,7 +55,7 @@ class PessoaJuridica extends Pessoa {
     digitos[11] = Integer.parseInt(cnpj.substring(11, 12))
     digitos[12] = Integer.parseInt(cnpj.substring(12, 13))
     digitos[13] = Integer.parseInt(cnpj.substring(13))
-    soma = 5 * digitos[0] + 4 * digitos[1] + 3 * digitos[2] + 2 * digitos[3] + 9 * digitos[4] + 8 * digitos[5] + 7 * digitos[6] + 6 * digitos[7] + 5 * digitos[8] + 4 * digitos[9] + 3 * digitos[10] + 2 * digitos[11]
+    soma = 5 * digitos[0]  +  4 * digitos[1] + 3 * digitos[2] + 2 * digitos[3] + 9 * digitos[4] + 8 * digitos[5] + 7 * digitos[6] + 6 * digitos[7] + 5 * digitos[8] + 4 * digitos[9] + 3 * digitos[10] + 2 * digitos[11]
     soma -= 11 * (soma / 11)
     int resultado
     if (soma == 0 || soma == 1) {
@@ -65,7 +65,7 @@ class PessoaJuridica extends Pessoa {
       resultado = 11 - soma
     }
     if (resultado == digitos[12]) {
-      soma = digitos[0] * 6 + digitos[1] * 5 + digitos[2] * 4 + digitos[3] * 3 + digitos[4] * 2 + digitos[5] * 9 + digitos[6] * 8 + digitos[7] * 7 + digitos[8] * 6 + digitos[9] * 5 + digitos[10] * 4 + digitos[11] * 3 + digitos[12] * 2
+      soma = digitos[0] * 6  +  digitos[1] * 5 + digitos[2] * 4 + digitos[3] * 3 + digitos[4] * 2 + digitos[5] * 9 + digitos[6] * 8 + digitos[7] * 7 + digitos[8] * 6 + digitos[9] * 5 + digitos[10] * 4 + digitos[11] * 3 + digitos[12] * 2
       soma -= 11 * (soma / 11)
       int resultadoDv
       if (soma == 0 || soma == 1) {
@@ -82,20 +82,20 @@ class PessoaJuridica extends Pessoa {
   static String formatarCNPJ(final String cnpj) {
     String cnpjFormatado = ""
     if (!cnpj.equals("")) {
-      cnpjFormatado = "-" + cnpj.substring(cnpj.length() - 2)
-      cnpjFormatado = "/" + cnpj.substring(cnpj.length() - 6, cnpj.length() - 2) + cnpjFormatado
-      cnpjFormatado = "." + cnpj.substring(cnpj.length() - 9, cnpj.length() - 6) + cnpjFormatado
-      cnpjFormatado = "." + cnpj.substring(cnpj.length() - 12, cnpj.length() - 9) + cnpjFormatado
-      cnpjFormatado = String.valueOf(cnpj.substring(0, cnpj.length() - 12)) + cnpjFormatado
+      cnpjFormatado = "-"  +  cnpj.substring(cnpj.length() - 2)
+      cnpjFormatado = "/"  +  cnpj.substring(cnpj.length() - 6, cnpj.length() - 2) + cnpjFormatado
+      cnpjFormatado = "."  +  cnpj.substring(cnpj.length() - 9, cnpj.length() - 6) + cnpjFormatado
+      cnpjFormatado = "."  +  cnpj.substring(cnpj.length() - 12, cnpj.length() - 9) + cnpjFormatado
+      cnpjFormatado = String.valueOf(cnpj.substring(0, cnpj.length() - 12))  +  cnpjFormatado
     }
     cnpjFormatado
   }
 
   static String formatarInscricaoMunicipal(final String inscricaoMunicipal) {
     String inscricaoFormatada = ""
-    inscricaoFormatada = "-" + inscricaoMunicipal.substring(inscricaoMunicipal.length() - 1)
-    inscricaoFormatada = "." + inscricaoMunicipal.substring(inscricaoMunicipal.length() - 4, inscricaoMunicipal.length() - 1) + inscricaoFormatada
-    inscricaoFormatada = String.valueOf(inscricaoMunicipal.substring(0, inscricaoMunicipal.length() - 4)) + inscricaoFormatada
+    inscricaoFormatada = "-"  +  inscricaoMunicipal.substring(inscricaoMunicipal.length() - 1)
+    inscricaoFormatada = "."  +  inscricaoMunicipal.substring(inscricaoMunicipal.length() - 4, inscricaoMunicipal.length() - 1) + inscricaoFormatada
+    inscricaoFormatada = String.valueOf(inscricaoMunicipal.substring(0, inscricaoMunicipal.length() - 4))  +  inscricaoFormatada
     inscricaoFormatada
   }
 

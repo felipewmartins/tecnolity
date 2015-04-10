@@ -35,7 +35,7 @@ class Transportadora {
     this.definirCodigo(codigo)
 
       ResultSet dadosTransportadora
-      dadosTransportadora = conexao.executarConsulta("select * from transportadora where codigo = "+ this.codigo +" ")
+      dadosTransportadora = conexao.executarConsulta("select * from transportadora where codigo = " +  this.codigo + " ")
 
       if(dadosTransportadora.next()) {
         try {
@@ -75,7 +75,7 @@ class Transportadora {
   void cadastrarTransportadora() throws Exception
   {
     String query = "insert into transportadora (transportadora) values "
-      query = query + "('"+ this.transportadora + "')"
+      query = query  +  "('"+ this.transportadora + "')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -90,7 +90,7 @@ class Transportadora {
 
   void alterarTransportadora() throws Exception
   {
-    String query = "update transportadora set transportadora = '"+ this.transportadora +"' where codigo = "+ this.codigo +" "
+    String query = "update transportadora set transportadora = '" +  this.transportadora + "' where codigo = "+ this.codigo + " "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -105,7 +105,7 @@ class Transportadora {
 
   void excluirTransportadora() throws Exception
   {
-    String query = "delete from transportadora where codigo = "+ this.codigo +" "
+    String query = "delete from transportadora where codigo = " +  this.codigo + " "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

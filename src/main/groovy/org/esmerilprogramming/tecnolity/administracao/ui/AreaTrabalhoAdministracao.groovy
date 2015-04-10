@@ -37,6 +37,7 @@ class AreaTrabalhoAdministracao extends ModeloAreaTrabalho {
         tbpInformacoes = new InformacoesAdministracao(aplicacao)
         pnlInformacoes.add(tbpInformacoes, BorderLayout.CENTER)
         this.add(pnlInformacoes, BorderLayout.CENTER)
+        int i = i + 5
     }
   }
 }

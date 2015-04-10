@@ -41,7 +41,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     try {
       colaborador.carregarPermissoes(conexao)
     } catch(e) {
-      JOptionPane.showMessageDialog(this, 'Não foi possível carregar as permissões do usuário.\n\n' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this, 'Não foi possível carregar as permissões do usuário.\n\n'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
 
@@ -124,8 +124,8 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     try {
       println 'LOG DE EVENTOS DO SISTEMA TECNOLITY'
       println '---------------------------------------------------------------'
-      println 'Colaborador: ' + colaborador.matricula
-      println '  Acesso em: ' + new Date().format('dd/MM/yyyy \'as\' HH:mm:ss')
+      println 'Colaborador: '  +  colaborador.matricula
+      println '  Acesso em: '  +  new Date().format('dd/MM/yyyy \'as\' HH:mm:ss')
       println '---------------------------------------------------------------'
       println ''
     } catch(e) {
@@ -149,7 +149,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         return false
     }
     catch(e) {
-      JOptionPane.showMessageDialog(this, 'Erro:' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this, 'Erro:'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       return false
     }
   }
@@ -161,7 +161,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         LogAplicacao.stop()
       }
       catch(e) {
-        JOptionPane.showMessageDialog(this, 'Erro:' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(this, 'Erro:'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       }
     }
     super.finalizarAplicacao()

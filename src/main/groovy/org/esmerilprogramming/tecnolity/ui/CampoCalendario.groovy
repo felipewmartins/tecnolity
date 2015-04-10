@@ -42,7 +42,7 @@ class CampoCalendario extends JPanel implements ActionListener, KeyListener, Foc
   Calendario getData() {
     if (this.digitado) {
       if (!this.txtData.getText().equals('dd/mm/aaaa')) {
-        this.calendario = Calendario.stringParaCalendario(String.valueOf(this.txtData.getText()) + ' 0:0')
+        this.calendario = Calendario.stringParaCalendario(String.valueOf(this.txtData.getText())  +  ' 0:0')
       }
       else {
         this.calendario = null
@@ -99,7 +99,7 @@ class CampoCalendario extends JPanel implements ActionListener, KeyListener, Foc
         --this.numeroCaracteres
     }
     if (this.txtData.getText().length() == 2 || this.txtData.getText().length() == 5) {
-      this.txtData.setText(String.valueOf(this.txtData.getText()) + '/')
+      this.txtData.setText(String.valueOf(this.txtData.getText())  +  '/')
         ++this.numeroCaracteres
         this.txtData.setCaretPosition(this.txtData.getText().length())
     }

@@ -70,12 +70,12 @@ class DlgCalendario extends JDialog implements ActionListener
 
   private void imprimirMesAno() {
     if (this.calendario != null) {
-      this.lblNomeMes.setText(String.valueOf(this.calendario.getMesPorExtenso()) + ", " + this.calendario.get("yyyy"))
+      this.lblNomeMes.setText(String.valueOf(this.calendario.getMesPorExtenso())  +  ", " + this.calendario.get("yyyy"))
     }
   }
 
   private void imprimirCalendario() {
-    Calendario calendarioAux = new Calendario(this.calendario.get(1), this.calendario.get(2) + 1, 1)
+    Calendario calendarioAux = new Calendario(this.calendario.get(1), this.calendario.get(2)  +  1, 1)
     int j = calendarioAux.get(7) - 1
     calendarioAux = null
     int indiceDia = 1
@@ -84,7 +84,7 @@ class DlgCalendario extends JDialog implements ActionListener
     for (int i = 0 ; i < 6 ; ++i) {
       for (j = 0;  j < 7;  ++j) {
         if (indiceDia <= this.calendario.getNumeroDiasMes()) {
-          (this.btDias[i][j] = new JButton("" + indiceDia)).setMargin(new Insets(0, 0, 0, 0))
+          (this.btDias[i][j] = new JButton(""  +  indiceDia)).setMargin(new Insets(0, 0, 0, 0))
           if (indiceDia == this.calendario.get(5)) {
             this.btDias[i][j].setBackground(Color.gray)
           }
@@ -101,7 +101,7 @@ class DlgCalendario extends JDialog implements ActionListener
   }
 
   private void imprimirDataSelecionada() {
-    this.lblDataSelecionada.setText("Data Selecionada: " + this.calendario.get("dd/MM/yyyy"))
+    this.lblDataSelecionada.setText("Data Selecionada: "  +  this.calendario.get("dd/MM/yyyy"))
   }
 
   protected void dimencionar() {
@@ -132,11 +132,11 @@ class DlgCalendario extends JDialog implements ActionListener
     }
     if (objeto == this.btMesPosterior) {
       if (this.calendario.get(2) == 11) {
-        this.calendario.set(1, this.calendario.get(1) + 1)
+        this.calendario.set(1, this.calendario.get(1)  +  1)
         this.calendario.set(2, 0)
       }
       else {
-        this.calendario.set(2, this.calendario.get(2) + 1)
+        this.calendario.set(2, this.calendario.get(2)  +  1)
       }
     }
     if (objeto != this.btMesAnterior && objeto != this.btMesPosterior && objeto instanceof JButton) {

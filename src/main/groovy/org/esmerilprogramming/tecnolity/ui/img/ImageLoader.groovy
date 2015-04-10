@@ -6,7 +6,7 @@ import javax.swing.ImageIcon
 class ImageLoader {
 
   ImageIcon icon(String ico) {
-    new ImageIcon(getClass().getResource('/org/esmerilprogramming/tecnolity/ui/img/' + ico))
+    new ImageIcon(getClass().getResource('/org/esmerilprogramming/tecnolity/ui/img/'  +  ico))
   }
 
 }

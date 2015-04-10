@@ -95,25 +95,25 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       label = new JLabel("Esquerda")
       label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemEsquerda = new JTextField("" + Configuracao.getMargemEsquerda(), 2)
+      txtMargemEsquerda = new JTextField(""  +  Configuracao.getMargemEsquerda(), 2)
       txtMargemEsquerda.addFocusListener(this)
       pnlMargens.add(txtMargemEsquerda)
       label = new JLabel("Direita")
       label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemDireita = new JTextField("" + Configuracao.getMargemDireita(), 2)
+      txtMargemDireita = new JTextField(""  +  Configuracao.getMargemDireita(), 2)
       txtMargemDireita.addFocusListener(this)
       pnlMargens.add(txtMargemDireita)
       label = new JLabel("Superior")
       label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemSuperior = new JTextField("" + Configuracao.getMargemSuperior(), 2)
+      txtMargemSuperior = new JTextField(""  +  Configuracao.getMargemSuperior(), 2)
       txtMargemSuperior.addFocusListener(this)
       pnlMargens.add(txtMargemSuperior)
       label = new JLabel("Inferior")
       label.setFont(new Font("Arial", Font.PLAIN, 12))
       pnlMargens.add(label)
-      txtMargemInferior = new JTextField("" + Configuracao.getMargemInferior(), 2)
+      txtMargemInferior = new JTextField(""  +  Configuracao.getMargemInferior(), 2)
       txtMargemInferior.addFocusListener(this)
       pnlMargens.add(txtMargemInferior)
       adicionarComponente(pnlDados, pnlMargens, 5, 0, 1, 1)
@@ -259,8 +259,8 @@ class PainelDesenho extends JPanel
         g.setColor(Color.white)
           g.fillRect(((this.getWidth()/2) - (largura/2)), 16, largura, altura)
           g.setColor(Color.BLACK)
-          g.drawRect(((this.getWidth()/2) - (largura/2)) + margemEsquerda,
-              16 + margemSuperior,
+          g.drawRect(((this.getWidth()/2) - (largura/2))  +  margemEsquerda,
+              16  +  margemSuperior,
               largura - margemDireita - margemEsquerda,
               altura - margemInferior - margemSuperior)
       }
@@ -268,8 +268,8 @@ class PainelDesenho extends JPanel
         g.setColor(Color.WHITE)
           g.fillRect(((this.getWidth()/2) - (altura/2)), 16, altura, largura)
           g.setColor(Color.BLACK)
-          g.drawRect(((this.getWidth()/2) - (altura/2)) + margemEsquerda,
-              16 + margemSuperior,
+          g.drawRect(((this.getWidth()/2) - (altura/2))  +  margemEsquerda,
+              16  +  margemSuperior,
               altura - margemDireita - margemEsquerda,
               largura - margemInferior - margemSuperior)
       }

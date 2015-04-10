@@ -173,7 +173,7 @@ class DlgBancoDados extends JDialog implements ActionListener
           }
       }
       catch(SQLException e) {
-        txaResultados.setText("Erro Nº:" + e.getErrorCode() + " - " + e.getMessage())
+        txaResultados.setText("Erro Nº:"  +  e.getErrorCode() + " - " + e.getMessage())
           e.printStackTrace()
       }
     }
