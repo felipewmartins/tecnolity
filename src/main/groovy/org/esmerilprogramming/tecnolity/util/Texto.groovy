@@ -2,7 +2,7 @@ package org.esmerilprogramming.tecnolity.util
 
 class Texto {
   static String formatarTextoHTML(final String texto) {
-    return texto.replaceAll("\n", "<br>")
+    return texto.replaceAll('\n', '<br>')
   }
 
   static String getStringTamanhoFixo(final String texto, final int tamanho) {
@@ -10,9 +10,9 @@ class Texto {
       return texto.substring(0, tamanho)
     }
     if (texto.length() < tamanho) {
-      String espacosBranco = ""
+      String espacosBranco = ''
         for (int i = 0;  i < tamanho - texto.length();  ++i) {
-          espacosBranco = String.valueOf(espacosBranco)  +  " "
+          espacosBranco = String.valueOf(espacosBranco)  +  ' '
         }
       return String.valueOf(texto)  +  espacosBranco
     }
@@ -24,7 +24,7 @@ class Texto {
       return numero.substring(numero.length() - tamanho - 1, numero.length())
     }
     if (numero.length() < tamanho) {
-      String zeros = ""
+      String zeros = ''
         for (int i = 0 ; i < tamanho - numero.length();  ++i) {
           zeros = String.valueOf(zeros)  +  preenchimento
         }
@@ -40,18 +40,18 @@ class Texto {
       }
       else if (texto.length() > largura) {
         linhas = new String[(texto.length() % largura == 0) ? (texto.length() / largura) : (texto.length() / largura  +  1)]
-          String token = ""
+          String token = ''
           int numeroLinha = 0
           final StringTokenizer st = new StringTokenizer(texto)
-          String linha = ""
+          String linha = ''
           while (st.hasMoreTokens()) {
             token = st.nextToken()
               String espaco
               if (linha.length() == 0) {
-                espaco = ""
+                espaco = ''
               }
               else {
-                espaco = " "
+                espaco = ' '
               }
             if (linha.length()  +  espaco.length() + token.length() == largura) {
               linhas[numeroLinha++] = linha
