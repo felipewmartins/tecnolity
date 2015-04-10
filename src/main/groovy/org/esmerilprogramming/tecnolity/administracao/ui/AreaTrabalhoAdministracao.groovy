@@ -2,6 +2,8 @@ package org.esmerilprogramming.tecnolity.administracao.ui
 
 import java.awt.BorderLayout
 import javax.swing.JOptionPane
+import javax.swing.JPanel
+import javax.swing.JLabel
 import javax.swing.border.EmptyBorder
 import org.esmerilprogramming.tecnolity.administracao.Permissao
 import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao

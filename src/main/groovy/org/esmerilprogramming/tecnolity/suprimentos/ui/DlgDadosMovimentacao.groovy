@@ -151,7 +151,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   //usuário logado no sistema
                   String nomeResponsavel = ''
                   try {
-                    ResultSet responsavel = conexao.executarConsulta('select nome_completo from usuario where usuario = ''+ (aplicacao.obterColaborador()).obterMatricula() +'' ')
+                    ResultSet responsavel = conexao.executarConsulta('select nome_completo from usuario where usuario = '+ (aplicacao.obterColaborador()).obterMatricula() +' ')
                       if(responsavel.next())
                         nomeResponsavel = responsavel.getString('nome_completo')
                           responsavel.close()
@@ -944,7 +944,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             txtValorConhecimento.setText('')
             txaObservacao.setText('')
             requisicaoCompraSelecionada = (RequisicaoCompra)requisicoesCompra.get(cbxRequisicaoAbastecimento.getSelectedIndex())
-            String query = 'select fornecedor.razao_social, departamento.departamento, transportadora.transportadora, data_emissao, data_limite_entrega, (case tipo_frete when 'C' then 'CIF' when 'F' then 'FOB' when 'P' then 'PRÓPRIO' end) as tipo_frete from requisicao_compra, fornecedor, departamento, transportadora where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo and requisicao_compra.transportadora *= transportadora.codigo and requisicao_compra.codigo = '+ requisicaoCompraSelecionada.obterCodigo() +' '
+            String query = 'select fornecedor.razao_social, departamento.departamento, transportadora.transportadora, data_emissao, data_limite_entrega, (case tipo_frete when 'C' then 'CIF' when 'F' then 'FOB' when 'P' then 'PROPRIO' end) as tipo_frete from requisicao_compra, fornecedor, departamento, transportadora where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo and requisicao_compra.transportadora *= transportadora.codigo and requisicao_compra.codigo = '+ requisicaoCompraSelecionada.obterCodigo() +' '
             try {
               ResultSet dadosRequisicaoCompra = conexao.executarConsulta(query)
                 if(dadosRequisicaoCompra.next()) {

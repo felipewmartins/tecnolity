@@ -543,7 +543,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
               }
 
   private void atualizarTabelaRequisicaoCompra() {
-    String sql = 'select requisicao_compra.codigo as 'código', fornecedor.razao_social as 'razão social', departamento.departamento as 'departamento solicitante', requisicao_compra.data_emissao as 'data de emissão', requisicao_compra.data_limite_entrega as 'limite de entrega', requisicao_compra.data_recebimento as 'data de recebimento', (case requisicao_compra.status when 'EM' then 'Emitido' when 'CL' then 'Cancelado' when 'CO' then 'Confirmado' when 'PD' then 'Pendente' end) as 'status' from requisicao_compra, fornecedor, departamento where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo order by requisicao_compra.data_emissao desc'
+    String sql = 'select requisicao_compra.codigo as 'codigo', fornecedor.razao_social as 'razao social', departamento.departamento as 'departamento solicitante', requisicao_compra.data_emissao as 'data de emissao', requisicao_compra.data_limite_entrega as 'limite de entrega', requisicao_compra.data_recebimento as 'data de recebimento', (case requisicao_compra.status when 'EM' then 'Emitido' when 'CL' then 'Cancelado' when 'CO' then 'Confirmado' when 'PD' then 'Pendente' end) as 'status' from requisicao_compra, fornecedor, departamento where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo order by requisicao_compra.data_emissao desc'
       modeloTabelaRequisicoesCompras.definirConsulta(sql)
       tblRequisicoesCompras.setModel(modeloTabelaRequisicoesCompras)
       tblRequisicoesCompras.updateUI()
@@ -558,7 +558,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     if(''.equals(palavraChave)) {
       if(cbxCategoria.getSelectedIndex() > 0) {
         Categoria categoriaSelecionada = (Categoria)categorias.get(cbxCategoria.getSelectedIndex())
-          query = 'select i.codigo, i.descricao, c.categoria as categoria, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima from item i, categoria_item c, unidade u where i.categoria = c.codigo and i.unidade = u.codigo '+ restricao +' and i.categoria = ''+ ((categoriaSelecionada == null)?0:categoriaSelecionada.obterCodigo()) +'' order by i.descricao, ci.categoria'
+          query = 'select i.codigo, i.descricao, c.categoria as categoria, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima from item i, categoria_item c, unidade u where i.categoria = c.codigo and i.unidade = u.codigo '+ restricao + ' and i.categoria = \'\'' + ((categoriaSelecionada == null)?0:categoriaSelecionada.obterCodigo()) + ' order by i.descricao, ci.categoria'
       }
       else
       {
@@ -595,13 +595,13 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
 
   private void atualizarTabelaMovimentacao(String tipo) {
     if(modeloTabelaMovimentacoes != null) {
-      String sql = 'select mi.codigo as 'código', (case tipo_movimento when 'AB' then 'Abastecimento' when 'CS' then 'Consumo' when 'VD' then 'Vendas' when 'DS' then 'Descarte' when 'DV' then 'Devolução' when 'DE' then 'Devolução Externa' when 'DP' then 'Depósito' when 'RD' then 'Retirada do Depósito' end) as 'tipo de movimento', i.descricao as 'item', mi.quantidade, data_hora as 'data', data_recebimento as 'recebimento', u.nome_completo as 'responsável', mi.nota_fiscal as 'Nota Fiscal' from movimentacao_item mi, item i, usuario u where mi.item = i.codigo and mi.responsavel = u.usuario '
+      String sql = 'select mi.codigo as 'codigo', (case tipo_movimento when 'AB' then 'Abastecimento' when 'CS' then 'Consumo' when 'VD' then 'Vendas' when 'DS' then 'Descarte' when 'DV' then 'Devolucao' when 'DE' then 'Devolucao Externa' when 'DP' then 'Depósito' when 'RD' then \'Retirada do Depósito\' end) as 'tipo de movimento', i.descricao as 'item', mi.quantidade, data_hora as 'data', data_recebimento as 'recebimento', u.nome_completo as 'responsavel', mi.nota_fiscal as 'Nota Fiscal' from movimentacao_item mi, item i, usuario u where mi.item = i.codigo and mi.responsavel = u.usuario '
         if(tipo != null)
           sql += 'and tipo_movimento = ''+ tipo +'' '
             if(!txtDataInicio.getText().equals(''))
-              sql += 'and mi.data_hora >= ''+ Calendario.inverterFormato(txtDataInicio.getText(), '/') +' 00:00:00.000' '
+              sql += 'and mi.data_hora >= ''+ Calendario.inverterFormato(txtDataInicio.getText(), '/') + \' 00:00:00.000\' '
                 if(!txtDataFinal.getText().equals(''))
-                  sql += 'and mi.data_hora <= ''+ Calendario.inverterFormato(txtDataFinal.getText(), '/') +' 23:59:59.999' '
+                  sql += 'and mi.data_hora <= ''+ Calendario.inverterFormato(txtDataFinal.getText(), '/') + \' 23:59:59.999\' '
                     if(cbxItemMovimentacao.getSelectedIndex() > 0)
                       sql += 'and i.codigo = ' + ((Item)itensMovimentacao.get(cbxItemMovimentacao.getSelectedIndex())).obterCodigo()
                         sql += ' order by tipo_movimento'
@@ -612,13 +612,14 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   }
 
   private void atualizarTabelaFornecedor() {
-    modeloTabelaFornecedores.definirConsulta('select codigo as código, razao_social as 'razão social', cnpj, ('(' + rtrim(ddd) + ') ' + telefone) as telefone, fax, email as 'e-mail' from fornecedor order by razao_social asc')
-      tblFornecedores.setModel(modeloTabelaFornecedores)
-      tblFornecedores.updateUI()
+   // rever depois
+   //  modeloTabelaFornecedores.definirConsulta('select codigo as código, razao_social as \'razao social\', cnpj, ('(' + rtrim(ddd) + ') + telefone) as telefone, fax, email as 'e-mail' from fornecedor order by razao_social asc')
+    tblFornecedores.setModel(modeloTabelaFornecedores)
+    tblFornecedores.updateUI()
   }
 
   private void atualizarTabelaRequisicaoInterna() {
-    String sql = 'select ri.codigo as 'código', (case tipo_solicitacao when 'CS' then 'Consumo' when 'VD' then 'Vendas' when 'DS' then 'Descarte' when 'DV' then 'Devolução' when 'DE' then 'Devolução Externa' end) as 'tipo de solicitação', datahora as 'data da requisição', datahora_limite_entrega as 'limite de entrega', d.departamento, (case status when 'EM' then 'Emitido' when 'CL' then 'Cancelado' when 'PD' then 'Pendente' when 'CO' then 'Confirmado' end) as 'status' from requisicao_interna ri, departamento d where ri.departamento = d.codigo order by datahora desc'
+    String sql = 'select ri.codigo as 'codigo', (case tipo_solicitacao when 'CS' then 'Consumo' when 'VD' then 'Vendas' when 'DS' then 'Descarte' when 'DV' then 'Devolucao' when 'DE' then 'Devolucao Externa' end) as 'tipo de solicitacao', datahora as 'data da requisicao', datahora_limite_entrega as 'limite de entrega', d.departamento, (case status when 'EM' then 'Emitido' when 'CL' then 'Cancelado' when 'PD' then 'Pendente' when 'CO' then 'Confirmado' end) as 'status' from requisicao_interna ri, departamento d where ri.departamento = d.codigo order by datahora desc'
       modeloTabelaRequisicoesInternas.definirConsulta(sql)
       tblRequisicoesInternas.setModel(modeloTabelaRequisicoesInternas)
       tblRequisicoesInternas.updateUI()
@@ -674,10 +675,12 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
               int linha = 0
               while(rsItens.next()) {
                 int codigoItem = rsItens.getInt('codigo')
+                  /*
                   query = 'select i.codigo, i.descricao, hqi.quantidade , hvi.valor_item, (hqi.quantidade * hvi.valor_item) as total from historico_quantidade_item hqi, item i, historico_valor_item hvi ' +
                   'where i.codigo = hqi.codigo and hvi.item = i.codigo and i.codigo = '+ codigoItem +' and hqi.data_hora <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and ' +
                   'hqi.data_hora = (select max(data_hora) from historico_quantidade_item where data_hora <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and codigo = '+ codigoItem +') and hvi.data_atualizacao <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and ' +
                   'hvi.data_atualizacao = (select max(data_atualizacao) from historico_valor_item where data_atualizacao <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and item = '+ codigoItem +')'
+                  */
                   ResultSet rsItensInventario = aplicacao.obterConexao().executarConsulta(query)
                   if(rsItensInventario.next()) {
                     tblInventario.setValueAt(rsItensInventario.getString('codigo'), linha, 0)
@@ -695,9 +698,9 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
         else
         {
           if(!txtDataInventario.getText().equals('')) {
-            query = 'select i.codigo, i.descricao, hqi.quantidade from historico_quantidade_item hqi, item i ' +
+            /*query = 'select i.codigo, i.descricao, hqi.quantidade from historico_quantidade_item hqi, item i ' +
               'where i.codigo = hqi.codigo and i.codigo = '+ ((Item)itensInventario.get(cbxItens.getSelectedIndex())).obterCodigo() +' and hqi.data_hora <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and ' +
-              'hqi.data_hora = (select max(data_hora) from historico_quantidade_item where data_hora <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and codigo = '+ ((Item)itensInventario.get(cbxItens.getSelectedIndex())).obterCodigo() +')'
+              'hqi.data_hora = (select max(data_hora) from historico_quantidade_item where data_hora <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and codigo = '+ ((Item)itensInventario.get(cbxItens.getSelectedIndex())).obterCodigo() +')'*/
               ResultSet rsItensInventario = aplicacao.obterConexao().executarConsulta(query)
               int linha = 0
               if(rsItensInventario.next()) {
@@ -1245,7 +1248,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
     if(objeto == btAtualizarFornecedores) {
       modeloTabelaFornecedoresPendentes.definirConsulta('select distinct f.codigo as codigo_fornecedor, f.razao_social ' +
           'from fornecedor f, fornecedor_item fi, item i, quantidade_materia_prima qmp, modelo_pedido mp, pedido_cliente pc ' +
-          'where f.codigo = fi.fornecedor and i.codigo = fi.item and qmp.item = i.codigo and mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and mp.pedido = pc.codigo and pc.status = '1P' and mp.pedido not in (select distinct pedido from pedido_requisicao_compra)')
+          'where f.codigo = fi.fornecedor and i.codigo = fi.item and qmp.item = i.codigo and mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and mp.pedido = pc.codigo and pc.status = \'1P\' and mp.pedido not in (select distinct pedido from pedido_requisicao_compra)')
         tblFornecedoresPendentes.setModel(modeloTabelaFornecedoresPendentes)
         tblFornecedoresPendentes.updateUI()
     }
@@ -1255,7 +1258,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
         Vector fornecedores = new Vector()
           ResultSet rsFornecedoresPendentes = aplicacao.obterConexao().executarConsulta('select distinct f.codigo as codigo_fornecedor, f.razao_social ' +
               'from fornecedor f, fornecedor_item fi, item i, quantidade_materia_prima qmp, modelo_pedido mp, pedido_cliente pc ' +
-              'where f.codigo = fi.fornecedor and i.codigo = fi.item and qmp.item = i.codigo and mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and mp.pedido = pc.codigo and pc.status = '1P' and mp.pedido not in (select distinct pedido from pedido_requisicao_compra)')
+              'where f.codigo = fi.fornecedor and i.codigo = fi.item and qmp.item = i.codigo and mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and mp.pedido = pc.codigo and pc.status = \'1P\' and mp.pedido not in (select distinct pedido from pedido_requisicao_compra)')
           while(rsFornecedoresPendentes.next()) {
             fornecedores.addElement(new Fornecedor(rsFornecedoresPendentes.getInt('codigo_fornecedor'), rsFornecedoresPendentes.getString('razao_social')))
           }

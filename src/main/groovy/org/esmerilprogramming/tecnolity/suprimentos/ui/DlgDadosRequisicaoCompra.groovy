@@ -518,7 +518,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
   private int obterDepartamentoSolicitante() throws Exception
   {
     Conexao conexao = aplicacao.obterConexao()
-      ResultSet departamentoSolicitante = conexao.executarConsulta('select departamento from usuario where usuario = ''+ this.responsavelEmissao +'' ')
+      ResultSet departamentoSolicitante = conexao.executarConsulta('select departamento from usuario where usuario = '+ this.responsavelEmissao +' ')
       if(departamentoSolicitante.next())
         return departamentoSolicitante.getInt('departamento')
       else
