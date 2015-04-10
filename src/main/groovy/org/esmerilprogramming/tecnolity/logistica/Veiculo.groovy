@@ -281,7 +281,7 @@ class Veiculo {
   void cadastrarDadosVeiculo() throws Exception
   {
     String query = "insert into veiculo (placa, transportadora, chassi, renavam, marca, modelo, ano, cor, numero_eixo, cubagem, tara, peso_bruto, combustivel, volume_combustivel, media_consumo) values "
-      query += "('"+ this.placa + "', "+ this.transportadora.obterCodigo() + ", '"+ this.chassi + "', '"+ this.renavam + "', '"+ this.marca + "', '"+ this.modelo + "', '"+ this.ano + "', '"+ this.cor + "', "+ this.numeroEixo + ", "+ this.cubagem + ", "+ this.tara + ", "+ this.pesoBruto + ", '"+ this.combustivel + "', "+ this.volumeCombustivel + ", "+ this.mediaConsumo + ") "
+      query += "('" + this.placa + "', " + this.transportadora.obterCodigo() + ", '" + this.chassi + "', '" + this.renavam + "', '" + this.marca + "', '" + this.modelo + "', '" + this.ano + "', '" + this.cor + "', " + this.numeroEixo + ", " + this.cubagem + ", " + this.tara + ", " + this.pesoBruto + ", '" + this.combustivel + "', " + this.volumeCombustivel + ", " + this.mediaConsumo + ") "
       Conexao conexao = new Conexao('T')
       boolean existente = false
 
@@ -307,7 +307,7 @@ class Veiculo {
 
   void alterarDadosVeiculo() throws Exception
   {
-    String query = "update veiculo set transportadora = " +  this.transportadora.obterCodigo() + ", chassi = '"+ this.chassi + "', renavam = '"+ this.renavam + "', marca = '"+ this.marca + "', modelo = '"+ this.modelo + "', ano = '"+ this.ano + "', cor = '"+ this.cor + "', numero_eixo = "+ this.numeroEixo + ", cubagem = "+ this.cubagem + ", tara = "+ this.tara + ", peso_bruto = "+ this.pesoBruto + ", combustivel = '"+ this.combustivel + "', volume_combustivel = "+ this.volumeCombustivel + ", media_consumo = "+ this.mediaConsumo + " where placa =  '"+ this.placa + "' "
+    String query = "update veiculo set transportadora = " +  this.transportadora.obterCodigo() + ", chassi = '" + this.chassi + "', renavam = '" + this.renavam + "', marca = '" + this.marca + "', modelo = '" + this.modelo + "', ano = '" + this.ano + "', cor = '" + this.cor + "', numero_eixo = " + this.numeroEixo + ", cubagem = " + this.cubagem + ", tara = " + this.tara + ", peso_bruto = " + this.pesoBruto + ", combustivel = '" + this.combustivel + "', volume_combustivel = " + this.volumeCombustivel + ", media_consumo = " + this.mediaConsumo + " where placa =  '" + this.placa + "' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

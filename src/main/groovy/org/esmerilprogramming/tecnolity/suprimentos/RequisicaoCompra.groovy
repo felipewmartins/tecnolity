@@ -292,7 +292,7 @@ class RequisicaoCompra
     itensRequisicao = new Vector()
       String query = "select i.codigo as codigo_item, i.descricao as descricao_item, ir.requisicao_compra, ir.status, ir.quantidade, ir.quantidade_pendente, ir.quantidade_abastecida, ir.valor_item, i.percentual_ipi "  + 
       "from item_requisicao ir, item i "  + 
-      "where ir.item = i.codigo and (ir.status = '" +  ItemRequisicao.ABASTECIDO_TOTALMENTE + "' or ir.status = '"+ ItemRequisicao.ABASTECIDO_PARCIALMENTE + "') and requisicao_compra = " + this.codigo +
+      "where ir.item = i.codigo and (ir.status = '" +  ItemRequisicao.ABASTECIDO_TOTALMENTE + "' or ir.status = '" + ItemRequisicao.ABASTECIDO_PARCIALMENTE + "') and requisicao_compra = " + this.codigo +
       " order by ir.item asc"
       try {
         ResultSet dadosItemRequisicao = conexao.executarConsulta(query)
@@ -322,7 +322,7 @@ class RequisicaoCompra
     itensRequisicao = new Vector()
       String query = "select distinct i.codigo as codigo_item, i.descricao as descricao_item, ci.codigo as codigo_categoria, ci.categoria, fi.referencia_fornecedor, ir.status, ir.quantidade, ir.quantidade_pendente, ir.quantidade_abastecida, ir.valor_item, i.percentual_ipi "  + 
       "from item_requisicao ir, item i, categoria_item ci, fornecedor f, fornecedor_item fi, requisicao_compra rc "  + 
-      "where ir.item = i.codigo and i.categoria = ci.codigo and ir.requisicao_compra = rc.codigo and rc.fornecedor = f.codigo and f.codigo = fi.fornecedor and fi.item = i.codigo and f.codigo = " +  this.obterFornecedor().obterCodigo() + " and (ir.status = '"+ ItemRequisicao.EMITIDO + "' or ir.status = '"+ ItemRequisicao.ABASTECIDO_PARCIALMENTE + "') and ir.requisicao_compra = " + this.codigo
+      "where ir.item = i.codigo and i.categoria = ci.codigo and ir.requisicao_compra = rc.codigo and rc.fornecedor = f.codigo and f.codigo = fi.fornecedor and fi.item = i.codigo and f.codigo = " +  this.obterFornecedor().obterCodigo() + " and (ir.status = '" + ItemRequisicao.EMITIDO + "' or ir.status = '" + ItemRequisicao.ABASTECIDO_PARCIALMENTE + "') and ir.requisicao_compra = " + this.codigo
       try {
         ResultSet dadosItemRequisicao = conexao.executarConsulta(query)
           Item item = null
@@ -353,7 +353,7 @@ class RequisicaoCompra
     itensRequisicao = new Vector()
       String query = "select distinct i.codigo as codigo_item, i.descricao as descricao_item, ci.codigo as codigo_categoria, ci.categoria, fi.referencia_fornecedor, ir.status, ir.quantidade, ir.quantidade_pendente, ir.quantidade_abastecida, ir.valor_item, i.percentual_ipi "  + 
       "from item_requisicao ir, item i, categoria_item ci, fornecedor f, fornecedor_item fi, requisicao_compra rc "  + 
-      "where ir.item = i.codigo and i.categoria = ci.codigo and ir.requisicao_compra = rc.codigo and rc.fornecedor = f.codigo and f.codigo = fi.fornecedor and fi.item = i.codigo and f.codigo = " +  this.obterFornecedor().obterCodigo() + " and (ir.status = '"+ ItemRequisicao.EMITIDO + "' or ir.status = '"+ ItemRequisicao.ABASTECIDO_PARCIALMENTE + "' or ir.status = '"+ ItemRequisicao.ABASTECIDO_TOTALMENTE + "' or ir.status = '"+ ItemRequisicao.CANCELADO + "') and ir.requisicao_compra = " + this.codigo
+      "where ir.item = i.codigo and i.categoria = ci.codigo and ir.requisicao_compra = rc.codigo and rc.fornecedor = f.codigo and f.codigo = fi.fornecedor and fi.item = i.codigo and f.codigo = " +  this.obterFornecedor().obterCodigo() + " and (ir.status = '" + ItemRequisicao.EMITIDO + "' or ir.status = '" + ItemRequisicao.ABASTECIDO_PARCIALMENTE + "' or ir.status = '" + ItemRequisicao.ABASTECIDO_TOTALMENTE + "' or ir.status = '" + ItemRequisicao.CANCELADO + "') and ir.requisicao_compra = " + this.codigo
       try {
         ResultSet dadosItemRequisicao = conexao.executarConsulta(query)
           Item item = null
@@ -414,7 +414,7 @@ class RequisicaoCompra
   {
     Vector requisicoesCompra = new Vector()
       requisicoesCompra.addElement(null)
-      String query = "select rc.codigo as codigo_requisicao, f.codigo as codigo_fornecedor, f.razao_social as fornecedor, rc.data_emissao, d. codigo as codigo_departamento, d.departamento, rc.data_limite_entrega, t.codigo as codigo_transportadora, t.transportadora, rc.tipo_frete from requisicao_compra rc, fornecedor f, departamento d, transportadora t where rc.fornecedor = f.codigo and rc.departamento_solicitante = d.codigo and rc.transportadora = t.codigo and (rc.status = '" +  STATUS_EMITIDO + "' or rc.status = '"+ STATUS_PENDENTE + "') order by rc.codigo"
+      String query = "select rc.codigo as codigo_requisicao, f.codigo as codigo_fornecedor, f.razao_social as fornecedor, rc.data_emissao, d. codigo as codigo_departamento, d.departamento, rc.data_limite_entrega, t.codigo as codigo_transportadora, t.transportadora, rc.tipo_frete from requisicao_compra rc, fornecedor f, departamento d, transportadora t where rc.fornecedor = f.codigo and rc.departamento_solicitante = d.codigo and rc.transportadora = t.codigo and (rc.status = '" +  STATUS_EMITIDO + "' or rc.status = '" + STATUS_PENDENTE + "') order by rc.codigo"
       ResultSet rsRequisicao = conexao.executarConsulta(query)
       while(rsRequisicao.next()) {
         requisicoesCompra.addElement(new RequisicaoCompra(rsRequisicao.getInt("codigo_requisicao"),
@@ -435,7 +435,7 @@ class RequisicaoCompra
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         query = "insert into requisicao_compra (fornecedor, departamento_solicitante, responsavel_emissao, data_limite_entrega, condicao_pagamento, forma_pagamento, transportadora, tipo_frete, observacao, status) values  (" + 
-          this.fornecedor.obterCodigo()  +  ", "+ this.departamento.obterCodigo() + ", '"+ this.responsavelEmissao.obterMatricula() + "', '"+ Calendario.inverterFormato(this.dataLimiteEntrega, "/") + "', '"+ this.condicaoPagamento + "', '"+ this.formaPagamento.obterSigla() + "', "+ this.transportadora.obterCodigo() + ", '"+ this.tipoFrete + "', '"+ this.observacao + "', '"+ STATUS_EMITIDO + "') "
+          this.fornecedor.obterCodigo()  +  ", " + this.departamento.obterCodigo() + ", '" + this.responsavelEmissao.obterMatricula() + "', '" + Calendario.inverterFormato(this.dataLimiteEntrega, "/") + "', '" + this.condicaoPagamento + "', '" + this.formaPagamento.obterSigla() + "', " + this.transportadora.obterCodigo() + ", '" + this.tipoFrete + "', '" + this.observacao + "', '" + STATUS_EMITIDO + "') "
           conexao.executarAtualizacao(query)
           ResultSet codigoRequisicao = conexao.executarConsulta("select max(codigo) as codigo from requisicao_compra ")
           if (codigoRequisicao.next())
@@ -461,10 +461,10 @@ class RequisicaoCompra
           for(int i = 0;i < numItens;i++) {
             irAtual = (ItemRequisicao)this.itensRequisicao.get(i)
               query = "insert into item_requisicao (item, requisicao_compra, quantidade, quantidade_pendente, valor_item) values "
-              query = query  +  "("+ irAtual.obterItem().obterCodigo() + ", "+ this.obterCodigo() + ", "+ irAtual.getQuantidadeItem() + ", "+ irAtual.getQuantidadeItem() + ", "+ irAtual.obterValorUnitario() + ") "
+              query = query  +  "(" + irAtual.obterItem().obterCodigo() + ", " + this.obterCodigo() + ", " + irAtual.getQuantidadeItem() + ", " + irAtual.getQuantidadeItem() + ", " + irAtual.obterValorUnitario() + ") "
               conexao.executarAtualizacao(query)
               for(int j = 0;j < pedidos.size();j++) {
-                query = "insert into pedido_requisicao_compra (pedido, requisicao_compra, item_requisicao) values (" +  ((Pedido)pedidos.get(j)).obterCodigo() + ", "+ this.obterCodigo() + ", "+ irAtual.obterItem().obterCodigo() + ")"
+                query = "insert into pedido_requisicao_compra (pedido, requisicao_compra, item_requisicao) values (" +  ((Pedido)pedidos.get(j)).obterCodigo() + ", " + this.obterCodigo() + ", " + irAtual.obterItem().obterCodigo() + ")"
                   conexao.executarAtualizacao(query)
               }
           }
@@ -481,7 +481,7 @@ class RequisicaoCompra
   void alterarRequisicaoCompra() throws Exception
   {
     String query = ""
-      query = "update requisicao_compra set fornecedor = " +  this.fornecedor + ", departamento_solicitante = "+ this.departamento.obterCodigo() + ", responsavel_emissao = '"+ this.responsavelEmissao + "', data_limite_entrega = '"+ Calendario.inverterFormato(this.dataLimiteEntrega, "/") + "', condicao_pagamento = '"+ this.condicaoPagamento + "', forma_pagamento = '"+ this.formaPagamento + "', transportadora = "+ this.transportadora + ", tipo_frete = '"+ this.tipoFrete + "', observacao = '"+ this.observacao + "', status = '"+ STATUS_EMITIDO + "' where codigo =  "+ this.codigo + " "
+      query = "update requisicao_compra set fornecedor = " +  this.fornecedor + ", departamento_solicitante = " + this.departamento.obterCodigo() + ", responsavel_emissao = '" + this.responsavelEmissao + "', data_limite_entrega = '" + Calendario.inverterFormato(this.dataLimiteEntrega, "/") + "', condicao_pagamento = '" + this.condicaoPagamento + "', forma_pagamento = '" + this.formaPagamento + "', transportadora = " + this.transportadora + ", tipo_frete = '" + this.tipoFrete + "', observacao = '" + this.observacao + "', status = '" + STATUS_EMITIDO + "' where codigo =  " + this.codigo + " "
 
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
@@ -509,7 +509,7 @@ class RequisicaoCompra
      for(int i = 0i < numItensi++) {
      ItemRequisicao itemRequisicao = (ItemRequisicao)this.itensRequisicao.get(i)
      query = "insert into item_requisicao (item, requisicao_compra, quantidade, quantidade_pendente, valor_item) values "
-     query = query  +  "("+ itemRequisicao.obterItem().obterCodigo() + ", "+ this.codigo + ", "+ itemRequisicao.obterQuantidadeItem() + ", "+ itemRequisicao.obterQuantidadeItem() + ", "+ itemRequisicao.obterValorUnitario() + ") "
+     query = query  +  "(" + itemRequisicao.obterItem().obterCodigo() + ", " + this.codigo + ", " + itemRequisicao.obterQuantidadeItem() + ", " + itemRequisicao.obterQuantidadeItem() + ", " + itemRequisicao.obterValorUnitario() + ") "
      conexao.executarAtualizacao(query)
      }
      conexao.fecharConexao()
@@ -553,7 +553,7 @@ class RequisicaoCompra
 
   void registrarStatusRequisicaoCompra() throws Exception
   {
-    String query = "update requisicao_compra set status = '" +  this.status + "' where codigo = "+ this.codigo + " "
+    String query = "update requisicao_compra set status = '" +  this.status + "' where codigo = " + this.codigo + " "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -580,7 +580,7 @@ class RequisicaoCompra
         for(int i = 0;i < itensRequisicao.size();i++) {
           itemRequisicao = (ItemRequisicao)itensRequisicao.get(i)
             if(itemRequisicao.obterItem().obterLote() != null) {
-              query = "update item_requisicao set status = '" +  itemRequisicao.obterStatus() + "', quantidade_pendente = "+ (itemRequisicao.getQuantidadeItem() - itemRequisicao.getQuantidadeAbastecida()) + ", quantidade_abastecida = "+ itemRequisicao.getQuantidadeAbastecida() + " where item = "+ itemRequisicao.obterItem().obterCodigo() + " and requisicao_compra = " + this.codigo
+              query = "update item_requisicao set status = '" +  itemRequisicao.obterStatus() + "', quantidade_pendente = " + (itemRequisicao.getQuantidadeItem() - itemRequisicao.getQuantidadeAbastecida()) + ", quantidade_abastecida = " + itemRequisicao.getQuantidadeAbastecida() + " where item = " + itemRequisicao.obterItem().obterCodigo() + " and requisicao_compra = " + this.codigo
                 conexao.executarAtualizacao(query)
             }
         }

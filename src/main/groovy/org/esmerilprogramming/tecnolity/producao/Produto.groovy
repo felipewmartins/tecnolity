@@ -190,14 +190,14 @@ class Produto {
 
       if(conexao.abrirConexao()) {
         query = "insert into modelo (referencia_cliente, componente, modelo, valor, custo_fabricacao, cliente, tipo_producao, especificacao_inserto, acabamentos, lavagem, pintura, exportacao) values "  + 
-          "('" +  this.referenciaCliente + "', "+ this.componente.obterCodigo() + ", '"+ this.nomeModelo + "', "+ this.valor + ", "+ this.custoFabricacao + ", "+ this.cliente.obterCodigo() + ", "+ this.tipoProducao.obterCodigo() + ", '"+ this.especificacaoInserto + "', '"+ this.acabamento + "', '"+ this.lavagem + "', '"+ this.pintura + "', '"+ this.destino + "')"
-          ResultSet modelo = conexao.executarConsulta("select codigo from modelo where modelo = '" +  this.nomeModelo + "' and referencia_cliente = '"+ this.referenciaCliente + "' and componente = "+ this.componente.obterCodigo() + " and cliente = "+ this.cliente.obterCodigo() + "")
+          "('" +  this.referenciaCliente + "', " + this.componente.obterCodigo() + ", '" + this.nomeModelo + "', " + this.valor + ", " + this.custoFabricacao + ", " + this.cliente.obterCodigo() + ", " + this.tipoProducao.obterCodigo() + ", '" + this.especificacaoInserto + "', '" + this.acabamento + "', '" + this.lavagem + "', '" + this.pintura + "', '" + this.destino + "')"
+          ResultSet modelo = conexao.executarConsulta("select codigo from modelo where modelo = '" +  this.nomeModelo + "' and referencia_cliente = '" + this.referenciaCliente + "' and componente = " + this.componente.obterCodigo() + " and cliente = " + this.cliente.obterCodigo() + "")
           if(modelo.next()) {
             Exception e = new Exception("Já existe um produto cadastrado com esta referência")
               throw e
           }
         conexao.executarAtualizacao(query)
-          modelo = conexao.executarConsulta("select codigo from modelo where referencia_cliente = '" +  this.referenciaCliente + "' and componente = "+ this.componente.obterCodigo() + " and cliente = "+ this.cliente.obterCodigo() + "")
+          modelo = conexao.executarConsulta("select codigo from modelo where referencia_cliente = '" +  this.referenciaCliente + "' and componente = " + this.componente.obterCodigo() + " and cliente = " + this.cliente.obterCodigo() + "")
           if(modelo.next())
             this.codigo = modelo.getInt("codigo")
               modelo.close()
@@ -211,7 +211,7 @@ class Produto {
       String query
 
       if(conexao.abrirConexao()) {
-        query = "update modelo set referencia_cliente = '" +  this.referenciaCliente + "', componente = "+ this.componente.obterCodigo() + ", modelo = '"+ this.nomeModelo + "', valor = "+ this.valor + ", custo_fabricacao = "+ this.custoFabricacao + ", cliente = "+ this.cliente.obterCodigo() + ", tipo_producao = "+ this.tipoProducao.obterCodigo() + ", especificacao_inserto = '"+ this.especificacaoInserto + "', acabamentos = '"+ this.acabamento + "', lavagem = '"+ this.lavagem + "', pintura = '"+ this.pintura + "', exportacao = '"+ this.destino + "' " +
+        query = "update modelo set referencia_cliente = '" +  this.referenciaCliente + "', componente = " + this.componente.obterCodigo() + ", modelo = '" + this.nomeModelo + "', valor = " + this.valor + ", custo_fabricacao = " + this.custoFabricacao + ", cliente = " + this.cliente.obterCodigo() + ", tipo_producao = " + this.tipoProducao.obterCodigo() + ", especificacao_inserto = '" + this.especificacaoInserto + "', acabamentos = '" + this.acabamento + "', lavagem = '" + this.lavagem + "', pintura = '" + this.pintura + "', exportacao = '" + this.destino + "' " +
           "where codigo = "  +  this.obterCodigo()
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
@@ -247,10 +247,10 @@ class Produto {
           for(int i = 0;i < materiasPrimas.size();i++) {
             materiaPrima = (MateriaPrima)materiasPrimas.get(i)
               query = "insert into quantidade_materia_prima (item, referencia, numero_sola, quantidade, produto) "
-              query  += "values ("+ materiaPrima.obterItem().obterCodigo()
-              query  += ", '"+ materiaPrima.obterMatriz().obterReferencia() + "', "
+              query  += "values (" + materiaPrima.obterItem().obterCodigo()
+              query  += ", '" + materiaPrima.obterMatriz().obterReferencia() + "', "
               query  += materiaPrima.obterMatriz().obterNumeroSola()
-              query  += ", "+ materiaPrima.obterQuantidade() + ", "
+              query  += ", " + materiaPrima.obterQuantidade() + ", "
               query  += this.obterCodigo() + ")"
               conexao.executarAtualizacao(query)
           }

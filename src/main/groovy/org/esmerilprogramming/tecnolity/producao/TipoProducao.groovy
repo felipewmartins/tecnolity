@@ -53,7 +53,7 @@ class TipoProducao {
   }
 
   void cadastrarTipoProducao() {
-    String query = "insert into tipo_producao (codigo, tipo_producao) values (" +  this.codigo + ", '"+ this.tipoProducao + "')"
+    String query = "insert into tipo_producao (codigo, tipo_producao) values (" +  this.codigo + ", '" + this.tipoProducao + "')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

@@ -354,9 +354,9 @@ class Item {
       "where i.categoria = ci.codigo and i.unidade = u.codigo and "
       for(int i = 0;i < codigos.length;i++) {
         if(i == 0)
-          query += "(i.codigo = "+ codigos[i] + " "
+          query += "(i.codigo = " + codigos[i] + " "
         else
-          query += "or i.codigo = "+ codigos[i] + " "
+          query += "or i.codigo = " + codigos[i] + " "
       }
     query += ") order by i.descricao, ci.categoria"
       dadosItem = conexao.executarConsulta(query)
@@ -383,7 +383,7 @@ class Item {
           "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and "  + 
           "qmp.item = i.codigo and i.codigo = fi.item "
           if(fornecedor != null)
-            query += "and fi.fornecedor = "+ fornecedor.obterCodigo()
+            query += "and fi.fornecedor = " + fornecedor.obterCodigo()
               for(int i = 0;i < pedidos.size();i++) {
                 if(i == 0) {
                   query += " and ("
@@ -404,7 +404,7 @@ class Item {
         query = "select i.codigo, i.descricao from item i, fornecedor_item fi "  + 
           "where i.codigo = fi.item "
           if(fornecedor != null)
-            query += "and fi.fornecedor = "+ fornecedor.obterCodigo() + " "
+            query += "and fi.fornecedor = " + fornecedor.obterCodigo() + " "
               query += "group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
       }
     dadosItem = conexao.executarConsulta(query)
@@ -455,7 +455,7 @@ class Item {
       Vector itens = new Vector()
       String query = "select i.codigo, i.descricao "  + 
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp, departamento_item di "  + 
-      "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and i.codigo = di.item and di.departamento = " +  departamento.obterCodigo() + " and mp.pedido = "+ pedido.obterCodigo() + " " +
+      "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and i.codigo = di.item and di.departamento = " +  departamento.obterCodigo() + " and mp.pedido = " + pedido.obterCodigo() + " " +
       "group by i.codigo, i.descricao"
       dadosItem = conexao.executarConsulta(query)
       itens.addElement("Selecione...")
@@ -665,7 +665,7 @@ class Item {
   void cadastrarItem() throws Exception
   {
     String query = "insert into item (descricao, categoria, armazenamento, unidade, temperatura, seguranca, quantidade, quantidade_minima, quantidade_maxima, percentual_ipi, percentual_perda, ativo, independente) values "
-      query = query  +  "('"+ descricao + "', "+ categoria.obterCodigo() + ", '"+ armazenamento + "', "+ unidade.obterCodigo() + ", "+ temperatura + ", '"+ seguranca + "', 0, "+ quantidadeMinima + ", "+ quantidadeMaxima + ", "+ percentualIPI + ", "+ percentualPerda + ", "+ ((this.ativo)?1:0) + ", "+ ((this.independente)?1:0) + ")"
+      query = query  +  "('" + descricao + "', " + categoria.obterCodigo() + ", '" + armazenamento + "', " + unidade.obterCodigo() + ", " + temperatura + ", '" + seguranca + "', 0, " + quantidadeMinima + ", " + quantidadeMaxima + ", " + percentualIPI + ", " + percentualPerda + ", " + ((this.ativo)?1:0) + ", " + ((this.independente)?1:0) + ")"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         ResultSet dadosItem = conexao.executarConsulta("select descricao from item where descricao = '" +  this.descricao + "'")
@@ -679,7 +679,7 @@ class Item {
           dadosItem = conexao.executarConsulta("select codigo from item where descricao = '" +  descricao + "'")
           if(dadosItem.next()) {
             this.definirCodigo(dadosItem.getInt("codigo"))
-              conexao.executarAtualizacao("insert into lote (item, quantidade, lote_basico) values (" +  this.obterCodigo() + ", "+ this.obterQuantidade() + ", '"+ Lote.LOTE_BASICO + "')")
+              conexao.executarAtualizacao("insert into lote (item, quantidade, lote_basico) values (" +  this.obterCodigo() + ", " + this.obterQuantidade() + ", '" + Lote.LOTE_BASICO + "')")
               dadosItem.close()
           }
         conexao.fecharConexao()
@@ -699,7 +699,7 @@ class Item {
         String query = ""
         if(numDepartamentos > 0 && conexao.abrirConexao()) {
           for(int i = 0;i < numDepartamentos;i++) {
-            query = "insert into departamento_item (departamento, item) values (" +  ((Departamento)departamentos.get(i)).obterCodigo() + ", "+ this.obterCodigo() + ")"
+            query = "insert into departamento_item (departamento, item) values (" +  ((Departamento)departamentos.get(i)).obterCodigo() + ", " + this.obterCodigo() + ")"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -717,7 +717,7 @@ class Item {
         if(numFornecedores > 0 && conexao.abrirConexao()) {
           for(int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (" +  fiAtual.obterFornecedor().obterCodigo() + ", "+ fiAtual.obterItem().obterCodigo() + ", "+ fiAtual.obterUnidade().obterCodigo() + ", "+ fiAtual.obterValorItem() + ", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") + "', '"+ fiAtual.obterMoeda() + "', '"+ fiAtual.obterReferenciaFornecedor() + "')"
+              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (" +  fiAtual.obterFornecedor().obterCodigo() + ", " + fiAtual.obterItem().obterCodigo() + ", " + fiAtual.obterUnidade().obterCodigo() + ", " + fiAtual.obterValorItem() + ", '" + Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") + "', '" + fiAtual.obterMoeda() + "', '" + fiAtual.obterReferenciaFornecedor() + "')"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -733,15 +733,15 @@ class Item {
       if (conexao.abrirConexao()) {
         ResultSet itemSelecionado = conexao.executarConsulta(query)
           if(itemSelecionado.next()) {
-            query = "update item set descricao = '" +  descricao + "', categoria = "+ categoria.obterCodigo() + ", armazenamento = '"+ armazenamento + "', unidade = "+ unidade.obterCodigo() + ", temperatura = "+ temperatura + ", seguranca = '"+ seguranca + "', quantidade = "+ quantidade + ", quantidade_minima = "+ quantidadeMinima + ", quantidade_maxima = "+ quantidadeMaxima + ", percentual_ipi = "+ percentualIPI + ", percentual_perda = "+ percentualPerda + ", ativo = "+ ((this.ativo)?1:0) + ", independente = "+ ((this.independente)?1:0) + " where codigo = "+ codigo
+            query = "update item set descricao = '" +  descricao + "', categoria = " + categoria.obterCodigo() + ", armazenamento = '" + armazenamento + "', unidade = " + unidade.obterCodigo() + ", temperatura = " + temperatura + ", seguranca = '" + seguranca + "', quantidade = " + quantidade + ", quantidade_minima = " + quantidadeMinima + ", quantidade_maxima = " + quantidadeMaxima + ", percentual_ipi = " + percentualIPI + ", percentual_perda = " + percentualPerda + ", ativo = " + ((this.ativo)?1:0) + ", independente = " + ((this.independente)?1:0) + " where codigo = " + codigo
               conexao.executarAtualizacao(query)
-              query = "update lote set quantidade = " +  quantidade + " where item = " + codigo + " and lote_basico = '"+ Lote.LOTE_BASICO + "'"
+              query = "update lote set quantidade = " +  quantidade + " where item = " + codigo + " and lote_basico = '" + Lote.LOTE_BASICO + "'"
               conexao.executarAtualizacao(query)
               itemSelecionado.close()
           }
           else
           {
-            query = "update item set descricao = '" +  descricao + "', categoria = "+ categoria.obterCodigo() + ", armazenamento = '"+ armazenamento + "', unidade = "+ unidade.obterCodigo() + ", temperatura = "+ temperatura + ", seguranca = '"+ seguranca + "', quantidade_minima = "+ quantidadeMinima + ", quantidade_maxima = "+ quantidadeMaxima + ", percentual_ipi = "+ percentualIPI + ", percentual_perda = "+ percentualPerda + ", ativo = "+ ((this.ativo)?1:0) + ", independente = "+ ((this.independente)?1:0) + " where codigo = "+ codigo
+            query = "update item set descricao = '" +  descricao + "', categoria = " + categoria.obterCodigo() + ", armazenamento = '" + armazenamento + "', unidade = " + unidade.obterCodigo() + ", temperatura = " + temperatura + ", seguranca = '" + seguranca + "', quantidade_minima = " + quantidadeMinima + ", quantidade_maxima = " + quantidadeMaxima + ", percentual_ipi = " + percentualIPI + ", percentual_perda = " + percentualPerda + ", ativo = " + ((this.ativo)?1:0) + ", independente = " + ((this.independente)?1:0) + " where codigo = " + codigo
               conexao.executarAtualizacao(query)
           }
         conexao.fecharConexao()
@@ -765,7 +765,7 @@ class Item {
             conexao.executarAtualizacao(query)
 
             for(int i = 0;i < numDepartamentos;i++) {
-              query = "insert into departamento_item (departamento, item) values (" +  ((Departamento)departamentos.get(i)).obterCodigo() + ", "+ this.obterCodigo() + ")"
+              query = "insert into departamento_item (departamento, item) values (" +  ((Departamento)departamentos.get(i)).obterCodigo() + ", " + this.obterCodigo() + ")"
                 conexao.executarAtualizacao(query)
             }
           conexao.fecharConexao()
@@ -787,7 +787,7 @@ class Item {
           }
           for(int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (" +  fiAtual.obterFornecedor().obterCodigo() + ", "+ fiAtual.obterItem().obterCodigo() + ", "+ fiAtual.obterUnidade().obterCodigo() + ", "+ fiAtual.obterValorItem() + ", '"+ Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") + "', '"+ fiAtual.obterMoeda() + "', '"+ fiAtual.obterReferenciaFornecedor() + "')"
+              query = "insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (" +  fiAtual.obterFornecedor().obterCodigo() + ", " + fiAtual.obterItem().obterCodigo() + ", " + fiAtual.obterUnidade().obterCodigo() + ", " + fiAtual.obterValorItem() + ", '" + Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), "/") + "', '" + fiAtual.obterMoeda() + "', '" + fiAtual.obterReferenciaFornecedor() + "')"
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()

@@ -59,7 +59,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp "  + 
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
       for(int i = 0;i < pedidos.length;i++) {
-        query  += "mp.pedido = "+ pedidos[i].obterCodigo()
+        query  += "mp.pedido = " + pedidos[i].obterCodigo()
           if((i + 1) < pedidos.length)
             query  += " or "
       }

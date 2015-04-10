@@ -101,7 +101,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   JPanel pnlDadosPedido = new JPanel(new BorderLayout())
                   modeloTabelaProducao = new ModeloTabela()
                   modeloTabelaProducao.definirConexao(aplicacao.obterConexao())
-                  /*String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '"+ Pedido.PRODUZINDO+ "' then 'Produzindo' when '"+ Pedido.FINALIZADO + "' then 'Finalizado' when '"+ Pedido.ATRASADO + "' then 'Atrasado' when '"+ Pedido.CANCELADO + "' then 'Cancelado' when '"+ Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
+                  /*String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' when '" + Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
                     "from pedido_cliente pc, cliente c, local_entrega le "  + 
                     "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "  + 
                     "order by pc.codigo desc"
@@ -243,7 +243,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
   }
 
   private void atualizarTabelaProducao() {
-    String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '"+ Pedido.PRODUZINDO+ "' then 'Produzindo' when '"+ Pedido.FINALIZADO + "' then 'Finalizado' when '"+ Pedido.ATRASADO + "' then 'Atrasado' when '"+ Pedido.CANCELADO + "' then 'Cancelado' when '"+ Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
+    String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' when '" + Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
       "from pedido_cliente pc, cliente c, local_entrega le "  + 
       "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "
       if(cbxSituacao.getSelectedIndex() > 0) {

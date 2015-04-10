@@ -29,7 +29,7 @@ class RelatorioProduto extends Relatorio
       conteudo.append("Tp. Componente: " +  Texto.obterStringTamanhoFixo(produto.obterComponente().obterNomeComponente(), 21) + " Tp. Produção: " + Texto.obterStringTamanhoFixo(produto.obterTipoProducao().obterTipoProducao(), 24))
       conteudo.append(QUEBRA)
       try {
-        conteudo.append("       Mercado: " +  (produto.obterDestino() == 'I'?"Mercado Interno":"Mercado Externo") + '       Valor: R$' + produto.getValor("") + " (Desde: "+ produto.getDataUltimaAlteracaoValor(null) + ")")
+        conteudo.append("       Mercado: " +  (produto.obterDestino() == 'I'?"Mercado Interno":"Mercado Externo") + '       Valor: R$' + produto.getValor("") + " (Desde: " + produto.getDataUltimaAlteracaoValor(null) + ")")
       }
     catch(Exception e) {
       e.printStackTrace()
@@ -99,17 +99,17 @@ class RelatorioProduto extends Relatorio
             numeroSolaAnterior = numeroSola
               conteudo.append("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ")
               conteudo.append(QUEBRA)
-              conteudo.append("No. Matriz: " +  Texto.obterStringTamanhoFixo(referencia, 13) + "  Num. Sola: "+ Texto.obterStringTamanhoFixo("" + numeroSola, 13) + "  Quant.: "+ Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterQuantidade(), 14))
+              conteudo.append("No. Matriz: " +  Texto.obterStringTamanhoFixo(referencia, 13) + "  Num. Sola: " + Texto.obterStringTamanhoFixo("" + numeroSola, 13) + "  Quant.: " + Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterQuantidade(), 14))
               conteudo.append(QUEBRA)
-              conteudo.append("    Dureza: " +  Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterDureza(), 13) + "  Densidade: "+ Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterDensidade(), 15) + "  Peso: "+ Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterPeso(), 14))
+              conteudo.append("    Dureza: " +  Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterDureza(), 13) + "  Densidade: " + Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterDensidade(), 15) + "  Peso: " + Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterPeso(), 14))
               conteudo.append(QUEBRA)
-              conteudo.append("    Volume: " +  Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterVolume(), 12) + " Tempo Forma: "+ Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterTempoForma(), 7) + " Tempo Injeção: "+ Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterTempoInjecao(), 10))
+              conteudo.append("    Volume: " +  Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterVolume(), 12) + " Tempo Forma: " + Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterTempoForma(), 7) + " Tempo Injeção: " + Texto.obterStringTamanhoFixo("" + materiaPrima.obterMatriz().obterTempoInjecao(), 10))
               conteudo.append(QUEBRA)
               conteudo.append(QUEBRA)
               conteudo.append("Item                                             Quantidade                 ")
               conteudo.append(QUEBRA)
           }
-        conteudo.append(Texto.obterStringTamanhoFixo(materiaPrima.obterItem().obterDescricao(), 47)  + "  "+ Texto.obterStringTamanhoFixo("" + materiaPrima.obterQuantidade(""), 27))
+        conteudo.append(Texto.obterStringTamanhoFixo(materiaPrima.obterItem().obterDescricao(), 47)  + "  " + Texto.obterStringTamanhoFixo("" + materiaPrima.obterQuantidade(""), 27))
           conteudo.append(QUEBRA)
       }
     return conteudo.toString()

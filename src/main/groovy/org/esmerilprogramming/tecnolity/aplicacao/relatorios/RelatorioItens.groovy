@@ -34,7 +34,7 @@ class RelatorioItens extends Relatorio
             quantMinima = "*"
           else
             quantMinima = ""
-              conteudo.append(""  +  Texto.obterNumeroTamanhoFixo("" + item.obterCodigo(), 6, "0") + "|"+ Texto.obterStringTamanhoFixo(item.obterDescricao(), 34) + "|"+ Texto.obterStringTamanhoFixo(item.obterUnidade().obterNomeUnidade(), 7) + "|"+ Texto.obterStringTamanhoFixo(item.obterCategoria().obterNomeCategoria(), 14) + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidade(), 3, ", "), 11, " ") + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidadeMinima(), 3, ", "), 11, " ") + quantMinima)
+              conteudo.append(""  +  Texto.obterNumeroTamanhoFixo("" + item.obterCodigo(), 6, "0") + "|" + Texto.obterStringTamanhoFixo(item.obterDescricao(), 34) + "|" + Texto.obterStringTamanhoFixo(item.obterUnidade().obterNomeUnidade(), 7) + "|" + Texto.obterStringTamanhoFixo(item.obterCategoria().obterNomeCategoria(), 14) + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidade(), 3, ", "), 11, " ") + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorNumerico(item.obterQuantidadeMinima(), 3, ", "), 11, " ") + quantMinima)
               conteudo.append(QUEBRA)
               alturaItens = linha  +  (i * 10)
       }

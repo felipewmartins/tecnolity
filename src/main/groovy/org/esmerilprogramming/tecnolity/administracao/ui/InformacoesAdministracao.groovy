@@ -294,7 +294,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   private void atualizarTabelaPermissoes(Colaborador colaborador) {
     String query = "select nome_completo, i.interface, case permissao when 'E' then 'Escrita' when 'L' then 'Leitura' end as permissao from permissao p, usuario u, interface i where	p.usuario = u.usuario and "
     if(colaborador != null)
-      query += "u.usuario = '"+ colaborador.obterMatricula() + "' and "
+      query += "u.usuario = '" + colaborador.obterMatricula() + "' and "
     query += "p.interface = i.identificador order by nome_completo asc"
 
     modeloTabelaPermissoes.definirConsulta(query)

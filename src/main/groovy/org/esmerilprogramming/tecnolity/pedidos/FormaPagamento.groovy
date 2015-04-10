@@ -100,7 +100,7 @@ class FormaPagamento {
   void cadastrarFormaPagamento() throws Exception
   {
     String query = "insert into forma_pagamento (sigla, forma_pagamento) values "
-      query = query  +  "('"+ this.sigla+ "', '"+ this.formaPagamento + "')"
+      query = query  +  "('" + this.sigla+ "', '" + this.formaPagamento + "')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -115,7 +115,7 @@ class FormaPagamento {
 
   void alterarFormaPagamento() throws Exception
   {
-    String query = "update forma_pagamento set sigla = '" +  this.sigla + "', forma_pagamento = '"+ this.formaPagamento + "' where sigla = '"+ this.siglaAntesAlteracao + "' "
+    String query = "update forma_pagamento set sigla = '" +  this.sigla + "', forma_pagamento = '" + this.formaPagamento + "' where sigla = '" + this.siglaAntesAlteracao + "' "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

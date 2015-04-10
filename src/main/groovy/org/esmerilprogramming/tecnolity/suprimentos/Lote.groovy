@@ -110,24 +110,24 @@ class Lote
     String query = "insert into lote (item, movimentacao_item, localizacao, data_validade, quantidade, reservado, descricao) values (" +  this.item.obterCodigo()
 
       if(this.movimentacao != null)
-        query = query  +  ", "+ this.movimentacao.obterCodigo()
+        query = query  +  ", " + this.movimentacao.obterCodigo()
       else
         query = query  +  ", null"
 
           if(this.localizacao != null)
-            query = query  +  ", '"+ this.localizacao.obterNomeCategoria() + "' "
+            query = query  +  ", '" + this.localizacao.obterNomeCategoria() + "' "
           else
             query = query  +  ", null"
 
               if(this.dataValidade != null)
-                query = query  +  ", '"+ Calendario.inverterFormato(this.dataValidade, "/") + "' "
+                query = query  +  ", '" + Calendario.inverterFormato(this.dataValidade, "/") + "' "
               else
                 query = query  +  ", null"
 
-                  query = query  +  ", "+ this.quantidade + ", "+ ((this.reservado)?1:0)
+                  query = query  +  ", " + this.quantidade + ", " + ((this.reservado)?1:0)
 
                   if(this.descricao != null)
-                    query = query  +  ", '"+ this.descricao + "')"
+                    query = query  +  ", '" + this.descricao + "')"
                   else
                     query = query  +  ", null)"
 

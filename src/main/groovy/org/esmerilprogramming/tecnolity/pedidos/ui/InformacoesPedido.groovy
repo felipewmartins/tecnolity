@@ -115,7 +115,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
   private void atualizarTabelaPedido() {
     String query = ""
       if(cbxSituacao.getSelectedIndex() > 0) {
-        query = "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '"+ Pedido.PRODUZINDO+ "' then 'Produzindo' when '"+ Pedido.FINALIZADO + "' then 'Finalizado' when '"+ Pedido.ATRASADO + "' then 'Atrasado' when '"+ Pedido.CANCELADO + "' then 'Cancelado' end) as status " +
+        query = "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' end) as status " +
           "from pedido_cliente pc, cliente c, local_entrega le "  + 
           "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega and pc.status = '" +  situacoes[cbxSituacao.getSelectedIndex()] + "' " +
           "order by pc.codigo desc"
@@ -123,7 +123,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       }
       else
       {
-        query = "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '"+ Pedido.PRODUZINDO+ "' then 'Produzindo' when '"+ Pedido.FINALIZADO + "' then 'Finalizado' when '"+ Pedido.ATRASADO + "' then 'Atrasado' when '"+ Pedido.CANCELADO + "' then 'Cancelado' end) as status " +
+        query = "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' end) as status " +
           "from pedido_cliente pc, cliente c, local_entrega le "  + 
           "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "  + 
           "order by pc.codigo desc"

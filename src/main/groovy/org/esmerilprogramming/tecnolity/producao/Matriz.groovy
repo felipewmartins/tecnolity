@@ -169,7 +169,7 @@ class Matriz {
           }
         dadosMatriz.close()
           conexao.executarAtualizacao("insert into matriz_modelo (referencia, numero_sola, quantidade, dureza, densidade, peso, volume, tempo_injecao, modificacoes, tempo_forma) "  + 
-              "values ('" +  this.referencia + "', "+ this.numeroSola + ", "+ this.quantidade + ", "+ this.dureza + ", "+ this.densidade + ", "+ this.peso + ", "+ this.volume + ", "+ this.tempoInjecao + ", '"+ this.modificacoes + "', "+ this.tempoForma + ")")
+              "values ('" +  this.referencia + "', " + this.numeroSola + ", " + this.quantidade + ", " + this.dureza + ", " + this.densidade + ", " + this.peso + ", " + this.volume + ", " + this.tempoInjecao + ", '" + this.modificacoes + "', " + this.tempoForma + ")")
           conexao.fecharConexao()
       }
       else
@@ -185,7 +185,7 @@ class Matriz {
       String query = ""
       boolean mudouChave = true
       if(conexao.abrirConexao()) {
-        query = "select referencia, numero_sola from matriz_modelo where referencia = '" +  this.obterReferencia() + "' and numero_sola = "+ this.obterNumeroSola()
+        query = "select referencia, numero_sola from matriz_modelo where referencia = '" +  this.obterReferencia() + "' and numero_sola = " + this.obterNumeroSola()
           ResultSet dadosMatriz = conexao.executarConsulta(query)
           if(this.referencia.equals(this.referenciaOriginal) && (this.numeroSola == this.numeroSolaOriginal)) {
             mudouChave = false
@@ -197,7 +197,7 @@ class Matriz {
         }
         else
         {
-          query = "update matriz_modelo set referencia = '" +  this.obterReferencia() + "', numero_sola = "+ this.obterNumeroSola() + ", quantidade = "+ this.obterQuantidade() + ", dureza = "+ this.obterDureza() + ", densidade = "+ this.obterDensidade() + ", peso = "+ this.obterPeso() + ", volume = "+ this.obterVolume() + ", tempo_injecao = "+ this.obterTempoInjecao() + ", modificacoes = '"+ this.obterModificacoes() + "', tempo_forma = "+ this.obterTempoForma() + " where referencia = '"+ this.obterReferenciaOriginal() + "' and numero_sola = "+ this.obterNumeroSolaOriginal()
+          query = "update matriz_modelo set referencia = '" +  this.obterReferencia() + "', numero_sola = " + this.obterNumeroSola() + ", quantidade = " + this.obterQuantidade() + ", dureza = " + this.obterDureza() + ", densidade = " + this.obterDensidade() + ", peso = " + this.obterPeso() + ", volume = " + this.obterVolume() + ", tempo_injecao = " + this.obterTempoInjecao() + ", modificacoes = '" + this.obterModificacoes() + "', tempo_forma = " + this.obterTempoForma() + " where referencia = '" + this.obterReferenciaOriginal() + "' and numero_sola = " + this.obterNumeroSolaOriginal()
             conexao.executarAtualizacao(query)
         }
         dadosMatriz.close()
@@ -232,7 +232,7 @@ class Matriz {
   {
     Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
-        conexao.executarAtualizacao("delete from matriz_modelo where referencia = '" +  this.referencia + "' and numero_sola = "+ this.numeroSola)
+        conexao.executarAtualizacao("delete from matriz_modelo where referencia = '" +  this.referencia + "' and numero_sola = " + this.numeroSola)
           conexao.fecharConexao()
       }
       else

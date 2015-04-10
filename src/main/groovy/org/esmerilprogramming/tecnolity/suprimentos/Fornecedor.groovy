@@ -328,7 +328,7 @@ class Fornecedor {
   void cadastrarFornecedor() throws Exception
   {
     String query = "insert into fornecedor (razao_social, cnpj, percentual_icms, logradouro, complemento, bairro, cidade, estado, pais, cep, ddd, telefone, ramal, fax, email, website) values "
-      query = query  +  "('"+ razaoSocial + "', '"+ cnpj + "', "+ percentualICMS + ", '"+ logradouro + "', '"+ complemento + "', '"+ bairro + "', '"+ cidade + "', '"+ estado.getSigla() + "', '"+ pais.getSigla() + "', '"+ cep + "', '"+ ddd + "', '"+ telefone + "', '"+ ramal + "', '"+ fax + "', '"+ email + "', '"+ website + "')"
+      query = query  +  "('" + razaoSocial + "', '" + cnpj + "', " + percentualICMS + ", '" + logradouro + "', '" + complemento + "', '" + bairro + "', '" + cidade + "', '" + estado.getSigla() + "', '" + pais.getSigla() + "', '" + cep + "', '" + ddd + "', '" + telefone + "', '" + ramal + "', '" + fax + "', '" + email + "', '" + website + "')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         ResultSet dadosFornecedor = conexao.executarConsulta("select cnpj from fornecedor where cnpj = '" +  this.cnpj + "'")
@@ -351,8 +351,8 @@ class Fornecedor {
 
   void alterarFornecedor() throws Exception
   {
-    String query = "update fornecedor set razao_social = '" +  razaoSocial + "', cnpj = '"+ cnpj + "', percentual_icms = "+ percentualICMS + ", logradouro = '"+ logradouro + "', complemento = '"+ complemento + "', bairro = '"+ bairro + "', cidade = '"+ cidade + "', estado = '"+ estado.getSigla() + "', pais = '"+ pais.getSigla() + "', cep = '"+ cep + "', ddd = '"+ ddd + "', telefone = '"+ telefone + "', ramal = '"+ ramal + "', fax = '"+ fax + "', email = '"+ email + "', website = '"+ website + "' "
-      query = query  +  " where codigo = "+ codigo + " "
+    String query = "update fornecedor set razao_social = '" +  razaoSocial + "', cnpj = '" + cnpj + "', percentual_icms = " + percentualICMS + ", logradouro = '" + logradouro + "', complemento = '" + complemento + "', bairro = '" + bairro + "', cidade = '" + cidade + "', estado = '" + estado.getSigla() + "', pais = '" + pais.getSigla() + "', cep = '" + cep + "', ddd = '" + ddd + "', telefone = '" + telefone + "', ramal = '" + ramal + "', fax = '" + fax + "', email = '" + email + "', website = '" + website + "' "
+      query = query  +  " where codigo = " + codigo + " "
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

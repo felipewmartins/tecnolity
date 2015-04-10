@@ -75,7 +75,7 @@ class Transportadora {
   void cadastrarTransportadora() throws Exception
   {
     String query = "insert into transportadora (transportadora) values "
-      query = query  +  "('"+ this.transportadora + "')"
+      query = query  +  "('" + this.transportadora + "')"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -90,7 +90,7 @@ class Transportadora {
 
   void alterarTransportadora() throws Exception
   {
-    String query = "update transportadora set transportadora = '" +  this.transportadora + "' where codigo = "+ this.codigo + " "
+    String query = "update transportadora set transportadora = '" +  this.transportadora + "' where codigo = " + this.codigo + " "
       Conexao conexao = new Conexao('T')
       if(conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

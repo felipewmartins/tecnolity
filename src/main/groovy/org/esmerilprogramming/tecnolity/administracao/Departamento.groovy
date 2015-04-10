@@ -76,7 +76,7 @@ class Departamento {
 
   void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
   {
-    String query = "insert into departamento (departamento, responsavel) values ('" +  nomeDepartamento + "', "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + ")"
+    String query = "insert into departamento (departamento, responsavel) values ('" +  nomeDepartamento + "', " + ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + ")"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -91,7 +91,7 @@ class Departamento {
 
   void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
   {
-    String query = "update departamento set departamento = '" +  nomeDepartamento + "', responsavel = "+ ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + " where codigo = " + this.codigo
+    String query = "update departamento set departamento = '" +  nomeDepartamento + "', responsavel = " + ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + " where codigo = " + this.codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

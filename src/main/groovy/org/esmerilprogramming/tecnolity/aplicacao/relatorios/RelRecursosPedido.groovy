@@ -70,7 +70,7 @@ class RelRecursosPedido extends JPanel implements Printable
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp "  + 
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
       for(int i = 0 ; i < pedidos.length ; i++) {
-        query += "mp.pedido = "+ pedidos[i].obterCodigo()
+        query += "mp.pedido = " + pedidos[i].obterCodigo()
           if((i + 1) < pedidos.length)
             query += " or "
       }
@@ -79,7 +79,7 @@ class RelRecursosPedido extends JPanel implements Printable
         ResultSet rsRecursosPedido = aplicacao.obterConexao().executarConsulta(query)
           String modelo, modeloAnterior = ""
           while(rsRecursosPedido.next()) {
-            g2.drawString(Texto.obterStringTamanhoFixo(rsRecursosPedido.getString("descricao"), 35)  +  " | "+ Texto.obterNumeroTamanhoFixo("" + Numero.inverterSeparador(rsRecursosPedido.getFloat("disponivel")), 10, " ") + " | "+ Texto.obterNumeroTamanhoFixo("" + Numero.inverterSeparador(rsRecursosPedido.getFloat("necessaria")), 10, " ") + " | " + Texto.obterNumeroTamanhoFixo("" + Numero.inverterSeparador(rsRecursosPedido.getFloat("saldo")), 11, " "), 10, alturaLinha += 10)
+            g2.drawString(Texto.obterStringTamanhoFixo(rsRecursosPedido.getString("descricao"), 35)  +  " | " + Texto.obterNumeroTamanhoFixo("" + Numero.inverterSeparador(rsRecursosPedido.getFloat("disponivel")), 10, " ") + " | " + Texto.obterNumeroTamanhoFixo("" + Numero.inverterSeparador(rsRecursosPedido.getFloat("necessaria")), 10, " ") + " | " + Texto.obterNumeroTamanhoFixo("" + Numero.inverterSeparador(rsRecursosPedido.getFloat("saldo")), 11, " "), 10, alturaLinha += 10)
           }
         rsRecursosPedido.close()
       }

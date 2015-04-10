@@ -85,7 +85,7 @@ class RelatorioRequisicaoCompra extends Relatorio
       }
     conteudo.append("-------------------------------------------------------------------------------------------")
       conteudo.append(QUEBRA)
-      conteudo.append("                                                               Total: |" +  Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalRequisicao, ""), 11, " ") + "|"+ Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalIPI, ""), 8, " "))
+      conteudo.append("                                                               Total: |" +  Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalRequisicao, ""), 11, " ") + "|" + Texto.obterNumeroTamanhoFixo("" + Numero.formatarValorMoeda(totalIPI, ""), 8, " "))
       conteudo.append(QUEBRA)
       conteudo.append("-------------------------------------------------------------------------------------------")
       conteudo.append(QUEBRA)
