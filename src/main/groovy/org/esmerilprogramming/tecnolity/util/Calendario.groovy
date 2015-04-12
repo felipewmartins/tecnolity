@@ -385,10 +385,6 @@ class Calendario extends GregorianCalendar {
     return 11
   }
 
-   String getDataAtual() {
-    return this.dataAtual = new SimpleDateFormat('dd/MM/yyyy').format(this.getTime())
-  }
-
    static boolean validarData(String data, final String separador) {
     try {
       if (data.equals('')) {

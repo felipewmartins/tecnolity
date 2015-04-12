@@ -350,7 +350,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           localEntrega = (LocalEntrega)locaisEntrega.get(i)
             if(!localEntrega.isInvalido()) {
               dados[linha][0] = localEntrega.obterDescricaoLocal()
-                dados[linha++][1] = Endereco.formatarEndereco(localEntrega.obterLogradouro(), localEntrega.obterComplemento(), localEntrega.obterBairro(), localEntrega.obterCidade(), localEntrega.obterEstado().getNome(), "", localEntrega.obterCep())
+              dados[linha++][1] = localEntrega.obterLogradouro() + localEntrega.obterComplemento() + localEntrega.obterBairro() + localEntrega.obterCidade() + localEntrega.obterEstado().getNome() + localEntrega.obterCep()
             }
         }
       modeloTblLocaisEntrega.carregar(cabecalhos, dados)

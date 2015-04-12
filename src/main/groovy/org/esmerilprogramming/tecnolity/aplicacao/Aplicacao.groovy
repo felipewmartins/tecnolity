@@ -1,7 +1,7 @@
 package org.esmerilprogramming.tecnolity.aplicacao
 
 import javax.swing.*
-
+import javax.swing.JPanel
 import java.awt.*
 import java.awt.print.*
 import org.esmerilprogramming.tecnolity.administracao.*
@@ -16,8 +16,6 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   private Container conteudo
   private Colaborador colaborador
   private Conexao conexao
-  private int teste
-  private static String caminho
   private PrinterJob tarefaImpressao
   private PageFormat formatoPagina
   private Configuracao configuracao
@@ -41,18 +39,18 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     try {
       colaborador.carregarPermissoes(conexao)
     } catch(e) {
-      JOptionPane.showMessageDialog(this, 'Não foi possível carregar as permissões do usuário.\n\n'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this, 'Não foi possível carregar as permissões do usuário.\n\n'  +  e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
 
     conteudo = this.getContentPane()
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
-    this.setBounds(0, 0, screenSize.width as int, screenSize.height - 27 as int)
-    this.addWindowListener(this)
+    setBounds(0, 0, screenSize.width as int, screenSize.height - 27 as int)
+    addWindowListener(this)
 
     BarraMenu barraMenu = new BarraMenu(this)
-    this.setJMenuBar(barraMenu)
+    setJMenuBar(barraMenu)
 
     BarraAplicacao barraAplicacao = new BarraAplicacao(this)
     conteudo.add(barraAplicacao, BorderLayout.NORTH)
@@ -62,7 +60,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   void adicionarAreaTrabalho(JPanel areaTrabalho) {
-    if(this.areaTrabalho != null) {
+    if(this.areaTrabalho) {
       conteudo.remove(this.areaTrabalho)
     }
     this.areaTrabalho = areaTrabalho
@@ -167,7 +165,4 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     super.finalizarAplicacao()
   }
 
-  static String obterCaminho() {
-    caminho
-  }
 }

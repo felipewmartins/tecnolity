@@ -66,34 +66,34 @@ class Configuracao extends Properties {
       margemDireita = getProperty('margemDireita') as int
       margemSuperior = getProperty('margemSuperior') as int
       margemInferior = getProperty('margemInferior') as int
-    } catch(e) {
+    } catch (e) {
       e.printStackTrace()
     }
     carregada = true
   }
 
   int getLarguraPapelPixel() {
-    return (larguraPapel/25.4f) * 72
+    return (larguraPapel / 25.4f) * 72
   }
 
   int getAlturaPapelPixel() {
-    return (alturaPapel/25.4f) * 72
+    return (alturaPapel / 25.4f) * 72
   }
 
   int getMargemEsquerdaPixel() {
-    return margemEsquerda/25.4f * 72
+    return margemEsquerda / 25.4f * 72
   }
 
   int getMargemDireitaPixel() {
-    return (margemDireita/25.4f) * 72
+    return (margemDireita / 25.4f) * 72
   }
 
   int getMargemSuperiorPixel() {
-    return (margemSuperior/25.4f) * 72
+    return (margemSuperior / 25.4f) * 72
   }
 
   int getMargemInferiorPixel() {
-    return (margemInferior/25.4f) * 72
+    return (margemInferior / 25.4f) * 72
   }
 
   void salvarConfiguracao() {
@@ -130,7 +130,7 @@ class Configuracao extends Properties {
       FileOutputStream saida = new FileOutputStream('config.properties')
       store(saida, 'Configurações do Sistema')
       saida.close()
-    } catch(e) {
+    } catch (e) {
       println('Erro: '  +  e.message)
     }
   }
