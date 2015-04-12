@@ -22,11 +22,11 @@ class TipoProducao {
     ResultSet dadosTipoProducao
       Vector tiposProducao = new Vector()
       try {
-        dadosTipoProducao = conexao.executarConsulta("select * from tipo_producao order by tipo_producao asc")
+        dadosTipoProducao = conexao.executarConsulta('select * from tipo_producao order by tipo_producao asc')
           tiposProducao.addElement(null)
 
           while (dadosTipoProducao.next()) {
-            tiposProducao.addElement(new TipoProducao(dadosTipoProducao.getInt("codigo"), dadosTipoProducao.getString("tipo_producao")))
+            tiposProducao.addElement(new TipoProducao(dadosTipoProducao.getInt('codigo'), dadosTipoProducao.getString('tipo_producao')))
           }
         dadosTipoProducao.close()
       }
@@ -40,9 +40,9 @@ class TipoProducao {
   {
     ResultSet dadosTipoProducao
       try {
-        dadosTipoProducao = conexao.executarConsulta("select max(codigo) as identificador_maior from tipo_producao")
+        dadosTipoProducao = conexao.executarConsulta('select max(codigo) as identificador_maior from tipo_producao')
           if (dadosTipoProducao.next()) {
-            return dadosTipoProducao.getInt("identificador_maior")  +  1
+            return dadosTipoProducao.getInt('identificador_maior')  +  1
           }
         dadosTipoProducao.close()
       }
@@ -53,7 +53,7 @@ class TipoProducao {
   }
 
   void cadastrarTipoProducao() {
-    String query = "insert into tipo_producao (codigo, tipo_producao) values (" +  this.codigo + ", '" + this.tipoProducao + "')"
+    String query = 'insert into tipo_producao (codigo, tipo_producao) values (' +  this.codigo + ', '' + this.tipoProducao + '')'
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

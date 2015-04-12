@@ -58,12 +58,12 @@ class ModeloTabela extends AbstractTableModel {
   void removeRow(final int posLinha) {
     if (posLinha < this.numeroRegistros) {
       for (int i = 0; i < this.getColumnCount();  ++i) {
-        this.setValueAt("", posLinha, i)
+        this.setValueAt('', posLinha, i)
       }
       for (int i = posLinha;  i < this.numeroRegistros - 1;  ++i) {
         for (int j = 0 ; j < this.getColumnCount() ; ++j) {
           this.setValueAt(this.getValueAt(i  +  1, j), i, j)
-            this.setValueAt("", i  +  1, j)
+            this.setValueAt('', i  +  1, j)
         }
       }
       --this.numeroRegistros

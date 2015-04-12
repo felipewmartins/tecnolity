@@ -42,13 +42,13 @@ class DlgDadosCliente extends Dialogo implements ActionListener
               private Cliente cliente
 
               DlgDadosCliente(Aplicacao aplicacao) {
-                super(aplicacao, "Cliente")
+                super(aplicacao, 'Cliente')
                   this.aplicacao = aplicacao
                   montarInterface()
               }
 
   DlgDadosCliente(Aplicacao aplicacao, Cliente cliente) {
-    super(aplicacao, "Cliente")
+    super(aplicacao, 'Cliente')
       this.aplicacao = aplicacao
       try
       {
@@ -59,7 +59,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           dimencionar()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
   }
@@ -70,43 +70,43 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       card = new CardLayout()
       pnlAreaDados = new JPanel(card)
       JPanel pnlDadosCliente = new JPanel(this.getGridbag())
-      JLabel label = new JLabel("Razão Social")
+      JLabel label = new JLabel('Razão Social')
       adicionarComponente(pnlDadosCliente, label, 0, 0, 2, 1)
-      label = new JLabel("Nome Fantasia")
+      label = new JLabel('Nome Fantasia')
       adicionarComponente(pnlDadosCliente, label, 0, 2, 2, 1)
-      txtRazaoSocial = new JTextField((cliente != null?cliente.obterRazaoSocial():""), 20)
+      txtRazaoSocial = new JTextField((cliente != null?cliente.obterRazaoSocial():''), 20)
       adicionarComponente(pnlDadosCliente, txtRazaoSocial, 1, 0, 2, 1)
-      txtNomeFantasia = new JTextField((cliente != null?cliente.obterNomeFantasia():""), 20)
+      txtNomeFantasia = new JTextField((cliente != null?cliente.obterNomeFantasia():''), 20)
       adicionarComponente(pnlDadosCliente, txtNomeFantasia, 1, 2, 2, 1)
-      label = new JLabel("CNPJ (Somente números)")
+      label = new JLabel('CNPJ (Somente números)')
       adicionarComponente(pnlDadosCliente, label, 2, 0, 2, 1)
-      label = new JLabel("Inscrição Estadual")
+      label = new JLabel('Inscrição Estadual')
       adicionarComponente(pnlDadosCliente, label, 2, 2, 2, 1)
-      txtCnpj = new JTextField((cliente != null?cliente.obterCnpj():""), 20)
+      txtCnpj = new JTextField((cliente != null?cliente.obterCnpj():''), 20)
       adicionarComponente(pnlDadosCliente, txtCnpj, 3, 0, 2, 1)
-      txtInscricaoEstadual = new JTextField((cliente != null?cliente.obterInscricaoEstadual():""), 20)
+      txtInscricaoEstadual = new JTextField((cliente != null?cliente.obterInscricaoEstadual():''), 20)
       adicionarComponente(pnlDadosCliente, txtInscricaoEstadual, 3, 2, 2, 1)
       JPanel pnlEndereco = new JPanel(this.getGridbag())
-      pnlEndereco.setBorder(new TitledBorder("Endereço"))
-      label = new JLabel("Logradouro")
+      pnlEndereco.setBorder(new TitledBorder('Endereço'))
+      label = new JLabel('Logradouro')
       adicionarComponente(pnlEndereco, label, 0, 0, 2, 1)
-      label = new JLabel("Complemento")
+      label = new JLabel('Complemento')
       adicionarComponente(pnlEndereco, label, 0, 2, 1, 1)
-      label = new JLabel("Bairro")
+      label = new JLabel('Bairro')
       adicionarComponente(pnlEndereco, label, 0, 3, 1, 1)
-      txtLogradouro = new JTextField((cliente != null?cliente.obterLogradouro():""), 15)
+      txtLogradouro = new JTextField((cliente != null?cliente.obterLogradouro():''), 15)
       adicionarComponente(pnlEndereco, txtLogradouro, 1, 0, 2, 1)
-      txtComplemento = new JTextField((cliente != null?cliente.obterComplemento():""), 10)
+      txtComplemento = new JTextField((cliente != null?cliente.obterComplemento():''), 10)
       adicionarComponente(pnlEndereco, txtComplemento, 1, 2, 1, 1)
-      txtBairro = new JTextField((cliente != null?cliente.obterBairro():""), 10)
+      txtBairro = new JTextField((cliente != null?cliente.obterBairro():''), 10)
       adicionarComponente(pnlEndereco, txtBairro, 1, 3, 1, 1)
-      label = new JLabel("Cidade")
+      label = new JLabel('Cidade')
       adicionarComponente(pnlEndereco, label, 2, 0, 2, 1)
-      label = new JLabel("Pais")
+      label = new JLabel('Pais')
       adicionarComponente(pnlEndereco, label, 2, 2, 1, 1)
-      label = new JLabel("Estado")
+      label = new JLabel('Estado')
       adicionarComponente(pnlEndereco, label, 2, 3, 1, 1)
-      txtCidade = new JTextField((cliente != null?cliente.obterCidade():""), 15)
+      txtCidade = new JTextField((cliente != null?cliente.obterCidade():''), 15)
       adicionarComponente(pnlEndereco, txtCidade, 3, 0, 2, 1)
       cbxPais = new JComboBox()
       try
@@ -115,69 +115,69 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           carregarPaises()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Países.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     cbxPais.addActionListener(this)
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
       pnlSuporteCombo.add(cbxPais, BorderLayout.CENTER)
-      btNovoPais = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoPais = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoPais.addActionListener(this)
-      btNovoPais.setToolTipText("Novo Pais")
+      btNovoPais.setToolTipText('Novo Pais')
       btNovoPais.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoPais, BorderLayout.EAST)
       adicionarComponente(pnlEndereco, pnlSuporteCombo, 3, 2, 1, 1)
       cbxEstado = new JComboBox()
       try
       {
-        estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
+        estados = Estado.carregarEstados('BRA', aplicacao.obterConexao())
           carregarEstados()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     pnlSuporteCombo = new JPanel(new BorderLayout())
       pnlSuporteCombo.add(cbxEstado, BorderLayout.CENTER)
-      btNovoEstado = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoEstado = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoEstado.addActionListener(this)
-      btNovoEstado.setToolTipText("Novo Estado")
+      btNovoEstado.setToolTipText('Novo Estado')
       btNovoEstado.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoEstado, BorderLayout.EAST)
       adicionarComponente(pnlEndereco, pnlSuporteCombo, 3, 3, 1, 1)
-      label = new JLabel("CEP (Somente números)")
+      label = new JLabel('CEP (Somente números)')
       adicionarComponente(pnlEndereco, label, 4, 0, 1, 1)
-      txtCep = new JTextField((cliente != null?cliente.obterCep():""), 8)
+      txtCep = new JTextField((cliente != null?cliente.obterCep():''), 8)
       adicionarComponente(pnlEndereco, txtCep, 5, 0, 1, 1)
       adicionarComponente(pnlDadosCliente, pnlEndereco, 4, 0, 4, 1)
 
       JPanel pnlContato = new JPanel(this.getGridbag())
-      pnlContato.setBorder(new TitledBorder("Contato"))
-      label = new JLabel("Contato Comercial")
+      pnlContato.setBorder(new TitledBorder('Contato'))
+      label = new JLabel('Contato Comercial')
       adicionarComponente(pnlContato, label, 0, 0, 2, 1)
-      label = new JLabel("Contato Técnico")
+      label = new JLabel('Contato Técnico')
       adicionarComponente(pnlContato, label, 0, 2, 2, 1)
-      txtContatoComercial = new JTextField((cliente != null?cliente.obterContatoComercial():""), 19)
+      txtContatoComercial = new JTextField((cliente != null?cliente.obterContatoComercial():''), 19)
       adicionarComponente(pnlContato, txtContatoComercial, 1, 0, 2, 1)
-      txtContatoTecnico = new JTextField((cliente != null?cliente.obterContatoTecnico():""), 19)
+      txtContatoTecnico = new JTextField((cliente != null?cliente.obterContatoTecnico():''), 19)
       adicionarComponente(pnlContato, txtContatoTecnico, 1, 2, 2, 1)
-      label = new JLabel("Telefone")
+      label = new JLabel('Telefone')
       adicionarComponente(pnlContato, label, 2, 0, 1, 1)
-      label = new JLabel("Fax")
+      label = new JLabel('Fax')
       adicionarComponente(pnlContato, label, 2, 1, 1, 1)
-      label = new JLabel("E-mail")
+      label = new JLabel('E-mail')
       adicionarComponente(pnlContato, label, 2, 2, 2, 1)
-      txtTelefone = new JTextField((cliente != null?cliente.obterTelefone():""), 10)
+      txtTelefone = new JTextField((cliente != null?cliente.obterTelefone():''), 10)
       adicionarComponente(pnlContato, txtTelefone, 3, 0, 1, 1)
-      txtFax = new JTextField((cliente != null?cliente.obterFax():""), 10)
+      txtFax = new JTextField((cliente != null?cliente.obterFax():''), 10)
       adicionarComponente(pnlContato, txtFax, 3, 1, 1, 1)
-      txtEmail = new JTextField((cliente != null?cliente.obterEmail():""), 19)
+      txtEmail = new JTextField((cliente != null?cliente.obterEmail():''), 19)
       adicionarComponente(pnlContato, txtEmail, 3, 2, 2, 1)
       adicionarComponente(pnlDadosCliente, pnlContato, 5, 0, 4, 1)
 
-      pnlAreaDados.add(pnlDadosCliente, "cliente")
+      pnlAreaDados.add(pnlDadosCliente, 'cliente')
       JPanel pnlDadosLocalEntrega = new JPanel(this.getGridbag())
-      pnlDadosLocalEntrega.setBorder(new TitledBorder("Local de Entrega"))
+      pnlDadosLocalEntrega.setBorder(new TitledBorder('Local de Entrega'))
 
       boolean localEntregaClienteExistente = false
       if (cliente != null) {
@@ -189,27 +189,27 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         }
       }
     if (localEntregaClienteExistente) {
-      label = new JLabel("Descrição")
+      label = new JLabel('Descrição')
         adicionarComponente(pnlDadosLocalEntrega, label, 0, 0, 3, 1)
         txtDescricaoLocal = new JTextField(20)
         adicionarComponente(pnlDadosLocalEntrega, txtDescricaoLocal, 1, 0, 3, 1)
     }
     else
     {
-      btPreencherLocalEntrega = new JButton("Preencher mesmo endereço")
+      btPreencherLocalEntrega = new JButton('Preencher mesmo endereço')
         btPreencherLocalEntrega.addActionListener(this)
         adicionarComponente(pnlDadosLocalEntrega, btPreencherLocalEntrega, 0, 0, 1, 2)
-        label = new JLabel("Descrição")
+        label = new JLabel('Descrição')
         adicionarComponente(pnlDadosLocalEntrega, label, 0, 1, 2, 1)
         txtDescricaoLocal = new JTextField(20)
         adicionarComponente(pnlDadosLocalEntrega, txtDescricaoLocal, 1, 1, 2, 1)
     }
 
-    label = new JLabel("Logradouro")
+    label = new JLabel('Logradouro')
       adicionarComponente(pnlDadosLocalEntrega, label, 2, 0, 1, 1)
-      label = new JLabel("Complemento")
+      label = new JLabel('Complemento')
       adicionarComponente(pnlDadosLocalEntrega, label, 2, 1, 1, 1)
-      label = new JLabel("Bairro")
+      label = new JLabel('Bairro')
       adicionarComponente(pnlDadosLocalEntrega, label, 2, 2, 1, 1)
       txtLogradouroEntrega = new JTextField(20)
       adicionarComponente(pnlDadosLocalEntrega, txtLogradouroEntrega, 3, 0, 1, 1)
@@ -217,46 +217,46 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       adicionarComponente(pnlDadosLocalEntrega, txtComplementoEntrega, 3, 1, 1, 1)
       txtBairroEntrega = new JTextField(10)
       adicionarComponente(pnlDadosLocalEntrega, txtBairroEntrega, 3, 2, 1, 1)
-      label = new JLabel("Cidade")
+      label = new JLabel('Cidade')
       adicionarComponente(pnlDadosLocalEntrega, label, 4, 0, 1, 1)
-      label = new JLabel("Estado")
+      label = new JLabel('Estado')
       adicionarComponente(pnlDadosLocalEntrega, label, 4, 1, 1, 1)
-      label = new JLabel("CEP")
+      label = new JLabel('CEP')
       adicionarComponente(pnlDadosLocalEntrega, label, 4, 2, 1, 1)
       txtCidadeEntrega = new JTextField(20)
       adicionarComponente(pnlDadosLocalEntrega, txtCidadeEntrega, 5, 0, 1, 1)
       cbxEstadoEntrega = new JComboBox()
       try
       {
-        estadosEntrega = Estado.carregarEstados("BRA", aplicacao.obterConexao())
+        estadosEntrega = Estado.carregarEstados('BRA', aplicacao.obterConexao())
           carregarEstadosEntrega()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados do Local de Entrega", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados do Local de Entrega', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     pnlSuporteCombo = new JPanel(new BorderLayout())
       pnlSuporteCombo.add(cbxEstadoEntrega, BorderLayout.CENTER)
-      btNovoEstadoEntrega = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoEstadoEntrega = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoEstadoEntrega.addActionListener(this)
-      btNovoEstadoEntrega.setToolTipText("Novo Estado")
+      btNovoEstadoEntrega.setToolTipText('Novo Estado')
       btNovoEstadoEntrega.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoEstadoEntrega, BorderLayout.EAST)
       adicionarComponente(pnlDadosLocalEntrega, pnlSuporteCombo, 5, 1, 1, 1)
       txtCepEntrega = new JTextField(10)
       adicionarComponente(pnlDadosLocalEntrega, txtCepEntrega, 5, 2, 1, 1)
-      label = new JLabel("Responsável Recebimento")
+      label = new JLabel('Responsável Recebimento')
       adicionarComponente(pnlDadosLocalEntrega, label, 6, 0, 1, 1)
-      label = new JLabel("Telefone")
+      label = new JLabel('Telefone')
       adicionarComponente(pnlDadosLocalEntrega, label, 6, 1, 1, 1)
       txtResponsavelRecebimento = new JTextField(20)
       adicionarComponente(pnlDadosLocalEntrega, txtResponsavelRecebimento, 7, 0, 1, 1)
       txtTelefoneEntrega = new JTextField(10)
       adicionarComponente(pnlDadosLocalEntrega, txtTelefoneEntrega, 7, 1, 1, 1)
-      btAdicionarLocal = new JButton("Adicionar")
+      btAdicionarLocal = new JButton('Adicionar')
       btAdicionarLocal.addActionListener(this)
       adicionarComponente(pnlDadosLocalEntrega, btAdicionarLocal, 8, 1, 1, 1)
-      btLimparLocal = new JButton("Limpar")
+      btLimparLocal = new JButton('Limpar')
       btLimparLocal.addActionListener(this)
       adicionarComponente(pnlDadosLocalEntrega, btLimparLocal, 8, 2, 1, 1)
 
@@ -266,26 +266,26 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       JScrollPane scroll = new JScrollPane(tblLocaisEntrega)
       adicionarComponente(pnlDadosLocalEntrega, scroll, 9, 0, 3, 1)
 
-      btExcluirLocal = new JButton("Excluir Selecionado")
+      btExcluirLocal = new JButton('Excluir Selecionado')
       btExcluirLocal.addActionListener(this)
       if (cliente == null)
         btExcluirLocal.setEnabled(false)
           adicionarComponente(pnlDadosLocalEntrega, btExcluirLocal, 10, 0, 1, 1)
-          pnlAreaDados.add(pnlDadosLocalEntrega, "localentrega")
+          pnlAreaDados.add(pnlDadosLocalEntrega, 'localentrega')
           this.setPnlAreaDados(pnlAreaDados)
 
           JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-          btAnterior = new JButton("<< Anterior")
+          btAnterior = new JButton('<< Anterior')
           btAnterior.setEnabled(false)
           btAnterior.addActionListener(this)
           pnlComandos.add(btAnterior)
-          btProximo = new JButton("Próximo >>")
+          btProximo = new JButton('Próximo >>')
           btProximo.addActionListener(this)
           pnlComandos.add(btProximo)
-          btConfirmar = new JButton("Confirmar")
+          btConfirmar = new JButton('Confirmar')
           btConfirmar.addActionListener(this)
           pnlComandos.add(btConfirmar)
-          btCancelar = new JButton("Cancelar")
+          btCancelar = new JButton('Cancelar')
           btCancelar.addActionListener(this)
           pnlComandos.add(btCancelar)
           this.setPnlAreaComandos(pnlComandos)
@@ -294,7 +294,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
 
   private void carregarPaises() {
     cbxPais.removeAllItems()
-      cbxPais.addItem("Selecione...")
+      cbxPais.addItem('Selecione...')
       String siglaPais
       int indicePais = 0
       for (int i = 1;i < paises.size(); i++) {
@@ -312,7 +312,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
 
   private void carregarEstados() {
     cbxEstado.removeAllItems()
-      cbxEstado.addItem("Selecione...")
+      cbxEstado.addItem('Selecione...')
       String siglaEstado
       int indiceEstado = 0
       for (int i = 1;i < estados.size(); i++) {
@@ -330,7 +330,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
 
   private void carregarEstadosEntrega() {
     cbxEstadoEntrega.removeAllItems()
-      cbxEstadoEntrega.addItem("Selecione...")
+      cbxEstadoEntrega.addItem('Selecione...')
 
       for (int i = 1;i < estadosEntrega.size();i++) {
         cbxEstadoEntrega.addItem(((Estado)estadosEntrega.get(i)).getNome())
@@ -358,21 +358,21 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         modeloTblLocaisEntrega.setTamanhoColunas(tblLocaisEntrega, tamanhoColunas)
     }
     catch (Exception ex) {
-      JOptionPane.showMessageDialog(this.aplicacao, "Não foi possível carregar os locais de entrega. "  +  ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(this.aplicacao, 'Não foi possível carregar os locais de entrega. '  +  ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         ex.printStackTrace()
     }
   }
 
   private void limparDadosLocalEntrega() {
-    txtDescricaoLocal.setText("")
-      txtLogradouroEntrega.setText("")
-      txtComplementoEntrega.setText("")
-      txtBairroEntrega.setText("")
-      txtCidadeEntrega.setText("")
+    txtDescricaoLocal.setText('')
+      txtLogradouroEntrega.setText('')
+      txtComplementoEntrega.setText('')
+      txtBairroEntrega.setText('')
+      txtCidadeEntrega.setText('')
       cbxEstadoEntrega.setSelectedIndex(0)
-      txtCepEntrega.setText("")
-      txtResponsavelRecebimento.setText("")
-      txtTelefoneEntrega.setText("")
+      txtCepEntrega.setText('')
+      txtResponsavelRecebimento.setText('')
+      txtTelefoneEntrega.setText('')
   }
 
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
@@ -387,7 +387,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
               carregarPaises()
           }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Países.", "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -397,11 +397,11 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         dlgDadosEstado.setVisible(true)
         try
         {
-          estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
+          estados = Estado.carregarEstados('BRA', aplicacao.obterConexao())
             carregarEstados()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -411,11 +411,11 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         dlgDadosEstado.setVisible(true)
         try
         {
-          estadosEntrega = Estado.carregarEstados("BRA", aplicacao.obterConexao())
+          estadosEntrega = Estado.carregarEstados('BRA', aplicacao.obterConexao())
             carregarEstadosEntrega()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados do Local de Entrega.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados do Local de Entrega.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -453,7 +453,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           btExcluirLocal.setEnabled(true)
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -502,7 +502,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
             btProximo.setEnabled(false)
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: " +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: ' +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -533,7 +533,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
               this.setVisible(false)
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

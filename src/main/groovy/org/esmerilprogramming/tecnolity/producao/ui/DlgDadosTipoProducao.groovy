@@ -26,13 +26,13 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
       super(aplicacao, true)
 
         // Define o título da janela
-        String tituloJanela = ""
+        String tituloJanela = ''
         if (modo == 'I')
-          tituloJanela = "Novo Tipo da Produção"
+          tituloJanela = 'Novo Tipo da Produção'
             if (modo == 'A')
-              tituloJanela = "Tipo da Produção"
+              tituloJanela = 'Tipo da Produção'
                 if (modo == 'V')
-                  tituloJanela = "Tipo da Produção"
+                  tituloJanela = 'Tipo da Produção'
                     this.setTitle(tituloJanela)
 
                     this.aplicacao = aplicacao
@@ -55,14 +55,14 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
       gbc.insets.top = 2
 
       pnlAreaDados = new JPanel(gridbag)
-      JLabel label = new JLabel("Tipo da Produção")
+      JLabel label = new JLabel('Tipo da Produção')
       adicionarComponente(pnlAreaDados, label, 0, 0, 1, 1)
       txtTipoProducao = new JTextField(20)
       adicionarComponente(pnlAreaDados, txtTipoProducao, 1, 0, 1, 1)
-      label = new JLabel("Identificador")
+      label = new JLabel('Identificador')
       adicionarComponente(pnlAreaDados, label, 2, 0, 1, 1)
       try {
-        txtIdentificador = new JTextField(""  +  tipoProducao.obterUltimoIdentificador(aplicacao.obterConexao()), 10)
+        txtIdentificador = new JTextField(''  +  tipoProducao.obterUltimoIdentificador(aplicacao.obterConexao()), 10)
       }
     catch (e) {
       e.printStackTrace()
@@ -71,10 +71,10 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-      btConfirmar = new JButton("Confirmar")
+      btConfirmar = new JButton('Confirmar')
       btConfirmar.addActionListener(this)
       pnlComandos.add(btConfirmar)
-      btCancelar = new JButton("Cancelar")
+      btCancelar = new JButton('Cancelar')
       btCancelar.addActionListener(this)
       pnlComandos.add(btCancelar)
       conteudo.add(pnlComandos, BorderLayout.SOUTH)

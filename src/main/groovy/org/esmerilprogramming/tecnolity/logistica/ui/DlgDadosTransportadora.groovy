@@ -29,9 +29,9 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
         transportadora = new Transportadora()
 
         // Define o título da janela
-        String tituloJanela = ""
+        String tituloJanela = ''
         if (modo == 'I')
-          tituloJanela = "Nova Transportadora"
+          tituloJanela = 'Nova Transportadora'
             this.setTitle(tituloJanela)
 
             this.aplicacao = aplicacao
@@ -46,17 +46,17 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
         transportadora = new Transportadora(codigoTransportadora, aplicacao.obterConexao())
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a Transportadora.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar a Transportadora.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     this.codigoTransportadora = codigoTransportadora
 
       // Define o título da janela
-      String tituloJanela = ""
+      String tituloJanela = ''
       if (modo == 'A')
-        tituloJanela = "Transportadora"
+        tituloJanela = 'Transportadora'
           if (modo == 'V')
-            tituloJanela = "Transportadora"
+            tituloJanela = 'Transportadora'
               this.setTitle(tituloJanela)
 
               this.aplicacao = aplicacao
@@ -78,7 +78,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
       gbc.insets.top = 2
 
       pnlAreaDados = new JPanel(gridbag)
-      JLabel label = new JLabel("Transportadora")
+      JLabel label = new JLabel('Transportadora')
       adicionarComponente(pnlAreaDados, label, 0, 0, 2, 1)
 
       txtTransportadora = new JTextField(this.transportadora.obterNome(), 30)
@@ -88,11 +88,11 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-      btConfirmar = new JButton("Confirmar")
+      btConfirmar = new JButton('Confirmar')
       btConfirmar.addActionListener(this)
       pnlComandos.add(btConfirmar)
 
-      btCancelar = new JButton("Cancelar")
+      btCancelar = new JButton('Cancelar')
       btCancelar.addActionListener(this)
       pnlComandos.add(btCancelar)
 
@@ -132,7 +132,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               transportadora.definirTransportadora(this.txtTransportadora.getText())
             }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -141,7 +141,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               this.transportadora.cadastrarTransportadora()
             }
             catch (e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -154,7 +154,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
                 transportadora.definirTransportadora(this.txtTransportadora.getText())
             }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
           }
@@ -163,7 +163,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               this.transportadora.alterarTransportadora()
             }
             catch (e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             this.setVisible(false)
@@ -171,7 +171,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
         }
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

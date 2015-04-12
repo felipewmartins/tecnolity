@@ -35,11 +35,11 @@ class Transportadora {
     this.definirCodigo(codigo)
 
       ResultSet dadosTransportadora
-      dadosTransportadora = conexao.executarConsulta("select * from transportadora where codigo = " +  this.codigo + " ")
+      dadosTransportadora = conexao.executarConsulta('select * from transportadora where codigo = ' +  this.codigo + ' ')
 
       if (dadosTransportadora.next()) {
         try {
-          this.definirTransportadora(dadosTransportadora.getString("transportadora"))
+          this.definirTransportadora(dadosTransportadora.getString('transportadora'))
         }
         catch (e) {
           e.printStackTrace()
@@ -49,11 +49,11 @@ class Transportadora {
 
   void definirTransportadora(String transportadora) throws Exception
   {
-    if (!transportadora.equals("") && transportadora.length() <= 60)
+    if (!transportadora.equals('') && transportadora.length() <= 60)
       this.transportadora = transportadora
     else
     {
-      Exception e = new Exception("A Transportadora não foi informada corretamente.")
+      Exception e = new Exception('A Transportadora não foi informada corretamente.')
         throw e
     }
   }
@@ -62,11 +62,11 @@ class Transportadora {
   {
     ResultSet dadosTransportadora
       Vector transportadoras = null
-      dadosTransportadora = conexao.executarConsulta("select * from transportadora order by transportadora asc")
+      dadosTransportadora = conexao.executarConsulta('select * from transportadora order by transportadora asc')
       transportadoras = new Vector()
-      transportadoras.addElement("Selecione...")
+      transportadoras.addElement('Selecione...')
       while (dadosTransportadora.next()) {
-        transportadoras.addElement(new Transportadora(dadosTransportadora.getInt("codigo"), dadosTransportadora.getString("transportadora")))
+        transportadoras.addElement(new Transportadora(dadosTransportadora.getInt('codigo'), dadosTransportadora.getString('transportadora')))
       }
     dadosTransportadora.close()
       return transportadoras
@@ -74,8 +74,8 @@ class Transportadora {
 
   void cadastrarTransportadora() throws Exception
   {
-    String query = "insert into transportadora (transportadora) values "
-      query = query  +  "('" + this.transportadora + "')"
+    String query = 'insert into transportadora (transportadora) values '
+      query = query  +  '('' + this.transportadora + '')'
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -83,14 +83,14 @@ class Transportadora {
       }
       else
       {
-        Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
+        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
           throw e
       }
   }
 
   void alterarTransportadora() throws Exception
   {
-    String query = "update transportadora set transportadora = '" +  this.transportadora + "' where codigo = " + this.codigo + " "
+    String query = 'update transportadora set transportadora = '' +  this.transportadora + '' where codigo = ' + this.codigo + ' '
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -98,14 +98,14 @@ class Transportadora {
       }
       else
       {
-        Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
+        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
           throw e
       }
   }
 
   void excluirTransportadora() throws Exception
   {
-    String query = "delete from transportadora where codigo = " +  this.codigo + " "
+    String query = 'delete from transportadora where codigo = ' +  this.codigo + ' '
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -113,7 +113,7 @@ class Transportadora {
       }
       else
       {
-        Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
+        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
           throw e
       }
   }

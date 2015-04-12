@@ -33,44 +33,44 @@ class DlgCalendario extends JDialog implements ActionListener
     this.gbc.insets.right = 0
     this.gbc.insets.top = 0
     final JPanel pnlCabecalho = new JPanel(new BorderLayout())
-    (this.btMesAnterior = new JButton(new ImageIcon("imagens/seta_contraido_esquerda.gif"))).setToolTipText("M\u00eas Anterior")
+    (this.btMesAnterior = new JButton(new ImageIcon('imagens/seta_contraido_esquerda.gif'))).setToolTipText('M\u00eas Anterior')
     this.btMesAnterior.setPreferredSize(new Dimension(20, 20))
     this.btMesAnterior.addActionListener(this)
-    pnlCabecalho.add(this.btMesAnterior, "West")
+    pnlCabecalho.add(this.btMesAnterior, 'West')
     final JPanel pnlNomeMes = new JPanel()
     this.lblNomeMes = new JLabel()
     this.imprimirMesAno()
-    this.lblNomeMes.setFont(new Font("Arial", 1, 16))
+    this.lblNomeMes.setFont(new Font('Arial', 1, 16))
     pnlNomeMes.add(this.lblNomeMes)
-    pnlCabecalho.add(pnlNomeMes, "Center")
-    (this.btMesPosterior = new JButton(new ImageIcon("imagens/seta_contraido_direita.gif"))).setToolTipText("Pr\u00f3ximo M\u00eas")
+    pnlCabecalho.add(pnlNomeMes, 'Center')
+    (this.btMesPosterior = new JButton(new ImageIcon('imagens/seta_contraido_direita.gif'))).setToolTipText('Pr\u00f3ximo M\u00eas')
     this.btMesPosterior.setPreferredSize(new Dimension(20, 20))
     this.btMesPosterior.addActionListener(this)
-    pnlCabecalho.add(this.btMesPosterior, "East")
-    this.conteudo.add(pnlCabecalho, "North")
+    pnlCabecalho.add(this.btMesPosterior, 'East')
+    this.conteudo.add(pnlCabecalho, 'North')
     final JPanel pnlCalendario = new JPanel(this.gridbag)
-    this.adicionarComponente(pnlCalendario, new JLabel(" Dom "), 0, 0, 1, 1)
-    this.adicionarComponente(pnlCalendario, new JLabel(" Seg "), 0, 1, 1, 1)
-    this.adicionarComponente(pnlCalendario, new JLabel("  Ter "), 0, 2, 1, 1)
-    this.adicionarComponente(pnlCalendario, new JLabel("  Qua "), 0, 3, 1, 1)
-    this.adicionarComponente(pnlCalendario, new JLabel("  Qui "), 0, 4, 1, 1)
-    this.adicionarComponente(pnlCalendario, new JLabel("  Sex "), 0, 5, 1, 1)
-    this.adicionarComponente(pnlCalendario, new JLabel("  Sab "), 0, 6, 1, 1)
+    this.adicionarComponente(pnlCalendario, new JLabel(' Dom '), 0, 0, 1, 1)
+    this.adicionarComponente(pnlCalendario, new JLabel(' Seg '), 0, 1, 1, 1)
+    this.adicionarComponente(pnlCalendario, new JLabel('  Ter '), 0, 2, 1, 1)
+    this.adicionarComponente(pnlCalendario, new JLabel('  Qua '), 0, 3, 1, 1)
+    this.adicionarComponente(pnlCalendario, new JLabel('  Qui '), 0, 4, 1, 1)
+    this.adicionarComponente(pnlCalendario, new JLabel('  Sex '), 0, 5, 1, 1)
+    this.adicionarComponente(pnlCalendario, new JLabel('  Sab '), 0, 6, 1, 1)
     (this.pnlDias = new JPanel(this.gridbag)).setBorder(new LineBorder(Color.black))
     this.imprimirCalendario()
     this.adicionarComponente(pnlCalendario, this.pnlDias, 1, 0, 7, 1)
-    this.conteudo.add(pnlCalendario, "Center")
+    this.conteudo.add(pnlCalendario, 'Center')
     final JPanel pnlDataSelecionada = new JPanel(new FlowLayout(0))
     this.lblDataSelecionada = new JLabel()
     this.imprimirDataSelecionada()
     pnlDataSelecionada.add(this.lblDataSelecionada)
-    this.conteudo.add(pnlDataSelecionada, "South")
+    this.conteudo.add(pnlDataSelecionada, 'South')
     this.dimencionar()
   }
 
   private void imprimirMesAno() {
     if (this.calendario != null) {
-      this.lblNomeMes.setText(String.valueOf(this.calendario.getMesPorExtenso())  +  ", " + this.calendario.get("yyyy"))
+      this.lblNomeMes.setText(String.valueOf(this.calendario.getMesPorExtenso())  +  ', ' + this.calendario.get('yyyy'))
     }
   }
 
@@ -84,14 +84,14 @@ class DlgCalendario extends JDialog implements ActionListener
     for (int i = 0 ; i < 6 ; ++i) {
       for (j = 0;  j < 7;  ++j) {
         if (indiceDia <= this.calendario.getNumeroDiasMes()) {
-          (this.btDias[i][j] = new JButton(""  +  indiceDia)).setMargin(new Insets(0, 0, 0, 0))
+          (this.btDias[i][j] = new JButton(''  +  indiceDia)).setMargin(new Insets(0, 0, 0, 0))
           if (indiceDia == this.calendario.get(5)) {
             this.btDias[i][j].setBackground(Color.gray)
           }
           ++indiceDia
           this.btDias[i][j].setBorderPainted(false)
           this.btDias[i][j].setPreferredSize(new Dimension(30, 25))
-          this.btDias[i][j].setToolTipText("Selecione a data.")
+          this.btDias[i][j].setToolTipText('Selecione a data.')
           this.btDias[i][j].addActionListener(this)
           this.adicionarComponente(this.pnlDias, this.btDias[i][j], i, j, 1, 1)
         }
@@ -101,7 +101,7 @@ class DlgCalendario extends JDialog implements ActionListener
   }
 
   private void imprimirDataSelecionada() {
-    this.lblDataSelecionada.setText("Data Selecionada: "  +  this.calendario.get("dd/MM/yyyy"))
+    this.lblDataSelecionada.setText('Data Selecionada: '  +  this.calendario.get('dd/MM/yyyy'))
   }
 
   protected void dimencionar() {

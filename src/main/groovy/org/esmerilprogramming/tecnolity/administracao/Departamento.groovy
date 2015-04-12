@@ -25,10 +25,10 @@ class Departamento {
   }
 
   void carregarDepartamento(Conexao conexao) throws Exception {
-    ResultSet dadosDepartamento = conexao.executarConsulta("select * from departamento where codigo = "  +  this.codigo)
+    ResultSet dadosDepartamento = conexao.executarConsulta('select * from departamento where codigo = '  +  this.codigo)
       if (dadosDepartamento.next()) {
-          this.definirNomeDepartamento(dadosDepartamento.getString("departamento"))
-          String responsavel = dadosDepartamento.getString("responsavel")
+          this.definirNomeDepartamento(dadosDepartamento.getString('departamento'))
+          String responsavel = dadosDepartamento.getString('responsavel')
           this.definirResponsavel((responsavel != null) ? new Colaborador(responsavel) : null)
       }
   }
@@ -38,15 +38,15 @@ class Departamento {
     ResultSet dadosDepartamento
       Vector departamentos = new Vector()
       try {
-        dadosDepartamento = conexao.executarConsulta("select codigo, d.departamento, nome_completo as responsavel from departamento d, usuario u where responsavel *= usuario order by d.departamento asc")
+        dadosDepartamento = conexao.executarConsulta('select codigo, d.departamento, nome_completo as responsavel from departamento d, usuario u where responsavel *= usuario order by d.departamento asc')
           departamentos.addElement(null)
           String responsavel, nomeDepartamento
           int codigo
 
           while (dadosDepartamento.next()) {
-            codigo = dadosDepartamento.getInt("codigo")
-              nomeDepartamento = dadosDepartamento.getString("departamento")
-              responsavel = dadosDepartamento.getString("responsavel")
+            codigo = dadosDepartamento.getInt('codigo')
+              nomeDepartamento = dadosDepartamento.getString('departamento')
+              responsavel = dadosDepartamento.getString('responsavel')
               if (responsavel == null) {
                 departamentos.addElement(new Departamento(codigo, nomeDepartamento, null))
               } else {
@@ -65,17 +65,17 @@ class Departamento {
   {
     ResultSet dadosDepartamento
       Vector departamentos = new Vector()
-      dadosDepartamento = conexao.executarConsulta("select * from departamento order by departamento asc")
-      departamentos.addElement("Selecione...")
+      dadosDepartamento = conexao.executarConsulta('select * from departamento order by departamento asc')
+      departamentos.addElement('Selecione...')
       while (dadosDepartamento.next()) {
-        departamentos.addElement(new Departamento(dadosDepartamento.getInt("codigo"), dadosDepartamento.getString("departamento")))
+        departamentos.addElement(new Departamento(dadosDepartamento.getInt('codigo'), dadosDepartamento.getString('departamento')))
       }
     dadosDepartamento.close()
       return departamentos
   }
 
   void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception {
-    String query = "insert into departamento (departamento, responsavel) values ('" +  nomeDepartamento + "', " + ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + ")"
+    String query = 'insert into departamento (departamento, responsavel) values ('' +  nomeDepartamento + '', ' + ((responsavel == null)?'NULL':''' + responsavel.obterMatricula() + ''') + ')'
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -83,13 +83,13 @@ class Departamento {
       }
       else
       {
-        Exception e = new Exception("Não foi possível cadastrar o Departamento Informado.")
+        Exception e = new Exception('Não foi possível cadastrar o Departamento Informado.')
           throw e
       }
   }
 
   void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception {
-    String query = "update departamento set departamento = '" +  nomeDepartamento + "', responsavel = " + ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + " where codigo = " + this.codigo
+    String query = 'update departamento set departamento = '' +  nomeDepartamento + '', responsavel = ' + ((responsavel == null)?'NULL':''' + responsavel.obterMatricula() + ''') + ' where codigo = ' + this.codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -97,13 +97,13 @@ class Departamento {
       }
       else
       {
-        Exception e = new Exception("Não foi possível alterar o Departamento Informado.")
+        Exception e = new Exception('Não foi possível alterar o Departamento Informado.')
           throw e
       }
   }
 
   void excluirDepartamento() throws Exception {
-    String query = "delete from departamento where codigo = "  +  this.codigo
+    String query = 'delete from departamento where codigo = '  +  this.codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -111,7 +111,7 @@ class Departamento {
       }
       else
       {
-        Exception e = new Exception("Não foi possível excluir o Departamento Informado.")
+        Exception e = new Exception('Não foi possível excluir o Departamento Informado.')
           throw e
       }
   }

@@ -19,7 +19,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
     private JComboBox cbxSituacao
     private JButton btAdicionarPedido, btAlterarPedido, btCancelarPedido, btAtualizarPedido, btImprimirPedido, btImprimirPorReferencia, btRecursosNecessarios
     private JTable tblPedido
-    private String[] situacoes = ["", Pedido.PENDENTE, Pedido.PRODUZINDO, Pedido.FINALIZADO, Pedido.ATRASADO, Pedido.CANCELADO]
+    private String[] situacoes = ['', Pedido.PENDENTE, Pedido.PRODUZINDO, Pedido.FINALIZADO, Pedido.ATRASADO, Pedido.CANCELADO]
     private Pedido pedido
 
     /* Objetos da aba de Cliente */
@@ -36,15 +36,15 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
         pnlPedido = new JPanel(new BorderLayout())
 
         JPanel pnlParametro = new JPanel(new FlowLayout(FlowLayout.LEFT))
-        JLabel label = new JLabel("Situação: ")
+        JLabel label = new JLabel('Situação: ')
         pnlParametro.add(label)
         cbxSituacao = new JComboBox()
-        cbxSituacao.addItem("Todos")
-        cbxSituacao.addItem("Pendente")
-        cbxSituacao.addItem("Produzindo")
-        cbxSituacao.addItem("Finalizado")
-        cbxSituacao.addItem("Atrasado")
-        cbxSituacao.addItem("Cancelado")
+        cbxSituacao.addItem('Todos')
+        cbxSituacao.addItem('Pendente')
+        cbxSituacao.addItem('Produzindo')
+        cbxSituacao.addItem('Finalizado')
+        cbxSituacao.addItem('Atrasado')
+        cbxSituacao.addItem('Cancelado')
         cbxSituacao.addActionListener(this)
 
         pnlParametro.add(cbxSituacao)
@@ -58,75 +58,75 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
 
         JPanel pnlAreaComandos = new JPanel()
         JPanel pnlComandos = new JPanel(new GridLayout(7, 1, 5, 5))
-        btAdicionarPedido = new JButton("Adicionar Pedido")
+        btAdicionarPedido = new JButton('Adicionar Pedido')
         btAdicionarPedido.addActionListener(this)
         pnlComandos.add(btAdicionarPedido)
-        btAlterarPedido = new JButton("Alterar Selecionado")
+        btAlterarPedido = new JButton('Alterar Selecionado')
         btAlterarPedido.addActionListener(this)
         pnlComandos.add(btAlterarPedido)
-        btCancelarPedido = new JButton("Cancelar Selecionado")
+        btCancelarPedido = new JButton('Cancelar Selecionado')
         btCancelarPedido.addActionListener(this)
         pnlComandos.add(btCancelarPedido)
-        btAtualizarPedido = new JButton("Atualizar Tabela")
+        btAtualizarPedido = new JButton('Atualizar Tabela')
         btAtualizarPedido.addActionListener(this)
         pnlComandos.add(btAtualizarPedido)
-        btImprimirPedido = new JButton("Imprimir Selecionado")
+        btImprimirPedido = new JButton('Imprimir Selecionado')
         btImprimirPedido.addActionListener(this)
         pnlComandos.add(btImprimirPedido)
-        btImprimirPorReferencia = new JButton("Imprimir p/ Referência")
+        btImprimirPorReferencia = new JButton('Imprimir p/ Referência')
         btImprimirPorReferencia.addActionListener(this)
         pnlComandos.add(btImprimirPorReferencia)
-        btRecursosNecessarios = new JButton("Recursos Necessários")
+        btRecursosNecessarios = new JButton('Recursos Necessários')
         btRecursosNecessarios.addActionListener(this)
         pnlComandos.add(btRecursosNecessarios)
         pnlAreaComandos.add(pnlComandos)
         pnlPedido.add(pnlAreaComandos, BorderLayout.EAST)
 
-        this.addTab("Pedidos", pnlPedido)
+        this.addTab('Pedidos', pnlPedido)
 
         pnlCliente = new JPanel(new BorderLayout())
 
         modeloTabelaCliente = new ModeloTabelaCliente()
         modeloTabelaCliente.definirConexao(aplicacao.obterConexao())
-        //modeloTabelaCliente.definirConsulta("select codigo, razao_social as 'razao social', CNPJ, contato_comercial as 'Contato Comercial', email as 'e-mail' from cliente order by razao_social asc")
+        //modeloTabelaCliente.definirConsulta('select codigo, razao_social as 'razao social', CNPJ, contato_comercial as 'Contato Comercial', email as 'e-mail' from cliente order by razao_social asc')
         tblCliente = new JTable(modeloTabelaCliente)
         scroll = new JScrollPane(tblCliente)
         pnlCliente.add(scroll, BorderLayout.CENTER)
 
         pnlAreaComandos = new JPanel()
         pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
-        btAdicionarCliente = new JButton("Adicionar Cliente")
+        btAdicionarCliente = new JButton('Adicionar Cliente')
         btAdicionarCliente.addActionListener(this)
         pnlComandos.add(btAdicionarCliente)
-        btAlterarCliente = new JButton("Alterar Selecionado")
+        btAlterarCliente = new JButton('Alterar Selecionado')
         btAlterarCliente.addActionListener(this)
         pnlComandos.add(btAlterarCliente)
-        btExcluirCliente = new JButton("Excluir Selecionado")
+        btExcluirCliente = new JButton('Excluir Selecionado')
         btExcluirCliente.addActionListener(this)
         pnlComandos.add(btExcluirCliente)
-        btAtualizarCliente = new JButton("Atualizar Tabela")
+        btAtualizarCliente = new JButton('Atualizar Tabela')
         btAtualizarCliente.addActionListener(this)
         pnlComandos.add(btAtualizarCliente)
         pnlAreaComandos.add(pnlComandos)
         pnlCliente.add(pnlAreaComandos, BorderLayout.EAST)
-        this.addTab("Clientes", pnlCliente)
+        this.addTab('Clientes', pnlCliente)
     }
 
   private void atualizarTabelaPedido() {
-    String query = ""
+    String query = ''
       if (cbxSituacao.getSelectedIndex() > 0) {
-        query = "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' end) as status " +
-          "from pedido_cliente pc, cliente c, local_entrega le "  + 
-          "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega and pc.status = '" +  situacoes[cbxSituacao.getSelectedIndex()] + "' " +
-          "order by pc.codigo desc"
+        query = 'select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '' +  Pedido.PENDENTE + '' then 'Pendente' when '' + Pedido.PRODUZINDO+ '' then 'Produzindo' when '' + Pedido.FINALIZADO + '' then 'Finalizado' when '' + Pedido.ATRASADO + '' then 'Atrasado' when '' + Pedido.CANCELADO + '' then 'Cancelado' end) as status ' +
+          'from pedido_cliente pc, cliente c, local_entrega le '  + 
+          'where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega and pc.status = '' +  situacoes[cbxSituacao.getSelectedIndex()] + '' ' +
+          'order by pc.codigo desc'
           modeloTabelaPedido.definirConsulta(query)
       }
       else
       {
-        query = "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' end) as status " +
-          "from pedido_cliente pc, cliente c, local_entrega le "  + 
-          "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "  + 
-          "order by pc.codigo desc"
+        query = 'select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '' +  Pedido.PENDENTE + '' then 'Pendente' when '' + Pedido.PRODUZINDO+ '' then 'Produzindo' when '' + Pedido.FINALIZADO + '' then 'Finalizado' when '' + Pedido.ATRASADO + '' then 'Atrasado' when '' + Pedido.CANCELADO + '' then 'Cancelado' end) as status ' +
+          'from pedido_cliente pc, cliente c, local_entrega le '  + 
+          'where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega '  + 
+          'order by pc.codigo desc'
           modeloTabelaPedido.definirConsulta(query)
       }
     tblPedido.setModel(modeloTabelaPedido)
@@ -134,7 +134,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
   }
 
   private void atualizarTabelaCliente() {
-    modeloTabelaCliente.definirConsulta("select codigo, razao_social as 'razao social', CNPJ, contato_comercial as 'Contato Comercial', email as 'e-mail' from cliente order by razao_social asc")
+    modeloTabelaCliente.definirConsulta('select codigo, razao_social as 'razao social', CNPJ, contato_comercial as 'Contato Comercial', email as 'e-mail' from cliente order by razao_social asc')
       tblCliente.setModel(modeloTabelaCliente)
       tblCliente.updateUI()
   }
@@ -157,18 +157,18 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             dlgDadosPedido.setVisible(true)
         }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o pedido selecionado.", "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar o pedido selecionado.', 'Erro', JOptionPane.ERROR_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido para alterar os seus dados.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione um pedido para alterar os seus dados.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btCancelarPedido) {
       if (tblPedido.getSelectedRow() >=0) {
-        if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o pedido selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o pedido selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblPedido.getSelectedRow()
             int codigoPedido = Integer.parseInt((String)tblPedido.getValueAt(linha, 0))
             try {
@@ -176,14 +176,14 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
                 pedido.cancelarPedido()
             }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível cancelar o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível cancelar o pedido.', 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione o pedido a ser excluído.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione o pedido a ser excluído.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
       atualizarTabelaPedido()
     }
@@ -205,7 +205,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             impressora.imprimir()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível imprimir o pedido.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -223,7 +223,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             impressora.imprimir()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível imprimir o pedido.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -242,7 +242,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             dlgRecursosPedido.setVisible(true)
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível exibir os Recursos Necessários.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível exibir os Recursos Necessários.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -259,13 +259,13 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
           dlgDadosCliente.setVisible(true)
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o Cliente selecionado.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar o Cliente selecionado.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
 
     if (objeto == btExcluirCliente) {
-      if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: A exclusão de um Cliente implicará na Exclusão de todos os dados \nRelacionados ao mesmo.\nTem certeza que deseja continuar a operação de exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+      if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: A exclusão de um Cliente implicará na Exclusão de todos os dados \nRelacionados ao mesmo.\nTem certeza que deseja continuar a operação de exclusão?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
         int codigoCliente = Integer.parseInt((String)tblCliente.getValueAt(tblCliente.getSelectedRow(), 0))
           Cliente cliente = new Cliente()
           try {
@@ -273,7 +273,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
               atualizarTabelaCliente()
           }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível excluir o Cliente selecionado.", "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível excluir o Cliente selecionado.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }

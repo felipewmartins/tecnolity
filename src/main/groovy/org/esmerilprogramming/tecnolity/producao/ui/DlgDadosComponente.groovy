@@ -26,13 +26,13 @@ class DlgDadosComponente extends JDialog implements ActionListener, FocusListene
       super(aplicacao, true)
 
         // Define o título da janela
-        String tituloJanela = ""
+        String tituloJanela = ''
         if (modo == 'I')
-          tituloJanela = "Novo Componente"
+          tituloJanela = 'Novo Componente'
             if (modo == 'A')
-              tituloJanela = "Componente"
+              tituloJanela = 'Componente'
                 if (modo == 'V')
-                  tituloJanela = "Componente"
+                  tituloJanela = 'Componente'
                     this.setTitle(tituloJanela)
 
                     this.aplicacao = aplicacao
@@ -54,17 +54,17 @@ class DlgDadosComponente extends JDialog implements ActionListener, FocusListene
       gbc.insets.top = 2
 
       pnlAreaDados = new JPanel(gridbag)
-      JLabel label = new JLabel("Nome do Componente")
+      JLabel label = new JLabel('Nome do Componente')
       adicionarComponente(pnlAreaDados, label, 0, 0, 1, 1)
       txtComponente = new JTextField(20)
       adicionarComponente(pnlAreaDados, txtComponente, 1, 0, 1, 1)
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-      btConfirmar = new JButton("Confirmar")
+      btConfirmar = new JButton('Confirmar')
       btConfirmar.addActionListener(this)
       pnlComandos.add(btConfirmar)
-      btCancelar = new JButton("Cancelar")
+      btCancelar = new JButton('Cancelar')
       btCancelar.addActionListener(this)
       pnlComandos.add(btCancelar)
       conteudo.add(pnlComandos, BorderLayout.SOUTH)

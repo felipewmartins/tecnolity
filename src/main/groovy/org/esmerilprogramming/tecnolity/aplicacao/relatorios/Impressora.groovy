@@ -29,6 +29,6 @@ class Impressora
         }
     }
     else
-      throw new PrinterException("Nenhuma página foi adicionada a impressora.")
+      throw new PrinterException('Nenhuma página foi adicionada a impressora.')
   }
 }

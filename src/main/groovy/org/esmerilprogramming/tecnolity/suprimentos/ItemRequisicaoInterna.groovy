@@ -5,10 +5,10 @@ import org.esmerilprogramming.tecnolity.util.*
 
 class ItemRequisicaoInterna
 {
-  static final String STATUS_EMITIDO    = "EM"
-    static final String STATUS_CANCELADO  = "CL"
-    static final String STATUS_CONFIRMADO = "CO"
-    static final String STATUS_PENDENTE   = "PD"
+  static final String STATUS_EMITIDO    = 'EM'
+    static final String STATUS_CANCELADO  = 'CL'
+    static final String STATUS_CONFIRMADO = 'CO'
+    static final String STATUS_PENDENTE   = 'PD'
 
     private Item item
     private RequisicaoInterna requisicaoInterna
@@ -47,7 +47,7 @@ class ItemRequisicaoInterna
     }
     else
     {
-      throw new Exception("A quantidade deve ser maior ou igual a zero zero.")
+      throw new Exception('A quantidade deve ser maior ou igual a zero zero.')
     }
   }
 
@@ -81,13 +81,13 @@ class ItemRequisicaoInterna
 
   String obterStatusLiteral() {
     if (status.equals(STATUS_CANCELADO))
-      return "Cancelado"
+      return 'Cancelado'
         if (status.equals(STATUS_CONFIRMADO))
-          return "Confirmado"
+          return 'Confirmado'
             if (status.equals(STATUS_EMITIDO))
-              return "Emitido"
+              return 'Emitido'
             else
-              return "Pendente"
+              return 'Pendente'
   }
 
   Departamento obterDestino() {
@@ -98,7 +98,7 @@ class ItemRequisicaoInterna
   {
     Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        String query = "insert into item_requisicao_interna (item, requisicao_interna, status, quantidade, destino) values (" +  this.item.obterCodigo() + ", " + this.requisicaoInterna.obterCodigo() + ", 'EM', " + this.quantidadeItem + ", " + this.destino.obterCodigo() + ")"
+        String query = 'insert into item_requisicao_interna (item, requisicao_interna, status, quantidade, destino) values (' +  this.item.obterCodigo() + ', ' + this.requisicaoInterna.obterCodigo() + ', 'EM', ' + this.quantidadeItem + ', ' + this.destino.obterCodigo() + ')'
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }
@@ -115,7 +115,7 @@ class ItemRequisicaoInterna
   {
     Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        String query = "update item_requisicao_interna set status = '" +  status + "', quantidade = '" + this.quantidadeItem + "' where item = " + this.obterItem().obterCodigo() + " and requisicao_interna = " + this.obterRequisicaoInterna().obterCodigo()
+        String query = 'update item_requisicao_interna set status = '' +  status + '', quantidade = '' + this.quantidadeItem + '' where item = ' + this.obterItem().obterCodigo() + ' and requisicao_interna = ' + this.obterRequisicaoInterna().obterCodigo()
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }

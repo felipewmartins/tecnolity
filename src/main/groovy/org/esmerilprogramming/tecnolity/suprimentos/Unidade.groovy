@@ -29,7 +29,7 @@ class Unidade
   }
 
   boolean cadastrarUnidade(String nomeUnidade) {
-    String query = "insert into unidade (unidade) values ('" +  nomeUnidade + "')"
+    String query = 'insert into unidade (unidade) values ('' +  nomeUnidade + '')'
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)

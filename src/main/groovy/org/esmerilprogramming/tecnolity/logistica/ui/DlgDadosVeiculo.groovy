@@ -32,7 +32,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
               DlgDadosVeiculo(Aplicacao aplicacao) {
                 super(aplicacao, true)
 
-                  this.setTitle("Veículo")
+                  this.setTitle('Veículo')
                   this.aplicacao = aplicacao
                   montarInterface()
               }
@@ -43,11 +43,11 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
         this.veiculo = veiculo
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o Veículo.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar o Veículo.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
-    this.setTitle("Veículo")
+    this.setTitle('Veículo')
       this.aplicacao = aplicacao
       montarInterface()
   }
@@ -65,13 +65,13 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       gbc.insets.top = 2
 
       JPanel pnlDadosVeiculo = new JPanel(gridbag)
-      pnlDadosVeiculo.setBorder(new TitledBorder("Dados do Veículo"))
+      pnlDadosVeiculo.setBorder(new TitledBorder('Dados do Veículo'))
 
-      JLabel label = new JLabel("Transportadora")
+      JLabel label = new JLabel('Transportadora')
       adicionarComponente(pnlDadosVeiculo, label, 0, 0, 1, 1)
-      label = new JLabel("Placa")
+      label = new JLabel('Placa')
       adicionarComponente(pnlDadosVeiculo, label, 0, 1, 1, 1)
-      label = new JLabel("Ano")
+      label = new JLabel('Ano')
       adicionarComponente(pnlDadosVeiculo, label, 0, 2, 2, 1)
 
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -88,87 +88,87 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
           }
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Transportadoras. ", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Transportadoras. ', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
 
     pnlSuporteCombo.add(cbxTransportadora, BorderLayout.CENTER)
-      btNovaTransportadora = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovaTransportadora = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovaTransportadora.addActionListener(this)
-      btNovaTransportadora.setToolTipText("Nova Transportadora")
+      btNovaTransportadora.setToolTipText('Nova Transportadora')
       btNovaTransportadora.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovaTransportadora, BorderLayout.EAST)
       adicionarComponente(pnlDadosVeiculo, pnlSuporteCombo, 1, 0, 1, 1)
 
-      txtPlaca = new JTextField((this.veiculo != null?this.veiculo.obterPlaca():""), 8)
+      txtPlaca = new JTextField((this.veiculo != null?this.veiculo.obterPlaca():''), 8)
       adicionarComponente(pnlDadosVeiculo, txtPlaca, 1, 1, 1, 1)
-      txtAno = new JTextField((this.veiculo != null?this.veiculo.obterAno():""), 4)
+      txtAno = new JTextField((this.veiculo != null?this.veiculo.obterAno():''), 4)
       adicionarComponente(pnlDadosVeiculo, txtAno, 1, 2, 1, 1)
 
-      label = new JLabel("Chassi")
+      label = new JLabel('Chassi')
       adicionarComponente(pnlDadosVeiculo, label, 2, 0, 1, 1)
-      label = new JLabel("Renavam")
+      label = new JLabel('Renavam')
       adicionarComponente(pnlDadosVeiculo, label, 2, 1, 1, 1)
-      label = new JLabel("Cor")
+      label = new JLabel('Cor')
       adicionarComponente(pnlDadosVeiculo, label, 2, 2, 2, 1)
 
-      txtChassi = new JTextField((this.veiculo==null?"":this.veiculo.obterChassi().trim()), 10)
+      txtChassi = new JTextField((this.veiculo==null?'':this.veiculo.obterChassi().trim()), 10)
       adicionarComponente(pnlDadosVeiculo, txtChassi, 3, 0, 1, 1)
-      txtRenavam = new JTextField((this.veiculo == null?"":this.veiculo.obterRenavam().trim()), 10)
+      txtRenavam = new JTextField((this.veiculo == null?'':this.veiculo.obterRenavam().trim()), 10)
       adicionarComponente(pnlDadosVeiculo, txtRenavam, 3, 1, 1, 1)
-      txtCor = new JTextField((this.veiculo == null?"":this.veiculo.obterCor().trim()), 10)
+      txtCor = new JTextField((this.veiculo == null?'':this.veiculo.obterCor().trim()), 10)
       adicionarComponente(pnlDadosVeiculo, txtCor, 3, 2, 2, 1)
 
-      label = new JLabel("Marca")
+      label = new JLabel('Marca')
       adicionarComponente(pnlDadosVeiculo, label, 4, 0, 1, 1)
-      label = new JLabel("Modelo")
+      label = new JLabel('Modelo')
       adicionarComponente(pnlDadosVeiculo, label, 4, 1, 2, 1)
 
-      txtMarca = new JTextField((this.veiculo == null?"":this.veiculo.obterMarca().trim()), 20)
+      txtMarca = new JTextField((this.veiculo == null?'':this.veiculo.obterMarca().trim()), 20)
       adicionarComponente(pnlDadosVeiculo, txtMarca, 5, 0, 1, 1)
-      txtModelo = new JTextField((this.veiculo == null?"":this.veiculo.obterModelo().trim()), 19)
+      txtModelo = new JTextField((this.veiculo == null?'':this.veiculo.obterModelo().trim()), 19)
       adicionarComponente(pnlDadosVeiculo, txtModelo, 5, 1, 2, 1)
 
-      label = new JLabel("Número do Eixo")
+      label = new JLabel('Número do Eixo')
       adicionarComponente(pnlDadosVeiculo, label, 6, 0, 1, 1)
-      label = new JLabel("Cubagem")
+      label = new JLabel('Cubagem')
       adicionarComponente(pnlDadosVeiculo, label, 6, 1, 1, 1)
-      label = new JLabel("Tara")
+      label = new JLabel('Tara')
       adicionarComponente(pnlDadosVeiculo, label, 6, 2, 1, 1)
-      label = new JLabel("Peso Bruto")
+      label = new JLabel('Peso Bruto')
       adicionarComponente(pnlDadosVeiculo, label, 6, 3, 1, 1)
 
-      txtNumeroEixo = new JTextField((this.veiculo != null?""  +  this.veiculo.obterNumeroEixo():""), 10)
+      txtNumeroEixo = new JTextField((this.veiculo != null?''  +  this.veiculo.obterNumeroEixo():''), 10)
       adicionarComponente(pnlDadosVeiculo, txtNumeroEixo, 7, 0, 1, 1)
-      txtCubagem = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterCubagem()):""), 8)
+      txtCubagem = new JTextField((this.veiculo != null?Numero.inverterSeparador('' + this.veiculo.obterCubagem()):''), 8)
       adicionarComponente(pnlDadosVeiculo, txtCubagem, 7, 1, 1, 1)
-      txtTara = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterTara()):""), 8)
+      txtTara = new JTextField((this.veiculo != null?Numero.inverterSeparador('' + this.veiculo.obterTara()):''), 8)
       adicionarComponente(pnlDadosVeiculo, txtTara, 7, 2, 1, 1)
-      txtPesoBruto = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterPesoBruto()):""), 8)
+      txtPesoBruto = new JTextField((this.veiculo != null?Numero.inverterSeparador('' + this.veiculo.obterPesoBruto()):''), 8)
       adicionarComponente(pnlDadosVeiculo, txtPesoBruto, 7, 3, 1, 1)
 
-      label = new JLabel("Combustível")
+      label = new JLabel('Combustível')
       adicionarComponente(pnlDadosVeiculo, label, 8, 0, 2, 1)
-      label = new JLabel("Volume Combustível")
+      label = new JLabel('Volume Combustível')
       adicionarComponente(pnlDadosVeiculo, label, 8, 2, 1, 1)
-      label = new JLabel("Média de Consumo")
+      label = new JLabel('Média de Consumo')
       adicionarComponente(pnlDadosVeiculo, label, 8, 3, 1, 1)
 
-      txtCombustivel = new JTextField((this.veiculo == null?"":this.veiculo.obterCombustivel().trim()), 20)
+      txtCombustivel = new JTextField((this.veiculo == null?'':this.veiculo.obterCombustivel().trim()), 20)
       adicionarComponente(pnlDadosVeiculo, txtCombustivel, 9, 0, 2, 1)
-      txtVolumeCombustivel = new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterVolumeCombustivel()):""), 8)
+      txtVolumeCombustivel = new JTextField((this.veiculo != null?Numero.inverterSeparador('' + this.veiculo.obterVolumeCombustivel()):''), 8)
       adicionarComponente(pnlDadosVeiculo, txtVolumeCombustivel, 9, 2, 1, 1)
-      txtMediaConsumo= new JTextField((this.veiculo != null?Numero.inverterSeparador("" + this.veiculo.obterMediaConsumo()):""), 8)
+      txtMediaConsumo= new JTextField((this.veiculo != null?Numero.inverterSeparador('' + this.veiculo.obterMediaConsumo()):''), 8)
       adicionarComponente(pnlDadosVeiculo, txtMediaConsumo, 9, 3, 1, 1)
       conteudo.add(pnlDadosVeiculo, BorderLayout.CENTER)
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
 
-      btConfirmar = new JButton("Confirmar")
+      btConfirmar = new JButton('Confirmar')
       btConfirmar.addActionListener(this)
       pnlComandos.add(btConfirmar)
 
-      btCancelar = new JButton("Cancelar")
+      btCancelar = new JButton('Cancelar')
       btCancelar.addActionListener(this)
       pnlComandos.add(btCancelar)
 
@@ -195,7 +195,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
 
   private void carregarTransportadoras() {
     cbxTransportadora.removeAllItems()
-      cbxTransportadora.addItem("Selecione...")
+      cbxTransportadora.addItem('Selecione...')
 
       for (int i = 1;i < transportadoras.size();i++) {
         cbxTransportadora.addItem(((Transportadora)transportadoras.get(i)).obterNome())
@@ -216,7 +216,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
               carregarTransportadoras()
           }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Transportadoras", "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Transportadoras', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
@@ -253,11 +253,11 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
         this.setVisible(false)
       }
       catch (NumberFormatException n) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Valor incorreto.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

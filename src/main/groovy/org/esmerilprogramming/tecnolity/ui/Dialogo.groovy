@@ -20,7 +20,7 @@ class Dialogo extends JDialog
   private GridBagConstraints gbc
 
   Dialogo() {
-    super(new Aplicacao("Di\u00e1logo"), true)
+    super(new Aplicacao('Di\u00e1logo'), true)
     this.conteudo = this.getContentPane()
     this.gridbag = new GridBagLayout()
     this.gbc = new GridBagConstraints()
@@ -117,22 +117,22 @@ class Dialogo extends JDialog
 
   protected void setPnlAreaCabecalho(final JPanel pnlAreaCabecalho) {
     this.pnlAreaCabecalho = pnlAreaCabecalho
-    this.conteudo.add(this.pnlAreaCabecalho, "North")
+    this.conteudo.add(this.pnlAreaCabecalho, 'North')
   }
 
   protected void setPnlAreaGuia(final JPanel pnlAreaGuia) {
     this.pnlAreaGuia = pnlAreaGuia
-    this.conteudo.add(this.pnlAreaGuia, "West")
+    this.conteudo.add(this.pnlAreaGuia, 'West')
   }
 
   protected void setPnlAreaDados(final JPanel pnlAreaDados) {
     this.pnlAreaDados = pnlAreaDados
-    this.conteudo.add(this.pnlAreaDados, "Center")
+    this.conteudo.add(this.pnlAreaDados, 'Center')
   }
 
   protected void setPnlAreaComandos(final JPanel pnlAreaComandos) {
     this.pnlAreaComandos = pnlAreaComandos
-    this.conteudo.add(this.pnlAreaComandos, "South")
+    this.conteudo.add(this.pnlAreaComandos, 'South')
   }
 
   protected void setGridbag(final GridBagLayout gridbag) {

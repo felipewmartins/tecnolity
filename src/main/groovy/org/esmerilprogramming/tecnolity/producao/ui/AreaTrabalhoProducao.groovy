@@ -20,7 +20,7 @@ class AreaTrabalhoProducao extends ModeloAreaTrabalho
       this.aplicacao = aplicacao
         switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR), aplicacao.obterColaborador(), aplicacao.obterConexao())) {
           case Permissao.SEM_ACESSO:
-            JOptionPane.showMessageDialog(this, "Acesso Negado.", "Segurança", JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(this, 'Acesso Negado.', 'Segurança', JOptionPane.WARNING_MESSAGE)
               break
           default:
               this.setLayout(new BorderLayout())
@@ -28,9 +28,9 @@ class AreaTrabalhoProducao extends ModeloAreaTrabalho
                 pnlCabecalho = new JPanel(new BorderLayout(5, 5))
                 pnlCabecalho.setBorder(new EmptyBorder(3, 3, 3, 3))
                 pnlCabecalho.setBackground(Color.white)
-                JLabel lblImagemSecao = new JLabel(new ImageIcon("imagens/tit_producao.gif"))
+                JLabel lblImagemSecao = new JLabel(new ImageIcon('imagens/tit_producao.gif'))
                 pnlCabecalho.add(lblImagemSecao, BorderLayout.WEST)
-                lblImagemSecao = new JLabel(new ImageIcon("imagens/logo_mentores.gif"))
+                lblImagemSecao = new JLabel(new ImageIcon('imagens/logo_mentores.gif'))
                 pnlCabecalho.add(lblImagemSecao, BorderLayout.EAST)
                 this.add(pnlCabecalho, BorderLayout.NORTH)
 

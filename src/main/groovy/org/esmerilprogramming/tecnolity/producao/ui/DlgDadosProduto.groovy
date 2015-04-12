@@ -45,7 +45,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
               DlgDadosProduto(Aplicacao aplicacao) {
                 super(aplicacao, true)
-                  this.setTitle("Novo Produto")
+                  this.setTitle('Novo Produto')
 
                   this.aplicacao = aplicacao
 
@@ -55,7 +55,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
   DlgDadosProduto(Aplicacao aplicacao, Cliente cliente) {
     super(aplicacao, true)
 
-      this.setTitle("Novo Produto")
+      this.setTitle('Novo Produto')
 
       this.aplicacao = aplicacao
       this.cliente = cliente
@@ -65,7 +65,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
   DlgDadosProduto(Aplicacao aplicacao, Produto produto) {
     super(aplicacao, true)
-      this.setTitle("Produto")
+      this.setTitle('Produto')
 
       this.aplicacao = aplicacao
 
@@ -75,7 +75,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
         this.produto.carregarProduto(aplicacao.obterConexao())
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os dados do Produto.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os dados do Produto.\n\n'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     montarInterface()
@@ -96,19 +96,19 @@ class DlgDadosProduto extends JDialog implements ActionListener
       card = new CardLayout()
       pnlAreaDados = new JPanel(card)
       JPanel pnlDadosProduto = new JPanel(gridbag)
-      JLabel label = new JLabel("Modelo")
+      JLabel label = new JLabel('Modelo')
       adicionarComponente(pnlDadosProduto, label, 0, 0, 3, 1)
-      label = new JLabel("Referência do Cliente")
+      label = new JLabel('Referência do Cliente')
       adicionarComponente(pnlDadosProduto, label, 0, 3, 1, 1)
-      txtModelo = new JTextField((this.produto == null)?"":this.produto.obterNomeModelo(), 28) 
+      txtModelo = new JTextField((this.produto == null)?'':this.produto.obterNomeModelo(), 28) 
       adicionarComponente(pnlDadosProduto, txtModelo, 1, 0, 3, 1)
-      txtReferenciaCliente = new JTextField((this.produto == null)?"":this.produto.obterReferenciaCliente(), 10)
+      txtReferenciaCliente = new JTextField((this.produto == null)?'':this.produto.obterReferenciaCliente(), 10)
       adicionarComponente(pnlDadosProduto, txtReferenciaCliente, 1, 3, 1, 1)
-      label = new JLabel("Cliente")
+      label = new JLabel('Cliente')
       adicionarComponente(pnlDadosProduto, label, 2, 0, 2, 1)
-      label = new JLabel("Tipo de Componente")
+      label = new JLabel('Tipo de Componente')
       adicionarComponente(pnlDadosProduto, label, 2, 2, 1, 1)
-      label = new JLabel("Tipo de Produção")
+      label = new JLabel('Tipo de Produção')
       adicionarComponente(pnlDadosProduto, label, 2, 3, 1, 1)
 
       JPanel pnlSuporteCombo = new JPanel(new BorderLayout())
@@ -121,13 +121,13 @@ class DlgDadosProduto extends JDialog implements ActionListener
           carregarClientes()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Clientes', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     pnlSuporteCombo.add(cbxCliente, BorderLayout.CENTER)
-      btNovoCliente = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoCliente = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoCliente.addActionListener(this)
-      btNovoCliente.setToolTipText("Novo Cliente")
+      btNovoCliente.setToolTipText('Novo Cliente')
       btNovoCliente.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoCliente, BorderLayout.EAST)
       adicionarComponente(pnlDadosProduto, pnlSuporteCombo, 3, 0, 2, 1)
@@ -141,13 +141,13 @@ class DlgDadosProduto extends JDialog implements ActionListener
           carregarComponentes()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Componentes.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Componentes.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     pnlSuporteCombo.add(cbxComponente, BorderLayout.CENTER)
-      btNovoComponente = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoComponente = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoComponente.addActionListener(this)
-      btNovoComponente.setToolTipText("Novo Componente")
+      btNovoComponente.setToolTipText('Novo Componente')
       btNovoComponente.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoComponente, BorderLayout.EAST)
       adicionarComponente(pnlDadosProduto, pnlSuporteCombo, 3, 2, 1, 1)
@@ -160,14 +160,14 @@ class DlgDadosProduto extends JDialog implements ActionListener
           carregarTiposProducao()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os tipos de produção.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os tipos de produção.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     pnlSuporteCombo = new JPanel(new BorderLayout())
       pnlSuporteCombo.add(cbxTipoProducao, BorderLayout.CENTER)
-      btNovoTipoProducao = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoTipoProducao = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoTipoProducao.addActionListener(this)
-      btNovoTipoProducao.setToolTipText("Novo Tipo de Produção")
+      btNovoTipoProducao.setToolTipText('Novo Tipo de Produção')
       btNovoTipoProducao.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoTipoProducao, BorderLayout.EAST)
       adicionarComponente(pnlDadosProduto, pnlSuporteCombo, 3, 3, 1, 1)
@@ -177,13 +177,13 @@ class DlgDadosProduto extends JDialog implements ActionListener
           destino = false
       }
     JPanel pnlExportacao = new JPanel(new GridLayout(2, 1))
-      pnlExportacao.setBorder(new TitledBorder("Destino"))
+      pnlExportacao.setBorder(new TitledBorder('Destino'))
       ButtonGroup grupo = new ButtonGroup()
-      rdbMercadoInterno = new JRadioButton("Mercado Interno")
+      rdbMercadoInterno = new JRadioButton('Mercado Interno')
       rdbMercadoInterno.setSelected(destino)
       grupo.add(rdbMercadoInterno)
       pnlExportacao.add(rdbMercadoInterno)
-      rdbExportacao = new JRadioButton("Exportação")
+      rdbExportacao = new JRadioButton('Exportação')
       rdbExportacao.setSelected(!destino)
       grupo.add(rdbExportacao)
       pnlExportacao.add(rdbExportacao)
@@ -192,15 +192,15 @@ class DlgDadosProduto extends JDialog implements ActionListener
       adicionarComponente(pnlDadosProduto, label, 4, 2, 1, 1)
       label = new JLabel('Fabricação (R$)')
       adicionarComponente(pnlDadosProduto, label, 4, 3, 1, 1)
-      txtValor = new JTextField(((this.produto != null)?Numero.inverterSeparador(this.produto.obterValor()):"0, 00"), 8)
+      txtValor = new JTextField(((this.produto != null)?Numero.inverterSeparador(this.produto.obterValor()):'0, 00'), 8)
       adicionarComponente(pnlDadosProduto, txtValor, 5, 2, 1, 1)
-      txtCustoFabricacao = new JTextField(((this.produto != null)?Numero.inverterSeparador(this.produto.obterCustoFabricacao()):"0, 00"), 8)
+      txtCustoFabricacao = new JTextField(((this.produto != null)?Numero.inverterSeparador(this.produto.obterCustoFabricacao()):'0, 00'), 8)
       adicionarComponente(pnlDadosProduto, txtCustoFabricacao, 5, 3, 1, 1)
       if (this.produto != null) {
         try
         {
-          label = new JLabel("Valor atualizado em: "  +  produto.getDataUltimaAlteracaoValor(this.aplicacao.obterConexao()))
-            label.setFont(new Font("Arial", Font.PLAIN, 10))
+          label = new JLabel('Valor atualizado em: '  +  produto.getDataUltimaAlteracaoValor(this.aplicacao.obterConexao()))
+            label.setFont(new Font('Arial', Font.PLAIN, 10))
             adicionarComponente(pnlDadosProduto, label, 6, 2, 2, 1)
         }
         catch (e) {
@@ -209,41 +209,41 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
 
     JPanel pnlInformacoes = new JPanel(gridbag)
-      label = new JLabel("Insertos")
+      label = new JLabel('Insertos')
       adicionarComponente(pnlInformacoes, label, 0, 0, 2, 1)
-      label = new JLabel("Acabamentos")
+      label = new JLabel('Acabamentos')
       adicionarComponente(pnlInformacoes, label, 0, 2, 2, 1)
-      txaEspecificacaoInserto = new JTextArea(((this.produto != null)?this.produto.obterEspecificacaoInserto():""), 4, 20)
+      txaEspecificacaoInserto = new JTextArea(((this.produto != null)?this.produto.obterEspecificacaoInserto():''), 4, 20)
       txaEspecificacaoInserto.setLineWrap(true)
       txaEspecificacaoInserto.setWrapStyleWord(true)
       JScrollPane scroll = new JScrollPane(txaEspecificacaoInserto)
       adicionarComponente(pnlInformacoes, scroll, 1, 0, 2, 1)
-      txaAcabamentos = new JTextArea(((this.produto != null)?this.produto.obterAcabamento():""), 4, 20)
+      txaAcabamentos = new JTextArea(((this.produto != null)?this.produto.obterAcabamento():''), 4, 20)
       txaAcabamentos.setLineWrap(true)
       txaAcabamentos.setWrapStyleWord(true)
       scroll = new JScrollPane(txaAcabamentos)
       adicionarComponente(pnlInformacoes, scroll, 1, 2, 2, 1)
-      label = new JLabel("Lavagem")
+      label = new JLabel('Lavagem')
       adicionarComponente(pnlInformacoes, label, 2, 0, 2, 1)
-      label = new JLabel("Pintura")
+      label = new JLabel('Pintura')
       adicionarComponente(pnlInformacoes, label, 2, 2, 2, 1)
-      txaLavagem = new JTextArea(((this.produto != null)?this.produto.obterLavagem():""), 4, 20)
+      txaLavagem = new JTextArea(((this.produto != null)?this.produto.obterLavagem():''), 4, 20)
       txaLavagem.setLineWrap(true)
       txaLavagem.setWrapStyleWord(true)
       scroll = new JScrollPane(txaLavagem)
       adicionarComponente(pnlInformacoes, scroll, 3, 0, 2, 1)
-      txaPintura = new JTextArea(((this.produto != null)?this.produto.obterPintura():""), 4, 20)
+      txaPintura = new JTextArea(((this.produto != null)?this.produto.obterPintura():''), 4, 20)
       txaPintura.setLineWrap(true)
       txaPintura.setWrapStyleWord(true)
       scroll = new JScrollPane(txaPintura)
       adicionarComponente(pnlInformacoes, scroll, 3, 2, 2, 1)
       adicionarComponente(pnlDadosProduto, pnlInformacoes, 7, 0, 4, 1)
 
-      pnlAreaDados.add(pnlDadosProduto, "produto")
+      pnlAreaDados.add(pnlDadosProduto, 'produto')
 
       JPanel pnlMateriaPrima = new JPanel(gridbag)
       materiasPrimas = new Vector()
-      label = new JLabel("Matriz")
+      label = new JLabel('Matriz')
       adicionarComponente(pnlMateriaPrima, label, 0, 0, 1, 1)
       cbxMatriz = new JComboBox()
       if (this.produto != null) {
@@ -254,24 +254,24 @@ class DlgDadosProduto extends JDialog implements ActionListener
             carregarMatrizes()
         }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes.", "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Matrizes.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
     cbxMatriz.addActionListener(this)
       pnlSuporteCombo = new JPanel(new BorderLayout())
       pnlSuporteCombo.add(cbxMatriz, BorderLayout.CENTER)
-      btNovaMatriz = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovaMatriz = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovaMatriz.addActionListener(this)
-      btNovaMatriz.setToolTipText("Nova Matriz")
+      btNovaMatriz.setToolTipText('Nova Matriz')
       btNovaMatriz.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovaMatriz, BorderLayout.EAST)
       adicionarComponente(pnlMateriaPrima, pnlSuporteCombo, 1, 0, 1, 1)
-      btReassociarItens = new JButton("Reassociar Itens")
+      btReassociarItens = new JButton('Reassociar Itens')
       btReassociarItens.addActionListener(this)
       btReassociarItens.setVisible(false)
       adicionarComponente(pnlMateriaPrima, btReassociarItens, 1, 1, 1, 1)
-      label = new JLabel("Materia Prima")
+      label = new JLabel('Materia Prima')
       adicionarComponente(pnlMateriaPrima, label, 2, 0, 1, 1)
       cbxItem = new JComboBox()
       try
@@ -280,30 +280,30 @@ class DlgDadosProduto extends JDialog implements ActionListener
           carregarItens()
       }
     catch (e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matérias Primas.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Matérias Primas.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     pnlSuporteCombo = new JPanel(new BorderLayout())
       pnlSuporteCombo.add(cbxItem, BorderLayout.CENTER)
-      btNovoItem = new JButton(new ImageIcon("imagens/novo.jpg"))
+      btNovoItem = new JButton(new ImageIcon('imagens/novo.jpg'))
       btNovoItem.addActionListener(this)
-      btNovoItem.setToolTipText("Nova Matéria Prima")
+      btNovoItem.setToolTipText('Nova Matéria Prima')
       btNovoItem.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoItem, BorderLayout.EAST)
       adicionarComponente(pnlMateriaPrima, pnlSuporteCombo, 3, 0, 1, 1)
-      label = new JLabel("Quantidade")
+      label = new JLabel('Quantidade')
       adicionarComponente(pnlMateriaPrima, label, 2, 1, 1, 1)
-      txtQuantidade = new JTextField("0, 000", 10)
+      txtQuantidade = new JTextField('0, 000', 10)
       adicionarComponente(pnlMateriaPrima, txtQuantidade, 3, 1, 1, 1)
       JPanel pnlComandosTabela = new JPanel()
-      btAdicionarMateriaPrima = new JButton("Adicionar")
+      btAdicionarMateriaPrima = new JButton('Adicionar')
       btAdicionarMateriaPrima.addActionListener(this)
       pnlComandosTabela.add(btAdicionarMateriaPrima)
-      btAlterarMateriaPrima = new JButton("Alterar")
+      btAlterarMateriaPrima = new JButton('Alterar')
       btAlterarMateriaPrima.addActionListener(this)
       btAlterarMateriaPrima.setEnabled(false)
       pnlComandosTabela.add(btAlterarMateriaPrima)
-      btLimparMateriaPrima = new JButton("Limpar")
+      btLimparMateriaPrima = new JButton('Limpar')
       btLimparMateriaPrima.addActionListener(this)
       pnlComandosTabela.add(btLimparMateriaPrima)
       adicionarComponente(pnlMateriaPrima, pnlComandosTabela, 4, 0, 3, 1)
@@ -316,53 +316,53 @@ class DlgDadosProduto extends JDialog implements ActionListener
             indiceTabela = materiasPrimas.size()
         }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matérias Primas", "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Matérias Primas', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
       }
-    String[] nomeColunas = ["Matriz", "Matéria Prima", "Quantidade"]
+    String[] nomeColunas = ['Matriz', 'Matéria Prima', 'Quantidade']
       tblMateriaPrima = new JTable(dados, nomeColunas)
       tblMateriaPrima.setPreferredScrollableViewportSize(new Dimension(500, 200))
       tblMateriaPrima.addRowSelectionInterval(0, 0)
       scroll = new JScrollPane(tblMateriaPrima)
       adicionarComponente(pnlMateriaPrima, scroll, 5, 0, 3, 1)
       pnlComandosTabela = new JPanel()
-      btAlterarSelecionado = new JButton("Alterar Selecionado")
+      btAlterarSelecionado = new JButton('Alterar Selecionado')
       btAlterarSelecionado.addActionListener(this)
       pnlComandosTabela.add(btAlterarSelecionado)
-      btRemoverMateriaPrima = new JButton("Remover Selecionado")
+      btRemoverMateriaPrima = new JButton('Remover Selecionado')
       btRemoverMateriaPrima.addActionListener(this)
       pnlComandosTabela.add(btRemoverMateriaPrima)
       adicionarComponente(pnlMateriaPrima, pnlComandosTabela, 6, 0, 2, 1)
-      pnlAreaDados.add(pnlMateriaPrima, "materiaprima")
+      pnlAreaDados.add(pnlMateriaPrima, 'materiaprima')
 
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
       if (this.produto != null) {
-        btImprimir = new JButton("Imprimir")
+        btImprimir = new JButton('Imprimir')
           btImprimir.addActionListener(this)
           btImprimir.setEnabled(true)
           pnlComandos.add(btImprimir)
-          btAnterior = new JButton("<< Anterior")
+          btAnterior = new JButton('<< Anterior')
           btAnterior.addActionListener(this)
           btAnterior.setEnabled(false)
           pnlComandos.add(btAnterior)
 
-          btProximo = new JButton("Próximo >>")
+          btProximo = new JButton('Próximo >>')
           btProximo.addActionListener(this)
           pnlComandos.add(btProximo)
 
-          btConfirmar = new JButton("Confirmar")
+          btConfirmar = new JButton('Confirmar')
           btConfirmar.addActionListener(this)
           pnlComandos.add(btConfirmar)
       }
       else
       {
-        btConfirmarParcial = new JButton("Confirmar")
+        btConfirmarParcial = new JButton('Confirmar')
           btConfirmarParcial.addActionListener(this)
           pnlComandos.add(btConfirmarParcial)
       }
-    btCancelar = new JButton("Cancelar")
+    btCancelar = new JButton('Cancelar')
       btCancelar.addActionListener(this)
       pnlComandos.add(btCancelar)
       conteudo.add(pnlComandos, BorderLayout.SOUTH)
@@ -372,7 +372,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
   private void carregarClientes() {
     cbxCliente.removeAllItems()
-      cbxCliente.addItem("Selecione...")
+      cbxCliente.addItem('Selecione...')
       int posicao = 0
       for (int i = 1;i < clientes.size();i++) {
         if (cliente != null) {
@@ -390,7 +390,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
   private void carregarMatrizes() {
     cbxMatriz.removeAllItems()
-      cbxMatriz.addItem("Selecione...")
+      cbxMatriz.addItem('Selecione...')
       Matriz matriz
       for (int i = 1;i < matrizes.size();i++) {
         matriz = (Matriz)matrizes.get(i)
@@ -401,7 +401,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
   private void carregarItens() {
     cbxItem.removeAllItems()
-      cbxItem.addItem("Selecione...")
+      cbxItem.addItem('Selecione...')
       for (int i = 1;i < itens.size();i++) {
         cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
       }
@@ -410,7 +410,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
   private void carregarComponentes() {
     cbxComponente.removeAllItems()
-      cbxComponente.addItem("Selecione...")
+      cbxComponente.addItem('Selecione...')
       int posicao = 0
       Componente componente
       for (int i = 1;i < componentes.size();i++) {
@@ -433,7 +433,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
   private void carregarTiposProducao() {
     cbxTipoProducao.removeAllItems()
-      cbxTipoProducao.addItem("Selecione...")
+      cbxTipoProducao.addItem('Selecione...')
       int posicao = 0
       TipoProducao tipoProducao
       for (int i = 1;i < tiposProducao.size();i++) {
@@ -472,7 +472,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
   private void inicializarFormMateriaPrima() {
     this.cbxMatriz.setSelectedIndex(0)
       this.cbxItem.setSelectedIndex(0)
-      this.txtQuantidade.setText("0, 000")
+      this.txtQuantidade.setText('0, 000')
   }
 
   private void carregarFormMateriaPrima(MateriaPrima materiaPrima) {
@@ -489,7 +489,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           break
       }
     }
-    this.txtQuantidade.setText(Numero.inverterSeparador(materiaPrima.obterQuantidade("###.#####")))
+    this.txtQuantidade.setText(Numero.inverterSeparador(materiaPrima.obterQuantidade('###.#####')))
   }
 
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
@@ -505,7 +505,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               carregarClientes()
           }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes", "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Clientes', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         redimencionar()
@@ -521,7 +521,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             carregarComponentes()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Componentes.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Componentes.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -536,7 +536,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             carregarTiposProducao()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os tipos de produção.\n\n Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os tipos de produção.\n\n Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -562,7 +562,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             carregarMatrizes()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Matrizes.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -586,7 +586,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               indiceTabela++
           }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -600,12 +600,12 @@ class DlgDadosProduto extends JDialog implements ActionListener
               mp.definirMatriz((Matriz)matrizes.get(cbxMatriz.getSelectedIndex()))
               tblMateriaPrima.setValueAt(mp.obterMatriz().obterDescricao(), indiceTabela, 0)
               tblMateriaPrima.setValueAt(mp.obterItem().obterDescricao(), indiceTabela, 1)
-              tblMateriaPrima.setValueAt("0, 000", indiceTabela, 2)
+              tblMateriaPrima.setValueAt('0, 000', indiceTabela, 2)
               materiasPrimas.addElement(mp)
               indiceTabela++
           }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
@@ -621,7 +621,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             carregarItens()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matérias Primas.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Matérias Primas.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -637,7 +637,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           inicializarFormMateriaPrima()
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -653,7 +653,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           btAlterarMateriaPrima.setEnabled(false)
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -671,7 +671,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma Matéria Prima antes de continuar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma Matéria Prima antes de continuar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
     }
 
@@ -680,9 +680,9 @@ class DlgDadosProduto extends JDialog implements ActionListener
         if (linhaSelecionada >= 0) {
           this.materiasPrimas.removeElementAt(linhaSelecionada)
 
-            tblMateriaPrima.setValueAt("", linhaSelecionada, 0)
-            tblMateriaPrima.setValueAt("", linhaSelecionada, 1)
-            tblMateriaPrima.setValueAt("", linhaSelecionada, 2)
+            tblMateriaPrima.setValueAt('', linhaSelecionada, 0)
+            tblMateriaPrima.setValueAt('', linhaSelecionada, 1)
+            tblMateriaPrima.setValueAt('', linhaSelecionada, 2)
 
             if (linhaSelecionada < (indiceTabela - 1)) {
               for (int i = linhaSelecionada;i < (indiceTabela - 1);i++) {
@@ -690,10 +690,10 @@ class DlgDadosProduto extends JDialog implements ActionListener
                   tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 1), i, 1)
                   tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 2), i, 2)
               }
-              tblMateriaPrima.setValueAt("", indiceTabela -1, 0)
-                tblMateriaPrima.setValueAt("", indiceTabela -1, 1)
-                tblMateriaPrima.setValueAt("", indiceTabela -1, 2)
-                tblMateriaPrima.setValueAt("", indiceTabela -1, 3)
+              tblMateriaPrima.setValueAt('', indiceTabela -1, 0)
+                tblMateriaPrima.setValueAt('', indiceTabela -1, 1)
+                tblMateriaPrima.setValueAt('', indiceTabela -1, 2)
+                tblMateriaPrima.setValueAt('', indiceTabela -1, 3)
             }
           indiceTabela--
 
@@ -703,18 +703,18 @@ class DlgDadosProduto extends JDialog implements ActionListener
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma Matéria Prima antes de continuar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma Matéria Prima antes de continuar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
     }
 
     if (objeto == btAnterior) {
-      card.show(pnlAreaDados, "produto")
+      card.show(pnlAreaDados, 'produto')
         btAnterior.setEnabled(false)
         btProximo.setEnabled(true)
     }
 
     if (objeto == btProximo) {
-      card.show(pnlAreaDados, "materiaprima")
+      card.show(pnlAreaDados, 'materiaprima')
         btAnterior.setEnabled(true)
         btProximo.setEnabled(false)
     }
@@ -740,7 +740,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           this.setVisible(false)
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -764,7 +764,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
                 txaPintura.getText(), 
                 (rdbMercadoInterno.isSelected()?'I':'E'))
               this.produto.cadastrarProduto()
-              card.show(pnlAreaDados, "materiaprima")
+              card.show(pnlAreaDados, 'materiaprima')
               indiceCard++
               try
               {
@@ -773,12 +773,12 @@ class DlgDadosProduto extends JDialog implements ActionListener
                   carregarMatrizes()
               }
             catch (e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes.", "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Matrizes.', 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
           }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível cadastrar o Produto.\n\n Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível cadastrar o Produto.\n\n Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
           break
@@ -789,7 +789,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
                 this.setVisible(false)
             }
             catch (e) {
-              JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
             break
@@ -806,7 +806,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           impressora.imprimir()
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }

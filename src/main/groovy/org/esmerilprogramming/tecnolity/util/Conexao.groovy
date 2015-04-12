@@ -85,7 +85,7 @@ create table interface (
     try {
       return !conexao.isClosed()
     } catch (e) {
-      throw new Exception("N\u00e3o foi poss\u00edvel verificar o estado da conex\u00e3o.")
+      throw new Exception('N\u00e3o foi poss\u00edvel verificar o estado da conex\u00e3o.')
     }
   }
 
@@ -93,7 +93,7 @@ create table interface (
     try {
       this.conexao.close()
     } catch (e) {
-      throw new Exception("N\u00e3o foi poss\u00edvel fechar a conex\u00e3o com o banco de dados.")
+      throw new Exception('N\u00e3o foi poss\u00edvel fechar a conex\u00e3o com o banco de dados.')
     }
   }
 

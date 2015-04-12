@@ -70,7 +70,7 @@ class LocalEntrega {
   void definirCodigo(long codigo) throws Exception
   {
     if (codigo <= 0) {
-      Exception e = new Exception("Código do Local de Entrega inválido.")
+      Exception e = new Exception('Código do Local de Entrega inválido.')
         throw e
     }
     this.codigo = codigo
@@ -80,7 +80,7 @@ class LocalEntrega {
   void definirCliente(Cliente cliente) throws Exception
   {
     if (cliente == null) {
-      Exception e = new Exception("O Cliente não foi informado.")
+      Exception e = new Exception('O Cliente não foi informado.')
         throw e
     }
     this.cliente = cliente
@@ -88,8 +88,8 @@ class LocalEntrega {
 
   void definirDescricaoLocal(String descricaoLocal) throws Exception
   {
-    if (descricaoLocal.equals("") || descricaoLocal == null) {
-      Exception e = new Exception("A Descrição do Local não foi informada.")
+    if (descricaoLocal.equals('') || descricaoLocal == null) {
+      Exception e = new Exception('A Descrição do Local não foi informada.')
         throw e
     }
     this.descricaoLocal = descricaoLocal
@@ -97,24 +97,24 @@ class LocalEntrega {
 
   void definirLogradouro(String logradouro) throws Exception
   {
-    if (!logradouro.equals("")) {
+    if (!logradouro.equals('')) {
       this.logradouro = logradouro
     }
     else
     {
-      Exception e = new Exception("O Logradouro não foi informado.")
+      Exception e = new Exception('O Logradouro não foi informado.')
         throw e
     }
   }
 
   void definirCidade(String cidade) throws Exception
   {
-    if (!cidade.equals("")) {
+    if (!cidade.equals('')) {
       this.cidade = cidade
     }
     else
     {
-      Exception e = new Exception("A Cidade não foi informada.")
+      Exception e = new Exception('A Cidade não foi informada.')
         throw e
     }
   }
@@ -127,17 +127,17 @@ class LocalEntrega {
     }
     else
     {
-      Exception e = new Exception("O Estado não foi informado.")
+      Exception e = new Exception('O Estado não foi informado.')
         throw e
     }
   }
 
   void addLocalEntrega(Conexao conexao) throws Exception
   {
-    String query = ""
+    String query = ''
       if (isNovoLocalEntrega() && !isInvalido()) {
-        query = "insert into local_entrega (cliente, descricao_local, logradouro, complemento, bairro, cidade, estado, cep, telefone, responsavel_recebimento) "  + 
-          "values (" +  this.obterCliente().obterCodigo() + ", '" + this.obterDescricaoLocal() + "', '" + this.obterLogradouro() + "', '" + this.obterComplemento() + "', '" + this.obterBairro() + "', '" + this.obterCidade() + "', '" + this.obterEstado().getSigla() + "', '" + this.obterCep() + "', '" + this.obterTelefone() + "', '" + this.obterResponsavelRecebimento() + "')"
+        query = 'insert into local_entrega (cliente, descricao_local, logradouro, complemento, bairro, cidade, estado, cep, telefone, responsavel_recebimento) '  + 
+          'values (' +  this.obterCliente().obterCodigo() + ', '' + this.obterDescricaoLocal() + '', '' + this.obterLogradouro() + '', '' + this.obterComplemento() + '', '' + this.obterBairro() + '', '' + this.obterCidade() + '', '' + this.obterEstado().getSigla() + '', '' + this.obterCep() + '', '' + this.obterTelefone() + '', '' + this.obterResponsavelRecebimento() + '')'
           conexao.executarAtualizacao(query)
           return
       }
@@ -148,13 +148,13 @@ class LocalEntrega {
 
   void deleteLocalEntrega(Conexao conexao) throws Exception
   {
-    ResultSet rsLocalEntrega = conexao.executarConsulta("select * from pedido_cliente where local_entrega = "  +  this.codigo)
+    ResultSet rsLocalEntrega = conexao.executarConsulta('select * from pedido_cliente where local_entrega = '  +  this.codigo)
       if (rsLocalEntrega.next()) {
-        Exception e = new Exception("Não foi possível excluir o local de entrega por estar associado a um pedido cadastrado.")
+        Exception e = new Exception('Não foi possível excluir o local de entrega por estar associado a um pedido cadastrado.')
           throw e
       }
       else
-        conexao.executarAtualizacao("delete from local_entrega where codigo_local = "  +  this.codigo)
+        conexao.executarAtualizacao('delete from local_entrega where codigo_local = '  +  this.codigo)
           rsLocalEntrega.close()
   }
 

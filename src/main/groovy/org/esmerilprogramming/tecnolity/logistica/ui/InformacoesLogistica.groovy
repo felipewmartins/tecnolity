@@ -52,7 +52,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
         pnlVeiculo = new JPanel(new BorderLayout())
 
         JPanel pnlParametroVeiculo = new JPanel(new FlowLayout(FlowLayout.LEFT))
-        JLabel labelParametroVeiculo = new JLabel("Transportadoras: ")
+        JLabel labelParametroVeiculo = new JLabel('Transportadoras: ')
         pnlParametroVeiculo.add(labelParametroVeiculo)
         cbxTransportadora = new JComboBox()
         try {
@@ -60,7 +60,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             carregarTransportadoras()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Transportadoras.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Transportadoras.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       cbxTransportadora.addActionListener(this)
@@ -76,22 +76,22 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
         JPanel pnlAreaComandos = new JPanel()
         JPanel pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
-        btAdicionarVeiculo = new JButton("Adicionar Veículo")
+        btAdicionarVeiculo = new JButton('Adicionar Veículo')
         btAdicionarVeiculo.addActionListener(this)
         pnlComandos.add(btAdicionarVeiculo)
-        btAlterarVeiculo = new JButton("Alterar Selecionado")
+        btAlterarVeiculo = new JButton('Alterar Selecionado')
         btAlterarVeiculo.addActionListener(this)
         pnlComandos.add(btAlterarVeiculo)
-        btExcluirVeiculo = new JButton("Excluir Selecionado")
+        btExcluirVeiculo = new JButton('Excluir Selecionado')
         btExcluirVeiculo.addActionListener(this)
         pnlComandos.add(btExcluirVeiculo)
-        btAtualizarVeiculo = new JButton("Atualizar Tabela")
+        btAtualizarVeiculo = new JButton('Atualizar Tabela')
         btAtualizarVeiculo.addActionListener(this)
         pnlComandos.add(btAtualizarVeiculo)
         pnlAreaComandos.add(pnlComandos)
         pnlVeiculo.add(pnlAreaComandos, BorderLayout.EAST)
 
-        this.addTab("Veículos", pnlVeiculo)
+        this.addTab('Veículos', pnlVeiculo)
 
         // Conteúdo da Aba Expedições
         pnlExpedicao = new JPanel(new BorderLayout())
@@ -104,21 +104,21 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
         pnlAreaComandos = new JPanel()
         pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
-        btAdicionarExpedicao = new JButton("Adicionar Expedição")
+        btAdicionarExpedicao = new JButton('Adicionar Expedição')
         btAdicionarExpedicao.addActionListener(this)
         pnlComandos.add(btAdicionarExpedicao)
-        btAlterarExpedicao = new JButton("Alterar Selecionado")
+        btAlterarExpedicao = new JButton('Alterar Selecionado')
         btAlterarExpedicao.addActionListener(this)
         pnlComandos.add(btAlterarExpedicao)
-        btExcluirExpedicao = new JButton("Excluir Selecionado")
+        btExcluirExpedicao = new JButton('Excluir Selecionado')
         btExcluirExpedicao.addActionListener(this)
         pnlComandos.add(btExcluirExpedicao)
-        btAtualizarExpedicao = new JButton("Atualizar Tabela")
+        btAtualizarExpedicao = new JButton('Atualizar Tabela')
         pnlComandos.add(btAtualizarExpedicao)
         pnlAreaComandos.add(pnlComandos)
         pnlExpedicao.add(pnlAreaComandos, BorderLayout.EAST)
 
-        this.addTab("Expedições", pnlExpedicao)
+        this.addTab('Expedições', pnlExpedicao)
 
         // Conteúdo da Aba Motoristas
         pnlMotorista = new JPanel(new BorderLayout())
@@ -131,22 +131,22 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
         pnlAreaComandos = new JPanel()
         pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
-        btAdicionarMotorista = new JButton("Adicionar Motorista")
+        btAdicionarMotorista = new JButton('Adicionar Motorista')
         btAdicionarMotorista.addActionListener(this)
         pnlComandos.add(btAdicionarMotorista)
-        btAlterarMotorista = new JButton("Alterar Selecionado")
+        btAlterarMotorista = new JButton('Alterar Selecionado')
         btAlterarMotorista.addActionListener(this)
         pnlComandos.add(btAlterarMotorista)
-        btExcluirMotorista = new JButton("Excluir Selecionado")
+        btExcluirMotorista = new JButton('Excluir Selecionado')
         btExcluirMotorista.addActionListener(this)
         pnlComandos.add(btExcluirMotorista)
-        btAtualizarMotorista = new JButton("Atualizar Tabela")
+        btAtualizarMotorista = new JButton('Atualizar Tabela')
         btAtualizarMotorista.addActionListener(this)
         pnlComandos.add(btAtualizarMotorista)
         pnlAreaComandos.add(pnlComandos)
         pnlMotorista.add(pnlAreaComandos, BorderLayout.EAST)
 
-        this.addTab("Motoristas", pnlMotorista)
+        this.addTab('Motoristas', pnlMotorista)
 
         // Conteúdo da Aba Despesas
         pnlDespesa = new JPanel(new BorderLayout())
@@ -158,7 +158,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
         pnlDespesa.add(scrollDespesas, BorderLayout.CENTER)
 
         JPanel pnlParametroDespesa = new JPanel(new FlowLayout(FlowLayout.LEFT))
-        JLabel labelParametroDespesa = new JLabel("Veículo: ")
+        JLabel labelParametroDespesa = new JLabel('Veículo: ')
         pnlParametroDespesa.add(labelParametroDespesa)
         cbxVeiculoDespesas = new JComboBox()
         try {
@@ -166,7 +166,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             carregarVeiculosDespesas()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Veículos.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       cbxVeiculoDespesas.addActionListener(this)
@@ -176,22 +176,22 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
         pnlAreaComandos = new JPanel()
         pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
-        btAdicionarDespesa = new JButton("Adicionar Despesa")
+        btAdicionarDespesa = new JButton('Adicionar Despesa')
         btAdicionarDespesa.addActionListener(this)
         pnlComandos.add(btAdicionarDespesa)
-        btAlterarDespesa = new JButton("Alterar Selecionado")
+        btAlterarDespesa = new JButton('Alterar Selecionado')
         btAlterarDespesa.addActionListener(this)
         pnlComandos.add(btAlterarDespesa)
-        btExcluirDespesa = new JButton("Excluir Selecionado")
+        btExcluirDespesa = new JButton('Excluir Selecionado')
         btExcluirDespesa.addActionListener(this)
         pnlComandos.add(btExcluirDespesa)
-        btAtualizarDespesa = new JButton("Atualizar Tabela")
+        btAtualizarDespesa = new JButton('Atualizar Tabela')
         btAtualizarDespesa.addActionListener(this)
         pnlComandos.add(btAtualizarDespesa)
         pnlAreaComandos.add(pnlComandos)
         pnlDespesa.add(pnlAreaComandos, BorderLayout.EAST)
 
-        this.addTab("Despesas", pnlDespesa)
+        this.addTab('Despesas', pnlDespesa)
 
         // Conteúdo da Aba Multas
         pnlMulta = new JPanel(new BorderLayout())
@@ -203,7 +203,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
         pnlMulta.add(scrollMultas, BorderLayout.CENTER)
 
         JPanel pnlParametroMulta = new JPanel(new FlowLayout(FlowLayout.LEFT))
-        JLabel labelParametroMulta = new JLabel("Veículo: ")
+        JLabel labelParametroMulta = new JLabel('Veículo: ')
         pnlParametroMulta.add(labelParametroMulta)
         cbxVeiculoMultas = new JComboBox()
         try {
@@ -211,7 +211,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             carregarVeiculosMultas()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Veículos.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       cbxVeiculoMultas.addActionListener(this)
@@ -221,27 +221,27 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
         pnlAreaComandos = new JPanel()
         pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
-        btAdicionarMulta = new JButton("Adicionar Multa")
+        btAdicionarMulta = new JButton('Adicionar Multa')
         btAdicionarMulta.addActionListener(this)
         pnlComandos.add(btAdicionarMulta)
-        btAlterarMulta = new JButton("Alterar Selecionado")
+        btAlterarMulta = new JButton('Alterar Selecionado')
         btAlterarMulta.addActionListener(this)
         pnlComandos.add(btAlterarMulta)
-        btExcluirMulta = new JButton("Excluir Selecionado")
+        btExcluirMulta = new JButton('Excluir Selecionado')
         btExcluirMulta.addActionListener(this)
         pnlComandos.add(btExcluirMulta)
-        btAtualizarMulta = new JButton("Atualizar Tabela")
+        btAtualizarMulta = new JButton('Atualizar Tabela')
         btAtualizarMulta.addActionListener(this)
         pnlComandos.add(btAtualizarMulta)
         pnlAreaComandos.add(pnlComandos)
         pnlMulta.add(pnlAreaComandos, BorderLayout.EAST)
 
-        this.addTab("Multas", pnlMulta)
+        this.addTab('Multas', pnlMulta)
     }
 
   private void carregarTransportadoras() {
     cbxTransportadora.removeAllItems()
-      cbxTransportadora.addItem("Selecione...")
+      cbxTransportadora.addItem('Selecione...')
 
       for (int i = 1;i < transportadoras.size();i++) {
         cbxTransportadora.addItem(((Transportadora)transportadoras.get(i)).obterNome())
@@ -250,7 +250,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
   private void carregarVeiculosDespesas() {
     cbxVeiculoDespesas.removeAllItems()
-      cbxVeiculoDespesas.addItem("Selecione...")
+      cbxVeiculoDespesas.addItem('Selecione...')
 
       for (int i = 1;i < veiculos.size();i++) {
         cbxVeiculoDespesas.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
@@ -259,7 +259,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
   private void carregarVeiculosMultas() {
     cbxVeiculoMultas.removeAllItems()
-      cbxVeiculoMultas.addItem("Selecione...")
+      cbxVeiculoMultas.addItem('Selecione...')
 
       for (int i = 1;i < veiculos.size();i++) {
         cbxVeiculoMultas.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
@@ -267,32 +267,32 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
   }
 
   private void atualizarTabelaVeiculos() {
-    String sql = "select placa, transportadora.transportadora, marca, modelo, ano, cubagem, tara from veiculo, transportadora where transportadora.codigo = veiculo.transportadora order by marca asc"
+    String sql = 'select placa, transportadora.transportadora, marca, modelo, ano, cubagem, tara from veiculo, transportadora where transportadora.codigo = veiculo.transportadora order by marca asc'
       modeloTabelaMotoristas.definirConsulta(sql)
       tblVeiculos.setModel(modeloTabelaMotoristas)
       tblVeiculos.updateUI()
   }
 
   private void atualizarTabelaExpedicoes() {
-    modeloTabelaExpedicoes.definirConsulta("select codigo, veiculo, data, responsavel from expedicao order by data desc")
+    modeloTabelaExpedicoes.definirConsulta('select codigo, veiculo, data, responsavel from expedicao order by data desc')
       tblExpedicoes.setModel(modeloTabelaExpedicoes)
       tblExpedicoes.updateUI()
   }
 
   private void atualizarTabelaMotoristas() {
-    modeloTabelaMotoristas.definirConsulta("select codigo, motorista, habilitacao, telefone from motorista order by motorista desc")
+    modeloTabelaMotoristas.definirConsulta('select codigo, motorista, habilitacao, telefone from motorista order by motorista desc')
       tblMotoristas.setModel(modeloTabelaMotoristas)
       tblMotoristas.updateUI()
   }
 
   private void atualizarTabelaDespesas() {
-    modeloTabelaDespesas.definirConsulta("select veiculo, datahora, descricao, valor from despesa_veiculo order by datahora desc")
+    modeloTabelaDespesas.definirConsulta('select veiculo, datahora, descricao, valor from despesa_veiculo order by datahora desc')
       tblDespesas.setModel(modeloTabelaDespesas)
       tblDespesas.updateUI()
   }
 
   private void atualizarTabelaMultas() {
-    modeloTabelaMultas.definirConsulta("select codigo, placa, motivo, valor, datahora from multa order by datahora desc")
+    modeloTabelaMultas.definirConsulta('select codigo, placa, motivo, valor, datahora from multa order by datahora desc')
       tblMultas.setModel(modeloTabelaMultas)
       tblMultas.updateUI()
   }
@@ -306,7 +306,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
     if (objeto == cbxVeiculoDespesas) {
       Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoDespesas.getSelectedIndex())
-        String sql = "select veiculo as 'veículo', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' order by datahora desc"
+        String sql = 'select veiculo as 'veículo', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = ''  +  ((veiculoSelecionado == null)?'':veiculoSelecionado.obterPlaca()) + '' order by datahora desc'
         modeloTabelaDespesas.definirConsulta(sql)
 
         this.tblDespesas = new JTable(modeloTabelaDespesas)
@@ -317,7 +317,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
 
     if (objeto == cbxVeiculoMultas) {
       Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoMultas.getSelectedIndex())
-        String sql = "select multa.codigo, multa.placa, motivo, valor, motorista from multa, motorista where multa.placa = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' and multa.responsabilidade = motorista.codigo order by motorista asc"
+        String sql = 'select multa.codigo, multa.placa, motivo, valor, motorista from multa, motorista where multa.placa = ''  +  ((veiculoSelecionado == null)?'':veiculoSelecionado.obterPlaca()) + '' and multa.responsabilidade = motorista.codigo order by motorista asc'
         modeloTabelaMultas.definirConsulta(sql)
 
         this.tblMultas = new JTable(modeloTabelaMultas)
@@ -341,18 +341,18 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             dlgDadosVeiculo.setVisible(true)
         }
         catch (e) {
-          JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para alterar os dados do veículo.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para alterar os dados do veículo.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btExcluirVeiculo) {
       if (tblVeiculos.getSelectedRow() >=0) {
-        if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o veículo selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o veículo selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblVeiculos.getSelectedRow()
             String placaVeiculo = (String)tblVeiculos.getValueAt(linha, 0)
             Veiculo veiculo = new Veiculo(placaVeiculo)
@@ -366,7 +366,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para excluir um veículo.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para excluir um veículo.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
@@ -388,13 +388,13 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para alterar os dados do motorista.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para alterar os dados do motorista.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btExcluirMotorista) {
       if (tblMotoristas.getSelectedRow() >=0) {
-        if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o motorista selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o motorista selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblMotoristas.getSelectedRow()
             int codigoMotorista = Integer.parseInt((String)tblMotoristas.getValueAt(linha, 0))
             Motorista motorista = new Motorista(codigoMotorista)
@@ -408,12 +408,12 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para excluir um motorista.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para excluir um motorista.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btAtualizarMotorista) {
-      String sql = "select codigo as 'código', motorista, placa, habilitacao as 'habilitação', categoria, validade, telefone from motorista order by codigo asc"
+      String sql = 'select codigo as 'código', motorista, placa, habilitacao as 'habilitação', categoria, validade, telefone from motorista order by codigo asc'
         modeloTabelaMotoristas.definirConsulta(sql)
         tblMotoristas.setModel(modeloTabelaMotoristas)
         tblMotoristas.updateUI()
@@ -435,19 +435,19 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para alterar os dados da despesa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para alterar os dados da despesa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para alterar os dados da despesa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para alterar os dados da despesa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btExcluirDespesa) {
       if (((Veiculo)veiculos.get(this.cbxVeiculoDespesas.getSelectedIndex()))!=null) {
         if (tblDespesas.getSelectedRow() >=0) {
-          if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir a despesa selecionada?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+          if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir a despesa selecionada?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
             int linha = tblDespesas.getSelectedRow()
               String placa = (String)this.tblDespesas.getValueAt(linha, 0)
               String data = (String)this.tblDespesas.getValueAt(linha, 1)
@@ -462,19 +462,19 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para excluir uma despesa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para excluir uma despesa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para excluir uma despesa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para excluir uma despesa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btAtualizarDespesa) {
       if (((Veiculo)veiculos.get(this.cbxVeiculoDespesas.getSelectedIndex()))!=null) {
         Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoDespesas.getSelectedIndex())
-          String sql = "select veiculo as 'placa', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' order by datahora desc"
+          String sql = 'select veiculo as 'placa', datahora as 'data', descricao as 'descrição', valor from despesa_veiculo where veiculo = ''  +  ((veiculoSelecionado == null)?'':veiculoSelecionado.obterPlaca()) + '' order by datahora desc'
           modeloTabelaDespesas.definirConsulta(sql)
           tblDespesas.setModel(modeloTabelaDespesas)
           tblDespesas.updateUI()
@@ -496,19 +496,19 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para alterar os dados da multa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para alterar os dados da multa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para alterar os dados da multa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para alterar os dados da multa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btExcluirMulta) {
       if (((Veiculo)veiculos.get(this.cbxVeiculoMultas.getSelectedIndex()))!=null) {
         if (tblMultas.getSelectedRow() >=0) {
-          if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir a multa selecionada?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+          if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir a multa selecionada?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
             int linha = tblMultas.getSelectedRow()
               int codigoMulta = Integer.parseInt((String)tblMultas.getValueAt(linha, 0))
               Multa multa = new Multa(codigoMulta)
@@ -522,19 +522,19 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para excluir uma multa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para excluir uma multa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione uma linha da visão para excluir uma multa.", "Atenção", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione uma linha da visão para excluir uma multa.', 'Atenção', JOptionPane.WARNING_MESSAGE)
       }
     }
 
     if (objeto == btAtualizarMulta) {
       if (((Veiculo)veiculos.get(this.cbxVeiculoMultas.getSelectedIndex()))!=null) {
         Veiculo veiculoSelecionado = (Veiculo)veiculos.get(cbxVeiculoMultas.getSelectedIndex())
-          String sql = "select multa.codigo, multa.placa, motivo, valor, motorista.motorista from multa, motorista where multa.placa = '"  +  ((veiculoSelecionado == null)?"":veiculoSelecionado.obterPlaca()) + "' and multa.responsabilidade = motorista.codigo order by motorista.motorista asc"
+          String sql = 'select multa.codigo, multa.placa, motivo, valor, motorista.motorista from multa, motorista where multa.placa = ''  +  ((veiculoSelecionado == null)?'':veiculoSelecionado.obterPlaca()) + '' and multa.responsabilidade = motorista.codigo order by motorista.motorista asc'
           modeloTabelaMultas.definirConsulta(sql)
           tblMultas.setModel(modeloTabelaMultas)
           tblMultas.updateUI()

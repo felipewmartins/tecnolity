@@ -17,9 +17,9 @@ class Pagina implements Printable
   void desenharPagina(Graphics2D g2) {
     int posicaoFimLinha = 0
       String conteudoAImprimir = conteudo
-      String linha = ""
-      while ((numeroLinhas <= totalLinhasPagina) && !conteudoAImprimir.equals("")) {
-        posicaoFimLinha = conteudoAImprimir.indexOf("\n")
+      String linha = ''
+      while ((numeroLinhas <= totalLinhasPagina) && !conteudoAImprimir.equals('')) {
+        posicaoFimLinha = conteudoAImprimir.indexOf('\n')
           if (posicaoFimLinha >= 0) {
             linha = conteudoAImprimir.substring(0, posicaoFimLinha)
               conteudoAImprimir = conteudoAImprimir.substring(posicaoFimLinha  +  1)
@@ -27,7 +27,7 @@ class Pagina implements Printable
           else
           {
             linha = conteudoAImprimir
-              conteudoAImprimir = ""
+              conteudoAImprimir = ''
           }
         g2.drawString(linha, 0, numeroLinhas++ * ENTRELINHA)
       }
@@ -39,7 +39,7 @@ class Pagina implements Printable
       g2.translate(formato.getImageableX(), formato.getImageableY())
       totalLinhasPagina = (int)(formato.getImageableHeight() / ENTRELINHA) - 3
       g2.setPaint(Color.black)
-      g2.setFont(new Font("Courier New", Font.PLAIN, 10))
+      g2.setFont(new Font('Courier New', Font.PLAIN, 10))
       numeroLinhas = 1
       desenharPagina(g2)
       return Printable.PAGE_EXISTS

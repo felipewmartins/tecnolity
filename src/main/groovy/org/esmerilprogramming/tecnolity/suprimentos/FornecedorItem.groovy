@@ -48,7 +48,7 @@ class FornecedorItem {
       this.item = item
     else
     {
-      Exception e = new Exception("Item não informado.")
+      Exception e = new Exception('Item não informado.')
         throw e
     }
   }
@@ -59,19 +59,19 @@ class FornecedorItem {
       this.fornecedor = fornecedor
     else
     {
-      Exception e = new Exception("Fornecedor não informado.")
+      Exception e = new Exception('Fornecedor não informado.')
         throw e
     }
   }
 
   void definirDataAtualizacaoValor(String data) throws Exception
   {
-    String erro = ""
-      if (data.equals(""))
-        erro = "Data de Atualização não foi informada."
-      else if (!Calendario.validarData(data, "/"))
-        erro = "Data inválida."
-          if (!erro.equals("")) {
+    String erro = ''
+      if (data.equals(''))
+        erro = 'Data de Atualização não foi informada.'
+      else if (!Calendario.validarData(data, '/'))
+        erro = 'Data inválida.'
+          if (!erro.equals('')) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -87,7 +87,7 @@ class FornecedorItem {
       this.unidade = unidade
     else
     {
-      Exception e = new Exception("A Unidade não foi informada.")
+      Exception e = new Exception('A Unidade não foi informada.')
         throw e
     }
   }
@@ -98,14 +98,14 @@ class FornecedorItem {
       this.valorItem = valorItem
     else
     {
-      Exception e = new Exception("Valor inválido.")
+      Exception e = new Exception('Valor inválido.')
         throw e
     }
     this.valorItem = valorItem
   }
 
   void definirMoeda(String moeda) {
-    if (moeda.equals(""))
+    if (moeda.equals(''))
       this.moeda = 'R$'
     else
       this.moeda = moeda
@@ -113,7 +113,7 @@ class FornecedorItem {
 
   void alterarValorItem() throws Exception
   {
-    String query = "update fornecedor_item set valor_item = " +  this.valorItem + " where fornecedor = " + this.fornecedor.obterCodigo() + " and item = " + this.item.obterCodigo()
+    String query = 'update fornecedor_item set valor_item = ' +  this.valorItem + ' where fornecedor = ' + this.fornecedor.obterCodigo() + ' and item = ' + this.item.obterCodigo()
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -121,7 +121,7 @@ class FornecedorItem {
       }
       else
       {
-        Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
+        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
           throw e
       }
   }

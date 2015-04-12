@@ -71,13 +71,13 @@ class Lote
 
   void definirDataValidade(String dataValidade) throws Exception
   {
-    String erro = ""
-      if (!dataValidade.equals("")) {
-        if (!Calendario.validarData(dataValidade, "/"))
-          erro = "Data de Validade inválida."
+    String erro = ''
+      if (!dataValidade.equals('')) {
+        if (!Calendario.validarData(dataValidade, '/'))
+          erro = 'Data de Validade inválida.'
       }
 
-    if (!erro.equals("")) {
+    if (!erro.equals('')) {
       Exception e = new Exception(erro)
         throw e
     }
@@ -107,29 +107,29 @@ class Lote
 
   void cadastrarLote() throws Exception
   {
-    String query = "insert into lote (item, movimentacao_item, localizacao, data_validade, quantidade, reservado, descricao) values (" +  this.item.obterCodigo()
+    String query = 'insert into lote (item, movimentacao_item, localizacao, data_validade, quantidade, reservado, descricao) values (' +  this.item.obterCodigo()
 
       if (this.movimentacao != null)
-        query = query  +  ", " + this.movimentacao.obterCodigo()
+        query = query  +  ', ' + this.movimentacao.obterCodigo()
       else
-        query = query  +  ", null"
+        query = query  +  ', null'
 
           if (this.localizacao != null)
-            query = query  +  ", '" + this.localizacao.obterNomeCategoria() + "' "
+            query = query  +  ', '' + this.localizacao.obterNomeCategoria() + '' '
           else
-            query = query  +  ", null"
+            query = query  +  ', null'
 
               if (this.dataValidade != null)
-                query = query  +  ", '" + Calendario.inverterFormato(this.dataValidade, "/") + "' "
+                query = query  +  ', '' + Calendario.inverterFormato(this.dataValidade, '/') + '' '
               else
-                query = query  +  ", null"
+                query = query  +  ', null'
 
-                  query = query  +  ", " + this.quantidade + ", " + ((this.reservado)?1:0)
+                  query = query  +  ', ' + this.quantidade + ', ' + ((this.reservado)?1:0)
 
                   if (this.descricao != null)
-                    query = query  +  ", '" + this.descricao + "')"
+                    query = query  +  ', '' + this.descricao + '')'
                   else
-                    query = query  +  ", null)"
+                    query = query  +  ', null)'
 
                       Conexao conexao = new Conexao('T')
                       if (conexao.abrirConexao()) {
@@ -138,7 +138,7 @@ class Lote
                       }
                       else
                       {
-                        Exception e = new Exception("Não foi possível realizar uma conexão com o banco de dados.")
+                        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
                           throw e
                       }
   }
@@ -155,32 +155,32 @@ class Lote
    */
   static void retirarItem(Movimentacao movimentacao, ItemRequisicaoInterna itemRequisicaoInterna) throws Exception
   {
-    String erro = ""
+    String erro = ''
       Conexao conexao = new Conexao('T')
       float quantidadeSolicitada = itemRequisicaoInterna.obterQuantidadeItem()
       float quantSolicitadaAux = quantidadeSolicitada
       if (conexao.abrirConexao()) {
         // Consulta a quantidade de determinado item em lotes distribuídos no estoque.
-        String query = "select isnull(sum(quantidade), -1) as quantidade_total from lote where item = "  +  itemRequisicaoInterna.obterItem().obterCodigo()
+        String query = 'select isnull(sum(quantidade), -1) as quantidade_total from lote where item = '  +  itemRequisicaoInterna.obterItem().obterCodigo()
           ResultSet rsQuantidadeTotal = conexao.executarConsulta(query)
           float quantidadeTotal = 0.0f
           if (rsQuantidadeTotal.next())
-            quantidadeTotal = rsQuantidadeTotal.getFloat("quantidade_total")
+            quantidadeTotal = rsQuantidadeTotal.getFloat('quantidade_total')
               // Continua se houver algum lote do item no estoque
               if (quantidadeTotal >= 0) {
                 boolean quantidadeSuficiente = false
                   if (quantidadeSolicitada <= quantidadeTotal) {
                     quantidadeSuficiente = true
                   }
-                query = "select quantidade, numero from lote where item = "  +  itemRequisicaoInterna.obterItem().obterCodigo() + " and quantidade > 0"
+                query = 'select quantidade, numero from lote where item = '  +  itemRequisicaoInterna.obterItem().obterCodigo() + ' and quantidade > 0'
                   ResultSet rsLote = conexao.executarConsulta(query)
                   // Percorre os lotes existentes retirando os itens dos mesmos
                   // até que a quantidade necessária seja atendida.
                   while (rsLote.next() && quantidadeSolicitada > 0) {
-                    float quantidadeLote = rsLote.getFloat("quantidade")
+                    float quantidadeLote = rsLote.getFloat('quantidade')
                       // Neste caso a solicitação foi atendida completamente.
                       if (quantidadeSolicitada <= quantidadeLote) {
-                        query = "update lote set quantidade = (quantidade - " +  quantidadeSolicitada + ") where numero = " + rsLote.getInt("numero")
+                        query = 'update lote set quantidade = (quantidade - ' +  quantidadeSolicitada + ') where numero = ' + rsLote.getInt('numero')
                           quantidadeSolicitada = 0
                       }
                     // Neste caso a quantidade que havia no Lote não foi suficiente
@@ -188,7 +188,7 @@ class Lote
                     // extrair itens de outros lotes.
                       else
                       {
-                        query = "update lote set quantidade = 0 where numero = "  +  rsLote.getInt("numero")
+                        query = 'update lote set quantidade = 0 where numero = '  +  rsLote.getInt('numero')
                           quantidadeSolicitada -= quantidadeLote
                       }
                     conexao.executarAtualizacao(query)
@@ -223,7 +223,7 @@ class Lote
               }
               else
               {
-                erro = "Não há nenhum lote registrado para o item selecionado."
+                erro = 'Não há nenhum lote registrado para o item selecionado.'
               }
         conexao.fecharConexao()
       }
@@ -234,7 +234,7 @@ class Lote
   {
     Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao("delete from lote where quantidade <= 0")
+        conexao.executarAtualizacao('delete from lote where quantidade <= 0')
           conexao.fecharConexao()
       }
   }

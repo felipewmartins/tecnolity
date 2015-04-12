@@ -26,7 +26,7 @@ class DlgBancoDados extends JDialog implements ActionListener
     DlgBancoDados(Aplicacao aplicacao) {
       super(aplicacao, true)
 
-        this.setTitle("Comandos de Banco de Dados")
+        this.setTitle('Comandos de Banco de Dados')
 
         this.aplicacao = aplicacao
 
@@ -42,14 +42,14 @@ class DlgBancoDados extends JDialog implements ActionListener
         gbc.insets.top = 2
 
         JPanel pnlDados = new JPanel(gridbag)
-        JLabel label = new JLabel("Comando SQL")
+        JLabel label = new JLabel('Comando SQL')
         adicionarComponente(pnlDados, label, 1, 0, 1, 1)
-        label = new JLabel("Importar Arquivo:")
+        label = new JLabel('Importar Arquivo:')
         adicionarComponente(pnlDados, label, 0, 0, 2, 1)
         txtCaminhoArquivo = new JTextField(20)
         txtCaminhoArquivo.setEditable(false)
         adicionarComponente(pnlDados, txtCaminhoArquivo, 0, 2, 1, 1)
-        btAbrir = new JButton("Abrir...")
+        btAbrir = new JButton('Abrir...')
         btAbrir.addActionListener(this)
         adicionarComponente(pnlDados, btAbrir, 0, 3, 1, 1)
         txaComandos = new JTextArea(4, 40)
@@ -59,15 +59,15 @@ class DlgBancoDados extends JDialog implements ActionListener
         adicionarComponente(pnlDados, scroll, 2, 0, 4, 1)
 
         JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-        btExecutar = new JButton("Executar")
+        btExecutar = new JButton('Executar')
         btExecutar.addActionListener(this)
         pnlComandos.add(btExecutar)
-        btLimpar = new JButton("Limpar")
+        btLimpar = new JButton('Limpar')
         btLimpar.addActionListener(this)
         pnlComandos.add(btLimpar)
         adicionarComponente(pnlDados, pnlComandos, 3, 0, 4, 1)
 
-        label = new JLabel("Resultado")
+        label = new JLabel('Resultado')
         adicionarComponente(pnlDados, label, 4, 0, 1, 1)
         txaResultados = new JTextArea(2, 40)
         txaResultados.setLineWrap(true)
@@ -85,7 +85,7 @@ class DlgBancoDados extends JDialog implements ActionListener
         this.conteudo.add(scroll, BorderLayout.CENTER)
 
         pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-        btFechar = new JButton("Fechar")
+        btFechar = new JButton('Fechar')
         btFechar.addActionListener(this)
         pnlComandos.add(btFechar)
         this.conteudo.add(pnlComandos, BorderLayout.SOUTH)
@@ -121,18 +121,18 @@ class DlgBancoDados extends JDialog implements ActionListener
         txaComandos.setText(conteudoArquivo.toString())
       }
     catch (FileNotFoundException e) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Arquivo informado não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Arquivo informado não encontrado.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
     catch (IOException ex) {
-      JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível ler o arquivo informado.", "Erro", JOptionPane.ERROR_MESSAGE)
+      JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível ler o arquivo informado.', 'Erro', JOptionPane.ERROR_MESSAGE)
         ex.printStackTrace()
     }
   }
 
   private char reconhecerTipoComando(String comando) {
     // Verifica se o comando é uma consulta. Caso contrário, retorna uma transação.
-    if (comando.indexOf("SELECT") >= 0 && comando.indexOf("INSERT") == -1 && comando.indexOf("UPDATE") == -1 && comando.indexOf("DELETE") == -1 && comando.indexOf("CREATE") == -1 && comando.indexOf("ALTER") == -1)
+    if (comando.indexOf('SELECT') >= 0 && comando.indexOf('INSERT') == -1 && comando.indexOf('UPDATE') == -1 && comando.indexOf('DELETE') == -1 && comando.indexOf('CREATE') == -1 && comando.indexOf('ALTER') == -1)
       return 'C'
     else
       return 'T'
@@ -161,25 +161,25 @@ class DlgBancoDados extends JDialog implements ActionListener
             modeloTabelaVisualizacao.definirConsulta(txaComandos.getText())
               tblDados.setModel(modeloTabelaVisualizacao)
               tblDados.updateUI()
-              txaResultados.setText("Consulta Realizada com Sucesso!")
+              txaResultados.setText('Consulta Realizada com Sucesso!')
           }
           else if (tipoComando == 'T') {
             Conexao conexao = new Conexao(tipoComando)
               if (conexao.abrirConexao()) {
                 conexao.executarAtualizacao(txaComandos.getText())
-                  txaResultados.setText("Alteração Realizada com Sucesso!")
+                  txaResultados.setText('Alteração Realizada com Sucesso!')
               }
             conexao.fecharConexao()
           }
       }
       catch (SQLException e) {
-        txaResultados.setText("Erro Nº:"  +  e.getErrorCode() + " - " + e.getMessage())
+        txaResultados.setText('Erro Nº:'  +  e.getErrorCode() + ' - ' + e.getMessage())
           e.printStackTrace()
       }
     }
 
     if (objeto == btLimpar) {
-      this.txaComandos.setText("")
+      this.txaComandos.setText('')
     }
 
     if (objeto == btFechar) {

@@ -3,10 +3,10 @@ package org.esmerilprogramming.tecnolity.suprimentos
 
 class ItemRequisicao {
   // status do item da requisição interna.
-  static final String EMITIDO                 = "EM" // Quando a requisição de compra é emitida.
-    static final String ABASTECIDO_TOTALMENTE   = "AT" // Quando a quantidade requisitada do item entra de uma vez no estoque.
-    static final String ABASTECIDO_PARCIALMENTE = "AP" // Quando a quantidade requisitada do item entra em parte no estoque.
-    static final String CANCELADO               = "CL" // Quando a requisição de compra é cancelada.
+  static final String EMITIDO                 = 'EM' // Quando a requisição de compra é emitida.
+    static final String ABASTECIDO_TOTALMENTE   = 'AT' // Quando a quantidade requisitada do item entra de uma vez no estoque.
+    static final String ABASTECIDO_PARCIALMENTE = 'AP' // Quando a quantidade requisitada do item entra em parte no estoque.
+    static final String CANCELADO               = 'CL' // Quando a requisição de compra é cancelada.
 
     private Item item
     private float quantidadeItem, quantidadePendente, quantidadeAbastecida, valorUnitario

@@ -51,16 +51,16 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   pnlProducao = new JPanel(new BorderLayout())
 
                   JPanel pnlParametro = new JPanel(new FlowLayout(FlowLayout.LEFT))
-                  JLabel label = new JLabel("Situação: ")
+                  JLabel label = new JLabel('Situação: ')
                   pnlParametro.add(label)
                   cbxSituacao = new JComboBox()
-                  cbxSituacao.addItem("Todos")
-                  cbxSituacao.addItem("Pendentes")
-                  cbxSituacao.addItem("Produzindo")
-                  cbxSituacao.addItem("Finalizados")
-                  cbxSituacao.addItem("Atrasados")
-                  cbxSituacao.addItem("Cancelados")
-                  cbxSituacao.addItem("Paralizado")
+                  cbxSituacao.addItem('Todos')
+                  cbxSituacao.addItem('Pendentes')
+                  cbxSituacao.addItem('Produzindo')
+                  cbxSituacao.addItem('Finalizados')
+                  cbxSituacao.addItem('Atrasados')
+                  cbxSituacao.addItem('Cancelados')
+                  cbxSituacao.addItem('Paralizado')
                   cbxSituacao.addActionListener(this)
 
                   pnlParametro.add(cbxSituacao)
@@ -68,31 +68,31 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
                   JPanel pnlAreaComandos = new JPanel()
                   JPanel pnlComandos = new JPanel(new GridLayout(9, 1, 5, 5))
-                  btHabilitarProducao = new JButton("Habilitar")
+                  btHabilitarProducao = new JButton('Habilitar')
                   btHabilitarProducao.addActionListener(this)
                   pnlComandos.add(btHabilitarProducao)
-                  btIniciarProducao = new JButton("Iniciar")
+                  btIniciarProducao = new JButton('Iniciar')
                   btIniciarProducao.addActionListener(this)
                   pnlComandos.add(btIniciarProducao)
-                  btParalizarProducao = new JButton("Paralizar")
+                  btParalizarProducao = new JButton('Paralizar')
                   btParalizarProducao.addActionListener(this)
                   pnlComandos.add(btParalizarProducao)
-                  btFinalizarProducao = new JButton("Finalizar")
+                  btFinalizarProducao = new JButton('Finalizar')
                   btFinalizarProducao.addActionListener(this)
                   pnlComandos.add(btFinalizarProducao)
-                  btCancelarProducao = new JButton("Cancelar")
+                  btCancelarProducao = new JButton('Cancelar')
                   btCancelarProducao.addActionListener(this)
                   pnlComandos.add(btCancelarProducao)
-                  btAtualizarProducao = new JButton("Atualizar Tabela")
+                  btAtualizarProducao = new JButton('Atualizar Tabela')
                   btAtualizarProducao.addActionListener(this)
                   pnlComandos.add(btAtualizarProducao)
-                  btImprimirPedido = new JButton("Imprimir Pedido")
+                  btImprimirPedido = new JButton('Imprimir Pedido')
                   btImprimirPedido.addActionListener(this)
                   pnlComandos.add(btImprimirPedido)
-                  btImprimirPedidoPorMatriz = new JButton("Impr. por Referência")
+                  btImprimirPedidoPorMatriz = new JButton('Impr. por Referência')
                   btImprimirPedidoPorMatriz.addActionListener(this)
                   pnlComandos.add(btImprimirPedidoPorMatriz)
-                  btRecursosNecessarios = new JButton("Recursos Necessários")
+                  btRecursosNecessarios = new JButton('Recursos Necessários')
                   btRecursosNecessarios.addActionListener(this)
                   pnlComandos.add(btRecursosNecessarios)
                   pnlAreaComandos.add(pnlComandos)
@@ -101,10 +101,10 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   JPanel pnlDadosPedido = new JPanel(new BorderLayout())
                   modeloTabelaProducao = new ModeloTabela()
                   modeloTabelaProducao.definirConexao(aplicacao.obterConexao())
-                  /*String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' when '" + Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
-                    "from pedido_cliente pc, cliente c, local_entrega le "  + 
-                    "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "  + 
-                    "order by pc.codigo desc"
+                  /*String query =  'select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '' +  Pedido.PENDENTE + '' then 'Pendente' when '' + Pedido.PRODUZINDO+ '' then 'Produzindo' when '' + Pedido.FINALIZADO + '' then 'Finalizado' when '' + Pedido.ATRASADO + '' then 'Atrasado' when '' + Pedido.CANCELADO + '' then 'Cancelado' when '' + Pedido.PARALIZADO + '' then 'Paralizado' end) as status ' +
+                    'from pedido_cliente pc, cliente c, local_entrega le '  + 
+                    'where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega '  + 
+                    'order by pc.codigo desc'
                     modeloTabelaProducao.definirConsulta(query)*/
                   tblProducao = new JTable(modeloTabelaProducao)
                   tblProducao.addMouseListener(this)
@@ -114,11 +114,11 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   JPanel pnlStatus = new JPanel(new BorderLayout())
 
                   JPanel pnlTituloHistorico = new JPanel()
-                  pnlTituloHistorico.add(new JLabel("Histórico do Pedido Selecionado"))
+                  pnlTituloHistorico.add(new JLabel('Histórico do Pedido Selecionado'))
                   pnlStatus.add(pnlTituloHistorico, BorderLayout.NORTH)
 
                   Object[][] dados = new Object[1][5]
-                  String[] nomeColunas = ["Pendente", "Iniciado", "Finalizado", "Paralizado", "Cancelado"]
+                  String[] nomeColunas = ['Pendente', 'Iniciado', 'Finalizado', 'Paralizado', 'Cancelado']
                   tblStatus = new JTable(dados, nomeColunas)
                   tblStatus.setPreferredScrollableViewportSize(new Dimension(460, 20))
                   tblStatus.addRowSelectionInterval(0, 0)
@@ -128,13 +128,13 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   pnlDadosPedido.add(pnlStatus, BorderLayout.SOUTH)
                   pnlProducao.add(pnlDadosPedido, BorderLayout.CENTER)
 
-                  this.addTab("Produção", pnlProducao)
+                  this.addTab('Produção', pnlProducao)
 
                   // Conteúdo da Aba de Produtos
                   pnlProduto = new JPanel(new BorderLayout())
 
                   pnlParametro = new JPanel(new FlowLayout(FlowLayout.LEFT))
-                  label = new JLabel("Cliente: ")
+                  label = new JLabel('Cliente: ')
                   pnlParametro.add(label)
                   this.cbxCliente = new JComboBox()
                   try {
@@ -143,7 +143,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                       carregarClientes()
                   }
                 catch (e) {
-                  JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes.", "Erro", JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Clientes.', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 cbxCliente.addActionListener(this)
@@ -152,38 +152,38 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
                   modeloTabelaProduto = new ModeloTabelaProduto()
                   modeloTabelaProduto.definirConexao(aplicacao.obterConexao())
-                  //modeloTabelaProduto.definirConsulta("select m.codigo as codigo, m.modelo as produto, cl.razao_social as cliente, c.componente as 'tipo de componente', tp.tipo_producao as 'tipo de produção', m.referencia_cliente as 'referência do cliente' from modelo m, componente c, tipo_producao tp, cliente cl where m.cliente = cl.codigo and m.componente = c.codigo and m.tipo_producao = tp.codigo order by m.modelo asc")
+                  //modeloTabelaProduto.definirConsulta('select m.codigo as codigo, m.modelo as produto, cl.razao_social as cliente, c.componente as 'tipo de componente', tp.tipo_producao as 'tipo de produção', m.referencia_cliente as 'referência do cliente' from modelo m, componente c, tipo_producao tp, cliente cl where m.cliente = cl.codigo and m.componente = c.codigo and m.tipo_producao = tp.codigo order by m.modelo asc')
                   tblProduto = new JTable(modeloTabelaProduto)
                   scroll = new JScrollPane(tblProduto)
                   pnlProduto.add(scroll, BorderLayout.CENTER)
 
                   pnlAreaComandos = new JPanel()
                   pnlComandos = new JPanel(new GridLayout(5, 1, 5, 5))
-                  btAdicionarProduto = new JButton("Adicionar Produto")
+                  btAdicionarProduto = new JButton('Adicionar Produto')
                   btAdicionarProduto.addActionListener(this)
                   pnlComandos.add(btAdicionarProduto)
-                  btAlterarProduto = new JButton("Alterar Selecionado")
+                  btAlterarProduto = new JButton('Alterar Selecionado')
                   btAlterarProduto.addActionListener(this)
                   pnlComandos.add(btAlterarProduto)
-                  btExcluirProduto = new JButton("Excluir Selecionado")
+                  btExcluirProduto = new JButton('Excluir Selecionado')
                   btExcluirProduto.addActionListener(this)
                   pnlComandos.add(btExcluirProduto)
-                  btAtualizarProdutos = new JButton("Atualizar")
+                  btAtualizarProdutos = new JButton('Atualizar')
                   btAtualizarProdutos.addActionListener(this)
                   pnlComandos.add(btAtualizarProdutos)
-                  btImprimirProduto = new JButton("Imprimir Selecionado")
+                  btImprimirProduto = new JButton('Imprimir Selecionado')
                   btImprimirProduto.addActionListener(this)
                   pnlComandos.add(btImprimirProduto)
                   pnlAreaComandos.add(pnlComandos)
                   pnlProduto.add(pnlAreaComandos, BorderLayout.EAST)
 
-                  this.addTab("Produtos", pnlProduto)
+                  this.addTab('Produtos', pnlProduto)
 
                   // Conteúdo da Aba de Matrizes
                   pnlMatriz = new JPanel(new BorderLayout())
 
                   pnlParametro = new JPanel(new FlowLayout(FlowLayout.LEFT))
-                  label = new JLabel("Produto: ")
+                  label = new JLabel('Produto: ')
                   pnlParametro.add(label)
                   this.cbxProduto = new JComboBox()
                   try {
@@ -192,7 +192,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                       carregarProdutos()
                   }
                 catch (e) {
-                  JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Produtos.", "Erro", JOptionPane.ERROR_MESSAGE)
+                  JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Produtos.', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
                 cbxProduto.addActionListener(this)
@@ -201,34 +201,34 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
                   modeloTabelaMatriz = new ModeloTabelaMatriz()
                   modeloTabelaMatriz.definirConexao(aplicacao.obterConexao())
-                  //modeloTabelaMatriz.definirConsulta("select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo")
+                  //modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo')
                   tblMatriz = new JTable(modeloTabelaMatriz)
                   scroll = new JScrollPane(tblMatriz)
                   pnlMatriz.add(scroll, BorderLayout.CENTER)
 
                   pnlAreaComandos = new JPanel()
                   pnlComandos = new JPanel(new GridLayout(4, 1, 5, 5))
-                  btAdicionarMatriz = new JButton("Adicionar Matriz")
+                  btAdicionarMatriz = new JButton('Adicionar Matriz')
                   btAdicionarMatriz.addActionListener(this)
                   pnlComandos.add(btAdicionarMatriz)
-                  btAlterarMatriz = new JButton("Alterar Selecionado")
+                  btAlterarMatriz = new JButton('Alterar Selecionado')
                   btAlterarMatriz.addActionListener(this)
                   pnlComandos.add(btAlterarMatriz)
-                  btExcluirMatriz = new JButton("Excluir Selecionado")
+                  btExcluirMatriz = new JButton('Excluir Selecionado')
                   btExcluirMatriz.addActionListener(this)
                   pnlComandos.add(btExcluirMatriz)
-                  btAtualizarMatrizes = new JButton("Atualizar")
+                  btAtualizarMatrizes = new JButton('Atualizar')
                   btAtualizarMatrizes.addActionListener(this)
                   pnlComandos.add(btAtualizarMatrizes)
                   pnlAreaComandos.add(pnlComandos)
                   pnlMatriz.add(pnlAreaComandos, BorderLayout.EAST)
 
-                  this.addTab("Matrizes", pnlMatriz)
+                  this.addTab('Matrizes', pnlMatriz)
               }
 
   private void carregarClientes() {
     cbxCliente.removeAllItems()
-      cbxCliente.addItem("Todos")
+      cbxCliente.addItem('Todos')
       for (int i=1;i < clientes.size();i++) {
         cbxCliente.addItem(((Cliente)clientes.get(i)).obterRazaoSocial())
       }
@@ -236,20 +236,20 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
   private void carregarProdutos() {
     cbxProduto.removeAllItems()
-      cbxProduto.addItem("Todos")
+      cbxProduto.addItem('Todos')
       for (int i=1;i < produtos.size();i++) {
         cbxProduto.addItem(((Produto)produtos.get(i)).obterNomeModelo())
       }
   }
 
   private void atualizarTabelaProducao() {
-    String query =  "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' when '" + Pedido.PARALIZADO + "' then 'Paralizado' end) as status " +
-      "from pedido_cliente pc, cliente c, local_entrega le "  + 
-      "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega "
+    String query =  'select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '' +  Pedido.PENDENTE + '' then 'Pendente' when '' + Pedido.PRODUZINDO+ '' then 'Produzindo' when '' + Pedido.FINALIZADO + '' then 'Finalizado' when '' + Pedido.ATRASADO + '' then 'Atrasado' when '' + Pedido.CANCELADO + '' then 'Cancelado' when '' + Pedido.PARALIZADO + '' then 'Paralizado' end) as status ' +
+      'from pedido_cliente pc, cliente c, local_entrega le '  + 
+      'where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega '
       if (cbxSituacao.getSelectedIndex() > 0) {
-        query += "and pc.status = '" + statusPedido[cbxSituacao.getSelectedIndex() - 1] + "'"
+        query += 'and pc.status = '' + statusPedido[cbxSituacao.getSelectedIndex() - 1] + '''
       }
-    query += " order by pc.codigo desc"
+    query += ' order by pc.codigo desc'
       modeloTabelaProducao.definirConsulta(query)
       tblProducao.setModel(modeloTabelaProducao)
       tblProducao.updateUI()
@@ -261,11 +261,11 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
         try {
           Pedido pedido = new Pedido(Long.parseLong((String)tblProducao.getValueAt(linhaSelecionada, 0)))
             Vector historico = pedido.carregarHistoricoPedido(aplicacao.obterConexao())
-            tblStatus.setValueAt("", 0, 0)
-            tblStatus.setValueAt("", 0, 1)
-            tblStatus.setValueAt("", 0, 2)
-            tblStatus.setValueAt("", 0, 3)
-            tblStatus.setValueAt("", 0, 4)
+            tblStatus.setValueAt('', 0, 0)
+            tblStatus.setValueAt('', 0, 1)
+            tblStatus.setValueAt('', 0, 2)
+            tblStatus.setValueAt('', 0, 3)
+            tblStatus.setValueAt('', 0, 4)
             for (int i = 0; i < historico.size();i++) {
               if (((RegistroHistoricoStatusPedido)historico.get(i)).getStatus().equals(Pedido.PENDENTE))
                 tblStatus.setValueAt(((RegistroHistoricoStatusPedido)historico.get(i)).getData(), 0, 0)
@@ -287,18 +287,18 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
   private void atualizarTabelaProduto() {
     if (cbxCliente.getSelectedIndex() > 0)
-      modeloTabelaProduto.definirConsulta("select m.codigo, m.modelo, c.componente, tp.tipo_producao, m.referencia_cliente from modelo m, componente c, tipo_producao tp where m.componente = c.codigo and m.tipo_producao = tp.codigo and m.cliente = " +  ((Cliente)clientes.get(cbxCliente.getSelectedIndex())).obterCodigo() + " order by m.modelo asc")
+      modeloTabelaProduto.definirConsulta('select m.codigo, m.modelo, c.componente, tp.tipo_producao, m.referencia_cliente from modelo m, componente c, tipo_producao tp where m.componente = c.codigo and m.tipo_producao = tp.codigo and m.cliente = ' +  ((Cliente)clientes.get(cbxCliente.getSelectedIndex())).obterCodigo() + ' order by m.modelo asc')
     else
-      modeloTabelaProduto.definirConsulta("select m.codigo, m.modelo, cl.razao_social, c.componente, tp.tipo_producao, m.referencia_cliente from modelo m, componente c, tipo_producao tp, cliente cl where m.cliente = cl.codigo and m.componente = c.codigo and m.tipo_producao = tp.codigo order by m.modelo asc")
+      modeloTabelaProduto.definirConsulta('select m.codigo, m.modelo, cl.razao_social, c.componente, tp.tipo_producao, m.referencia_cliente from modelo m, componente c, tipo_producao tp, cliente cl where m.cliente = cl.codigo and m.componente = c.codigo and m.tipo_producao = tp.codigo order by m.modelo asc')
         tblProduto.setModel(modeloTabelaProduto)
         tblProduto.updateUI()
   }
 
   private void atualizarTabelaMatriz() {
     if (cbxProduto.getSelectedIndex() > 0)
-      modeloTabelaMatriz.definirConsulta("select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo where referencia in (select distinct referencia from quantidade_materia_prima where produto = " +  ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterCodigo() + ")")
+      modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo where referencia in (select distinct referencia from quantidade_materia_prima where produto = ' +  ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterCodigo() + ')')
     else
-      modeloTabelaMatriz.definirConsulta("select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo")
+      modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo')
         tblMatriz.setModel(modeloTabelaMatriz)
         tblMatriz.updateUI()
   }
@@ -323,11 +323,11 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione um pedido antes de continar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
           }
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -342,11 +342,11 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione um pedido antes de continar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
           }
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -361,11 +361,11 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione um pedido antes de continar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
           }
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -380,11 +380,11 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione um pedido antes de continar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
           }
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -399,11 +399,11 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           }
           else
           {
-            JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione um pedido antes de continar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
           }
       }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProducao()
@@ -426,7 +426,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             impressora.imprimir()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível imprimir o pedido.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -444,7 +444,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             impressora.imprimir()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível imprimir o pedido.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -463,7 +463,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             dlgRecursosPedido.setVisible(true)
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível exibir os Recursos Necessários.", "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível exibir os Recursos Necessários.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -486,13 +486,13 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
               dlgDadosProduto.setVisible(true)
           }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro:"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro:'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione o produto a ser alterado.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione o produto a ser alterado.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
     }
 
@@ -500,12 +500,12 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
       int codigoProduto = Integer.parseInt((String)tblProduto.getValueAt(tblProduto.getSelectedRow(), 0))
         Produto produto = new Produto()
         try {
-          if (JOptionPane.showConfirmDialog(aplicacao, "Você tem certeza que deseja excluir\n TODAS as Informações deste Produto?", "Confirmação", JOptionPane.OK_CANCEL_OPTION) == 0) {
+          if (JOptionPane.showConfirmDialog(aplicacao, 'Você tem certeza que deseja excluir\n TODAS as Informações deste Produto?', 'Confirmação', JOptionPane.OK_CANCEL_OPTION) == 0) {
             produto.excluirProduto(codigoProduto)
           }
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
       atualizarTabelaProduto()
@@ -527,7 +527,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             impressora.imprimir()
         }
       catch (e) {
-        JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+        JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
     }
@@ -540,26 +540,26 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
     if (objeto == btAlterarMatriz) {
       int linhaSelecionada = tblMatriz.getSelectedRow()
         if (linhaSelecionada >= 0) {
-          String query = "select referencia, numero_sola "  + 
-            "from matriz_modelo "  + 
-            "where referencia = '" +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + "' and " +
-            "numero_sola = "  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
+          String query = 'select referencia, numero_sola '  + 
+            'from matriz_modelo '  + 
+            'where referencia = '' +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + '' and ' +
+            'numero_sola = '  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
             try {
               ResultSet dadosMatriz = aplicacao.obterConexao().executarConsulta(query)
                 if (dadosMatriz.next()) {
-                  Matriz matriz = new Matriz(dadosMatriz.getString("referencia"), dadosMatriz.getInt("numero_sola"))
+                  Matriz matriz = new Matriz(dadosMatriz.getString('referencia'), dadosMatriz.getInt('numero_sola'))
                     DlgDadosMatriz dlgDadosMatriz = new DlgDadosMatriz(aplicacao, matriz)
                     dlgDadosMatriz.setVisible(true)
                 }
             }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a Matriz Selecionada. \nEla pode ter sido Excluida por outro usuário. \n Clique no botão Atualizar para obter dados mais recentes.", "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar a Matriz Selecionada. \nEla pode ter sido Excluida por outro usuário. \n Clique no botão Atualizar para obter dados mais recentes.', 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione a Matriz que deseja alterar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione a Matriz que deseja alterar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
     }
 
@@ -567,30 +567,30 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
       int linhaSelecionada = tblMatriz.getSelectedRow()
         if (linhaSelecionada >= 0) {
 
-          String query = "select referencia, numero_sola "  + 
-            "from matriz_modelo "  + 
-            "where referencia = '" +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + "' and " +
-            "numero_sola = "  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
+          String query = 'select referencia, numero_sola '  + 
+            'from matriz_modelo '  + 
+            'where referencia = '' +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + '' and ' +
+            'numero_sola = '  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
             ResultSet dadosMatriz = aplicacao.obterConexao().executarConsulta(query)
             try {
               if (dadosMatriz.next()) {
-                Matriz matriz = new Matriz(dadosMatriz.getString("referencia"), dadosMatriz.getInt("numero_sola"))
-                  if (JOptionPane.showConfirmDialog(aplicacao, "Você tem certeza que deseja excluir esta Matriz?", "Confirmação", JOptionPane.OK_CANCEL_OPTION) == 0) {
+                Matriz matriz = new Matriz(dadosMatriz.getString('referencia'), dadosMatriz.getInt('numero_sola'))
+                  if (JOptionPane.showConfirmDialog(aplicacao, 'Você tem certeza que deseja excluir esta Matriz?', 'Confirmação', JOptionPane.OK_CANCEL_OPTION) == 0) {
                     matriz.excluirMatriz()
                   }
               }
               atualizarTabelaMatriz()
             }
           catch (SQLException eSql) {
-            JOptionPane.showMessageDialog(aplicacao, "Não possível excluir a Matriz. Ela pode estar associada a algum produto.", "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Não possível excluir a Matriz. Ela pode estar associada a algum produto.', 'Erro', JOptionPane.ERROR_MESSAGE)
           }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Não possível excluir a Matriz. Ela pode estar associada a algum produto.", "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Não possível excluir a Matriz. Ela pode estar associada a algum produto.', 'Erro', JOptionPane.ERROR_MESSAGE)
           }
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione a Matriz que deseja alterar.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione a Matriz que deseja alterar.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
     }
 

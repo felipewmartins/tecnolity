@@ -24,7 +24,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
 
     DlgRecursosPedido(Aplicacao aplicacao, Pedido pedido) {
       super(aplicacao, true)
-        this.setTitle("Recursos Necessários para produção do Pedido")
+        this.setTitle('Recursos Necessários para produção do Pedido')
 
         this.aplicacao = aplicacao
         this.pedidos = new Pedido[1]
@@ -34,7 +34,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
 
   DlgRecursosPedido(Aplicacao aplicacao, Pedido[] pedidos) {
     super(aplicacao, true)
-      this.setTitle("Recursos Necessários para produção do Pedido")
+      this.setTitle('Recursos Necessários para produção do Pedido')
 
       this.aplicacao = aplicacao
       this.pedidos = pedidos
@@ -44,26 +44,26 @@ class DlgRecursosPedido extends JDialog implements ActionListener
   void montarInterface() {
     conteudo = this.getContentPane()
 
-      String strLabel = "Recursos Necessários para a produção do pedido No. "
+      String strLabel = 'Recursos Necessários para a produção do pedido No. '
       for (int i = 0;i < pedidos.length;i++) {
-        strLabel  += "" + pedidos[i].obterCodigo()
+        strLabel  += '' + pedidos[i].obterCodigo()
           if ((i + 1) < pedidos.length)
-            strLabel  += ", "
+            strLabel  += ', '
       }
 
     conteudo.add(new JLabel(strLabel), BorderLayout.NORTH)
 
       modeloTabelaRecursos = new ModeloTabela()
       modeloTabelaRecursos.definirConexao(aplicacao.obterConexao())
-      String query =  "select i.codigo, i.descricao, i.quantidade as disponivel, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria, (i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
-      "from item i, modelo_pedido mp, quantidade_materia_prima qmp "  + 
-      "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
+      String query =  'select i.codigo, i.descricao, i.quantidade as disponivel, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria, (i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo ' +
+      'from item i, modelo_pedido mp, quantidade_materia_prima qmp '  + 
+      'where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ('
       for (int i = 0;i < pedidos.length;i++) {
-        query  += "mp.pedido = " + pedidos[i].obterCodigo()
+        query  += 'mp.pedido = ' + pedidos[i].obterCodigo()
           if ((i + 1) < pedidos.length)
-            query  += " or "
+            query  += ' or '
       }
-    query  += ") group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
+    query  += ') group by i.codigo, i.descricao, i.quantidade, i.percentual_perda'
       modeloTabelaRecursos.definirConsulta(query)
       tblRecursos = new JTable(modeloTabelaRecursos)
       tblRecursos.setPreferredScrollableViewportSize(new Dimension(500, 250))
@@ -74,20 +74,20 @@ class DlgRecursosPedido extends JDialog implements ActionListener
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
 
       if (pedidos.length == 1) {
-        btRequisitarSelecionado = new JButton("Requisitar Selecionado")
+        btRequisitarSelecionado = new JButton('Requisitar Selecionado')
           btRequisitarSelecionado.addActionListener(this)
           pnlComandos.add(btRequisitarSelecionado)
 
-          btRequisitarTudo = new JButton("Requisitar Tudo")
+          btRequisitarTudo = new JButton('Requisitar Tudo')
           btRequisitarTudo.addActionListener(this)
           pnlComandos.add(btRequisitarTudo)
       }
 
-    btImprimir = new JButton("Imprimir")
+    btImprimir = new JButton('Imprimir')
       btImprimir.addActionListener(this)
       pnlComandos.add(btImprimir)
 
-      btFechar = new JButton("Fechar")
+      btFechar = new JButton('Fechar')
       btFechar.addActionListener(this)
       pnlComandos.add(btFechar)
 
@@ -117,13 +117,13 @@ class DlgRecursosPedido extends JDialog implements ActionListener
                 dlgDadosRequisicaoInterna.setVisible(true)
             }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
         else
         {
-          JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione apenas um item da lista.", "Atenção", JOptionPane.WARNING_MESSAGE)
+          JOptionPane.showMessageDialog(aplicacao, 'Atenção: Selecione apenas um item da lista.', 'Atenção', JOptionPane.WARNING_MESSAGE)
         }
       }
 
@@ -138,7 +138,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
 
           }
           catch (e) {
-            JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
+            JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
         }
