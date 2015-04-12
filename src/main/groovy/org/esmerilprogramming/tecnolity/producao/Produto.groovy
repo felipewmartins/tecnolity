@@ -91,7 +91,7 @@ class Produto {
 
   String getValor(String formato) {
     DecimalFormat df
-      if(!formato.equals("")) {
+      if (!formato.equals("")) {
         df = new DecimalFormat(formato)
       }
       else
@@ -103,7 +103,7 @@ class Produto {
 
   void definirCodigo(long codigo) throws Exception
   {
-    if(codigo < 0) {
+    if (codigo < 0) {
       Exception e = new Exception("Código do Produto inválido.")
         throw e
     }
@@ -112,7 +112,7 @@ class Produto {
 
   void definirReferenciaCliente(String referencia) throws Exception
   {
-    if(referencia.equals("") || referencia == null) {
+    if (referencia.equals("") || referencia == null) {
       Exception e = new Exception("A Referência do Cliente não foi informada.")
         throw e
     }
@@ -121,7 +121,7 @@ class Produto {
 
   void definirComponente(Componente componente) throws Exception
   {
-    if(componente == null) {
+    if (componente == null) {
       Exception e = new Exception("O Tipo de Componente não foi informado.")
         throw e
     }
@@ -130,7 +130,7 @@ class Produto {
 
   void definirNomeModelo(String nomeModelo) throws Exception
   {
-    if(nomeModelo.equals("") || nomeModelo == null) {
+    if (nomeModelo.equals("") || nomeModelo == null) {
       Exception e = new Exception("O Nome do Modelo não foi informado.")
         throw e
     }
@@ -139,7 +139,7 @@ class Produto {
 
   void definirCliente(Cliente cliente) throws Exception
   {
-    if(cliente == null) {
+    if (cliente == null) {
       Exception e = new Exception("O Cliente não foi informado.")
         throw e
     }
@@ -148,7 +148,7 @@ class Produto {
 
   void definirTipoProducao(TipoProducao tipoProducao) throws Exception
   {
-    if(tipoProducao == null) {
+    if (tipoProducao == null) {
       Exception e = new Exception("O Tipo de Produção não foi informado.")
         throw e
     }
@@ -156,28 +156,28 @@ class Produto {
   }
 
   void definirEspecificacaoInserto(String especificacaoInserto) {
-    if(especificacaoInserto != null)
+    if (especificacaoInserto != null)
       this.especificacaoInserto = especificacaoInserto
     else
       this.especificacaoInserto = ""
   }
 
   void definirAcabamento(String acabamento) {
-    if(acabamento != null)
+    if (acabamento != null)
       this.acabamento = acabamento
     else
       this.acabamento = ""
   }
 
   void definirLavagem(String lavagem) {
-    if(lavagem != null)
+    if (lavagem != null)
       this.lavagem = lavagem
     else
       this.lavagem = ""
   }
 
   void definirPintura(String pintura) {
-    if(pintura != null)
+    if (pintura != null)
       this.pintura = pintura
     else
       this.pintura = ""
@@ -188,17 +188,17 @@ class Produto {
     Conexao conexao = new Conexao('T')
       String query
 
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         query = "insert into modelo (referencia_cliente, componente, modelo, valor, custo_fabricacao, cliente, tipo_producao, especificacao_inserto, acabamentos, lavagem, pintura, exportacao) values "  + 
           "('" +  this.referenciaCliente + "', " + this.componente.obterCodigo() + ", '" + this.nomeModelo + "', " + this.valor + ", " + this.custoFabricacao + ", " + this.cliente.obterCodigo() + ", " + this.tipoProducao.obterCodigo() + ", '" + this.especificacaoInserto + "', '" + this.acabamento + "', '" + this.lavagem + "', '" + this.pintura + "', '" + this.destino + "')"
           ResultSet modelo = conexao.executarConsulta("select codigo from modelo where modelo = '" +  this.nomeModelo + "' and referencia_cliente = '" + this.referenciaCliente + "' and componente = " + this.componente.obterCodigo() + " and cliente = " + this.cliente.obterCodigo() + "")
-          if(modelo.next()) {
+          if (modelo.next()) {
             Exception e = new Exception("Já existe um produto cadastrado com esta referência")
               throw e
           }
         conexao.executarAtualizacao(query)
           modelo = conexao.executarConsulta("select codigo from modelo where referencia_cliente = '" +  this.referenciaCliente + "' and componente = " + this.componente.obterCodigo() + " and cliente = " + this.cliente.obterCodigo() + "")
-          if(modelo.next())
+          if (modelo.next())
             this.codigo = modelo.getInt("codigo")
               modelo.close()
               conexao.fecharConexao()
@@ -210,7 +210,7 @@ class Produto {
     Conexao conexao = new Conexao('T')
       String query
 
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         query = "update modelo set referencia_cliente = '" +  this.referenciaCliente + "', componente = " + this.componente.obterCodigo() + ", modelo = '" + this.nomeModelo + "', valor = " + this.valor + ", custo_fabricacao = " + this.custoFabricacao + ", cliente = " + this.cliente.obterCodigo() + ", tipo_producao = " + this.tipoProducao.obterCodigo() + ", especificacao_inserto = '" + this.especificacaoInserto + "', acabamentos = '" + this.acabamento + "', lavagem = '" + this.lavagem + "', pintura = '" + this.pintura + "', exportacao = '" + this.destino + "' " +
           "where codigo = "  +  this.obterCodigo()
           conexao.executarAtualizacao(query)
@@ -221,8 +221,8 @@ class Produto {
   void excluirProduto(int codigoProduto) throws Exception
   {
     Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
-        if(codigoProduto > 0) {
+      if (conexao.abrirConexao()) {
+        if (codigoProduto > 0) {
           conexao.executarAtualizacao("delete from modelo where codigo = "  +  codigoProduto)
         }
         else
@@ -241,10 +241,10 @@ class Produto {
       MateriaPrima materiaPrima
       boolean exclusao = false
 
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         /*  Exclui toda a matéria prima para evitar duplicação duranta a inserção.*/
         conexao.executarAtualizacao("delete from quantidade_materia_prima where produto = " +  this.obterCodigo())
-          for(int i = 0;i < materiasPrimas.size();i++) {
+          for (int i = 0;i < materiasPrimas.size();i++) {
             materiaPrima = (MateriaPrima)materiasPrimas.get(i)
               query = "insert into quantidade_materia_prima (item, referencia, numero_sola, quantidade, produto) "
               query  += "values (" + materiaPrima.obterItem().obterCodigo()
@@ -265,7 +265,7 @@ class Produto {
         dadosProduto = conexao.executarConsulta("select codigo, referencia_cliente, modelo, valor, moeda from modelo where cliente = " +  cliente.obterCodigo() + " order by modelo asc")
           produtos.addElement(null)
 
-          while(dadosProduto.next()) {
+          while (dadosProduto.next()) {
             produtos.addElement(new Produto(dadosProduto.getLong("codigo"), dadosProduto.getString("referencia_cliente"), dadosProduto.getString("modelo"), dadosProduto.getFloat("valor"), dadosProduto.getString("moeda")))
           }
         dadosProduto.close()
@@ -284,7 +284,7 @@ class Produto {
         dadosProduto = conexao.executarConsulta("select codigo, referencia_cliente, modelo, valor, moeda from modelo order by modelo asc")
           produtos.addElement(null)
 
-          while(dadosProduto.next()) {
+          while (dadosProduto.next()) {
             produtos.addElement(new Produto(dadosProduto.getLong("codigo"), dadosProduto.getString("referencia_cliente"), dadosProduto.getString("modelo"), dadosProduto.getFloat("valor"), dadosProduto.getString("moeda")))
           }
         dadosProduto.close()
@@ -304,7 +304,7 @@ class Produto {
       "where m.componente = c.codigo and m.cliente = cl.codigo and m.tipo_producao = tp.codigo and "  + 
       "m.codigo = "  +  this.codigo
       ResultSet dadosProduto = conexao.executarConsulta(query)
-      if(dadosProduto.next()) {
+      if (dadosProduto.next()) {
         this.definirCodigo(dadosProduto.getLong("codigo_modelo"))
           this.definirReferenciaCliente(dadosProduto.getString("referencia_cliente"))
           this.definirComponente(new Componente(dadosProduto.getInt("codigo_componente"), dadosProduto.getString("componente")))
@@ -327,7 +327,7 @@ class Produto {
       " order by mm.numero_sola, i.descricao"
       ResultSet dadosMateriaPrima = conexao.executarConsulta(query)
       materiasPrimas = new Vector()
-      while(dadosMateriaPrima.next()) {
+      while (dadosMateriaPrima.next()) {
         MateriaPrima materiaPrima = new MateriaPrima(new Item(dadosMateriaPrima.getInt("codigo_item"), dadosMateriaPrima.getString("descricao_item")),
             new Matriz(dadosMateriaPrima.getString("referencia"), dadosMateriaPrima.getInt("numero_sola"), dadosMateriaPrima.getInt("quantidade_matriz"), dadosMateriaPrima.getInt("tempo_forma"), dadosMateriaPrima.getFloat("tempo_injecao"), dadosMateriaPrima.getFloat("dureza"), dadosMateriaPrima.getFloat("densidade"), dadosMateriaPrima.getFloat("peso"), dadosMateriaPrima.getFloat("volume")),
             dadosMateriaPrima.getFloat("quantidade"))
@@ -339,7 +339,7 @@ class Produto {
   Object[][] carregarMateriasPrimas(Conexao conexao, Object[][] dados) throws Exception
   {
     MateriaPrima materiaPrima
-      for(int i = 0;i < materiasPrimas.size();i++) {
+      for (int i = 0;i < materiasPrimas.size();i++) {
         materiaPrima = (MateriaPrima)materiasPrimas.get(i)
           dados[i][0] = materiaPrima.obterMatriz().obterDescricao()
           dados[i][1] = materiaPrima.obterItem().obterDescricao()
@@ -351,11 +351,11 @@ class Produto {
   String getDataUltimaAlteracaoValor(Conexao conexao) throws Exception
   {
     String dataUltimaAlteracao = ""
-      if(conexao == null) {
+      if (conexao == null) {
         conexao = new Conexao('T')
           conexao.abrirConexao()
           ResultSet rsData = conexao.executarConsulta("select max(data_atualizacao) as data_atualizacao from historico_valor_modelo where modelo ="  +  this.codigo)
-          if(rsData.next()) {
+          if (rsData.next()) {
             dataUltimaAlteracao = (new Calendario(rsData.getTimestamp("data_atualizacao"))).getDataAtual()
           }
         conexao.fecharConexao()
@@ -363,7 +363,7 @@ class Produto {
       else
       {
         ResultSet rsData = conexao.executarConsulta("select max(data_atualizacao) as data_atualizacao from historico_valor_modelo where modelo ="  +  this.codigo)
-          if(rsData.next()) {
+          if (rsData.next()) {
             dataUltimaAlteracao = (new Calendario(rsData.getTimestamp("data_atualizacao"))).getDataAtual()
           }
       }

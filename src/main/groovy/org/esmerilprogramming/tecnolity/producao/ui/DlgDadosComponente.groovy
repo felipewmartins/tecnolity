@@ -92,13 +92,13 @@ class DlgDadosComponente extends JDialog implements ActionListener, FocusListene
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar) {
+      if (objeto == btConfirmar) {
         Componente componente = new Componente(txtComponente.getText())
           componente.cadastrarComponente()
           this.setVisible(false)
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

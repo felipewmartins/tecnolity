@@ -38,47 +38,47 @@ class RelatorioProduto extends Relatorio
 
       int alturaLinha = 80
       String[] texto
-      if(!produto.obterEspecificacaoInserto().equals("")) {
+      if (!produto.obterEspecificacaoInserto().equals("")) {
         conteudo.append("----------------------------------------------------------------------------")
           conteudo.append(QUEBRA)
           conteudo.append("Insertos                                                                    ")
           conteudo.append(QUEBRA)
 
           texto = Texto.obterTextoAlinhado(produto.obterEspecificacaoInserto(), 77)
-          for(int linha = 0;linha < texto.length;linha++) {
+          for (int linha = 0;linha < texto.length;linha++) {
             conteudo.append(texto[linha])
               conteudo.append(QUEBRA)
           }
       }
-    if(!produto.obterAcabamento().equals("")) {
+    if (!produto.obterAcabamento().equals("")) {
       conteudo.append("----------------------------------------------------------------------------")
         conteudo.append(QUEBRA)
         conteudo.append("Acabamentos                                                                 ")
         conteudo.append(QUEBRA)
         texto = Texto.obterTextoAlinhado(produto.obterAcabamento(), 77)
-        for(int linha = 0;linha < texto.lengthl;inha++) {
+        for (int linha = 0;linha < texto.lengthl;inha++) {
           conteudo.append(texto[linha])
             conteudo.append(QUEBRA)
         }
     }
-    if(!produto.obterLavagem().equals("")) {
+    if (!produto.obterLavagem().equals("")) {
       conteudo.append("----------------------------------------------------------------------------")
         conteudo.append(QUEBRA)
         conteudo.append("Lavagem                                                                     ")
         conteudo.append(QUEBRA)
         texto = Texto.obterTextoAlinhado(produto.obterLavagem(), 77)
-        for(int linha = 0 ; linha < texto.length;linha++) {
+        for (int linha = 0 ; linha < texto.length;linha++) {
           conteudo.append(texto[linha])
             conteudo.append(QUEBRA)
         }
     }
-    if(!produto.obterPintura().equals("")) {
+    if (!produto.obterPintura().equals("")) {
       conteudo.append("----------------------------------------------------------------------------")
         conteudo.append(QUEBRA)
         conteudo.append("Pintura                                                                     ")
         conteudo.append(QUEBRA)
         texto = Texto.obterTextoAlinhado(produto.obterPintura(), 77)
-        for(int linha = 0;linha < texto.length;linha++) {
+        for (int linha = 0;linha < texto.length;linha++) {
           conteudo.append(texto[linha])
             conteudo.append(QUEBRA)
         }
@@ -91,11 +91,11 @@ class RelatorioProduto extends Relatorio
       int numeroSola, numeroSolaAnterior = 0
       String referencia = ""
       MateriaPrima materiaPrima
-      for(int i = 0;i < produto.obterMateriasPrimas().size();i++) {
+      for (int i = 0;i < produto.obterMateriasPrimas().size();i++) {
         materiaPrima = (MateriaPrima)produto.obterMateriasPrimas().get(i)
           referencia = materiaPrima.obterMatriz().obterReferencia()
           numeroSola = materiaPrima.obterMatriz().obterNumeroSola()
-          if(numeroSolaAnterior != numeroSola) {
+          if (numeroSolaAnterior != numeroSola) {
             numeroSolaAnterior = numeroSola
               conteudo.append("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ")
               conteudo.append(QUEBRA)

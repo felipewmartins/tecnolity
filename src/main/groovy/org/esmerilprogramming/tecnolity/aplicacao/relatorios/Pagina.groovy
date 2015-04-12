@@ -18,9 +18,9 @@ class Pagina implements Printable
     int posicaoFimLinha = 0
       String conteudoAImprimir = conteudo
       String linha = ""
-      while((numeroLinhas <= totalLinhasPagina) && !conteudoAImprimir.equals("")) {
+      while ((numeroLinhas <= totalLinhasPagina) && !conteudoAImprimir.equals("")) {
         posicaoFimLinha = conteudoAImprimir.indexOf("\n")
-          if(posicaoFimLinha >= 0) {
+          if (posicaoFimLinha >= 0) {
             linha = conteudoAImprimir.substring(0, posicaoFimLinha)
               conteudoAImprimir = conteudoAImprimir.substring(posicaoFimLinha  +  1)
           }

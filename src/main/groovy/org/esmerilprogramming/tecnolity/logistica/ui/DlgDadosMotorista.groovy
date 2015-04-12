@@ -140,8 +140,8 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       categorias.addElement("C")
 
       int indiceCategoria = 0
-      for(int i = 1; i < categorias.size(); i++) {
-        if((categorias.get(i)).equals((this.motorista.obterCategoria())==null?"":this.motorista.obterCategoria())) {
+      for (int i = 1; i < categorias.size(); i++) {
+        if ((categorias.get(i)).equals((this.motorista.obterCategoria())==null?"":this.motorista.obterCategoria())) {
           indiceCategoria = i
         }
       }
@@ -246,7 +246,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
     cbxVeiculo.removeAllItems()
       cbxVeiculo.addItem("Selecione...")
 
-      for(int i = 1;i < veiculos.size();i++) {
+      for (int i = 1;i < veiculos.size();i++) {
         cbxVeiculo.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
       }
   }
@@ -255,7 +255,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
     cbxEstado.removeAllItems()
       cbxEstado.addItem("Selecione...")
 
-      for(int i = 1;i < estados.size();i++) {
+      for (int i = 1;i < estados.size();i++) {
         cbxEstado.addItem(((Estado)estados.get(i)).getNome())
       }
   }
@@ -263,7 +263,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoEstado) {
+      if (objeto == btNovoEstado) {
         DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao, 'I')
           dlgDadosEstado.setVisible(true)
           try {
@@ -276,7 +276,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
         }
       }
 
-    if(objeto == btNovoVeiculo) {
+    if (objeto == btNovoVeiculo) {
       DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao)
         dlgDadosVeiculo.setVisible(true)
         try {
@@ -289,12 +289,12 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
 
-    if(objeto == btConfirmar) {
-      if(motorista == null) {
+    if (objeto == btConfirmar) {
+      if (motorista == null) {
         boolean confirmado = true
           try {
             motorista.definirMotorista(this.txtMotorista.getText())
@@ -319,7 +319,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
             e.printStackTrace()
             confirmado = false
         }
-        if(confirmado) {
+        if (confirmado) {
           try {
             this.motorista.cadastrarMotorista()
           }
@@ -357,7 +357,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
             e.printStackTrace()
             confirmado = false
         }
-        if(confirmado) {
+        if (confirmado) {
           try {
             this.motorista.alterarMotorista()
           }

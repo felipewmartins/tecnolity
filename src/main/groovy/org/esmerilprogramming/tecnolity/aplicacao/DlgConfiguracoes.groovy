@@ -90,7 +90,7 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
     label = new JLabel("Pais")
     adicionarComponente(pnlEndereco, label, 4, 1, 1, 1)
     cbxEstado = new JComboBox()
-    if(configuracao.isCarregada()) {
+    if (configuracao.isCarregada()) {
       try {
           estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
         }
@@ -99,7 +99,7 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
       }
     adicionarComponente(pnlEndereco, cbxEstado, 5, 0, 1, 1)
       cbxPais = new JComboBox()
-      if(configuracao.isCarregada()) {
+      if (configuracao.isCarregada()) {
         try {
           paises = Pais.carregarPaises(aplicacao.obterConexao())
         }
@@ -185,10 +185,10 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
     cbxPais.removeAllItems()
     cbxPais.addItem("Selecione...")
 
-    for(int i = 1;i < paises.size();i++) {
+    for (int i = 1;i < paises.size();i++) {
         cbxPais.addItem(((Pais)paises.get(i)).getNome())
     }
-    if(!"".equals(pais))
+    if (!"".equals(pais))
       cbxPais.setSelectedItem(pais)
   }
 
@@ -196,10 +196,10 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
     cbxEstado.removeAllItems()
     cbxEstado.addItem("Selecione...")
 
-    for(int i = 1;i < estados.size();i++) {
+    for (int i = 1;i < estados.size();i++) {
         cbxEstado.addItem(((Estado)estados.get(i)).getNome())
     }
-    if(!"".equals(estado))
+    if (!"".equals(estado))
       cbxEstado.setSelectedItem(estado)
   }
 
@@ -217,7 +217,7 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar) {
+      if (objeto == btConfirmar) {
         configuracao.setOrganizacaoRazaoSocial(txtOrganizacaoRazaoSocial.getText())
           configuracao.setOrganizacaoNomeFantasia(txtOrganizacaoNomeFantasia.getText())
           configuracao.setOrganizacaoCnpj(txtOrganizacaoCnpj.getText())
@@ -226,12 +226,12 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
           configuracao.setOrganizacaoComplemento(txtOrganizacaoComplemento.getText())
           configuracao.setOrganizacaoBairro(txtOrganizacaoBairro.getText())
           configuracao.setOrganizacaoCidade(txtOrganizacaoCidade.getText())
-          if(estados != null && paises != null) {
-            if(estados.size() <= 1)
+          if (estados != null && paises != null) {
+            if (estados.size() <= 1)
               configuracao.setOrganizacaoEstado("")
             else
               configuracao.setOrganizacaoEstado((String)cbxEstado.getSelectedItem())
-                if(paises.size() <= 1)
+                if (paises.size() <= 1)
                   configuracao.setOrganizacaoPais("")
                 else
                   configuracao.setOrganizacaoPais((String)cbxPais.getSelectedItem())
@@ -256,7 +256,7 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
         this.setVisible(false)
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

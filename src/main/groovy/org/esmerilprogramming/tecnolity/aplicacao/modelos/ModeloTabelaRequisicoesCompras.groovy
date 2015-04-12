@@ -9,8 +9,8 @@ class ModeloTabelaRequisicoesCompras extends ModeloTabela
   }
 
   Object getValueAt(int linha, int coluna) {
-    if(((String[])cache.elementAt(linha))[coluna] != null) {
-      if(coluna == 3 || coluna == 4 || coluna == 5)
+    if (((String[])cache.elementAt(linha))[coluna] != null) {
+      if (coluna == 3 || coluna == 4 || coluna == 5)
         return Calendario.ajustarFormatoDataBanco(((String[])cache.elementAt(linha))[coluna])
       else
         return ((String[])cache.elementAt(linha))[coluna]

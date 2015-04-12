@@ -51,13 +51,13 @@ class RelatorioRequisicaoCompra extends Relatorio
       conteudo.append("Pedidos: ")
       conteudo.append(QUEBRA)
       String strPedidos = ""
-      if(pedidos == null)
+      if (pedidos == null)
         pedidos = requisicaoCompra.getPedidos()
-          for(int i = 0;i < pedidos.size();i++) {
+          for (int i = 0;i < pedidos.size();i++) {
             strPedidos += ((Pedido)pedidos.get(i)).obterCodigo() + "(OC:" +((Pedido)pedidos.get(i)).obterOrdemCompra() + ") "
           }
     String[] texto = Texto.obterTextoAlinhado(strPedidos, 92)
-      for(int linha = 0;linha < texto.length;linha++) {
+      for (int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }
@@ -70,7 +70,7 @@ class RelatorioRequisicaoCompra extends Relatorio
       Vector itens = this.requisicaoCompra.obterItensRequisicao()
       int posicaoBarraLista = 0
       float totalRequisicao = 0.0f, totalIPI = 0.0f
-      for(int i = 0;i < itens.size();i++) {
+      for (int i = 0;i < itens.size();i++) {
         ItemRequisicao irAtual = (ItemRequisicao)itens.get(i)
           conteudo.append(Texto.obterStringTamanhoFixo(irAtual.obterItem().obterDescricao(), 32)  +  "|" + 
               Texto.obterStringTamanhoFixo(""  +  irAtual.obterItem().obterFornecedorItem().obterReferenciaFornecedor(), 14) + "|" + 
@@ -92,7 +92,7 @@ class RelatorioRequisicaoCompra extends Relatorio
       conteudo.append("Observação: ")
       conteudo.append(QUEBRA)
       texto = Texto.obterTextoAlinhado(requisicaoCompra.obterObservacao(), 92)
-      for(int linha = 0;linha < texto.length;linha++) {
+      for (int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }

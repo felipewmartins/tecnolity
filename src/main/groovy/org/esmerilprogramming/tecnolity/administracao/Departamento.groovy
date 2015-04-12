@@ -67,7 +67,7 @@ class Departamento {
       Vector departamentos = new Vector()
       dadosDepartamento = conexao.executarConsulta("select * from departamento order by departamento asc")
       departamentos.addElement("Selecione...")
-      while(dadosDepartamento.next()) {
+      while (dadosDepartamento.next()) {
         departamentos.addElement(new Departamento(dadosDepartamento.getInt("codigo"), dadosDepartamento.getString("departamento")))
       }
     dadosDepartamento.close()

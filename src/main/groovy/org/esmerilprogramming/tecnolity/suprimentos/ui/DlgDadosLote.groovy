@@ -124,10 +124,10 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
   private void carregarLocalizacoes() {
     cbxLocalizacao.addItem('Selecione...')
       Categoria categoria
-      for(int i = 1;i < localizacoes.size();i++) {
+      for (int i = 1;i < localizacoes.size();i++) {
         categoria = (Categoria)localizacoes.get(i)
           cbxLocalizacao.addItem(categoria.obterNomeCategoria())
-          if(categoria.obterNomeCategoria().equals(itemRequisicao.obterItem().obterCategoria().obterNomeCategoria()))
+          if (categoria.obterNomeCategoria().equals(itemRequisicao.obterItem().obterCategoria().obterNomeCategoria()))
             cbxLocalizacao.setSelectedIndex(i)
       }
   }
@@ -147,19 +147,19 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btCancelar) {
+      if (objeto == btCancelar) {
         this.setVisible(false)
       }
 
-    if(objeto == btConfirmar) {
-      if(!txtQuantidadeRecebida.getText().equals('')) {
+    if (objeto == btConfirmar) {
+      if (!txtQuantidadeRecebida.getText().equals('')) {
         //Verifica se o item foi atendido completamente ou parcialmente.
-        if(itemRequisicao.getQuantidadePendente() > Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
+        if (itemRequisicao.getQuantidadePendente() > Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
           itemRequisicao.definirStatus(ItemRequisicao.ABASTECIDO_PARCIALMENTE)
-        else if(itemRequisicao.getQuantidadePendente() == Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
+        else if (itemRequisicao.getQuantidadePendente() == Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText())))
           itemRequisicao.definirStatus(ItemRequisicao.ABASTECIDO_TOTALMENTE)
             // Define o lote para o item requisitado.
-            if(itemRequisicao.getQuantidadePendente() >= Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText()))) {
+            if (itemRequisicao.getQuantidadePendente() >= Float.parseFloat(Numero.inverterSeparador(txtQuantidadeRecebida.getText()))) {
               try {
                 lote.definirItem(itemRequisicao.obterItem())
                   lote.definirMovimentacao(movimentacaoItem)

@@ -60,7 +60,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   void adicionarAreaTrabalho(JPanel areaTrabalho) {
-    if(this.areaTrabalho) {
+    if (this.areaTrabalho) {
       conteudo.remove(this.areaTrabalho)
     }
     this.areaTrabalho = areaTrabalho
@@ -96,14 +96,14 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   PageFormat obterFormatoPagina() {
-    if(formatoPagina == null) {
+    if (formatoPagina == null) {
       definirFormatoPagina()
     }
     formatoPagina
   }
 
   Conexao obterConexao() {
-    if(conexao.conexaoAberta() || conexao != null) {
+    if (conexao.conexaoAberta() || conexao != null) {
       return conexao
     }
     else {
@@ -139,9 +139,9 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
   boolean conectado() {
     try {
-      if(conexao == null)
+      if (conexao == null)
         return false
-      else if(conexao.conexaoAberta())
+      else if (conexao.conexaoAberta())
         return true
       else
         return false
@@ -153,7 +153,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
   }
 
   void finalizarAplicacao() {
-    if(conectado()) {
+    if (conectado()) {
       try {
         conexao.fecharConexao()
         LogAplicacao.stop()

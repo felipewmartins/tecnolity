@@ -72,12 +72,12 @@ class Lote
   void definirDataValidade(String dataValidade) throws Exception
   {
     String erro = ""
-      if(!dataValidade.equals("")) {
-        if(!Calendario.validarData(dataValidade, "/"))
+      if (!dataValidade.equals("")) {
+        if (!Calendario.validarData(dataValidade, "/"))
           erro = "Data de Validade inválida."
       }
 
-    if(!erro.equals("")) {
+    if (!erro.equals("")) {
       Exception e = new Exception(erro)
         throw e
     }
@@ -109,24 +109,24 @@ class Lote
   {
     String query = "insert into lote (item, movimentacao_item, localizacao, data_validade, quantidade, reservado, descricao) values (" +  this.item.obterCodigo()
 
-      if(this.movimentacao != null)
+      if (this.movimentacao != null)
         query = query  +  ", " + this.movimentacao.obterCodigo()
       else
         query = query  +  ", null"
 
-          if(this.localizacao != null)
+          if (this.localizacao != null)
             query = query  +  ", '" + this.localizacao.obterNomeCategoria() + "' "
           else
             query = query  +  ", null"
 
-              if(this.dataValidade != null)
+              if (this.dataValidade != null)
                 query = query  +  ", '" + Calendario.inverterFormato(this.dataValidade, "/") + "' "
               else
                 query = query  +  ", null"
 
                   query = query  +  ", " + this.quantidade + ", " + ((this.reservado)?1:0)
 
-                  if(this.descricao != null)
+                  if (this.descricao != null)
                     query = query  +  ", '" + this.descricao + "')"
                   else
                     query = query  +  ", null)"
@@ -159,27 +159,27 @@ class Lote
       Conexao conexao = new Conexao('T')
       float quantidadeSolicitada = itemRequisicaoInterna.obterQuantidadeItem()
       float quantSolicitadaAux = quantidadeSolicitada
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         // Consulta a quantidade de determinado item em lotes distribuídos no estoque.
         String query = "select isnull(sum(quantidade), -1) as quantidade_total from lote where item = "  +  itemRequisicaoInterna.obterItem().obterCodigo()
           ResultSet rsQuantidadeTotal = conexao.executarConsulta(query)
           float quantidadeTotal = 0.0f
-          if(rsQuantidadeTotal.next())
+          if (rsQuantidadeTotal.next())
             quantidadeTotal = rsQuantidadeTotal.getFloat("quantidade_total")
               // Continua se houver algum lote do item no estoque
-              if(quantidadeTotal >= 0) {
+              if (quantidadeTotal >= 0) {
                 boolean quantidadeSuficiente = false
-                  if(quantidadeSolicitada <= quantidadeTotal) {
+                  if (quantidadeSolicitada <= quantidadeTotal) {
                     quantidadeSuficiente = true
                   }
                 query = "select quantidade, numero from lote where item = "  +  itemRequisicaoInterna.obterItem().obterCodigo() + " and quantidade > 0"
                   ResultSet rsLote = conexao.executarConsulta(query)
                   // Percorre os lotes existentes retirando os itens dos mesmos
                   // até que a quantidade necessária seja atendida.
-                  while(rsLote.next() && quantidadeSolicitada > 0) {
+                  while (rsLote.next() && quantidadeSolicitada > 0) {
                     float quantidadeLote = rsLote.getFloat("quantidade")
                       // Neste caso a solicitação foi atendida completamente.
-                      if(quantidadeSolicitada <= quantidadeLote) {
+                      if (quantidadeSolicitada <= quantidadeLote) {
                         query = "update lote set quantidade = (quantidade - " +  quantidadeSolicitada + ") where numero = " + rsLote.getInt("numero")
                           quantidadeSolicitada = 0
                       }
@@ -194,12 +194,12 @@ class Lote
                     conexao.executarAtualizacao(query)
                   }
                 rsLote.close()
-                  if(quantidadeSuficiente) {
+                  if (quantidadeSuficiente) {
                     movimentacao.cadastrarMovimentacao()
                       itemRequisicaoInterna.definirStatus(ItemRequisicaoInterna.STATUS_CONFIRMADO)
                       itemRequisicaoInterna.atualizarItemRequisicaoInterna()
 
-                      if(!itemRequisicaoInterna.obterRequisicaoInterna().obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE)) {
+                      if (!itemRequisicaoInterna.obterRequisicaoInterna().obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE)) {
                         itemRequisicaoInterna.obterRequisicaoInterna().definirStatus(RequisicaoInterna.STATUS_EMITIDO)
                           itemRequisicaoInterna.obterRequisicaoInterna().atualizarRequisicaoInterna(RequisicaoInterna.STATUS_EMITIDO)
                       }
@@ -207,14 +207,14 @@ class Lote
                   else
                   {
                     //A movimentação só é gerada se alguma quantidade tiver sido movimentada.
-                    if((quantSolicitadaAux - quantidadeSolicitada) > 0) {
+                    if ((quantSolicitadaAux - quantidadeSolicitada) > 0) {
                       itemRequisicaoInterna.definirQuantidadeItem(quantSolicitadaAux - quantidadeSolicitada)
                         movimentacao.cadastrarMovimentacao()
                     }
                     itemRequisicaoInterna.definirStatus(ItemRequisicaoInterna.STATUS_PENDENTE)
                       itemRequisicaoInterna.definirQuantidadeItem(quantidadeSolicitada)
                       itemRequisicaoInterna.atualizarItemRequisicaoInterna()
-                      if(!itemRequisicaoInterna.obterRequisicaoInterna().obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE)) {
+                      if (!itemRequisicaoInterna.obterRequisicaoInterna().obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE)) {
                         itemRequisicaoInterna.obterRequisicaoInterna().definirStatus(RequisicaoInterna.STATUS_PENDENTE)
                           itemRequisicaoInterna.obterRequisicaoInterna().atualizarRequisicaoInterna(RequisicaoInterna.STATUS_PENDENTE)
                       }
@@ -233,7 +233,7 @@ class Lote
   static void excluirLotesVazios() throws Exception
   {
     Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao("delete from lote where quantidade <= 0")
           conexao.fecharConexao()
       }

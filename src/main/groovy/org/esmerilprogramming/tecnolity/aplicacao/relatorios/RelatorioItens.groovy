@@ -28,9 +28,9 @@ class RelatorioItens extends Relatorio
       conteudo.append(QUEBRA)
       int linha = 60, alturaItens = 0
       String quantMinima = ""
-      for(int i = 1;i < itens.size();i++) {
+      for (int i = 1;i < itens.size();i++) {
         Item item = (Item)itens.get(i)
-          if(item.obterQuantidade() <= item.obterQuantidadeMinima())
+          if (item.obterQuantidade() <= item.obterQuantidadeMinima())
             quantMinima = "*"
           else
             quantMinima = ""

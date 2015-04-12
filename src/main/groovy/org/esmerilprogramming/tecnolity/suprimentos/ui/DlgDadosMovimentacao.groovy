@@ -152,7 +152,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   String nomeResponsavel = ''
                   try {
                     ResultSet responsavel = conexao.executarConsulta('select nome_completo from usuario where usuario = ' +  (aplicacao.obterColaborador()).obterMatricula() +' ')
-                      if(responsavel.next())
+                      if (responsavel.next())
                         nomeResponsavel = responsavel.getString('nome_completo')
                           responsavel.close()
                           responsavel = null
@@ -351,7 +351,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 }
                 finally
                 {
-                  if(cbxRequisicaoConsumo == null)
+                  if (cbxRequisicaoConsumo == null)
                     cbxRequisicaoConsumo = new JComboBox()
                 }
                 cbxRequisicaoConsumo.addActionListener(this)
@@ -410,7 +410,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 }
                 finally
                 {
-                  if(cbxRequisicaoVenda == null)
+                  if (cbxRequisicaoVenda == null)
                     cbxRequisicaoVenda = new JComboBox()
                 }
                 cbxRequisicaoVenda.addActionListener(this)
@@ -464,7 +464,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 }
                 finally
                 {
-                  if(cbxRequisicaoDescarte == null)
+                  if (cbxRequisicaoDescarte == null)
                     cbxRequisicaoDescarte = new JComboBox()
                 }
                 cbxRequisicaoDescarte.addActionListener(this)
@@ -525,7 +525,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 }
                 finally
                 {
-                  if(	cbxRequisicaoDevolucao == null)
+                  if (	cbxRequisicaoDevolucao == null)
                     cbxRequisicaoDevolucao = new JComboBox()
                 }
                 cbxRequisicaoDevolucao.addActionListener(this)
@@ -585,7 +585,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 }
                 finally
                 {
-                  if(cbxRequisicaoDevolucaoExterna == null)
+                  if (cbxRequisicaoDevolucaoExterna == null)
                     cbxRequisicaoDevolucaoExterna = new JComboBox()
                 }
                 cbxRequisicaoDevolucaoExterna.addActionListener(this)
@@ -766,14 +766,14 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       int codigoRequisicaoCompra
       int fornecedor
 
-      for(int i = 1;i < this.requisicoesCompra.size();i++) {
+      for (int i = 1;i < this.requisicoesCompra.size();i++) {
         cbxRequisicaoAbastecimento.addItem('' +  ((RequisicaoCompra)requisicoesCompra.get(i)).obterCodigo() + ' - '+
             ((RequisicaoCompra)requisicoesCompra.get(i)).obterFornecedor().obterRazaoSocial())
       }
   }
 
   private void carregarItensRequisicaoCompra() {
-    for(int i = 0 ;i < itensRequisicaoCompra.size();i++) {
+    for (int i = 0 ;i < itensRequisicaoCompra.size();i++) {
       tblItensAbastecimento.setValueAt('', i, 0)
         tblItensAbastecimento.setValueAt('', i, 1)
         tblItensAbastecimento.setValueAt('', i, 2)
@@ -794,7 +794,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         itensRequisicaoCompra = requisicaoCompraSelecionada.obterItensRequisicao()
         ItemRequisicao itemRequisicao
         float totalGeral = 0
-        for(int i = 0;i < itensRequisicaoCompra.size();i++) {
+        for (int i = 0;i < itensRequisicaoCompra.size();i++) {
           itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
             tblItensAbastecimento.setValueAt(itemRequisicao.obterItem().obterDescricao(), i, 0)
             tblItensAbastecimento.setValueAt(Numero.inverterSeparador('' +  itemRequisicao.getQuantidadeItem()), i, 1)
@@ -812,7 +812,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
   }
 
   private void carregarItensRequisicaoInternaVendas() {
-    for(int i = 0; i < numeroItens;i++) {
+    for (int i = 0; i < numeroItens;i++) {
       tblItensVenda.setValueAt('', i, 0)
         tblItensVenda.setValueAt('', i, 1)
         tblItensVenda.setValueAt('', i, 2)
@@ -827,7 +827,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       try {
         ResultSet resultadoItensRequisicaoInterna = conexao.executarConsulta(query)
           try {
-            while(resultadoItensRequisicaoInterna.next()) {
+            while (resultadoItensRequisicaoInterna.next()) {
               int codigoItem = resultadoItensRequisicaoInterna.getInt('item')
                 String item = resultadoItensRequisicaoInterna.getString('descricao')
                 float quantidadeItem = resultadoItensRequisicaoInterna.getFloat('quantidade')
@@ -850,7 +850,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
   }
 
   void carregarItensRequisicaoInternaDevolucaoExterna() {
-    for(int i = 0; i < numeroItens;i++) {
+    for (int i = 0; i < numeroItens;i++) {
       tblItensDevolucaoExterna.setValueAt('', i, 0)
         tblItensDevolucaoExterna.setValueAt('', i, 1)
         tblItensDevolucaoExterna.setValueAt('', i, 2)
@@ -865,7 +865,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       try {
         ResultSet resultadoItensRequisicaoInterna = conexao.executarConsulta(query)
           try {
-            while(resultadoItensRequisicaoInterna.next()) {
+            while (resultadoItensRequisicaoInterna.next()) {
               int codigoItem = resultadoItensRequisicaoInterna.getInt('item')
                 String item = resultadoItensRequisicaoInterna.getString('descricao')
                 float quantidadeItem = resultadoItensRequisicaoInterna.getFloat('quantidade')
@@ -894,11 +894,11 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       String query = 'select observacao, fornecedor.razao_social as razao_social from requisicao_compra, fornecedor where requisicao_compra.codigo = ' +  requisicaoCompraSelecionada.obterCodigo() +' and fornecedor.codigo = requisicao_compra.fornecedor '
       try {
         ResultSet dadosRequisicaoCompra = conexao.executarConsulta(query)
-          if(dadosRequisicaoCompra.next()) {
+          if (dadosRequisicaoCompra.next()) {
             observacao = dadosRequisicaoCompra.getString('observacao')
               txaObservacao.setText(observacao)
               lblRequisicaoAbastecimento.setText('' +  requisicaoCompraSelecionada.obterCodigo() + ' - '+ dadosRequisicaoCompra.getString('razao_social'))
-              for(int i = 0; i < itensRequisicaoCompra.size(); i++) {
+              for (int i = 0; i < itensRequisicaoCompra.size(); i++) {
                 tblItensAbastecimentoConfirmacao.setValueAt('' + ((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterCodigo(), i, 0)
                   tblItensAbastecimentoConfirmacao.setValueAt('' + ((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterDescricao(), i, 1)
                   tblItensAbastecimentoConfirmacao.setValueAt('' + ((ItemRequisicao)itensRequisicaoCompra.get(i)).getQuantidadeItem(), i, 4)
@@ -916,9 +916,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
   void atualizarTabelaItensAbastecimentoConfirmacao() {
     try {
       ItemRequisicao itemRequisicao = null
-        for(int i = 0;i < itensRequisicaoCompra.size();i++) {
+        for (int i = 0;i < itensRequisicaoCompra.size();i++) {
           itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
-            if(itemRequisicao.obterItem().obterLote() != null) {
+            if (itemRequisicao.obterItem().obterLote() != null) {
               tblItensAbastecimentoConfirmacao.setValueAt('' +  itemRequisicao.obterItem().obterLote().obterLocalizacao(), i, 2)
                 tblItensAbastecimentoConfirmacao.setValueAt('' +  itemRequisicao.obterItem().obterLote().obterDataValidade(), i, 3)
                 tblItensAbastecimentoConfirmacao.setValueAt('' +  itemRequisicao.getQuantidadeItem(), i, 4)
@@ -935,8 +935,8 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
     Object objeto = actionEvent.getSource()
 
       // Abastecimento do estoque com base nas requisições de compra.
-      if(objeto == cbxRequisicaoAbastecimento) {
-        if(cbxRequisicaoAbastecimento.getSelectedIndex() > 0) {
+      if (objeto == cbxRequisicaoAbastecimento) {
+        if (cbxRequisicaoAbastecimento.getSelectedIndex() > 0) {
           txtDataDespacho.setText('')
             txtNumeroConhecimento.setText('')
             txtDataRecebimento.setText('')
@@ -947,7 +947,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             String query = 'select fornecedor.razao_social, departamento.departamento, transportadora.transportadora, data_emissao, data_limite_entrega, (case tipo_frete when 'C' then 'CIF' when 'F' then 'FOB' when 'P' then 'PROPRIO' end) as tipo_frete from requisicao_compra, fornecedor, departamento, transportadora where requisicao_compra.fornecedor = fornecedor.codigo and requisicao_compra.departamento_solicitante = departamento.codigo and requisicao_compra.transportadora *= transportadora.codigo and requisicao_compra.codigo = ' +  requisicaoCompraSelecionada.obterCodigo() +' '
             try {
               ResultSet dadosRequisicaoCompra = conexao.executarConsulta(query)
-                if(dadosRequisicaoCompra.next()) {
+                if (dadosRequisicaoCompra.next()) {
                   razaoSocial = dadosRequisicaoCompra.getString('razao_social')
                     lblFornecedor.setText(razaoSocial)
                     departamentoSolicitante = dadosRequisicaoCompra.getString('departamento')
@@ -973,9 +973,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         }
       }
 
-    if(objeto == cbxRequisicaoConsumo) {
-      if(cbxRequisicaoConsumo.getSelectedIndex() > 0) {
-        if(itensRequisicaoInterna != null)
+    if (objeto == cbxRequisicaoConsumo) {
+      if (cbxRequisicaoConsumo.getSelectedIndex() > 0) {
+        if (itensRequisicaoInterna != null)
           itensRequisicaoInterna.removeAllElements()
             requisicaoInterna = (RequisicaoInterna)requisicoesInternasConsumo.get(cbxRequisicaoConsumo.getSelectedIndex())
 
@@ -985,7 +985,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblSolicitanteConsumo.setText(requisicaoInterna.obterSolicitante().getNome())
             txaJustificativaConsumo.setText(requisicaoInterna.obterJustificativa())
 
-            for(int i = 0; i < numeroItens;i++) {
+            for (int i = 0; i < numeroItens;i++) {
               tblItensConsumo.setValueAt('', i, 0)
                 tblItensConsumo.setValueAt('', i, 1)
                 tblItensConsumo.setValueAt('', i, 2)
@@ -994,7 +994,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
-            for(int i = 0;i < itensRequisicaoInterna.size();i++) {
+            for (int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
                 tblItensConsumo.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
@@ -1011,9 +1011,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == cbxRequisicaoVenda) {
-      if(cbxRequisicaoVenda.getSelectedIndex() > 0) {
-        if(itensRequisicaoInterna != null)
+    if (objeto == cbxRequisicaoVenda) {
+      if (cbxRequisicaoVenda.getSelectedIndex() > 0) {
+        if (itensRequisicaoInterna != null)
           itensRequisicaoInterna.removeAllElements()
             requisicaoInterna = (RequisicaoInterna)requisicoesInternasVendas.get(cbxRequisicaoVenda.getSelectedIndex())
 
@@ -1022,7 +1022,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblDepartSolicitanteVendas.setText(requisicaoInterna.obterDepartamento().obterNomeDepartamento())
             lblSolicitanteVendas.setText(requisicaoInterna.obterSolicitante().getNome())
 
-            for(int i = 0; i < numeroItens;i++) {
+            for (int i = 0; i < numeroItens;i++) {
               tblItensVenda.setValueAt('', i, 0)
                 tblItensVenda.setValueAt('', i, 1)
                 tblItensVenda.setValueAt('', i, 2)
@@ -1031,7 +1031,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
-            for(int i = 0;i < itensRequisicaoInterna.size();i++) {
+            for (int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
                 tblItensVenda.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
@@ -1048,9 +1048,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == cbxRequisicaoDescarte) {
-      if(cbxRequisicaoDescarte.getSelectedIndex() > 0) {
-        if(itensRequisicaoInterna != null)
+    if (objeto == cbxRequisicaoDescarte) {
+      if (cbxRequisicaoDescarte.getSelectedIndex() > 0) {
+        if (itensRequisicaoInterna != null)
           itensRequisicaoInterna.removeAllElements()
             requisicaoInterna = (RequisicaoInterna)requisicoesInternasDescarte.get(cbxRequisicaoDescarte.getSelectedIndex())
 
@@ -1059,7 +1059,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblDepartSolicitanteDescarte.setText(requisicaoInterna.obterDepartamento().obterNomeDepartamento())
             lblSolicitanteDescarte.setText(requisicaoInterna.obterSolicitante().getNome())
             txaJustificativaDescarte.setText(requisicaoInterna.obterJustificativa())
-            for(int i = 0; i < numeroItens;i++) {
+            for (int i = 0; i < numeroItens;i++) {
               tblItensDescarte.setValueAt('', i, 0)
                 tblItensDescarte.setValueAt('', i, 1)
                 tblItensDescarte.setValueAt('', i, 2)
@@ -1068,7 +1068,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
-            for(int i = 0;i < itensRequisicaoInterna.size();i++) {
+            for (int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
                 tblItensDescarte.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
@@ -1087,9 +1087,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
 
     /* Ao selecionar uma requisição de devolução preenche a tela com
      * informações sobre esta requisição. */
-    if(objeto == cbxRequisicaoDevolucao) {
-      if(cbxRequisicaoDevolucao.getSelectedIndex() > 0) {
-        if(itensRequisicaoInterna != null)
+    if (objeto == cbxRequisicaoDevolucao) {
+      if (cbxRequisicaoDevolucao.getSelectedIndex() > 0) {
+        if (itensRequisicaoInterna != null)
           itensRequisicaoInterna.removeAllElements()
             requisicaoInterna = (RequisicaoInterna)cbxRequisicaoDevolucao.getSelectedItem()
 
@@ -1099,7 +1099,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblSolicitanteDevolucao.setText(requisicaoInterna.obterSolicitante().getNome())
             txaJustificativaDevolucao.setText(requisicaoInterna.obterJustificativa())
 
-            for(int i = 0; i < numeroItens;i++) {
+            for (int i = 0; i < numeroItens;i++) {
               tblItensDevolucao.setValueAt('', i, 0)
                 tblItensDevolucao.setValueAt('', i, 1)
                 tblItensDevolucao.setValueAt('', i, 2)
@@ -1108,7 +1108,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
-            for(int i = 0;i < itensRequisicaoInterna.size();i++) {
+            for (int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
                 tblItensDevolucao.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
                 tblItensDevolucao.setValueAt(itemRequisicaoInterna.obterItem().obterDescricao(), numeroItens, 1)
@@ -1130,7 +1130,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           lblSolicitanteDevolucao.setText('')
           txaJustificativaDevolucao.setText('')
 
-          for(int i = 0; i < numeroItens;i++) {
+          for (int i = 0; i < numeroItens;i++) {
             tblItensDevolucao.setValueAt('', i, 0)
               tblItensDevolucao.setValueAt('', i, 1)
               tblItensDevolucao.setValueAt('', i, 2)
@@ -1138,9 +1138,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == cbxRequisicaoDevolucaoExterna) {
-      if(cbxRequisicaoDevolucaoExterna.getSelectedIndex() > 0) {
-        if(itensRequisicaoInterna != null)
+    if (objeto == cbxRequisicaoDevolucaoExterna) {
+      if (cbxRequisicaoDevolucaoExterna.getSelectedIndex() > 0) {
+        if (itensRequisicaoInterna != null)
           itensRequisicaoInterna.removeAllElements()
             requisicaoInterna = (RequisicaoInterna)requisicoesInternasDevolucaoExterna.get(cbxRequisicaoDevolucaoExterna.getSelectedIndex())
 
@@ -1149,7 +1149,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblDepartSolicitanteDevolucaoExterna.setText(requisicaoInterna.obterDepartamento().obterNomeDepartamento())
             lblSolicitanteDevolucaoExterna.setText(requisicaoInterna.obterSolicitante().getNome())
             txaJustificativaDevolucaoExterna.setText(requisicaoInterna.obterJustificativa())
-            for(int i = 0; i < numeroItens;i++) {
+            for (int i = 0; i < numeroItens;i++) {
               tblItensDevolucaoExterna.setValueAt('', i, 0)
                 tblItensDevolucaoExterna.setValueAt('', i, 1)
                 tblItensDevolucaoExterna.setValueAt('', i, 2)
@@ -1158,7 +1158,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           itensRequisicaoInterna = requisicaoInterna.carregarItensRequisicaoInterna(aplicacao.obterConexao())
             numeroItens = 0
             ItemRequisicaoInterna itemRequisicaoInterna
-            for(int i = 0;i < itensRequisicaoInterna.size();i++) {
+            for (int i = 0;i < itensRequisicaoInterna.size();i++) {
               itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
 
                 tblItensDevolucaoExterna.setValueAt('' +  itemRequisicaoInterna.obterItem().obterCodigo(), numeroItens, 0)
@@ -1175,19 +1175,19 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == cbxTipoMovimentacao) {
+    if (objeto == cbxTipoMovimentacao) {
       card.show(pnlAreaMovimentacao, (String)cbxTipoMovimentacao.getSelectedItem())
         this.pack()
         tipoMovimentacao = (String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex())
     }
 
-    if(objeto == btProximo) {
-      if(cbxRequisicaoAbastecimento.getSelectedIndex() > 0) {
+    if (objeto == btProximo) {
+      if (cbxRequisicaoAbastecimento.getSelectedIndex() > 0) {
         card.show(pnlAreaMovimentacao, 'Abastecimento Confirmação')
           try {
             // Carrega os itens da movimentacao pelos itens da requisicao de compras.
             movimentacoes = new Vector()
-              for(int i = 0; i < itensRequisicaoCompra.size(); i++) {
+              for (int i = 0; i < itensRequisicaoCompra.size(); i++) {
                 movimentacoes.addElement(new Movimentacao((String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()),
                       ((ItemRequisicao)itensRequisicaoCompra.get(i)),
                       responsavelMovimentacao))
@@ -1204,18 +1204,18 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btAnterior) {
+    if (objeto == btAnterior) {
       card.show(pnlAreaMovimentacao, 'Abastecimento')
     }
 
-    if(objeto == btConfirmar) {
-      if(tipoMovimentacao == Movimentacao.ABASTECIMENTO) {
+    if (objeto == btConfirmar) {
+      if (tipoMovimentacao == Movimentacao.ABASTECIMENTO) {
         try {
           //Definir o status da requisição de compra com base nos status dos itens da requisição.
           ItemRequisicao itemRequisicao
-            for(int i = 0;i < itensRequisicaoCompra.size();i++) {
+            for (int i = 0;i < itensRequisicaoCompra.size();i++) {
               itemRequisicao = (ItemRequisicao)itensRequisicaoCompra.get(i)
-                if(itemRequisicao.obterStatus().equals(ItemRequisicao.ABASTECIDO_PARCIALMENTE)) {
+                if (itemRequisicao.obterStatus().equals(ItemRequisicao.ABASTECIDO_PARCIALMENTE)) {
                   requisicaoCompraSelecionada.definirStatus(RequisicaoCompra.STATUS_PENDENTE)
                     break
                 }
@@ -1228,8 +1228,8 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             //Registrar movimentações para cada item da requisição.
 
             Movimentacao movimentacao = null
-            for(int i = 0;i < movimentacoes.size();i++) {
-              if(((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterLote() != null) {
+            for (int i = 0;i < movimentacoes.size();i++) {
+              if (((ItemRequisicao)itensRequisicaoCompra.get(i)).obterItem().obterLote() != null) {
                 movimentacao = (Movimentacao)movimentacoes.get(i)
                   movimentacao.definirDataDespacho(txtDataDespacho.getText())
                   movimentacao.definirNumeroConhecimento(txtNumeroConhecimento.getText())
@@ -1254,9 +1254,9 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
        * Status da Requisicao Interna é  Confirmado quando existe quantidade suficiente em
        * lote em pelo menos um item.
        */
-      else if(tipoMovimentacao == Movimentacao.CONSUMO || tipoMovimentacao == Movimentacao.VENDAS || tipoMovimentacao == Movimentacao.DESCARTE || tipoMovimentacao == Movimentacao.DEVOLUCAO_EXTERNA) {
+      else if (tipoMovimentacao == Movimentacao.CONSUMO || tipoMovimentacao == Movimentacao.VENDAS || tipoMovimentacao == Movimentacao.DESCARTE || tipoMovimentacao == Movimentacao.DEVOLUCAO_EXTERNA) {
         String statusDefinido = ''
-          for(int i = 0; i < itensRequisicaoInterna.size(); i++) {
+          for (int i = 0; i < itensRequisicaoInterna.size(); i++) {
             try {
               Movimentacao movimentacao = new Movimentacao((String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()),
                   (ItemRequisicaoInterna)itensRequisicaoInterna.get(i),
@@ -1271,8 +1271,8 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
           }
         // Atualiza o status da Movimentação Interna
         try {
-          for(int i = 0;i < itensRequisicaoInterna.size();i++) {
-            if(((ItemRequisicaoInterna)itensRequisicaoInterna.get(i)).obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE)) {
+          for (int i = 0;i < itensRequisicaoInterna.size();i++) {
+            if (((ItemRequisicaoInterna)itensRequisicaoInterna.get(i)).obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE)) {
               requisicaoInterna.definirStatus(RequisicaoInterna.STATUS_PENDENTE)
                 break
             }
@@ -1281,15 +1281,15 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               requisicaoInterna.definirStatus(RequisicaoInterna.STATUS_CONFIRMADO)
             }
           }
-          if(requisicaoInterna.obterStatus().equals(RequisicaoInterna.STATUS_EMITIDO) ||
+          if (requisicaoInterna.obterStatus().equals(RequisicaoInterna.STATUS_EMITIDO) ||
               requisicaoInterna.obterStatus().equals(RequisicaoInterna.STATUS_CONFIRMADO)) {
             requisicaoInterna.atualizarRequisicaoInterna(RequisicaoInterna.STATUS_CONFIRMADO)
           }
-          else if(requisicaoInterna.obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE)) {
+          else if (requisicaoInterna.obterStatus().equals(RequisicaoInterna.STATUS_PENDENTE)) {
             String mensagem = 'Atenção: Os seguintes itens possuem quantidades insuficientes no estoque: \n'
-              for(int i = 0; i < itensRequisicaoInterna.size(); i++) {
+              for (int i = 0; i < itensRequisicaoInterna.size(); i++) {
                 ItemRequisicaoInterna item = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
-                  if(item.obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE))
+                  if (item.obterStatus().equals(ItemRequisicaoInterna.STATUS_PENDENTE))
                     mensagem += '' + (i + 1) + '. ' + item.obterItem().obterDescricao() + ' ('+ item.obterQuantidadeItem() +')\n'
               }
             JOptionPane.showMessageDialog(aplicacao, mensagem, 'Atenção', JOptionPane.WARNING_MESSAGE)
@@ -1305,8 +1305,8 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       }
       /* A devolução de um item implica no acréscimo do estoque. através
        * da entrada de um novo lote. */
-      else if(tipoMovimentacao == Movimentacao.DEVOLUCAO) {
-        for(int i = 0; i < itensRequisicaoInterna.size(); i++) {
+      else if (tipoMovimentacao == Movimentacao.DEVOLUCAO) {
+        for (int i = 0; i < itensRequisicaoInterna.size(); i++) {
           try {
             ItemRequisicaoInterna itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
               Movimentacao movimentacao = new Movimentacao((String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()),
@@ -1341,12 +1341,12 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
       this.setVisible(false)
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
 
-    if(objeto == btDefinirLote) {
-      if(tblItensAbastecimentoConfirmacao.getSelectedRow() >=0) {
+    if (objeto == btDefinirLote) {
+      if (tblItensAbastecimentoConfirmacao.getSelectedRow() >=0) {
         ItemRequisicao itemSelecionado = (ItemRequisicao)itensRequisicaoCompra.get(tblItensAbastecimentoConfirmacao.getSelectedRow())
           Movimentacao movimentacaoItem = (Movimentacao)movimentacoes.get(tblItensAbastecimentoConfirmacao.getSelectedRow())
           DlgDadosLote dlgDadosLote = new DlgDadosLote(aplicacao, itemSelecionado, movimentacaoItem)

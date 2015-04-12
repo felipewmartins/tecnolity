@@ -60,7 +60,7 @@ class Veiculo {
 
   void definirPlaca(String placa) throws Exception
   {
-    if(!placa.equals("") && placa.length() <= 8)
+    if (!placa.equals("") && placa.length() <= 8)
       this.placa = placa
     else
     {
@@ -71,7 +71,7 @@ class Veiculo {
 
   void definirTransportadora(Transportadora transportadora) throws Exception
   {
-    if(transportadora != null)
+    if (transportadora != null)
       this.transportadora = transportadora
     else
     {
@@ -82,7 +82,7 @@ class Veiculo {
 
   void definirChassi(String chassi) throws Exception
   {
-    if(!chassi.equals("") && chassi.length() <= 10)
+    if (!chassi.equals("") && chassi.length() <= 10)
       this.chassi = chassi
     else
     {
@@ -93,7 +93,7 @@ class Veiculo {
 
   void definirRenavam(String renavam) throws Exception
   {
-    if(!renavam.equals("") && renavam.length() <= 10)
+    if (!renavam.equals("") && renavam.length() <= 10)
       this.renavam = renavam
     else
     {
@@ -104,7 +104,7 @@ class Veiculo {
 
   void definirMarca(String marca) throws Exception
   {
-    if(!marca.equals("") && marca.length() <= 50)
+    if (!marca.equals("") && marca.length() <= 50)
       this.marca = marca
     else
     {
@@ -115,7 +115,7 @@ class Veiculo {
 
   void definirModelo(String modelo) throws Exception
   {
-    if(!modelo.equals("") && modelo.length() <= 50)
+    if (!modelo.equals("") && modelo.length() <= 50)
       this.modelo = modelo
     else
     {
@@ -126,7 +126,7 @@ class Veiculo {
 
   void definirAno(String ano) throws Exception
   {
-    if(ano.length() == 4)
+    if (ano.length() == 4)
       this.ano = ano
     else
     {
@@ -137,7 +137,7 @@ class Veiculo {
 
   void definirCor(String cor) throws Exception
   {
-    if(ano.length() <= 12)
+    if (ano.length() <= 12)
       this.cor = cor
     else
     {
@@ -149,10 +149,10 @@ class Veiculo {
   void definirNumeroEixo(int numeroEixo) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(numeroEixo))
+      if (Float.isNaN(numeroEixo))
         erro = "O Número do Eixo não foi informado corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -163,10 +163,10 @@ class Veiculo {
   void definirCubagem(float cubagem) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(cubagem))
+      if (Float.isNaN(cubagem))
         erro = "O Valor da Cubagem não foi informado corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -177,10 +177,10 @@ class Veiculo {
   void definirTara(float tara) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(tara))
+      if (Float.isNaN(tara))
         erro = "O Valor da Tara não foi informado corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -191,10 +191,10 @@ class Veiculo {
   void definirPesoBruto(float pesoBruto) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(pesoBruto))
+      if (Float.isNaN(pesoBruto))
         erro = "O Peso Bruto não foi informado corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -204,7 +204,7 @@ class Veiculo {
 
   void definirCombustivel(String combustivel) throws Exception
   {
-    if(combustivel.length() <= 20)
+    if (combustivel.length() <= 20)
       this.combustivel = combustivel
     else
     {
@@ -216,10 +216,10 @@ class Veiculo {
   void definirVolumeCombustivel(float volumeCombustivel) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(volumeCombustivel))
+      if (Float.isNaN(volumeCombustivel))
         erro = "O Volume do Combustível não foi informado corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -230,10 +230,10 @@ class Veiculo {
   void definirMediaConsumo(float mediaConsumo) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(mediaConsumo))
+      if (Float.isNaN(mediaConsumo))
         erro = "A Média de Consumo não foi informada corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -247,7 +247,7 @@ class Veiculo {
 
       dadosVeiculo = conexao.executarConsulta("select t.codigo as codigo_transportadora, t.transportadora, v.chassi, v.renavam, v.marca, v.modelo, v.ano, v.cor, v.numero_eixo, v.cubagem, v.tara, v.peso_bruto, v.combustivel, v.volume_combustivel, v.media_consumo from transportadora t, veiculo v where v.transportadora = t.codigo and placa = '" +  this.placa + "'")
 
-      if(dadosVeiculo.next()) {
+      if (dadosVeiculo.next()) {
         this.definirTransportadora(new Transportadora(dadosVeiculo.getInt("codigo_transportadora"), dadosVeiculo.getString("transportadora")))
           this.definirChassi(dadosVeiculo.getString("chassi"))
           this.definirRenavam(dadosVeiculo.getString("renavam"))
@@ -271,7 +271,7 @@ class Veiculo {
       Vector veiculos = new Vector()
       dadosVeiculo = conexao.executarConsulta("select placa from veiculo order by placa asc")
       veiculos.addElement(null)
-      while(dadosVeiculo.next()) {
+      while (dadosVeiculo.next()) {
         veiculos.addElement(new Veiculo(dadosVeiculo.getString("placa")))
       }
     dadosVeiculo.close()
@@ -287,7 +287,7 @@ class Veiculo {
 
       if (conexao.abrirConexao()) {
         ResultSet veiculo = conexao.executarConsulta("select * from veiculo where placa = '" +  this.placa + "' ")
-          if(veiculo.next()) {
+          if (veiculo.next()) {
             existente = true
               Exception e = new Exception("Já existe um veículo com a placa informada. Não foi possível realizar o cadastro.")
               throw e
@@ -309,7 +309,7 @@ class Veiculo {
   {
     String query = "update veiculo set transportadora = " +  this.transportadora.obterCodigo() + ", chassi = '" + this.chassi + "', renavam = '" + this.renavam + "', marca = '" + this.marca + "', modelo = '" + this.modelo + "', ano = '" + this.ano + "', cor = '" + this.cor + "', numero_eixo = " + this.numeroEixo + ", cubagem = " + this.cubagem + ", tara = " + this.tara + ", peso_bruto = " + this.pesoBruto + ", combustivel = '" + this.combustivel + "', volume_combustivel = " + this.volumeCombustivel + ", media_consumo = " + this.mediaConsumo + " where placa =  '" + this.placa + "' "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }
@@ -324,7 +324,7 @@ class Veiculo {
   {
     String queryVeiculo = "delete from veiculo where placa = '" +  this.placa + "' "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(queryVeiculo)
           conexao.fecharConexao()
       }

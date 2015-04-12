@@ -84,15 +84,15 @@ class DlgDadosUnidade extends JDialog implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar) {
+      if (objeto == btConfirmar) {
         Unidade unidade = new Unidade()
-          if(unidade.cadastrarUnidade(txtNomeUnidade.getText()))
+          if (unidade.cadastrarUnidade(txtNomeUnidade.getText()))
             this.setVisible(false)
           else
             JOptionPane.showMessageDialog(aplicacao, 'Não foi possível cadastrar a Unidade informada!', 'Erro', JOptionPane.WARNING_MESSAGE)
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

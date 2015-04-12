@@ -114,7 +114,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
 
   private void atualizarTabelaPedido() {
     String query = ""
-      if(cbxSituacao.getSelectedIndex() > 0) {
+      if (cbxSituacao.getSelectedIndex() > 0) {
         query = "select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local, pc.data_emissao, pc.data_entrega, (case pc.status when '" +  Pedido.PENDENTE + "' then 'Pendente' when '" + Pedido.PRODUZINDO+ "' then 'Produzindo' when '" + Pedido.FINALIZADO + "' then 'Finalizado' when '" + Pedido.ATRASADO + "' then 'Atrasado' when '" + Pedido.CANCELADO + "' then 'Cancelado' end) as status " +
           "from pedido_cliente pc, cliente c, local_entrega le "  + 
           "where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega and pc.status = '" +  situacoes[cbxSituacao.getSelectedIndex()] + "' " +
@@ -142,13 +142,13 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btAdicionarPedido) {
+      if (objeto == btAdicionarPedido) {
         DlgDadosPedido dlgDadosPedido = new DlgDadosPedido(aplicacao)
           dlgDadosPedido.setVisible(true)
       }
 
-    if(objeto == btAlterarPedido) {
-      if(tblPedido.getSelectedRow() >=0) {
+    if (objeto == btAlterarPedido) {
+      if (tblPedido.getSelectedRow() >=0) {
         try {
           int linha = tblPedido.getSelectedRow()
             int codigoPedido = Integer.parseInt((String)tblPedido.getValueAt(linha, 0))
@@ -166,9 +166,9 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btCancelarPedido) {
-      if(tblPedido.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o pedido selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == btCancelarPedido) {
+      if (tblPedido.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o pedido selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblPedido.getSelectedRow()
             int codigoPedido = Integer.parseInt((String)tblPedido.getValueAt(linha, 0))
             try {
@@ -188,11 +188,11 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       atualizarTabelaPedido()
     }
 
-    if(objeto == btAtualizarPedido) {
+    if (objeto == btAtualizarPedido) {
       atualizarTabelaPedido()
     }
 
-    if(objeto == btImprimirPedido) {
+    if (objeto == btImprimirPedido) {
       int linha = tblPedido.getSelectedRow()
         int codigoPedido = Integer.parseInt((String)tblPedido.getValueAt(linha, 0))
         try {
@@ -210,7 +210,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btImprimirPorReferencia) {
+    if (objeto == btImprimirPorReferencia) {
       int linha = tblPedido.getSelectedRow()
         int codigoPedido = Integer.parseInt((String)tblPedido.getValueAt(linha, 0))
         try {
@@ -228,12 +228,12 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btRecursosNecessarios) {
+    if (objeto == btRecursosNecessarios) {
       int[] linha = tblPedido.getSelectedRows()
         int[] codigoPedido = new int[linha.length]
         Pedido[] pedidos = new Pedido[linha.length]
         try {
-          for(int i = 0;i < linha.length;i++) {
+          for (int i = 0;i < linha.length;i++) {
             codigoPedido[i] = Integer.parseInt((String)tblPedido.getValueAt(linha[i], 0))
               pedidos[i] = new Pedido(codigoPedido[i])
               pedidos[i].carregarPedido(aplicacao.obterConexao())
@@ -247,12 +247,12 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btAdicionarCliente) {
+    if (objeto == btAdicionarCliente) {
       DlgDadosCliente dlgDadosCliente = new DlgDadosCliente(aplicacao)
         dlgDadosCliente.setVisible(true)
     }
 
-    if(objeto == btAlterarCliente) {
+    if (objeto == btAlterarCliente) {
       try {
         int linha = tblCliente.getSelectedRow()
           DlgDadosCliente dlgDadosCliente = new DlgDadosCliente(aplicacao, new Cliente(Long.parseLong(tblCliente.getValueAt(linha, 0).toString())))
@@ -264,8 +264,8 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btExcluirCliente) {
-      if(JOptionPane.showConfirmDialog(aplicacao, "Atenção: A exclusão de um Cliente implicará na Exclusão de todos os dados \nRelacionados ao mesmo.\nTem certeza que deseja continuar a operação de exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == btExcluirCliente) {
+      if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: A exclusão de um Cliente implicará na Exclusão de todos os dados \nRelacionados ao mesmo.\nTem certeza que deseja continuar a operação de exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
         int codigoCliente = Integer.parseInt((String)tblCliente.getValueAt(tblCliente.getSelectedRow(), 0))
           Cliente cliente = new Cliente()
           try {
@@ -279,7 +279,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btAtualizarCliente) {
+    if (objeto == btAtualizarCliente) {
       atualizarTabelaCliente()
     }
 

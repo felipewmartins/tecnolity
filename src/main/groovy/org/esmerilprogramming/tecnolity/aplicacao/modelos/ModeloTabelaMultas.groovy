@@ -9,7 +9,7 @@ class ModeloTabelaMultas extends ModeloTabela
   }
 
   Object getValueAt(int linha, int coluna) {
-    if(coluna == 3)
+    if (coluna == 3)
       return Numero.inverterSeparador(((String[])cache.elementAt(linha))[coluna])
     else
       return ((String[])cache.elementAt(linha))[coluna]

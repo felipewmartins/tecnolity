@@ -263,7 +263,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   private void carregarColaboradores() {
     this.cbxColaboradores.removeAllItems()
     this.cbxColaboradores.addItem("Selecione...")
-    for(int i = 1;i < colaboradores.size();i++) {
+    for (int i = 1;i < colaboradores.size();i++) {
       this.cbxColaboradores.addItem(((Colaborador)colaboradores.get(i)).getNome())
     }
   }
@@ -293,7 +293,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
   private void atualizarTabelaPermissoes(Colaborador colaborador) {
     String query = "select nome_completo, i.interface, case permissao when 'E' then 'Escrita' when 'L' then 'Leitura' end as permissao from permissao p, usuario u, interface i where	p.usuario = u.usuario and "
-    if(colaborador != null)
+    if (colaborador != null)
       query += "u.usuario = '" + colaborador.obterMatricula() + "' and "
     query += "p.interface = i.identificador order by nome_completo asc"
 
@@ -307,7 +307,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     try {
       FileReader entrada = new FileReader(arqComandos)
       int indiceRegistro = 0
-      while((indiceRegistro = entrada.read()) != -1) {
+      while ((indiceRegistro = entrada.read()) != -1) {
         conteudoArquivo.append((char)indiceRegistro)
       }
       txaComandos.setText(conteudoArquivo.toString())
@@ -325,7 +325,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   private char reconhecerTipoComando(String comando) {
     // Verifica se o comando é uma consulta. Caso contrário, retorna uma transação.
     comando = comando.toUpperCase()
-    if(comando.indexOf("SELECT") >= 0 && comando.indexOf("INSERT") == -1 && comando.indexOf("UPDATE") == -1 && comando.indexOf("DELETE") == -1 && comando.indexOf("CREATE") == -1 && comando.indexOf("ALTER") == -1)
+    if (comando.indexOf("SELECT") >= 0 && comando.indexOf("INSERT") == -1 && comando.indexOf("UPDATE") == -1 && comando.indexOf("DELETE") == -1 && comando.indexOf("CREATE") == -1 && comando.indexOf("ALTER") == -1)
       return 'C'
     else
       return 'T'
@@ -333,12 +333,12 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
   private void executarComandoSQL() {
     try {
-      if(txaComandos.getSelectedText() == null) {
+      if (txaComandos.getSelectedText() == null) {
         txaComandos.setSelectionStart(0)
         txaComandos.setSelectionEnd(txaComandos.getText().length())
       }
       char tipoComando = reconhecerTipoComando(txaComandos.getSelectedText())
-      if(tipoComando == 'C') {
+      if (tipoComando == 'C') {
         modeloTabelaVisualizacao.definirConsulta(txaComandos.getSelectedText())
         tblResultado.setModel(modeloTabelaVisualizacao)
         tblResultado.updateUI()
@@ -346,9 +346,9 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
         lblStatusResultado.setText("Status: Consulta Realizada com Sucesso!")
         btSalvar.setEnabled(true)
       }
-      else if(tipoComando == 'T') {
+      else if (tipoComando == 'T') {
         Conexao conexao = new Conexao(tipoComando)
-        if(conexao.abrirConexao()) {
+        if (conexao.abrirConexao()) {
           conexao.executarAtualizacao(txaComandos.getSelectedText())
           lblStatusResultado.setForeground(Color.BLUE)
           lblStatusResultado.setText("Status: Alteração Realizada com Sucesso!")
@@ -367,40 +367,40 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
    void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-    if(objeto == btAdicionarUsuario) {
+    if (objeto == btAdicionarUsuario) {
       DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao, 'I')
       dlgDadosColaborador.setVisible(true)
       atualizarTabelaColaborador()
     }
 
-    if(objeto == cbxColaboradores) {
-      if(colaboradores.get(cbxColaboradores.getSelectedIndex()) != null) {
+    if (objeto == cbxColaboradores) {
+      if (colaboradores.get(cbxColaboradores.getSelectedIndex()) != null) {
         atualizarTabelaPermissoes((Colaborador)colaboradores.get(cbxColaboradores.getSelectedIndex()))
       }
     }
 
-    if(objeto == btAtribuirPermissao) {
+    if (objeto == btAtribuirPermissao) {
       DlgDadosPermissao dlgDadosPermissao = new DlgDadosPermissao(aplicacao, 'I')
       dlgDadosPermissao.setVisible(true)
-      if(colaboradores.get(cbxColaboradores.getSelectedIndex()) != null) {
+      if (colaboradores.get(cbxColaboradores.getSelectedIndex()) != null) {
         atualizarTabelaPermissoes((Colaborador)colaboradores.get(cbxColaboradores.getSelectedIndex()))
       }
     }
 
-    if(objeto == btAtualizarPermissao) {
-      if(colaboradores.get(cbxColaboradores.getSelectedIndex()) != null) {
+    if (objeto == btAtualizarPermissao) {
+      if (colaboradores.get(cbxColaboradores.getSelectedIndex()) != null) {
         atualizarTabelaPermissoes((Colaborador)colaboradores.get(cbxColaboradores.getSelectedIndex()))
       }
     }
 
-    if(objeto == btEditar) {
+    if (objeto == btEditar) {
       txtCotacaoDolar.setEnabled(true)
       btConfirmar.setEnabled(true)
       btDesfazer.setEnabled(true)
       btEditar.setEnabled(false)
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
         this.cambio.definirDolar(Float.parseFloat(Numero.inverterSeparador(txtCotacaoDolar.getText())))
       }
@@ -421,12 +421,12 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       btEditar.setEnabled(true)
     }
 
-    if(objeto == btDesfazer) {
+    if (objeto == btDesfazer) {
       txtCotacaoDolar.setText(Numero.inverterSeparador("" + this.cambio.obterDolar()))
     }
 
-    if(objeto == btAlterarUsuario) {
-      if(this.tblColaboradores.getSelectedRow() >= 0) {
+    if (objeto == btAlterarUsuario) {
+      if (this.tblColaboradores.getSelectedRow() >= 0) {
         int linha = this.tblColaboradores.getSelectedRow()
         String usuarioColaborador = (String)this.tblColaboradores.getValueAt(linha, 0)
         DlgDadosColaborador dlgDadosColaborador = new DlgDadosColaborador(aplicacao, 'A', usuarioColaborador)
@@ -439,9 +439,9 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       }
     }
 
-    if(objeto == btExcluirUsuario) {
-      if(tblColaboradores.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o colaborador selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == btExcluirUsuario) {
+      if (tblColaboradores.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, "Atenção: Tem certeza que deseja excluir o colaborador selecionado?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblColaboradores.getSelectedRow()
           String usuarioColaborador = (String)this.tblColaboradores.getValueAt(linha, 0)
           try {
@@ -461,18 +461,18 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       }
     }
 
-    if(objeto == btAtualizarUsuario) {
+    if (objeto == btAtualizarUsuario) {
       atualizarTabelaColaborador()
     }
 
-    if(objeto == btAdicionarDepartamento) {
+    if (objeto == btAdicionarDepartamento) {
       DlgDadosDepartamento dlgDadosDepartamento = new DlgDadosDepartamento(aplicacao)
       dlgDadosDepartamento.setVisible(true)
       dlgDadosDepartamento = null
       atualizarTabelaDepartamento()
     }
 
-    if(objeto == btAlterarDepartamento) {
+    if (objeto == btAlterarDepartamento) {
       int linhaSelecionada = tblDepartamentos.getSelectedRow()
       Departamento departamento = new Departamento(Integer.parseInt((String)tblDepartamentos.getValueAt(linhaSelecionada, 0)))
       try {
@@ -488,7 +488,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       atualizarTabelaDepartamento()
     }
 
-    if(objeto == btExcluirDepartamento) {
+    if (objeto == btExcluirDepartamento) {
       int linhaSelecionada = tblDepartamentos.getSelectedRow()
       Departamento departamento = new Departamento(Integer.parseInt((String)tblDepartamentos.getValueAt(linhaSelecionada, 0)))
       try {
@@ -501,15 +501,15 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       }
     }
 
-    if(objeto == btAtualizarDepartamento) {
+    if (objeto == btAtualizarDepartamento) {
       atualizarTabelaDepartamento()
     }
 
-    if(objeto == btAbrirComando) {
+    if (objeto == btAbrirComando) {
       JFileChooser fchComando = new JFileChooser(Configuracao.getRepositorioConsultas())
       int status = fchComando.showOpenDialog(this)
 
-      if(status == JFileChooser.APPROVE_OPTION) {
+      if (status == JFileChooser.APPROVE_OPTION) {
         arqComandos = fchComando.getSelectedFile()
         txtArquivoComando.setText(arqComandos.getAbsolutePath())
       }
@@ -517,37 +517,37 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       importarArquivoComandoSQL()
     }
 
-    if(objeto == btExecutarComando) {
+    if (objeto == btExecutarComando) {
       executarComandoSQL()
     }
 
-    if(objeto == btLimparComando) {
+    if (objeto == btLimparComando) {
       this.txaComandos.setText("")
       this.txtArquivoComando.setText("")
     }
 
-    if(objeto == btSalvar) {
+    if (objeto == btSalvar) {
       JFileChooser dlgSalvamento = new JFileChooser(Configuracao.getRepositorioRelatorios())
       int status = dlgSalvamento.showSaveDialog(aplicacao)
-      if(status == JFileChooser.APPROVE_OPTION) {
+      if (status == JFileChooser.APPROVE_OPTION) {
         try {
           File arquivo = dlgSalvamento.getSelectedFile()
           FileWriter saida = new FileWriter(arquivo)
           saida.write("---- CONSULTA -----\n\n"  +  txaComandos.getText())
           saida.write("\n\n---- RESULTADO ----")
           int[] tabs = new int[tblResultado.getColumnCount()]
-          for(int i = 0;i < tblResultado.getColumnCount();i++) {
+          for (int i = 0;i < tblResultado.getColumnCount();i++) {
             tabs[i] = 1
-            for(int j = 0;j < tblResultado.getRowCount();j++) {
-              if(tabs[i] <= (((String)(tblResultado.getValueAt(j, i) != null?tblResultado.getValueAt(j, i):"")).length()/6.0f))
+            for (int j = 0;j < tblResultado.getRowCount();j++) {
+              if (tabs[i] <= (((String)(tblResultado.getValueAt(j, i) != null?tblResultado.getValueAt(j, i):"")).length()/6.0f))
                 tabs[i]++
             }
           }
           String linha = ""
-          for(int i = 0;i < tblResultado.getRowCount();i++) {
-            for(int j = 0;j < tblResultado.getColumnCount();j++) {
+          for (int i = 0;i < tblResultado.getRowCount();i++) {
+            for (int j = 0;j < tblResultado.getColumnCount();j++) {
               linha += (tblResultado.getValueAt(i, j) != null?tblResultado.getValueAt(i, j):"")
-              for(int l = 0;l < (tabs[j] - ((String)(tblResultado.getValueAt(i, j) != null?tblResultado.getValueAt(i, j):"")).length()/6);l++) {
+              for (int l = 0;l < (tabs[j] - ((String)(tblResultado.getValueAt(i, j) != null?tblResultado.getValueAt(i, j):"")).length()/6);l++) {
                 linha += "\t"
               }
             }
@@ -569,7 +569,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   }
 
    void keyPressed(KeyEvent e) {
-    if(e.getKeyCode() == KeyEvent.VK_F5) {
+    if (e.getKeyCode() == KeyEvent.VK_F5) {
       executarComandoSQL()
     }
   }

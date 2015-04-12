@@ -65,28 +65,28 @@ class BarraMenu extends JMenuBar implements ActionListener {
 
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
-    if(objeto == mnArqDesconectar) {
+    if (objeto == mnArqDesconectar) {
       aplicacao.setVisible(false)
       aplicacao = new Aplicacao()
       aplicacao.setVisible(true)
     }
-    if(objeto == mnArqSair) {
+    if (objeto == mnArqSair) {
       aplicacao.finalizarAplicacao()
     }
-    if(objeto == mnPrefApPadrao) {
+    if (objeto == mnPrefApPadrao) {
       try {
         UIManager.setLookAndFeel('javax.swing.plaf.metal.MetalLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)
       }catch (e){}
     }
-    if(objeto == mnPrefApWindows) {
+    if (objeto == mnPrefApWindows) {
       try {
         UIManager.setLookAndFeel('com.sun.java.swing.plaf.windows.WindowsLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)
       }catch (e){}
     }
 
-    if(objeto == mnPrefApUnix) {
+    if (objeto == mnPrefApUnix) {
       try {
         UIManager.setLookAndFeel('com.sun.java.swing.plaf.motif.MotifLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)

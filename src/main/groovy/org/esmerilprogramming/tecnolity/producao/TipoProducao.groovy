@@ -25,7 +25,7 @@ class TipoProducao {
         dadosTipoProducao = conexao.executarConsulta("select * from tipo_producao order by tipo_producao asc")
           tiposProducao.addElement(null)
 
-          while(dadosTipoProducao.next()) {
+          while (dadosTipoProducao.next()) {
             tiposProducao.addElement(new TipoProducao(dadosTipoProducao.getInt("codigo"), dadosTipoProducao.getString("tipo_producao")))
           }
         dadosTipoProducao.close()
@@ -41,7 +41,7 @@ class TipoProducao {
     ResultSet dadosTipoProducao
       try {
         dadosTipoProducao = conexao.executarConsulta("select max(codigo) as identificador_maior from tipo_producao")
-          if(dadosTipoProducao.next()) {
+          if (dadosTipoProducao.next()) {
             return dadosTipoProducao.getInt("identificador_maior")  +  1
           }
         dadosTipoProducao.close()

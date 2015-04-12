@@ -62,7 +62,7 @@ class Cliente {
 
   void definirCodigo(long codigo) throws Exception
   {
-    if(codigo <= 0) {
+    if (codigo <= 0) {
       Exception e = new Exception("Código do Cliente inválido.")
         throw e
     }
@@ -71,7 +71,7 @@ class Cliente {
 
   void definirRazaoSocial(String razaoSocial) throws Exception
   {
-    if(razaoSocial.equals("") || razaoSocial == null) {
+    if (razaoSocial.equals("") || razaoSocial == null) {
       Exception e = new Exception("A Razão Social não foi informada.")
         throw e
     }
@@ -93,7 +93,7 @@ class Cliente {
    */
   void definirCnpj(String cnpj) throws Exception
   {
-    if(!cnpj.equals("") && cnpj.length() <= 15) {
+    if (!cnpj.equals("") && cnpj.length() <= 15) {
       this.cnpj = cnpj.trim()
     }
     else
@@ -109,7 +109,7 @@ class Cliente {
 
   void definirLogradouro(String logradouro) throws Exception
   {
-    if(logradouro.equals("") || logradouro == null) {
+    if (logradouro.equals("") || logradouro == null) {
       Exception e = new Exception("O Logradouro nao foi informado.")
         throw e
     }
@@ -118,7 +118,7 @@ class Cliente {
 
   void definirCidade(String cidade) throws Exception
   {
-    if(cidade.equals("") || cidade == null) {
+    if (cidade.equals("") || cidade == null) {
       Exception e = new Exception("A Cidade não foi informada.")
         throw e
     }
@@ -131,7 +131,7 @@ class Cliente {
 
   void definirPais(Pais pais) throws Exception
   {
-    if(pais == null) {
+    if (pais == null) {
       Exception e = new Exception("O País nao foi informado.")
         throw e
     }
@@ -145,8 +145,8 @@ class Cliente {
    */
   void definirCep(String cep) throws Exception
   {
-    if(!cep.equals("")) {
-      if(cep.length() == 8)
+    if (!cep.equals("")) {
+      if (cep.length() == 8)
         this.cep = cep
       else
       {
@@ -158,9 +158,9 @@ class Cliente {
 
   void carregarCliente(Conexao conexao) throws Exception
   {
-    if(codigo > 0) {
+    if (codigo > 0) {
       ResultSet dadosCliente = conexao.executarConsulta("select * from cliente where codigo = "  +  this.codigo)
-        if(dadosCliente.next()) {
+        if (dadosCliente.next()) {
           this.definirRazaoSocial(dadosCliente.getString("razao_social"))
             this.definirNomeFantasia(dadosCliente.getString("nome_fantasia"))
             this.definirCnpj(dadosCliente.getString("cnpj"))
@@ -201,7 +201,7 @@ class Cliente {
         dadosCliente = conexao.executarConsulta("select codigo, razao_social from cliente order by razao_social asc")
           clientes.addElement(null)
 
-          while(dadosCliente.next()) {
+          while (dadosCliente.next()) {
             clientes.addElement(new Cliente(dadosCliente.getLong("codigo"), dadosCliente.getString("razao_social")))
           }
         dadosCliente.close()
@@ -218,7 +218,7 @@ class Cliente {
       Vector locaisEntrega = new Vector()
       String query = "select * from local_entrega where cliente = " +  cliente.obterCodigo() + " order by descricao_local asc"
       dadosLocalEntrega = conexao.executarConsulta(query)
-      while(dadosLocalEntrega.next()) {
+      while (dadosLocalEntrega.next()) {
         locaisEntrega.addElement(new LocalEntrega(cliente,
               dadosLocalEntrega.getLong("codigo_local"),
               dadosLocalEntrega.getString("descricao_local"),
@@ -240,7 +240,7 @@ class Cliente {
   {
     String query
       ResultSet dadosCliente = conexao.executarConsulta("select cnpj from cliente where cnpj = '" +  this.cnpj + "'")
-      if(dadosCliente.next()) {
+      if (dadosCliente.next()) {
         Exception e = new Exception("Já existe um cliente com este CNPJ.")
           throw e
       }
@@ -249,12 +249,12 @@ class Cliente {
       "('" +  this.razaoSocial + "', '" + this.nomeFantasia + "', '" + this.cnpj + "', '" + this.inscricaoEstadual + "', '" + this.logradouro + "', '" + this.bairro + "', '" + this.complemento + "', '" + this.cidade + "', '" + ((this.estado == null)?"":this.estado.getSigla()) + "', '" + this.pais.getSigla() + "', '" + this.cep + "', '" + this.telefone + "', '" + this.fax + "', '" + this.contatoComercial + "', '" + this.contatoTecnico + "', '" + this.email + "')"
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
-      for(int i = 0;i < locaisEntrega.size(); i++) {
+      for (int i = 0;i < locaisEntrega.size(); i++) {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
           localEntrega.addLocalEntrega(conexao)
       }
     dadosCliente = conexao.executarConsulta("select codigo from cliente where razao_social = '" +  this.razaoSocial + "' and cnpj = '" + this.cnpj + "'")
-      if(dadosCliente.next()) {
+      if (dadosCliente.next()) {
         this.codigo = dadosCliente.getInt("codigo")
       }
   }
@@ -265,7 +265,7 @@ class Cliente {
       query = "update cliente set razao_social = '" +  this.razaoSocial + "', nome_fantasia = '" + this.nomeFantasia + "', cnpj = '" + this.cnpj + "', inscricao_estadual = '" + this.inscricaoEstadual + "', logradouro = '" + this.logradouro + "', bairro = '" + this.bairro + "', complemento = '" + this.complemento + "', cidade = '" + this.cidade + "', estado = '" + this.estado.getSigla() + "', pais = '" + this.pais.getSigla() + "', cep = '" + this.obterCep() + "', telefone = '" + this.telefone + "', fax = '" + this.fax + "', contato_comercial = '" + this.contatoComercial + "', contato_tecnico = '" + this.contatoTecnico + "', email = '" + this.email + "' where codigo = " + this.codigo
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
-      for(int i = 0;i < locaisEntrega.size(); i++) {
+      for (int i = 0;i < locaisEntrega.size(); i++) {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
           localEntrega.addLocalEntrega(conexao)
       }
@@ -274,7 +274,7 @@ class Cliente {
   void excluirCliente(Conexao conexao) throws Exception
   {
     ResultSet dadosModelo = conexao.executarConsulta("select codigo from modelo where cliente = " +  this.obterCodigo())
-      while(dadosModelo.next()) {
+      while (dadosModelo.next()) {
         conexao.executarAtualizacao("delete from materia_prima where modelo ="  +  dadosModelo.getInt("codigo"))
       }
     dadosModelo.close()

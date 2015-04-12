@@ -40,7 +40,7 @@ class FormaPagamento {
     ResultSet dadosFormaPagamento
       dadosFormaPagamento = conexao.executarConsulta("select * from forma_pagamento where sigla = '" +  this.sigla + "' ")
 
-      if(dadosFormaPagamento.next()) {
+      if (dadosFormaPagamento.next()) {
         try {
           this.definirFormaPagamento(dadosFormaPagamento.getString("forma_pagamento"))
         }
@@ -52,7 +52,7 @@ class FormaPagamento {
 
   void definirSigla(String sigla) throws Exception
   {
-    if(!sigla.equals("") && sigla.length() <= 2)
+    if (!sigla.equals("") && sigla.length() <= 2)
       this.sigla = sigla
     else
     {
@@ -63,7 +63,7 @@ class FormaPagamento {
 
   void definirSiglaAntesAlteracao(String siglaAntesAlteracao) throws Exception
   {
-    if(!siglaAntesAlteracao.equals("") && siglaAntesAlteracao.length() <= 2)
+    if (!siglaAntesAlteracao.equals("") && siglaAntesAlteracao.length() <= 2)
       this.siglaAntesAlteracao = siglaAntesAlteracao
     else
     {
@@ -74,7 +74,7 @@ class FormaPagamento {
 
   void definirFormaPagamento(String formaPagamento) throws Exception
   {
-    if(!formaPagamento.equals("") && formaPagamento.length() <= 50)
+    if (!formaPagamento.equals("") && formaPagamento.length() <= 50)
       this.formaPagamento = formaPagamento
     else
     {
@@ -90,7 +90,7 @@ class FormaPagamento {
       formasPagamento = conexao.executarConsulta("select * from forma_pagamento order by forma_pagamento asc")
       formas = new Vector()
       formas.addElement(null)
-      while(formasPagamento.next()) {
+      while (formasPagamento.next()) {
         formas.addElement(new FormaPagamento(formasPagamento.getString("sigla"), formasPagamento.getString("forma_pagamento")))
       }
     formasPagamento.close()
@@ -117,7 +117,7 @@ class FormaPagamento {
   {
     String query = "update forma_pagamento set sigla = '" +  this.sigla + "', forma_pagamento = '" + this.formaPagamento + "' where sigla = '" + this.siglaAntesAlteracao + "' "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }
@@ -132,7 +132,7 @@ class FormaPagamento {
   {
     String query = "delete from forma_pagamento where sigla = '" +  this.sigla + "' "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }

@@ -48,11 +48,11 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       cbxTamanhoPapel.addItem("A4 (210 x 297mm)")
       cbxTamanhoPapel.addItem("Carta (216 x 280 mm)")
       try {
-        if(Configuracao.getLarguraPapel() == 210 &&
+        if (Configuracao.getLarguraPapel() == 210 &&
             Configuracao.getAlturaPapel() == 297) {
           cbxTamanhoPapel.setSelectedIndex(0)
         }
-        else if(Configuracao.getLarguraPapel() == 216 &&
+        else if (Configuracao.getLarguraPapel() == 216 &&
             Configuracao.getAlturaPapel() == 280) {
           cbxTamanhoPapel.setSelectedIndex(1)
         }
@@ -73,10 +73,10 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       rdbOrientacaoPaisagem = new JRadioButton("Paisagem")
       rdbOrientacaoPaisagem.setFont(new Font("Arial", Font.PLAIN, 12))
       try {
-        if(Configuracao.getOrientacao() == PageFormat.PORTRAIT) {
+        if (Configuracao.getOrientacao() == PageFormat.PORTRAIT) {
           rdbOrientacaoRetrato.setSelected(true)
         }
-        else if(Configuracao.getOrientacao() == PageFormat.LANDSCAPE) {
+        else if (Configuracao.getOrientacao() == PageFormat.LANDSCAPE) {
           rdbOrientacaoPaisagem.setSelected(true)
         }
       }
@@ -165,22 +165,22 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
             break
     }
 
-    if(rdbOrientacaoRetrato.isSelected()) {
+    if (rdbOrientacaoRetrato.isSelected()) {
       pnlAmostra.setOrientacao(PageFormat.PORTRAIT)
-    }else if(rdbOrientacaoPaisagem.isSelected()) {
+    }else if (rdbOrientacaoPaisagem.isSelected()) {
       pnlAmostra.setOrientacao(PageFormat.LANDSCAPE)
     }
 
-    if(!txtMargemEsquerda.getText().equals(""))
+    if (!txtMargemEsquerda.getText().equals(""))
       pnlAmostra.setMargemEsquerda(Integer.parseInt(txtMargemEsquerda.getText()))
 
-        if(!txtMargemDireita.getText().equals(""))
+        if (!txtMargemDireita.getText().equals(""))
           pnlAmostra.setMargemDireita(Integer.parseInt(txtMargemDireita.getText()))
 
-            if(!txtMargemSuperior.getText().equals(""))
+            if (!txtMargemSuperior.getText().equals(""))
               pnlAmostra.setMargemSuperior(Integer.parseInt(txtMargemSuperior.getText()))
 
-                if(!txtMargemInferior.getText().equals(""))
+                if (!txtMargemInferior.getText().equals(""))
                   pnlAmostra.setMargemInferior(Integer.parseInt(txtMargemInferior.getText()))
 
                     pnlAmostra.repaint()
@@ -189,24 +189,24 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == cbxTamanhoPapel) {
+      if (objeto == cbxTamanhoPapel) {
         desenharPapel()
       }
 
-    if(objeto == rdbOrientacaoRetrato) {
+    if (objeto == rdbOrientacaoRetrato) {
       desenharPapel()
     }
 
-    if(objeto == rdbOrientacaoPaisagem) {
+    if (objeto == rdbOrientacaoPaisagem) {
       desenharPapel()
     }
 
-    if(objeto == btConfirmar) {
-      if(cbxTamanhoPapel.getSelectedIndex() == 0) {
+    if (objeto == btConfirmar) {
+      if (cbxTamanhoPapel.getSelectedIndex() == 0) {
         this.aplicacao.obterConfiguracao().setLarguraPapel(210)
           this.aplicacao.obterConfiguracao().setAlturaPapel(297)
       }
-      else if(cbxTamanhoPapel.getSelectedIndex() == 1) {
+      else if (cbxTamanhoPapel.getSelectedIndex() == 1) {
         this.aplicacao.obterConfiguracao().setLarguraPapel(216)
           this.aplicacao.obterConfiguracao().setAlturaPapel(280)
       }
@@ -225,7 +225,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       this.setVisible(false)
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }
@@ -255,7 +255,7 @@ class PainelDesenho extends JPanel
 
   void paintComponent(Graphics g) {
     super.paintComponent(g)
-      if(orientacao == 1) {
+      if (orientacao == 1) {
         g.setColor(Color.white)
           g.fillRect(((this.getWidth()/2) - (largura/2)), 16, largura, altura)
           g.setColor(Color.BLACK)
@@ -264,7 +264,7 @@ class PainelDesenho extends JPanel
               largura - margemDireita - margemEsquerda,
               altura - margemInferior - margemSuperior)
       }
-      else if(orientacao == 0) {
+      else if (orientacao == 0) {
         g.setColor(Color.WHITE)
           g.fillRect(((this.getWidth()/2) - (altura/2)), 16, altura, largura)
           g.setColor(Color.BLACK)

@@ -51,7 +51,7 @@ class Interface
   {
     Vector interfaces = new Vector()
       ResultSet dadosInterface = conexao.executarConsulta("select * from interface order by interface asc")
-      while(dadosInterface.next()) {
+      while (dadosInterface.next()) {
         interfaces.addElement(new Interface(dadosInterface.getInt("identificador"), dadosInterface.getString("interface"), dadosInterface.getString("descricao")))
       }
     dadosInterface.close()
@@ -62,10 +62,10 @@ class Interface
   {
     Conexao conexao = new Conexao('T')
 
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         try {
           ResultSet interfaces = conexao.executarConsulta("select * from interface")
-            if(!interfaces.next()) {
+            if (!interfaces.next()) {
               conexao.executarAtualizacao("insert into interface values (1, 'Seção Administração', '')")
                 conexao.executarAtualizacao("insert into interface values (2, 'Seção Gerência', '')")
                 conexao.executarAtualizacao("insert into interface values (3, 'Seção Logística', '')")
@@ -113,7 +113,7 @@ class Interface
   {
     Conexao conexao = new Conexao('T')
 
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao("delete from interface")
           conexao.fecharConexao()
       }

@@ -44,7 +44,7 @@ class Motorista {
       ResultSet dadosMotorista
       dadosMotorista = conexao.executarConsulta("select * from motorista where codigo = " +  this.codigo + " ")
 
-      if(dadosMotorista.next()) {
+      if (dadosMotorista.next()) {
         try {
           this.definirPlaca(dadosMotorista.getString("placa"))
             this.definirMotorista(dadosMotorista.getString("motorista"))
@@ -59,7 +59,7 @@ class Motorista {
             this.definirBairro(dadosMotorista.getString("bairro"))
             this.definirCidade(dadosMotorista.getString("cidade"))
             String siglaEstado = dadosMotorista.getString("estado")
-            if(siglaEstado != null) {
+            if (siglaEstado != null) {
               this.definirEstado(new Estado(siglaEstado))
             }
           this.definirCep(dadosMotorista.getString("cep"))
@@ -137,7 +137,7 @@ class Motorista {
 
   void definirPlaca(String placa) throws Exception
   {
-    if(!placa.equals(""))
+    if (!placa.equals(""))
       this.placa = placa
     else
     {
@@ -148,7 +148,7 @@ class Motorista {
 
   void definirMotorista(String motorista) throws Exception
   {
-    if(!motorista.equals("") && motorista.length() <= 50)
+    if (!motorista.equals("") && motorista.length() <= 50)
       this.motorista = motorista
     else
     {
@@ -159,7 +159,7 @@ class Motorista {
 
   void definirIdentidade(String identidade) throws Exception
   {
-    if(!identidade.equals("") && identidade.length() <= 15)
+    if (!identidade.equals("") && identidade.length() <= 15)
       this.identidade = identidade
     else
     {
@@ -170,7 +170,7 @@ class Motorista {
 
   void definirOrgaoEmissorIdentidade(String orgaoEmissorIdentidade) throws Exception
   {
-    if(!orgaoEmissorIdentidade.equals("") && orgaoEmissorIdentidade.length() <= 15)
+    if (!orgaoEmissorIdentidade.equals("") && orgaoEmissorIdentidade.length() <= 15)
       this.orgaoEmissorIdentidade = orgaoEmissorIdentidade
     else
     {
@@ -181,7 +181,7 @@ class Motorista {
 
   void definirCpf(String cpf) throws Exception
   {
-    if(!cpf.equals("") && cpf.length() <= 15)
+    if (!cpf.equals("") && cpf.length() <= 15)
       this.cpf = cpf
     else
     {
@@ -192,7 +192,7 @@ class Motorista {
 
   void definirHabilitacao(String habilitacao) throws Exception
   {
-    if(!habilitacao.equals("") && habilitacao.length() <= 10)
+    if (!habilitacao.equals("") && habilitacao.length() <= 10)
       this.habilitacao = habilitacao
     else
     {
@@ -203,7 +203,7 @@ class Motorista {
 
   void definirCategoria(String categoria) throws Exception
   {
-    if(!categoria.equals(""))
+    if (!categoria.equals(""))
       this.categoria = categoria
     else
     {
@@ -215,16 +215,16 @@ class Motorista {
   void definirValidade(String validade) throws Exception
   {
     String erro = ""
-      if(validade.equals(""))
+      if (validade.equals(""))
         erro = "A Data de Validade não foi informada."
-      else if(validade.length() == 10) {
-        if(!Calendario.validarData(validade, "/"))
+      else if (validade.length() == 10) {
+        if (!Calendario.validarData(validade, "/"))
           erro = "Data de Validade inválida."
       }
       else
         erro = "Data de Validade inválida."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -234,7 +234,7 @@ class Motorista {
 
   void definirLogradouro(String logradouro) throws Exception
   {
-    if(!logradouro.equals("") && logradouro.length() <= 50)
+    if (!logradouro.equals("") && logradouro.length() <= 50)
       this.logradouro = logradouro
     else
     {
@@ -245,7 +245,7 @@ class Motorista {
 
   void definirComplemento(String complemento) throws Exception
   {
-    if(complemento.length() <= 30)
+    if (complemento.length() <= 30)
       this.complemento = complemento
     else
     {
@@ -256,7 +256,7 @@ class Motorista {
 
   void definirBairro(String bairro) throws Exception
   {
-    if(bairro.length() <= 50)
+    if (bairro.length() <= 50)
       this.bairro = bairro
     else
     {
@@ -267,7 +267,7 @@ class Motorista {
 
   void definirCidade(String cidade) throws Exception
   {
-    if(!cidade.equals("") && cidade.length() <= 50)
+    if (!cidade.equals("") && cidade.length() <= 50)
       this.cidade = cidade
     else
     {
@@ -278,7 +278,7 @@ class Motorista {
 
   void definirEstado(Estado estado) throws Exception
   {
-    if(estado != null)
+    if (estado != null)
       this.estado = estado
     else
     {
@@ -289,7 +289,7 @@ class Motorista {
 
   void definirCep(String cep) throws Exception
   {
-    if(cep.length() <= 8)
+    if (cep.length() <= 8)
       this.cep = cep
     else
     {
@@ -300,7 +300,7 @@ class Motorista {
 
   void definirTelefone(String telefone) throws Exception
   {
-    if(telefone.length() <= 15)
+    if (telefone.length() <= 15)
       this.telefone = telefone
     else
     {
@@ -311,7 +311,7 @@ class Motorista {
 
   void definirCelular(String celular) throws Exception
   {
-    if(celular.length() <= 15)
+    if (celular.length() <= 15)
       this.celular = celular
     else
     {
@@ -328,7 +328,7 @@ class Motorista {
         dadosMotorista = conexao.executarConsulta("select codigo, motorista from motorista order by motorista asc")
           motoristas = new Vector()
           motoristas.addElement(null)
-          while(dadosMotorista.next()) {
+          while (dadosMotorista.next()) {
             motoristas.addElement(new Motorista(dadosMotorista.getInt("codigo"), dadosMotorista.getString("motorista")))
           }
         dadosMotorista.close()
@@ -359,7 +359,7 @@ class Motorista {
   {
     String query = "update motorista set placa = '" +  this.placa + "', motorista = '" + this.motorista + "', identidade = '" + this.identidade + "', orgao_emissor = '" + this.orgaoEmissorIdentidade + "', cpf = '" + this.cpf + "', habilitacao = '" + this.habilitacao + "', categoria = '" + this.categoria + "', validade = '" + Calendario.inverterFormato(this.validade, "/") + "', logradouro = '" + this.logradouro + "', complemento = '" + this.complemento + "', bairro = '" + this.bairro + "', cidade = '" + this.cidade + "', estado = '" + this.estado.getSigla() + "', cep = '" + this.cep + "', telefone = '" + this.telefone + "', celular = '" + this.celular + "' where codigo = " + this.codigo + " "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }
@@ -374,7 +374,7 @@ class Motorista {
   {
     String query = "delete from motorista where codigo = " +  this.codigo + " "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }

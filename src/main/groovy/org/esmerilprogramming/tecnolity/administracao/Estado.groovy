@@ -23,9 +23,9 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
   void carregarEstado() throws Exception
   {
     Conexao conexao = new Conexao('C')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         ResultSet dadosEstado = conexao.executarConsulta('select * from estado where sigla_estado = '  +  this.getSigla() +'')
-          if(dadosEstado.next()) {
+          if (dadosEstado.next()) {
             setNome(dadosEstado.getString('estado'))
               setPais(new Pais(dadosEstado.getString('pais')))
           }
@@ -41,7 +41,7 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
       try {
         dadosEstado = conexao.executarConsulta('select sigla_estado, estado from estado where pais = ' +  pais +' order by estado asc')
           estados.addElement(null)
-          while(dadosEstado.next()) {
+          while (dadosEstado.next()) {
             estados.addElement(new Estado(dadosEstado.getString('sigla_estado'), dadosEstado.getString('estado')))
           }
         dadosEstado.close()
@@ -60,7 +60,7 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
         String query = 'Select sigla_estado from estado where sigla_estado = '' +  this.getSigla() +'''
           try {
             ResultSet dadosEstado = conexao.executarConsulta(query)
-              if(!dadosEstado.next()) {
+              if (!dadosEstado.next()) {
                 query = 'insert into estado (sigla_estado, estado, pais) values ('' +  this.getSigla() +'', ''+ this.getNome() +'', ''+ this.getPais().getSigla() +'')'
                   conexao.executarAtualizacao(query)
                   conexao.fecharConexao()

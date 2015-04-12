@@ -45,9 +45,9 @@ class DlgRecursosPedido extends JDialog implements ActionListener
     conteudo = this.getContentPane()
 
       String strLabel = "Recursos Necessários para a produção do pedido No. "
-      for(int i = 0;i < pedidos.length;i++) {
+      for (int i = 0;i < pedidos.length;i++) {
         strLabel  += "" + pedidos[i].obterCodigo()
-          if((i + 1) < pedidos.length)
+          if ((i + 1) < pedidos.length)
             strLabel  += ", "
       }
 
@@ -58,9 +58,9 @@ class DlgRecursosPedido extends JDialog implements ActionListener
       String query =  "select i.codigo, i.descricao, i.quantidade as disponivel, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria, (i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo " +
       "from item i, modelo_pedido mp, quantidade_materia_prima qmp "  + 
       "where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ("
-      for(int i = 0;i < pedidos.length;i++) {
+      for (int i = 0;i < pedidos.length;i++) {
         query  += "mp.pedido = " + pedidos[i].obterCodigo()
-          if((i + 1) < pedidos.length)
+          if ((i + 1) < pedidos.length)
             query  += " or "
       }
     query  += ") group by i.codigo, i.descricao, i.quantidade, i.percentual_perda"
@@ -73,7 +73,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
 
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
 
-      if(pedidos.length == 1) {
+      if (pedidos.length == 1) {
         btRequisitarSelecionado = new JButton("Requisitar Selecionado")
           btRequisitarSelecionado.addActionListener(this)
           pnlComandos.add(btRequisitarSelecionado)
@@ -104,8 +104,8 @@ class DlgRecursosPedido extends JDialog implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btRequisitarSelecionado) {
-        if(tblRecursos.getSelectedRows().length == 1) {
+      if (objeto == btRequisitarSelecionado) {
+        if (tblRecursos.getSelectedRows().length == 1) {
           Vector itensRequisicaoInterna = new Vector()
             int linha = tblRecursos.getSelectedRow()
             try
@@ -127,9 +127,9 @@ class DlgRecursosPedido extends JDialog implements ActionListener
         }
       }
 
-    if(objeto == btRequisitarTudo) {
+    if (objeto == btRequisitarTudo) {
       Vector itensRequisicaoInterna = new Vector()
-        for(int i = 0;i < tblRecursos.getRowCount();i++) {
+        for (int i = 0;i < tblRecursos.getRowCount();i++) {
           try
           {
             itensRequisicaoInterna.addElement(new ItemRequisicaoInterna(new Item(Integer.parseInt((String)tblRecursos.getValueAt(i, 0)), 
@@ -146,12 +146,12 @@ class DlgRecursosPedido extends JDialog implements ActionListener
         dlgDadosRequisicaoInterna.setVisible(true)
     }
 
-    if(objeto == btImprimir) {
+    if (objeto == btImprimir) {
       RelRecursosPedido relRecursosPedido = new RelRecursosPedido(aplicacao, pedidos)
         relRecursosPedido.imprimir()
     }
 
-    if(objeto == btFechar) {
+    if (objeto == btFechar) {
       this.setVisible(false)
     }
   }

@@ -127,13 +127,13 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btCancelar) {
+      if (objeto == btCancelar) {
         this.setVisible(false)
       }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
-        if(modo == 'I') {
+        if (modo == 'I') {
           boolean confirmado = true
             try {
               this.formaPagamento.definirSigla(this.txtSigla.getText())
@@ -144,7 +144,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado) {
+          if (confirmado) {
             try {
               this.formaPagamento.cadastrarFormaPagamento()
             }
@@ -155,7 +155,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
             this.setVisible(false)
           }
         }
-        else if(modo == 'A') {
+        else if (modo == 'A') {
           boolean confirmado = true
             try {
               this.formaPagamento.definirSigla(this.txtSigla.getText())
@@ -166,7 +166,7 @@ class DlgDadosFormaPagamento extends JDialog implements ActionListener, FocusLis
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado) {
+          if (confirmado) {
             try {
               this.formaPagamento.alterarFormaPagamento()
             }

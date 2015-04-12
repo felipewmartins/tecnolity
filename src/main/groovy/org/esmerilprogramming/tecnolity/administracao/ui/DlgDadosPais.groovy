@@ -87,7 +87,7 @@ class DlgDadosPais extends JDialog implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar) {
+      if (objeto == btConfirmar) {
         try {
           Pais pais = new Pais(txtSiglaPais.getText(), txtNomePais.getText())
             pais.cadastrarPais()
@@ -99,7 +99,7 @@ class DlgDadosPais extends JDialog implements ActionListener {
         }
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

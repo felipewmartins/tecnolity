@@ -31,7 +31,7 @@ class RelatorioRequisicaoInterna extends Relatorio
       conteudo.append("Observação: ")
       conteudo.append(QUEBRA)
       String[] texto = Texto.obterTextoAlinhado(requisicaoInterna.obterJustificativa(), 77)
-      for(int linha = 0;linha < texto.length;linha++) {
+      for (int linha = 0;linha < texto.length;linha++) {
         conteudo.append(texto[linha])
           conteudo.append(QUEBRA)
       }
@@ -43,7 +43,7 @@ class RelatorioRequisicaoInterna extends Relatorio
       conteudo.append(QUEBRA)
       Vector itensRequisicaoInterna = requisicaoInterna.obterItensRequisicaoInterna()
       ItemRequisicaoInterna itemRequisicaoInterna
-      for(int i = 0;i < itensRequisicaoInterna.size();i++) {
+      for (int i = 0;i < itensRequisicaoInterna.size();i++) {
         itemRequisicaoInterna = (ItemRequisicaoInterna)itensRequisicaoInterna.get(i)
           conteudo.append(""  +  Texto.obterStringTamanhoFixo(itemRequisicaoInterna.obterItem().toString(), 45) + "  " + Texto.obterNumeroTamanhoFixo("" + itemRequisicaoInterna.obterQuantidadeItem(), 12, " ") + "  " + Texto.obterStringTamanhoFixo(itemRequisicaoInterna.obterStatusLiteral(), 15))
           conteudo.append(QUEBRA)

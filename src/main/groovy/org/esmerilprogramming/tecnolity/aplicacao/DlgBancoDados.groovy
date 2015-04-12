@@ -115,7 +115,7 @@ class DlgBancoDados extends JDialog implements ActionListener
       try {
         FileReader entrada = new FileReader(arqComandos)
           int indiceRegistro = 0
-          while((indiceRegistro = entrada.read()) != -1) {
+          while ((indiceRegistro = entrada.read()) != -1) {
             conteudoArquivo.append((char)indiceRegistro)
           }
         txaComandos.setText(conteudoArquivo.toString())
@@ -132,7 +132,7 @@ class DlgBancoDados extends JDialog implements ActionListener
 
   private char reconhecerTipoComando(String comando) {
     // Verifica se o comando é uma consulta. Caso contrário, retorna uma transação.
-    if(comando.indexOf("SELECT") >= 0 && comando.indexOf("INSERT") == -1 && comando.indexOf("UPDATE") == -1 && comando.indexOf("DELETE") == -1 && comando.indexOf("CREATE") == -1 && comando.indexOf("ALTER") == -1)
+    if (comando.indexOf("SELECT") >= 0 && comando.indexOf("INSERT") == -1 && comando.indexOf("UPDATE") == -1 && comando.indexOf("DELETE") == -1 && comando.indexOf("CREATE") == -1 && comando.indexOf("ALTER") == -1)
       return 'C'
     else
       return 'T'
@@ -141,11 +141,11 @@ class DlgBancoDados extends JDialog implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btAbrir) {
+      if (objeto == btAbrir) {
         JFileChooser fchComando = new JFileChooser(Configuracao.getRepositorioConsultas())
           int status = fchComando.showOpenDialog(this)
 
-          if(status == JFileChooser.APPROVE_OPTION) {
+          if (status == JFileChooser.APPROVE_OPTION) {
             arqComandos = fchComando.getSelectedFile()
               txtCaminhoArquivo.setText(arqComandos.getAbsolutePath())
           }
@@ -153,19 +153,19 @@ class DlgBancoDados extends JDialog implements ActionListener
         importarArquivoComandoSQL()
       }
 
-    if(objeto == btExecutar) {
+    if (objeto == btExecutar) {
       try {
         txaComandos.setText(txaComandos.getText().toUpperCase())
           char tipoComando = reconhecerTipoComando(txaComandos.getText())
-          if(tipoComando == 'C') {
+          if (tipoComando == 'C') {
             modeloTabelaVisualizacao.definirConsulta(txaComandos.getText())
               tblDados.setModel(modeloTabelaVisualizacao)
               tblDados.updateUI()
               txaResultados.setText("Consulta Realizada com Sucesso!")
           }
-          else if(tipoComando == 'T') {
+          else if (tipoComando == 'T') {
             Conexao conexao = new Conexao(tipoComando)
-              if(conexao.abrirConexao()) {
+              if (conexao.abrirConexao()) {
                 conexao.executarAtualizacao(txaComandos.getText())
                   txaResultados.setText("Alteração Realizada com Sucesso!")
               }
@@ -178,11 +178,11 @@ class DlgBancoDados extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btLimpar) {
+    if (objeto == btLimpar) {
       this.txaComandos.setText("")
     }
 
-    if(objeto == btFechar) {
+    if (objeto == btFechar) {
       this.setVisible(false)
     }
   }

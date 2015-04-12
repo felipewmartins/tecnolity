@@ -130,8 +130,8 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
       }
 
         int indicePais = 0
-        for(int i = 1; i < paises.size(); i++) {
-          if((((Pais)paises.get(i)).getSigla()).equals((this.fornecedor.obterPais())==null?'':(this.fornecedor.obterPais()).getSigla())) {
+        for (int i = 1; i < paises.size(); i++) {
+          if ((((Pais)paises.get(i)).getSigla()).equals((this.fornecedor.obterPais())==null?'':(this.fornecedor.obterPais()).getSigla())) {
             indicePais = i
           }
         }
@@ -228,7 +228,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
       cbxPais.removeAllItems()
         cbxPais.addItem('Selecione...')
         
-        for(int i = 1;i < paises.size();i++) {
+        for (int i = 1;i < paises.size();i++) {
           cbxPais.addItem(((Pais)paises.get(i)).getNome())
         }
     }
@@ -237,7 +237,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
       cbxEstado.removeAllItems()
         cbxEstado.addItem('Selecione...')
         
-        for(int i = 1;i < estados.size();i++) {
+        for (int i = 1;i < estados.size();i++) {
           cbxEstado.addItem(((Estado)estados.get(i)).getNome())
         }
     }
@@ -256,8 +256,8 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
     void actionPerformed(java.awt.event.ActionEvent actionEvent) {
       Object objeto = actionEvent.getSource()
         
-        if(objeto == cbxPais) {
-          if(cbxEstado != null) {
+        if (objeto == cbxPais) {
+          if (cbxEstado != null) {
             try
             {
               estados = Estado.carregarEstados(((Pais)paises.get(cbxPais.getSelectedIndex())).getSigla(), aplicacao.obterConexao())
@@ -270,7 +270,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           }
         }
       
-        if(objeto == btNovoPais) {
+        if (objeto == btNovoPais) {
           DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao, 'I')
             dlgDadosPais.setVisible(true)
             try
@@ -285,7 +285,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           }
         }
       
-        if(objeto == btNovoEstado) {
+        if (objeto == btNovoEstado) {
           DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao, 'I')
             dlgDadosEstado.setVisible(true)
             try
@@ -300,10 +300,10 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           }
         }
       
-        if(objeto == btConfirmar) {
+        if (objeto == btConfirmar) {
           try
           {
-            if(modo == 'I') {
+            if (modo == 'I') {
               boolean confirmado = true
                 try
                 {
@@ -329,7 +329,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                   e.printStackTrace()
                   confirmado = false
               }
-              if(confirmado) {
+              if (confirmado) {
                 try
                 {
                   fornecedor.cadastrarFornecedor()
@@ -341,7 +341,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 this.setVisible(false)
               }
             }
-            else if(modo == 'A') {
+            else if (modo == 'A') {
               boolean confirmado = true
                 try
                 {
@@ -368,7 +368,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 e.printStackTrace()
                 confirmado = false
               }
-              if(confirmado) {
+              if (confirmado) {
                 try {
                   fornecedor.alterarFornecedor()
                 }
@@ -389,7 +389,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           }
         }
       
-        if(objeto == btCancelar) {
+        if (objeto == btCancelar) {
           this.setVisible(false)
         }
     }
@@ -399,7 +399,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
 
   void focusGained(java.awt.event.FocusEvent e) {
     Component componente = e.getComponent()
-    if(componente == txtPercentualICMS)
+    if (componente == txtPercentualICMS)
       txtPercentualICMS.selectAll()
   }
 }

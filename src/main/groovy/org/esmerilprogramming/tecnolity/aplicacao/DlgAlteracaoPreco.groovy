@@ -78,7 +78,7 @@ class DlgAlteracaoPreco extends JDialog implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar) {
+      if (objeto == btConfirmar) {
         try {
           this.fornecedorItem.definirValorItem(Float.parseFloat(Numero.inverterSeparador(txtValorItem.getText())))
             this.fornecedorItem.alterarValorItem()
@@ -90,7 +90,7 @@ class DlgAlteracaoPreco extends JDialog implements ActionListener
         }
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }
