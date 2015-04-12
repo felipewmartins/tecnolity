@@ -81,7 +81,7 @@ class FormAutenticacao extends JDialog implements ActionListener {
       }
         else
         {
-          if(colaborador.colaboradorExiste()) {
+          if (colaborador.colaboradorExiste()) {
             JOptionPane.showMessageDialog(aplicacao, 'Usuário ou senha inválida!', 'Problema de Autenticação', JOptionPane.WARNING_MESSAGE)
             this.txtUsuario.transferFocus()
             this.txtUsuario.selectAll()
@@ -101,18 +101,18 @@ class FormAutenticacao extends JDialog implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == txtUsuario) {
+      if (objeto == txtUsuario) {
         verificarAutenticacao()
       }
 
-    if(objeto == txtSenha) {
+    if (objeto == txtSenha) {
       verificarAutenticacao()
     }
-    if(objeto == btAcessar) {
+    if (objeto == btAcessar) {
       verificarAutenticacao()
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       aplicacao.finalizarAplicacao()
     }
   }

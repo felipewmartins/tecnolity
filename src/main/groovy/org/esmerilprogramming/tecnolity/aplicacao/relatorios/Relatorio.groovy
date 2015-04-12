@@ -14,11 +14,11 @@ class Relatorio
         int totalLinhasPagina = (int)(formato.getImageableHeight() / Pagina.ENTRELINHA) - 3
         int posicaoFimLinha
         String linha
-        while(!conteudoAImprimir.equals("")) {
+        while (!conteudoAImprimir.equals("")) {
           StringBuffer conteudoPagina = new StringBuffer()
-            for(int i = 0;i < totalLinhasPagina;i++) {
+            for (int i = 0;i < totalLinhasPagina;i++) {
               posicaoFimLinha = conteudoAImprimir.indexOf("\n")
-                if(posicaoFimLinha >= 0) {
+                if (posicaoFimLinha >= 0) {
                   linha = conteudoAImprimir.substring(0, posicaoFimLinha  +  1)
                     conteudoAImprimir = (conteudoAImprimir.length() > 1?conteudoAImprimir.substring(posicaoFimLinha  +  1):"")
                 }
@@ -28,7 +28,7 @@ class Relatorio
                     conteudoAImprimir = ""
                 }
               conteudoPagina.append(linha)
-                if(conteudoAImprimir.equals(""))
+                if (conteudoAImprimir.equals(""))
                   break
             }
           Pagina pagina = new Pagina(conteudoPagina.toString())

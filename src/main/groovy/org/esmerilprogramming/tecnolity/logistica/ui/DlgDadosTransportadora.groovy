@@ -120,13 +120,13 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btCancelar) {
+      if (objeto == btCancelar) {
         this.setVisible(false)
       }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
-        if(modo == 'I') {
+        if (modo == 'I') {
           boolean confirmado = true
             try {
               transportadora.definirTransportadora(this.txtTransportadora.getText())
@@ -136,7 +136,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado) {
+          if (confirmado) {
             try {
               this.transportadora.cadastrarTransportadora()
             }
@@ -147,7 +147,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
             this.setVisible(false)
           }
         }
-        else if(modo == 'A') {
+        else if (modo == 'A') {
           boolean confirmado = true
             try {
               transportadora.definirCodigo(this.codigoTransportadora)
@@ -158,7 +158,7 @@ class DlgDadosTransportadora extends JDialog implements ActionListener, FocusLis
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado) {
+          if (confirmado) {
             try {
               this.transportadora.alterarTransportadora()
             }

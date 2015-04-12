@@ -76,27 +76,27 @@ class BarraAplicacao extends JPanel implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-    if(objeto == btSuprimentos) {
+    if (objeto == btSuprimentos) {
       AreaTrabalhoSuprimentos areaTrabalho = new AreaTrabalhoSuprimentos(aplicacao)
       this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
     }
 
-    if(objeto == btProducao) {
+    if (objeto == btProducao) {
       AreaTrabalhoProducao areaTrabalho = new AreaTrabalhoProducao(aplicacao)
       this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
     }
 
-    if(objeto == btPedidos) {
+    if (objeto == btPedidos) {
       AreaTrabalhoPedido areaTrabalho = new AreaTrabalhoPedido(aplicacao)
       this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
     }
 
-    if(objeto == btLogistica) {
+    if (objeto == btLogistica) {
       AreaTrabalhoLogistica areaTrabalho = new AreaTrabalhoLogistica(aplicacao)
       this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
     }
 
-    if(objeto == btAdministracao) {
+    if (objeto == btAdministracao) {
       AreaTrabalhoAdministracao areaTrabalho = new AreaTrabalhoAdministracao(aplicacao)
       this.aplicacao.adicionarAreaTrabalho(areaTrabalho)
     }

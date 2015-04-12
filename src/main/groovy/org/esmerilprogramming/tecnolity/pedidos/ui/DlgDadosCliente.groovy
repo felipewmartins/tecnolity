@@ -180,15 +180,15 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       pnlDadosLocalEntrega.setBorder(new TitledBorder("Local de Entrega"))
 
       boolean localEntregaClienteExistente = false
-      if(cliente != null) {
-        for(int i = 0;i < cliente.getLocaisEntrega().size(); i++) {
-          if(cliente.obterRazaoSocial().equals((LocalEntrega)cliente.getLocaisEntrega().get(i))) {
+      if (cliente != null) {
+        for (int i = 0;i < cliente.getLocaisEntrega().size(); i++) {
+          if (cliente.obterRazaoSocial().equals((LocalEntrega)cliente.getLocaisEntrega().get(i))) {
             localEntregaClienteExistente = true
               break
           }
         }
       }
-    if(localEntregaClienteExistente) {
+    if (localEntregaClienteExistente) {
       label = new JLabel("Descrição")
         adicionarComponente(pnlDadosLocalEntrega, label, 0, 0, 3, 1)
         txtDescricaoLocal = new JTextField(20)
@@ -268,7 +268,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
 
       btExcluirLocal = new JButton("Excluir Selecionado")
       btExcluirLocal.addActionListener(this)
-      if(cliente == null)
+      if (cliente == null)
         btExcluirLocal.setEnabled(false)
           adicionarComponente(pnlDadosLocalEntrega, btExcluirLocal, 10, 0, 1, 1)
           pnlAreaDados.add(pnlDadosLocalEntrega, "localentrega")
@@ -297,10 +297,10 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       cbxPais.addItem("Selecione...")
       String siglaPais
       int indicePais = 0
-      for(int i = 1;i < paises.size(); i++) {
-        if(cliente != null) {
+      for (int i = 1;i < paises.size(); i++) {
+        if (cliente != null) {
           siglaPais = ((Pais)paises.get(i)).getSigla()
-            if(cliente.obterPais().getSigla().equals(siglaPais)) {
+            if (cliente.obterPais().getSigla().equals(siglaPais)) {
               indicePais = i
             }
         }
@@ -315,10 +315,10 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       cbxEstado.addItem("Selecione...")
       String siglaEstado
       int indiceEstado = 0
-      for(int i = 1;i < estados.size(); i++) {
-        if(cliente != null) {
+      for (int i = 1;i < estados.size(); i++) {
+        if (cliente != null) {
           siglaEstado = ((Estado)estados.get(i)).getSigla()
-            if(cliente.obterEstado().getSigla().equals(siglaEstado)) {
+            if (cliente.obterEstado().getSigla().equals(siglaEstado)) {
               indiceEstado = i
             }
         }
@@ -332,7 +332,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
     cbxEstadoEntrega.removeAllItems()
       cbxEstadoEntrega.addItem("Selecione...")
 
-      for(int i = 1;i < estadosEntrega.size();i++) {
+      for (int i = 1;i < estadosEntrega.size();i++) {
         cbxEstadoEntrega.addItem(((Estado)estadosEntrega.get(i)).getNome())
       }
     dimencionar()
@@ -346,9 +346,9 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         String[] cabecalhos = ['Local', 'Endereço']
         LocalEntrega localEntrega
         int linha = 0
-        for(int i = 0;i < locaisEntrega.size();i++) {
+        for (int i = 0;i < locaisEntrega.size();i++) {
           localEntrega = (LocalEntrega)locaisEntrega.get(i)
-            if(!localEntrega.isInvalido()) {
+            if (!localEntrega.isInvalido()) {
               dados[linha][0] = localEntrega.obterDescricaoLocal()
               dados[linha++][1] = localEntrega.obterLogradouro() + localEntrega.obterComplemento() + localEntrega.obterBairro() + localEntrega.obterCidade() + localEntrega.obterEstado().getNome() + localEntrega.obterCep()
             }
@@ -378,7 +378,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoPais) {
+      if (objeto == btNovoPais) {
         DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao, 'I')
           dlgDadosPais.setVisible(true)
           try
@@ -392,7 +392,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         }
       }
 
-    if(objeto == btNovoEstado) {
+    if (objeto == btNovoEstado) {
       DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao, 'I')
         dlgDadosEstado.setVisible(true)
         try
@@ -406,7 +406,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       }
     }
 
-    if(objeto == btNovoEstadoEntrega) {
+    if (objeto == btNovoEstadoEntrega) {
       DlgDadosEstado dlgDadosEstado = new DlgDadosEstado(aplicacao, 'I')
         dlgDadosEstado.setVisible(true)
         try
@@ -420,7 +420,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       }
     }
 
-    if(objeto == btPreencherLocalEntrega) {
+    if (objeto == btPreencherLocalEntrega) {
       txtDescricaoLocal.setText(txtRazaoSocial.getText())
         txtLogradouroEntrega.setText(txtLogradouro.getText())
         txtComplementoEntrega.setText(txtComplemento.getText())
@@ -433,10 +433,10 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         btPreencherLocalEntrega.setEnabled(false)
     }
 
-    if(objeto == btAdicionarLocal) {
+    if (objeto == btAdicionarLocal) {
       try
       {
-        if(cliente == null) {
+        if (cliente == null) {
           cliente = new Cliente()
         }
         cliente.getLocaisEntrega().addElement(new LocalEntrega(cliente, 
@@ -458,28 +458,28 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       }
     }
 
-    if(objeto == btLimparLocal) {
+    if (objeto == btLimparLocal) {
       limparDadosLocalEntrega()
     }
 
-    if(objeto == btExcluirLocal) {
-      if(tblLocaisEntrega.getSelectedRow() >= 0) {
+    if (objeto == btExcluirLocal) {
+      if (tblLocaisEntrega.getSelectedRow() >= 0) {
         LocalEntrega locEntrega = (LocalEntrega)cliente.getLocaisEntrega().get(tblLocaisEntrega.getSelectedRow())
           locEntrega.setInvalido(true)
           atualizarTabelaLocaisEntrega()
       }
     }
 
-    if(objeto == btAnterior) {
+    if (objeto == btAnterior) {
       card.previous(pnlAreaDados)
         btAnterior.setEnabled(false)
         btProximo.setEnabled(true)
     }
 
-    if(objeto == btProximo) {
+    if (objeto == btProximo) {
       try
       {
-        if(cliente == null)
+        if (cliente == null)
           cliente = new Cliente()
             cliente.definirRazaoSocial(txtRazaoSocial.getText())
             cliente.definirNomeFantasia(txtNomeFantasia.getText())
@@ -507,7 +507,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       }
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try
       {
         cliente.definirRazaoSocial(txtRazaoSocial.getText())
@@ -538,7 +538,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

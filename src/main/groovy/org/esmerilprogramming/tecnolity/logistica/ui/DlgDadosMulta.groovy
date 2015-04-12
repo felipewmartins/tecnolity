@@ -75,7 +75,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
       try {
         veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
           cbxPlaca = new JComboBox(veiculos)
-          if(multa != null)
+          if (multa != null)
             cbxPlaca.setSelectedItem(multa.obterVeiculo())
       }
     catch (e) {
@@ -112,8 +112,8 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
     }
 
     int indiceMotorista = 0
-      for(int i = 1; i < motoristas.size(); i++) {
-        if((((Motorista)motoristas.get(i)).obterCodigo()) == ((this.multa)==null?0:this.multa.obterResponsabilidade())) {
+      for (int i = 1; i < motoristas.size(); i++) {
+        if ((((Motorista)motoristas.get(i)).obterCodigo()) == ((this.multa)==null?0:this.multa.obterResponsabilidade())) {
           indiceMotorista = i
         }
       }
@@ -177,7 +177,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
     cbxPlaca.removeAllItems()
       cbxPlaca.addItem("Selecione...")
 
-      for(int i = 1;i < veiculos.size();i++) {
+      for (int i = 1;i < veiculos.size();i++) {
         cbxPlaca.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
       }
   }
@@ -186,7 +186,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
     cbxMotorista.removeAllItems()
       cbxMotorista.addItem("Selecione...")
 
-      for(int i = 1;i < motoristas.size();i++) {
+      for (int i = 1;i < motoristas.size();i++) {
         cbxMotorista.addItem(((Motorista)motoristas.get(i)).obterMotorista())
       }
   }
@@ -194,7 +194,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoVeiculo) {
+      if (objeto == btNovoVeiculo) {
         DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao)
           dlgDadosVeiculo.setVisible(true)
           try {
@@ -207,7 +207,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
         }
       }
 
-    if(objeto == btNovoMotorista) {
+    if (objeto == btNovoMotorista) {
       DlgDadosMotorista dlgDadosMotorista = new DlgDadosMotorista(aplicacao, 'I')
         dlgDadosMotorista.setVisible(true)
         try {
@@ -221,12 +221,12 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
 
-    if(objeto == btConfirmar) {
-      if(multa == null) {
+    if (objeto == btConfirmar) {
+      if (multa == null) {
         try {
           multa = new Multa()
             multa.definirVeiculo((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex()))
@@ -266,7 +266,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
   void focusGained(FocusEvent e) {
     Component componente = e.getComponent()
 
-      if(componente == txtValor)
+      if (componente == txtValor)
         txtValor.selectAll()
   }
 }

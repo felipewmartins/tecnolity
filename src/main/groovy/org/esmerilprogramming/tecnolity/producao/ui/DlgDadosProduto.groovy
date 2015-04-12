@@ -172,8 +172,8 @@ class DlgDadosProduto extends JDialog implements ActionListener
       pnlSuporteCombo.add(btNovoTipoProducao, BorderLayout.EAST)
       adicionarComponente(pnlDadosProduto, pnlSuporteCombo, 3, 3, 1, 1)
       boolean destino = true
-      if(this.produto != null) {
-        if(this.produto.obterDestino() == 'E')
+      if (this.produto != null) {
+        if (this.produto.obterDestino() == 'E')
           destino = false
       }
     JPanel pnlExportacao = new JPanel(new GridLayout(2, 1))
@@ -196,7 +196,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       adicionarComponente(pnlDadosProduto, txtValor, 5, 2, 1, 1)
       txtCustoFabricacao = new JTextField(((this.produto != null)?Numero.inverterSeparador(this.produto.obterCustoFabricacao()):"0, 00"), 8)
       adicionarComponente(pnlDadosProduto, txtCustoFabricacao, 5, 3, 1, 1)
-      if(this.produto != null) {
+      if (this.produto != null) {
         try
         {
           label = new JLabel("Valor atualizado em: "  +  produto.getDataUltimaAlteracaoValor(this.aplicacao.obterConexao()))
@@ -246,7 +246,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       label = new JLabel("Matriz")
       adicionarComponente(pnlMateriaPrima, label, 0, 0, 1, 1)
       cbxMatriz = new JComboBox()
-      if(this.produto != null) {
+      if (this.produto != null) {
         try
         {
           Matriz matriz = new Matriz()
@@ -308,7 +308,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       pnlComandosTabela.add(btLimparMateriaPrima)
       adicionarComponente(pnlMateriaPrima, pnlComandosTabela, 4, 0, 3, 1)
       Object[][] dados = new Object[1000][5]
-      if(this.produto != null) {
+      if (this.produto != null) {
         try
         {
           dados = this.produto.carregarMateriasPrimas(aplicacao.obterConexao(), dados)
@@ -338,7 +338,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
 
       conteudo.add(pnlAreaDados, BorderLayout.CENTER)
       JPanel pnlComandos = new JPanel(new FlowLayout(FlowLayout.RIGHT))
-      if(this.produto != null) {
+      if (this.produto != null) {
         btImprimir = new JButton("Imprimir")
           btImprimir.addActionListener(this)
           btImprimir.setEnabled(true)
@@ -374,12 +374,12 @@ class DlgDadosProduto extends JDialog implements ActionListener
     cbxCliente.removeAllItems()
       cbxCliente.addItem("Selecione...")
       int posicao = 0
-      for(int i = 1;i < clientes.size();i++) {
-        if(cliente != null) {
-          if(cliente.obterCodigo() == ((Cliente)clientes.get(i)).obterCodigo())
+      for (int i = 1;i < clientes.size();i++) {
+        if (cliente != null) {
+          if (cliente.obterCodigo() == ((Cliente)clientes.get(i)).obterCodigo())
             posicao = i
-        }else if(produto != null) {
-          if(produto.obterCliente().obterCodigo() == ((Cliente)clientes.get(i)).obterCodigo())
+        }else if (produto != null) {
+          if (produto.obterCliente().obterCodigo() == ((Cliente)clientes.get(i)).obterCodigo())
             posicao = i
         }
         cbxCliente.addItem(((Cliente)clientes.get(i)).obterRazaoSocial())
@@ -392,7 +392,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
     cbxMatriz.removeAllItems()
       cbxMatriz.addItem("Selecione...")
       Matriz matriz
-      for(int i = 1;i < matrizes.size();i++) {
+      for (int i = 1;i < matrizes.size();i++) {
         matriz = (Matriz)matrizes.get(i)
           cbxMatriz.addItem(matriz.obterDescricao())
       }
@@ -402,7 +402,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
   private void carregarItens() {
     cbxItem.removeAllItems()
       cbxItem.addItem("Selecione...")
-      for(int i = 1;i < itens.size();i++) {
+      for (int i = 1;i < itens.size();i++) {
         cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
       }
     redimencionar()
@@ -413,12 +413,12 @@ class DlgDadosProduto extends JDialog implements ActionListener
       cbxComponente.addItem("Selecione...")
       int posicao = 0
       Componente componente
-      for(int i = 1;i < componentes.size();i++) {
+      for (int i = 1;i < componentes.size();i++) {
         componente = (Componente)componentes.get(i)
-          if(this.produto != null) {
+          if (this.produto != null) {
             try
             {
-              if(this.produto.obterComponente().obterNomeComponente(aplicacao.obterConexao()).equals(componente.obterNomeComponente()))
+              if (this.produto.obterComponente().obterNomeComponente(aplicacao.obterConexao()).equals(componente.obterNomeComponente()))
                 posicao = i
             }
             catch (e) {
@@ -436,10 +436,10 @@ class DlgDadosProduto extends JDialog implements ActionListener
       cbxTipoProducao.addItem("Selecione...")
       int posicao = 0
       TipoProducao tipoProducao
-      for(int i = 1;i < tiposProducao.size();i++) {
+      for (int i = 1;i < tiposProducao.size();i++) {
         tipoProducao = (TipoProducao)tiposProducao.get(i)
-          if(this.produto != null) {
-            if(this.produto.obterTipoProducao().obterCodigo() == tipoProducao.obterCodigo())
+          if (this.produto != null) {
+            if (this.produto.obterTipoProducao().obterCodigo() == tipoProducao.obterCodigo())
               posicao = i
           }
         cbxTipoProducao.addItem(tipoProducao.obterTipoProducao())
@@ -476,15 +476,15 @@ class DlgDadosProduto extends JDialog implements ActionListener
   }
 
   private void carregarFormMateriaPrima(MateriaPrima materiaPrima) {
-    for(int i = 1;i < matrizes.size();i++) {
-      if(materiaPrima.obterMatriz().obterDescricao().equals(((Matriz)matrizes.get(i)).obterDescricao())) {
+    for (int i = 1;i < matrizes.size();i++) {
+      if (materiaPrima.obterMatriz().obterDescricao().equals(((Matriz)matrizes.get(i)).obterDescricao())) {
         this.cbxMatriz.setSelectedIndex(i)
           break
       }
     }
 
-    for(int i = 1;i < itens.size();i++) {
-      if(materiaPrima.obterItem().obterCodigo() == ((Item)itens.get(i)).obterCodigo()) {
+    for (int i = 1;i < itens.size();i++) {
+      if (materiaPrima.obterItem().obterCodigo() == ((Item)itens.get(i)).obterCodigo()) {
         this.cbxItem.setSelectedIndex(i)
           break
       }
@@ -495,7 +495,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoCliente) {
+      if (objeto == btNovoCliente) {
         DlgDadosCliente dlgDadosCliente = new DlgDadosCliente(aplicacao)
           dlgDadosCliente.setVisible(true)
           try
@@ -511,7 +511,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
         redimencionar()
       }
 
-    if(objeto == btNovoComponente) {
+    if (objeto == btNovoComponente) {
       DlgDadosComponente dlgDadosComponente = new DlgDadosComponente(aplicacao, 'I')
         dlgDadosComponente.setVisible(true)
         try
@@ -526,7 +526,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btNovoTipoProducao) {
+    if (objeto == btNovoTipoProducao) {
       DlgDadosTipoProducao dlgDadosTipoProducao = new DlgDadosTipoProducao(aplicacao, 'I')
         dlgDadosTipoProducao.setVisible(true)
         try
@@ -541,18 +541,18 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == cbxMatriz) {
-      if(this.materiasPrimas.size() > 0) {
+    if (objeto == cbxMatriz) {
+      if (this.materiasPrimas.size() > 0) {
         this.btReassociarItens.setVisible(true)
           this.pack()
       }
-      if(cbxMatriz.getSelectedIndex() == 0) {
+      if (cbxMatriz.getSelectedIndex() == 0) {
         this.btReassociarItens.setVisible(false)
           this.pack()
       }
     }
 
-    if(objeto == btNovaMatriz) {
+    if (objeto == btNovaMatriz) {
       DlgDadosMatriz dlgDadosMatriz = new DlgDadosMatriz(aplicacao, produto)
         dlgDadosMatriz.setVisible(true)
         try
@@ -567,13 +567,13 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btReassociarItens) {
-      if(materiasPrimasIniciais == null) {
+    if (objeto == btReassociarItens) {
+      if (materiasPrimasIniciais == null) {
         materiasPrimasIniciais = new Vector()
-          for(int i = 0;i < materiasPrimas.size();i++) {
+          for (int i = 0;i < materiasPrimas.size();i++) {
             materiasPrimasIniciais.addElement(materiasPrimas.get(i))
           }
-        for(int i = 0;i < materiasPrimasIniciais.size();i++) {
+        for (int i = 0;i < materiasPrimasIniciais.size();i++) {
           try
           {
             MateriaPrima mp = ((MateriaPrima)materiasPrimasIniciais.get(i)).clonar()
@@ -593,7 +593,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
       else
       {
-        for(int i = 0;i < materiasPrimasIniciais.size();i++) {
+        for (int i = 0;i < materiasPrimasIniciais.size();i++) {
           try
           {
             MateriaPrima mp = ((MateriaPrima)materiasPrimasIniciais.get(i)).clonar()
@@ -612,7 +612,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btNovoItem) {
+    if (objeto == btNovoItem) {
       DlgDadosItem dlgDadosItem = new DlgDadosItem(aplicacao, 'I')
         dlgDadosItem.setVisible(true)
         try
@@ -626,7 +626,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btAdicionarMateriaPrima) {
+    if (objeto == btAdicionarMateriaPrima) {
       try
       {
         materiasPrimas.addElement(new MateriaPrima(((Item)itens.get(cbxItem.getSelectedIndex())), ((Matriz)matrizes.get(cbxMatriz.getSelectedIndex())), Float.parseFloat(Numero.inverterSeparador(txtQuantidade.getText()))))
@@ -642,7 +642,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btAlterarMateriaPrima) {
+    if (objeto == btAlterarMateriaPrima) {
       try
       {
         materiasPrimas.setElementAt(new MateriaPrima(((Item)itens.get(cbxItem.getSelectedIndex())), ((Matriz)matrizes.get(cbxMatriz.getSelectedIndex())), Float.parseFloat(Numero.inverterSeparador(txtQuantidade.getText()))), idMatPrimSelecionada)
@@ -658,13 +658,13 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btLimparMateriaPrima) {
+    if (objeto == btLimparMateriaPrima) {
       inicializarFormMateriaPrima()
     }
 
-    if(objeto == btAlterarSelecionado) {
+    if (objeto == btAlterarSelecionado) {
       int linhaSelecionada = tblMateriaPrima.getSelectedRow()
-        if(linhaSelecionada >= 0) {
+        if (linhaSelecionada >= 0) {
           this.idMatPrimSelecionada = linhaSelecionada
             carregarFormMateriaPrima((MateriaPrima)materiasPrimas.get(linhaSelecionada))
             btAlterarMateriaPrima.setEnabled(true)
@@ -675,17 +675,17 @@ class DlgDadosProduto extends JDialog implements ActionListener
         }
     }
 
-    if(objeto == btRemoverMateriaPrima) {
+    if (objeto == btRemoverMateriaPrima) {
       int linhaSelecionada = tblMateriaPrima.getSelectedRow()
-        if(linhaSelecionada >= 0) {
+        if (linhaSelecionada >= 0) {
           this.materiasPrimas.removeElementAt(linhaSelecionada)
 
             tblMateriaPrima.setValueAt("", linhaSelecionada, 0)
             tblMateriaPrima.setValueAt("", linhaSelecionada, 1)
             tblMateriaPrima.setValueAt("", linhaSelecionada, 2)
 
-            if(linhaSelecionada < (indiceTabela - 1)) {
-              for(int i = linhaSelecionada;i < (indiceTabela - 1);i++) {
+            if (linhaSelecionada < (indiceTabela - 1)) {
+              for (int i = linhaSelecionada;i < (indiceTabela - 1);i++) {
                 tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 0), i, 0)
                   tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 1), i, 1)
                   tblMateriaPrima.setValueAt(tblMateriaPrima.getValueAt(i + 1, 2), i, 2)
@@ -707,19 +707,19 @@ class DlgDadosProduto extends JDialog implements ActionListener
         }
     }
 
-    if(objeto == btAnterior) {
+    if (objeto == btAnterior) {
       card.show(pnlAreaDados, "produto")
         btAnterior.setEnabled(false)
         btProximo.setEnabled(true)
     }
 
-    if(objeto == btProximo) {
+    if (objeto == btProximo) {
       card.show(pnlAreaDados, "materiaprima")
         btAnterior.setEnabled(true)
         btProximo.setEnabled(false)
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try
       {
         this.produto.definirReferenciaCliente(txtReferenciaCliente.getText())
@@ -745,7 +745,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btConfirmarParcial) {
+    if (objeto == btConfirmarParcial) {
       switch (indiceCard) {
         /* Salva o produto e segue para o cadastro de matrizes.*/
         case 0:
@@ -796,7 +796,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btImprimir) {
+    if (objeto == btImprimir) {
       try
       {
         RelatorioProduto relProduto = new RelatorioProduto(produto)
@@ -811,7 +811,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

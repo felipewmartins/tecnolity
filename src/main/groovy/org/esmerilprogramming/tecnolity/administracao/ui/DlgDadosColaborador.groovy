@@ -82,13 +82,13 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     ButtonGroup grupo = new ButtonGroup()
     rdbSexoMasculino = new JRadioButton('Masculino')
     if (colaborador)
-        if(this.colaborador.obterSexo() == 'M' || this.colaborador.obterSexo() == '\u0000')
+        if (this.colaborador.obterSexo() == 'M' || this.colaborador.obterSexo() == '\u0000')
           rdbSexoMasculino.setSelected(true)
             grupo.add(rdbSexoMasculino)
             pnlSexo.add(rdbSexoMasculino)
             rdbSexoFeminino = new JRadioButton('Feminino')
-            if(colaborador != null)
-              if(this.colaborador.obterSexo() == 'F')
+            if (colaborador != null)
+              if (this.colaborador.obterSexo() == 'F')
                 rdbSexoFeminino.setSelected(true)
                   grupo.add(rdbSexoFeminino)
                   pnlSexo.add(rdbSexoFeminino)
@@ -121,8 +121,8 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
                   this.carregarDepartamentos(cbxDepartamento)
 
                   int indiceDepartamento = 0
-                  for(int i = 1; i < departamentos.size(); i++) {
-                    if((((Departamento)departamentos.get(i)).obterNomeDepartamento()).equals((this.colaborador.obterDepartamento())==null?'':(this.colaborador.obterDepartamento()).obterNomeDepartamento())) {
+                  for (int i = 1; i < departamentos.size(); i++) {
+                    if ((((Departamento)departamentos.get(i)).obterNomeDepartamento()).equals((this.colaborador.obterDepartamento())==null?'':(this.colaborador.obterDepartamento()).obterNomeDepartamento())) {
                       indiceDepartamento = i
                     }
                   }
@@ -174,8 +174,8 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     }
 
     int indiceEstado = 0
-      for(int i = 1; i < estados.size(); i++) {
-        if((((Estado)estados.get(i)).getSigla()).equals((this.colaborador.obterEstado())==null?'':(this.colaborador.obterEstado()).getSigla())) {
+      for (int i = 1; i < estados.size(); i++) {
+        if ((((Estado)estados.get(i)).getSigla()).equals((this.colaborador.obterEstado())==null?'':(this.colaborador.obterEstado()).getSigla())) {
           indiceEstado = i
         }
       }
@@ -219,7 +219,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       label = new JLabel('Confirmação de Senha')
       adicionarComponente(pnlAutenticacao, label, 0, 2, 1, 1)
       txtMatricula = new JTextField(this.colaborador.obterMatricula(), 10)
-      if(modo == 'A') {
+      if (modo == 'A') {
         txtMatricula.setEditable(false)
       }
     adicionarComponente(pnlAutenticacao, txtMatricula, 1, 0, 1, 1)
@@ -257,7 +257,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     cbxEstado.removeAllItems()
       cbxEstado.addItem('Selecione...')
 
-      for(int i = 1;i < estados.size();i++) {
+      for (int i = 1;i < estados.size();i++) {
         cbxEstado.addItem(((Estado)estados.get(i)).getNome())
       }
   }
@@ -268,7 +268,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       try {
         departamentos = departamento.carregarDepartamentos(aplicacao.obterConexao())
           comboBox.addItem('Selecione...')
-          for(int i=1;i < this.departamentos.size();i++) {
+          for (int i=1;i < this.departamentos.size();i++) {
             comboBox.addItem(((Departamento)this.departamentos.get(i)).obterNomeDepartamento())
           }
       }
@@ -313,7 +313,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       }
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
         colaborador.matricula = txtMatricula.getText()
         colaborador.senha = txpSenha.getPassword() as String
@@ -348,7 +348,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       setVisible(false)
     }
   }

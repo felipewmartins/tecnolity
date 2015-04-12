@@ -102,14 +102,14 @@ class DlgDadosTipoProducao extends JDialog implements ActionListener, FocusListe
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar) {
+      if (objeto == btConfirmar) {
         tipoProducao.definirCodigo(Integer.parseInt(txtIdentificador.getText()))
           tipoProducao.definirTipoProducao(txtTipoProducao.getText())
           tipoProducao.cadastrarTipoProducao()
           this.setVisible(false)
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

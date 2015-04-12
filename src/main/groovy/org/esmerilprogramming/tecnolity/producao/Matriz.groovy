@@ -61,7 +61,7 @@ class Matriz {
 
   void definirReferencia(String referencia) throws Exception
   {
-    if(referencia.equals("") || referencia == null) {
+    if (referencia.equals("") || referencia == null) {
       Exception e = new Exception("A referência não foi informada.")
         throw e
     }
@@ -70,7 +70,7 @@ class Matriz {
 
   private void definirReferenciaOriginal(String referencia) throws Exception
   {
-    if(referencia.equals("") || referencia == null) {
+    if (referencia.equals("") || referencia == null) {
       Exception e = new Exception("A referência não foi informada.")
         throw e
     }
@@ -79,7 +79,7 @@ class Matriz {
 
   void definirNumeroSola(int numeroSola) throws Exception
   {
-    if(numeroSola <= 0) {
+    if (numeroSola <= 0) {
       Exception e = new Exception("Número da sola inválida.")
         throw e
     }
@@ -88,7 +88,7 @@ class Matriz {
 
   void definirNumeroSolaOriginal(int numeroSola) throws Exception
   {
-    if(numeroSola <= 0) {
+    if (numeroSola <= 0) {
       Exception e = new Exception("Número da sola inválida.")
         throw e
     }
@@ -97,7 +97,7 @@ class Matriz {
 
   void definirQuantidade(int quantidade) throws Exception
   {
-    if(quantidade <= 0) {
+    if (quantidade <= 0) {
       Exception e = new Exception("Quantidade informada inválida.")
         throw e
     }
@@ -107,22 +107,22 @@ class Matriz {
   String obterDescricao() {
     String descricao = ""
       descricao = this.referencia  +  " - " + this.numeroSola
-      if(this.dureza > 0.0f || this.densidade > 0.0f || this.peso > 0.0f || this.volume > 0.0f) {
+      if (this.dureza > 0.0f || this.densidade > 0.0f || this.peso > 0.0f || this.volume > 0.0f) {
         descricao += "("
       }
-    if(this.dureza > 0.0f) {
+    if (this.dureza > 0.0f) {
       descricao += "Du:" + this.dureza
     }
-    if(this.densidade > 0.0f) {
+    if (this.densidade > 0.0f) {
       descricao += "/De:" + this.densidade
     }
-    if(this.peso > 0.0f) {
+    if (this.peso > 0.0f) {
       descricao += "/Pe:" + this.peso
     }
-    if(this.volume > 0.0f) {
+    if (this.volume > 0.0f) {
       descricao += "/Vo:" + this.volume
     }
-    if(this.dureza > 0.0f || this.densidade > 0.0f || this.peso > 0.0f || this.volume > 0.0f) {
+    if (this.dureza > 0.0f || this.densidade > 0.0f || this.peso > 0.0f || this.volume > 0.0f) {
       descricao += ")"
     }
     return descricao
@@ -161,9 +161,9 @@ class Matriz {
   void cadastrarMatriz() throws Exception
   {
     Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         ResultSet dadosMatriz = conexao.executarConsulta("select * from matriz_modelo where referencia = '" +  this.referencia + "' and numero_sola = " + this.numeroSola)
-          if(dadosMatriz.next()) {
+          if (dadosMatriz.next()) {
             Exception e = new Exception("Já existe uma matriz cadastrada com a referência e o número de sola informados.")
               throw e
           }
@@ -184,14 +184,14 @@ class Matriz {
     Conexao conexao = new Conexao('T')
       String query = ""
       boolean mudouChave = true
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         query = "select referencia, numero_sola from matriz_modelo where referencia = '" +  this.obterReferencia() + "' and numero_sola = " + this.obterNumeroSola()
           ResultSet dadosMatriz = conexao.executarConsulta(query)
-          if(this.referencia.equals(this.referenciaOriginal) && (this.numeroSola == this.numeroSolaOriginal)) {
+          if (this.referencia.equals(this.referenciaOriginal) && (this.numeroSola == this.numeroSolaOriginal)) {
             mudouChave = false
           }
 
-        if(dadosMatriz.next() && mudouChave) {
+        if (dadosMatriz.next() && mudouChave) {
           Exception e = new Exception("Já existe uma matriz com a referência e número de sola informados.")
             throw e
         }
@@ -213,7 +213,7 @@ class Matriz {
   void carregarMatriz(Conexao conexao) throws Exception
   {
     ResultSet dadosMatriz = conexao.executarConsulta("select * from matriz_modelo where referencia = '" +  this.referencia + "' and numero_sola = " + this.numeroSola)
-      if(dadosMatriz.next()) {
+      if (dadosMatriz.next()) {
         definirQuantidade(dadosMatriz.getInt("quantidade"))
           definirDureza(dadosMatriz.getFloat("dureza"))
           definirDensidade(dadosMatriz.getFloat("densidade"))
@@ -231,7 +231,7 @@ class Matriz {
   void excluirMatriz() throws Exception
   {
     Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao("delete from matriz_modelo where referencia = '" +  this.referencia + "' and numero_sola = " + this.numeroSola)
           conexao.fecharConexao()
       }

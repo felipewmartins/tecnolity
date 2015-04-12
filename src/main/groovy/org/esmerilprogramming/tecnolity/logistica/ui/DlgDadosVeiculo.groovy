@@ -78,9 +78,9 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       try {
         this.transportadoras = Transportadora.carregarTransportadoras(aplicacao.obterConexao())
           cbxTransportadora = new JComboBox(this.transportadoras)
-          if(veiculo != null) {
-            for(int i = 1;i < transportadoras.size();i++) {
-              if(((Transportadora)transportadoras.get(i)).obterNome().equals(veiculo.obterTransportadora().obterNome())) {
+          if (veiculo != null) {
+            for (int i = 1;i < transportadoras.size();i++) {
+              if (((Transportadora)transportadoras.get(i)).obterNome().equals(veiculo.obterTransportadora().obterNome())) {
                 cbxTransportadora.setSelectedIndex(i)
                   break
               }
@@ -197,7 +197,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
     cbxTransportadora.removeAllItems()
       cbxTransportadora.addItem("Selecione...")
 
-      for(int i = 1;i < transportadoras.size();i++) {
+      for (int i = 1;i < transportadoras.size();i++) {
         cbxTransportadora.addItem(((Transportadora)transportadoras.get(i)).obterNome())
       }
     this.pack()
@@ -207,7 +207,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovaTransportadora) {
+      if (objeto == btNovaTransportadora) {
         DlgDadosTransportadora dlgDadosTransportadora = new DlgDadosTransportadora(aplicacao, 'I')
           dlgDadosTransportadora.setVisible(true)
           try {
@@ -221,9 +221,9 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
         }
       }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
-        if(veiculo == null) {
+        if (veiculo == null) {
           veiculo = new Veiculo(this.txtPlaca.getText(), (Transportadora)this.cbxTransportadora.getSelectedItem(), this.txtChassi.getText(), this.txtRenavam.getText(),
               this.txtMarca.getText(), this.txtModelo.getText(), this.txtAno.getText(), this.txtCor.getText(),
               Integer.parseInt(this.txtNumeroEixo.getText()), Float.parseFloat(Numero.inverterSeparador(this.txtCubagem.getText())),
@@ -262,7 +262,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

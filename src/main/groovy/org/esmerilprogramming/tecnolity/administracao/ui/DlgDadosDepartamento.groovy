@@ -93,10 +93,10 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
     cbxResponsavel.removeAllItems()
     cbxResponsavel.addItem('Selecione...')
     int selecionado = 0
-    for(int i = 1;i < responsaveis.size();i++) {
+    for (int i = 1;i < responsaveis.size();i++) {
       Colaborador colaborador = (Colaborador)responsaveis.get(i)
-      if(departamento.obterResponsavel() != null)
-        if(colaborador.obterMatricula().equals(departamento.obterResponsavel().obterMatricula()))
+      if (departamento.obterResponsavel() != null)
+        if (colaborador.obterMatricula().equals(departamento.obterResponsavel().obterMatricula()))
           selecionado = i
       cbxResponsavel.addItem(colaborador.getNome())
     }
@@ -115,8 +115,8 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-    if(objeto == btConfirmar) {
-      if(departamento.obterCodigo() > 0) {
+    if (objeto == btConfirmar) {
+      if (departamento.obterCodigo() > 0) {
         try {
           departamento.alterarDepartamento(txtNomeDepartamento.getText(), (Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
           this.setVisible(false)
@@ -135,7 +135,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

@@ -100,7 +100,7 @@ class Fornecedor {
 
   void definirRazaoSocial(String razaoSocial) throws Exception
   {
-    if(!razaoSocial.equals("") && razaoSocial.length() <= 60)
+    if (!razaoSocial.equals("") && razaoSocial.length() <= 60)
       this.razaoSocial = razaoSocial.trim()
     else
     {
@@ -111,7 +111,7 @@ class Fornecedor {
 
   void definirCnpj(String cnpj) throws Exception
   {
-    if(cnpj.length() <= 15)
+    if (cnpj.length() <= 15)
       this.cnpj = cnpj.trim()
     else
     {
@@ -123,10 +123,10 @@ class Fornecedor {
   void definirPercentualIcms(int percentualICMS) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(percentualICMS))
+      if (Float.isNaN(percentualICMS))
         erro = "O Valor do Percentual do ICMS não foi informado corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -136,7 +136,7 @@ class Fornecedor {
 
   void definirLogradouro(String logradouro) throws Exception
   {
-    if(!logradouro.equals("") && logradouro.length() <= 60)
+    if (!logradouro.equals("") && logradouro.length() <= 60)
       this.logradouro = logradouro
     else
     {
@@ -147,7 +147,7 @@ class Fornecedor {
 
   void definirComplemento(String complemento) throws Exception
   {
-    if(complemento.length() <= 30)
+    if (complemento.length() <= 30)
       this.complemento = complemento
     else
     {
@@ -158,7 +158,7 @@ class Fornecedor {
 
   void definirBairro(String bairro) throws Exception
   {
-    if(bairro.length() <= 50)
+    if (bairro.length() <= 50)
       this.bairro = bairro
     else
     {
@@ -169,7 +169,7 @@ class Fornecedor {
 
   void definirCidade(String cidade) throws Exception
   {
-    if(!cidade.equals("") && cidade.length() <= 60)
+    if (!cidade.equals("") && cidade.length() <= 60)
       this.cidade = cidade
     else
     {
@@ -180,7 +180,7 @@ class Fornecedor {
 
   void definirEstado(Estado estado) throws Exception
   {
-    if(estado != null)
+    if (estado != null)
       this.estado = estado
     else
     {
@@ -191,7 +191,7 @@ class Fornecedor {
 
   void definirPais(Pais pais) throws Exception
   {
-    if(pais != null)
+    if (pais != null)
       this.pais = pais
     else
     {
@@ -202,7 +202,7 @@ class Fornecedor {
 
   void definirCep(String cep) throws Exception
   {
-    if(cep.length() <= 8)
+    if (cep.length() <= 8)
       this.cep = cep
     else
     {
@@ -213,7 +213,7 @@ class Fornecedor {
 
   void definirDdd(String ddd) throws Exception
   {
-    if(!ddd.equals("") && ddd.length() <= 3)
+    if (!ddd.equals("") && ddd.length() <= 3)
       this.ddd = ddd
     else
     {
@@ -224,7 +224,7 @@ class Fornecedor {
 
   void definirTelefone(String telefone) throws Exception
   {
-    if(!telefone.equals("") && telefone.length() <= 8)
+    if (!telefone.equals("") && telefone.length() <= 8)
       this.telefone = telefone
     else
     {
@@ -235,7 +235,7 @@ class Fornecedor {
 
   void definirRamal(String ramal) throws Exception
   {
-    if(ramal.length() <= 8)
+    if (ramal.length() <= 8)
       this.ramal = ramal
     else
     {
@@ -246,7 +246,7 @@ class Fornecedor {
 
   void definirFax(String fax) throws Exception
   {
-    if(fax.length() <= 8)
+    if (fax.length() <= 8)
       this.fax = fax
     else
     {
@@ -257,7 +257,7 @@ class Fornecedor {
 
   void definirEmail(String email) throws Exception
   {
-    if(email.length() <= 50)
+    if (email.length() <= 50)
       this.email = email
     else
     {
@@ -268,7 +268,7 @@ class Fornecedor {
 
   void definirWebsite(String website) throws Exception
   {
-    if(website.length() <= 50)
+    if (website.length() <= 50)
       this.website = website
     else
     {
@@ -282,7 +282,7 @@ class Fornecedor {
     String query = "select * from fornecedor where codigo = "  +  this.codigo + " "
       try {
         ResultSet resultado = conexao.executarConsulta(query)
-          if(resultado.next()) {
+          if (resultado.next()) {
             this.razaoSocial = resultado.getString("razao_social")
               this.cnpj = resultado.getString("cnpj")
               this.percentualICMS = resultado.getInt("percentual_icms")
@@ -318,7 +318,7 @@ class Fornecedor {
       Vector fornecedores = new Vector()
       dadosFornecedor = conexao.executarConsulta("select codigo, razao_social, cnpj from fornecedor order by razao_social asc")
       fornecedores.addElement(null)
-      while(dadosFornecedor.next()) {
+      while (dadosFornecedor.next()) {
         fornecedores.addElement(new Fornecedor(dadosFornecedor.getInt("codigo"), dadosFornecedor.getString("razao_social"), dadosFornecedor.getString("cnpj")))
       }
     dadosFornecedor.close()
@@ -332,7 +332,7 @@ class Fornecedor {
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         ResultSet dadosFornecedor = conexao.executarConsulta("select cnpj from fornecedor where cnpj = '" +  this.cnpj + "'")
-          if(dadosFornecedor.next()) {
+          if (dadosFornecedor.next()) {
             Exception e = new Exception("Já existe um Fornecedor com o CNPJ informado.")
               throw e
           }
@@ -373,7 +373,7 @@ class Fornecedor {
 
       if (conexao.abrirConexao()) {
         ResultSet fornecedor = conexao.executarConsulta("select * from fornecedor_item where fornecedor = " +  codigo + " ")
-          if(fornecedor.next()) {
+          if (fornecedor.next()) {
             existente = true
               Exception e = new Exception("Existe um item associado a este fornecedor. Não foi possível realizar a exclusão.")
               throw e
@@ -404,8 +404,8 @@ class Fornecedor {
       "from fornecedor f, item i, fornecedor_item fi "  + 
       "where f.codigo = fi.fornecedor and i.codigo = fi.item and f.codigo = " +  this.obterCodigo() + " and i.independente = 0 "
       ResultSet rsItensIndependentes = conexao.executarConsulta(query)
-      if(rsItensIndependentes.next()) {
-        if(rsItensIndependentes.getInt(1) > 0)
+      if (rsItensIndependentes.next()) {
+        if (rsItensIndependentes.getInt(1) > 0)
           return false // possui algum item dependente de pedido.
       }
     return true // não possui nenhum item dependente de pedido.

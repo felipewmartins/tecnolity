@@ -111,8 +111,8 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       carregarUnidades(cbxUnidadeTecnolity)
 
       int indiceUnidade = 0
-      for(int i = 1; i < unidades.size(); i++) {
-        if((((Unidade)unidades.get(i)).obterNomeUnidade()).equals((this.item.obterUnidade())==null?'':(this.item.obterUnidade()).obterNomeUnidade())) {
+      for (int i = 1; i < unidades.size(); i++) {
+        if ((((Unidade)unidades.get(i)).obterNomeUnidade()).equals((this.item.obterUnidade())==null?'':(this.item.obterUnidade()).obterNomeUnidade())) {
           indiceUnidade = i
         }
       }
@@ -136,8 +136,8 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       categorias = categoria.carregarCategorias(cbxCategoria, aplicacao)
 
       int indiceCategoria = 0
-      for(int i = 1; i < categorias.size(); i++) {
-        if((((Categoria)categorias.get(i)).obterNomeCategoria()).equals((this.item.obterCategoria())==null?'':(this.item.obterCategoria()).obterNomeCategoria())) {
+      for (int i = 1; i < categorias.size(); i++) {
+        if ((((Categoria)categorias.get(i)).obterNomeCategoria()).equals((this.item.obterCategoria())==null?'':(this.item.obterCategoria()).obterNomeCategoria())) {
           indiceCategoria = i
         }
       }
@@ -156,7 +156,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       adicionarComponente(pnlDadosItem, txtTemperatura, 3, 2, 1, 1)
       chbReservavel = new JCheckBox('Independente')
       adicionarComponente(pnlDadosItem, chbReservavel, 3, 3, 1, 1)
-      if(this.item.obterIndependente())
+      if (this.item.obterIndependente())
         chbReservavel.setSelected(true)
       else
         chbReservavel.setSelected(false)
@@ -170,12 +170,12 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           pnlSituacao.setBorder(new TitledBorder('Situação'))
           ButtonGroup grupo = new ButtonGroup()
           rdbSituacaoAtiva = new JRadioButton('Ativo')
-          if(this.item.obterAtivo())
+          if (this.item.obterAtivo())
             rdbSituacaoAtiva.setSelected(true)
               grupo.add(rdbSituacaoAtiva)
               pnlSituacao.add(rdbSituacaoAtiva)
               rdbSituacaoDesativa = new JRadioButton('Inativo')
-              if(!this.item.obterAtivo())
+              if (!this.item.obterAtivo())
                 rdbSituacaoDesativa.setSelected(true)
                   grupo.add(rdbSituacaoDesativa)
                   pnlSituacao.add(rdbSituacaoDesativa)
@@ -382,7 +382,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           unidades = new Vector()
           unidades.addElement(null)
           int i = 1
-          while(dadosUnidade.next()) {
+          while (dadosUnidade.next()) {
             unidades.addElement(new Unidade(dadosUnidade.getInt('codigo'), dadosUnidade.getString('unidade')))
               comboBox.addItem(((Unidade)unidades.get(i)).obterNomeUnidade())
               i++
@@ -406,7 +406,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           fornecedores.addElement(null)
           int i = 1
           String cnpj, razaoSocial
-          while(dadosFornecedor.next()) {
+          while (dadosFornecedor.next()) {
             fornecedores.addElement(new Fornecedor(dadosFornecedor.getInt('codigo'), dadosFornecedor.getString('razao_social'), dadosFornecedor.getString('cnpj')))
               cnpj = (((Fornecedor)fornecedores.get(i)).obterCnpj()).trim()
               razaoSocial = (((Fornecedor)fornecedores.get(i)).obterRazaoSocial()).trim()
@@ -426,14 +426,14 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       Conexao conexao = aplicacao.obterConexao()
       DefaultListModel modeloLista = new DefaultListModel()
       try {
-        if(item.obterCodigo() == 0)
+        if (item.obterCodigo() == 0)
           dadosDepartamento = conexao.executarConsulta('select codigo, departamento from departamento order by departamento asc')
         else
           dadosDepartamento = conexao.executarConsulta('select distinct departamento.codigo, departamento.departamento from departamento, departamento_item where departamento.codigo not in (select departamento from departamento_item where item = ' +  this.item.obterCodigo() +') and departamento_item.item = '+ this.item.obterCodigo() +' order by departamento.departamento asc')
             departamentos = new Vector()
             int i = 0
             list.setModel(modeloLista)
-            while(dadosDepartamento.next()) {
+            while (dadosDepartamento.next()) {
               departamentos.addElement(new Departamento(dadosDepartamento.getInt('codigo'), dadosDepartamento.getString('departamento')))
                 modeloLista.addElement(((Departamento)departamentos.get(i)).obterNomeDepartamento())
                 i++
@@ -455,7 +455,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           departamentosSelecionados = new Vector()
           int i = 0
           list.setModel(modeloLista)
-          while(dadosDepartamento.next()) {
+          while (dadosDepartamento.next()) {
             departamentosSelecionados.addElement(new Departamento(dadosDepartamento.getInt('codigo'), dadosDepartamento.getString('departamento')))
               modeloLista.addElement(((Departamento)departamentosSelecionados.get(i)).obterNomeDepartamento())
               i++
@@ -485,7 +485,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               String moeda
               String referenciaFornecedor
 
-              while(resultado.next()) {
+              while (resultado.next()) {
                 codigoFornecedor = resultado.getInt('fornecedor_codigo')
                   cnpj = resultado.getString('cnpj_fornecedor')
                   razaoSocialFornecedor = resultado.getString('razao_social')
@@ -531,37 +531,37 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovaUnidadeTecnolity) {
+      if (objeto == btNovaUnidadeTecnolity) {
         DlgDadosUnidade dlgDadosUnidade = new DlgDadosUnidade(aplicacao, 'I')
           dlgDadosUnidade.setVisible(true)
           carregarUnidades(this.cbxUnidadeTecnolity)
           carregarUnidades(this.cbxUnidadeFornecedor)
       }
 
-    if(objeto == btNovaCategoria) {
+    if (objeto == btNovaCategoria) {
       DlgDadosCategoria dlgDadosCategoria = new DlgDadosCategoria(aplicacao, 'I')
         dlgDadosCategoria.setVisible(true)
         categorias = categoria.carregarCategorias(this.cbxCategoria, aplicacao)
     }
 
-    if(objeto == btNovoFornecedor) {
+    if (objeto == btNovoFornecedor) {
       DlgDadosFornecedor dlgDadosFornecedor = new DlgDadosFornecedor(aplicacao, 'I')
         dlgDadosFornecedor.setVisible(true)
         carregarFornecedores(this.cbxFornecedor)
     }
 
-    if(objeto == btNovaUnidadeFornecedor) {
+    if (objeto == btNovaUnidadeFornecedor) {
       DlgDadosUnidade dlgDadosUnidade = new DlgDadosUnidade(aplicacao, 'I')
         dlgDadosUnidade.setVisible(true)
         carregarUnidades(this.cbxUnidadeTecnolity)
         carregarUnidades(this.cbxUnidadeFornecedor)
     }
 
-    if(objeto == btConfirmarAlteracao) {
+    if (objeto == btConfirmarAlteracao) {
       try {
         boolean fornecedorInserido = false
 
-          if(!fornecedorInserido) {
+          if (!fornecedorInserido) {
             fornecedoresItem.setElementAt(new FornecedorItem((Fornecedor)fornecedores.get(cbxFornecedor.getSelectedIndex()), (Item)this.item, this.txtDataAtualizacao.getText(), (Unidade)unidades.get(cbxUnidadeFornecedor.getSelectedIndex()), Float.parseFloat(Numero.inverterSeparador(txtValorUnitario.getText())), (String)cbxMoeda.getSelectedItem(), txtReferenciaFornecedor.getText()), linhaSelecionada)
               tblFornecedores.setValueAt(cbxFornecedor.getSelectedItem(), linhaSelecionada, 0)
               tblFornecedores.setValueAt(cbxUnidadeFornecedor.getSelectedItem(), linhaSelecionada, 1)
@@ -585,16 +585,16 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       btConfirmarAlteracao.setEnabled(false)
     }
 
-    if(objeto == btAdicionarFornecedor) {
-      if(numeroFornecedores < 20) {
+    if (objeto == btAdicionarFornecedor) {
+      if (numeroFornecedores < 20) {
         try {
           boolean fornecedorInserido = false
-            for(int i=0;i < 20;i++) {
-              if(cbxFornecedor.getSelectedItem().equals((String)tblFornecedores.getValueAt(i, 0))) {
+            for (int i=0;i < 20;i++) {
+              if (cbxFornecedor.getSelectedItem().equals((String)tblFornecedores.getValueAt(i, 0))) {
                 fornecedorInserido = true
               }
             }
-          if(!fornecedorInserido) {
+          if (!fornecedorInserido) {
             fornecedoresItem.addElement(new FornecedorItem((Fornecedor)fornecedores.get(cbxFornecedor.getSelectedIndex()), (Item)this.item, this.txtDataAtualizacao.getText(), (Unidade)unidades.get(cbxUnidadeFornecedor.getSelectedIndex()), Float.parseFloat(Numero.inverterSeparador(txtValorUnitario.getText())), (String)cbxMoeda.getSelectedItem(), txtReferenciaFornecedor.getText()))
               tblFornecedores.setValueAt(cbxFornecedor.getSelectedItem(), numeroFornecedores, 0)
               tblFornecedores.setValueAt(cbxUnidadeFornecedor.getSelectedItem(), numeroFornecedores, 1)
@@ -631,18 +631,18 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btAlterarFornecedor) {
+    if (objeto == btAlterarFornecedor) {
       linhaSelecionada = tblFornecedores.getSelectedRow()
         FornecedorItem fornecedorSelecionado = (FornecedorItem)fornecedoresItem.get(linhaSelecionada)
-        for(int i = 1;i < fornecedores.size();i++) {
-          if(fornecedorSelecionado.obterFornecedor().obterCodigo() == ((Fornecedor)fornecedores.get(i)).obterCodigo()) {
+        for (int i = 1;i < fornecedores.size();i++) {
+          if (fornecedorSelecionado.obterFornecedor().obterCodigo() == ((Fornecedor)fornecedores.get(i)).obterCodigo()) {
             cbxFornecedor.setSelectedIndex(i)
               break
           }
         }
 
-      for(int i = 1;i < unidades.size();i++) {
-        if(fornecedorSelecionado.obterUnidade().obterCodigo() == ((Unidade)unidades.get(i)).obterCodigo()) {
+      for (int i = 1;i < unidades.size();i++) {
+        if (fornecedorSelecionado.obterUnidade().obterCodigo() == ((Unidade)unidades.get(i)).obterCodigo()) {
           cbxUnidadeFornecedor.setSelectedIndex(i)
             break
         }
@@ -655,7 +655,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         btConfirmarAlteracao.setEnabled(true)
     }
 
-    if(objeto == btExcluirFornecedor) {
+    if (objeto == btExcluirFornecedor) {
       int linhaSelecionada = tblFornecedores.getSelectedRow()
         fornecedoresItem.removeElementAt(linhaSelecionada)
         tblFornecedores.setValueAt('', linhaSelecionada, 0)
@@ -663,8 +663,8 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         tblFornecedores.setValueAt('', linhaSelecionada, 2)
         tblFornecedores.setValueAt('', linhaSelecionada, 3)
 
-        if(linhaSelecionada < (numeroFornecedores -1)) {
-          for(int i = linha;Selecionada < (numeroFornecedores -1);i++) {
+        if (linhaSelecionada < (numeroFornecedores -1)) {
+          for (int i = linha;Selecionada < (numeroFornecedores -1);i++) {
             tblFornecedores.setValueAt(tblFornecedores.getValueAt(i + 1, 0), i, 0)
               tblFornecedores.setValueAt(tblFornecedores.getValueAt(i + 1, 1), i, 1)
               tblFornecedores.setValueAt(tblFornecedores.getValueAt(i + 1, 2), i, 2)
@@ -686,8 +686,8 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btAdicionarDepartamento) {
-      if(!lstDepartamento.isSelectionEmpty()) {
+    if (objeto == btAdicionarDepartamento) {
+      if (!lstDepartamento.isSelectionEmpty()) {
         departamentosSelecionados.addElement(departamentos.get(lstDepartamento.getSelectedIndex()))
           DefaultListModel modelo = (DefaultListModel)lstDepartamento.getModel()
           DefaultListModel modeloSelecionado = (DefaultListModel)lstDepartamentoSelecionado.getModel()
@@ -700,12 +700,12 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btCancelarFornecedor) {
+    if (objeto == btCancelarFornecedor) {
       cancelarFornecedor()
     }
 
-    if(objeto == btExcluirDepartamento) {
-      if(!lstDepartamentoSelecionado.isSelectionEmpty()) {
+    if (objeto == btExcluirDepartamento) {
+      if (!lstDepartamentoSelecionado.isSelectionEmpty()) {
         departamentosSelecionados.removeElementAt(lstDepartamentoSelecionado.getSelectedIndex())
           DefaultListModel modelo = (DefaultListModel)lstDepartamento.getModel()
           DefaultListModel modeloSelecionado = (DefaultListModel)lstDepartamentoSelecionado.getModel()
@@ -718,9 +718,9 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btProximo) {
+    if (objeto == btProximo) {
       boolean confirmado = true // Se os dados forem válidos autoriza a mudança de painel.
-        if(indiceCard == 0) {
+        if (indiceCard == 0) {
           try {
             this.item.definirDescricao(this.txtDescricao.getText())
               this.item.definirUnidade((Unidade)this.unidades.get(this.cbxUnidadeTecnolity.getSelectedIndex()))
@@ -748,30 +748,30 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           }
         }
 
-      if(confirmado) {
+      if (confirmado) {
         card.next(pnlAreaDados)
           indiceCard++
-          if(indiceCard > 0)
+          if (indiceCard > 0)
             btAnterior.setEnabled(true)
-              if(indiceCard == 2) {
+              if (indiceCard == 2) {
                 btProximo.setEnabled(false)
                   btConfirmar.setEnabled(true)
               }
       }
     }
 
-    if(objeto == btAnterior) {
+    if (objeto == btAnterior) {
       card.previous(pnlAreaDados)
         indiceCard--
-        if(indiceCard < 2)
+        if (indiceCard < 2)
           btProximo.setEnabled(true)
-            if(indiceCard == 0)
+            if (indiceCard == 0)
               btAnterior.setEnabled(false)
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
-        if(this.item.obterCodigo() == 0) {
+        if (this.item.obterCodigo() == 0) {
           this.item.cadastrarItem()
             this.item.associarFornecedores(fornecedoresItem)
             this.item.associarDepartamentos(departamentosSelecionados)
@@ -791,32 +791,32 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }
 
   void focusGained(FocusEvent e) {
     Component componente = e.getComponent()
-      if(componente == txtTemperatura)
+      if (componente == txtTemperatura)
         txtTemperatura.selectAll()
 
-          if(componente == txtQuantidade)
+          if (componente == txtQuantidade)
             txtQuantidade.selectAll()
 
-              if(componente == txtQuantMaxima)
+              if (componente == txtQuantMaxima)
                 txtQuantMaxima.selectAll()
 
-                  if(componente == txtQuantMinima)
+                  if (componente == txtQuantMinima)
                     txtQuantMinima.selectAll()
 
-                      if(componente == txtPercentualIPI)
+                      if (componente == txtPercentualIPI)
                         txtPercentualIPI.selectAll()
 
-                          if(componente == txtValorUnitario)
+                          if (componente == txtValorUnitario)
                             txtValorUnitario.selectAll()
 
-                              if(componente == txtDataAtualizacao)
+                              if (componente == txtDataAtualizacao)
                                 txtDataAtualizacao.selectAll()
   }
   void focusLost(FocusEvent e){}

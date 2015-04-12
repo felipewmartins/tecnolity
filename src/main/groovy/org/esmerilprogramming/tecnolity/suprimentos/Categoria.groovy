@@ -44,7 +44,7 @@ class Categoria {
           categorias = new Vector()
           categorias.addElement(null)
           int i = 1
-          while(dadosCategoria.next()) {
+          while (dadosCategoria.next()) {
             categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'), dadosCategoria.getString('categoria')))
               comboBox.addItem(((Categoria)categorias.get(i)).obterNomeCategoria())
               i++
@@ -63,7 +63,7 @@ class Categoria {
     try {
       dadosCategoria = conexao.executarConsulta('select * from categoria_item order by categoria asc')
       categorias.addElement(null)
-      while(dadosCategoria.next()) {
+      while (dadosCategoria.next()) {
         categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'), dadosCategoria.getString('categoria')))
       }
       dadosCategoria.close()

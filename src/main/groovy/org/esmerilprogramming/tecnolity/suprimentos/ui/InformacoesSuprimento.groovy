@@ -262,7 +262,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                       cbxItemMovimentacao = new JComboBox()
                       cbxItemMovimentacao.addActionListener(this)
                       cbxItemMovimentacao.addItem('Todos')
-                      for(int i = 1;i < itensMovimentacao.size();i++) {
+                      for (int i = 1;i < itensMovimentacao.size();i++) {
                         cbxItemMovimentacao.addItem((Item)itensMovimentacao.get(i))
                       }
                   }
@@ -272,7 +272,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                 }
                 finally
                 {
-                  if(cbxItemMovimentacao == null) {
+                  if (cbxItemMovimentacao == null) {
                     cbxItemMovimentacao = new JComboBox()
                       cbxItemMovimentacao.addItem('Todos')
                   }
@@ -377,7 +377,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                 }
                 finally
                 {
-                  if(cbxPedidos == null) {
+                  if (cbxPedidos == null) {
                     cbxPedidos = new JComboBox()
                       cbxPedidos.addItem('Selecione...')
                   }
@@ -436,7 +436,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   cbxFornecedor.addItem('Todos')
                   try {
                     fornecedores = Fornecedor.carregarFornecedores(aplicacao.obterConexao())
-                      for(int i = 1;i < fornecedores.size();i++) {
+                      for (int i = 1;i < fornecedores.size();i++) {
                         cbxFornecedor.addItem((Fornecedor)fornecedores.get(i))
                       }
                     cbxFornecedor.addActionListener(this)
@@ -493,7 +493,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                     itensInventario = Item.carregarItens(aplicacao.obterConexao())
                       cbxItens = new JComboBox()
                       cbxItens.addItem('Todos')
-                      for(int i = 1;i < itensInventario.size();i++) {
+                      for (int i = 1;i < itensInventario.size();i++) {
                         cbxItens.addItem((Item)itensInventario.get(i))
                       }
                   }
@@ -503,7 +503,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                 }
                 finally
                 {
-                  if(cbxItens == null) {
+                  if (cbxItens == null) {
                     cbxItens = new JComboBox()
                       cbxItens.addItem('Todos')
                   }
@@ -552,11 +552,11 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   private void atualizarTabelaItem(char tabela, String palavraChave) {
     String query = ''
       String restricao = ''
-      if(!chbMostrarTodos.isSelected()) {
+      if (!chbMostrarTodos.isSelected()) {
         restricao = 'and i.ativo = 1'
       }
-    if(''.equals(palavraChave)) {
-      if(cbxCategoria.getSelectedIndex() > 0) {
+    if (''.equals(palavraChave)) {
+      if (cbxCategoria.getSelectedIndex() > 0) {
         Categoria categoriaSelecionada = (Categoria)categorias.get(cbxCategoria.getSelectedIndex())
           query = 'select i.codigo, i.descricao, c.categoria as categoria, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima from item i, categoria_item c, unidade u where i.categoria = c.codigo and i.unidade = u.codigo ' +  restricao + ' and i.categoria = \'\'' + ((categoriaSelecionada == null)?0:categoriaSelecionada.obterCodigo()) + ' order by i.descricao, ci.categoria'
       }
@@ -594,15 +594,15 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   }
 
   private void atualizarTabelaMovimentacao(String tipo) {
-    if(modeloTabelaMovimentacoes != null) {
+    if (modeloTabelaMovimentacoes != null) {
       String sql = 'select mi.codigo as 'codigo', (case tipo_movimento when 'AB' then 'Abastecimento' when 'CS' then 'Consumo' when 'VD' then 'Vendas' when 'DS' then 'Descarte' when 'DV' then 'Devolucao' when 'DE' then 'Devolucao Externa' when 'DP' then 'Depósito' when 'RD' then \'Retirada do Depósito\' end) as 'tipo de movimento', i.descricao as 'item', mi.quantidade, data_hora as 'data', data_recebimento as 'recebimento', u.nome_completo as 'responsavel', mi.nota_fiscal as 'Nota Fiscal' from movimentacao_item mi, item i, usuario u where mi.item = i.codigo and mi.responsavel = u.usuario '
-        if(tipo != null)
+        if (tipo != null)
           sql += 'and tipo_movimento = ''+ tipo +'' '
-            if(!txtDataInicio.getText().equals(''))
+            if (!txtDataInicio.getText().equals(''))
               sql += 'and mi.data_hora >= ''+ Calendario.inverterFormato(txtDataInicio.getText(), '/') + \' 00:00:00.000\' '
-                if(!txtDataFinal.getText().equals(''))
+                if (!txtDataFinal.getText().equals(''))
                   sql += 'and mi.data_hora <= ''+ Calendario.inverterFormato(txtDataFinal.getText(), '/') + \' 23:59:59.999\' '
-                    if(cbxItemMovimentacao.getSelectedIndex() > 0)
+                    if (cbxItemMovimentacao.getSelectedIndex() > 0)
                       sql += 'and i.codigo = ' + ((Item)itensMovimentacao.get(cbxItemMovimentacao.getSelectedIndex())).obterCodigo()
                         sql += ' order by tipo_movimento'
                         modeloTabelaMovimentacoes.definirConsulta(sql)
@@ -627,13 +627,13 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
 
   private void atualizarTabelaPrecos() {
     String query = 'select f.codigo as codigo_fornecedor, f.razao_social, i.codigo as codigo_item, i.descricao, fi.valor_item from fornecedor f, fornecedor_item fi, item i where f.codigo = fi.fornecedor and i.codigo = fi.item'
-      if(cbxFornecedor.getSelectedIndex() > 0)
+      if (cbxFornecedor.getSelectedIndex() > 0)
         query += ' and fi.fornecedor = '+ ((Fornecedor)fornecedores.get(cbxFornecedor.getSelectedIndex())).obterCodigo()
           try {
             ResultSet rsFornecedoresItem = aplicacao.obterConexao().executarConsulta(query)
               fornecedoresItem = null
               fornecedoresItem = new Vector()
-              while(rsFornecedoresItem.next()) {
+              while (rsFornecedoresItem.next()) {
                 fornecedoresItem.addElement(new FornecedorItem(new Fornecedor(rsFornecedoresItem.getInt('codigo_fornecedor'), rsFornecedoresItem.getString('razao_social')),
                       new Item(rsFornecedoresItem.getInt('codigo_item'), rsFornecedoresItem.getString('descricao')), rsFornecedoresItem.getFloat('valor_item')))
               }
@@ -651,29 +651,29 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == txtPalavraChaveItemTodos || objeto == btPesquisarItensTodos) {
+      if (objeto == txtPalavraChaveItemTodos || objeto == btPesquisarItensTodos) {
         atualizarTabelaItem('T', this.txtPalavraChaveItemTodos.getText())
       }
 
-    if(objeto == txtPalavraChaveItemPorCategoria || objeto == btPesquisarItensPorCategoria) {
+    if (objeto == txtPalavraChaveItemPorCategoria || objeto == btPesquisarItensPorCategoria) {
       cbxCategoria.setSelectedIndex(0)
         atualizarTabelaItem('C', this.txtPalavraChaveItemPorCategoria.getText())
     }
 
-    if(objeto == txtDataInventario || objeto == btPesquisarItens) {
+    if (objeto == txtDataInventario || objeto == btPesquisarItens) {
       String query
-        for(int i = 0;i < tblInventario.getRowCount();i++) {
+        for (int i = 0;i < tblInventario.getRowCount();i++) {
           tblInventario.setValueAt('', i, 0)
             tblInventario.setValueAt('', i, 1)
             tblInventario.setValueAt('', i, 2)
         }
       try {
-        if(cbxItens.getSelectedIndex() == 0) {
-          if(!txtDataInventario.getText().equals('')) {
+        if (cbxItens.getSelectedIndex() == 0) {
+          if (!txtDataInventario.getText().equals('')) {
             query = 'select codigo from item order by descricao'
               ResultSet rsItens = aplicacao.obterConexao().executarConsulta(query)
               int linha = 0
-              while(rsItens.next()) {
+              while (rsItens.next()) {
                 int codigoItem = rsItens.getInt('codigo')
                   /*
                   query = 'select i.codigo, i.descricao, hqi.quantidade , hvi.valor_item, (hqi.quantidade * hvi.valor_item) as total from historico_quantidade_item hqi, item i, historico_valor_item hvi '  + 
@@ -682,7 +682,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   'hvi.data_atualizacao = (select max(data_atualizacao) from historico_valor_item where data_atualizacao <= '' +  Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and item = '+ codigoItem +')'
                   */
                   ResultSet rsItensInventario = aplicacao.obterConexao().executarConsulta(query)
-                  if(rsItensInventario.next()) {
+                  if (rsItensInventario.next()) {
                     tblInventario.setValueAt(rsItensInventario.getString('codigo'), linha, 0)
                       tblInventario.setValueAt(rsItensInventario.getString('descricao'), linha, 1)
                       tblInventario.setValueAt(rsItensInventario.getString('quantidade'), linha, 2)
@@ -697,13 +697,13 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
         }
         else
         {
-          if(!txtDataInventario.getText().equals('')) {
+          if (!txtDataInventario.getText().equals('')) {
             /*query = 'select i.codigo, i.descricao, hqi.quantidade from historico_quantidade_item hqi, item i '  + 
               'where i.codigo = hqi.codigo and i.codigo = ' +  ((Item)itensInventario.get(cbxItens.getSelectedIndex())).obterCodigo() +' and hqi.data_hora <= ''+ Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and ' +
               'hqi.data_hora = (select max(data_hora) from historico_quantidade_item where data_hora <= '' +  Calendario.inverterFormato(this.txtDataInventario.getText(), '/') +' 23:59:59.999' and codigo = '+ ((Item)itensInventario.get(cbxItens.getSelectedIndex())).obterCodigo() +')'*/
               ResultSet rsItensInventario = aplicacao.obterConexao().executarConsulta(query)
               int linha = 0
-              if(rsItensInventario.next()) {
+              if (rsItensInventario.next()) {
                 tblInventario.setValueAt(rsItensInventario.getString('codigo'), linha, 0)
                   tblInventario.setValueAt(rsItensInventario.getString('descricao'), linha, 1)
                   tblInventario.setValueAt(rsItensInventario.getString('quantidade'), linha, 2)
@@ -716,7 +716,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       catch (e){}
     }
 
-    if(objeto == btImprimirInventario) {
+    if (objeto == btImprimirInventario) {
       try {
         RelatorioInventario relInventario = new RelatorioInventario(aplicacao.obterConexao(), txtDataInventario.getText())
           Vector paginas = relInventario.paginar(aplicacao.obterFormatoPagina())
@@ -729,7 +729,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btImprimirMovimentacao) {
+    if (objeto == btImprimirMovimentacao) {
       try {
         RelatorioMovimentacao relMovimentacao = new RelatorioMovimentacao(aplicacao.obterConexao(), (String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()), ((cbxItemMovimentacao.getSelectedIndex() > 0)?((Item)itensMovimentacao.get(cbxItemMovimentacao.getSelectedIndex())).obterCodigo():0), txtDataInicio.getText(), txtDataFinal.getText())
           Vector paginas = relMovimentacao.paginar(aplicacao.obterFormatoPagina())
@@ -742,13 +742,13 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btAdicionarItemTodos || objeto == btAdicionarItemPorCategoria) {
+    if (objeto == btAdicionarItemTodos || objeto == btAdicionarItemPorCategoria) {
       DlgDadosItem dlgDadosItem = new DlgDadosItem(aplicacao)
         dlgDadosItem.setVisible(true)
     }
 
-    if(objeto == btAlterarItemTodos) {
-      if(this.tblItensTodos.getSelectedRow() >= 0) {
+    if (objeto == btAlterarItemTodos) {
+      if (this.tblItensTodos.getSelectedRow() >= 0) {
         int linha = this.tblItensTodos.getSelectedRow()
           int codigoItem = Integer.parseInt((String)this.tblItensTodos.getValueAt(linha, 0))
           DlgDadosItem dlgDadosItem = new DlgDadosItem(aplicacao, codigoItem)
@@ -760,8 +760,8 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btAlterarItemPorCategoria) {
-      if(this.tblItensPorCategoria.getSelectedRow() >= 0) {
+    if (objeto == btAlterarItemPorCategoria) {
+      if (this.tblItensPorCategoria.getSelectedRow() >= 0) {
         int linha = this.tblItensPorCategoria.getSelectedRow()
           int codigoItem = Integer.parseInt((String)this.tblItensPorCategoria.getValueAt(linha, 0))
           DlgDadosItem dlgDadosItem = new DlgDadosItem(aplicacao, codigoItem)
@@ -773,8 +773,8 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btAlterarItemListaCompras) {
-      if(this.tblItensListaCompras.getSelectedRow() >= 0) {
+    if (objeto == btAlterarItemListaCompras) {
+      if (this.tblItensListaCompras.getSelectedRow() >= 0) {
         int linha = this.tblItensListaCompras.getSelectedRow()
           int codigoItem = Integer.parseInt((String)this.tblItensListaCompras.getValueAt(linha, 0))
           DlgDadosItem dlgDadosItem = new DlgDadosItem(aplicacao, codigoItem)
@@ -786,9 +786,9 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btExcluirItemTodos) {
-      if(tblItensTodos.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o item selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == btExcluirItemTodos) {
+      if (tblItensTodos.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o item selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblItensTodos.getSelectedRow()
             int codigoItem = Integer.parseInt((String)tblItensTodos.getValueAt(linha, 0))
             item = new Item()
@@ -809,9 +809,9 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btExcluirItemPorCategoria) {
-      if(tblItensPorCategoria.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o item selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == btExcluirItemPorCategoria) {
+      if (tblItensPorCategoria.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o item selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblItensPorCategoria.getSelectedRow()
             int codigoItem = Integer.parseInt((String)tblItensPorCategoria.getValueAt(linha, 0))
             item = new Item()
@@ -832,9 +832,9 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btExcluirItemListaCompras) {
-      if(tblItensListaCompras.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o item selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == btExcluirItemListaCompras) {
+      if (tblItensListaCompras.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o item selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblItensListaCompras.getSelectedRow()
             int codigoItem = Integer.parseInt((String)tblItensListaCompras.getValueAt(linha, 0))
             item = new Item()
@@ -855,28 +855,28 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btAtualizarItemTodos) {
+    if (objeto == btAtualizarItemTodos) {
       atualizarTabelaItem('T', '')
     }
 
-    if(objeto == btAtualizarItemPorCategoria) {
+    if (objeto == btAtualizarItemPorCategoria) {
       atualizarTabelaItem('C', '')
     }
 
-    if(objeto == btAtualizarItensInativos) {
+    if (objeto == btAtualizarItensInativos) {
       atualizarTabelaItem('I', '')
     }
 
-    if(objeto == btAtualizarItemListaCompras) {
+    if (objeto == btAtualizarItemListaCompras) {
       atualizarTabelaItem('L', '')
     }
 
-    if(objeto == btImprimirItensTodos) {
-      if(tblItensTodos.getSelectedRow() >=0) {
+    if (objeto == btImprimirItensTodos) {
+      if (tblItensTodos.getSelectedRow() >=0) {
         try {
           int[] linhas = tblItensTodos.getSelectedRows()
             int[] codigosItem = new int[linhas.length]
-            for(int i = 0;i < linhas.length;i++) {
+            for (int i = 0;i < linhas.length;i++) {
               codigosItem[i] = Integer.parseInt((String)tblItensTodos.getValueAt(linhas[i], 0))
             }
           Vector itens = Item.carregarItensSelecionados(codigosItem, aplicacao.obterConexao())
@@ -908,12 +908,12 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btImprimirItensPorCategoria) {
-      if(tblItensPorCategoria.getSelectedRow() >=0) {
+    if (objeto == btImprimirItensPorCategoria) {
+      if (tblItensPorCategoria.getSelectedRow() >=0) {
         try {
           int[] linhas = tblItensPorCategoria.getSelectedRows()
             int[] codigosItem = new int[linhas.length]
-            for(int i = 0;i < linhas.length;i++) {
+            for (int i = 0;i < linhas.length;i++) {
               codigosItem[i] = Integer.parseInt((String)tblItensPorCategoria.getValueAt(linhas[i], 0))
             }
           Vector itens = Item.carregarItensSelecionados(codigosItem, aplicacao.obterConexao())
@@ -945,7 +945,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btImprimirItensInativos) {
+    if (objeto == btImprimirItensInativos) {
       try {
         Vector itens = Item.carregarItensInativos(aplicacao.obterConexao())
           RelatorioItens relItens = new RelatorioItens(itens, 'ITENS INATIVOS DO ESTOQUE')
@@ -960,12 +960,12 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btImprimirItensListaCompras) {
-      if(tblItensListaCompras.getSelectedRow() >=0) {
+    if (objeto == btImprimirItensListaCompras) {
+      if (tblItensListaCompras.getSelectedRow() >=0) {
         try {
           int[] linhas = tblItensListaCompras.getSelectedRows()
             int[] codigosItem = new int[linhas.length]
-            for(int i = 0;i < linhas.length;i++) {
+            for (int i = 0;i < linhas.length;i++) {
               codigosItem[i] = Integer.parseInt((String)tblItensListaCompras.getValueAt(linhas[i], 0))
             }
           Vector itens = Item.carregarItensSelecionados(codigosItem, aplicacao.obterConexao())
@@ -997,24 +997,24 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btMovimentarItem) {
+    if (objeto == btMovimentarItem) {
       DlgDadosMovimentacao dlgDadosMovimentacao = new DlgDadosMovimentacao(aplicacao)
         dlgDadosMovimentacao.setVisible(true)
     }
 
-    if(objeto == btAtualizarMovimentacao || objeto == cbxTipoMovimentacao ||
+    if (objeto == btAtualizarMovimentacao || objeto == cbxTipoMovimentacao ||
         objeto == btPesquisarMovimentacao || objeto == txtDataInicio ||
         objeto == txtDataFinal || objeto == cbxItemMovimentacao) {
       atualizarTabelaMovimentacao((String)tiposMovimentacao.get(cbxTipoMovimentacao.getSelectedIndex()))
     }
 
-    if(objeto == btAdicionarFornecedor) {
+    if (objeto == btAdicionarFornecedor) {
       DlgDadosFornecedor dlgDadosFornecedor = new DlgDadosFornecedor(aplicacao, 'I')
         dlgDadosFornecedor.setVisible(true)
     }
 
-    if(objeto == btAlterarFornecedor) {
-      if(tblFornecedores.getSelectedRow() >=0) {
+    if (objeto == btAlterarFornecedor) {
+      if (tblFornecedores.getSelectedRow() >=0) {
         int linha = tblFornecedores.getSelectedRow()
           int codigoFornecedor = Integer.parseInt((String)tblFornecedores.getValueAt(linha, 0))
           DlgDadosFornecedor dlgDadosFornecedor = new DlgDadosFornecedor(aplicacao, 'A', codigoFornecedor)
@@ -1026,9 +1026,9 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btExcluirFornecedor) {
-      if(tblFornecedores.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o fornecedor selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == btExcluirFornecedor) {
+      if (tblFornecedores.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja excluir o fornecedor selecionado?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = tblFornecedores.getSelectedRow()
             int codigoFornecedor = Integer.parseInt((String)tblFornecedores.getValueAt(linha, 0))
             fornecedor = new Fornecedor()
@@ -1048,23 +1048,23 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btAtualizarFornecedor) {
+    if (objeto == btAtualizarFornecedor) {
       atualizarTabelaFornecedor()
     }
 
-    if(objeto == cbxPedidos) {
-      if(btVisualizarRecursos.getText().equals('Ocultar Recursos do Pedido')) {
+    if (objeto == cbxPedidos) {
+      if (btVisualizarRecursos.getText().equals('Ocultar Recursos do Pedido')) {
         // Limpa a tabela.
-        for(int i = 0;i < 40;i++) {
-          for(int j = 0;j < 6;j++) {
+        for (int i = 0;i < 40;i++) {
+          for (int j = 0;j < 6;j++) {
             tblRecursos.setValueAt('', i, j)
           }
         }
-        if(cbxPedidos.getSelectedIndex() > 0 && cbxPedidos.getSelectedItem() instanceof Pedido) {
+        if (cbxPedidos.getSelectedIndex() > 0 && cbxPedidos.getSelectedItem() instanceof Pedido) {
           try {
             dadosRecursos = Pedido.carregarRecursosPedido(aplicacao.obterConexao(), (Pedido)cbxPedidos.getSelectedItem())
-              for(int i = 0;i < 40;i++) {
-                for(int j = 0;j < 6;j++) {
+              for (int i = 0;i < 40;i++) {
+                for (int j = 0;j < 6;j++) {
                   tblRecursos.setValueAt(''  +  (dadosRecursos[i][j] == null?'':dadosRecursos[i][j]), i, j)
                 }
               }
@@ -1077,14 +1077,14 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == btEmitirRequisicaoCompra) {
+    if (objeto == btEmitirRequisicaoCompra) {
       DlgDadosRequisicaoCompra dlgDadosRequisicaoCompra = new DlgDadosRequisicaoCompra(aplicacao)
         dlgDadosRequisicaoCompra.setVisible(true)
     }
 
-    if(objeto == this.btCancelarRequisicaoCompra) {
-      if(this.tblRequisicoesCompras.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja cancelar a requisição de compra selecionada?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == this.btCancelarRequisicaoCompra) {
+      if (this.tblRequisicoesCompras.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja cancelar a requisição de compra selecionada?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = this.tblRequisicoesCompras.getSelectedRow()
             int codigo = Integer.parseInt((String)this.tblRequisicoesCompras.getValueAt(linha, 0))
             RequisicaoCompra requisicaoCompra = new RequisicaoCompra(codigo)
@@ -1102,12 +1102,12 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == this.btAtualizarRequisicaoCompra) {
+    if (objeto == this.btAtualizarRequisicaoCompra) {
       atualizarTabelaRequisicaoCompra()
     }
 
-    if(objeto == this.btImprimirRequisicaoInterna) {
-      if(tblRequisicoesInternas.getSelectedRow() >= 0) {
+    if (objeto == this.btImprimirRequisicaoInterna) {
+      if (tblRequisicoesInternas.getSelectedRow() >= 0) {
         try {
           int codigo = Integer.parseInt((String)tblRequisicoesInternas.getValueAt(tblRequisicoesInternas.getSelectedRow(), 0))
             RequisicaoInterna requisicaoInterna = new RequisicaoInterna(codigo, aplicacao.obterConexao())
@@ -1128,8 +1128,8 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == this.btVisualizarRequisicaoInterna) {
-      if(tblRequisicoesInternas.getSelectedRow() >= 0) {
+    if (objeto == this.btVisualizarRequisicaoInterna) {
+      if (tblRequisicoesInternas.getSelectedRow() >= 0) {
         try {
           int codigo = Integer.parseInt((String)tblRequisicoesInternas.getValueAt(tblRequisicoesInternas.getSelectedRow(), 0))
             RequisicaoInterna requisicaoInterna = new RequisicaoInterna(codigo, aplicacao.obterConexao())
@@ -1147,8 +1147,8 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == this.btImprimirRequisicaoCompra) {
-      if(tblRequisicoesCompras.getSelectedRow() >= 0) {
+    if (objeto == this.btImprimirRequisicaoCompra) {
+      if (tblRequisicoesCompras.getSelectedRow() >= 0) {
         try {
           int codigo = Integer.parseInt((String)tblRequisicoesCompras.getValueAt(tblRequisicoesCompras.getSelectedRow(), 0))
             RequisicaoCompra requisicaoCompra = new RequisicaoCompra(codigo, aplicacao.obterConexao())
@@ -1169,8 +1169,8 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == this.btVisualizarRequisicaoCompra) {
-      if(tblRequisicoesCompras.getSelectedRow() >= 0) {
+    if (objeto == this.btVisualizarRequisicaoCompra) {
+      if (tblRequisicoesCompras.getSelectedRow() >= 0) {
         try {
           int codigo = Integer.parseInt((String)tblRequisicoesCompras.getValueAt(tblRequisicoesCompras.getSelectedRow(), 0))
             RequisicaoCompra requisicaoCompra = new RequisicaoCompra(codigo, aplicacao.obterConexao())
@@ -1188,14 +1188,14 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == this.btRequisitarItem) {
+    if (objeto == this.btRequisitarItem) {
       DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao)
         dlgDadosRequisicaoInterna.setVisible(true)
     }
 
-    if(objeto == this.btCancelarRequisicao) {
-      if(this.tblRequisicoesInternas.getSelectedRow() >=0) {
-        if(JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja cancelar a requisição interna selecionada?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+    if (objeto == this.btCancelarRequisicao) {
+      if (this.tblRequisicoesInternas.getSelectedRow() >=0) {
+        if (JOptionPane.showConfirmDialog(aplicacao, 'Atenção: Tem certeza que deseja cancelar a requisição interna selecionada?', 'Atenção', JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
           int linha = this.tblRequisicoesInternas.getSelectedRow()
             int codigo = Integer.parseInt((String)this.tblRequisicoesInternas.getValueAt(linha, 0))
             RequisicaoInterna requisicaoInterna = new RequisicaoInterna(codigo)
@@ -1213,16 +1213,16 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == this.btAtualizarRequisicao) {
+    if (objeto == this.btAtualizarRequisicao) {
       atualizarTabelaRequisicaoInterna()
     }
 
-    if(objeto == cbxCategoria) {
+    if (objeto == cbxCategoria) {
       atualizarTabelaItem('C', '')
     }
 
-    if(objeto == btVisualizarRecursos) {
-      if(btVisualizarRecursos.getText().equals('Visualizar Recursos do Pedido')) {
+    if (objeto == btVisualizarRecursos) {
+      if (btVisualizarRecursos.getText().equals('Visualizar Recursos do Pedido')) {
         scrollRecursos.setVisible(true)
           btVisualizarRecursos.setText('Ocultar Recursos do Pedido')
       }
@@ -1233,19 +1233,19 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
       }
     }
 
-    if(objeto == cbxFornecedor || objeto == cbxItem) {
+    if (objeto == cbxFornecedor || objeto == cbxItem) {
       atualizarTabelaPrecos()
     }
 
-    if(objeto == btAlterarValor) {
-      if(tblListaPrecos.getSelectedRow() >= 0) {
+    if (objeto == btAlterarValor) {
+      if (tblListaPrecos.getSelectedRow() >= 0) {
         DlgAlteracaoPreco dlgAlteracaoPreco = new DlgAlteracaoPreco(aplicacao, (FornecedorItem)fornecedoresItem.get(tblListaPrecos.getSelectedRow()))
           dlgAlteracaoPreco.setVisible(true)
           atualizarTabelaPrecos()
       }
     }
 
-    if(objeto == btAtualizarFornecedores) {
+    if (objeto == btAtualizarFornecedores) {
       modeloTabelaFornecedoresPendentes.definirConsulta('select distinct f.codigo as codigo_fornecedor, f.razao_social '  + 
           'from fornecedor f, fornecedor_item fi, item i, quantidade_materia_prima qmp, modelo_pedido mp, pedido_cliente pc '  + 
           'where f.codigo = fi.fornecedor and i.codigo = fi.item and qmp.item = i.codigo and mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and mp.pedido = pc.codigo and pc.status = \'1P\' and mp.pedido not in (select distinct pedido from pedido_requisicao_compra)')
@@ -1253,13 +1253,13 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
         tblFornecedoresPendentes.updateUI()
     }
 
-    if(objeto == btImprimirFornecedores) {
+    if (objeto == btImprimirFornecedores) {
       try {
         Vector fornecedores = new Vector()
           ResultSet rsFornecedoresPendentes = aplicacao.obterConexao().executarConsulta('select distinct f.codigo as codigo_fornecedor, f.razao_social '  + 
               'from fornecedor f, fornecedor_item fi, item i, quantidade_materia_prima qmp, modelo_pedido mp, pedido_cliente pc '  + 
               'where f.codigo = fi.fornecedor and i.codigo = fi.item and qmp.item = i.codigo and mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and mp.pedido = pc.codigo and pc.status = \'1P\' and mp.pedido not in (select distinct pedido from pedido_requisicao_compra)')
-          while(rsFornecedoresPendentes.next()) {
+          while (rsFornecedoresPendentes.next()) {
             fornecedores.addElement(new Fornecedor(rsFornecedoresPendentes.getInt('codigo_fornecedor'), rsFornecedoresPendentes.getString('razao_social')))
           }
         rsFornecedoresPendentes.close()

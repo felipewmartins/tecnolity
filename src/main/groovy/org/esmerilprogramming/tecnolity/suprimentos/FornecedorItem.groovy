@@ -44,7 +44,7 @@ class FornecedorItem {
 
   void definirItem(Item item) throws Exception
   {
-    if(item != null)
+    if (item != null)
       this.item = item
     else
     {
@@ -55,7 +55,7 @@ class FornecedorItem {
 
   void definirFornecedor(Fornecedor fornecedor) throws Exception
   {
-    if(fornecedor != null)
+    if (fornecedor != null)
       this.fornecedor = fornecedor
     else
     {
@@ -67,11 +67,11 @@ class FornecedorItem {
   void definirDataAtualizacaoValor(String data) throws Exception
   {
     String erro = ""
-      if(data.equals(""))
+      if (data.equals(""))
         erro = "Data de Atualização não foi informada."
-      else if(!Calendario.validarData(data, "/"))
+      else if (!Calendario.validarData(data, "/"))
         erro = "Data inválida."
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -83,7 +83,7 @@ class FornecedorItem {
 
   void definirUnidade(Unidade unidade) throws Exception
   {
-    if(unidade != null)
+    if (unidade != null)
       this.unidade = unidade
     else
     {
@@ -94,7 +94,7 @@ class FornecedorItem {
 
   void definirValorItem(float valorItem) throws Exception
   {
-    if(!Float.isNaN(valorItem) && valorItem >= 0.0f)
+    if (!Float.isNaN(valorItem) && valorItem >= 0.0f)
       this.valorItem = valorItem
     else
     {
@@ -105,7 +105,7 @@ class FornecedorItem {
   }
 
   void definirMoeda(String moeda) {
-    if(moeda.equals(""))
+    if (moeda.equals(""))
       this.moeda = 'R$'
     else
       this.moeda = moeda

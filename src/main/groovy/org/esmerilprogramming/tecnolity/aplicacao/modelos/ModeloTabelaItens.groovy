@@ -9,7 +9,7 @@ class ModeloTabelaItens extends ModeloTabela
   }
 
   Object getValueAt(int linha, int coluna) {
-    if(coluna == 4 || coluna == 5 || coluna == 6)
+    if (coluna == 4 || coluna == 5 || coluna == 6)
       return Numero.inverterSeparador(((String[])cache.elementAt(linha))[coluna])
     else
       return ((String[])cache.elementAt(linha))[coluna]

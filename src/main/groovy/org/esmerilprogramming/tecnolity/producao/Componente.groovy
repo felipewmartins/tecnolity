@@ -22,7 +22,7 @@ class Componente {
 
   String obterNomeComponente(Conexao conexao) throws Exception {
     ResultSet dadosComponente = conexao.executarConsulta('select componente from componente where codigo = '  +  this.codigo)
-    if(dadosComponente.next()) {
+    if (dadosComponente.next()) {
       this.nomeComponente = dadosComponente.getString('componente')
     }
     dadosComponente.close()
@@ -34,7 +34,7 @@ class Componente {
     Vector componentes = new Vector()
     dadosComponente = conexao.executarConsulta('select * from componente order by componente asc')
     componentes.addElement(null)
-    while(dadosComponente.next()) {
+    while (dadosComponente.next()) {
       componentes.addElement(new Componente(dadosComponente.getInt('codigo'), dadosComponente.getString('componente')))
     }
     dadosComponente.close()

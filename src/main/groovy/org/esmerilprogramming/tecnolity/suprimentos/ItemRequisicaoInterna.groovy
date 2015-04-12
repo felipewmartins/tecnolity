@@ -42,7 +42,7 @@ class ItemRequisicaoInterna
 
   void definirQuantidadeItem(float quantidadeItem) throws Exception
   {
-    if(quantidadeItem >= 0.0f) {
+    if (quantidadeItem >= 0.0f) {
       this.quantidadeItem = quantidadeItem
     }
     else
@@ -80,11 +80,11 @@ class ItemRequisicaoInterna
   }
 
   String obterStatusLiteral() {
-    if(status.equals(STATUS_CANCELADO))
+    if (status.equals(STATUS_CANCELADO))
       return "Cancelado"
-        if(status.equals(STATUS_CONFIRMADO))
+        if (status.equals(STATUS_CONFIRMADO))
           return "Confirmado"
-            if(status.equals(STATUS_EMITIDO))
+            if (status.equals(STATUS_EMITIDO))
               return "Emitido"
             else
               return "Pendente"
@@ -97,7 +97,7 @@ class ItemRequisicaoInterna
   void registrarItemRequisicaoInterna() throws Exception
   {
     Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         String query = "insert into item_requisicao_interna (item, requisicao_interna, status, quantidade, destino) values (" +  this.item.obterCodigo() + ", " + this.requisicaoInterna.obterCodigo() + ", 'EM', " + this.quantidadeItem + ", " + this.destino.obterCodigo() + ")"
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
@@ -114,7 +114,7 @@ class ItemRequisicaoInterna
   void atualizarItemRequisicaoInterna() throws Exception
   {
     Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         String query = "update item_requisicao_interna set status = '" +  status + "', quantidade = '" + this.quantidadeItem + "' where item = " + this.obterItem().obterCodigo() + " and requisicao_interna = " + this.obterRequisicaoInterna().obterCodigo()
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()

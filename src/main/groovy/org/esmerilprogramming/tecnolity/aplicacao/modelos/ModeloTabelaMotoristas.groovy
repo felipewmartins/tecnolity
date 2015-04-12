@@ -9,7 +9,7 @@ class ModeloTabelaMotoristas extends ModeloTabela
   }
 
   Object getValueAt(int linha, int coluna) {
-    if(coluna == 5)
+    if (coluna == 5)
       return Calendario.ajustarFormatoDataBanco(((String[])cache.elementAt(linha))[coluna])
     else
       return ((String[])cache.elementAt(linha))[coluna]

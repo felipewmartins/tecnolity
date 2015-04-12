@@ -78,15 +78,15 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       montarInterface()
       try {
         // Seleciona o fornecedor da requisição de compras.
-        for(int i = 1; i < fornecedores.size(); i++) {
-          if( (((Fornecedor)fornecedores.get(i)).obterCodigo()) == ((this.requisicaoCompra.obterFornecedor())==null?0:this.requisicaoCompra.obterFornecedor().obterCodigo())) {
+        for (int i = 1; i < fornecedores.size(); i++) {
+          if ( (((Fornecedor)fornecedores.get(i)).obterCodigo()) == ((this.requisicaoCompra.obterFornecedor())==null?0:this.requisicaoCompra.obterFornecedor().obterCodigo())) {
             cbxFornecedor.setSelectedIndex(i)
               break
           }
         }
         // Seleciona a forma de pagamento da requisição de compras.
-        for(int i = 1; i < formasPagamento.size(); i++) {
-          if(((FormaPagamento)formasPagamento.get(i)).obterFormaPagamento().equals(requisicaoCompra.obterFormaPagamento().obterFormaPagamento())) {
+        for (int i = 1; i < formasPagamento.size(); i++) {
+          if (((FormaPagamento)formasPagamento.get(i)).obterFormaPagamento().equals(requisicaoCompra.obterFormaPagamento().obterFormaPagamento())) {
             cbxFormaPagamento.setSelectedIndex(i)
               break
           }
@@ -96,7 +96,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           'where prc.pedido = pc.codigo and prc.requisicao_compra = '  +  requisicaoCompra.obterCodigo()
           ResultSet rsPedidos = aplicacao.obterConexao().executarConsulta(query)
 
-          while(rsPedidos.next()) {
+          while (rsPedidos.next()) {
             modeloListaPedidosSelecionados.addElement(new Pedido(rsPedidos.getInt('codigo'), rsPedidos.getString('ordem_compra')))
           }
         rsPedidos.close()
@@ -106,7 +106,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           'where i.codigo = ir.item and ir.requisicao_compra = '  +  requisicaoCompra.obterCodigo()
           ResultSet rsItensRequisicao = aplicacao.obterConexao().executarConsulta(query)
           int posItem = 0
-          while(rsItensRequisicao.next()) {
+          while (rsItensRequisicao.next()) {
             this.tblItens.setValueAt(rsItensRequisicao.getString('descricao'), posItem, 0)
               this.tblItens.setValueAt(rsItensRequisicao.getString('quantidade'), posItem, 1)
               this.tblItens.setValueAt(rsItensRequisicao.getString('valor_item'), posItem, 2)
@@ -210,8 +210,8 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     }
 
     int indiceTransportadora = 0
-      for(int i = 1; i < transportadoras.size(); i++) {
-        if((((Transportadora)transportadoras.get(i)).obterCodigo()) == (this.requisicaoCompra==null?0:this.requisicaoCompra.obterTransportadora().obterCodigo())) {
+      for (int i = 1; i < transportadoras.size(); i++) {
+        if ((((Transportadora)transportadoras.get(i)).obterCodigo()) == (this.requisicaoCompra==null?0:this.requisicaoCompra.obterTransportadora().obterCodigo())) {
           indiceTransportadora = i
         }
       }
@@ -264,7 +264,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
           modeloListaPedidos = new DefaultListModel()
           lstPedidos = new JList(modeloListaPedidos)
-          for(int i = 0;i < this.pedidos.size();i++) {
+          for (int i = 0;i < this.pedidos.size();i++) {
             modeloListaPedidos.addElement(this.pedidos.get(i))
           }
         lstPedidos.setFixedCellWidth(200)
@@ -392,7 +392,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
       btProximoLeitura = new JButton('Próximo >>')
       btProximo = new JButton('Próximo >>')
-      if(requisicaoCompra == null) {
+      if (requisicaoCompra == null) {
         btProximo.addActionListener(this)
           pnlComandos.add(btProximo)
       }
@@ -404,7 +404,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
 
 
     btConfirmar = new JButton('Confirmar')
-      if(requisicaoCompra == null) {
+      if (requisicaoCompra == null) {
         btConfirmar.addActionListener(this)
           btConfirmar.setEnabled(false)
           pnlComandos.add(btConfirmar)
@@ -443,7 +443,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     cbxTransportadora.removeAllItems()
       cbxTransportadora.addItem('Selecione...')
 
-      for(int i = 1;i < transportadoras.size();i++) {
+      for (int i = 1;i < transportadoras.size();i++) {
         cbxTransportadora.addItem(((Transportadora)transportadoras.get(i)).obterNome())
       }
   }
@@ -453,7 +453,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       cbxFornecedor.addItem('Selecione...')
       String cnpj, razaoSocial
 
-      for(int i = 1;i < fornecedores.size();i++) {
+      for (int i = 1;i < fornecedores.size();i++) {
         cnpj = (((Fornecedor)fornecedores.get(i)).obterCnpj()).trim()
           razaoSocial = (((Fornecedor)fornecedores.get(i)).obterRazaoSocial()).trim()
           cbxFornecedor.addItem(cnpj  +  ' - ' + razaoSocial.substring(0, ((razaoSocial.length() < 40)?razaoSocial.length():40)) + ((razaoSocial.length() < 40)?'':' . . .'))
@@ -464,7 +464,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     cbxFormaPagamento.removeAllItems()
       cbxFormaPagamento.addItem('Selecione...')
 
-      for(int i = 1;i < formasPagamento.size();i++) {
+      for (int i = 1;i < formasPagamento.size();i++) {
         cbxFormaPagamento.addItem(((FormaPagamento)formasPagamento.get(i)).obterFormaPagamento())
       }
   }
@@ -473,7 +473,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     try {
       modeloListaPedidos.removeAllElements()
         this.pedidos = Pedido.carregarPedidosPendentes(aplicacao.obterConexao())
-        for(int i = 0;i < this.pedidos.size();i++) {
+        for (int i = 0;i < this.pedidos.size();i++) {
           modeloListaPedidos.addElement(this.pedidos.get(i))
         }
     }
@@ -487,7 +487,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     try {
       modeloListaPedidos.removeAllElements()
         this.pedidos = Pedido.carregarPedidosProduzindo(aplicacao.obterConexao())
-        for(int i = 0;i < this.pedidos.size();i++) {
+        for (int i = 0;i < this.pedidos.size();i++) {
           modeloListaPedidos.addElement(this.pedidos.get(i))
         }
     }
@@ -501,7 +501,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     cbxItem.removeAllItems()
       cbxItem.addItem('Selecione...')
 
-      for(int i = 1;i < itens.size();i++) {
+      for (int i = 1;i < itens.size();i++) {
         cbxItem.addItem(((Item)itens.get(i)).obterDescricao())
       }
   }
@@ -519,7 +519,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
   {
     Conexao conexao = aplicacao.obterConexao()
       ResultSet departamentoSolicitante = conexao.executarConsulta('select departamento from usuario where usuario = ' +  this.responsavelEmissao +' ')
-      if(departamentoSolicitante.next())
+      if (departamentoSolicitante.next())
         return departamentoSolicitante.getInt('departamento')
       else
         return 0
@@ -529,7 +529,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
     float quantidadeItem = Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText()))
       float valorItem = Float.parseFloat(Numero.inverterSeparador(this.txtValorUnitario.getText()))
       float percentualIpi = Float.parseFloat(Numero.inverterSeparador(this.txtPercentualIpi.getText()))
-      if(quantidadeItem != 0.0f && valorItem != 0.0f) {
+      if (quantidadeItem != 0.0f && valorItem != 0.0f) {
         float totalItem = quantidadeItem * valorItem
           this.txtTotal.setText('' + Numero.inverterSeparador(''+totalItem))
           float ipi = ((percentualIpi)/100) * totalItem
@@ -540,8 +540,8 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == this.cbxFornecedor) {
-        if(cbxFornecedor.getSelectedIndex() > 0) {
+      if (objeto == this.cbxFornecedor) {
+        if (cbxFornecedor.getSelectedIndex() > 0) {
           try {
             itens = Item.carregarItensIndependentesEmFalta((Fornecedor)fornecedores.get(cbxFornecedor.getSelectedIndex()), this.aplicacao.obterConexao())
               carregarItens()
@@ -555,7 +555,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         }
       }
 
-    if(objeto == this.btNovaTransportadora) {
+    if (objeto == this.btNovaTransportadora) {
       DlgDadosTransportadora dlgDadosTransportadora = new DlgDadosTransportadora(aplicacao, 'I')
         dlgDadosTransportadora.setVisible(true)
         try {
@@ -569,7 +569,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == this.btNovoItem) {
+    if (objeto == this.btNovoItem) {
       DlgDadosItem dlgDadosItem = new DlgDadosItem(aplicacao, 'I')
         dlgDadosItem.setVisible(true)
         try {
@@ -582,7 +582,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == this.btNovoFornecedor) {
+    if (objeto == this.btNovoFornecedor) {
       DlgDadosFornecedor dlgDadosFornecedor = new DlgDadosFornecedor(aplicacao, 'I')
         dlgDadosFornecedor.setVisible(true)
         try {
@@ -595,7 +595,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == this.btNovaFormaPagamento) {
+    if (objeto == this.btNovaFormaPagamento) {
       DlgDadosFormaPagamento dlgDadosFormaPagamento = new DlgDadosFormaPagamento(aplicacao, 'I')
         dlgDadosFormaPagamento.setVisible(true)
         try {
@@ -609,14 +609,14 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == cbxItem) {
-      if(cbxItem.getSelectedIndex() > 0) {
+    if (objeto == cbxItem) {
+      if (cbxItem.getSelectedIndex() > 0) {
         this.item = (Item)itens.get(cbxItem.getSelectedIndex())
           String query = 'select fi.valor_item, i.percentual_ipi from item i, fornecedor_item fi where fi.item = i.codigo and i.codigo = ' +  this.item.obterCodigo()
           try {
             Conexao conexao = aplicacao.obterConexao()
               ResultSet dadosItem = conexao.executarConsulta(query)
-              if(dadosItem.next()) {
+              if (dadosItem.next()) {
                 txtQuantidade.setText('' + Numero.inverterSeparador(item.obterQuantidadeMinima()))
                   txtValorUnitario.setText('' + Numero.inverterSeparador(dadosItem.getFloat('valor_item')))
                   txtPercentualIpi.setText('' + dadosItem.getInt('percentual_ipi'))
@@ -628,16 +628,16 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == rdbProducaoIniciada) {
+    if (objeto == rdbProducaoIniciada) {
       carregarPedidosProduzindo()
     }
 
-    if(objeto == rdbProducaoNaoIniciada) {
+    if (objeto == rdbProducaoNaoIniciada) {
       carregarPedidosPendentes()
     }
 
-    if(objeto == btAdicionar) {
-      if(!lstPedidos.isSelectionEmpty()) {
+    if (objeto == btAdicionar) {
+      if (!lstPedidos.isSelectionEmpty()) {
         pedidosSelecionados.addElement(pedidos.get(lstPedidos.getSelectedIndex()))
           pedidos.removeElementAt(lstPedidos.getSelectedIndex())
           DefaultListModel modelo = (DefaultListModel)lstPedidos.getModel()
@@ -651,8 +651,8 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == btRemover) {
-      if(!lstPedidosSelecionados.isSelectionEmpty()) {
+    if (objeto == btRemover) {
+      if (!lstPedidosSelecionados.isSelectionEmpty()) {
         pedidos.addElement(pedidosSelecionados.get(lstPedidosSelecionados.getSelectedIndex()))
           pedidosSelecionados.removeElementAt(lstPedidosSelecionados.getSelectedIndex())
           DefaultListModel modelo = (DefaultListModel)lstPedidos.getModel()
@@ -666,22 +666,22 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == btAdicionarItem) {
+    if (objeto == btAdicionarItem) {
       // Insere no máximo 20 itens
-      if(numeroItens < 100) {
+      if (numeroItens < 100) {
         try {
           boolean ItemInserido = false
-            for(int i=0;i < 20;i++) {
-              if(cbxItem.getSelectedItem().equals((String)tblItens.getValueAt(i, 0))) {
+            for (int i=0;i < 20;i++) {
+              if (cbxItem.getSelectedItem().equals((String)tblItens.getValueAt(i, 0))) {
                 ItemInserido = true
               }
             }
-          if(!ItemInserido) {
+          if (!ItemInserido) {
             calcularPreco()
               float quantidadeItem = Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText()))
               float valorItem = Float.parseFloat(Numero.inverterSeparador(this.txtValorUnitario.getText()))
               int percentualIpi = Integer.parseInt(this.txtPercentualIpi.getText())
-              if(quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
+              if (quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
                 float totalItem = quantidadeItem * valorItem
                   this.txtTotal.setText('' + Numero.inverterSeparador(''+totalItem))
                   float ipi = ((percentualIpi)/100) * totalItem
@@ -725,11 +725,11 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == btConfirmarAlteracao) {
+    if (objeto == btConfirmarAlteracao) {
       float quantidadeItem = Float.parseFloat(Numero.inverterSeparador(this.txtQuantidade.getText()))
         float valorItem = Float.parseFloat(Numero.inverterSeparador(this.txtValorUnitario.getText()))
         int percentualIpi = Integer.parseInt(this.txtPercentualIpi.getText())
-        if(quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
+        if (quantidadeItem != 0 && valorItem != 0.0f && percentualIpi != 0.0f ) {
           float totalItem = quantidadeItem * valorItem
             this.txtTotal.setText('' + Numero.inverterSeparador(''+totalItem))
             float ipi = ((percentualIpi)/100) * totalItem
@@ -748,7 +748,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         btAlterarItem.setEnabled(true)
     }
 
-    if(objeto == this.btAlterarItem) {
+    if (objeto == this.btAlterarItem) {
       int linhaSelecionada = this.tblItens.getSelectedRow()
         linhaAAlterar = linhaSelecionada
         cbxItem.setSelectedItem(this.tblItens.getValueAt(linhaSelecionada, 0))
@@ -761,7 +761,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         btAlterarItem.setEnabled(false)
     }
 
-    if(objeto == this.btExcluirItem) {
+    if (objeto == this.btExcluirItem) {
       int linhaSelecionada = this.tblItens.getSelectedRow()
         this.itensRequisicao.removeElementAt(linhaSelecionada)
 
@@ -772,8 +772,8 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         this.tblItens.setValueAt('', linhaSelecionada, 4)
         this.tblItens.setValueAt('', linhaSelecionada, 5)
 
-        if(linhaSelecionada < (numeroItens -1)) {
-          for(int i = linhaSelecionada;i < (numeroItens -1);i++) {
+        if (linhaSelecionada < (numeroItens -1)) {
+          for (int i = linhaSelecionada;i < (numeroItens -1);i++) {
             this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 0), i, 0)
               this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 1), i, 1)
               this.tblItens.setValueAt(this.tblItens.getValueAt(i + 1, 2), i, 2)
@@ -799,28 +799,28 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == this.btCancelarItem) {
+    if (objeto == this.btCancelarItem) {
       cancelarItem()
         btConfirmarAlteracao.setEnabled(false)
         btAdicionarItem.setEnabled(true)
         btAlterarItem.setEnabled(true)
     }
 
-    if(objeto == btProximoLeitura) {
+    if (objeto == btProximoLeitura) {
       card.next(pnlAreaDados)
         indiceCard++
-        if(indiceCard > 0)
+        if (indiceCard > 0)
           btAnterior.setEnabled(true)
-            if(indiceCard == 2) {
+            if (indiceCard == 2) {
               btProximo.setEnabled(false)
                 btConfirmar.setEnabled(true)
             }
     }
 
-    if(objeto == btProximo) {
+    if (objeto == btProximo) {
       boolean confirmado = true // Se os dados forem válidos autoriza a mudança de painel.
         // Preenchimento dos dados essenciais da requisição.
-        if(indiceCard == 0) {
+        if (indiceCard == 0) {
           try {
             String freteSelecionado = ((String)this.cbxFrete.getSelectedItem()).substring(0, 1)
 
@@ -836,7 +836,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               this.requisicaoCompra.definirDataEmissao(calendario.dataHoje('dd/MM/yyyy'))
               this.requisicaoCompra.definirObservacao(this.txaObservacoes.getText())
 
-              if(this.requisicaoCompra.obterFornecedor().possuiApenasItensIndependentes(this.aplicacao.obterConexao())) {
+              if (this.requisicaoCompra.obterFornecedor().possuiApenasItensIndependentes(this.aplicacao.obterConexao())) {
                 JOptionPane.showMessageDialog(aplicacao, 'Atenção: O fornecedor selecionado só oferece itens independentes de pedidos do cliente.\n A seleção de pedidos será desabilitada.', 'Atenção', JOptionPane.WARNING_MESSAGE)
                   btAdicionar.setEnabled(false)
                   btRemover.setEnabled(false)
@@ -854,32 +854,32 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           }
         }
       // Seleção dos pedidos dos clientes.
-      if(indiceCard == 1) {
+      if (indiceCard == 1) {
         // Seleciona a necessidade dos itens a serem requisitados.
         String query =  'select i.codigo, i.descricao, fi.valor_item, fi.referencia_fornecedor, i.percentual_ipi, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria ' +
           'from item i, modelo_pedido mp, quantidade_materia_prima qmp, fornecedor_item fi '  + 
           'where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo '
 
-          for(int i = 0;i < pedidosSelecionados.size();i++) {
-            if(i == 0)
+          for (int i = 0;i < pedidosSelecionados.size();i++) {
+            if (i == 0)
               query += 'and ('
                 query += 'mp.pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
-                if((i + 1) < pedidosSelecionados.size())
+                if ((i + 1) < pedidosSelecionados.size())
                   query += ' or '
-                    if((i  +  1) == pedidosSelecionados.size())
+                    if ((i  +  1) == pedidosSelecionados.size())
                       query += ') '
           }
         query += 'and i.codigo = fi.item and fi.fornecedor = '+ ((Fornecedor)this.fornecedores.get(cbxFornecedor.getSelectedIndex())).obterCodigo() + ' and i.codigo not in (select distinct item_requisicao from pedido_requisicao_compra '
-          for(int i = 0;i < pedidosSelecionados.size();i++) {
-            if(i == 0)
+          for (int i = 0;i < pedidosSelecionados.size();i++) {
+            if (i == 0)
               query += 'where '
                 query += 'pedido = '+ ((Pedido)pedidosSelecionados.get(i)).obterCodigo()
-                if((i + 1) < pedidosSelecionados.size())
+                if ((i + 1) < pedidosSelecionados.size())
                   query += ' or '
           }
         query += ') group by i.codigo, i.descricao, i.percentual_perda, fi.valor_item, fi.referencia_fornecedor, i.percentual_ipi'
           numeroItens = 0
-          for(int i = 0;i < 100;i++) {
+          for (int i = 0;i < 100;i++) {
             this.tblItens.setValueAt('', i, 0)
               this.tblItens.setValueAt('', i, 1)
               this.tblItens.setValueAt('', i, 2)
@@ -887,12 +887,12 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               this.tblItens.setValueAt('', i, 4)
               this.tblItens.setValueAt('', i, 5)
           }
-        if(pedidosSelecionados.size() > 0) {
+        if (pedidosSelecionados.size() > 0) {
           try {
             ResultSet rsItensPedidos = this.aplicacao.obterConexao().executarConsulta(query)
               itensRequisicao.removeAllElements()
               // Associa cada item a requisição de compra
-              while(rsItensPedidos.next()) {
+              while (rsItensPedidos.next()) {
                 Item item = new Item(rsItensPedidos.getInt('codigo'), rsItensPedidos.getString('descricao'), new FornecedorItem(rsItensPedidos.getFloat('valor_item'), rsItensPedidos.getString('referencia_fornecedor')))
                   float valorItem = item.obterFornecedorItem().obterValorItem()
                   int percentualIPI = rsItensPedidos.getInt('percentual_ipi')
@@ -923,12 +923,12 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         }
       }
 
-      if(confirmado) {
+      if (confirmado) {
         card.next(pnlAreaDados)
           indiceCard++
-          if(indiceCard > 0)
+          if (indiceCard > 0)
             btAnterior.setEnabled(true)
-              if(indiceCard == 2) {
+              if (indiceCard == 2) {
                 btProximo.setEnabled(false)
                   btConfirmar.setEnabled(true)
               }
@@ -936,16 +936,16 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       redimencionar()
     }
 
-    if(objeto == btAnterior) {
+    if (objeto == btAnterior) {
       card.previous(pnlAreaDados)
         indiceCard--
-        if(indiceCard < 2)
+        if (indiceCard < 2)
           btProximo.setEnabled(true)
-            if(indiceCard == 0)
+            if (indiceCard == 0)
               btAnterior.setEnabled(false)
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
         this.requisicaoCompra.cadastrarRequisicaoCompra()
           this.requisicaoCompra.associarItens(itensRequisicao, pedidosSelecionados)
@@ -968,7 +968,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
 
@@ -977,22 +977,22 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
   void focusGained(FocusEvent e) {
     Component componente = e.getComponent()
 
-      if(componente == txtQuantidade)
+      if (componente == txtQuantidade)
         txtQuantidade.selectAll()
-          if(componente == txtValorUnitario)
+          if (componente == txtValorUnitario)
             txtValorUnitario.selectAll()
-              if(componente == txtTotal)
+              if (componente == txtTotal)
                 txtTotal.selectAll()
-                  if(componente == txtPercentualIpi)
+                  if (componente == txtPercentualIpi)
                     txtPercentualIpi.selectAll()
-                      if(componente == txtIpi)
+                      if (componente == txtIpi)
                         txtIpi.selectAll()
   }
 
   void focusLost(FocusEvent e) {
     Component componente = e.getComponent()
 
-      if(componente == this.txtQuantidade) {
+      if (componente == this.txtQuantidade) {
         this.calcularPreco()
       }
   }

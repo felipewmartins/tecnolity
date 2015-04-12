@@ -86,7 +86,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       pnlAreaDados = new JPanel(card)
       JLabel label = null
       JScrollPane scroll = null
-      if(pedido == null) {
+      if (pedido == null) {
         JPanel pnlOpcoes = new JPanel(gridbag)
           ButtonGroup grupo = new ButtonGroup()
           rdbImportar = new JRadioButton("Importar Arquivo (EDI)")
@@ -156,7 +156,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       cbxTipoOperacao.addItem("Selecione...")
       cbxTipoOperacao.addItem("Venda")
       cbxTipoOperacao.addItem("Beneficiamento")
-      if(pedido != null) {
+      if (pedido != null) {
         cbxTipoOperacao.setSelectedItem(pedido.obterTipoOperacao() == 'V'?"Venda":"Beneficiamento")
       }
     adicionarComponente(pnlInsercaoPedido, cbxTipoOperacao, 1, 2, 1, 1)
@@ -210,7 +210,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       btNovoProduto.setPreferredSize(new Dimension(22, 20))
       pnlSuporteCombo.add(btNovoProduto, BorderLayout.EAST)
       adicionarComponente(pnlProduto, pnlSuporteCombo, 1, 0, 1, 1)
-      if(pedido != null) {
+      if (pedido != null) {
         produtos = Produto.carregarProdutos(((Cliente)clientes.get(cbxCliente.getSelectedIndex())), aplicacao.obterConexao())
           carregarProdutos()
       }
@@ -256,7 +256,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       tblProduto.addRowSelectionInterval(0, 0)
       scroll = new JScrollPane(tblProduto)
       adicionarComponente(pnlProdutosSelecionados, scroll, 1, 0, 3, 1)
-      if(pedido != null) {
+      if (pedido != null) {
         carregarProdutosPedido()
       }
     btExcluirProduto = new JButton("Excluir Selecionado")
@@ -279,7 +279,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       btConfirmar = new JButton("Confirmar Pedido")
       btConfirmar.addActionListener(this)
       btConfirmar.setVisible(false)
-      if(pedido == null) {
+      if (pedido == null) {
         pnlComandos.add(btConfirmar)
       }
       else
@@ -310,10 +310,10 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
   private void carregarClientes() {
     cbxCliente.removeAllItems()
       cbxCliente.addItem("Selecione...")
-      for(int i = 1;i < clientes.size();i++) {
+      for (int i = 1;i < clientes.size();i++) {
         cbxCliente.addItem(((Cliente)clientes.get(i)).obterRazaoSocial())
       }
-    if(pedido != null) {
+    if (pedido != null) {
       cbxCliente.setSelectedItem(pedido.obterCliente().obterRazaoSocial())
         try
         {
@@ -332,14 +332,14 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
   private void carregarProdutos() {
     cbxProduto.removeAllItems()
       cbxProduto.addItem("Selecione...")
-      for(int i = 1;i < produtos.size();i++) {
+      for (int i = 1;i < produtos.size();i++) {
         cbxProduto.addItem(((Produto)produtos.get(i)).obterNomeModelo())
       }
     redimencionar()
   }
 
   private void carregarProdutosPedido() {
-    for(int i = 0;i < produtosPedido.size();i++) {
+    for (int i = 0;i < produtosPedido.size();i++) {
       ProdutoPedido produtoPedido = (ProdutoPedido)produtosPedido.get(i)
         tblProduto.setValueAt(produtoPedido.obterProduto().obterNomeModelo(), indiceTabela, 0)
         tblProduto.setValueAt(""  +  produtoPedido.obterMatriz().obterNumeroSola(), indiceTabela, 1)
@@ -352,7 +352,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
     cbxMatriz.removeAllItems()
       cbxMatriz.addItem("Selecione...")
       Matriz matriz
-      for(int i = 1;i < matrizes.size();i++) {
+      for (int i = 1;i < matrizes.size();i++) {
         matriz = (Matriz)matrizes.get(i)
           cbxMatriz.addItem(matriz.obterDescricao())
       }
@@ -362,10 +362,10 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
   private void carregarLocaisEntrega() {
     cbxLocalEntrega.removeAllItems()
       cbxLocalEntrega.addItem("Selecione...")
-      for(int i = 1;i < locaisEntrega.size();i++) {
+      for (int i = 1;i < locaisEntrega.size();i++) {
         cbxLocalEntrega.addItem(((LocalEntrega)locaisEntrega.get(i)).obterDescricaoLocal())
       }
-    if(pedido != null)
+    if (pedido != null)
       cbxLocalEntrega.setSelectedItem(pedido.obterLocalEntrega().obterDescricaoLocal())
         redimencionar()
   }
@@ -390,20 +390,20 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btAbrirArquivo) {
+      if (objeto == btAbrirArquivo) {
         JFileChooser fchEDI = new JFileChooser("edi")
           int status = fchEDI.showOpenDialog(this)
 
-          if(status == JFileChooser.APPROVE_OPTION) {
+          if (status == JFileChooser.APPROVE_OPTION) {
             edi = fchEDI.getSelectedFile()
               txtCaminhoArquivo.setText(edi.getAbsolutePath())
           }
       }
 
-    if(objeto == cbxCliente) {
+    if (objeto == cbxCliente) {
       try
       {
-        if(cbxCliente.getSelectedIndex() > 0) {
+        if (cbxCliente.getSelectedIndex() > 0) {
           locaisEntrega = Cliente.carregarLocaisEntrega(aplicacao.obterConexao(), (Cliente)clientes.get(cbxCliente.getSelectedIndex()))
             carregarLocaisEntrega()
         }
@@ -415,7 +415,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
 
       try
       {
-        if(cbxCliente.getSelectedIndex() > 0) {
+        if (cbxCliente.getSelectedIndex() > 0) {
           produtos = Produto.carregarProdutos(((Cliente)clientes.get(cbxCliente.getSelectedIndex())), aplicacao.obterConexao())
         }
         carregarProdutos()
@@ -426,10 +426,10 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == cbxProduto) {
+    if (objeto == cbxProduto) {
       try
       {
-        if(cbxProduto.getSelectedIndex() > 0) {
+        if (cbxProduto.getSelectedIndex() > 0) {
           Matriz matriz = new Matriz()
             matrizes = matriz.carregarMatrizes(((Produto)produtos.get(cbxProduto.getSelectedIndex())), aplicacao.obterConexao())
             carregarMatrizes()
@@ -439,12 +439,12 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes dos produtos.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
-      if(txtValorNegociado != null && cbxProduto.getSelectedIndex() > 0) {
+      if (txtValorNegociado != null && cbxProduto.getSelectedIndex() > 0) {
         txtValorNegociado.setText(Numero.inverterSeparador(""  +  ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterValor()))
       }
     }
 
-    if(objeto == btIncluirProduto) {
+    if (objeto == btIncluirProduto) {
       tblProduto.setValueAt(this.cbxProduto.getSelectedItem(), indiceTabela, 0)
         tblProduto.setValueAt(this.cbxMatriz.getSelectedItem(), indiceTabela, 1)
         tblProduto.setValueAt(this.txtQuantidade.getText(), indiceTabela, 2)
@@ -463,11 +463,11 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       inicializarFormularioProduto()
     }
 
-    if(objeto == btDesfazerProduto) {
+    if (objeto == btDesfazerProduto) {
       inicializarFormularioProduto()
     }
 
-    if(objeto == btExcluirProduto) {
+    if (objeto == btExcluirProduto) {
       int linhaSelecionada = tblProduto.getSelectedRow()
         produtosPedido.removeElementAt(linhaSelecionada)
 
@@ -475,8 +475,8 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         tblProduto.setValueAt("", linhaSelecionada, 1)
         tblProduto.setValueAt("", linhaSelecionada, 2)
 
-        if(linhaSelecionada < (indiceTabela - 1)) {
-          for(int i = linhaSelecionada;i < (indiceTabela - 1);i++) {
+        if (linhaSelecionada < (indiceTabela - 1)) {
+          for (int i = linhaSelecionada;i < (indiceTabela - 1);i++) {
             tblProduto.setValueAt(tblProduto.getValueAt(i + 1, 0), i, 0)
               tblProduto.setValueAt(tblProduto.getValueAt(i + 1, 1), i, 1)
               tblProduto.setValueAt(tblProduto.getValueAt(i + 1, 2), i, 2)
@@ -492,7 +492,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         }
     }
 
-    if(objeto == btNovoCliente) {
+    if (objeto == btNovoCliente) {
       DlgDadosCliente dlgDadosCliente = new DlgDadosCliente(aplicacao)
         dlgDadosCliente.setVisible(true)
         try
@@ -507,12 +507,12 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btNovoProduto) {
+    if (objeto == btNovoProduto) {
       DlgDadosProduto dlgDadosProduto = new DlgDadosProduto(aplicacao, ((Cliente)clientes.get(cbxCliente.getSelectedIndex())))
         dlgDadosProduto.setVisible(true)
         try
         {
-          if(cbxCliente.getSelectedIndex() > 0) {
+          if (cbxCliente.getSelectedIndex() > 0) {
             produtos = Produto.carregarProdutos(((Cliente)clientes.get(cbxCliente.getSelectedIndex())), aplicacao.obterConexao())
           }
           carregarProdutos()
@@ -523,8 +523,8 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btNovaMatriz) {
-      if(cbxProduto.getSelectedIndex() > 0) {
+    if (objeto == btNovaMatriz) {
+      if (cbxProduto.getSelectedIndex() > 0) {
         DlgDadosMatriz dlgDadosMatriz = new DlgDadosMatriz(aplicacao, ((Produto)produtos.get(cbxProduto.getSelectedIndex())))
           dlgDadosMatriz.setVisible(true)
           try
@@ -540,7 +540,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btImportar) {
+    if (objeto == btImportar) {
       try
       {
         txaConteudoArquivo.setText(pedido.importarArquivoEDI(edi))
@@ -553,14 +553,14 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btAnterior) {
-      if(rdbImportar != null) {
-        if(rdbImportar.isSelected()) {
+    if (objeto == btAnterior) {
+      if (rdbImportar != null) {
+        if (rdbImportar.isSelected()) {
           card.show(pnlAreaDados, "opcoes")
             btProximo.setEnabled(true)
             btAnterior.setEnabled(false)
         }
-        else if(rdbInserir.isSelected()) {
+        else if (rdbInserir.isSelected()) {
           switch(telaPedido) {
             case ITENS_PEDIDO:
               card.show(pnlAreaDados, "pedido")
@@ -585,15 +585,15 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btProximo) {
-      if(pedido != null?false:rdbImportar.isSelected()) {
+    if (objeto == btProximo) {
+      if (pedido != null?false:rdbImportar.isSelected()) {
         card.show(pnlAreaDados, "importacao")
           btProximo.setEnabled(false)
           btAnterior.setEnabled(true)
       }
       else
       {
-        if(pedido != null)
+        if (pedido != null)
           telaPedido = PEDIDO
             switch(telaPedido) {
               case INICIAL: // Na inclusão de um pedido mostra o formulário de pedido em branco
@@ -604,9 +604,9 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
               case PEDIDO:
                   try
                   {
-                    if(pedido == null)
+                    if (pedido == null)
                       pedido = new Pedido()
-                    else if(btConfirmarAlteracao != null)
+                    else if (btConfirmarAlteracao != null)
                       btConfirmarAlteracao.setEnabled(true)
                         this.pedido.definirCliente((Cliente)clientes.get(cbxCliente.getSelectedIndex()))
                         this.pedido.definirTipoOperacao(((String)cbxTipoOperacao.getSelectedItem()).charAt(0))
@@ -631,7 +631,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try
       {
         this.pedido.cadastrarPedido()
@@ -645,7 +645,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btConfirmarAlteracao) {
+    if (objeto == btConfirmarAlteracao) {
       try
       {
         this.pedido.alterarPedido()
@@ -659,7 +659,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

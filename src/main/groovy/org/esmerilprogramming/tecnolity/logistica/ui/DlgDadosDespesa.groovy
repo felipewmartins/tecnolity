@@ -108,8 +108,8 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
     }
 
     int indicePlaca = 0
-      for(int i = 1; i < veiculos.size(); i++) {
-        if((((Veiculo)veiculos.get(i)).obterPlaca()).equals((this.despesa)==null?"":this.despesa.obterPlaca())) {
+      for (int i = 1; i < veiculos.size(); i++) {
+        if ((((Veiculo)veiculos.get(i)).obterPlaca()).equals((this.despesa)==null?"":this.despesa.obterPlaca())) {
           indicePlaca = i
         }
       }
@@ -179,7 +179,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
     cbxPlaca.removeAllItems()
       cbxPlaca.addItem("Selecione...")
 
-      for(int i = 1;i < veiculos.size();i++) {
+      for (int i = 1;i < veiculos.size();i++) {
         cbxPlaca.addItem(((Veiculo)veiculos.get(i)).obterPlaca())
       }
   }
@@ -187,7 +187,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoVeiculo) {
+      if (objeto == btNovoVeiculo) {
         DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao)
           dlgDadosVeiculo.setVisible(true)
           try {
@@ -200,13 +200,13 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
         }
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
-        if(modo == 'I') {
+        if (modo == 'I') {
           boolean confirmado = true
             try {
               despesa.definirPlaca(((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex()))==null?"":((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex())).obterPlaca())
@@ -219,7 +219,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado) {
+          if (confirmado) {
             try {
               this.despesa.cadastrarDespesa()
             }
@@ -230,7 +230,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
             this.setVisible(false)
           }
         }
-        else if(modo == 'A') {
+        else if (modo == 'A') {
           boolean confirmado = true
             try {
               despesa.definirPlaca(((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex()))==null?"":((Veiculo)veiculos.get(this.cbxPlaca.getSelectedIndex())).obterPlaca())
@@ -243,7 +243,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
               e.printStackTrace()
               confirmado = false
           }
-          if(confirmado) {
+          if (confirmado) {
             try {
               this.despesa.alterarDespesa()
             }
@@ -268,7 +268,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
   void focusGained(FocusEvent e) {
     Component componente = e.getComponent()
 
-      if(componente == txtValor)
+      if (componente == txtValor)
         txtValor.selectAll()
   }
 }

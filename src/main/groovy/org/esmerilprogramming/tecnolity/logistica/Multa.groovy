@@ -23,7 +23,7 @@ class Multa {
       ResultSet dadosMulta
       dadosMulta = conexao.executarConsulta("select * from multa where codigo = " +  this.codigo + " ")
 
-      if(dadosMulta.next()) {
+      if (dadosMulta.next()) {
         try {
           this.definirVeiculo(new Veiculo(dadosMulta.getString("placa")))
             this.definirMotivo(dadosMulta.getString("motivo"))
@@ -66,7 +66,7 @@ class Multa {
 
   void definirVeiculo(Veiculo veiculo) throws Exception
   {
-    if(veiculo != null)
+    if (veiculo != null)
       this.veiculo = veiculo
     else
     {
@@ -76,7 +76,7 @@ class Multa {
 
   void definirMotivo(String motivo) throws Exception
   {
-    if(!motivo.equals("") && motivo.length() <= 100)
+    if (!motivo.equals("") && motivo.length() <= 100)
       this.motivo = motivo
     else
     {
@@ -88,10 +88,10 @@ class Multa {
   void definirValor(float valor) throws Exception
   {
     String erro = ""
-      if(Float.isNaN(valor) || valor <= 0.0f)
+      if (Float.isNaN(valor) || valor <= 0.0f)
         erro = "O Valor não foi informado corretamente."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -101,7 +101,7 @@ class Multa {
 
   void definirResponsabilidade(int responsabilidade) throws Exception
   {
-    if(responsabilidade > 0)
+    if (responsabilidade > 0)
       this.responsabilidade = responsabilidade
     else
     {
@@ -113,16 +113,16 @@ class Multa {
   void definirData(String data) throws Exception
   {
     String erro = ""
-      if(data.equals(""))
+      if (data.equals(""))
         erro = "A Data não foi informada."
-      else if(data.length() == 10) {
-        if(!Calendario.validarData(data, "/"))
+      else if (data.length() == 10) {
+        if (!Calendario.validarData(data, "/"))
           erro = "Data inválida."
       }
       else
         erro = "Data inválida."
 
-          if(!erro.equals("")) {
+          if (!erro.equals("")) {
             Exception e = new Exception(erro)
               throw e
           }
@@ -150,7 +150,7 @@ class Multa {
   {
     String query = "update multa set placa = '" +  this.veiculo.obterPlaca() + "', motivo = '" + this.motivo + "', valor = " + this.valor + ", responsabilidade = " + this.responsabilidade + ", datahora = '" + Calendario.inverterFormato(this.data, "/") + "' where codigo = " + this.codigo + " "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }
@@ -165,7 +165,7 @@ class Multa {
   {
     String query = "delete from multa where codigo = " +  this.codigo + " "
       Conexao conexao = new Conexao('T')
-      if(conexao.abrirConexao()) {
+      if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
           conexao.fecharConexao()
       }

@@ -15,16 +15,16 @@ class Impressora
 
   void addPaginas(Vector paginas, PageFormat formato) {
     numeroPaginas = paginas.size()
-      for(int i = 0;i < numeroPaginas;i++) {
+      for (int i = 0;i < numeroPaginas;i++) {
         livro.append((Pagina)paginas.get(i), formato)
       }
   }
 
   void imprimir() throws PrinterException
   {
-    if(numeroPaginas > 0) {
+    if (numeroPaginas > 0) {
       trabalhoImpressao.setPageable(livro)
-        if(trabalhoImpressao.printDialog()) {
+        if (trabalhoImpressao.printDialog()) {
           trabalhoImpressao.print()
         }
     }

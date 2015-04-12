@@ -18,7 +18,7 @@ class MateriaPrima implements Cloneable {
 
   String obterQuantidade(String formato) {
     DecimalFormat df
-      if(!formato.equals("")) {
+      if (!formato.equals("")) {
         df = new DecimalFormat(formato)
       }
       else
@@ -30,7 +30,7 @@ class MateriaPrima implements Cloneable {
 
   void definirItem(Item item) throws Exception
   {
-    if(item == null) {
+    if (item == null) {
       Exception e = new Exception("O Item não foi informado.")
         throw e
     }
@@ -39,7 +39,7 @@ class MateriaPrima implements Cloneable {
 
   void definirMatriz(Matriz matriz) throws Exception
   {
-    if(matriz == null) {
+    if (matriz == null) {
       Exception e = new Exception("A Matriz nao foi informada.")
         throw e
     }
@@ -48,7 +48,7 @@ class MateriaPrima implements Cloneable {
 
   void definirQuantidade(float quantidade) throws Exception
   {
-    if(quantidade < 0.0f) {
+    if (quantidade < 0.0f) {
       Exception e = new Exception("Quantidade inválida.")
         throw e
     }

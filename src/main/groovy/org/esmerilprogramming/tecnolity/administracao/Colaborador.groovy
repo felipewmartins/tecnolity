@@ -51,7 +51,7 @@ class Colaborador extends PessoaFisica {
 
       dadosColaborador = conexao.executarConsulta("select * from usuario where usuario = '" +  this.matricula + "'")
 
-      if(dadosColaborador.next()) {
+      if (dadosColaborador.next()) {
         this.definirSenha(dadosColaborador.getString("senha"))
           this.definirSexo(dadosColaborador.getString("sexo").charAt(0))
           super.setNome(dadosColaborador.getString("nome_completo"))
@@ -60,9 +60,9 @@ class Colaborador extends PessoaFisica {
           this.definirCpf(dadosColaborador.getString("cpf"))
 
           int codigoDepartamento = dadosColaborador.getInt("departamento")
-          if(codigoDepartamento > 0) {
+          if (codigoDepartamento > 0) {
             dadosDepartamento = conexao.executarConsulta("select departamento from departamento where codigo = "  +  codigoDepartamento)
-              if(dadosDepartamento.next()) {
+              if (dadosDepartamento.next()) {
                 this.definirDepartamento(new Departamento(codigoDepartamento, dadosDepartamento.getString("departamento")))
               }
             dadosDepartamento.close()
@@ -72,7 +72,7 @@ class Colaborador extends PessoaFisica {
         this.definirBairro(dadosColaborador.getString("bairro"))
         this.definirCidade(dadosColaborador.getString("cidade"))
         String siglaEstado = dadosColaborador.getString("estado")
-        if(siglaEstado != null) {
+        if (siglaEstado != null) {
           this.setEstado(new Estado(siglaEstado))
         }
         this.definirCep(dadosColaborador.getString("cep"))
@@ -90,9 +90,9 @@ class Colaborador extends PessoaFisica {
   }
 
   void definirTelefone(String telefone) throws Exception {
-    if(telefone == null)
+    if (telefone == null)
       return
-        if(telefone.length() <= 8) {
+        if (telefone.length() <= 8) {
           super.setTelefone(telefone)
         }
         else
@@ -187,7 +187,7 @@ class Colaborador extends PessoaFisica {
       try {
           dadosColaborador = conexao.executarConsulta("select usuario, nome_completo, senha from usuario order by usuario asc")
           colaboradores.addElement(null)
-          while(dadosColaborador.next()) {
+          while (dadosColaborador.next()) {
             colaboradores.addElement(new Colaborador(dadosColaborador.getString("usuario"), dadosColaborador.getString("nome_completo"), dadosColaborador.getString("senha")))
           }
         dadosColaborador.close()
@@ -220,7 +220,7 @@ class Colaborador extends PessoaFisica {
       ResultSet dadosColaborador
 
       conexao.executarAtualizacao("delete from permissao where usuario = '" +  this.matricula + "'")
-      for(int i = 0;i < permissoes.size();i++) {
+      for (int i = 0;i < permissoes.size();i++) {
         conexao.executarAtualizacao("insert into permissao (interface, usuario, permissao) values (" +  ((Permissao)permissoes.get(i)).obterTela().obterIdentificador() + ", '" + this.matricula + "', '" + ((Permissao)permissoes.get(i)).obterTipoAcesso() + "')")
       }
     conexao.fecharConexao()
@@ -228,8 +228,8 @@ class Colaborador extends PessoaFisica {
 
   char verificarPermissao(Interface tela) {
     char tipoPermissao = '\u0000'
-      for(int i=0;i < permissoes.size();i++) {
-        if(((Permissao)permissoes.get(i)).obterTela().obterIdentificador() == tela.obterIdentificador()) {
+      for (int i=0;i < permissoes.size();i++) {
+        if (((Permissao)permissoes.get(i)).obterTela().obterIdentificador() == tela.obterIdentificador()) {
           tipoPermissao = ((Permissao)permissoes.get(i)).obterTipoAcesso()
         }
       }

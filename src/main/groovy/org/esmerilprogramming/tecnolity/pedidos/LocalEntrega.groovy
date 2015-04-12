@@ -69,7 +69,7 @@ class LocalEntrega {
 
   void definirCodigo(long codigo) throws Exception
   {
-    if(codigo <= 0) {
+    if (codigo <= 0) {
       Exception e = new Exception("Código do Local de Entrega inválido.")
         throw e
     }
@@ -79,7 +79,7 @@ class LocalEntrega {
 
   void definirCliente(Cliente cliente) throws Exception
   {
-    if(cliente == null) {
+    if (cliente == null) {
       Exception e = new Exception("O Cliente não foi informado.")
         throw e
     }
@@ -88,7 +88,7 @@ class LocalEntrega {
 
   void definirDescricaoLocal(String descricaoLocal) throws Exception
   {
-    if(descricaoLocal.equals("") || descricaoLocal == null) {
+    if (descricaoLocal.equals("") || descricaoLocal == null) {
       Exception e = new Exception("A Descrição do Local não foi informada.")
         throw e
     }
@@ -97,7 +97,7 @@ class LocalEntrega {
 
   void definirLogradouro(String logradouro) throws Exception
   {
-    if(!logradouro.equals("")) {
+    if (!logradouro.equals("")) {
       this.logradouro = logradouro
     }
     else
@@ -109,7 +109,7 @@ class LocalEntrega {
 
   void definirCidade(String cidade) throws Exception
   {
-    if(!cidade.equals("")) {
+    if (!cidade.equals("")) {
       this.cidade = cidade
     }
     else
@@ -121,7 +121,7 @@ class LocalEntrega {
 
   void definirEstado(Estado estado) throws Exception
   {
-    if(estado != null) {
+    if (estado != null) {
       this.estado = estado
         this.estado.carregarEstado()
     }
@@ -135,13 +135,13 @@ class LocalEntrega {
   void addLocalEntrega(Conexao conexao) throws Exception
   {
     String query = ""
-      if(isNovoLocalEntrega() && !isInvalido()) {
+      if (isNovoLocalEntrega() && !isInvalido()) {
         query = "insert into local_entrega (cliente, descricao_local, logradouro, complemento, bairro, cidade, estado, cep, telefone, responsavel_recebimento) "  + 
           "values (" +  this.obterCliente().obterCodigo() + ", '" + this.obterDescricaoLocal() + "', '" + this.obterLogradouro() + "', '" + this.obterComplemento() + "', '" + this.obterBairro() + "', '" + this.obterCidade() + "', '" + this.obterEstado().getSigla() + "', '" + this.obterCep() + "', '" + this.obterTelefone() + "', '" + this.obterResponsavelRecebimento() + "')"
           conexao.executarAtualizacao(query)
           return
       }
-      else if(isInvalido()) {
+      else if (isInvalido()) {
         deleteLocalEntrega(conexao)
       }
   }
@@ -149,7 +149,7 @@ class LocalEntrega {
   void deleteLocalEntrega(Conexao conexao) throws Exception
   {
     ResultSet rsLocalEntrega = conexao.executarConsulta("select * from pedido_cliente where local_entrega = "  +  this.codigo)
-      if(rsLocalEntrega.next()) {
+      if (rsLocalEntrega.next()) {
         Exception e = new Exception("Não foi possível excluir o local de entrega por estar associado a um pedido cadastrado.")
           throw e
       }

@@ -21,7 +21,7 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
     dadosPais = conexao.executarConsulta('select sigla_pais, pais from pais order by pais asc')
     paises = new Vector()
     paises.addElement(null)
-    while(dadosPais.next()) {
+    while (dadosPais.next()) {
       paises.addElement(new Pais(dadosPais.getString('sigla_pais'), dadosPais.getString('pais')))
     }
     dadosPais.close()
@@ -36,7 +36,7 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
       String query = 'Select sigla_pais from pais where sigla_pais = '' +  getSigla() +'''
       try {
         ResultSet dadosPais = conexao.executarConsulta(query)
-        if(!dadosPais.next()) {
+        if (!dadosPais.next()) {
           query = 'insert into pais (sigla_pais, pais) values ('' +  getSigla() +'', ''+ getNome() +'')'
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()

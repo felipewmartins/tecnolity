@@ -76,15 +76,15 @@ class DlgDadosCategoria extends JDialog implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       Categoria categoria = new Categoria()
-      if(categoria.cadastrarCategoria(txtNomeCategoria.getText())) {
+      if (categoria.cadastrarCategoria(txtNomeCategoria.getText())) {
         this.setVisible(false)
       } else {
         JOptionPane.showMessageDialog(aplicacao, 'Não foi possível cadastrar a Categoria informada!', 'Erro', JOptionPane.WARNING_MESSAGE)
       }
 
-      if(objeto == btCancelar) {
+      if (objeto == btCancelar) {
         this.setVisible(false)
       }
     }

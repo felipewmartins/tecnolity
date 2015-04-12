@@ -101,7 +101,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
     cbxPais.removeAllItems()
       cbxPais.addItem('Selecione...')
 
-      for(int i = 1;i < paises.size();i++) {
+      for (int i = 1;i < paises.size();i++) {
         cbxPais.addItem(((Pais)paises.get(i)).getNome())
       }
   }
@@ -120,7 +120,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btNovoPais) {
+      if (objeto == btNovoPais) {
         DlgDadosPais dlgDadosPais = new DlgDadosPais(aplicacao, 'I')
           dlgDadosPais.setVisible(true)
           try {
@@ -133,7 +133,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
         }
       }
 
-    if(objeto == btConfirmar) {
+    if (objeto == btConfirmar) {
       try {
         Estado estado = new Estado(txtSiglaEstado.getText(), txtNomeEstado.getText(), (Pais)paises.get(cbxPais.getSelectedIndex()))
           estado.cadastrarEstado()
@@ -145,7 +145,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
       }
     }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }

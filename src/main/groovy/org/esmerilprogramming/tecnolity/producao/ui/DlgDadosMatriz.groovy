@@ -147,9 +147,9 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
 
-      if(objeto == btConfirmar) {
+      if (objeto == btConfirmar) {
         try {
-          if(matriz.obterReferencia() == null) {
+          if (matriz.obterReferencia() == null) {
             matriz = new Matriz(txtReferencia.getText(),
                 Integer.parseInt("0"  +  txtNumeroSola.getText()),
                 Integer.parseInt("0"  +  txtQuantidade.getText()),
@@ -183,7 +183,7 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
         }
       }
 
-    if(objeto == btCancelar) {
+    if (objeto == btCancelar) {
       this.setVisible(false)
     }
   }
