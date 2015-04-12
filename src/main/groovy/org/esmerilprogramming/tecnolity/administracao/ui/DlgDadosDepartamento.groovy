@@ -59,7 +59,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
     try {
       responsaveis = colaborador.carregarColaboradores(aplicacao.obterConexao())
       carregarResponsaveis()
-    } catch(Exception e) {
+    } catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
@@ -120,7 +120,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
         try {
           departamento.alterarDepartamento(txtNomeDepartamento.getText(), (Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
           this.setVisible(false)
-        } catch(Exception e) {
+        } catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }
@@ -128,7 +128,7 @@ class DlgDadosDepartamento extends JDialog implements ActionListener {
         try {
           departamento.cadastrarDepartamento(txtNomeDepartamento.getText(), (Colaborador)responsaveis.get(cbxResponsavel.getSelectedIndex()))
           this.setVisible(false)
-        } catch(Exception e) {
+        } catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }

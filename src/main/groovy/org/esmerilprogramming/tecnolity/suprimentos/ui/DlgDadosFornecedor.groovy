@@ -156,7 +156,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
           estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?'BRA':(String)(this.fornecedor.obterPais()).getSigla(), aplicacao.obterConexao())
             carregarEstados()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -263,7 +263,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
               estados = Estado.carregarEstados(((Pais)paises.get(cbxPais.getSelectedIndex())).getSigla(), aplicacao.obterConexao())
                 carregarEstados()
             }
-            catch(Exception e) {
+            catch (e) {
               JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
@@ -279,7 +279,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 paises = Pais.carregarPaises(aplicacao.obterConexao())
                 carregarPaises()
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -294,7 +294,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 estados = Estado.carregarEstados((this.fornecedor.obterPais())==null?'BRA':(String)(this.fornecedor.obterPais()).getSigla(), aplicacao.obterConexao())
                 carregarEstados()
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -324,7 +324,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                     fornecedor.definirEmail(txtEmail.getText())
                     fornecedor.definirWebsite(txtWebSite.getText())
                 }
-              catch(Exception e) {
+              catch (e) {
                 JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                   e.printStackTrace()
                   confirmado = false
@@ -334,7 +334,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 {
                   fornecedor.cadastrarFornecedor()
                 }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -372,7 +372,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                 try {
                   fornecedor.alterarFornecedor()
                 }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }

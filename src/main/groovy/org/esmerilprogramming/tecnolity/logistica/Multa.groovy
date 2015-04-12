@@ -31,7 +31,7 @@ class Multa {
             this.definirResponsabilidade(dadosMulta.getInt("responsabilidade"))
             this.definirData(dadosMulta.getString("datahora"))
         }
-        catch(Exception e) {
+        catch (e) {
           e.printStackTrace()
         }
       }
@@ -45,7 +45,7 @@ class Multa {
         this.definirResponsabilidade(responsabilidade)
         this.definirData(data)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -59,7 +59,7 @@ class Multa {
           this.definirResponsabilidade(responsabilidade)
           this.definirData(data)
       }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }

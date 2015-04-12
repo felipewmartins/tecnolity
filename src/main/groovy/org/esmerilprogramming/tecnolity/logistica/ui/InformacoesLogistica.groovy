@@ -59,7 +59,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
           transportadoras = Transportadora.carregarTransportadoras(aplicacao.obterConexao())
             carregarTransportadoras()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Transportadoras.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -165,7 +165,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
           veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
             carregarVeiculosDespesas()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -210,7 +210,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
           veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
             carregarVeiculosMultas()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -340,7 +340,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             DlgDadosVeiculo dlgDadosVeiculo = new DlgDadosVeiculo(aplicacao, new Veiculo(placaVeiculo, aplicacao.obterConexao()))
             dlgDadosVeiculo.setVisible(true)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         }
       }
@@ -359,7 +359,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             try {
               veiculo.excluirVeiculo()
             }
-          catch(Exception e) {
+          catch (e) {
             e.printStackTrace()
           }
         }
@@ -401,7 +401,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
             try {
               motorista.excluirMotorista()
             }
-          catch(Exception e) {
+          catch (e) {
             e.printStackTrace()
           }
         }
@@ -455,7 +455,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
               try {
                 despesa.excluirDespesa()
               }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }
@@ -515,7 +515,7 @@ class InformacoesLogistica extends JTabbedPane implements ActionListener
               try {
                 multa.excluirMulta()
               }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }

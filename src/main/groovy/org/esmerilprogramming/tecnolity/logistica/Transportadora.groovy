@@ -16,7 +16,7 @@ class Transportadora {
       try {
         this.definirTransportadora(transportadora)
       }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -25,7 +25,7 @@ class Transportadora {
     try {
       this.definirTransportadora(transportadora)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -41,7 +41,7 @@ class Transportadora {
         try {
           this.definirTransportadora(dadosTransportadora.getString("transportadora"))
         }
-        catch(Exception e) {
+        catch (e) {
           e.printStackTrace()
         }
       }

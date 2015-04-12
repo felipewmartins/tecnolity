@@ -125,7 +125,7 @@ class Item {
             this.carregarDepartamentos(conexao)
             this.carregarFornecedores(conexao)
         }
-        catch(Exception e) {
+        catch (e) {
           e.printStackTrace()
         }
       }
@@ -511,7 +511,7 @@ class Item {
                     resultado.getString("moeda"),
                     resultado.getString("referencia_fornecedor")))
             }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }

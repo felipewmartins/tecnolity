@@ -84,7 +84,7 @@ class DlgAlteracaoPreco extends JDialog implements ActionListener
             this.fornecedorItem.alterarValorItem()
             this.setVisible(false)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE)
             e.printStackTrace()
         }

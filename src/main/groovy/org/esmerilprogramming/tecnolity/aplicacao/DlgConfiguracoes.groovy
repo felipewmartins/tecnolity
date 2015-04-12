@@ -94,7 +94,7 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
       try {
           estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
         }
-        catch(Exception e){}
+        catch (e){}
         carregarEstados(Configuracao.getOrganizacaoEstado())
       }
     adicionarComponente(pnlEndereco, cbxEstado, 5, 0, 1, 1)
@@ -103,7 +103,7 @@ class DlgConfiguracoes extends JDialog implements ActionListener {
         try {
           paises = Pais.carregarPaises(aplicacao.obterConexao())
         }
-        catch(Exception e){}
+        catch (e){}
         carregarPaises(Configuracao.getOrganizacaoPais())
       }
     adicionarComponente(pnlEndereco, cbxPais, 5, 1, 2, 1)

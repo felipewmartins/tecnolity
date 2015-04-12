@@ -219,7 +219,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                       requisicoesCompra = requisicaoCompra.carregarRequisicoesCompra(conexao)
                       carregarRequisicoesCompra()
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições de Compra. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -345,7 +345,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     requisicoesInternasConsumo = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_CONSUMO)
                       cbxRequisicaoConsumo = new JComboBox(requisicoesInternasConsumo)
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -404,7 +404,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     requisicoesInternasVendas = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_VENDAS)
                       cbxRequisicaoVenda = new JComboBox(requisicoesInternasVendas)
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -458,7 +458,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     requisicoesInternasDescarte = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_DESCARTE)
                       cbxRequisicaoDescarte = new JComboBox(requisicoesInternasDescarte)
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -519,7 +519,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     requisicoesDevolucao = RequisicaoInterna.carregarRequisicoesInternas(aplicacao.obterConexao(), RequisicaoInterna.REQUISICAO_DEVOLUCAO)
                       cbxRequisicaoDevolucao = new JComboBox(requisicoesDevolucao)
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições de Devolução.', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -579,7 +579,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                     requisicoesInternasDevolucaoExterna = RequisicaoInterna.carregarRequisicoesInternas(conexao, RequisicaoInterna.REQUISICAO_DEVOLUCAO_EXTERNA)
                       cbxRequisicaoDevolucaoExterna = new JComboBox(requisicoesInternasDevolucaoExterna)
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Requisições Internas. ', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -806,7 +806,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             lblTotalGeral.setText(Numero.inverterSeparador(''  +  totalGeral))
         }
     }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
     }
   }
@@ -839,7 +839,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 numeroItens++
             }
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -877,7 +877,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 numeroItens++
             }
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -926,7 +926,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             }
         }
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -1003,7 +1003,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 numeroItens++
             }
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1040,7 +1040,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 numeroItens++
             }
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1077,7 +1077,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 numeroItens++
             }
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1116,7 +1116,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 numeroItens++
             }
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1167,7 +1167,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                 numeroItens++
             }
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1193,7 +1193,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                       responsavelMovimentacao))
               }
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         }
         this.redimencionar()
@@ -1242,7 +1242,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               }
             }
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1264,7 +1264,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                   responsavelMovimentacao)
                 Lote.retirarItem(movimentacao, (ItemRequisicaoInterna)itensRequisicaoInterna.get(i))
             }
-            catch(Exception e) {
+            catch (e) {
               JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
@@ -1295,7 +1295,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
             JOptionPane.showMessageDialog(aplicacao, mensagem, 'Atenção', JOptionPane.WARNING_MESSAGE)
           }
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n'  + 
               'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n'  + 
               'a requisição poderá ser processada novamente sem necessidade.', 'Erro',
@@ -1319,7 +1319,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               movimentacao.cadastrarMovimentacao()
               lote.cadastrarLote()
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível registrar a movimentação. \n'  + 
                 'O banco de dados pode estar inconsistente. Entre em contato com o administrador.', 'Erro',
                 JOptionPane.ERROR_MESSAGE)
@@ -1330,7 +1330,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         try {
           requisicaoInterna.atualizarRequisicaoInterna(RequisicaoInterna.STATUS_CONFIRMADO)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível finalizar a Requisição Interna. \n'  + 
               'Mesmo assim as transações foram efetuadas com sucesso, no entanto \n'  + 
               'a requisição poderá ser processada novamente sem necessidade.', 'Erro',

@@ -58,7 +58,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           this.atualizarTabelaLocaisEntrega()
           dimencionar()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -114,7 +114,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         paises = Pais.carregarPaises(aplicacao.obterConexao())
           carregarPaises()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Países.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -133,7 +133,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
           carregarEstados()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -231,7 +231,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         estadosEntrega = Estado.carregarEstados("BRA", aplicacao.obterConexao())
           carregarEstadosEntrega()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados do Local de Entrega", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -386,7 +386,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
             paises = Pais.carregarPaises(aplicacao.obterConexao())
               carregarPaises()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Países.", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -400,7 +400,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
             carregarEstados()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -414,7 +414,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           estadosEntrega = Estado.carregarEstados("BRA", aplicacao.obterConexao())
             carregarEstadosEntrega()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados do Local de Entrega.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -452,7 +452,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
           atualizarTabelaLocaisEntrega()
           btExcluirLocal.setEnabled(true)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -501,7 +501,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
             btAnterior.setEnabled(true)
             btProximo.setEnabled(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: " +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -532,7 +532,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
             cliente.cadastrarCliente(aplicacao.obterConexao())
               this.setVisible(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

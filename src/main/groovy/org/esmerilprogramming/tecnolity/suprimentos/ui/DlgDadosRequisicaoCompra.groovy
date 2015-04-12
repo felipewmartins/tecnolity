@@ -117,7 +117,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           }
         rsItensRequisicao.close()
       }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -150,7 +150,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         fornecedores = Fornecedor.carregarFornecedores(aplicacao.obterConexao())
           carregarFornecedores()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Fornecedores. ', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -178,7 +178,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         formasPagamento = formaPagamento.carregarFormasPagamento(aplicacao.obterConexao())
           carregarFormasPagamento()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Formas de Pagamento. ', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -204,7 +204,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
         transportadoras = Transportadora.carregarTransportadoras(aplicacao.obterConexao())
           carregarTransportadoras()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Transportadoras. ', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -272,7 +272,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           pnlPedidos.add(scroll, BorderLayout.CENTER)
           pnlPedidosClientes.add(pnlPedidos, BorderLayout.WEST)
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os pedidos.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -477,7 +477,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           modeloListaPedidos.addElement(this.pedidos.get(i))
         }
     }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar pedidos em produção.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -491,7 +491,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           modeloListaPedidos.addElement(this.pedidos.get(i))
         }
     }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar pedidos em produção.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -548,7 +548,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               btAdicionar.setEnabled(true)
               btRemover.setEnabled(true)
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens do fornecedor', 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -563,7 +563,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             this.transportadoras = Transportadora.carregarTransportadoras(aplicacao.obterConexao())
             carregarTransportadoras()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Transportadoras', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -576,7 +576,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           this.itens = Item.carregarItens(this.requisicaoCompra.obterFornecedor(), pedidosSelecionados, aplicacao.obterConexao())
             this.carregarItens()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Ítens.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -589,7 +589,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           this.fornecedores = Fornecedor.carregarFornecedores(aplicacao.obterConexao())
             this.carregarFornecedores()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Fornecedores.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -603,7 +603,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             this.formasPagamento = formaPagamento.carregarFormasPagamento(aplicacao.obterConexao())
             this.carregarFormasPagamento()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar as Formas de Pagamento.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -707,7 +707,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -847,7 +847,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               confirmado = false
               n.printStackTrace()
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               confirmado = false
               e.printStackTrace()
@@ -962,7 +962,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
           impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
           impressora.imprimir()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

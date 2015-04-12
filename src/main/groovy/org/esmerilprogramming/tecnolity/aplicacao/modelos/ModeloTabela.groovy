@@ -60,7 +60,7 @@ import org.esmerilprogramming.tecnolity.util.*
       resultado.close()
       fireTableChanged(null)//notificar a criacao de uma nova tabela
     }
-    catch(Exception e) {
+    catch (e) {
       cache = new Vector()
       e.printStackTrace()
     }

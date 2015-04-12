@@ -54,7 +54,7 @@ class RelatorioInventario extends Relatorio
           conteudo.append("                                                                                        Total Geral:" +  Texto.obterNumeroTamanhoFixo("" + totalGeral, 15, " "))
           rsItens.close()
       }
-    catch(Exception e){}
+    catch (e){}
     return conteudo.toString()
   }
 }

@@ -266,7 +266,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                         cbxItemMovimentacao.addItem((Item)itensMovimentacao.get(i))
                       }
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens da movimentação.', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -371,7 +371,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                     cbxPedidos = new JComboBox(Pedido.carregarPedidosClientes(aplicacao.obterConexao()))
                       cbxPedidos.addItem('Sem Pedido')
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os pedidos dos clientes.', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -441,7 +441,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                       }
                     cbxFornecedor.addActionListener(this)
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os fornecedores', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -497,7 +497,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                         cbxItens.addItem((Item)itensInventario.get(i))
                       }
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens.', 'Erro', JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -533,7 +533,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   try {
                     numeroItens = Item.obterNumeroItensCadastrados(aplicacao.obterConexao())
                   }
-                catch(Exception e){}
+                catch (e){}
                 String[][] dados = new String[numeroItens][5]
                   tblInventario = new JTable(dados, titulosTabelaInventario)
                   JScrollPane scrollInventario = new JScrollPane(tblInventario)
@@ -639,7 +639,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
               }
             rsFornecedoresItem.close()
           }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os preços dos insumos.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -713,7 +713,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
           }
         }
       }
-      catch(Exception e){}
+      catch (e){}
     }
 
     if(objeto == btImprimirInventario) {
@@ -724,7 +724,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
           impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
           impressora.imprimir()
       }
-      catch(Exception e) {
+      catch (e) {
         e.printStackTrace()
       }
     }
@@ -737,7 +737,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
           impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
           impressora.imprimir()
       }
-      catch(Exception e) {
+      catch (e) {
         e.printStackTrace()
       }
     }
@@ -798,7 +798,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                 item.excluirItem(codigoItem)
                 atualizarTabelaItem('T', '')
             }
-          catch(Exception e) {
+          catch (e) {
             e.printStackTrace()
           }
         }
@@ -821,7 +821,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                 item.excluirItem(codigoItem)
                 atualizarTabelaItem('C', '')
             }
-          catch(Exception e) {
+          catch (e) {
             e.printStackTrace()
           }
         }
@@ -844,7 +844,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                 item.excluirItem(codigoItem)
                 atualizarTabelaItem('L', '')
             }
-          catch(Exception e) {
+          catch (e) {
             e.printStackTrace()
           }
         }
@@ -886,7 +886,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -901,7 +901,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -923,7 +923,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -938,7 +938,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -954,7 +954,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
           impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
           impressora.imprimir()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -975,7 +975,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -990,7 +990,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1036,7 +1036,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
               fornecedor.excluirFornecedor(codigoFornecedor)
                 atualizarTabelaFornecedor()
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -1069,7 +1069,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                 }
               }
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -1091,7 +1091,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             try {
               requisicaoCompra.cancelarRequisicaoCompra()
             }
-          catch(Exception e) {
+          catch (e) {
             e.printStackTrace()
           }
         }
@@ -1117,7 +1117,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível imprimir a requisição interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1136,7 +1136,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao, requisicaoInterna)
             dlgDadosRequisicaoInterna.setVisible(true)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível abrir a requisição interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1158,7 +1158,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível imprimir a requisição de compra.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1177,7 +1177,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             DlgDadosRequisicaoCompra dlgDadosRequisicaoCompra = new DlgDadosRequisicaoCompra(aplicacao, requisicaoCompra)
             dlgDadosRequisicaoCompra.setVisible(true)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível abrir a requisição de compra.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -1202,7 +1202,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
             try {
               requisicaoInterna.cancelarRequisicaoInterna()
             }
-          catch(Exception e) {
+          catch (e) {
             e.printStackTrace()
           }
         }
@@ -1269,7 +1269,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
           impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
           impressora.imprimir()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os itens para impressão.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

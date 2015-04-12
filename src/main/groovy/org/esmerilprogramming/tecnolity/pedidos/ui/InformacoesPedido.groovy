@@ -156,7 +156,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             DlgDadosPedido dlgDadosPedido = new DlgDadosPedido(aplicacao, pedido)
             dlgDadosPedido.setVisible(true)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o pedido selecionado.", "Erro", JOptionPane.ERROR_MESSAGE)
         }
       }
@@ -175,7 +175,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
               Pedido pedido = new Pedido(codigoPedido)
                 pedido.cancelarPedido()
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível cancelar o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -204,7 +204,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -222,7 +222,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -241,7 +241,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
           DlgRecursosPedido dlgRecursosPedido = new DlgRecursosPedido(aplicacao, pedidos)
             dlgRecursosPedido.setVisible(true)
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível exibir os Recursos Necessários.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -258,7 +258,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
           DlgDadosCliente dlgDadosCliente = new DlgDadosCliente(aplicacao, new Cliente(Long.parseLong(tblCliente.getValueAt(linha, 0).toString())))
           dlgDadosCliente.setVisible(true)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o Cliente selecionado.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -272,7 +272,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
             cliente.excluirCliente(aplicacao.obterConexao())
               atualizarTabelaCliente()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível excluir o Cliente selecionado.", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }

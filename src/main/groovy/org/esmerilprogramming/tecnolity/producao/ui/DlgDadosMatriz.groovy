@@ -48,7 +48,7 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
       try {
         this.matriz.carregarMatriz(aplicacao.obterConexao())
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro:"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -177,7 +177,7 @@ class DlgDadosMatriz extends JDialog implements ActionListener {
           }
           this.setVisible(false)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }

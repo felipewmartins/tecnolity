@@ -273,7 +273,7 @@ class Produto {
     catch (SQLException e) {
       e.printStackTrace()
     }
-    catch(Exception e){}
+    catch (e){}
     return produtos
   }
 
@@ -290,7 +290,7 @@ class Produto {
         dadosProduto.close()
       }
     catch(SQLException e){}
-    catch(Exception e){}
+    catch (e){}
     return produtos
   }
 

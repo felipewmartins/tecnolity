@@ -136,7 +136,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       pnlParametro.add(cbxColaboradores)
       pnlPermissoes.add(pnlParametro, BorderLayout.NORTH)
     }
-    catch (Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE)
       e.printStackTrace()
     }
@@ -167,7 +167,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     try {
       this.cambio.carregarCambio(aplicacao.obterConexao())
     }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a cotação do dólar.", "Erro", JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
@@ -404,14 +404,14 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       try {
         this.cambio.definirDolar(Float.parseFloat(Numero.inverterSeparador(txtCotacaoDolar.getText())))
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
       try {
         this.cambio.cadastrarCambio()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível registrar o câmbio atual.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
@@ -447,7 +447,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
           try {
             colaborador = new Colaborador(usuarioColaborador)
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
           }
@@ -478,7 +478,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       try {
         departamento.carregarDepartamento(aplicacao.obterConexao())
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: não foi possível carregar o Departamento.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
@@ -495,7 +495,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
         departamento.excluirDepartamento()
         atualizarTabelaDepartamento()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }

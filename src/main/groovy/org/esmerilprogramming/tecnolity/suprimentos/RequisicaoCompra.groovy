@@ -55,7 +55,7 @@ class RequisicaoCompra
           this.carregarItensRequisicaoCompleto(conexao)
           this.carregarPedidosRequisicao(conexao)
       }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -281,7 +281,7 @@ class RequisicaoCompra
             this.definirObservacao(dadosRequisicaoCompra.getString("observacao"))
             this.definirStatus(dadosRequisicaoCompra.getString("status"))
         }
-        catch(Exception e) {
+        catch (e) {
           e.printStackTrace()
         }
       }
@@ -306,7 +306,7 @@ class RequisicaoCompra
                     dadosItemRequisicao.getFloat("valor_item"),
                     dadosItemRequisicao.getInt("percentual_ipi")))
             }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }
@@ -337,7 +337,7 @@ class RequisicaoCompra
                       dadosItemRequisicao.getFloat("valor_item"),
                       dadosItemRequisicao.getInt("percentual_ipi")))
             }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }
@@ -368,7 +368,7 @@ class RequisicaoCompra
                       dadosItemRequisicao.getFloat("valor_item"),
                       dadosItemRequisicao.getInt("percentual_ipi")))
             }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }
@@ -391,7 +391,7 @@ class RequisicaoCompra
             try {
               pedidos.addElement(new Pedido(rsPedidos.getInt("pedido"), rsPedidos.getString("ordem_compra")))
             }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }

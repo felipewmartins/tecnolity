@@ -17,7 +17,7 @@ class Despesa {
       this.definirPlaca(placa)
         this.definirData(data)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -30,7 +30,7 @@ class Despesa {
         this.definirPlacaAntesAlteracao(placa)
         this.definirDataAntesAlteracao(data)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
 
@@ -42,7 +42,7 @@ class Despesa {
           this.definirDescricao(dadosDespesa.getString("descricao"))
             this.definirValor(dadosDespesa.getFloat("valor"))
         }
-        catch(Exception e) {
+        catch (e) {
           e.printStackTrace()
         }
       }
@@ -55,7 +55,7 @@ class Despesa {
         this.definirValor(valor)
         this.definirData(data)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -69,7 +69,7 @@ class Despesa {
         this.definirData(data)
         this.definirDataAntesAlteracao(dataAntesAlteracao)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }

@@ -68,7 +68,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
       try {
         item = new Item(codigo, aplicacao.obterConexao())
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -578,7 +578,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -612,7 +612,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -741,7 +741,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               n.printStackTrace()
               confirmado = false
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
@@ -785,7 +785,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
             this.setVisible(false)
         }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

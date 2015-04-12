@@ -74,7 +74,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
       {
         this.produto.carregarProduto(aplicacao.obterConexao())
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os dados do Produto.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -120,7 +120,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           clientes = cliente.carregarClientes(aplicacao.obterConexao())
           carregarClientes()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -140,7 +140,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           componentes = componente.carregarComponentes(aplicacao.obterConexao())
           carregarComponentes()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Componentes.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -159,7 +159,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           tiposProducao = tipoProducao.carregarTiposProducao(aplicacao.obterConexao())
           carregarTiposProducao()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os tipos de produção.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -203,7 +203,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             label.setFont(new Font("Arial", Font.PLAIN, 10))
             adicionarComponente(pnlDadosProduto, label, 6, 2, 2, 1)
         }
-        catch(Exception e) {
+        catch (e) {
 
         }
       }
@@ -253,7 +253,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             this.matrizes = matriz.carregarMatrizes(aplicacao.obterConexao())
             carregarMatrizes()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes.", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -279,7 +279,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
         itens = Item.carregarItens(aplicacao.obterConexao())
           carregarItens()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matérias Primas.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -315,7 +315,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             this.materiasPrimas = this.produto.obterMateriasPrimas()
             indiceTabela = materiasPrimas.size()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matérias Primas", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -421,7 +421,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               if(this.produto.obterComponente().obterNomeComponente(aplicacao.obterConexao()).equals(componente.obterNomeComponente()))
                 posicao = i
             }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
           }
@@ -504,7 +504,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               clientes = cliente.carregarClientes(aplicacao.obterConexao())
               carregarClientes()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -520,7 +520,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             componentes = componente.carregarComponentes(aplicacao.obterConexao())
             carregarComponentes()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Componentes.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -535,7 +535,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             tiposProducao = tipoProducao.carregarTiposProducao(aplicacao.obterConexao())
             carregarTiposProducao()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os tipos de produção.\n\n Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -561,7 +561,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
             this.matrizes = matriz.carregarMatrizes(aplicacao.obterConexao())
             carregarMatrizes()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -585,7 +585,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               materiasPrimas.addElement(mp)
               indiceTabela++
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -604,7 +604,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               materiasPrimas.addElement(mp)
               indiceTabela++
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -620,7 +620,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           itens = Item.carregarItens(aplicacao.obterConexao())
             carregarItens()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matérias Primas.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -636,7 +636,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           indiceTabela++
           inicializarFormMateriaPrima()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -652,7 +652,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           inicializarFormMateriaPrima()
           btAlterarMateriaPrima.setEnabled(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -739,7 +739,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           this.produto.associarMateriasPrimas(this.materiasPrimas)
           this.setVisible(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -772,12 +772,12 @@ class DlgDadosProduto extends JDialog implements ActionListener
                   this.matrizes = matriz.carregarMatrizes(aplicacao.obterConexao())
                   carregarMatrizes()
               }
-            catch(Exception e) {
+            catch (e) {
               JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes.", "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível cadastrar o Produto.\n\n Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -788,7 +788,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
               this.produto.associarMateriasPrimas(materiasPrimas)
                 this.setVisible(false)
             }
-            catch(Exception e) {
+            catch (e) {
               JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
@@ -805,7 +805,7 @@ class DlgDadosProduto extends JDialog implements ActionListener
           impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
           impressora.imprimir()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

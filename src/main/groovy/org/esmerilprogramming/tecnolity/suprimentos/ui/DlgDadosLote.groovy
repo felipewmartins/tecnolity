@@ -35,7 +35,7 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
         try {
           lote = new Lote()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar o Lote.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -171,7 +171,7 @@ class DlgDadosLote extends JDialog implements ActionListener, FocusListener
                   lote.definirDescricao(txtDescricao.getText())
                   this.itemRequisicao.obterItem().definirLote(this.lote)
               }
-              catch(Exception e) {
+              catch (e) {
                 JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                   e.printStackTrace()
               }

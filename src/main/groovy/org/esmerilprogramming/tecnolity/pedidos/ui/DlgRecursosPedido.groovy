@@ -116,7 +116,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
                 DlgDadosRequisicaoInterna dlgDadosRequisicaoInterna = new DlgDadosRequisicaoInterna(aplicacao, this.pedidos[0], itensRequisicaoInterna)
                 dlgDadosRequisicaoInterna.setVisible(true)
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -137,7 +137,7 @@ class DlgRecursosPedido extends JDialog implements ActionListener
                   Float.parseFloat((String)tblRecursos.getValueAt(i, 3))))
 
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }

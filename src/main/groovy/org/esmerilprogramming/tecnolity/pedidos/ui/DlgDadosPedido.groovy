@@ -139,7 +139,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
           clientes = cliente.carregarClientes(aplicacao.obterConexao())
           carregarClientes()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes.\n\n"  +  e.getMessage())
         e.printStackTrace()
     }
@@ -319,7 +319,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         {
           locaisEntrega = Cliente.carregarLocaisEntrega(aplicacao.obterConexao(), (Cliente)clientes.get(cbxCliente.getSelectedIndex()))
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os locais de entrega.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -408,7 +408,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
             carregarLocaisEntrega()
         }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os locais de entrega.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -420,7 +420,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
         }
         carregarProdutos()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os produtos.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -435,7 +435,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
             carregarMatrizes()
         }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes dos produtos.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -501,7 +501,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
             clientes = cliente.carregarClientes(aplicacao.obterConexao())
             carregarClientes()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes.\n\n"  +  e.getMessage())
           e.printStackTrace()
       }
@@ -517,7 +517,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
           }
           carregarProdutos()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os produtos.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -533,7 +533,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
               matrizes = matriz.carregarMatrizes(((Produto)produtos.get(cbxProduto.getSelectedIndex())), aplicacao.obterConexao())
               carregarMatrizes()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Matrizes do produto.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -547,7 +547,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
           lblStatus.setText("Status: Importado. "  +  pedido.obterNumeroRegistros() + " registros.")
           redimencionar()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível importar o arquivo.\n\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -622,7 +622,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
                         btConfirmar.setVisible(true)
                         telaPedido = ITENS_PEDIDO
                   }
-                  catch(Exception e) {
+                  catch (e) {
                     JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                       e.printStackTrace()
                   }
@@ -639,7 +639,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
 
           this.setVisible(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível cadastrar o pedido."  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -653,7 +653,7 @@ class DlgDadosPedido extends JDialog implements ActionListener, FocusListener
 
           this.setVisible(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possivel alterar o pedido."  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

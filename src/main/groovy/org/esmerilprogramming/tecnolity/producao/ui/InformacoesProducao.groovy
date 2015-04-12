@@ -142,7 +142,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                       clientes = cliente.carregarClientes(aplicacao.obterConexao())
                       carregarClientes()
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Clientes.", "Erro", JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -191,7 +191,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                       produtos = produto.carregarProdutos(aplicacao.obterConexao())
                       carregarProdutos()
                   }
-                catch(Exception e) {
+                catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Produtos.", "Erro", JOptionPane.ERROR_MESSAGE)
                     e.printStackTrace()
                 }
@@ -279,7 +279,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                 tblStatus.setValueAt(((RegistroHistoricoStatusPedido)historico.get(i)).getData(), 0, 4)
             }
         }
-        catch(Exception e) {
+        catch (e) {
 
         }
       }
@@ -326,7 +326,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
           }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -345,7 +345,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
           }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -364,7 +364,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
           }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -383,7 +383,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
           }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -402,7 +402,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             JOptionPane.showMessageDialog(aplicacao, "Atenção: Selecione um pedido antes de continar.", "Atenção", JOptionPane.WARNING_MESSAGE)
           }
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -425,7 +425,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -443,7 +443,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível imprimir o pedido.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -462,7 +462,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           DlgRecursosPedido dlgRecursosPedido = new DlgRecursosPedido(aplicacao, pedidos)
             dlgRecursosPedido.setVisible(true)
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível exibir os Recursos Necessários.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -485,7 +485,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
               DlgDadosProduto dlgDadosProduto = new DlgDadosProduto(aplicacao, produto)
               dlgDadosProduto.setVisible(true)
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro:"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -504,7 +504,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             produto.excluirProduto(codigoProduto)
           }
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -526,7 +526,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
             impressora.addPaginas(paginas, aplicacao.obterFormatoPagina())
             impressora.imprimir()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -552,7 +552,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                     dlgDadosMatriz.setVisible(true)
                 }
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a Matriz Selecionada. \nEla pode ter sido Excluida por outro usuário. \n Clique no botão Atualizar para obter dados mais recentes.", "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -584,7 +584,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           catch(SQLException eSql) {
             JOptionPane.showMessageDialog(aplicacao, "Não possível excluir a Matriz. Ela pode estar associada a algum produto.", "Erro", JOptionPane.ERROR_MESSAGE)
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Não possível excluir a Matriz. Ela pode estar associada a algum produto.", "Erro", JOptionPane.ERROR_MESSAGE)
           }
         }

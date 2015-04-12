@@ -42,7 +42,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
       try {
         this.veiculo = veiculo
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o Veículo.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -87,7 +87,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
             }
           }
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Transportadoras. ", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -215,7 +215,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
               transportadoras = Transportadora.carregarTransportadoras(aplicacao.obterConexao())
               carregarTransportadoras()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar as Transportadoras", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -256,7 +256,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
         JOptionPane.showMessageDialog(aplicacao, "Erro: Valor incorreto.", "Erro", JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

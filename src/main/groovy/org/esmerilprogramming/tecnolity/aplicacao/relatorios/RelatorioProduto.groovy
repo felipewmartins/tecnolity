@@ -31,7 +31,7 @@ class RelatorioProduto extends Relatorio
       try {
         conteudo.append("       Mercado: " +  (produto.obterDestino() == 'I'?"Mercado Interno":"Mercado Externo") + '       Valor: R$' + produto.getValor("") + " (Desde: " + produto.getDataUltimaAlteracaoValor(null) + ")")
       }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
     conteudo.append(QUEBRA)

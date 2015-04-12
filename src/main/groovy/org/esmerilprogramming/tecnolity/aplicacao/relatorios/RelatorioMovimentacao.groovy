@@ -49,7 +49,7 @@ class RelatorioMovimentacao extends Relatorio
                           }
         rsMovimentacoes.close()
       }
-    catch(Exception e){}
+    catch (e){}
     conteudo.append(QUEBRA)
       conteudo.append("----------------------------------------------------------------------------------------")
       return conteudo.toString()

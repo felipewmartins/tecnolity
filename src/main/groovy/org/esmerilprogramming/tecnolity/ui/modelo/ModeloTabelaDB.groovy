@@ -58,7 +58,7 @@ class ModeloTabelaDB extends ModeloTabela {
         this.resultado.close()
           this.fireTableChanged(null)
       }
-    catch (Exception e) {
+    catch (e) {
       this.cache = new Vector()
         e.printStackTrace()
     }

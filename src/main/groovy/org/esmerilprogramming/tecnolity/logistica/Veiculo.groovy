@@ -24,7 +24,7 @@ class Veiculo {
     try {
       this.definirPlaca(placa)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }

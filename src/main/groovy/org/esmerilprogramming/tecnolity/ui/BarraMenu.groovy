@@ -77,13 +77,13 @@ class BarraMenu extends JMenuBar implements ActionListener {
       try {
         UIManager.setLookAndFeel('javax.swing.plaf.metal.MetalLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)
-      }catch(Exception e){}
+      }catch (e){}
     }
     if(objeto == mnPrefApWindows) {
       try {
         UIManager.setLookAndFeel('com.sun.java.swing.plaf.windows.WindowsLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)
-      }catch(Exception e){}
+      }catch (e){}
     }
 
     if(objeto == mnPrefApUnix) {

@@ -57,7 +57,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
       try {
         despesa = new Despesa(placa, data, aplicacao.obterConexao())
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar a Despesa.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -102,7 +102,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
         veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
           carregarVeiculos()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos. ", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -194,7 +194,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
             veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
               carregarVeiculos()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -214,7 +214,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
                 despesa.definirData(this.txtData.getText())
                 despesa.definirDescricao(this.txaDescricao.getText())
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
@@ -223,7 +223,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
             try {
               this.despesa.cadastrarDespesa()
             }
-            catch(Exception e) {
+            catch (e) {
               JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
@@ -238,7 +238,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
                 despesa.definirData(this.txtData.getText())
                 despesa.definirDescricao(this.txaDescricao.getText())
             }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
@@ -247,7 +247,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
             try {
               this.despesa.alterarDespesa()
             }
-            catch(Exception e) {
+            catch (e) {
               JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
             }
@@ -256,7 +256,7 @@ class DlgDadosDespesa extends JDialog implements ActionListener, FocusListener
         }
 
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

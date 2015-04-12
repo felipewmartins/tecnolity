@@ -272,7 +272,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
             comboBox.addItem(((Departamento)this.departamentos.get(i)).obterNomeDepartamento())
           }
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }

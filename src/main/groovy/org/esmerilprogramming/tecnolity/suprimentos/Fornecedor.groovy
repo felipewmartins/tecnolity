@@ -294,7 +294,7 @@ class Fornecedor {
               try {
                 this.pais = new Pais(resultado.getString("pais"))
               }
-            catch(Exception e) {
+            catch (e) {
               e.printStackTrace()
             }
             this.cep = resultado.getString("cep")

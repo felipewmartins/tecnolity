@@ -65,7 +65,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
                       paises = Pais.carregarPaises(aplicacao.obterConexao())
                         carregarPaises()
                     }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -127,7 +127,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
             paises = Pais.carregarPaises(aplicacao.obterConexao())
               carregarPaises()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -139,7 +139,7 @@ class DlgDadosEstado extends JDialog implements ActionListener {
           estado.cadastrarEstado()
           this.setVisible(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.WARNING_MESSAGE)
           e.printStackTrace()
       }

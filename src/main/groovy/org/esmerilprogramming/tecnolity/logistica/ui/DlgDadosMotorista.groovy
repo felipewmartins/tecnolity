@@ -51,7 +51,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
       try {
         motorista = new Motorista(codigo, aplicacao.obterConexao())
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar o Motorista.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -94,7 +94,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
         veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
           cbxVeiculo = new JComboBox(veiculos)
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos. ", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -182,7 +182,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
         estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
           carregarEstados()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -270,7 +270,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
             estados = Estado.carregarEstados("BRA", aplicacao.obterConexao())
               carregarEstados()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Estados", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -283,7 +283,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
           veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
             carregarVeiculos()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -314,7 +314,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirTelefone(this.txtTelefone.getText())
               motorista.definirCelular(this.txtCelular.getText())
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
@@ -323,7 +323,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
           try {
             this.motorista.cadastrarMotorista()
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }
@@ -352,7 +352,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
               motorista.definirTelefone(this.txtTelefone.getText())
               motorista.definirCelular(this.txtCelular.getText())
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
             confirmado = false
@@ -361,7 +361,7 @@ class DlgDadosMotorista extends JDialog implements ActionListener, FocusListener
           try {
             this.motorista.alterarMotorista()
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
           }

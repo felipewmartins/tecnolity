@@ -131,7 +131,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             }
           rsItensPedidos.close()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar a requisição interna. ', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -192,7 +192,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
         departamentos = departamento.carregarNomesDepartamentos(aplicacao.obterConexao())
           cbxDepartamento = new JComboBox(departamentos)
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Departamentos. ', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -239,7 +239,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           pnlPedidos.add(scroll, BorderLayout.CENTER)
           pnlPedidosClientes.add(pnlPedidos, BorderLayout.WEST)
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os pedidos.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -385,7 +385,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           cbxDepartamento.addItem(departamentos.get(i))
         }
     }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Departamentos.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -413,7 +413,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           modeloListaPedidos.addElement(this.pedidos.get(i))
         }
     }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar pedidos em produção.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -427,7 +427,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           modeloListaPedidos.addElement(this.pedidos.get(i))
         }
     }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar pedidos em produção.', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -452,7 +452,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             this.itens = Item.carregarItens(aplicacao.obterConexao())
               this.carregarItens()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Ítens.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -467,7 +467,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             this.itens = Item.carregarItens(aplicacao.obterConexao())
               this.carregarItens()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Ítens.', 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -484,7 +484,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               carregarItens()
               redimencionar()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possivel carregar os itens.', 'Erro', JOptionPane.ERROR_MESSAGE)
         }
       }
@@ -548,7 +548,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -620,7 +620,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               n.printStackTrace()
               confirmado = false
           }
-          catch(Exception e) {
+          catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               e.printStackTrace()
               confirmado = false
@@ -751,13 +751,13 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
           this.requisicaoInterna.cadastrarRequisicaoInterna()
             this.requisicaoInterna.associarItens(itensRequisicaoInterna, pedidosSelecionados)
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
         this.setVisible(false)
       }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

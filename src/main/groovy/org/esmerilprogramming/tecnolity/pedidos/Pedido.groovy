@@ -416,7 +416,7 @@ class Pedido {
       rsModeloPedido = null
     }
     catch(SQLException e){ e.printStackTrace() }
-    catch(Exception e){ e.printStackTrace() }
+    catch (e){ e.printStackTrace() }
   }
 
   /**

@@ -13,7 +13,7 @@ class FormaPagamento {
       this.definirSigla(sigla)
         this.definirFormaPagamento(formaPagamento)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -22,7 +22,7 @@ class FormaPagamento {
     try {
       this.definirSigla(sigla)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -33,7 +33,7 @@ class FormaPagamento {
       this.definirSigla(sigla)
         this.definirSiglaAntesAlteracao(sigla)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
 
@@ -44,7 +44,7 @@ class FormaPagamento {
         try {
           this.definirFormaPagamento(dadosFormaPagamento.getString("forma_pagamento"))
         }
-        catch(Exception e) {
+        catch (e) {
           e.printStackTrace()
         }
       }

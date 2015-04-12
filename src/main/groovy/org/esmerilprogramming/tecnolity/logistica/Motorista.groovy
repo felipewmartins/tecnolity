@@ -28,7 +28,7 @@ class Motorista {
       try {
         this.definirMotorista(motorista)
       }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -66,7 +66,7 @@ class Motorista {
             this.definirTelefone(dadosMotorista.getString("telefone"))
             this.definirCelular(dadosMotorista.getString("celular"))
         }
-        catch(Exception e) {
+        catch (e) {
           e.printStackTrace()
         }
       }
@@ -96,7 +96,7 @@ class Motorista {
         this.definirTelefone(telefone)
         this.definirCelular(celular)
     }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }
@@ -126,7 +126,7 @@ class Motorista {
           this.definirTelefone(telefone)
           this.definirCelular(celular)
       }
-    catch(Exception e) {
+    catch (e) {
       e.printStackTrace()
     }
   }

@@ -78,7 +78,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
           if(multa != null)
             cbxPlaca.setSelectedItem(multa.obterVeiculo())
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos. ", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -106,7 +106,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
         motoristas = motorista.carregarMotoristas(aplicacao.obterConexao())
           carregarMotoristas()
       }
-    catch(Exception e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Motoristas.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -201,7 +201,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             veiculos = Veiculo.carregarVeiculos(aplicacao.obterConexao())
               carregarVeiculos()
           }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Veículos", "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -215,7 +215,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             motoristas = motorista.carregarMotoristas(aplicacao.obterConexao())
             carregarMotoristas()
         }
-      catch(Exception e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível carregar os Motoristas", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -236,7 +236,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             multa.definirMotivo(this.txaMotivo.getText())
             this.multa.cadastrarMulta()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
@@ -252,7 +252,7 @@ class DlgDadosMulta extends JDialog implements ActionListener, FocusListener
             multa.definirMotivo(this.txaMotivo.getText())
             this.multa.alterarMulta()
         }
-        catch(Exception e) {
+        catch (e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: "  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
         }
