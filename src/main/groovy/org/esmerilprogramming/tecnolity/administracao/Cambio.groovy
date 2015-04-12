@@ -35,7 +35,7 @@ class Cambio {
     Conexao conexao = new Conexao('T')
     if (conexao.abrirConexao()) {
       String query = 'insert into cotacao_dolar (valor_dolar) '
-      query += 'values ('+ this.dolar +')'
+      query += 'values (' + this.dolar + ')'
       conexao.executarAtualizacao(query)
       conexao.fecharConexao()
     }

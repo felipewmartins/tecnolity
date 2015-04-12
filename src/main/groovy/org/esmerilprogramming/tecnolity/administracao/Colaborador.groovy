@@ -103,10 +103,11 @@ class Colaborador extends PessoaFisica {
   }
 
   void definirCelular(String celular) throws Exception {
-    if(celular == null)
+    if (celular == null) {
       return
-        if(celular.length() <= 8) {
-          super.setCelular(celular)
+    }
+        if (celular.length() <= 8) {
+           super.setCelular(celular)
         }
         else
         {
@@ -142,10 +143,10 @@ class Colaborador extends PessoaFisica {
     Conexao conexao = new Conexao('T')
       boolean existente = false
       try {
-        if(conexao.abrirConexao()) {
-          ResultSet colaborador = conexao.executarConsulta("select usuario from usuario where usuario = '" +  this.matricula + "'")
-            if(colaborador.next()) {
-              existente = true
+        if (conexao.abrirConexao()) {
+           ResultSet colaborador = conexao.executarConsulta("select usuario from usuario where usuario = '" +  this.matricula + "'")
+            if (colaborador.next()) {
+               existente = true
             }
             else
             {
