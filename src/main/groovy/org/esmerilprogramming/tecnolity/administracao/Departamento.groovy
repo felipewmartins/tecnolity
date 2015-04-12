@@ -24,13 +24,12 @@ class Departamento {
     this.codigo = codigo
   }
 
-  void carregarDepartamento(Conexao conexao) throws Exception
-  {
+  void carregarDepartamento(Conexao conexao) throws Exception {
     ResultSet dadosDepartamento = conexao.executarConsulta("select * from departamento where codigo = "  +  this.codigo)
-      if(dadosDepartamento.next()) {
-        this.definirNomeDepartamento(dadosDepartamento.getString("departamento"))
+      if (dadosDepartamento.next()) {
+          this.definirNomeDepartamento(dadosDepartamento.getString("departamento"))
           String responsavel = dadosDepartamento.getString("responsavel")
-          this.definirResponsavel((responsavel != null)?new Colaborador(responsavel):null)
+          this.definirResponsavel((responsavel != null) ? new Colaborador(responsavel) : null)
       }
   }
 
@@ -44,14 +43,15 @@ class Departamento {
           String responsavel, nomeDepartamento
           int codigo
 
-          while(dadosDepartamento.next()) {
+          while (dadosDepartamento.next()) {
             codigo = dadosDepartamento.getInt("codigo")
               nomeDepartamento = dadosDepartamento.getString("departamento")
               responsavel = dadosDepartamento.getString("responsavel")
-              if(responsavel == null)
+              if (responsavel == null) {
                 departamentos.addElement(new Departamento(codigo, nomeDepartamento, null))
-              else
+              } else {
                 departamentos.addElement(new Departamento(codigo, nomeDepartamento, new Colaborador(responsavel)))
+              }
           }
         dadosDepartamento.close()
       }
@@ -74,8 +74,7 @@ class Departamento {
       return departamentos
   }
 
-  void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
-  {
+  void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception {
     String query = "insert into departamento (departamento, responsavel) values ('" +  nomeDepartamento + "', " + ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + ")"
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
@@ -89,8 +88,7 @@ class Departamento {
       }
   }
 
-  void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception
-  {
+  void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception {
     String query = "update departamento set departamento = '" +  nomeDepartamento + "', responsavel = " + ((responsavel == null)?"NULL":"'" + responsavel.obterMatricula() + "'") + " where codigo = " + this.codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
@@ -104,8 +102,7 @@ class Departamento {
       }
   }
 
-  void excluirDepartamento() throws Exception
-  {
+  void excluirDepartamento() throws Exception {
     String query = "delete from departamento where codigo = "  +  this.codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
