@@ -57,7 +57,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
           cbxTamanhoPapel.setSelectedIndex(1)
         }
       }
-    catch(NumberFormatException e) {
+    catch (NumberFormatException e) {
       cbxTamanhoPapel.setSelectedIndex(0)
     }
     cbxTamanhoPapel.addActionListener(this)
@@ -80,7 +80,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
           rdbOrientacaoPaisagem.setSelected(true)
         }
       }
-    catch(NumberFormatException e) {
+    catch (NumberFormatException e) {
       rdbOrientacaoRetrato.setSelected(true)
     }
 
@@ -218,7 +218,7 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
           this.aplicacao.obterConfiguracao().setMargemInferior(Integer.parseInt(txtMargemInferior.getText()))
           this.aplicacao.obterConfiguracao().salvarConfiguracao()
       }
-      catch(NumberFormatException e) {
+      catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Informe somente números inteiros nas margens da página.", "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }

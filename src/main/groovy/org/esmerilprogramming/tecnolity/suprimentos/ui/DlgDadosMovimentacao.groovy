@@ -157,7 +157,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
                           responsavel.close()
                           responsavel = null
                   }
-                catch(SQLException e) {
+                catch (SQLException e) {
                   e.printStackTrace()
                 }
 
@@ -846,7 +846,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         resultadoItensRequisicaoInterna.close()
           resultadoItensRequisicaoInterna = null
       }
-    catch(SQLException e){e.printStackTrace()}
+    catch (SQLException e){e.printStackTrace()}
   }
 
   void carregarItensRequisicaoInternaDevolucaoExterna() {
@@ -884,7 +884,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         resultadoItensRequisicaoInterna.close()
           resultadoItensRequisicaoInterna = null
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }
@@ -908,7 +908,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
         dadosRequisicaoCompra.close()
           dadosRequisicaoCompra = null
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }
@@ -964,7 +964,7 @@ class DlgDadosMovimentacao extends JDialog implements ActionListener
               dadosRequisicaoCompra.close()
                 dadosRequisicaoCompra = null
             }
-          catch(SQLException e) {
+          catch (SQLException e) {
             e.printStackTrace()
           }
           this.pack()

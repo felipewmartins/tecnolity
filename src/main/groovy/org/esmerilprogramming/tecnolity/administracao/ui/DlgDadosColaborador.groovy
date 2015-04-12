@@ -47,7 +47,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     super(aplicacao, true)
     try {
       colaborador = new Colaborador(usuario, aplicacao.conexao)
-    } catch(e) {
+    } catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
@@ -168,7 +168,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
         estados = Estado.carregarEstados('BRA', aplicacao.obterConexao())
           carregarEstados()
       }
-    catch(e) {
+    catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
@@ -295,7 +295,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       try {
         estados = Estado.carregarEstados('BRA', aplicacao.conexao)
         carregarEstados()
-      } catch(e) {
+      } catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Estados', 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
@@ -307,7 +307,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
       try {
         departamentos = new Departamento().carregarDepartamentos(aplicacao.conexao)
         carregarDepartamentos(cbxDepartamento)
-      } catch(e) {
+      } catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }
@@ -342,7 +342,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
           colaborador.alterarColaborador()
         }
         setVisible(false)
-      } catch(e) {
+      } catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
       }

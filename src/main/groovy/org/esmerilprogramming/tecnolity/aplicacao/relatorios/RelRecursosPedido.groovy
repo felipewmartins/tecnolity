@@ -83,7 +83,7 @@ class RelRecursosPedido extends JPanel implements Printable
           }
         rsRecursosPedido.close()
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }

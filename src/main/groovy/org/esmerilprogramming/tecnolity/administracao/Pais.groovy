@@ -47,7 +47,7 @@ class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
           dadosPais.close()
         }
       }
-      catch(Exception ex) {
+      catch (Exception ex) {
         ex.printStackTrace()
       }
       conexao.fecharConexao()

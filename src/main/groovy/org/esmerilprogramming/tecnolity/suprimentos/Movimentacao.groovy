@@ -167,7 +167,7 @@ class Movimentacao
                     }
                 mov.close()
               }
-            catch(SQLException e) {
+            catch (SQLException e) {
               Exception ex = new Exception("Não foi possível consultar a movimentação.\n"  +  e.getMessage())
                 throw ex
             }

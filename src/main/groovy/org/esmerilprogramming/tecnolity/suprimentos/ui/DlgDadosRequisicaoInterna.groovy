@@ -544,7 +544,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
             JOptionPane.showMessageDialog(aplicacao, 'Erro: O Item informado já foi associado a Requisição Interna.', 'Erro', JOptionPane.ERROR_MESSAGE)
           }
         }
-        catch(NumberFormatException n) {
+        catch (NumberFormatException n) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
@@ -615,7 +615,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               this.requisicaoInterna.definirSolicitante(this.solicitante)
               this.requisicaoInterna.definirJustificativa(txaJustificativa.getText())
           }
-          catch(NumberFormatException n) {
+          catch (NumberFormatException n) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
               n.printStackTrace()
               confirmado = false
@@ -695,7 +695,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
                 rsItensPedidos.close()
                 proceguir = true
                 }
-                catch(SQLException e) {
+                catch (SQLException e) {
               if(JOptionPane.showConfirmDialog(aplicacao, 'Os ítens para este pedido já foram requisitados anteriormente.\n Tem certeza que deseja requisitar novamente?\n Aviso: Isso pode comprometer a produção de outros pedidos.', 'Atenção', JOptionPane.YES_NO_OPTION) == 0) {
                 confirmado = true
                   proceguir = false
@@ -709,7 +709,7 @@ class DlgDadosRequisicaoInterna extends JDialog implements ActionListener, Focus
               }
             e.printStackTrace()
           }
-          catch(Exception ex) {
+          catch (Exception ex) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               confirmado = false
               ex.printStackTrace()

@@ -92,7 +92,7 @@ class FormAutenticacao extends JDialog implements ActionListener {
               dlgDadosColaborador.setVisible(true)
           }
         }
-    } catch(e) {
+    } catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }

@@ -312,7 +312,7 @@ class RequisicaoCompra
           }
         dadosItemRequisicao.close()
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }
@@ -343,7 +343,7 @@ class RequisicaoCompra
           }
         dadosItemRequisicao.close()
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }
@@ -374,7 +374,7 @@ class RequisicaoCompra
           }
         dadosItemRequisicao.close()
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }
@@ -397,7 +397,7 @@ class RequisicaoCompra
           }
         rsPedidos.close()
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }

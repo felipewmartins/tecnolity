@@ -622,7 +622,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
                   txtPercentualIpi.setText('' + dadosItem.getInt('percentual_ipi'))
               }
           }
-        catch(SQLException e) {
+        catch (SQLException e) {
           e.printStackTrace()
         }
       }
@@ -703,7 +703,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
             JOptionPane.showMessageDialog(aplicacao, 'Erro: O Item informado já foi associado a Requisição de Compra.', 'Erro', JOptionPane.ERROR_MESSAGE)
           }
         }
-        catch(NumberFormatException n) {
+        catch (NumberFormatException n) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
@@ -842,7 +842,7 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
                   btRemover.setEnabled(false)
               }
           }
-          catch(NumberFormatException n) {
+          catch (NumberFormatException n) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
               confirmado = false
               n.printStackTrace()
@@ -910,12 +910,12 @@ class DlgDadosRequisicaoCompra  extends JDialog implements ActionListener, Focus
               }
             rsItensPedidos.close()
           }
-          catch(SQLException e) {
+          catch (SQLException e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: As quantidades necessárias para os pedidos selecionados \n já foram atendidas em uma requisicao anterior.', 'Erro', JOptionPane.ERROR_MESSAGE)
               confirmado = false
               e.printStackTrace()
           }
-          catch(Exception ex) {
+          catch (Exception ex) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
               //confirmado = false
               ex.printStackTrace()

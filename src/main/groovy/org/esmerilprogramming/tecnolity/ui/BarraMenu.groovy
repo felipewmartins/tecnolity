@@ -90,7 +90,7 @@ class BarraMenu extends JMenuBar implements ActionListener {
       try {
         UIManager.setLookAndFeel('com.sun.java.swing.plaf.motif.MotifLookAndFeel')
           SwingUtilities.updateComponentTreeUI(aplicacao)
-      } catch(e){
+      } catch (e){
         e.printStackTrace()
       }
     }

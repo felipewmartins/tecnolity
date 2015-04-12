@@ -120,11 +120,11 @@ class DlgBancoDados extends JDialog implements ActionListener
           }
         txaComandos.setText(conteudoArquivo.toString())
       }
-    catch(FileNotFoundException e) {
+    catch (FileNotFoundException e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Arquivo informado não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE)
         e.printStackTrace()
     }
-    catch(IOException ex) {
+    catch (IOException ex) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível ler o arquivo informado.", "Erro", JOptionPane.ERROR_MESSAGE)
         ex.printStackTrace()
     }
@@ -172,7 +172,7 @@ class DlgBancoDados extends JDialog implements ActionListener
             conexao.fecharConexao()
           }
       }
-      catch(SQLException e) {
+      catch (SQLException e) {
         txaResultados.setText("Erro Nº:"  +  e.getErrorCode() + " - " + e.getMessage())
           e.printStackTrace()
       }

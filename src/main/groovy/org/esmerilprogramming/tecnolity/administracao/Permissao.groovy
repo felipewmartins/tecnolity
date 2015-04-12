@@ -40,7 +40,7 @@ class Permissao {
           return permissoes.getString("permissao").charAt(0)
         }
     }
-    catch(SQLException e) {
+    catch (SQLException e) {
       return SEM_ACESSO
     }
     return SEM_ACESSO

@@ -357,7 +357,7 @@ class DlgDadosCliente extends Dialogo implements ActionListener
         int[] tamanhoColunas = [25, 75]
         modeloTblLocaisEntrega.setTamanhoColunas(tblLocaisEntrega, tamanhoColunas)
     }
-    catch(Exception ex) {
+    catch (Exception ex) {
       JOptionPane.showMessageDialog(this.aplicacao, "Não foi possível carregar os locais de entrega. "  +  ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
         ex.printStackTrace()
     }

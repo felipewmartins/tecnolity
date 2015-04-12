@@ -51,7 +51,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
     super(aplicacao, true)
     try {
       fornecedor = new Fornecedor(codigoFornecedor)
-    } catch(e) {
+    } catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: ' + e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
@@ -124,7 +124,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
       paises = Pais.carregarPaises(aplicacao.obterConexao())
       carregarPaises()
     }
-      catch(e) {
+      catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Países.', 'Erro', JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
       }
@@ -363,7 +363,7 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
                     fornecedor.definirEmail(txtEmail.getText())
                     fornecedor.definirWebsite(txtWebSite.getText())
                 }
-              catch(e) {
+              catch (e) {
                 JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
                 e.printStackTrace()
                 confirmado = false
@@ -380,10 +380,10 @@ class DlgDadosFornecedor extends JDialog implements ActionListener, FocusListene
               }
             }
           }
-          catch(NumberFormatException n) {
+          catch (NumberFormatException n) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
               n.printStackTrace()
-          } catch(e) {
+          } catch (e) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             e.printStackTrace()
           }

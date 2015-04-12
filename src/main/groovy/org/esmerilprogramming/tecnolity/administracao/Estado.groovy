@@ -71,7 +71,7 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
                   dadosEstado.close()
               }
           }
-        catch(Exception ex) {
+        catch (Exception ex) {
           ex.printStackTrace()
         }
       }

@@ -209,7 +209,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
             }
           }
       }
-      catch(SQLException e) {
+      catch (SQLException e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: ' +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       }
     }

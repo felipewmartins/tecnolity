@@ -173,7 +173,7 @@ class Item {
           }
         resultado.close()
       }
-    catch(SQLException sqle) {
+    catch (SQLException sqle) {
       sqle.printStackTrace()
         Exception e = new Exception(sqle.getMessage())
         throw e
@@ -491,7 +491,7 @@ class Item {
           }
         resultado.close()
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }
@@ -517,7 +517,7 @@ class Item {
           }
         resultado.close()
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }

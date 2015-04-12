@@ -289,7 +289,7 @@ class Produto {
           }
         dadosProduto.close()
       }
-    catch(SQLException e){}
+    catch (SQLException e){}
     catch (e){}
     return produtos
   }

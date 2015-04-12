@@ -25,7 +25,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     configuracao = new Configuracao()
     try {
       configuracao.carregarConfiguracao()
-    } catch(e) {
+    } catch (e) {
       JOptionPane.showMessageDialog(this, 'Falha no carregamento das propriedades do sistema.', 'Falha', JOptionPane.ERROR_MESSAGE)
       DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(this, configuracao)
       dlgConfiguracoes.setVisible(true)
@@ -38,7 +38,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
     try {
       colaborador.carregarPermissoes(conexao)
-    } catch(e) {
+    } catch (e) {
       JOptionPane.showMessageDialog(this, 'Não foi possível carregar as permissões do usuário.\n\n'  +  e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
@@ -126,7 +126,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       println '  Acesso em: '  +  new Date().format('dd/MM/yyyy \'as\' HH:mm:ss')
       println '---------------------------------------------------------------'
       println ''
-    } catch(e) {
+    } catch (e) {
       e.printStackTrace()
     }
   }
@@ -146,7 +146,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
       else
         return false
     }
-    catch(e) {
+    catch (e) {
       JOptionPane.showMessageDialog(this, 'Erro:'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       return false
     }
@@ -158,7 +158,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
         conexao.fecharConexao()
         LogAplicacao.stop()
       }
-      catch(e) {
+      catch (e) {
         JOptionPane.showMessageDialog(this, 'Erro:'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
       }
     }

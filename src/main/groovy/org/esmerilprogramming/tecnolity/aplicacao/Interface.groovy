@@ -103,7 +103,7 @@ class Interface
             }
           conexao.fecharConexao()
         }
-        catch(SQLException e) {
+        catch (SQLException e) {
 
         }
       }

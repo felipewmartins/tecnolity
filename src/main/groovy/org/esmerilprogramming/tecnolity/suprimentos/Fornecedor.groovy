@@ -307,7 +307,7 @@ class Fornecedor {
           }
         resultado.close()
       }
-    catch(SQLException sqle) {
+    catch (SQLException sqle) {
       sqle.printStackTrace()
     }
   }

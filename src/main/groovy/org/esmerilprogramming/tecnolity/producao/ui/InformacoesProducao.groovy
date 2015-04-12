@@ -581,7 +581,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
               }
               atualizarTabelaMatriz()
             }
-          catch(SQLException eSql) {
+          catch (SQLException eSql) {
             JOptionPane.showMessageDialog(aplicacao, "Não possível excluir a Matriz. Ela pode estar associada a algum produto.", "Erro", JOptionPane.ERROR_MESSAGE)
           }
           catch (e) {

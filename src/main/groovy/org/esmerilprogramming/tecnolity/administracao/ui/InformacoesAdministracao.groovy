@@ -312,11 +312,11 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
       }
       txaComandos.setText(conteudoArquivo.toString())
     }
-    catch(FileNotFoundException e) {
+    catch (FileNotFoundException e) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Arquivo informado não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
     }
-    catch(IOException ex) {
+    catch (IOException ex) {
       JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível ler o arquivo informado.", "Erro", JOptionPane.ERROR_MESSAGE)
       ex.printStackTrace()
     }
@@ -357,7 +357,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
         btSalvar.setEnabled(false)
       }
     }
-    catch(SQLException e) {
+    catch (SQLException e) {
       lblStatusResultado.setForeground(Color.RED)
       lblStatusResultado.setText("Erro Nº:"  +  e.getErrorCode() + " - " + e.getMessage())
       e.printStackTrace()
@@ -556,7 +556,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
           }
           saida.close()
         }
-        catch(IOException e) {
+        catch (IOException e) {
           JOptionPane.showMessageDialog(aplicacao, "Erro: Não foi possível salvar o arquivo.\n"  +  e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE)
           e.printStackTrace()
         }

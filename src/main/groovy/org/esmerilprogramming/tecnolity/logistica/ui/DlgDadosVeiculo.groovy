@@ -252,7 +252,7 @@ class DlgDadosVeiculo  extends JDialog implements ActionListener
         }
         this.setVisible(false)
       }
-      catch(NumberFormatException n) {
+      catch (NumberFormatException n) {
         JOptionPane.showMessageDialog(aplicacao, "Erro: Valor incorreto.", "Erro", JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }

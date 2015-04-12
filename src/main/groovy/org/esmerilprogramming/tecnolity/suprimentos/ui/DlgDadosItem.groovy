@@ -505,7 +505,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
                   numeroFornecedores++
               }
           }
-        catch(Exception ex) {
+        catch (Exception ex) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  ex.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
             ex.printStackTrace()
         }
@@ -515,7 +515,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               btExcluirFornecedor.setEnabled(true)
           }
       }
-    catch(SQLException e) {
+    catch (SQLException e) {
       e.printStackTrace()
     }
   }
@@ -574,7 +574,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
             JOptionPane.showMessageDialog(aplicacao, 'Erro: O Fornecedor informado já foi associado ao Item.', 'Erro', JOptionPane.ERROR_MESSAGE)
           }
       }
-      catch(NumberFormatException n) {
+      catch (NumberFormatException n) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
           n.printStackTrace()
       }
@@ -608,7 +608,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
             JOptionPane.showMessageDialog(aplicacao, 'Erro: O Fornecedor informado já foi associado ao Item.', 'Erro', JOptionPane.ERROR_MESSAGE)
           }
         }
-        catch(NumberFormatException n) {
+        catch (NumberFormatException n) {
           JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
             n.printStackTrace()
         }
@@ -736,7 +736,7 @@ class DlgDadosItem extends JDialog implements ActionListener, FocusListener
               this.item.definirArmazenamento(this.txaArmazenamento.getText())
               this.item.definirSeguranca(this.txaSeguranca.getText())
           }
-          catch(NumberFormatException n) {
+          catch (NumberFormatException n) {
             JOptionPane.showMessageDialog(aplicacao, 'Erro: Valor incorreto.', 'Erro', JOptionPane.ERROR_MESSAGE)
               n.printStackTrace()
               confirmado = false
