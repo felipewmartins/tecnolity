@@ -223,28 +223,28 @@ class Cliente {
   void cadastrarCliente(Conexao conexao) throws Exception
   {
     String query
-      ResultSet dadosCliente = conexao.executarConsulta('select cnpj from cliente where cnpj = ' +  this.cnpj)
+      ResultSet dadosCliente = conexao.executarConsulta('select cnpj from cliente where cnpj = ' + this.cnpj)
       if (dadosCliente.next()) {
         Exception e = new Exception('Já existe um cliente com este CNPJ.')
           throw e
       }
     dadosCliente.close()
-      query = 'insert into cliente (razao_social, nome_fantasia, cnpj, inscricao_estadual, logradouro, bairro, complemento, cidade, estado, pais, cep, telefone, fax, contato_comercial, contato_tecnico, email) values '  +
-      '('' +  this.razaoSocial + '', '' + this.nomeFantasia + '', '' + this.cnpj + '', '' + this.inscricaoEstadual + '', '' + this.logradouro + '', '' + this.bairro + '', '' + this.complemento + ', ' + this.cidade + ', ' + ((this.estado == null)?'':this.estado.getSigla()) + '', '' + this.pais.getSigla() + '', '' + this.cep + '', '' + this.telefone + '', '' + this.fax + '', '' + this.contatoComercial + '', '' + this.contatoTecnico + '', '' + this.email + '')'
+      query = 'insert into cliente (razao_social, nome_fantasia, cnpj, inscricao_estadual, logradouro, bairro, complemento, cidade, estado, pais, cep, telefone, fax, contato_comercial, contato_tecnico, email) values '  + 
+      '(' +  this.razaoSocial + ', ' + this.nomeFantasia + ', ' + this.cnpj + ', ' + this.inscricaoEstadual + ', ' + this.logradouro + ', ' + this.bairro + ', ' + this.complemento + ', ' + this.cidade + ', ' + ((this.estado == null)?'':this.estado.getSigla()) + ', ' + this.pais.getSigla() + ', ' + this.cep + ', ' + this.telefone + ', ' + this.fax + ', ' + this.contatoComercial + ', ' + this.contatoTecnico + ', ' + this.email + ')'
       conexao.executarAtualizacao(query)
       LocalEntrega localEntrega
       for (int i = 0;i < locaisEntrega.size(); i++) {
         localEntrega = (LocalEntrega)locaisEntrega.get(i)
           localEntrega.addLocalEntrega(conexao)
       }
-    dadosCliente = conexao.executarConsulta('select codigo from cliente where razao_social = '' +  this.razaoSocial + '' and cnpj = '' + this.cnpj + ''')
+    dadosCliente = conexao.executarConsulta('select codigo from cliente where razao_social = ' +  this.razaoSocial + ' and cnpj = ' + this.cnpj)
     if (dadosCliente.next()) {
       this.codigo = dadosCliente.getInt('codigo')
     }
   }
 
   void alterarCliente(Conexao conexao) throws Exception {
-    String query = 'update cliente set razao_social = '' +  this.razaoSocial + '', nome_fantasia = '' + this.nomeFantasia + '', cnpj = '' + this.cnpj + '', inscricao_estadual = '' + this.inscricaoEstadual + '', logradouro = '' + this.logradouro + '', bairro = '' + this.bairro + '', complemento = '' + this.complemento + '', cidade = '' + this.cidade + '', estado = '' + this.estado.getSigla() + '', pais = '' + this.pais.getSigla() + '', cep = '' + this.obterCep() + '', telefone = '' + this.telefone + '', fax = '' + this.fax + '', contato_comercial = '' + this.contatoComercial + '', contato_tecnico = '' + this.contatoTecnico + '', email = '' + this.email + '' where codigo = ' + this.codigo
+    String query = 'update cliente set razao_social = ' +  this.razaoSocial + ', nome_fantasia = ' + this.nomeFantasia + ', cnpj = ' + this.cnpj + ', inscricao_estadual = ' + this.inscricaoEstadual + ', logradouro = ' + this.logradouro + ', bairro = ' + this.bairro + ', complemento = ' + this.complemento + ', cidade = ' + this.cidade + ', estado = ' + this.estado.getSigla() + ', pais = ' + this.pais.getSigla() + ', cep = ' + this.obterCep() + ', telefone = ' + this.telefone + ', fax = ' + this.fax + ', contato_comercial = ' + this.contatoComercial + ', contato_tecnico = ' + this.contatoTecnico + ', email = ' + this.email + ' where codigo = ' + this.codigo
     conexao.executarAtualizacao(query)
     LocalEntrega localEntrega
     for (int i = 0; i < locaisEntrega.size(); i++) {

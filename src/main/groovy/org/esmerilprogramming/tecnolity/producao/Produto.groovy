@@ -189,15 +189,15 @@ class Produto {
       String query
 
       if (conexao.abrirConexao()) {
-        query = 'insert into modelo (referencia_cliente, componente, modelo, valor, custo_fabricacao, cliente, tipo_producao, especificacao_inserto, acabamentos, lavagem, pintura, exportacao) values '  + 
-          '('' +  this.referenciaCliente + '', ' + this.componente.obterCodigo() + ', '' + this.nomeModelo + '', ' + this.valor + ', ' + this.custoFabricacao + ', ' + this.cliente.obterCodigo() + ', ' + this.tipoProducao.obterCodigo() + ', '' + this.especificacaoInserto + '', '' + this.acabamento + '', '' + this.lavagem + '', '' + this.pintura + '', '' + this.destino + '')'
-          ResultSet modelo = conexao.executarConsulta('select codigo from modelo where modelo = '' +  this.nomeModelo + '' and referencia_cliente = '' + this.referenciaCliente + '' and componente = ' + this.componente.obterCodigo() + ' and cliente = ' + this.cliente.obterCodigo() + '')
+        query = 'insert into modelo (referencia_cliente, componente, modelo, valor, custo_fabricacao, cliente, tipo_producao, especificacao_inserto, acabamentos, lavagem, pintura, exportacao) values '  +
+          '(' +  this.referenciaCliente + ', ' + this.componente.obterCodigo() + ', ' + this.nomeModelo + ', ' + this.valor + ', ' + this.custoFabricacao + ', ' + this.cliente.obterCodigo() + ', ' + this.tipoProducao.obterCodigo() + ', ' + this.especificacaoInserto + ', ' + this.acabamento + ', ' + this.lavagem + ', ' + this.pintura + ', ' + this.destino + ')'
+          ResultSet modelo = conexao.executarConsulta('select codigo from modelo where modelo = ' +  this.nomeModelo + ' and referencia_cliente = ' + this.referenciaCliente + ' and componente = ' + this.componente.obterCodigo() + ' and cliente = ' + this.cliente.obterCodigo() )
           if (modelo.next()) {
             Exception e = new Exception('Já existe um produto cadastrado com esta referência')
               throw e
           }
         conexao.executarAtualizacao(query)
-          modelo = conexao.executarConsulta('select codigo from modelo where referencia_cliente = '' +  this.referenciaCliente + '' and componente = ' + this.componente.obterCodigo() + ' and cliente = ' + this.cliente.obterCodigo() + '')
+          modelo = conexao.executarConsulta('select codigo from modelo where referencia_cliente = ' +  this.referenciaCliente + ' and componente = ' + this.componente.obterCodigo() + ' and cliente = ' + this.cliente.obterCodigo() )
           if (modelo.next())
             this.codigo = modelo.getInt('codigo')
               modelo.close()
@@ -211,7 +211,7 @@ class Produto {
       String query
 
       if (conexao.abrirConexao()) {
-        query = 'update modelo set referencia_cliente = '' +  this.referenciaCliente + '', componente = ' + this.componente.obterCodigo() + ', modelo = '' + this.nomeModelo + '', valor = ' + this.valor + ', custo_fabricacao = ' + this.custoFabricacao + ', cliente = ' + this.cliente.obterCodigo() + ', tipo_producao = ' + this.tipoProducao.obterCodigo() + ', especificacao_inserto = '' + this.especificacaoInserto + '', acabamentos = '' + this.acabamento + '', lavagem = '' + this.lavagem + '', pintura = '' + this.pintura + '', exportacao = '' + this.destino + '' ' +
+        query = 'update modelo set referencia_cliente = ' +  this.referenciaCliente + ', componente = ' + this.componente.obterCodigo() + ', modelo = ' + this.nomeModelo + ', valor = ' + this.valor + ', custo_fabricacao = ' + this.custoFabricacao + ', cliente = ' + this.cliente.obterCodigo() + ', tipo_producao = ' + this.tipoProducao.obterCodigo() + ', especificacao_inserto = ' + this.especificacaoInserto + ', acabamentos = ' + this.acabamento + ', lavagem = ' + this.lavagem + ', pintura = ' + this.pintura + ', exportacao = ' + this.destino +
           'where codigo = '  +  this.obterCodigo()
           conexao.executarAtualizacao(query)
           conexao.fecharConexao()
@@ -248,7 +248,7 @@ class Produto {
             materiaPrima = (MateriaPrima)materiasPrimas.get(i)
               query = 'insert into quantidade_materia_prima (item, referencia, numero_sola, quantidade, produto) '
               query  += 'values (' + materiaPrima.obterItem().obterCodigo()
-              query  += ', '' + materiaPrima.obterMatriz().obterReferencia() + '', '
+              query  += ', ' + materiaPrima.obterMatriz().obterReferencia() + ', '
               query  += materiaPrima.obterMatriz().obterNumeroSola()
               query  += ', ' + materiaPrima.obterQuantidade() + ', '
               query  += this.obterCodigo() + ')'
@@ -296,12 +296,12 @@ class Produto {
 
   void carregarProduto(Conexao conexao) throws Exception
   {
-    String query = 'select  m.codigo as codigo_modelo, m.referencia_cliente, c.codigo as codigo_componente, '  + 
-      'c.componente, m.modelo, m.valor, m.custo_fabricacao, m.moeda, cl.codigo as codigo_cliente, '  + 
-      'cl.razao_social, tp.codigo as codigo_tipo_producao, tp.tipo_producao, m.especificacao_inserto, '  + 
-      'm.acabamentos, m.lavagem, m.pintura, m.exportacao '  + 
-      'from modelo m, componente c, cliente cl, tipo_producao tp '  + 
-      'where m.componente = c.codigo and m.cliente = cl.codigo and m.tipo_producao = tp.codigo and '  + 
+    String query = 'select  m.codigo as codigo_modelo, m.referencia_cliente, c.codigo as codigo_componente, '  +
+      'c.componente, m.modelo, m.valor, m.custo_fabricacao, m.moeda, cl.codigo as codigo_cliente, '  +
+      'cl.razao_social, tp.codigo as codigo_tipo_producao, tp.tipo_producao, m.especificacao_inserto, '  +
+      'm.acabamentos, m.lavagem, m.pintura, m.exportacao '  +
+      'from modelo m, componente c, cliente cl, tipo_producao tp '  +
+      'where m.componente = c.codigo and m.cliente = cl.codigo and m.tipo_producao = tp.codigo and '  +
       'm.codigo = '  +  this.codigo
       ResultSet dadosProduto = conexao.executarConsulta(query)
       if (dadosProduto.next()) {
@@ -321,8 +321,8 @@ class Produto {
           this.definirDestino(dadosProduto.getString('exportacao').charAt(0))
       }
     dadosProduto.close()
-      query = 'select i.codigo as codigo_item, i.descricao as descricao_item, mm.referencia, mm.numero_sola, mm.quantidade as quantidade_matriz, mm.tempo_forma, mm.tempo_injecao, mm.dureza, mm.densidade, mm.peso, mm.volume, qmp.quantidade '  + 
-      'from matriz_modelo mm, quantidade_materia_prima qmp, item i '  + 
+      query = 'select i.codigo as codigo_item, i.descricao as descricao_item, mm.referencia, mm.numero_sola, mm.quantidade as quantidade_matriz, mm.tempo_forma, mm.tempo_injecao, mm.dureza, mm.densidade, mm.peso, mm.volume, qmp.quantidade '  +
+      'from matriz_modelo mm, quantidade_materia_prima qmp, item i '  +
       'where mm.referencia = qmp.referencia and mm.numero_sola = qmp.numero_sola and qmp.item = i.codigo and qmp.produto = '  +  this.codigo +
       ' order by mm.numero_sola, i.descricao'
       ResultSet dadosMateriaPrima = conexao.executarConsulta(query)

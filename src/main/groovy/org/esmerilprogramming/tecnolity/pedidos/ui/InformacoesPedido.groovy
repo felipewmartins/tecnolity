@@ -134,7 +134,7 @@ class InformacoesPedido extends JTabbedPane implements ActionListener
   }
 
   private void atualizarTabelaCliente() {
-    modeloTabelaCliente.definirConsulta('select codigo, razao_social as 'razao social', CNPJ, contato_comercial as 'Contato Comercial', email as 'e-mail' from cliente order by razao_social asc')
+    modeloTabelaCliente.definirConsulta('select codigo, razao_social as \'razao social\', CNPJ, contato_comercial as \'Contato Comercial\', email as \'e-mail\' from cliente order by razao_social asc')
       tblCliente.setModel(modeloTabelaCliente)
       tblCliente.updateUI()
   }

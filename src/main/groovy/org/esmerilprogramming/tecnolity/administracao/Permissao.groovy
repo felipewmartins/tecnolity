@@ -34,7 +34,7 @@ class Permissao {
     contrário um caractere de SEM_ACESSO é retornado. */
   char verificarPermissaoAcesso(Conexao conexao) {
     try {
-      String query = 'select permissao from permissao where interface = ' +  tela.obterIdentificador() + ' and usuario = '' + colaborador.obterMatricula() + '''
+      String query = 'select permissao from permissao where interface = ' +  tela.obterIdentificador() + ' and usuario = ' + colaborador.obterMatricula() 
         ResultSet permissoes = conexao.executarConsulta(query)
         if (permissoes.next()) {
           return permissoes.getString('permissao').charAt(0)

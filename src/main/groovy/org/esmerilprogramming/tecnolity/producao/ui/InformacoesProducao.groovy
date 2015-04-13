@@ -296,9 +296,9 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
   private void atualizarTabelaMatriz() {
     if (cbxProduto.getSelectedIndex() > 0)
-      modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo where referencia in (select distinct referencia from quantidade_materia_prima where produto = ' +  ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterCodigo() + ')')
+      modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as \'No. Sola\', quantidade, dureza, densidade, peso, volume, tempo_injecao as \'Temp. Injeção\' from matriz_modelo where referencia in (select distinct referencia from quantidade_materia_prima where produto = ' +  ((Produto)produtos.get(cbxProduto.getSelectedIndex())).obterCodigo() + ')')
     else
-      modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo')
+      modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as \'No. Sola\', quantidade, dureza, densidade, peso, volume, tempo_injecao as \'Temp. Injeção\' from matriz_modelo')
         tblMatriz.setModel(modeloTabelaMatriz)
         tblMatriz.updateUI()
   }
@@ -540,9 +540,9 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
     if (objeto == btAlterarMatriz) {
       int linhaSelecionada = tblMatriz.getSelectedRow()
         if (linhaSelecionada >= 0) {
-          String query = 'select referencia, numero_sola '  + 
-            'from matriz_modelo '  + 
-            'where referencia = '' +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + '' and ' +
+          String query = 'select referencia, numero_sola ' +
+            'from matriz_modelo ' +
+            'where referencia = ' +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + ' and ' +
             'numero_sola = '  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
             try {
               ResultSet dadosMatriz = aplicacao.obterConexao().executarConsulta(query)
@@ -567,9 +567,9 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
       int linhaSelecionada = tblMatriz.getSelectedRow()
         if (linhaSelecionada >= 0) {
 
-          String query = 'select referencia, numero_sola '  + 
-            'from matriz_modelo '  + 
-            'where referencia = '' +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + '' and ' +
+          String query = 'select referencia, numero_sola ' +
+            'from matriz_modelo ' +
+            'where referencia = ' +  ((String)tblMatriz.getValueAt(linhaSelecionada, 0)).trim() + ' and ' +
             'numero_sola = '  +  ((String)tblMatriz.getValueAt(linhaSelecionada, 1)).trim()
             ResultSet dadosMatriz = aplicacao.obterConexao().executarConsulta(query)
             try {

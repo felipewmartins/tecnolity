@@ -49,7 +49,7 @@ class Colaborador extends PessoaFisica {
 
       ResultSet dadosColaborador, dadosDepartamento
 
-      dadosColaborador = conexao.executarConsulta('select * from usuario where usuario = '' +  this.matricula + ''')
+      dadosColaborador = conexao.executarConsulta('select * from usuario where usuario = ' +  this.matricula)
 
       if (dadosColaborador.next()) {
         this.definirSenha(dadosColaborador.getString('senha'))
@@ -144,14 +144,14 @@ class Colaborador extends PessoaFisica {
       boolean existente = false
       try {
         if (conexao.abrirConexao()) {
-           ResultSet colaborador = conexao.executarConsulta('select usuario from usuario where usuario = '' +  this.matricula + ''')
+           ResultSet colaborador = conexao.executarConsulta('select usuario from usuario where usuario = ' +  this.matricula)
             if (colaborador.next()) {
                existente = true
             }
             else
             {
               String query = 'insert into usuario (usuario, senha, sexo, nome_completo, identidade, orgao_emissor_rg, cpf, departamento, logradouro, complemento, bairro, cidade, estado, cep, ddd, telefone, ramal, celular, email, senha_alterada) '
-                query += 'values ('' + this.matricula + '', '' + this.senha + '', '' + super.getSexo() + '', '' + super.getNome() + '', '' + super.getIdentidade() + '', '' + super.getOrgaoIdentidade() + '', '' + super.getCPF() + '', '' + this.departamento.obterCodigo() + '', '' + super.getLogradouro() + '', '' + super.getComplemento() + '', '' + super.getBairro() + '', '' + super.getCidade() + '', '' + this.obterEstado().getSigla() + '', '' + super.getCEP() + '', '' + this.getDDD() + '', '' + super.getTelefone() + '', '' + this.ramal + '', '' + super.getCelular() + '', '' + super.getEmail() + '', '1')'
+                query += 'values (' + this.matricula + ', ' + this.senha + ', ' + super.getSexo() + ', ' + super.getNome() + ', ' + super.getIdentidade() + ', ' + super.getOrgaoIdentidade() + ', ' + super.getCPF() + ', ' + this.departamento.obterCodigo() + ', ' + super.getLogradouro() + ', ' + super.getComplemento() + ', ' + super.getBairro() + ', ' + super.getCidade() + ', ' + this.obterEstado().getSigla() + ', ' + super.getCEP() + ', ' + this.getDDD() + ', ' + super.getTelefone() + ', ' + this.ramal + ', ' + super.getCelular() + ', ' + super.getEmail() + ', 1)'
                 conexao.executarAtualizacao(query)
             }
           conexao.fecharConexao()
@@ -164,7 +164,7 @@ class Colaborador extends PessoaFisica {
   void alterarColaborador() {
     Conexao conexao = new Conexao('T')
       conexao.abrirConexao()
-      String query = 'update usuario set senha = '' +  this.senha + '', sexo = '' + super.getSexo() + '', nome_completo = '' + super.getNome() + '', identidade = '' + super.getIdentidade() + '', orgao_emissor_rg = '' + super.getOrgaoIdentidade().trim() + '', cpf = '' + super.getCPF() + '', departamento = ' + ((this.departamento == null)?'NULL':'' + this.departamento.obterCodigo()) + ', logradouro = '' + super.getLogradouro() + '', complemento = '' + super.getComplemento() + '', bairro = '' + super.getBairro() + '', cidade = '' + super.getCidade() + '', estado = ' + (this.obterEstado() != null?''' + this.obterEstado().getSigla() + ''':null) + ', cep = '' + super.getCEP() + '', ddd = '' + this.getDDD() + '', telefone = '' + super.getTelefone() + '', ramal = '' + this.ramal + '', celular = '' + super.getCelular() + '', email = '' + super.getEmail() + '', senha_alterada = 1 where usuario = '' + this.matricula + '''
+      String query = 'update usuario set senha = ' +  this.senha + ', sexo = ' + super.getSexo() + ', nome_completo = ' + super.getNome() + ', identidade = ' + super.getIdentidade() + ', orgao_emissor_rg = ' + super.getOrgaoIdentidade().trim() + ', cpf = ' + super.getCPF() + ', departamento = ' + ((this.departamento == null)?'NULL':'' + this.departamento.obterCodigo()) + ', logradouro = ' + super.getLogradouro() + ', complemento = ' + super.getComplemento() + ', bairro = ' + super.getBairro() + ', cidade = ' + super.getCidade() + ', estado = ' + (this.obterEstado() != null?'' + this.obterEstado().getSigla() + '':null) + ', cep = ' + super.getCEP() + ', ddd = ' + this.getDDD() + ', telefone = ' + super.getTelefone() + ', ramal = ' + this.ramal + ', celular = ' + super.getCelular() + ', email = ' + super.getEmail() + ', senha_alterada = 1 where usuario = ' + this.matricula 
       conexao.executarAtualizacao(query)
       conexao.fecharConexao()
   }
@@ -172,7 +172,7 @@ class Colaborador extends PessoaFisica {
   void excluirColaborador() {
     Conexao conexao = new Conexao('T')
       conexao.abrirConexao()
-      String query = 'delete from usuario where usuario = '' +  this.matricula + '''
+      String query = 'delete from usuario where usuario = ' +  this.matricula
       conexao.executarAtualizacao(query)
       conexao.fecharConexao()
   }
@@ -219,9 +219,9 @@ class Colaborador extends PessoaFisica {
       conexao.abrirConexao()
       ResultSet dadosColaborador
 
-      conexao.executarAtualizacao('delete from permissao where usuario = '' +  this.matricula + ''')
+      conexao.executarAtualizacao('delete from permissao where usuario = ' +  this.matricula)
       for (int i = 0;i < permissoes.size();i++) {
-        conexao.executarAtualizacao('insert into permissao (interface, usuario, permissao) values (' +  ((Permissao)permissoes.get(i)).obterTela().obterIdentificador() + ', '' + this.matricula + '', '' + ((Permissao)permissoes.get(i)).obterTipoAcesso() + '')')
+        conexao.executarAtualizacao('insert into permissao (interface, usuario, permissao) values (' +  ((Permissao)permissoes.get(i)).obterTela().obterIdentificador() + ', ' + this.matricula + ', ' + ((Permissao)permissoes.get(i)).obterTipoAcesso() + ')')
       }
     conexao.fecharConexao()
   }

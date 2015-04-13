@@ -162,14 +162,14 @@ class Matriz {
   {
     Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        ResultSet dadosMatriz = conexao.executarConsulta('select * from matriz_modelo where referencia = '' +  this.referencia + '' and numero_sola = ' + this.numeroSola)
+        ResultSet dadosMatriz = conexao.executarConsulta('select * from matriz_modelo where referencia = ' +  this.referencia + ' and numero_sola = ' + this.numeroSola)
           if (dadosMatriz.next()) {
             Exception e = new Exception('Já existe uma matriz cadastrada com a referência e o número de sola informados.')
               throw e
           }
         dadosMatriz.close()
           conexao.executarAtualizacao('insert into matriz_modelo (referencia, numero_sola, quantidade, dureza, densidade, peso, volume, tempo_injecao, modificacoes, tempo_forma) '  + 
-              'values ('' +  this.referencia + '', ' + this.numeroSola + ', ' + this.quantidade + ', ' + this.dureza + ', ' + this.densidade + ', ' + this.peso + ', ' + this.volume + ', ' + this.tempoInjecao + ', '' + this.modificacoes + '', ' + this.tempoForma + ')')
+              'values (' +  this.referencia + ', ' + this.numeroSola + ', ' + this.quantidade + ', ' + this.dureza + ', ' + this.densidade + ', ' + this.peso + ', ' + this.volume + ', ' + this.tempoInjecao + ', ' + this.modificacoes + ', ' + this.tempoForma + ')')
           conexao.fecharConexao()
       }
       else
@@ -212,7 +212,7 @@ class Matriz {
 
   void carregarMatriz(Conexao conexao) throws Exception
   {
-    ResultSet dadosMatriz = conexao.executarConsulta('select * from matriz_modelo where referencia = '' +  this.referencia + '' and numero_sola = ' + this.numeroSola)
+    ResultSet dadosMatriz = conexao.executarConsulta('select * from matriz_modelo where referencia = ' +  this.referencia + ' and numero_sola = ' + this.numeroSola)
       if (dadosMatriz.next()) {
         definirQuantidade(dadosMatriz.getInt('quantidade'))
           definirDureza(dadosMatriz.getFloat('dureza'))
@@ -232,7 +232,7 @@ class Matriz {
   {
     Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao('delete from matriz_modelo where referencia = '' +  this.referencia + '' and numero_sola = ' + this.numeroSola)
+        conexao.executarAtualizacao('delete from matriz_modelo where referencia = ' +  this.referencia + ' and numero_sola = ' + this.numeroSola)
           conexao.fecharConexao()
       }
       else

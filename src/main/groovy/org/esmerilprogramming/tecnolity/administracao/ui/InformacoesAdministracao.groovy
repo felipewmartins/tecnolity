@@ -86,7 +86,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
 
     modeloTabelaColaboradores = new ModeloTabela()
     modeloTabelaColaboradores.definirConexao(aplicacao.obterConexao())
-    modeloTabelaColaboradores.definirConsulta('select usuario as 'usuário', nome_completo as 'nome completo', telefone, ramal, email as 'e-mail' from usuario order by usuario asc')
+    modeloTabelaColaboradores.definirConsulta('select usuario as \'usuário\', nome_completo as \'nome completo\', telefone, ramal, email as \'e-mail\' from usuario order by usuario asc')
     tblColaboradores = new JTable(modeloTabelaColaboradores)
     JScrollPane scrollColaboradores = new JScrollPane(tblColaboradores)
     pnlUsuarios.add(scrollColaboradores, BorderLayout.CENTER)
@@ -280,7 +280,7 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   }
 
   private void atualizarTabelaColaborador() {
-    modeloTabelaColaboradores.definirConsulta('select usuario as 'usuário', nome_completo as 'nome completo', telefone, ramal, email as 'e-mail' from usuario order by usuario asc')
+    modeloTabelaColaboradores.definirConsulta('select usuario as \'usuário\', nome_completo as \'nome completo\', telefone, ramal, email as \'e-mail\' from usuario order by usuario asc')
     tblColaboradores.setModel(modeloTabelaColaboradores)
     tblColaboradores.updateUI()
   }
@@ -292,9 +292,9 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   }
 
   private void atualizarTabelaPermissoes(Colaborador colaborador) {
-    String query = 'select nome_completo, i.interface, case permissao when 'E' then 'Escrita' when 'L' then 'Leitura' end as permissao from permissao p, usuario u, interface i where	p.usuario = u.usuario and '
-    if (colaborador != null)
-      query += 'u.usuario = '' + colaborador.obterMatricula() + '' and '
+    String query = 'select nome_completo, i.interface, case permissao when \'E\' then \'Escrita\' when \'L\' then \'Leitura\' end as permissao from permissao p, usuario u, interface i where	p.usuario = u.usuario and '
+    if (colaborador)
+      query += 'u.usuario = ' + colaborador.obterMatricula() + ' and '
     query += 'p.interface = i.identificador order by nome_completo asc'
 
     modeloTabelaPermissoes.definirConsulta(query)
