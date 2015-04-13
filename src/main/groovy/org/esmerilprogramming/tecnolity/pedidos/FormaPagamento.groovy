@@ -12,8 +12,7 @@ class FormaPagamento {
     try {
       this.definirSigla(sigla)
         this.definirFormaPagamento(formaPagamento)
-    }
-    catch (e) {
+    } catch (e) {
       e.printStackTrace()
     }
   }
@@ -21,129 +20,107 @@ class FormaPagamento {
   FormaPagamento(String sigla) {
     try {
       this.definirSigla(sigla)
-    }
-    catch (e) {
+    } catch (e) {
       e.printStackTrace()
     }
   }
 
-  FormaPagamento(String sigla, Conexao conexao)throws Exception
-  {
+  FormaPagamento(String sigla, Conexao conexao)throws Exception {
     try {
       this.definirSigla(sigla)
-        this.definirSiglaAntesAlteracao(sigla)
-    }
-    catch (e) {
+      this.definirSiglaAntesAlteracao(sigla)
+    } catch (e) {
       e.printStackTrace()
     }
-
-    ResultSet dadosFormaPagamento
-      dadosFormaPagamento = conexao.executarConsulta('select * from forma_pagamento where sigla = '' +  this.sigla + '' ')
-
-      if (dadosFormaPagamento.next()) {
-        try {
-          this.definirFormaPagamento(dadosFormaPagamento.getString('forma_pagamento'))
-        }
-        catch (e) {
-          e.printStackTrace()
-        }
+    ResultSet rs = conexao.executarConsulta('select * from forma_pagamento where sigla = '' +  this.sigla + '' ')
+    if (rs.next()) {
+      try {
+        this.definirFormaPagamento(dadosFormaPagamento.getString('forma_pagamento'))
+      } catch (e) {
+        e.printStackTrace()
       }
+    }
   }
 
-  void definirSigla(String sigla) throws Exception
-  {
+  void definirSigla(String sigla) throws Exception {
     if (!sigla.equals('') && sigla.length() <= 2)
       this.sigla = sigla
-    else
-    {
+    else {
       Exception e = new Exception('A Sigla não foi informada corretamente.')
-        throw e
+      throw e
     }
   }
 
-  void definirSiglaAntesAlteracao(String siglaAntesAlteracao) throws Exception
-  {
+  void definirSiglaAntesAlteracao(String siglaAntesAlteracao) throws Exception {
     if (!siglaAntesAlteracao.equals('') && siglaAntesAlteracao.length() <= 2)
       this.siglaAntesAlteracao = siglaAntesAlteracao
-    else
-    {
+    else {
       Exception e = new Exception('A Sigla não foi informada corretamente.')
-        throw e
+      throw e
     }
   }
 
-  void definirFormaPagamento(String formaPagamento) throws Exception
-  {
+  void definirFormaPagamento(String formaPagamento) throws Exception {
     if (!formaPagamento.equals('') && formaPagamento.length() <= 50)
       this.formaPagamento = formaPagamento
-    else
-    {
+    else {
       Exception e = new Exception('A Forma de Pagamento não foi informada corretamente.')
-        throw e
+      throw e
     }
   }
 
-  Vector carregarFormasPagamento(Conexao conexao) throws Exception
-  {
+  Vector carregarFormasPagamento(Conexao conexao) throws Exception {
     ResultSet formasPagamento
-      Vector formas = null
-      formasPagamento = conexao.executarConsulta('select * from forma_pagamento order by forma_pagamento asc')
-      formas = new Vector()
-      formas.addElement(null)
-      while (formasPagamento.next()) {
-        formas.addElement(new FormaPagamento(formasPagamento.getString('sigla'), formasPagamento.getString('forma_pagamento')))
-      }
+    Vector formas = null
+    formasPagamento = conexao.executarConsulta('select * from forma_pagamento order by forma_pagamento asc')
+    formas = new Vector()
+    formas.addElement(null)
+    while (formasPagamento.next()) {
+      formas.addElement(new FormaPagamento(formasPagamento.getString('sigla'), formasPagamento.getString('forma_pagamento')))
+    }
     formasPagamento.close()
-      return formas
+    formas
   }
 
-  void cadastrarFormaPagamento() throws Exception
-  {
+  void cadastrarFormaPagamento() throws Exception {
     String query = 'insert into forma_pagamento (sigla, forma_pagamento) values '
-      query = query  +  '('' + this.sigla+ '', '' + this.formaPagamento + '')'
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    query = query  +  '('' + this.sigla+ '', '' + this.formaPagamento + '')'
+    Conexao conexao = new Conexao('T')
+    if (conexao.abrirConexao()) {
+      conexao.executarAtualizacao(query)
+      conexao.fecharConexao()
+    }
+    else {
+     Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
+     throw e
+    }
   }
 
-  void alterarFormaPagamento() throws Exception
-  {
+  void alterarFormaPagamento() throws Exception {
     String query = 'update forma_pagamento set sigla = '' +  this.sigla + '', forma_pagamento = '' + this.formaPagamento + '' where sigla = '' + this.siglaAntesAlteracao + '' '
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    Conexao conexao = new Conexao('T')
+    if (conexao.abrirConexao()) {
+      conexao.executarAtualizacao(query)
+      conexao.fecharConexao()
+    } else {
+      Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
+      throw e
+    }
   }
 
-  void excluirFormaPagamento() throws Exception
-  {
+  void excluirFormaPagamento() throws Exception {
     String query = 'delete from forma_pagamento where sigla = '' +  this.sigla + '' '
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    Conexao conexao = new Conexao('T')
+    if (conexao.abrirConexao()) {
+      conexao.executarAtualizacao(query)
+      conexao.fecharConexao()
+    } else {
+      Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
+      throw e
+    }
   }
 
   String toString() {
-    return this.formaPagamento
+    formaPagamento
   }
 }

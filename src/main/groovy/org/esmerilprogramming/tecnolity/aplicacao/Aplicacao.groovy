@@ -102,20 +102,6 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
     formatoPagina
   }
 
-  Conexao obterConexao() {
-    if (conexao.conexaoAberta() || conexao != null) {
-      return conexao
-    }
-    else {
-      abrirConexao()
-      return conexao
-    }
-  }
-
-  void abrirConexao() {
-    this.conexao = new Conexao()
-  }
-
   void definirColaborador(Colaborador colaborador) {
     this.colaborador = colaborador
 
@@ -133,36 +119,7 @@ class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
 
   static main (args) {
     Conexao.instance.setupDB()
-    Aplicacao aplicacao = new Aplicacao()
-    aplicacao.setVisible(true)
-  }
-
-  boolean conectado() {
-    try {
-      if (conexao == null)
-        return false
-      else if (conexao.conexaoAberta())
-        return true
-      else
-        return false
-    }
-    catch (e) {
-      JOptionPane.showMessageDialog(this, 'Erro:'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
-      return false
-    }
-  }
-
-  void finalizarAplicacao() {
-    if (conectado()) {
-      try {
-        conexao.fecharConexao()
-        LogAplicacao.stop()
-      }
-      catch (e) {
-        JOptionPane.showMessageDialog(this, 'Erro:'  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
-      }
-    }
-    super.finalizarAplicacao()
+    new Aplicacao().setVisible(true)
   }
 
 }

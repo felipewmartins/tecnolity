@@ -11,12 +11,8 @@ class Aplicacao extends JFrame implements WindowListener {
     this.addWindowListener(this)
   }
 
-  void finalizarAplicacao() {
-    System.exit(0)
-  }
-
   void maximizar() {
-    final Dimension tela = Toolkit.getDefaultToolkit().getScreenSize()
+    Dimension tela = Toolkit.getDefaultToolkit().getScreenSize()
     this.setBounds(0, 0, tela.width, tela.height - 28)
   }
 

@@ -33,7 +33,7 @@ import java.awt.*
     private String y
     private String z
     private Vector formatar
-    
+
      CampoCPF() {
         this.numeros = ''
         this.w = ''
@@ -60,21 +60,21 @@ import java.awt.*
         this.setHorizontalAlignment(4)
         this.addKeyListener(this)
     }
-    
+
      void keyPressed(final KeyEvent e) {
         this.s = KeyEvent.getKeyText(e.getKeyCode())
     }
-    
+
      void keyReleased(final KeyEvent e) {
         this.s = KeyEvent.getKeyText(e.getKeyCode())
         this.numeros = String.valueOf(this.numeros)  +  KeyEvent.getKeyText(e.getKeyCode())
         this.setFormatarNumero(e)
     }
-    
+
      void keyTyped(final KeyEvent e) {
         this.s = ''  +  e.getKeyChar()
     }
-    
+
      void setFormatarNumero(final KeyEvent e) {
         final String execao = 'O CPF s\u00f3 possui 11 n\u00fameros.'
         final Vector formatar = new Vector()

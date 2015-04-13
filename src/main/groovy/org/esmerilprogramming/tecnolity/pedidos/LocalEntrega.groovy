@@ -24,12 +24,11 @@ class LocalEntrega {
     setNovoLocalEntrega(true)
   }
 
-  LocalEntrega(long codigo, Cliente cliente, String descricaoLocal) throws Exception
-  {
-    this.definirCodigo(codigo)
-      this.definirCliente(cliente)
-      this.definirDescricaoLocal(descricaoLocal)
-      this.setNovoLocalEntrega(false)
+  LocalEntrega(long codigo, Cliente cliente, String descricaoLocal) throws Exception {
+    this.codigo = codigo
+    this.cliente = cliente
+    this.descricaoLocal = descricaoLocal
+    this.novoLocalEntrega = false
   }
 
   LocalEntrega(Cliente cliente, String descricaoLocal, String logradouro, String complemento,
@@ -37,16 +36,16 @@ class LocalEntrega {
       String responsavelRecebimento) throws Exception
   {
     definirCliente(cliente)
-      definirDescricaoLocal(descricaoLocal)
-      definirLogradouro(logradouro)
-      definirComplemento(complemento)
-      definirBairro(bairro)
-      definirCidade(cidade)
-      definirEstado(estado)
-      definirCep(cep)
-      definirTelefone(telefone)
-      definirResponsavelRecebimento(responsavelRecebimento)
-      setNovoLocalEntrega(true)
+    definirDescricaoLocal(descricaoLocal)
+    definirLogradouro(logradouro)
+    definirComplemento(complemento)
+    definirBairro(bairro)
+    definirCidade(cidade)
+    definirEstado(estado)
+    definirCep(cep)
+    definirTelefone(telefone)
+    definirResponsavelRecebimento(responsavelRecebimento)
+    setNovoLocalEntrega(true)
   }
 
   LocalEntrega(Cliente cliente, long codigo, String descricaoLocal, String logradouro, String complemento,
@@ -54,27 +53,26 @@ class LocalEntrega {
       String responsavelRecebimento) throws Exception
   {
     definirCliente(cliente)
-      definirCodigo(codigo)
-      definirDescricaoLocal(descricaoLocal)
-      definirLogradouro(logradouro)
-      definirComplemento(complemento)
-      definirBairro(bairro)
-      definirCidade(cidade)
-      definirEstado(estado)
-      definirCep(cep)
-      definirTelefone(telefone)
-      definirResponsavelRecebimento(responsavelRecebimento)
-      setNovoLocalEntrega(false)
+    definirCodigo(codigo)
+    definirDescricaoLocal(descricaoLocal)
+    definirLogradouro(logradouro)
+    definirComplemento(complemento)
+    definirBairro(bairro)
+    definirCidade(cidade)
+    definirEstado(estado)
+    definirCep(cep)
+    definirTelefone(telefone)
+    definirResponsavelRecebimento(responsavelRecebimento)
+    setNovoLocalEntrega(false)
   }
 
-  void definirCodigo(long codigo) throws Exception
-  {
+  void definirCodigo(long codigo) throws Exception {
     if (codigo <= 0) {
       Exception e = new Exception('Código do Local de Entrega inválido.')
-        throw e
+      throw e
     }
     this.codigo = codigo
-      setNovoLocalEntrega(false)
+    setNovoLocalEntrega(false)
   }
 
   void definirCliente(Cliente cliente) throws Exception
