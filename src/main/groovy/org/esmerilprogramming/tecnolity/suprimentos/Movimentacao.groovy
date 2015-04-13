@@ -148,19 +148,19 @@ class Movimentacao
   {
     String query = 'insert into movimentacao_item (tipo_movimento, item, quantidade, responsavel, requisicao_compra, requisicao_interna, data_despacho, data_recebimento, valor_conhecimento, numero_conhecimento, nota_fiscal) values '
       if (requisicaoInterna != null)
-        query = query  +  '('' + this.tipoMovimentacao + '', ' + this.itemRequisicaoInterna.obterItem().obterCodigo() + ', ' + this.itemRequisicaoInterna.obterQuantidadeItem() + ', '' + this.responsavel.obterMatricula() + '', null, ' + this.requisicaoInterna.obterCodigo() + ', null, null, null, null, null)'
+        query = query  +  '(' + this.tipoMovimentacao + ', ' + this.itemRequisicaoInterna.obterItem().obterCodigo() + ', ' + this.itemRequisicaoInterna.obterQuantidadeItem() + ', ' + this.responsavel.obterMatricula() + ', null, ' + this.requisicaoInterna.obterCodigo() + ', null, null, null, null, null)'
       else
-        query = query  +  '('' + this.tipoMovimentacao + '', ' + this.itemRequisicao.obterItem().obterCodigo() + ', ' + this.quantidadeItem + ', '' + this.responsavel.obterMatricula() + '', ' + this.itemRequisicao.obterRequisicaoCompra().obterCodigo() + ', null, '' + Calendario.inverterFormato(this.dataDespacho, '/') + '', '' + Calendario.inverterFormato(this.dataRecebimento, '/') + '', ' + this.valorConhecimento + ', '' + this.numeroConhecimento + '', '' + this.notaFiscal + '')'
+        query = query  +  '(' + this.tipoMovimentacao + ', ' + this.itemRequisicao.obterItem().obterCodigo() + ', ' + this.quantidadeItem + ', ' + this.responsavel.obterMatricula() + ', ' + this.itemRequisicao.obterRequisicaoCompra().obterCodigo() + ', null, ' + Calendario.inverterFormato(this.dataDespacho, '/') + ', ' + Calendario.inverterFormato(this.dataRecebimento, '/') + ', ' + this.valorConhecimento + ', ' + this.numeroConhecimento + ', ' + this.notaFiscal + ')'
           Conexao conexao = new Conexao('T')
           if (conexao.abrirConexao()) {
             // registra a movimentação.
             conexao.executarAtualizacao(query)
               // consulta e define o código da movimentação registrada.
               try {
-                if (requisicaoInterna != null)
-                  query = 'select codigo from movimentacao_item where tipo_movimento = '' +  this.tipoMovimentacao + '' and item = ' + this.itemRequisicaoInterna.obterItem().obterCodigo() + ' and quantidade = ' + this.itemRequisicaoInterna.obterQuantidadeItem() + ' and responsavel = '' + this.responsavel.obterMatricula() + '' and requisicao_interna = ' + this.requisicaoInterna.obterCodigo()
+                if (requisicaoInterna)
+                  query = 'select codigo from movimentacao_item where tipo_movimento = ' +  this.tipoMovimentacao + ' and item = ' + this.itemRequisicaoInterna.obterItem().obterCodigo() + ' and quantidade = ' + this.itemRequisicaoInterna.obterQuantidadeItem() + ' and responsavel = ' + this.responsavel.obterMatricula() + ' and requisicao_interna = ' + this.requisicaoInterna.obterCodigo()
                 else
-                  query = 'select codigo from movimentacao_item where tipo_movimento = '' +  this.tipoMovimentacao + '' and item = ' + this.itemRequisicao.obterItem().obterCodigo() + ' and quantidade = ' + this.quantidadeItem + ' and responsavel = '' + this.responsavel.obterMatricula() + '' and requisicao_compra = ' + this.itemRequisicao.obterRequisicaoCompra().obterCodigo()
+                  query = 'select codigo from movimentacao_item where tipo_movimento = ' +  this.tipoMovimentacao + ' and item = ' + this.itemRequisicao.obterItem().obterCodigo() + ' and quantidade = ' + this.quantidadeItem + ' and responsavel = ' + this.responsavel.obterMatricula() + ' and requisicao_compra = ' + this.itemRequisicao.obterRequisicaoCompra().obterCodigo()
                     ResultSet mov = conexao.executarConsulta(query)
                     if (mov.next()) {
                       this.definirCodigoMovimentacao(mov.getInt('codigo'))

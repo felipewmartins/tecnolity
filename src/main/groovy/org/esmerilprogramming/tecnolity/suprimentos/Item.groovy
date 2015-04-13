@@ -665,10 +665,10 @@ class Item {
   void cadastrarItem() throws Exception
   {
     String query = 'insert into item (descricao, categoria, armazenamento, unidade, temperatura, seguranca, quantidade, quantidade_minima, quantidade_maxima, percentual_ipi, percentual_perda, ativo, independente) values '
-      query = query  +  '('' + descricao + '', ' + categoria.obterCodigo() + ', '' + armazenamento + '', ' + unidade.obterCodigo() + ', ' + temperatura + ', '' + seguranca + '', 0, ' + quantidadeMinima + ', ' + quantidadeMaxima + ', ' + percentualIPI + ', ' + percentualPerda + ', ' + ((this.ativo)?1:0) + ', ' + ((this.independente)?1:0) + ')'
+      query = query  +  '(' + descricao + ', ' + categoria.obterCodigo() + ', ' + armazenamento + ', ' + unidade.obterCodigo() + ', ' + temperatura + ', ' + seguranca + ', 0, ' + quantidadeMinima + ', ' + quantidadeMaxima + ', ' + percentualIPI + ', ' + percentualPerda + ', ' + ((this.ativo)?1:0) + ', ' + ((this.independente)?1:0) + ')'
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
-        ResultSet dadosItem = conexao.executarConsulta('select descricao from item where descricao = '' +  this.descricao + ''')
+        ResultSet dadosItem = conexao.executarConsulta('select descricao from item where descricao = ' +  this.descricao)
           if (dadosItem.next()) {
             Exception e = new Exception('Já existem um item com esta descrição.')
               throw e
@@ -676,10 +676,10 @@ class Item {
         dadosItem.close()
           conexao.executarAtualizacao(query)
           // definir o código do ítem e cria um lote basico para suportar sua quantidade atual.
-          dadosItem = conexao.executarConsulta('select codigo from item where descricao = '' +  descricao + ''')
+          dadosItem = conexao.executarConsulta('select codigo from item where descricao = ' +  descricao)
           if (dadosItem.next()) {
             this.definirCodigo(dadosItem.getInt('codigo'))
-              conexao.executarAtualizacao('insert into lote (item, quantidade, lote_basico) values (' +  this.obterCodigo() + ', ' + this.obterQuantidade() + ', '' + Lote.LOTE_BASICO + '')')
+              conexao.executarAtualizacao('insert into lote (item, quantidade, lote_basico) values (' +  this.obterCodigo() + ', ' + this.obterQuantidade() + ', ' + Lote.LOTE_BASICO + ')')
               dadosItem.close()
           }
         conexao.fecharConexao()
@@ -717,7 +717,7 @@ class Item {
         if (numFornecedores > 0 && conexao.abrirConexao()) {
           for (int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = 'insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (' +  fiAtual.obterFornecedor().obterCodigo() + ', ' + fiAtual.obterItem().obterCodigo() + ', ' + fiAtual.obterUnidade().obterCodigo() + ', ' + fiAtual.obterValorItem() + ', '' + Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), '/') + '', '' + fiAtual.obterMoeda() + '', '' + fiAtual.obterReferenciaFornecedor() + '')'
+              query = 'insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (' +  fiAtual.obterFornecedor().obterCodigo() + ', ' + fiAtual.obterItem().obterCodigo() + ', ' + fiAtual.obterUnidade().obterCodigo() + ', ' + fiAtual.obterValorItem() + ', ' + Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), '/') + ', ' + fiAtual.obterMoeda() + ', ' + fiAtual.obterReferenciaFornecedor() + ')'
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -733,16 +733,16 @@ class Item {
       if (conexao.abrirConexao()) {
         ResultSet itemSelecionado = conexao.executarConsulta(query)
           if (itemSelecionado.next()) {
-            query = 'update item set descricao = '' +  descricao + '', categoria = ' + categoria.obterCodigo() + ', armazenamento = '' + armazenamento + '', unidade = ' + unidade.obterCodigo() + ', temperatura = ' + temperatura + ', seguranca = '' + seguranca + '', quantidade = ' + quantidade + ', quantidade_minima = ' + quantidadeMinima + ', quantidade_maxima = ' + quantidadeMaxima + ', percentual_ipi = ' + percentualIPI + ', percentual_perda = ' + percentualPerda + ', ativo = ' + ((this.ativo)?1:0) + ', independente = ' + ((this.independente)?1:0) + ' where codigo = ' + codigo
+            query = 'update item set descricao = ' +  descricao + ', categoria = ' + categoria.obterCodigo() + ', armazenamento = ' + armazenamento + ', unidade = ' + unidade.obterCodigo() + ', temperatura = ' + temperatura + ', seguranca = ' + seguranca + ', quantidade = ' + quantidade + ', quantidade_minima = ' + quantidadeMinima + ', quantidade_maxima = ' + quantidadeMaxima + ', percentual_ipi = ' + percentualIPI + ', percentual_perda = ' + percentualPerda + ', ativo = ' + ((this.ativo)?1:0) + ', independente = ' + ((this.independente)?1:0) + ' where codigo = ' + codigo
               conexao.executarAtualizacao(query)
-              query = 'update lote set quantidade = ' +  quantidade + ' where item = ' + codigo + ' and lote_basico = '' + Lote.LOTE_BASICO + '''
+              query = 'update lote set quantidade = ' +  quantidade + ' where item = ' + codigo + ' and lote_basico = ' + Lote.LOTE_BASICO
               conexao.executarAtualizacao(query)
               itemSelecionado.close()
           }
           else
           {
-            query = 'update item set descricao = '' +  descricao + '', categoria = ' + categoria.obterCodigo() + ', armazenamento = '' + armazenamento + '', unidade = ' + unidade.obterCodigo() + ', temperatura = ' + temperatura + ', seguranca = '' + seguranca + '', quantidade_minima = ' + quantidadeMinima + ', quantidade_maxima = ' + quantidadeMaxima + ', percentual_ipi = ' + percentualIPI + ', percentual_perda = ' + percentualPerda + ', ativo = ' + ((this.ativo)?1:0) + ', independente = ' + ((this.independente)?1:0) + ' where codigo = ' + codigo
-              conexao.executarAtualizacao(query)
+            query = 'update item set descricao = ' +  descricao + ', categoria = ' + categoria.obterCodigo() + ', armazenamento = ' + armazenamento + ', unidade = ' + unidade.obterCodigo() + ', temperatura = ' + temperatura + ', seguranca = ' + seguranca + ', quantidade_minima = ' + quantidadeMinima + ', quantidade_maxima = ' + quantidadeMaxima + ', percentual_ipi = ' + percentualIPI + ', percentual_perda = ' + percentualPerda + ', ativo = ' + ((this.ativo)?1:0) + ', independente = ' + ((this.independente)?1:0) + ' where codigo = ' + codigo
+            conexao.executarAtualizacao(query)
           }
         conexao.fecharConexao()
       }
@@ -787,7 +787,7 @@ class Item {
           }
           for (int i = 0;i < numFornecedores;i++) {
             fiAtual = (FornecedorItem)this.fornecedoresItem.get(i)
-              query = 'insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (' +  fiAtual.obterFornecedor().obterCodigo() + ', ' + fiAtual.obterItem().obterCodigo() + ', ' + fiAtual.obterUnidade().obterCodigo() + ', ' + fiAtual.obterValorItem() + ', '' + Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), '/') + '', '' + fiAtual.obterMoeda() + '', '' + fiAtual.obterReferenciaFornecedor() + '')'
+              query = 'insert into fornecedor_item (fornecedor, item, unidade, valor_item, data_atualizacao_valor, moeda, referencia_fornecedor) values (' +  fiAtual.obterFornecedor().obterCodigo() + ', ' + fiAtual.obterItem().obterCodigo() + ', ' + fiAtual.obterUnidade().obterCodigo() + ', ' + fiAtual.obterValorItem() + ', ' + Calendario.inverterFormato(fiAtual.obterDataAtualizacaoValor(), '/') + ', ' + fiAtual.obterMoeda() + ', ' + fiAtual.obterReferenciaFornecedor() + ')'
               conexao.executarAtualizacao(query)
           }
           conexao.fecharConexao()
@@ -797,7 +797,7 @@ class Item {
 
   void excluirFornecedorItem(int codigo) throws Exception
   {
-    String query = 'delete from fornecedor_item where item = ' +  codigo + ' '
+    String query = 'delete from fornecedor_item where item = ' +  codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -812,7 +812,7 @@ class Item {
 
   void excluirDepartamentoItem(int codigo) throws Exception
   {
-    String query = 'delete from departamento_item where item = ' +  codigo + ' '
+    String query = 'delete from departamento_item where item = ' +  codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
@@ -827,7 +827,7 @@ class Item {
 
   void excluirItem(int codigo) throws Exception
   {
-    String query = 'delete from item where codigo = ' +  codigo + ' '
+    String query = 'delete from item where codigo = ' +  codigo
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
