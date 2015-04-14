@@ -37,7 +37,7 @@ class Aplicacao extends JFrame {
     formAutenticacao.setVisible(true)
 
     try {
-      colaborador.carregarPermissoes(conexao)
+      colaborador.carregarPermissoes()
     } catch (e) {
       JOptionPane.showMessageDialog(this, 'Não foi possível carregar as permissões do usuário.\n\n'  +  e.message, 'Erro', JOptionPane.ERROR_MESSAGE)
       e.printStackTrace()
@@ -47,7 +47,6 @@ class Aplicacao extends JFrame {
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
     setBounds(0, 0, screenSize.width as int, screenSize.height - 27 as int)
-    addWindowListener(this)
 
     BarraMenu barraMenu = new BarraMenu(this)
     setJMenuBar(barraMenu)

@@ -12,7 +12,7 @@ class Colaborador extends PessoaFisica {
   String ramal
   boolean senhaAlterada
   Calendario calendario = new Calendario()
-  Vector permissoes = new Vector()
+  def permissoes = []
   boolean colaboradorExiste = true
   String ddd
 
@@ -198,16 +198,15 @@ class Colaborador extends PessoaFisica {
     return colaboradores
   }
 
-  void carregarPermissoes(Conexao conexao) throws SQLException {
+  void carregarPermissoes() {
     Interface tela
     Permissao permissao
-    permissoes.removeAllElements()
     def db = Conexao.instance.db
-    def consulta = '''select i.identificador as identificador,
+    def sql = '''select i.identificador as identificador,
  i.interface as interface, i.descricao as descricao_interface, p.permissao as tipo_permissao from permissao p,
- interface i where i.identificador = p.interface and p.usuario = '' +  this.matricula + '' order by i.identificador asc
+ interface i where i.identificador = p.interface and p.usuario = '${matricula}' order by i.identificador asc
 '''
-    db.eachRow(consulta) {
+    db.eachRow(sql) {
       tela = new Interface(it.identificador as int, it.interface, it.descricao_interface)
       permissao = new Permissao(tela, it.tipo_permissao.toCharArray()[0])
       permissoes.addElement(permissao)
@@ -220,7 +219,7 @@ class Colaborador extends PessoaFisica {
       ResultSet dadosColaborador
 
       conexao.executarAtualizacao('delete from permissao where usuario = ' +  this.matricula)
-      for (int i = 0;i < permissoes.size();i++) {
+      for (int i = 0; i < permissoes.size(); i++) {
         conexao.executarAtualizacao('insert into permissao (interface, usuario, permissao) values (' +  ((Permissao)permissoes.get(i)).obterTela().obterIdentificador() + ', ' + this.matricula + ', ' + ((Permissao)permissoes.get(i)).obterTipoAcesso() + ')')
       }
     conexao.fecharConexao()
