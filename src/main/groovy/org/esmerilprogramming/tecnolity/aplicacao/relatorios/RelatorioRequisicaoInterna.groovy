@@ -16,7 +16,7 @@ class RelatorioRequisicaoInterna extends Relatorio
       Calendario calendario = new Calendario()
       conteudo.append('REQUISIÇÃO INTERNA                                TECNOLITY DO NORDESTE LTDA')
       conteudo.append(QUEBRA)
-      conteudo.append('                                                         '  +   calendario.dataHoje('dd/MM/yyyy 'as' HH:mm'))
+      conteudo.append('                                                         '  +   calendario.dataHoje('dd/MM/yyyy \'as\' HH:mm'))
       conteudo.append(QUEBRA)
       conteudo.append('============================================================================')
       conteudo.append(QUEBRA)

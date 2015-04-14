@@ -20,24 +20,24 @@ class RelatorioMovimentacao extends Relatorio
   String gerarRelatorio() {
     Calendario calendario = new Calendario()
       conteudo = new StringBuffer()
-      conteudo.append('INVENT�RIO DE ITENS DO ESTOQUE                                TECNOLITY DO NORDESTE LTDA')
+      conteudo.append('INVENTÃRIO DE ITENS DO ESTOQUE                                TECNOLITY DO NORDESTE LTDA')
       conteudo.append(QUEBRA)
       conteudo.append('========================================================================================')
       conteudo.append(QUEBRA)
-      conteudo.append('                                                 Per�odo de: ' +  dataInicio + '  at�: ' + dataFinal)
+      conteudo.append('                                                 PerÃ­odo de: ' +  dataInicio + '  atÃ©: ' + dataFinal)
       conteudo.append(QUEBRA)
       conteudo.append('Cod.  | Movimento             | Item                           | Quantidade | Data      ')
       conteudo.append(QUEBRA)
       conteudo.append('----------------------------------------------------------------------------------------')
       conteudo.append(QUEBRA)
       try {
-        String sql = 'select mi.codigo, (case tipo_movimento when 'AB' then 'Abastecimento' when 'CS' then 'Consumo' when 'VD' then 'Vendas' when 'DS' then 'Descarte' when 'DV' then 'Devolu��o' when 'DE' then 'Devolu��o Externa' when 'DP' then 'Dep�sito' when 'RD' then 'Retirada do Dep�sito' end) as tipo_movimento, i.descricao, mi.quantidade, data_hora from movimentacao_item mi, item i, usuario u where mi.item = i.codigo and mi.responsavel = u.usuario '
+        String sql = 'select mi.codigo, (case tipo_movimento when \'AB\' then \'Abastecimento\' when \'CS\' then \'Consumo\' when \'VD\' then \'Vendas\' when \'DS\' then \'Descarte\' when \'DV\' then \'DevoluÃ§Ã£o\' when \'DE\' then \'DevoluÃ§Ã£o Externa\' when \'DP\' then \'DepÃ³sito\' when \'RD\' then \'Retirada do DepÃ³sito\' end) as tipo_movimento, i.descricao, mi.quantidade, data_hora from movimentacao_item mi, item i, usuario u where mi.item = i.codigo and mi.responsavel = u.usuario '
           if (tipo != null)
-            sql += 'and tipo_movimento = '' + tipo + '' '
+            sql += 'and tipo_movimento = ' + tipo
               if (!dataInicio.equals(''))
-                sql += 'and mi.data_hora >= '' + Calendario.inverterFormato(dataInicio, '/') + ' 00:00:00.000' '
+                sql += 'and mi.data_hora >= ' + Calendario.inverterFormato(dataInicio, '/') + ' 00:00:00.000'
                   if (!dataFinal.equals(''))
-                    sql += 'and mi.data_hora <= '' + Calendario.inverterFormato(dataFinal, '/') + ' 23:59:59.999' '
+                    sql += 'and mi.data_hora <= ' + Calendario.inverterFormato(dataFinal, '/') + ' 23:59:59.999'
                       if (codigoItem > 0)
                         sql += 'and i.codigo = ' + codigoItem
                           sql += ' order by tipo_movimento'
