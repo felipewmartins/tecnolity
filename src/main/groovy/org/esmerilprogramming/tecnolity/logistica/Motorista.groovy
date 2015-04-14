@@ -342,7 +342,7 @@ class Motorista {
   void cadastrarMotorista() throws Exception
   {
     String query = 'insert into motorista (placa, motorista, identidade, orgao_emissor, cpf, habilitacao, categoria, validade, logradouro, complemento, bairro, cidade, estado, cep, telefone, celular) values '
-      query = query  +  '('' + this.placa + '', '' + this.motorista + '', '' + this.identidade + '', '' + this.orgaoEmissorIdentidade + '', '' + this.cpf + '', '' + this.habilitacao + '', '' + this.categoria + '', '' + Calendario.inverterFormato(this.validade, '/') + '', '' + this.logradouro + '', '' + this.complemento + '', '' + this.bairro + '', '' + this.cidade + '', '' + this.estado.getSigla() + '', '' + this.cep + '', '' + this.telefone + '', '' + this.celular + '')'
+      query = query  +  '(' + this.placa + ', ' + this.motorista + ', ' + this.identidade + ', ' + this.orgaoEmissorIdentidade + ', ' + this.cpf + ', ' + this.habilitacao + ', ' + this.categoria + ', ' + Calendario.inverterFormato(this.validade, '/') + ', ' + this.logradouro + ', ' + this.complemento + ', ' + this.bairro + ', ' + this.cidade + ', ' + this.estado.getSigla() + ', ' + this.cep + ', ' + this.telefone + '', '' + this.celular
       Conexao conexao = new Conexao('T')
       if (conexao.abrirConexao()) {
         conexao.executarAtualizacao(query)
