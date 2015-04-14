@@ -18,7 +18,7 @@ class RelatorioPedidoReferencia extends Relatorio
       conteudo.append(QUEBRA)
       conteudo.append('============================================================================')
       conteudo.append(QUEBRA)
-      conteudo.append('   Cliente: ' +  Texto.obterStringTamanhoFixo(pedido.obterCliente().obterRazaoSocial(), 38) + ' Data: ' + calendario.dataHoje('dd/MM/yyyy 'as' HH:mm'))
+      conteudo.append('   Cliente: ' +  Texto.obterStringTamanhoFixo(pedido.obterCliente().obterRazaoSocial(), 38) + ' Data: ' + calendario.dataHoje('dd/MM/yyyy \'as\' HH:mm'))
       conteudo.append(QUEBRA)
       conteudo.append('    Pedido: ' +  Texto.obterStringTamanhoFixo('' + pedido.obterCodigo(), 29) + ' Ordem Compra:' + pedido.obterOrdemCompra())
       conteudo.append(QUEBRA)

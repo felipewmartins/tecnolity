@@ -42,13 +42,13 @@ class RelRecursosPedido extends JPanel implements Printable
       g2.drawString('============================================================================', 10, 20)
       int alturaLinha
       if (pedidos.length == 1) {
-        g2.drawString('    Cliente: ' +  Texto.obterStringTamanhoFixo(pedidos[0].obterCliente().obterRazaoSocial(), 37) + ' Data: ' + calendario.dataHoje('dd/MM/yyyy 'as' HH:mm'), 10, 30)
+        g2.drawString('    Cliente: ' +  Texto.obterStringTamanhoFixo(pedidos[0].obterCliente().obterRazaoSocial(), 37) + ' Data: ' + calendario.dataHoje('dd/MM/yyyy \'as\' HH:mm'), 10, 30)
           g2.drawString('    Destino: ' +  Texto.obterStringTamanhoFixo(pedidos[0].obterLocalEntrega().obterDescricaoLocal(), 20) + ' Num. Pedido: ' + pedidos[0].obterCodigo() + '      Ordem Compra:' + pedidos[0].obterOrdemCompra(), 10, 45)
           alturaLinha = 45
       }
       else
       {
-        g2.drawString('No. Pedidos: ' +  pedidos.length + ' Data: ' + calendario.dataHoje('dd/MM/yyyy 'as' HH:mm'), 10, 30)
+        g2.drawString('No. Pedidos: ' +  pedidos.length + ' Data: ' + calendario.dataHoje('dd/MM/yyyy \'as\' HH:mm'), 10, 30)
           g2.drawString('Pedidos', 10, 45)
           String strPedidos = ''
           for (int i = 0 ; i < pedidos.length ; i++) {
@@ -67,7 +67,7 @@ class RelRecursosPedido extends JPanel implements Printable
       g2.setFont(new Font('Courier New', Font.PLAIN, 10))
       g2.drawString('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ', 10, alturaLinha += 10)
       String query =  'select i.descricao, i.quantidade as disponivel, (sum(qmp.quantidade * mp.quantidade)  +  ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100)) as necessaria, (i.quantidade - (sum(qmp.quantidade * mp.quantidade) + ((i.percentual_perda * sum(qmp.quantidade * mp.quantidade))/100))) as saldo ' +
-      'from item i, modelo_pedido mp, quantidade_materia_prima qmp '  + 
+      'from item i, modelo_pedido mp, quantidade_materia_prima qmp ' +
       'where mp.referencia = qmp.referencia and qmp.produto = mp.modelo and mp.numero_sola = qmp.numero_sola and qmp.item = i.codigo and ('
       for (int i = 0 ; i < pedidos.length ; i++) {
         query += 'mp.pedido = ' + pedidos[i].obterCodigo()
