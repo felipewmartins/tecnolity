@@ -10,7 +10,7 @@ import org.esmerilprogramming.tecnolity.aplicacao.*
 import org.esmerilprogramming.tecnolity.ui.*
 import org.esmerilprogramming.tecnolity.ui.img.ImageLoader
 
-class Aplicacao extends org.esmerilprogramming.tecnolity.ui.Aplicacao {
+class Aplicacao extends JFrame {
 
   private JPanel areaTrabalho
   private Container conteudo
