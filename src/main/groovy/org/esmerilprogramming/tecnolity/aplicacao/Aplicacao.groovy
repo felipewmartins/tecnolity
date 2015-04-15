@@ -1,24 +1,24 @@
 package org.esmerilprogramming.tecnolity.aplicacao
 
-import javax.swing.*
 import javax.swing.JPanel
+import javax.swing.JFrame
 import java.awt.*
-import java.awt.print.*
+import java.awt.print.PrinterJob
+import java.awt.print.PageFormat
+import java.awt.print.Paper
 import org.esmerilprogramming.tecnolity.administracao.*
 import org.esmerilprogramming.tecnolity.util.*
-import org.esmerilprogramming.tecnolity.aplicacao.*
 import org.esmerilprogramming.tecnolity.ui.*
 import org.esmerilprogramming.tecnolity.ui.img.ImageLoader
 
 class Aplicacao extends JFrame {
 
   private JPanel areaTrabalho
-  private Container conteudo
+  private final Container conteudo
   private Colaborador colaborador
-  private Conexao conexao
   private PrinterJob tarefaImpressao
   private PageFormat formatoPagina
-  private Configuracao configuracao
+  private final Configuracao configuracao
 
   Aplicacao() {
     super('Sistema de Planejamento e Controle da Produção')
@@ -31,7 +31,7 @@ class Aplicacao extends JFrame {
       dlgConfiguracoes.setVisible(true)
     }
 
-    super.setIconImage(ImageLoader.instance.icon('ico_tecnolity.jpg').getImage())
+    super.setIconImage(ImageLoader.instance.icon('ico_tecnolity.jpg').image)
 
     FormAutenticacao formAutenticacao = new FormAutenticacao(this)
     formAutenticacao.setVisible(true)
@@ -43,9 +43,9 @@ class Aplicacao extends JFrame {
       e.printStackTrace()
     }
 
-    conteudo = this.getContentPane()
+    conteudo = this.contentPane
 
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
+    Dimension screenSize = Toolkit.defaultToolkit.screenSize
     setBounds(0, 0, screenSize.width as int, screenSize.height - 27 as int)
 
     BarraMenu barraMenu = new BarraMenu(this)
@@ -69,7 +69,7 @@ class Aplicacao extends JFrame {
 
   void inicializarTarefaImpressao() {
     if (this.tarefaImpressao == null) {
-      tarefaImpressao = PrinterJob.getPrinterJob()
+      tarefaImpressao = PrinterJob.printerJob
     }
   }
 
@@ -88,10 +88,6 @@ class Aplicacao extends JFrame {
           Configuracao.getAlturaPapelPixel() - Configuracao.getMargemSuperiorPixel() - Configuracao.getMargemInferiorPixel())
     formatoPagina.setPaper(papel)
     formatoPagina.setOrientation(Configuracao.getOrientacao())
-  }
-
-  Configuracao obterConfiguracao() {
-    configuracao
   }
 
   PageFormat obterFormatoPagina() {
