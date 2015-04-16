@@ -104,7 +104,7 @@ class BarraMenu extends JMenuBar implements ActionListener {
     }
 
     if (objeto == mnPrefConfiguracoes) {
-      DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(aplicacao, aplicacao.obterConfiguracao())
+      DlgConfiguracoes dlgConfiguracoes = new DlgConfiguracoes(aplicacao, aplicacao.configuracao)
       dlgConfiguracoes.setVisible(true)
     }
   }
