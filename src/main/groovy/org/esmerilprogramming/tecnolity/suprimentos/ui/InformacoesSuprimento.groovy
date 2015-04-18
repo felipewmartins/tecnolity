@@ -143,7 +143,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlItemPorCategoria.add(pnlParametro, BorderLayout.NORTH)
 
                   modeloTabelaItensPorCategoria = new ModeloTabelaItens()
-                  modeloTabelaItensPorCategoria.definirConexao(aplicacao.obterConexao())
                   tblItensPorCategoria = new JTable(modeloTabelaItensPorCategoria)
                   scroll = new JScrollPane(tblItensPorCategoria)
                   pnlItemPorCategoria.add(scroll, BorderLayout.CENTER)
@@ -172,7 +171,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   JPanel pnlItensInativos = new JPanel(new BorderLayout())
 
                   modeloTabelaItensInativos = new ModeloTabelaItens()
-                  modeloTabelaItensInativos.definirConexao(aplicacao.obterConexao())
                   tblItensInativos = new JTable(modeloTabelaItensInativos)
                   scroll = new JScrollPane(tblItensInativos)
                   pnlItensInativos.add(scroll, BorderLayout.CENTER)
@@ -192,7 +190,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   JPanel pnlItemListaCompras = new JPanel(new BorderLayout())
 
                   modeloTabelaItensListaCompras = new ModeloTabelaItens()
-                  modeloTabelaItensListaCompras.definirConexao(aplicacao.obterConexao())
                   tblItensListaCompras = new JTable(modeloTabelaItensListaCompras)
                   scroll = new JScrollPane(tblItensListaCompras)
                   pnlItemListaCompras.add(scroll, BorderLayout.CENTER)
@@ -300,7 +297,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlMovimentacao.add(pnlAreaComandos, BorderLayout.EAST)
 
                   modeloTabelaMovimentacoes = new ModeloTabela()
-                  modeloTabelaMovimentacoes.definirConexao(aplicacao.obterConexao())
                   tblMovimentacoes = new JTable(modeloTabelaMovimentacoes)
                   JScrollPane scrollMovimentacoes = new JScrollPane(tblMovimentacoes)
                   pnlMovimentacao.add(scrollMovimentacoes, BorderLayout.CENTER)
@@ -326,7 +322,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlFornecedor.add(pnlAreaComandos, BorderLayout.EAST)
 
                   modeloTabelaFornecedores = new ModeloTabela()
-                  modeloTabelaFornecedores.definirConexao(aplicacao.obterConexao())
                   tblFornecedores = new JTable(modeloTabelaFornecedores)
                   JScrollPane scrollFornecedores = new JScrollPane(tblFornecedores)
                   pnlFornecedor.add(scrollFornecedores, BorderLayout.CENTER)
@@ -355,7 +350,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlRequisicaoInterna.add(pnlAreaComandos, BorderLayout.EAST)
 
                   modeloTabelaRequisicoesInternas = new ModeloTabela()
-                  modeloTabelaRequisicoesInternas.definirConexao(aplicacao.obterConexao())
                   tblRequisicoesInternas = new JTable(modeloTabelaRequisicoesInternas)
                   JScrollPane scrollRequisicoesInternas = new JScrollPane(tblRequisicoesInternas)
                   pnlRequisicaoInterna.add(scrollRequisicoesInternas, BorderLayout.CENTER)
@@ -407,7 +401,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlRequisicaoCompra.add(pnlAreaComandos, BorderLayout.EAST)
 
                   modeloTabelaRequisicoesCompras = new ModeloTabelaRequisicoesCompras()
-                  modeloTabelaRequisicoesCompras.definirConexao(aplicacao.obterConexao())
                   tblRequisicoesCompras = new JTable(modeloTabelaRequisicoesCompras)
                   JScrollPane scrollRequisicoesCompras = new JScrollPane(tblRequisicoesCompras)
                   pnlRequisicaoCompra.add(scrollRequisicoesCompras, BorderLayout.CENTER)
@@ -448,7 +441,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlListaPreco.add(pnlAreaParametros, BorderLayout.NORTH)
 
                   modeloTabelaListaPreco = new ModeloTabela()
-                  modeloTabelaListaPreco.definirConexao(aplicacao.obterConexao())
                   tblListaPrecos = new JTable(modeloTabelaListaPreco)
                   scroll = new JScrollPane(tblListaPrecos)
                   pnlListaPreco.add(scroll, BorderLayout.CENTER)
@@ -465,7 +457,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
 
                   JPanel pnlFornecedoresPendentes = new JPanel(new BorderLayout())
                   modeloTabelaFornecedoresPendentes = new ModeloTabela()
-                  modeloTabelaFornecedoresPendentes.definirConexao(aplicacao.obterConexao())
                   tblFornecedoresPendentes = new JTable(modeloTabelaFornecedoresPendentes)
                   scroll = new JScrollPane(tblFornecedoresPendentes)
                   pnlFornecedoresPendentes.add(scroll, BorderLayout.CENTER)

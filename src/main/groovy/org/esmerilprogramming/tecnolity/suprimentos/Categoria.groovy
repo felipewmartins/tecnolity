@@ -38,25 +38,17 @@ class Categoria {
   }
 
   Vector carregarCategorias(JComboBox comboBox, Aplicacao aplicacao) {
-    ResultSet dadosCategoria
-      Vector categorias = new Vector()
-      Conexao conexao = aplicacao.obterConexao()
-      comboBox.removeAllItems()
-      try {
-        dadosCategoria = conexao.executarConsulta('select * from categoria_item order by categoria asc')
-          comboBox.addItem('Selecione...')
-          categorias = new Vector()
-          categorias.addElement(null)
-          int i = 1
-          while (dadosCategoria.next()) {
-            categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'), dadosCategoria.getString('categoria')))
-              comboBox.addItem(((Categoria)categorias.get(i)).obterNomeCategoria())
-              i++
-          }
-        dadosCategoria.close()
-      }
-    catch (e) {
-      e.printStackTrace()
+    Vector categorias = new Vector()
+    categorias.addElement(null)
+    comboBox.removeAllItems()
+    def db = Conexao.instance.db
+    def query = 'select categoria_item_id as id, categoria from categoria_item order by categoria asc'
+    comboBox.addItem('Selecione...')
+    int i = 1
+    db.eachRow(query) {
+      categorias.addElement(new Categoria(it.id, it.categoria))
+      comboBox.addItem(((Categoria)categorias.get(i)).nomeCategoria)
+      i++
     }
     categorias
   }

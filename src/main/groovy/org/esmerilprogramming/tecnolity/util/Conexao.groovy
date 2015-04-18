@@ -63,6 +63,14 @@ create table interface (
 );
 '''
 
+    db.execute '''
+create table categoria_item (
+    categoria_item_id int(9) not null auto_increment,
+    categoria varchar(50) not null,
+    primary key (categoria_item_id)
+);
+'''
+
     def params = [1, 'e', 'p', 1, 'Esmeril Programming', '999999999', 'ssp', '9999999999',
     1, 'universe', 'orion', 'space', 'gamma', 'ray', '12345', '111', '88888888', '111', '88888888', 'ep@test.com', 0]
 
