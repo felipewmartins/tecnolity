@@ -9,7 +9,6 @@ import javax.swing.*
 
 class BarraMenu extends JMenuBar implements ActionListener {
   private JMenu mnArquivo
-  private JMenuItem mnArqDesconectar
   private JMenuItem mnArqSair
   private Aplicacao aplicacao
   private JMenu mnPreferencias
@@ -25,11 +24,6 @@ class BarraMenu extends JMenuBar implements ActionListener {
       // Itens e SubItens de Arquivo
       mnArquivo = new JMenu('Arquivo')
       mnArquivo.setMnemonic('A')
-      mnArqDesconectar = new JMenuItem('Desconectar-se')
-      mnArqDesconectar.setMnemonic('D')
-      mnArqDesconectar.addActionListener(this)
-      mnArquivo.add(mnArqDesconectar)
-      mnArquivo.addSeparator()
       mnArqSair = new JMenuItem('Sair da Aplicação')
       mnArqSair.setMnemonic('S')
       mnArqSair.addActionListener(this)
@@ -65,11 +59,6 @@ class BarraMenu extends JMenuBar implements ActionListener {
 
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
-    if (objeto == mnArqDesconectar) {
-      aplicacao.setVisible(false)
-      aplicacao = new Aplicacao()
-      aplicacao.setVisible(true)
-    }
     if (objeto == mnArqSair) {
       aplicacao.finalizarAplicacao()
     }

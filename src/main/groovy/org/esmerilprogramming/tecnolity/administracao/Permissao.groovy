@@ -7,42 +7,40 @@ import org.esmerilprogramming.tecnolity.util.*
 
 class Permissao {
   static final char LEITURA = 'L'
-    static final char ESCRITA = 'E'
-    static final char SEM_ACESSO = 'S'
+  static final char ESCRITA = 'E'
+  static final char SEM_ACESSO = 'S'
 
-    private Interface tela
-    private Colaborador colaborador
-    private char tipoAcesso
+  private Interface tela
+  private Colaborador colaborador
+  private char tipoAcesso
 
-    Permissao(Interface tela, Colaborador colaborador, char tipoAcesso) {
-      definirTela(tela)
-        definirColaborador(colaborador)
-        definirTipoAcesso(tipoAcesso)
-    }
+  Permissao(Interface tela, Colaborador colaborador, char tipoAcesso) {
+    this.tela = tela
+    this.colaborador = colaborador
+    this.tipoAcesso = tipoAcesso
+  }
 
   Permissao(Interface tela, char tipoAcesso) {
-    definirTela(tela)
-      definirTipoAcesso(tipoAcesso)
+    this.tela = tela
+    this.tipoAcesso = tipoAcesso
   }
 
   Permissao(Interface tela, Colaborador colaborador) {
-    definirTela(tela)
-      definirColaborador(colaborador)
+    this.tela = tela
+    this.colaborador = colaborador
   }
 
   /** Verifica de o usuário tem permissão de leitura ou escrita na tela. Caso
     contrário um caractere de SEM_ACESSO é retornado. */
-  char verificarPermissaoAcesso(Conexao conexao) {
-    try {
-      String query = 'select permissao from permissao where interface = ' +  tela.obterIdentificador() + ' and usuario = ' + colaborador.obterMatricula() 
-        ResultSet permissoes = conexao.executarConsulta(query)
-        if (permissoes.next()) {
-          return permissoes.getString('permissao').charAt(0)
-        }
+  char verificarPermissaoAcesso() {
+    def db = Conexao.instance.db
+    def params = [tela.identificador, colaborador.matricula]
+    def query = 'select permissao from permissao where interface = ? and usuario = ?'
+    def row = db.firstRow(query, params)
+    char retorno = SEM_ACESSO
+    if (row.permissao == ESCRITA) {
+      retorno = ESCRITA
     }
-    catch (SQLException e) {
-      return SEM_ACESSO
-    }
-    return SEM_ACESSO
+    retorno
   }
 }

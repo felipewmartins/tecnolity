@@ -9,6 +9,10 @@ class Categoria {
   int codigo
   String nomeCategoria
 
+  Categoria() {
+
+  }
+
   Categoria(int codigo, String nomeCategoria) {
     this.codigo = codigo
     this.nomeCategoria = nomeCategoria

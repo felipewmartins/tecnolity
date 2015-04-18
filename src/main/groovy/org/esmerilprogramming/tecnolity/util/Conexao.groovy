@@ -59,8 +59,7 @@ create table permissao (
     db.execute '''
 create table interface (
   identificador int(6) not null,
-  interface varchar(60) not null,
-  descricao varchar(120) null
+  interface varchar(60) not null
 );
 '''
 
@@ -68,6 +67,43 @@ create table interface (
     1, 'universe', 'orion', 'space', 'gamma', 'ray', '12345', '111', '88888888', '111', '88888888', 'ep@test.com', 0]
 
     db.execute 'insert into usuario values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params
+
+    db.execute 'insert into interface values (1, \'Secao Administração\')'
+    db.execute 'insert into interface values (2, \'Seção Gerência\')'
+    db.execute 'insert into interface values (3, \'Seção Logística\')'
+    db.execute 'insert into interface values (4, \'Seção Pedido\')'
+    db.execute 'insert into interface values (5, \'Seção Produção\')'
+    db.execute 'insert into interface values (6, \'Seção Suprimentos\')'
+    db.execute 'insert into interface values (7, \'Acesso Direto a Base de Dados\')'
+    db.execute 'insert into interface values (8, \'Categoria\')'
+    db.execute 'insert into interface values (9, \'Cliente\')'
+    db.execute 'insert into interface values (10, \'Colaborador\')'
+    db.execute 'insert into interface values (11, \'Componente\')'
+    db.execute 'insert into interface values (12, \'Departamento\')'
+    db.execute 'insert into interface values (13, \'Despesa\')'
+    db.execute 'insert into interface values (14, \'Estado\')'
+    db.execute 'insert into interface values (15, \'Forma de Pagamento\')'
+    db.execute 'insert into interface values (16, \'Fornecedor\')'
+    db.execute 'insert into interface values (17, \'Item\')'
+    db.execute 'insert into interface values (18, \'Lote\')'
+    db.execute 'insert into interface values (19, \'Matriz\')'
+    db.execute 'insert into interface values (20, \'Motorista\')'
+    db.execute 'insert into interface values (21, \'Movimentação de Itens\')'
+    db.execute 'insert into interface values (22, \'Multa\')'
+    db.execute 'insert into interface values (23, \'País\')'
+    db.execute 'insert into interface values (24, \'Pedido\')'
+    db.execute 'insert into interface values (25, \'Atribuição de Permissões\')'
+    db.execute 'insert into interface values (26, \'Produto\')'
+    db.execute 'insert into interface values (27, \'Requisição de Compra\')'
+    db.execute 'insert into interface values (28, \'Requisição Interna\')'
+    db.execute 'insert into interface values (29, \'Tipo de Produção\')'
+    db.execute 'insert into interface values (30, \'Transportadora\')'
+    db.execute 'insert into interface values (31, \'Unidade\')'
+    db.execute 'insert into interface values (32, \'Veículo\')'
+    db.execute 'insert into interface values (33, \'Recursos do Pedido\')'
+    db.execute 'insert into interface values (34, \'Alteração de Preço\')'
+
+    db.execute 'insert into permissao values (6, \'e\', \'E\')'
 
   }
 

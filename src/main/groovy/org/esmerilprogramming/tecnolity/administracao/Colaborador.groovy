@@ -203,11 +203,11 @@ class Colaborador extends PessoaFisica {
     Permissao permissao
     def db = Conexao.instance.db
     def sql = '''select i.identificador as identificador,
- i.interface as interface, i.descricao as descricao_interface, p.permissao as tipo_permissao from permissao p,
+ i.interface as interface, p.permissao as tipo_permissao from permissao p,
  interface i where i.identificador = p.interface and p.usuario = '${matricula}' order by i.identificador asc
 '''
     db.eachRow(sql) {
-      tela = new Interface(it.identificador as int, it.interface, it.descricao_interface)
+      tela = new Interface(it.identificador as int, it.interface)
       permissao = new Permissao(tela, it.tipo_permissao.toCharArray()[0])
       permissoes.addElement(permissao)
     }

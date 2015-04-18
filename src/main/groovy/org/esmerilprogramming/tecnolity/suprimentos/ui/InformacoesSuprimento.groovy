@@ -98,7 +98,6 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlItem.add(pnlParametro, BorderLayout.NORTH)
 
                   modeloTabelaItensTodos = new ModeloTabelaItens()
-                  modeloTabelaItensTodos.definirConexao(aplicacao.obterConexao())
                   tblItensTodos = new JTable(modeloTabelaItensTodos)
                   JScrollPane scroll = new JScrollPane(tblItensTodos)
                   pnlItem.add(scroll, BorderLayout.CENTER)

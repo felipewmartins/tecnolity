@@ -2,8 +2,7 @@ package org.esmerilprogramming.tecnolity.aplicacao.modelos
 
 import org.esmerilprogramming.tecnolity.util.*
 
-class ModeloTabelaItens extends ModeloTabela
-{
+class ModeloTabelaItens extends ModeloTabela {
   ModeloTabelaItens() {
     super()
   }
