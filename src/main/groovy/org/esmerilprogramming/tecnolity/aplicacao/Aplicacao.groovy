@@ -112,6 +112,10 @@ class Aplicacao extends JFrame {
     }
   }
 
+  void finalizarAplicacao() {
+    System.exit(0);
+  }
+
   static main (args) {
     Conexao.instance.setupDB()
     new Aplicacao().setVisible(true)
