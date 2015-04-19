@@ -271,82 +271,19 @@ class Item {
         return itens
   }
 
-  static Vector carregarItens(Conexao conexao) throws Exception
-  {
+  static Vector carregarItens() {
     Vector itens = new Vector()
-      ResultSet dadosItem
-      itens.addElement(null)
-      String query = 'select i.codigo as codigo, i.descricao as descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, sum(l.quantidade) as quantidade '  + 
-      'from item i, unidade u, categoria_item ci, lote l '  + 
-      'where u.codigo = i.unidade and ci.codigo = i.categoria and i.codigo *= l.item '  + 
-      'group by i.codigo, i.descricao, u.codigo, u.unidade, ci.codigo, ci.categoria '  + 
-      'order by i.descricao, ci.categoria'
-      dadosItem = conexao.executarConsulta(query)
-      while (dadosItem.next()) {
-        itens.addElement(new Item(dadosItem.getInt('codigo'),
-              dadosItem.getString('descricao'),
-              new Categoria(dadosItem.getInt('codigo_categoria'), dadosItem.getString('categoria')),
-              new Unidade(dadosItem.getInt('codigo_unidade'), dadosItem.getString('unidade')),
-              dadosItem.getFloat('quantidade')))
-      }
-    dadosItem.close()
-      return itens
   }
 
-  static Vector carregarItensExistentes(Conexao conexao) throws Exception
-  {
+  static Vector carregarItensExistentes() throws Exception {
     Vector itens = new Vector()
-      ResultSet dadosItem
-      itens.addElement(null)
-      String query = 'select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u '  + 
-      'where i.categoria = ci.codigo and i.unidade = u.codigo and i.quantidade > 0 '  + 
-      'order by i.descricao, ci.categoria'
-      dadosItem = conexao.executarConsulta(query)
-      while (dadosItem.next()) {
-        itens.addElement(new Item(dadosItem.getInt('codigo'),
-              dadosItem.getString('descricao'),
-              new Categoria(dadosItem.getInt('codigo_categoria'), dadosItem.getString('categoria')),
-              new Unidade(dadosItem.getInt('codigo_unidade'), dadosItem.getString('unidade')),
-              dadosItem.getFloat('quantidade'),
-              dadosItem.getFloat('quantidade_minima')))
-      }
-    if (!dadosItem.wasNull())
-      dadosItem.close()
-        return itens
   }
 
-  static Vector carregarItensInativos(Conexao conexao) throws Exception
-  {
+  static Vector carregarItensInativos() throws Exception {
     Vector itens = new Vector()
-      ResultSet dadosItem
-      itens.addElement(null)
-      String query = 'select i.codigo, i.descricao, ci.codigo as codigo_categoria, ci.categoria as categoria, u.codigo as codigo_unidade, u.unidade as unidade, i.quantidade, i.quantidade_minima, i.quantidade_maxima, i.percentual_ipi, i.independente from item i, categoria_item ci, unidade u '  + 
-      'where i.categoria = ci.codigo and i.unidade = u.codigo and i.ativo = 0 '  + 
-      'order by i.descricao, ci.categoria'
-      dadosItem = conexao.executarConsulta(query)
-      while (dadosItem.next()) {
-        itens.addElement(new Item(dadosItem.getInt('codigo'),
-              dadosItem.getString('descricao'),
-              new Categoria(dadosItem.getInt('codigo_categoria'), dadosItem.getString('categoria')),
-              new Unidade(dadosItem.getInt('codigo_unidade'), dadosItem.getString('unidade')),
-              dadosItem.getFloat('quantidade'),
-              dadosItem.getFloat('quantidade_minima')))
-      }
-    if (!dadosItem.wasNull())
-      dadosItem.close()
-        return itens
   }
 
-  /**
-   * Method carregarItensSelecionados. Carrega as informações dos itens apartir
-   * do código no banco de dados.
-   * @param codigos Códigos dos ítens que precisam ser carregados.
-   * @param conexao Conexão com o banco de dados.
-   * @return Vector Lista de itens carregados.
-   * @throws Exception
-   */
-  static Vector carregarItensSelecionados(int[] codigos, Conexao conexao) throws Exception
-  {
+  static Vector carregarItensSelecionados(int[] codigos, Conexao conexao) throws Exception {
     Vector itens = new Vector()
       ResultSet dadosItem
       itens.addElement(null)

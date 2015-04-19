@@ -71,6 +71,47 @@ create table categoria_item (
 );
 '''
 
+    db.execute '''
+create table item (
+    item_id int(9) not null auto_increment,
+    descricao varchar(60) not null,
+    categoria_id int(9) not null,
+    armazenamento text null,
+    unidade int(9) not null,
+    temperatura decimal(18, 3) null,
+    seguranca text null,
+    quantidade decimal(15, 3) not null,
+    quantidade_minima decimal(15, 3) not null,
+    quantidade_maxima decimal(15, 3) null,
+    percentual_ipi int(9) null,
+    percentual_perda decimal(3, 2) null,
+    ativo bit not null,
+    independente bit not null,
+    primary key (item_id)
+);
+'''
+
+    db.execute '''
+create table unidade (
+  unidade_id int(9) not null auto_increment,
+  nome varchar(50) not null,
+  primary key (unidade_id)
+);
+'''
+
+    db.execute '''
+create table lote (
+  numero int(9) not null auto_increment,
+  item int(9) not null,
+  movimentacao_item int(9) null ,
+  localizacao varchar (100)  null,
+  data_validade datetime null ,
+  quantidade decimal(18, 3) not null,
+  reservado bit null,
+  descricao varchar (200) null,
+  lote_basico char (1) null
+);
+'''
     def params = [1, 'e', 'p', 1, 'Esmeril Programming', '999999999', 'ssp', '9999999999',
     1, 'universe', 'orion', 'space', 'gamma', 'ray', '12345', '111', '88888888', '111', '88888888', 'ep@test.com', 0]
 

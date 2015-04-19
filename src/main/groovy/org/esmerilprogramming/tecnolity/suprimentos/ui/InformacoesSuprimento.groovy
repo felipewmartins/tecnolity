@@ -254,7 +254,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   JPanel pnlParametroItem = new JPanel(new FlowLayout(FlowLayout.LEFT))
                   try {
                     itensMovimentacao = new Vector()
-                      itensMovimentacao = Item.carregarItens(aplicacao.obterConexao())
+                      itensMovimentacao = Item.carregarItens()
                       cbxItemMovimentacao = new JComboBox()
                       cbxItemMovimentacao.addActionListener(this)
                       cbxItemMovimentacao.addItem('Todos')
@@ -480,7 +480,7 @@ class InformacoesSuprimento extends JTabbedPane implements ActionListener
                   pnlInventario = new JPanel(new BorderLayout())
                   pnlAreaParametros = new JPanel(new FlowLayout(FlowLayout.LEFT))
                   try {
-                    itensInventario = Item.carregarItens(aplicacao.obterConexao())
+                    itensInventario = Item.carregarItens()
                       cbxItens = new JComboBox()
                       cbxItens.addItem('Todos')
                       for (int i = 1;i < itensInventario.size();i++) {
