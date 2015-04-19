@@ -162,40 +162,30 @@ class Colaborador extends PessoaFisica {
   }
 
   void alterarColaborador() {
-    Conexao conexao = new Conexao('T')
-      conexao.abrirConexao()
-      String query = 'update usuario set senha = ' +  this.senha + ', sexo = ' + super.getSexo() + ', nome_completo = ' + super.getNome() + ', identidade = ' + super.getIdentidade() + ', orgao_emissor_rg = ' + super.getOrgaoIdentidade().trim() + ', cpf = ' + super.getCPF() + ', departamento = ' + ((this.departamento == null)?'NULL':'' + this.departamento.obterCodigo()) + ', logradouro = ' + super.getLogradouro() + ', complemento = ' + super.getComplemento() + ', bairro = ' + super.getBairro() + ', cidade = ' + super.getCidade() + ', estado = ' + (this.obterEstado() != null?'' + this.obterEstado().getSigla() + '':null) + ', cep = ' + super.getCEP() + ', ddd = ' + this.getDDD() + ', telefone = ' + super.getTelefone() + ', ramal = ' + this.ramal + ', celular = ' + super.getCelular() + ', email = ' + super.getEmail() + ', senha_alterada = 1 where usuario = ' + this.matricula 
-      conexao.executarAtualizacao(query)
-      conexao.fecharConexao()
+    def db = Conexao.instance.db
+    //TODO terminar esse
+    db.execute 'update usuario set senha = ?', senha
+    String query = 'update usuario set senha = ' +  this.senha + ', sexo = ' + super.getSexo() + ', nome_completo = ' + super.getNome() + ', identidade = ' + super.getIdentidade() + ', orgao_emissor_rg = ' + super.getOrgaoIdentidade().trim() + ', cpf = ' + super.getCPF() + ', departamento = ' + ((this.departamento == null)?'NULL':'' + this.departamento.obterCodigo()) + ', logradouro = ' + super.getLogradouro() + ', complemento = ' + super.getComplemento() + ', bairro = ' + super.getBairro() + ', cidade = ' + super.getCidade() + ', estado = ' + (this.obterEstado() != null?'' + this.obterEstado().getSigla() + '':null) + ', cep = ' + super.getCEP() + ', ddd = ' + this.getDDD() + ', telefone = ' + super.getTelefone() + ', ramal = ' + this.ramal + ', celular = ' + super.getCelular() + ', email = ' + super.getEmail() + ', senha_alterada = 1 where usuario = ' + this.matricula 
   }
 
   void excluirColaborador() {
-    Conexao conexao = new Conexao('T')
-      conexao.abrirConexao()
-      String query = 'delete from usuario where usuario = ' +  this.matricula
-      conexao.executarAtualizacao(query)
-      conexao.fecharConexao()
+    def db = Conexao.instance.db
+    db.execute 'delete from usuario where usuario = ?' , matricula
   }
 
   boolean colaboradorTemPermissao(Interface inter) {
-    return true
+    true
   }
 
-  Vector carregarColaboradores(Conexao conexao) throws Exception {
-    ResultSet dadosColaborador
-      Vector colaboradores = new Vector()
-      try {
-          dadosColaborador = conexao.executarConsulta('select usuario, nome_completo, senha from usuario order by usuario asc')
-          colaboradores.addElement(null)
-          while (dadosColaborador.next()) {
-            colaboradores.addElement(new Colaborador(dadosColaborador.getString('usuario'), dadosColaborador.getString('nome_completo'), dadosColaborador.getString('senha')))
-          }
-        dadosColaborador.close()
-      }
-    catch (SQLException e) {
-      e.printStackTrace()
+  Vector carregarColaboradores() {
+    Vector colaboradores = new Vector()
+    colaboradores.addElement(null)
+    def db = Conexao.instance.db
+    def query = 'select usuario, nome_completo, senha from usuario order by usuario asc'
+    db.eachRow(query) {
+      colaboradores.addElement(new Colaborador(it.usuario, it.nome_completo, it.senha))
     }
-    return colaboradores
+    colaboradores
   }
 
   void carregarPermissoes() {
@@ -214,26 +204,21 @@ class Colaborador extends PessoaFisica {
   }
 
   void definirPermissoes(Vector permissoes) throws SQLException, Exception {
-    Conexao conexao = new Conexao('T')
-      conexao.abrirConexao()
-      ResultSet dadosColaborador
-
-      conexao.executarAtualizacao('delete from permissao where usuario = ' +  this.matricula)
-      for (int i = 0; i < permissoes.size(); i++) {
-        conexao.executarAtualizacao('insert into permissao (interface, usuario, permissao) values (' +  ((Permissao)permissoes.get(i)).obterTela().obterIdentificador() + ', ' + this.matricula + ', ' + ((Permissao)permissoes.get(i)).obterTipoAcesso() + ')')
-      }
-    conexao.fecharConexao()
+    def db = Conexao.instance.db
+    db.execute 'delete from permissao where usuario = ?', matricula
+    for (int i = 0; i < permissoes.size(); i++) {
+      db.execute 'insert into permissao (interface, usuario, permissao) values (' +  ((Permissao)permissoes.get(i)).tela.identificador + ', ' + matricula + ', ' + ((Permissao)permissoes.get(i)).tipoAcesso + ')'
+    }
   }
 
   char verificarPermissao(Interface tela) {
     char tipoPermissao = '\u0000'
-      for (int i=0;i < permissoes.size();i++) {
-        if (((Permissao)permissoes.get(i)).obterTela().obterIdentificador() == tela.obterIdentificador()) {
-          tipoPermissao = ((Permissao)permissoes.get(i)).obterTipoAcesso()
-        }
+    for (int i=0;i < permissoes.size();i++) {
+      if (((Permissao)permissoes.get(i)).tela.identificador == tela.identificador) {
+        tipoPermissao = ((Permissao)permissoes.get(i)).tipoAcesso
       }
-    return tipoPermissao
+    }
+    tipoPermissao
   }
-
 
 }

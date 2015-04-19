@@ -152,8 +152,12 @@ create table lote (
     db.execute 'insert into interface values (33, \'Recursos do Pedido\')'
     db.execute 'insert into interface values (34, \'Alteração de Preço\')'
 
+    db.execute 'insert into permissao values (1, \'e\', \'E\')'
+    db.execute 'insert into permissao values (2, \'e\', \'E\')'
+    db.execute 'insert into permissao values (3, \'e\', \'E\')'
+    db.execute 'insert into permissao values (4, \'e\', \'E\')'
+    db.execute 'insert into permissao values (5, \'e\', \'E\')'
     db.execute 'insert into permissao values (6, \'e\', \'E\')'
-
   }
 
   void abrirConexao() throws Exception {

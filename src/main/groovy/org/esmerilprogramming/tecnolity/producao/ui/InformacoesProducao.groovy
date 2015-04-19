@@ -100,12 +100,6 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
 
                   JPanel pnlDadosPedido = new JPanel(new BorderLayout())
                   modeloTabelaProducao = new ModeloTabela()
-                  modeloTabelaProducao.definirConexao(aplicacao.obterConexao())
-                  /*String query =  'select pc.codigo, pc.ordem_compra, c.razao_social, le.descricao_local as local_entrega, pc.data_emissao, pc.data_entrega, (case pc.status when '' +  Pedido.PENDENTE + '' then 'Pendente' when '' + Pedido.PRODUZINDO+ '' then 'Produzindo' when '' + Pedido.FINALIZADO + '' then 'Finalizado' when '' + Pedido.ATRASADO + '' then 'Atrasado' when '' + Pedido.CANCELADO + '' then 'Cancelado' when '' + Pedido.PARALIZADO + '' then 'Paralizado' end) as status ' +
-                    'from pedido_cliente pc, cliente c, local_entrega le '  + 
-                    'where pc.cliente = c.codigo and c.codigo = le.cliente and le.codigo_local = pc.local_entrega '  + 
-                    'order by pc.codigo desc'
-                    modeloTabelaProducao.definirConsulta(query)*/
                   tblProducao = new JTable(modeloTabelaProducao)
                   tblProducao.addMouseListener(this)
                   JScrollPane scroll = new JScrollPane(tblProducao)
@@ -139,8 +133,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   this.cbxCliente = new JComboBox()
                   try {
                     Cliente cliente = new Cliente()
-                      clientes = cliente.carregarClientes(aplicacao.obterConexao())
-                      carregarClientes()
+                    carregarClientes()
                   }
                 catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Clientes.', 'Erro', JOptionPane.ERROR_MESSAGE)
@@ -151,8 +144,6 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   pnlProduto.add(pnlParametro, BorderLayout.NORTH)
 
                   modeloTabelaProduto = new ModeloTabelaProduto()
-                  modeloTabelaProduto.definirConexao(aplicacao.obterConexao())
-                  //modeloTabelaProduto.definirConsulta('select m.codigo as codigo, m.modelo as produto, cl.razao_social as cliente, c.componente as 'tipo de componente', tp.tipo_producao as 'tipo de produção', m.referencia_cliente as 'referência do cliente' from modelo m, componente c, tipo_producao tp, cliente cl where m.cliente = cl.codigo and m.componente = c.codigo and m.tipo_producao = tp.codigo order by m.modelo asc')
                   tblProduto = new JTable(modeloTabelaProduto)
                   scroll = new JScrollPane(tblProduto)
                   pnlProduto.add(scroll, BorderLayout.CENTER)
@@ -188,8 +179,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   this.cbxProduto = new JComboBox()
                   try {
                     Produto produto = new Produto()
-                      produtos = produto.carregarProdutos(aplicacao.obterConexao())
-                      carregarProdutos()
+                    carregarProdutos()
                   }
                 catch (e) {
                   JOptionPane.showMessageDialog(aplicacao, 'Erro: Não foi possível carregar os Produtos.', 'Erro', JOptionPane.ERROR_MESSAGE)
@@ -200,8 +190,6 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
                   pnlMatriz.add(pnlParametro, BorderLayout.NORTH)
 
                   modeloTabelaMatriz = new ModeloTabelaMatriz()
-                  modeloTabelaMatriz.definirConexao(aplicacao.obterConexao())
-                  //modeloTabelaMatriz.definirConsulta('select referencia, numero_sola as 'No. Sola', quantidade, dureza, densidade, peso, volume, tempo_injecao as 'Temp. Injeção' from matriz_modelo')
                   tblMatriz = new JTable(modeloTabelaMatriz)
                   scroll = new JScrollPane(tblMatriz)
                   pnlMatriz.add(scroll, BorderLayout.CENTER)
@@ -260,7 +248,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
       if (linhaSelecionada >= 0) {
         try {
           Pedido pedido = new Pedido(Long.parseLong((String)tblProducao.getValueAt(linhaSelecionada, 0)))
-            Vector historico = pedido.carregarHistoricoPedido(aplicacao.obterConexao())
+            Vector historico = pedido.carregarHistoricoPedido()
             tblStatus.setValueAt('', 0, 0)
             tblStatus.setValueAt('', 0, 1)
             tblStatus.setValueAt('', 0, 2)
@@ -418,7 +406,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
         int codigoPedido = Integer.parseInt((String)tblProducao.getValueAt(linha, 0))
         try {
           Pedido pedido = new Pedido(codigoPedido)
-            pedido.carregarPedido(aplicacao.obterConexao())
+            pedido.carregarPedido()
             RelatorioPedido relPedido = new RelatorioPedido(pedido)
             Vector paginas = relPedido.paginar(aplicacao.obterFormatoPagina())
             Impressora impressora = new Impressora()
@@ -457,7 +445,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
           for (int i = 0;i < linha.length;i++) {
             codigoPedido[i] = Integer.parseInt((String)tblProducao.getValueAt(linha[i], 0))
               pedidos[i] = new Pedido(codigoPedido[i])
-              pedidos[i].carregarPedido(aplicacao.obterConexao())
+              pedidos[i].carregarPedido()
           }
           DlgRecursosPedido dlgRecursosPedido = new DlgRecursosPedido(aplicacao, pedidos)
             dlgRecursosPedido.setVisible(true)
@@ -481,7 +469,7 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
       int colunaSelecionada = tblProduto.getSelectedRow()
         if (colunaSelecionada >= 0) {
           try {
-            Produto produto = new Produto(aplicacao.obterConexao(), Long.parseLong((String)tblProduto.getValueAt(colunaSelecionada, 0)))
+            Produto produto = new Produto(Long.parseLong((String)tblProduto.getValueAt(colunaSelecionada, 0)))
               DlgDadosProduto dlgDadosProduto = new DlgDadosProduto(aplicacao, produto)
               dlgDadosProduto.setVisible(true)
           }
@@ -518,8 +506,8 @@ class InformacoesProducao extends JTabbedPane implements ActionListener, MouseLi
     if (objeto == btImprimirProduto) {
       int codigoProduto = Integer.parseInt((String)tblProduto.getValueAt(tblProduto.getSelectedRow(), 0))
         try {
-          Produto produto = new Produto(aplicacao.obterConexao(), codigoProduto)
-            produto.carregarProduto(aplicacao.obterConexao())
+          Produto produto = new Produto(codigoProduto)
+            produto.carregarProduto()
             RelatorioProduto relProduto = new RelatorioProduto(produto)
             Vector paginas = relProduto.paginar(aplicacao.obterFormatoPagina())
             Impressora impressora = new Impressora()

@@ -18,7 +18,7 @@ class AreaTrabalhoProducao extends ModeloAreaTrabalho
 
     AreaTrabalhoProducao(Aplicacao aplicacao) {
       this.aplicacao = aplicacao
-        switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR), aplicacao.obterColaborador(), aplicacao.obterConexao())) {
+        switch(super.verificarPermissaoAcesso(new Interface(IDENTIFICADOR), aplicacao.colaborador)) {
           case Permissao.SEM_ACESSO:
             JOptionPane.showMessageDialog(this, 'Acesso Negado.', 'Segurança', JOptionPane.WARNING_MESSAGE)
               break

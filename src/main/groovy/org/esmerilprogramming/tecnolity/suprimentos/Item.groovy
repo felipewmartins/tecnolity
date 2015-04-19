@@ -353,14 +353,6 @@ class Item {
       return itens
   }
 
-  /**
-   * Method carregarItens. Dado o departamento, o método busca no banco de dados
-   * os itens relacionados.
-   * @param departamento departamento do usuário.
-   * @param conexao conexão com o banco de dados.
-   * @return Vector retorna uma lista de itens encontrados.
-   * @throws Exception
-   */
   static Vector carregarItens(Departamento departamento, Conexao conexao) throws Exception
   {
     ResultSet dadosItem
@@ -377,15 +369,6 @@ class Item {
       return itens
   }
 
-  /**
-   * Method carregarItens. Dado o departamento e o pedido do cliente, o método
-   * busca no banco de dados os itens relacionados.
-   * @param departamento departamento do usuário.
-   * @param pedido pedido do cliente.
-   * @param conexao conexão com o banco de dados.
-   * @return Vector retorna uma lista de itens encontrados.
-   * @throws Exception
-   */
   static Vector carregarItens(Departamento departamento, Pedido pedido, Conexao conexao) throws Exception
   {
     ResultSet dadosItem
@@ -777,12 +760,6 @@ class Item {
       }
   }
 
-  /**
-   * Method carregarListaCompras. Esta lista contém quantidades adicionais de matéria-prima
-   * necessárias para repor o estoque mínimo e substituir disperdícios ou necessidades
-   * além do previsto para a produção de um pedido.
-   * @param conexao Conexão com o banco de dados.
-   */
   void  carregarListaCompras(Conexao conexao) {
 
   }

@@ -1,8 +1,6 @@
 package org.esmerilprogramming.tecnolity.administracao
 
-import java.sql.*
-
-import org.esmerilprogramming.tecnolity.util.*
+import org.esmerilprogramming.tecnolity.util.Conexao
 
 class Departamento {
   int codigo
@@ -24,99 +22,59 @@ class Departamento {
     this.codigo = codigo
   }
 
-  void carregarDepartamento(Conexao conexao) throws Exception {
-    ResultSet dadosDepartamento = conexao.executarConsulta('select * from departamento where codigo = '  +  this.codigo)
-      if (dadosDepartamento.next()) {
-          this.definirNomeDepartamento(dadosDepartamento.getString('departamento'))
-          String responsavel = dadosDepartamento.getString('responsavel')
-          this.definirResponsavel((responsavel != null) ? new Colaborador(responsavel) : null)
-      }
-  }
-
-  Vector carregarDepartamentos(Conexao conexao) throws Exception
-  {
-    ResultSet dadosDepartamento
-      Vector departamentos = new Vector()
-      try {
-        dadosDepartamento = conexao.executarConsulta('select codigo, d.departamento, nome_completo as responsavel from departamento d, usuario u where responsavel *= usuario order by d.departamento asc')
-          departamentos.addElement(null)
-          String responsavel, nomeDepartamento
-          int codigo
-
-          while (dadosDepartamento.next()) {
-            codigo = dadosDepartamento.getInt('codigo')
-              nomeDepartamento = dadosDepartamento.getString('departamento')
-              responsavel = dadosDepartamento.getString('responsavel')
-              if (responsavel == null) {
-                departamentos.addElement(new Departamento(codigo, nomeDepartamento, null))
-              } else {
-                departamentos.addElement(new Departamento(codigo, nomeDepartamento, new Colaborador(responsavel)))
-              }
-          }
-        dadosDepartamento.close()
-      }
-    catch (SQLException e) {
-      e.printStackTrace()
+  void carregarDepartamento() {
+    def db = Conexao.instance.db
+    def query = 'select departamento, responsavel from departamento where codigo = ' + codigo
+    db.firstRow(query) {
+      nomeDepartamento = it.departamento
+      responsavel = it.responsavel ?: new Colaborador(it.responsavel)
     }
-    return departamentos
   }
 
-  Vector carregarNomesDepartamentos(Conexao conexao) throws Exception
-  {
-    ResultSet dadosDepartamento
-      Vector departamentos = new Vector()
-      dadosDepartamento = conexao.executarConsulta('select * from departamento order by departamento asc')
-      departamentos.addElement('Selecione...')
-      while (dadosDepartamento.next()) {
-        departamentos.addElement(new Departamento(dadosDepartamento.getInt('codigo'), dadosDepartamento.getString('departamento')))
+  Vector carregarDepartamentos() {
+    Vector departamentos = new Vector()
+    departamentos.addElement(null)
+    def db = Conexao.instance.db
+    def query = 'select codigo, d.departamento, nome_completo as responsavel from departamento d, usuario u where responsavel += usuario order by d.departamento asc'
+    db.eachRow(query) {
+      def cod = it.codigo
+      def nomeDep = it.departamento
+      def resp = it.responsavel
+      if (!resp) {
+        departamentos.addElement(new Departamento(cod, nomeDep, null))
+      } else {
+        departamentos.addElement(new Departamento(cod, nomeDep, new Colaborador(resp)))
       }
-    dadosDepartamento.close()
-      return departamentos
+    }
+    departamentos
+  }
+
+  Vector carregarNomesDepartamentos() {
+    def db = Conexao.instance.db
+    def query = 'select codigo, departamento from departamento order by departamento asc'
+    Vector departamentos = new Vector()
+    departamentos.addElement('Selecione...')
+    db.eachRow(query) {
+      departamentos.addElement(new Departamento(it.codigo, it.departamento))
+    }
+    departamentos
   }
 
   void cadastrarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception {
     String query = 'insert into departamento (departamento, responsavel) values ('' +  nomeDepartamento + '', ' + ((responsavel == null)?'NULL':''' + responsavel.obterMatricula() + ''') + ')'
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível cadastrar o Departamento Informado.')
-          throw e
-      }
+    Conexao.instance.db.execute query
   }
 
-  void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) throws Exception {
+  void alterarDepartamento(String nomeDepartamento, Colaborador responsavel) {
     String query = 'update departamento set departamento = '' +  nomeDepartamento + '', responsavel = ' + ((responsavel == null)?'NULL':''' + responsavel.obterMatricula() + ''') + ' where codigo = ' + this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível alterar o Departamento Informado.')
-          throw e
-      }
+    Conexao.instance.db.execute query
   }
 
-  void excluirDepartamento() throws Exception {
-    String query = 'delete from departamento where codigo = '  +  this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível excluir o Departamento Informado.')
-          throw e
-      }
+  void excluirDepartamento() {
+    Conexao.instance.db.execute 'delete from departamento where codigo = ' + codigo
   }
 
   String toString() {
-    return this.nomeDepartamento
+    nomeDepartamento
   }
 }

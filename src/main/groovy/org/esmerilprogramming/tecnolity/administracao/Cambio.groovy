@@ -1,7 +1,6 @@
 package org.esmerilprogramming.tecnolity.administracao
 
-import org.esmerilprogramming.tecnolity.util.*
-import java.sql.*
+import org.esmerilprogramming.tecnolity.util.Conexao
 
 class Cambio {
   float dolar
@@ -16,28 +15,22 @@ class Cambio {
     if (dolar == 0.0f) {
       Exception e = new Exception('O valor do dólar não foi informado.')
       throw e
-    }
-    else {
+    } else {
       this.dolar = dolar
     }
   }
 
-  void carregarCambio(Conexao conexao) throws Exception {
-    ResultSet dadosCambio
-    dadosCambio = conexao.executarConsulta('select distinct valor_dolar from cotacao_dolar where data = (select max(data) from cotacao_dolar)')
-    if (dadosCambio.next()) {
-      definirDolar(dadosCambio.getFloat('valor_dolar'))
+  void carregarCambio() {
+    def db = Conexao.instance.db
+    def query = 'select distinct valor_dolar from cotacao_dolar where data = '
+    query += '(select max(data) from cotacao_dolar)'
+    db.firstRow(query) {
+      definirDolar(it.valor_dolar)
     }
-    dadosCambio.close()
   }
 
   void cadastrarCambio() throws Exception {
-    Conexao conexao = new Conexao('T')
-    if (conexao.abrirConexao()) {
-      String query = 'insert into cotacao_dolar (valor_dolar) '
-      query += 'values (' + this.dolar + ')'
-      conexao.executarAtualizacao(query)
-      conexao.fecharConexao()
-    }
+    def db = Conexao.instance.db
+    db.execute 'insert into cotacao_dolar (valor_dolar) values (?)', dolar
   }
 }
