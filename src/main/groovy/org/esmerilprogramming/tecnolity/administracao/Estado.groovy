@@ -1,88 +1,44 @@
 package org.esmerilprogramming.tecnolity.administracao
 
-import java.sql.*
-
-import org.esmerilprogramming.tecnolity.util.*
+import org.esmerilprogramming.tecnolity.util.Conexao
 
 class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
-  Estado(String sigla, String nome, Pais pais) throws Exception
-  {
+  Estado(String sigla, String nome, Pais pais) {
     super(sigla, nome, pais)
   }
 
-  Estado(String siglaEstado, String nomeEstado) throws Exception
-  {
+  Estado(String siglaEstado, String nomeEstado) {
     super(siglaEstado, nomeEstado)
   }
 
-  Estado(String siglaEstado) throws Exception
-  {
+  Estado(String siglaEstado) {
     super(siglaEstado)
   }
 
-  void carregarEstado() throws Exception
-  {
-    Conexao conexao = new Conexao('C')
-      if (conexao.abrirConexao()) {
-        ResultSet dadosEstado = conexao.executarConsulta('select * from estado where sigla_estado = '  +  this.getSigla() +'')
-          if (dadosEstado.next()) {
-            setNome(dadosEstado.getString('estado'))
-              setPais(new Pais(dadosEstado.getString('pais')))
-          }
-        dadosEstado.close()
-      }
-    conexao.fecharConexao()
+  void carregarEstado() {
+    def db = Conexao.instance.db
+    def query = 'select estado, pais from estado where sigla_estado = ' + sigla
+    db.firstRow(query) {
+      nome = it.estado
+      pais = new Pais(it.pais)
+    }
   }
 
-  static Vector carregarEstados(String pais, Conexao conexao) throws Exception
-  {
-    ResultSet dadosEstado
-      Vector estados = new Vector()
-      try {
-        dadosEstado = conexao.executarConsulta('select sigla_estado, estado from estado where pais = ' +  pais +' order by estado asc')
-          estados.addElement(null)
-          while (dadosEstado.next()) {
-            estados.addElement(new Estado(dadosEstado.getString('sigla_estado'), dadosEstado.getString('estado')))
-          }
-        dadosEstado.close()
-      }
-    catch (SQLException e) {
-      e.printStackTrace()
+  static Vector carregarEstados(String pais) {
+    Vector estados = new Vector()
+    estados.addElement(null)
+    def query = 'select sigla_estado, estado from estado where pais = ' + pais + ' order by estado asc'
+    def db = Conexao.instance.db
+    db.eachRow(query) {
+      estados.addElement(new Estado(it.sigla_estado, it.estado))
     }
-    return estados
+    estados
   }
 
-  void cadastrarEstado() throws Exception
-  {
-    Conexao conexao = new Conexao('T')
-      String erro = ''
-      if (conexao.abrirConexao()) {
-        String query = 'Select sigla_estado from estado where sigla_estado = '' +  this.getSigla() +'''
-          try {
-            ResultSet dadosEstado = conexao.executarConsulta(query)
-              if (!dadosEstado.next()) {
-                query = 'insert into estado (sigla_estado, estado, pais) values ('' +  this.getSigla() +'', ''+ this.getNome() +'', ''+ this.getPais().getSigla() +'')'
-                  conexao.executarAtualizacao(query)
-                  conexao.fecharConexao()
-              }
-              else
-              {
-                erro = 'Não foi possível cadastrar o Estado Informado.\nVerifique se o mesmo já foi cadastrado.'
-                  dadosEstado.close()
-              }
-          }
-        catch (Exception ex) {
-          ex.printStackTrace()
-        }
-      }
-      else
-      {
-        erro = 'Não foi possível realizar uma conexão com o banco de dados.'
-      }
-
-    if (!erro.equals('')) {
-      Exception e = new Exception(erro)
-        throw e
-    }
+  void cadastrarEstado() {
+    def query = 'select sigla_estado from estado where sigla_estado = ' + sigla
+    def db = Conexao.instance.db
+    if (!db.firstRow(query)) {
+      db.execute 'insert into estado (sigla_estado, estado, pais) values (?,?,?)' , sigla, nome, pais.sigla
   }
 }

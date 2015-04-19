@@ -1,65 +1,33 @@
 package org.esmerilprogramming.tecnolity.administracao
 
-import java.sql.*
-import org.esmerilprogramming.tecnolity.util.*
+import org.esmerilprogramming.tecnolity.util.Conexao
 
 class Pais extends org.esmerilprogramming.tecnolity.util.Pais {
-   Pais(String siglaPais, String nomePais) throws Exception
-  {
+  Pais(String siglaPais, String nomePais) {
     super(siglaPais, nomePais)
   }
 
-   Pais(String siglaPais) throws Exception
-  {
+  Pais(String siglaPais) {
     super(siglaPais)
   }
 
-   static Vector carregarPaises(Conexao conexao) throws Exception
-  {
-    ResultSet dadosPais
-    Vector paises = null
-    dadosPais = conexao.executarConsulta('select sigla_pais, pais from pais order by pais asc')
-    paises = new Vector()
+  static Vector carregarPaises() {
+    Vector paises = new Vector()
     paises.addElement(null)
-    while (dadosPais.next()) {
-      paises.addElement(new Pais(dadosPais.getString('sigla_pais'), dadosPais.getString('pais')))
+    def db = Conexao.instance.db
+    def query = 'select sigla_pais, pais from pais order by pais asc'
+    db.eachRow(query) {
+      paises.addElement(new Pais(it.sigla_pais, it.pais))
     }
-    dadosPais.close()
-    return paises
+    paises
   }
 
-   void cadastrarPais() throws Exception
-  {
-    Conexao conexao = new Conexao('T')
-    String erro = ''
-    if (conexao.abrirConexao()) {
-      String query = 'Select sigla_pais from pais where sigla_pais = '' +  getSigla() +'''
-      try {
-        ResultSet dadosPais = conexao.executarConsulta(query)
-        if (!dadosPais.next()) {
-          query = 'insert into pais (sigla_pais, pais) values ('' +  getSigla() +'', ''+ getNome() +'')'
-          conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-        }
-        else
-        {
-          erro = 'Não foi possível cadastrar o País Informado.\nVerifique se o mesmo já foi cadastrado.'
-          dadosPais.close()
-        }
-      }
-      catch (Exception ex) {
-        ex.printStackTrace()
-      }
-      conexao.fecharConexao()
-    }
-    else
-    {
-      erro = 'Não foi possível realizar uma conexão com o banco de dados.'
-    }
-
-    if (!erro.equals('')) {
-      Exception e = new Exception(erro)
-      throw e
+  void cadastrarPais() {
+    def db = Conexao.instance.db
+    def query = 'select sigla_pais from pais where sigla_pais = ' + sigla
+    if (!db.firstRow(query)) {
+      db.execute 'insert into pais (sigla_pais, pais) values (?, ?)', sigla, nome
     }
   }
+
 }
