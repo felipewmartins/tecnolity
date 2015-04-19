@@ -130,49 +130,17 @@ class Multa {
             this.data = data
   }
 
-  void cadastrarMulta() throws Exception
-  {
+  void cadastrarMulta() {
     String query = 'insert into multa (placa, motivo, valor, responsabilidade, datahora) values '
-      query = query  +  '(' + this.veiculo.obterPlaca() + ', ' + this.motivo + ', ' + this.valor + ', ' + this.responsabilidade + ', ' + Calendario.inverterFormato(this.data, '/') + ')'
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    query = query  +  '(' + this.veiculo.obterPlaca() + ', ' + this.motivo + ', ' + this.valor + ', ' + this.responsabilidade + ', ' + Calendario.inverterFormato(this.data, '/') + ')'
+    Conexao.instance.db.execute query
   }
 
-  void alterarMulta() throws Exception
-  {
-    String query = 'update multa set placa = ' +  this.veiculo.obterPlaca() + ', motivo = ' + this.motivo + ', valor = ' + this.valor + ', responsabilidade = ' + this.responsabilidade + ', datahora = ' + Calendario.inverterFormato(this.data, '/') + ' where codigo = ' + this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void alterarMulta() {
+    Conexao.instance.db.execute 'update multa set placa = ' + veiculo.placa + ', motivo = ' + motivo + ', valor = ' + valor + ', responsabilidade = ' + responsabilidade + ', datahora = ' + Calendario.inverterFormato(data, '/') + ' where codigo = ' + codigo
   }
 
-  void excluirMulta() throws Exception
-  {
-    String query = 'delete from multa where codigo = ' +  this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void excluirMulta() {
+    Conexao.instance.db.execute 'delete from multa where codigo = ' + codigo
   }
 }

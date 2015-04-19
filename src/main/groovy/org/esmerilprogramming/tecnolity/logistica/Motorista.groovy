@@ -131,21 +131,6 @@ class Motorista {
     }
   }
 
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
-  }
-
-  void definirPlaca(String placa) throws Exception
-  {
-    if (!placa.equals(''))
-      this.placa = placa
-    else
-    {
-      Exception e = new Exception('A Placa não foi informada.')
-        throw e
-    }
-  }
-
   void definirMotorista(String motorista) throws Exception
   {
     if (!motorista.equals('') && motorista.length() <= 50)
@@ -339,49 +324,17 @@ class Motorista {
     return motoristas
   }
 
-  void cadastrarMotorista() throws Exception
-  {
+  void cadastrarMotorista() {
     String query = 'insert into motorista (placa, motorista, identidade, orgao_emissor, cpf, habilitacao, categoria, validade, logradouro, complemento, bairro, cidade, estado, cep, telefone, celular) values '
       query = query  +  '(' + this.placa + ', ' + this.motorista + ', ' + this.identidade + ', ' + this.orgaoEmissorIdentidade + ', ' + this.cpf + ', ' + this.habilitacao + ', ' + this.categoria + ', ' + Calendario.inverterFormato(this.validade, '/') + ', ' + this.logradouro + ', ' + this.complemento + ', ' + this.bairro + ', ' + this.cidade + ', ' + this.estado.getSigla() + ', ' + this.cep + ', ' + this.telefone + ', ' + this.celular
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    Conexao.instance.db.execute query
   }
 
-  void alterarMotorista() throws Exception
-  {
-    String query = 'update motorista set placa = ' +  this.placa + ', motorista = ' + this.motorista + ', identidade = ' + this.identidade + ', orgao_emissor = ' + this.orgaoEmissorIdentidade + ', cpf = ' + this.cpf + ', habilitacao = ' + this.habilitacao + ', categoria = ' + this.categoria + ', validade = ' + Calendario.inverterFormato(this.validade, '/') + ', logradouro = ' + this.logradouro + ', complemento = ' + this.complemento + ', bairro = ' + this.bairro + ', cidade = ' + this.cidade + ', estado = ' + this.estado.getSigla() + ', cep = ' + this.cep + ', telefone = ' + this.telefone + ', celular = ' + this.celular + ' where codigo = ' + this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void alterarMotorista() {
+    Conexao.instance.db.execute 'update motorista set placa = ' +  this.placa + ', motorista = ' + this.motorista + ', identidade = ' + this.identidade + ', orgao_emissor = ' + this.orgaoEmissorIdentidade + ', cpf = ' + this.cpf + ', habilitacao = ' + this.habilitacao + ', categoria = ' + this.categoria + ', validade = ' + Calendario.inverterFormato(this.validade, '/') + ', logradouro = ' + this.logradouro + ', complemento = ' + this.complemento + ', bairro = ' + this.bairro + ', cidade = ' + this.cidade + ', estado = ' + this.estado.getSigla() + ', cep = ' + this.cep + ', telefone = ' + this.telefone + ', celular = ' + this.celular + ' where codigo = ' + this.codigo
   }
 
-  void excluirMotorista() throws Exception
-  {
-    String query = 'delete from motorista where codigo = ' +  this.codigo + ' '
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void excluirMotorista() {
+    Conexao.instance.db.execute = 'delete from motorista where codigo = ' + codigo
   }
 }

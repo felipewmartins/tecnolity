@@ -147,17 +147,16 @@ class LocalEntrega {
   void deleteLocalEntrega(Conexao conexao) throws Exception
   {
     ResultSet rsLocalEntrega = conexao.executarConsulta('select * from pedido_cliente where local_entrega = '  +  this.codigo)
-      if (rsLocalEntrega.next()) {
-        Exception e = new Exception('Não foi possível excluir o local de entrega por estar associado a um pedido cadastrado.')
-          throw e
-      }
-      else
-        conexao.executarAtualizacao('delete from local_entrega where codigo_local = '  +  this.codigo)
-          rsLocalEntrega.close()
+    if (rsLocalEntrega.next()) {
+      Exception e = new Exception('Não foi possível excluir o local de entrega por estar associado a um pedido cadastrado.')
+      throw e
+    }
+    else
+        Conexao.instance.db.execute 'delete from local_entrega where codigo_local = ' + codigo
   }
 
   String toString() {
-    return this.descricaoLocal
+    descricaoLocal
   }
 
 }

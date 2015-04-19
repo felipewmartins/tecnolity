@@ -12,31 +12,19 @@ class Transportadora {
   }
 
   Transportadora(int codigo, String transportadora) {
-    this.definirCodigo(codigo)
-      try {
-        this.definirTransportadora(transportadora)
-      }
-    catch (e) {
-      e.printStackTrace()
-    }
+    this.codigo = codigo
+    this.transportadora = transportadora
   }
 
   Transportadora(String transportadora) {
-    try {
-      this.definirTransportadora(transportadora)
-    }
-    catch (e) {
-      e.printStackTrace()
-    }
+    this.transportadora = transportadora
   }
 
   Transportadora(int codigo, Conexao conexao)throws Exception
   {
     this.definirCodigo(codigo)
-
       ResultSet dadosTransportadora
       dadosTransportadora = conexao.executarConsulta('select * from transportadora where codigo = ' +  this.codigo)
-
       if (dadosTransportadora.next()) {
         try {
           this.definirTransportadora(dadosTransportadora.getString('transportadora'))
@@ -45,17 +33,6 @@ class Transportadora {
           e.printStackTrace()
         }
       }
-  }
-
-  void definirTransportadora(String transportadora) throws Exception
-  {
-    if (!transportadora.equals('') && transportadora.length() <= 60)
-      this.transportadora = transportadora
-    else
-    {
-      Exception e = new Exception('A Transportadora não foi informada corretamente.')
-        throw e
-    }
   }
 
   static Vector carregarTransportadoras(Conexao conexao) throws Exception
@@ -72,50 +49,18 @@ class Transportadora {
       return transportadoras
   }
 
-  void cadastrarTransportadora() throws Exception
-  {
+  void cadastrarTransportadora() {
     String query = 'insert into transportadora (transportadora) values '
-      query = query  +  '(' + this.transportadora + ')'
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    query = query  +  '(' + transportadora + ')'
+    Conexao.instance.db.execute query
   }
 
-  void alterarTransportadora() throws Exception
-  {
-    String query = 'update transportadora set transportadora = ' +  this.transportadora + ' where codigo = ' + this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void alterarTransportadora() {
+    Conexao.instance.db.execute 'update transportadora set transportadora = ' + transportadora + ' where codigo = ' + codigo
   }
 
-  void excluirTransportadora() throws Exception
-  {
-    String query = 'delete from transportadora where codigo = ' +  this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void excluirTransportadora() {
+    Conexao.instance.db.execute 'delete from transportadora where codigo = ' + codigo
   }
 
 }

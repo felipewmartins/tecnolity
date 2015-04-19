@@ -141,12 +141,6 @@ class Pedido {
     return numeros
   }
 
-  /**
-   *  O pedido pode ser feito através de arquivo sequencial. Esse arquivo segue
-   *  um padrão nacional cujo formado é compreensível pela maioria das indústrias
-   *  de calçados. Esta função lê e alimenta o banco de dados com os dados do
-   *  pedido presente no arquivo.
-   */
   String importarArquivoEDI(File arquivo) throws Exception
   {
     StringBuffer conteudoArquivo = new StringBuffer()
@@ -182,9 +176,6 @@ class Pedido {
   }
 
 
-  /**
-   *  
-   */
   private void importarRegistro() throws Exception
   {
     String cnpjCliente, anteriorOrdemCompra, proximaOrdemCompra, remessa, dataEmissao, tipoOperacao, 
@@ -333,14 +324,8 @@ class Pedido {
     }
   }
 
-  /** Cancela o pedido atual, evitando que seja produzido. */
-  void cancelarPedido() throws Exception
-  {
-    Conexao conexao = new Conexao("T")
-    if (conexao.abrirConexao()) {
-      conexao.executarAtualizacao("update pedido_cliente set status = " +  CANCELADO + " where codigo = " + this.codigo)
-      conexao.fecharConexao()
-    }
+  void cancelarPedido() {
+    Conexao.instance.db.execute 'update pedido_cliente set status = ' +  CANCELADO + ' where codigo = ' + codigo
   }
 
   /**
@@ -514,8 +499,7 @@ class Pedido {
     return dadosRecursos
   }
 
-  Vector carregarHistoricoPedido(Conexao conexao) throws Exception
-  {
+  Vector carregarHistoricoPedido(Conexao conexao) throws Exception {
     ResultSet rsHistorico
     Vector historico = new Vector()
     rsHistorico = conexao.executarConsulta("select * from historico_status_pedido where pedido = " +  this.obterCodigo() + " order by status")
@@ -523,10 +507,10 @@ class Pedido {
       historico.addElement(new RegistroHistoricoStatusPedido(rsHistorico.getString("status"), rsHistorico.getString("data")))
     }
     rsHistorico.close()
-    return historico
+    historico
   }
 
   String toString() {
-    return ""  +  this.codigo + " - " + this.ordemCompra
+    codigo + ' - ' + ordemCompra
   }
 }

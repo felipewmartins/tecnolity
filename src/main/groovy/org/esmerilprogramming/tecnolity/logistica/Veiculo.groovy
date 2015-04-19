@@ -305,37 +305,15 @@ class Veiculo {
       }
   }
 
-  void alterarDadosVeiculo() throws Exception
-  {
-    String query = 'update veiculo set transportadora = ' +  this.transportadora.obterCodigo() + ', chassi = ' + this.chassi + ', renavam = ' + this.renavam + ', marca = ' + this.marca + ', modelo = ' + this.modelo + ', ano = ' + this.ano + ', cor = ' + this.cor + ', numero_eixo = ' + this.numeroEixo + ', cubagem = ' + this.cubagem + ', tara = ' + this.tara + ', peso_bruto = ' + this.pesoBruto + ', combustivel = ' + this.combustivel + ', volume_combustivel = ' + this.volumeCombustivel + ', media_consumo = ' + this.mediaConsumo + ' where placa =  ' + this.placa
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void alterarDadosVeiculo() {
+    Conexao.instance.db.execute 'update veiculo set transportadora = ' +  this.transportadora.obterCodigo() + ', chassi = ' + this.chassi + ', renavam = ' + this.renavam + ', marca = ' + this.marca + ', modelo = ' + this.modelo + ', ano = ' + this.ano + ', cor = ' + this.cor + ', numero_eixo = ' + this.numeroEixo + ', cubagem = ' + this.cubagem + ', tara = ' + this.tara + ', peso_bruto = ' + this.pesoBruto + ', combustivel = ' + this.combustivel + ', volume_combustivel = ' + this.volumeCombustivel + ', media_consumo = ' + this.mediaConsumo + ' where placa =  ' + this.placa
   }
 
-  void excluirVeiculo() throws Exception
-  {
-    String queryVeiculo = 'delete from veiculo where placa = '' +  this.placa + '' '
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(queryVeiculo)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void excluirVeiculo() {
+    Conexao.instance.db.execute 'delete from veiculo where placa = ' + placa
   }
 
   String toString() {
-    return this.placa  +  ' ' + modelo
+    placa + ' ' + modelo
   }
 }
