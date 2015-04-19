@@ -1,17 +1,14 @@
 package org.esmerilprogramming.tecnolity.aplicacao
 
-import org.esmerilprogramming.tecnolity.util.*
-import java.sql.*
+import org.esmerilprogramming.tecnolity.util.Conexao
 
 class Interface {
   private int identificador
   private String nomeInterface
-  private String descricaoInterface
 
-  Interface(int identificador, String nomeInterface, String descricaoInterface) {
+  Interface(int identificador, String nomeInterface) {
     this.identificador = identificador
     this.nomeInterface = nomeInterface
-    this.descricaoInterface = descricaoInterface
   }
 
   Interface(int identificador) {
@@ -22,24 +19,17 @@ class Interface {
 
   }
 
-  Vector carregarInterfaces(Conexao conexao) throws Exception
-  {
+  Vector carregarInterfaces() {
     Vector interfaces = new Vector()
-      ResultSet dadosInterface = conexao.executarConsulta('select * from interface order by interface asc')
-      while (dadosInterface.next()) {
-        interfaces.addElement(new Interface(dadosInterface.getInt('identificador'), dadosInterface.getString('interface'), dadosInterface.getString('descricao')))
-      }
-    dadosInterface.close()
-      return interfaces
+    def query 'select identificador, interface as inter rom interface order by interface asc'
+    def db = Conexao.instance.db
+    db.eachRow(query) {
+      interfaces.addElement(new Interface(it.identificador, it.inter))
+    }
+    interfaces
   }
 
-  void excluirInterfacesPadroes() throws Exception
-  {
-    Conexao conexao = new Conexao('T')
-
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao('delete from interface')
-          conexao.fecharConexao()
-      }
+  void excluirInterfacesPadroes() {
+    Conexao.instance.db.execute 'delete from interface'
   }
 }

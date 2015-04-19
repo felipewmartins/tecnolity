@@ -212,11 +212,11 @@ class DlgConfiguracaoImpressora extends JDialog implements ActionListener, Focus
       }
       try {
         this.aplicacao.obterConfiguracao().setOrientacao(rdbOrientacaoRetrato.isSelected()?1:0)
-          this.aplicacao.obterConfiguracao().setMargemEsquerda(Integer.parseInt(txtMargemEsquerda.getText()))
-          this.aplicacao.obterConfiguracao().setMargemDireita(Integer.parseInt(txtMargemDireita.getText()))
-          this.aplicacao.obterConfiguracao().setMargemSuperior(Integer.parseInt(txtMargemSuperior.getText()))
-          this.aplicacao.obterConfiguracao().setMargemInferior(Integer.parseInt(txtMargemInferior.getText()))
-          this.aplicacao.obterConfiguracao().salvarConfiguracao()
+          this.aplicacao.configuracao.margemEsquerda = txtMargemEsquerda.text as int
+          this.aplicacao.configuracao.margemDireita = txtMargemDireita.text as int
+          this.aplicacao.configuracao.margemSuperior = txtMargemSuperior.text as int
+          this.aplicacao.configuracao.margemInferior = txtMargemInferior.text as int
+          this.aplicacao.configuracao.salvarConfiguracao()
       }
       catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: Informe somente números inteiros nas margens da página.', 'Erro', JOptionPane.ERROR_MESSAGE)
@@ -245,12 +245,12 @@ class PainelDesenho extends JPanel
 
     PainelDesenho(int largura, int altura, int margemEsquerda, int margemDireita, int margemSuperior, int margemInferior, int orientacao) {
       this.setLargura(largura)
-        this.setAltura(altura)
-        this.setMargemEsquerda(margemEsquerda)
-        this.setMargemDireita(margemDireita)
-        this.setMargemSuperior(margemSuperior)
-        this.setMargemInferior(margemInferior)
-        this.setOrientacao(orientacao)
+        this.altura = altura
+        this.margemEsquerda = margemEsquerda
+        this.margemDireita = margemDireita
+        this.margemSuperior = margemSuperior
+        this.margemInferior = margemInferior
+        this.orientacao = orientacao
     }
 
   void paintComponent(Graphics g) {
@@ -275,31 +275,4 @@ class PainelDesenho extends JPanel
       }
   }
 
-  void setAltura(int altura) {
-    this.altura = altura
-  }
-
-  void setLargura(int largura) {
-    this.largura = largura
-  }
-
-  void setMargemEsquerda(int margemEsquerda) {
-    this.margemEsquerda = margemEsquerda
-  }
-
-  void setMargemDireita(int margemDireita) {
-    this.margemDireita = margemDireita
-  }
-
-  void setMargemSuperior(int margemSuperior) {
-    this.margemSuperior = margemSuperior
-  }
-
-  void setMargemInferior(int margemInferior) {
-    this.margemInferior = margemInferior
-  }
-
-  void setOrientacao(int orientacao) {
-    this.orientacao = orientacao
-  }
 }

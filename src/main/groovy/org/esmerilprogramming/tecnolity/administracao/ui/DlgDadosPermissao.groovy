@@ -46,7 +46,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
         cbxColaborador = new JComboBox()
         Colaborador colaborador = new Colaborador()
         try {
-          colaboradores = colaborador.carregarColaboradores(aplicacao.obterConexao())
+          colaboradores = colaborador.carregarColaboradores()
         }
       catch (e) {
         JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)
@@ -184,7 +184,7 @@ class DlgDadosPermissao extends JDialog implements ActionListener {
       Interface tela = new Interface()
 
       try {
-        interfaces = tela.carregarInterfaces(aplicacao.obterConexao())
+        interfaces = tela.carregarInterfaces()
       }
     catch (e) {
       JOptionPane.showMessageDialog(aplicacao, 'Erro: '  +  e.getMessage(), 'Erro', JOptionPane.ERROR_MESSAGE)

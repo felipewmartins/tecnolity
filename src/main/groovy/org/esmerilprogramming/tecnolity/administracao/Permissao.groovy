@@ -30,8 +30,6 @@ class Permissao {
     this.colaborador = colaborador
   }
 
-  /** Verifica de o usuário tem permissão de leitura ou escrita na tela. Caso
-    contrário um caractere de SEM_ACESSO é retornado. */
   char verificarPermissaoAcesso() {
     def db = Conexao.instance.db
     def params = [tela.identificador, colaborador.matricula]

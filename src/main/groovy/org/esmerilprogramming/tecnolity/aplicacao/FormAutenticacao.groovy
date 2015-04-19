@@ -100,18 +100,15 @@ class FormAutenticacao extends JDialog implements ActionListener {
 
   void actionPerformed(java.awt.event.ActionEvent actionEvent) {
     Object objeto = actionEvent.getSource()
-
-      if (objeto == txtUsuario) {
-        verificarAutenticacao()
-      }
-
+    if (objeto == txtUsuario) {
+      verificarAutenticacao()
+    }
     if (objeto == txtSenha) {
       verificarAutenticacao()
     }
     if (objeto == btAcessar) {
       verificarAutenticacao()
     }
-
     if (objeto == btCancelar) {
       aplicacao.finalizarAplicacao()
     }

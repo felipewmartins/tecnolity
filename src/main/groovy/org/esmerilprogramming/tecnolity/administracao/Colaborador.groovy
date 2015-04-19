@@ -45,44 +45,42 @@ class Colaborador extends PessoaFisica {
   }
 
   Colaborador(String matricula, Conexao conexao) throws Exception {
-    this.definirMatricula(matricula)
+    this.matricula = matricula
+    ResultSet dadosColaborador, dadosDepartamento
+    dadosColaborador = conexao.executarConsulta('select * from usuario where usuario = ' +  this.matricula)
 
-      ResultSet dadosColaborador, dadosDepartamento
+    if (dadosColaborador.next()) {
+      this.definirSenha(dadosColaborador.getString('senha'))
+      this.definirSexo(dadosColaborador.getString('sexo').charAt(0))
+      super.setNome(dadosColaborador.getString('nome_completo'))
+      this.definirIdentidade(dadosColaborador.getString('identidade'))
+      this.definirOrgaoEmissorIdentidade(dadosColaborador.getString('orgao_emissor_rg'))
+      this.definirCpf(dadosColaborador.getString('cpf'))
 
-      dadosColaborador = conexao.executarConsulta('select * from usuario where usuario = ' +  this.matricula)
-
-      if (dadosColaborador.next()) {
-        this.definirSenha(dadosColaborador.getString('senha'))
-          this.definirSexo(dadosColaborador.getString('sexo').charAt(0))
-          super.setNome(dadosColaborador.getString('nome_completo'))
-          this.definirIdentidade(dadosColaborador.getString('identidade'))
-          this.definirOrgaoEmissorIdentidade(dadosColaborador.getString('orgao_emissor_rg'))
-          this.definirCpf(dadosColaborador.getString('cpf'))
-
-          int codigoDepartamento = dadosColaborador.getInt('departamento')
-          if (codigoDepartamento > 0) {
-            dadosDepartamento = conexao.executarConsulta('select departamento from departamento where codigo = '  +  codigoDepartamento)
-              if (dadosDepartamento.next()) {
-                this.definirDepartamento(new Departamento(codigoDepartamento, dadosDepartamento.getString('departamento')))
-              }
-            dadosDepartamento.close()
-          }
-        this.definirLogradouro(dadosColaborador.getString('logradouro'))
-        this.definirComplemento(dadosColaborador.getString('complemento'))
-        this.definirBairro(dadosColaborador.getString('bairro'))
-        this.definirCidade(dadosColaborador.getString('cidade'))
-        String siglaEstado = dadosColaborador.getString('estado')
-        if (siglaEstado != null) {
-          this.setEstado(new Estado(siglaEstado))
+      int codigoDepartamento = dadosColaborador.getInt('departamento')
+      if (codigoDepartamento > 0) {
+        dadosDepartamento = conexao.executarConsulta('select departamento from departamento where codigo = '  +  codigoDepartamento)
+        if (dadosDepartamento.next()) {
+          this.definirDepartamento(new Departamento(codigoDepartamento, dadosDepartamento.getString('departamento')))
         }
-        this.definirCep(dadosColaborador.getString('cep'))
-          this.setDDD(dadosColaborador.getString('ddd'))
-          this.definirTelefone(dadosColaborador.getString('telefone'))
-          this.definirRamal(dadosColaborador.getString('ramal'))
-          this.definirCelular(dadosColaborador.getString('celular'))
-          super.setEmail(dadosColaborador.getString('email'))
-          this.senhaAlterada = dadosColaborador.getBoolean('senha_alterada')
+        dadosDepartamento.close()
       }
+      this.definirLogradouro(dadosColaborador.getString('logradouro'))
+      this.definirComplemento(dadosColaborador.getString('complemento'))
+      this.definirBairro(dadosColaborador.getString('bairro'))
+      this.definirCidade(dadosColaborador.getString('cidade'))
+      String siglaEstado = dadosColaborador.getString('estado')
+      if (siglaEstado != null) {
+        this.setEstado(new Estado(siglaEstado))
+      }
+      this.definirCep(dadosColaborador.getString('cep'))
+      this.setDDD(dadosColaborador.getString('ddd'))
+      this.definirTelefone(dadosColaborador.getString('telefone'))
+      this.definirRamal(dadosColaborador.getString('ramal'))
+      this.definirCelular(dadosColaborador.getString('celular'))
+      super.setEmail(dadosColaborador.getString('email'))
+      this.senhaAlterada = dadosColaborador.getBoolean('senha_alterada')
+    }
   }
 
   Colaborador(String matricula) {

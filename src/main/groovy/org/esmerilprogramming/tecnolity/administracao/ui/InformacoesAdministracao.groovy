@@ -85,7 +85,6 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     pnlUsuarios.add(pnlAreaComandos, BorderLayout.EAST)
 
     modeloTabelaColaboradores = new ModeloTabela()
-    modeloTabelaColaboradores.definirConexao(aplicacao.obterConexao())
     modeloTabelaColaboradores.definirConsulta('select usuario as \'usuário\', nome_completo as \'nome completo\', telefone, ramal, email as \'e-mail\' from usuario order by usuario asc')
     tblColaboradores = new JTable(modeloTabelaColaboradores)
     JScrollPane scrollColaboradores = new JScrollPane(tblColaboradores)
@@ -113,7 +112,6 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     pnlDepartamentos.add(pnlAreaComandos, BorderLayout.EAST)
 
     modeloTabelaDepartamentos = new ModeloTabela()
-    modeloTabelaDepartamentos.definirConexao(aplicacao.obterConexao())
     modeloTabelaDepartamentos.definirConsulta('select codigo, d.departamento, nome_completo as responsavel from departamento d, usuario u where responsavel *= usuario order by d.departamento asc')
     tblDepartamentos = new JTable(modeloTabelaDepartamentos)
     JScrollPane scrollDepartamentos = new JScrollPane(tblDepartamentos)
@@ -154,7 +152,6 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
     pnlPermissoes.add(pnlAreaComandos, BorderLayout.EAST)
 
     modeloTabelaPermissoes = new ModeloTabela()
-    modeloTabelaPermissoes.definirConexao(aplicacao.obterConexao())
     tblPermissoes = new JTable()
     atualizarTabelaPermissoes(null)
 
@@ -271,10 +268,8 @@ class InformacoesAdministracao extends JTabbedPane implements ActionListener, Ke
   private void adicionarComponente(JPanel painel, Component c, int linha, int coluna, int largura, int altura) {
     gbc.gridx = coluna
     gbc.gridy = linha
-
     gbc.gridwidth = largura
     gbc.gridheight = altura
-
     gridbag.setConstraints(c, gbc)
     painel.add(c)
   }

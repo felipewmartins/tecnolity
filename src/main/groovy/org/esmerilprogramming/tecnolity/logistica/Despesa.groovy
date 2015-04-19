@@ -5,84 +5,46 @@ import java.sql.*
 
 class Despesa {
 
-  private String placa, descricao, data, placaAntesAlteracao, dataAntesAlteracao
-  private float valor
+  String placa, descricao, data, placaAntesAlteracao, dataAntesAlteracao
+  float valor
 
   Despesa(String data) {
     this.data = data
   }
 
   Despesa(String placa, String data) {
-    try {
-      this.definirPlaca(placa)
-        this.definirData(data)
-    }
-    catch (e) {
-      e.printStackTrace()
-    }
+    this.placa = placa
+    this.data = data
   }
 
-  Despesa(String placa, String data, Conexao conexao)throws Exception
-  {
-    try {
-      this.definirPlaca(placa)
-        this.definirData(data)
-        this.definirPlacaAntesAlteracao(placa)
-        this.definirDataAntesAlteracao(data)
-    }
-    catch (e) {
-      e.printStackTrace()
-    }
+  Despesa(String placa, String data) {
+    this.placa = placa
+    this.data = data
+    this.placaAntesAlteracao = placa
+    this.dataAntesAlteracao = data
 
-    ResultSet dadosDespesa
-      dadosDespesa = conexao.executarConsulta('select * from despesa_veiculo where veiculo = ' +  this.placa + ' and datahora = ' + Calendario.inverterFormato(this.data, '/'))
-
-      if (dadosDespesa.next()) {
-        try {
-          this.definirDescricao(dadosDespesa.getString('descricao'))
-            this.definirValor(dadosDespesa.getFloat('valor'))
-        }
-        catch (e) {
-          e.printStackTrace()
-        }
-      }
+    def query 'select descricao, valor from despesa_veiculo where veiculo = ' +  placa + ' and datahora = ' + Calendario.inverterFormato(data, '/')
+    def db = Conexao.instance.db
+    if (db.firstRow(query)) {
+      descricao = it.descricao
+      valor = it.valor
+    }
   }
 
   Despesa(String placa, String descricao, float valor, String data) {
-    try {
-      this.definirPlaca(placa)
-        this.definirDescricao(descricao)
-        this.definirValor(valor)
-        this.definirData(data)
-    }
-    catch (e) {
-      e.printStackTrace()
-    }
+    this.placa = placa
+    this.descricao = descricao
+    this.valor = valor
+    this.data = data
   }
 
   Despesa(String placa, String descricao, float valor, String data, String placaAntesAlteracao, String dataAntesAlteracao) {
-    try {
-      this.definirPlaca(placa)
-        this.definirPlacaAntesAlteracao(placaAntesAlteracao)
-        this.definirDescricao(descricao)
-        this.definirValor(valor)
-        this.definirData(data)
-        this.definirDataAntesAlteracao(dataAntesAlteracao)
-    }
-    catch (e) {
-      e.printStackTrace()
-    }
-  }
-
-  void definirPlacaAntesAlteracao(String placaAntesAlteracao) throws Exception
-  {
-    if (!placaAntesAlteracao.equals(''))
-      this.placaAntesAlteracao = placaAntesAlteracao
-    else
-    {
-      Exception e = new Exception('A Placa não foi informada.')
-        throw e
-    }
+    this.definirPlaca(placa)
+    this.definirPlacaAntesAlteracao(placaAntesAlteracao)
+    this.definirDescricao(descricao)
+    this.definirValor(valor)
+    this.definirData(data)
+    this.definirDataAntesAlteracao(dataAntesAlteracao)
   }
 
   void definirDataAntesAlteracao(String dataAntesAlteracao) throws Exception
@@ -106,42 +68,6 @@ class Despesa {
             this.dataAntesAlteracao = dataAntesAlteracao
   }
 
-  void definirPlaca(String placa) throws Exception
-  {
-    if (!placa.equals(''))
-      this.placa = placa
-    else
-    {
-      Exception e = new Exception('A Placa não foi informada.')
-        throw e
-    }
-  }
-
-  void definirDescricao(String descricao) throws Exception
-  {
-    if (!descricao.equals('') && descricao.length() <= 500)
-      this.descricao = descricao
-    else
-    {
-      Exception e = new Exception('A Descrição não foi informada.')
-        throw e
-    }
-  }
-
-  void definirValor(float valor) throws Exception
-  {
-    String erro = ''
-      if (Float.isNaN(valor) || valor <= 0.0f)
-        erro = 'O Valor não foi informado corretamente.'
-
-          if (!erro.equals('')) {
-            Exception e = new Exception(erro)
-              throw e
-          }
-          else
-            this.valor = valor
-  }
-
   void definirData(String data) throws Exception
   {
 
@@ -163,17 +89,14 @@ class Despesa {
             this.data = data
   }
 
-  Vector carregarDatasDespesas(Conexao conexao) throws Exception
-  {
-    ResultSet dadosDespesas
-      Vector datasDespesas = null
-      dadosDespesas = conexao.executarConsulta('select datahora from despesa_veiculo where veiculo = ' +  this.placa + ' order by datahora desc')
-      datasDespesas = new Vector()
-      while (dadosDespesas.next()) {
-        datasDespesas.addElement(new Despesa(dadosDespesas.getString('datahora')))
-      }
-    dadosDespesas.close()
-      return datasDespesas
+  Vector carregarDatasDespesas() {
+    Vector datasDespesas = new Vector()
+    def query = 'select datahora from despesa_veiculo where veiculo = ' + placa + ' order by datahora desc'
+    def Conexao.instance.db
+    db.eachRow(query) {
+      datasDespesas.addElement(new Despesa(it.datahora))
+    }
+    datasDespesas
   }
 
   void cadastrarDespesa() throws Exception
@@ -202,33 +125,13 @@ class Despesa {
       }
   }
 
-  void alterarDespesa() throws Exception
-  {
-    String query = 'update despesa_veiculo set veiculo = ' +  this.placa + ', datahora = ' + Calendario.inverterFormato(this.data, '/') + ', descricao = ' + this.descricao + ', valor = ' + this.valor + ' where veiculo = ' + this.placaAntesAlteracao + ' and datahora = ' + Calendario.inverterFormato(this.dataAntesAlteracao, '/') 
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void alterarDespesa() {
+    def query = 'update despesa_veiculo set veiculo = ' + placa + ', datahora = ' + Calendario.inverterFormato(data, '/') + ', descricao = ' + descricao + ', valor = ' + valor + ' where veiculo = ' + placaAntesAlteracao + ' and datahora = ' + Calendario.inverterFormato(dataAntesAlteracao, '/')
+    Conexao.instance.db.execute query
   }
 
-  void excluirDespesa() throws Exception
-  {
-    String query = 'delete from despesa_veiculo where veiculo = ' +  this.placa + ' and datahora = ' + Calendario.inverterFormato(this.data, '/')
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void excluirDespesa() {
+    def query = 'delete from despesa_veiculo where veiculo = ' + placa + ' and datahora = ' + Calendario.inverterFormato(data, '/')
+    Conexao.instance.db.execute query
   }
 }
