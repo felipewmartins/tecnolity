@@ -80,206 +80,16 @@ class Fornecedor {
 
   Fornecedor(int codigo, String razaoSocial) {
     this.codigo = codigo
-      this.razaoSocial = razaoSocial
+    this.razaoSocial = razaoSocial
   }
 
-  Fornecedor(int codigo) throws Exception
-  {
+  Fornecedor(int codigo) {
     this.codigo = codigo
-      Conexao conexao = new Conexao('C')
-      if (conexao.abrirConexao()) {
-        this.carregarFornecedor(conexao)
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
-    conexao.fecharConexao()
+    carregarFornecedor()
   }
 
-  void definirRazaoSocial(String razaoSocial) throws Exception
-  {
-    if (!razaoSocial.equals('') && razaoSocial.length() <= 60)
-      this.razaoSocial = razaoSocial.trim()
-    else
-    {
-      Exception e = new Exception('A Razão Social não foi informada corretamente.')
-        throw e
-    }
-  }
-
-  void definirCnpj(String cnpj) throws Exception
-  {
-    if (cnpj.length() <= 15)
-      this.cnpj = cnpj.trim()
-    else
-    {
-      Exception e = new Exception('O CNPJ não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirPercentualIcms(int percentualICMS) throws Exception
-  {
-    String erro = ''
-      if (Float.isNaN(percentualICMS))
-        erro = 'O Valor do Percentual do ICMS não foi informado corretamente.'
-
-          if (!erro.equals('')) {
-            Exception e = new Exception(erro)
-              throw e
-          }
-          else
-            this.percentualICMS = percentualICMS
-  }
-
-  void definirLogradouro(String logradouro) throws Exception
-  {
-    if (!logradouro.equals('') && logradouro.length() <= 60)
-      this.logradouro = logradouro
-    else
-    {
-      Exception e = new Exception('O Logradouro não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirComplemento(String complemento) throws Exception
-  {
-    if (complemento.length() <= 30)
-      this.complemento = complemento
-    else
-    {
-      Exception e = new Exception('O Complemento não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirBairro(String bairro) throws Exception
-  {
-    if (bairro.length() <= 50)
-      this.bairro = bairro
-    else
-    {
-      Exception e = new Exception('O Bairro não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirCidade(String cidade) throws Exception
-  {
-    if (!cidade.equals('') && cidade.length() <= 60)
-      this.cidade = cidade
-    else
-    {
-      Exception e = new Exception('A Cidade não foi informada corretamente.')
-        throw e
-    }
-  }
-
-  void definirEstado(Estado estado) throws Exception
-  {
-    if (estado != null)
-      this.estado = estado
-    else
-    {
-      Exception e = new Exception('O Estado não foi informado.')
-        throw e
-    }
-  }
-
-  void definirPais(Pais pais) throws Exception
-  {
-    if (pais != null)
-      this.pais = pais
-    else
-    {
-      Exception e = new Exception('O País não foi informado.')
-        throw e
-    }
-  }
-
-  void definirCep(String cep) throws Exception
-  {
-    if (cep.length() <= 8)
-      this.cep = cep
-    else
-    {
-      Exception e = new Exception('O Cep não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirDdd(String ddd) throws Exception
-  {
-    if (!ddd.equals('') && ddd.length() <= 3)
-      this.ddd = ddd
-    else
-    {
-      Exception e = new Exception('O DDD não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirTelefone(String telefone) throws Exception
-  {
-    if (!telefone.equals('') && telefone.length() <= 8)
-      this.telefone = telefone
-    else
-    {
-      Exception e = new Exception('O Telefone não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirRamal(String ramal) throws Exception
-  {
-    if (ramal.length() <= 8)
-      this.ramal = ramal
-    else
-    {
-      Exception e = new Exception('O Ramal não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirFax(String fax) throws Exception
-  {
-    if (fax.length() <= 8)
-      this.fax = fax
-    else
-    {
-      Exception e = new Exception('O Fax não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirEmail(String email) throws Exception
-  {
-    if (email.length() <= 50)
-      this.email = email
-    else
-    {
-      Exception e = new Exception('O E-mail não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  void definirWebsite(String website) throws Exception
-  {
-    if (website.length() <= 50)
-      this.website = website
-    else
-    {
-      Exception e = new Exception('O Website não foi informado corretamente.')
-        throw e
-    }
-  }
-
-  private void carregarFornecedor(Conexao conexao) throws Exception
-  {
-    String query = 'select * from fornecedor where codigo = '  +  this.codigo + ' '
+  private void carregarFornecedor() {
+    def query = 'select * from fornecedor where codigo = ' + this.codigo
       try {
         ResultSet resultado = conexao.executarConsulta(query)
           if (resultado.next()) {
@@ -291,12 +101,7 @@ class Fornecedor {
               this.bairro = resultado.getString('bairro')
               this.cidade = resultado.getString('cidade')
               this.estado = new Estado(resultado.getString('estado'))
-              try {
                 this.pais = new Pais(resultado.getString('pais'))
-              }
-            catch (e) {
-              e.printStackTrace()
-            }
             this.cep = resultado.getString('cep')
               this.ddd = resultado.getString('ddd')
               this.telefone = resultado.getString('telefone')
@@ -305,11 +110,6 @@ class Fornecedor {
               this.email = resultado.getString('email')
               this.website = resultado.getString('website')
           }
-        resultado.close()
-      }
-    catch (SQLException sqle) {
-      sqle.printStackTrace()
-    }
   }
 
   static Vector carregarFornecedores(Conexao conexao) throws Exception
@@ -349,20 +149,10 @@ class Fornecedor {
       }
   }
 
-  void alterarFornecedor() throws Exception
-  {
+  void alterarFornecedor() {
     String query = 'update fornecedor set razao_social = ' +  razaoSocial + ', cnpj = ' + cnpj + ', percentual_icms = ' + percentualICMS + ', logradouro = ' + logradouro + ', complemento = ' + complemento + ', bairro = ' + bairro + ', cidade = ' + cidade + ', estado = ' + estado.getSigla() + ', pais = ' + pais.getSigla() + ', cep = ' + cep + ', ddd = ' + ddd + ', telefone = ' + telefone + ', ramal = ' + ramal + ', fax = ' + fax + ', email = ' + email + ', website = ' + website
-      query = query  +  ' where codigo = ' + codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    query = query  +  ' where codigo = ' + codigo
+    Conexao.instance.db.execute query
   }
 
   void excluirFornecedor(int codigo) throws Exception
