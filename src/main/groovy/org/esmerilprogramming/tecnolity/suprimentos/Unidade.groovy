@@ -1,16 +1,15 @@
 package org.esmerilprogramming.tecnolity.suprimentos
 
-import org.esmerilprogramming.tecnolity.util.*
+import org.esmerilprogramming.tecnolity.util.Conexao
 
-class Unidade
-{
-  private int codigo
-    private String nomeUnidade
+class Unidade {
+  int codigo
+  String nomeUnidade
 
-    Unidade(int codigo, String nomeUnidade) {
-      this.codigo = codigo
-        this.nomeUnidade = nomeUnidade
-    }	
+  Unidade(int codigo, String nomeUnidade) {
+    this.codigo = codigo
+    this.nomeUnidade = nomeUnidade
+  }
 
   Unidade(int codigo) {
     this.codigo = codigo
@@ -20,22 +19,8 @@ class Unidade
 
   }
 
-  int obterCodigo() {
-    return codigo
-  }
-
-  String obterNomeUnidade() {
-    return this.nomeUnidade
-  }
-
   boolean cadastrarUnidade(String nomeUnidade) {
-    String query = 'insert into unidade (unidade) values ('' +  nomeUnidade + '')'
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-          return true
-      }
-    return false
+    Conexao.instance.db.execute 'insert into unidade (unidade) values (?)' , nomeUnidade
+    false
   }
 }

@@ -59,51 +59,6 @@ class Matriz {
       this.definirVolume(volume)
   }
 
-  void definirReferencia(String referencia) throws Exception
-  {
-    if (referencia.equals('') || referencia == null) {
-      Exception e = new Exception('A referência não foi informada.')
-        throw e
-    }
-    this.referencia = referencia.trim()
-  }
-
-  private void definirReferenciaOriginal(String referencia) throws Exception
-  {
-    if (referencia.equals('') || referencia == null) {
-      Exception e = new Exception('A referência não foi informada.')
-        throw e
-    }
-    this.referenciaOriginal = referencia.trim()
-  }
-
-  void definirNumeroSola(int numeroSola) throws Exception
-  {
-    if (numeroSola <= 0) {
-      Exception e = new Exception('Número da sola inválida.')
-        throw e
-    }
-    this.numeroSola = numeroSola
-  }
-
-  void definirNumeroSolaOriginal(int numeroSola) throws Exception
-  {
-    if (numeroSola <= 0) {
-      Exception e = new Exception('Número da sola inválida.')
-        throw e
-    }
-    this.numeroSolaOriginal = numeroSola
-  }
-
-  void definirQuantidade(int quantidade) throws Exception
-  {
-    if (quantidade <= 0) {
-      Exception e = new Exception('Quantidade informada inválida.')
-        throw e
-    }
-    this.quantidade = quantidade
-  }
-
   String obterDescricao() {
     String descricao = ''
       descricao = this.referencia  +  ' - ' + this.numeroSola
@@ -228,17 +183,7 @@ class Matriz {
     dadosMatriz.close()
   }
 
-  void excluirMatriz() throws Exception
-  {
-    Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao('delete from matriz_modelo where referencia = ' +  this.referencia + ' and numero_sola = ' + this.numeroSola)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não possível excluir a Matriz. Ela precisa ser desassociada dos produtos antes de ser excluída.')
-          throw e
-      }
+  void excluirMatriz() {
+    Conexao.instance.db.execute 'delete from matriz_modelo where referencia = ' + referencia + ' and numero_sola = ' + numeroSola
   }
 }

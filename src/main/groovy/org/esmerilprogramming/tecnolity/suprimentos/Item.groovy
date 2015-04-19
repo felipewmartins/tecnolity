@@ -400,19 +400,13 @@ class Item {
       return itens
   }
 
-  private void carregarDepartamentos(Conexao conexao) {
-    String query = 'select * from departamento_item where item = '  +  this.codigo + ' '
-      departamentos = new Vector()
-      try {
-        ResultSet resultado = conexao.executarConsulta(query)
-          while (resultado.next()) {
-            int depto = resultado.getInt('departamento')
-              departamentos.addElement(new Departamento(depto))
-          }
-        resultado.close()
-      }
-    catch (SQLException e) {
-      e.printStackTrace()
+  private void carregarDepartamentos() {
+    departamentos = new Vector()
+    def query = 'select departamento from departamento_item where item = ' + codigo
+    def db = Conexao.instance.db
+    db.eachRow(query) {
+      int depto = resultado.getInt('departamento')
+      departamentos.addElement(new Departamento(it.departamento))
     }
   }
 

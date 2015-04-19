@@ -111,18 +111,7 @@ class FornecedorItem {
       this.moeda = moeda
   }
 
-  void alterarValorItem() throws Exception
-  {
-    String query = 'update fornecedor_item set valor_item = ' +  this.valorItem + ' where fornecedor = ' + this.fornecedor.obterCodigo() + ' and item = ' + this.item.obterCodigo()
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void alterarValorItem() {
+    Conexao.instance.db.execute 'update fornecedor_item set valor_item = ' +  valorItem + ' where fornecedor = ' + fornecedor.codigo + ' and item = ' + item.codigo
   }
 }

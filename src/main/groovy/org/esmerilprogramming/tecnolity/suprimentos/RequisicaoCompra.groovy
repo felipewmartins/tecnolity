@@ -77,10 +77,6 @@ class RequisicaoCompra
       this.definirTipoFrete(tipoFrete)
   }
 
-  void definirCodigo(int codigo) {
-    this.codigo = codigo
-  }
-
   void definirFornecedor(Fornecedor fornecedor) throws Exception
   {
     if (fornecedor != null)
@@ -478,126 +474,32 @@ class RequisicaoCompra
     }
   }
 
-  void alterarRequisicaoCompra() throws Exception
-  {
-    String query = ''
-      query = 'update requisicao_compra set fornecedor = ' +  this.fornecedor + ', departamento_solicitante = ' + this.departamento.obterCodigo() + ', responsavel_emissao = ' + this.responsavelEmissao + ', data_limite_entrega = ' + Calendario.inverterFormato(this.dataLimiteEntrega, '/') + ', condicao_pagamento = ' + this.condicaoPagamento + ', forma_pagamento = ' + this.formaPagamento + ', transportadora = ' + this.transportadora + ', tipo_frete = ' + this.tipoFrete + ', observacao = ' + this.observacao + ', status = ' + STATUS_EMITIDO + ' where codigo =  ' + this.codigo
-
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void alterarRequisicaoCompra() {
+    Conexao.instance.db.execute 'update requisicao_compra set fornecedor = ' +  this.fornecedor + ', departamento_solicitante = ' + this.departamento.obterCodigo() + ', responsavel_emissao = ' + this.responsavelEmissao + ', data_limite_entrega = ' + Calendario.inverterFormato(this.dataLimiteEntrega, '/') + ', condicao_pagamento = ' + this.condicaoPagamento + ', forma_pagamento = ' + this.formaPagamento + ', transportadora = ' + this.transportadora + ', tipo_frete = ' + this.tipoFrete + ', observacao = ' + this.observacao + ', status = ' + STATUS_EMITIDO + ' where codigo =  ' + this.codigo
   }
 
-  /* void alterarItensRequisicao(Vector itensRequisicao) {
-     if (itensRequisicao != null) {
-     this.itensRequisicao = itensRequisicao
-     int numItens = this.itensRequisicao.size()
-     Conexao conexao = new Conexao('T')
-     String query = ''
-
-     if (numItens > 0 && conexao.abrirConexao()) {
-     query = 'delete from item_requisicao where requisicao_compra = ' +  this.codigo + ' '
-     conexao.executarAtualizacao(query)
-
-     for (int i = 0i < numItensi++) {
-     ItemRequisicao itemRequisicao = (ItemRequisicao)this.itensRequisicao.get(i)
-     query = 'insert into item_requisicao (item, requisicao_compra, quantidade, quantidade_pendente, valor_item) values '
-     query = query  +  '(' + itemRequisicao.obterItem().obterCodigo() + ', ' + this.codigo + ', ' + itemRequisicao.obterQuantidadeItem() + ', ' + itemRequisicao.obterQuantidadeItem() + ', ' + itemRequisicao.obterValorUnitario() + ') '
-     conexao.executarAtualizacao(query)
-     }
-     conexao.fecharConexao()
-     }
-     }
-     }   */
-
-  void excluirRequisicaoCompra() throws Exception
-  {
-    String queryRequisicaoCompra = 'delete from requisicao_compra where codigo = ' +  this.codigo + ' '
-      String queryItemRequisicao = 'delete from item_requisicao where requisicao_compra = ' +  this.codigo + ' '
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(queryItemRequisicao)
-          conexao.executarAtualizacao(queryRequisicaoCompra)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void excluirRequisicaoCompra() {
+    Conexao.instance.db.execute 'delete from requisicao_compra where codigo = ' + codigo
+    Conexao.instance.db.execute 'delete from item_requisicao where requisicao_compra = ' + codigo
   }
 
-  void cancelarRequisicaoCompra() throws Exception
-  {
-    String query = 'update requisicao_compra set status = ' +  STATUS_CANCELADO + ' where codigo = ' + this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          query = 'delete from pedido_requisicao_compra where requisicao_compra = '  +  this.codigo
-          conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void cancelarRequisicaoCompra() {
+    Conexao.instance.db.execute 'update requisicao_compra set status = ' + STATUS_CANCELADO + ' where codigo = ' + codigo
+    Conexao.instance.db.execute 'delete from pedido_requisicao_compra where requisicao_compra = ' + codigo
   }
 
-  void registrarStatusRequisicaoCompra() throws Exception
-  {
-    String query = 'update requisicao_compra set status = ' +  this.status + ' where codigo = ' + this.codigo
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+  void registrarStatusRequisicaoCompra() {
+    Conexao.instance.db.execute 'update requisicao_compra set status = ' + status + ' where codigo = ' + codigo
   }
 
-  /**
-   * Method registrarQuantidadesAbastecidas. Registra a quantidade abastecida
-   * de cada item da requisição de compras e seus respectivos status.
-   * @throws Exception
-   */
-  void registrarQuantidadesAbastecidas() throws Exception
-  {
+  void registrarQuantidadesAbastecidas() {
     ItemRequisicao itemRequisicao
-      Conexao conexao = new Conexao('T')
-      String query
-      if (conexao.abrirConexao()) {
-        for (int i = 0;i < itensRequisicao.size();i++) {
-          itemRequisicao = (ItemRequisicao)itensRequisicao.get(i)
-            if (itemRequisicao.obterItem().obterLote() != null) {
-              query = 'update item_requisicao set status = ' +  itemRequisicao.obterStatus() + ', quantidade_pendente = ' + (itemRequisicao.getQuantidadeItem() - itemRequisicao.getQuantidadeAbastecida()) + ', quantidade_abastecida = ' + itemRequisicao.getQuantidadeAbastecida() + ' where item = ' + itemRequisicao.obterItem().obterCodigo() + ' and requisicao_compra = ' + this.codigo
-                conexao.executarAtualizacao(query)
-            }
-        }
-        conexao.fecharConexao()
+    for (int i = 0;i < itensRequisicao.size();i++) {
+      itemRequisicao = (ItemRequisicao)itensRequisicao.get(i)
+      if (itemRequisicao.obterItem().obterLote() != null) {
+        Conexao.instance.db.execute 'update item_requisicao set status = ' +  itemRequisicao.obterStatus() + ', quantidade_pendente = ' + (itemRequisicao.getQuantidadeItem() - itemRequisicao.getQuantidadeAbastecida()) + ', quantidade_abastecida = ' + itemRequisicao.getQuantidadeAbastecida() + ' where item = ' + itemRequisicao.obterItem().obterCodigo() + ' and requisicao_compra = ' + this.codigo
       }
-      else
-      {
-        Exception e = new Exception('Não foi possível realizar uma conexão com o banco de dados.')
-          throw e
-      }
+    }
   }
 
-  Vector getPedidos() {
-    return pedidos
-  }
-
-  void setPedidos(Vector pedidos) {
-    this.pedidos = pedidos
-  }
 }

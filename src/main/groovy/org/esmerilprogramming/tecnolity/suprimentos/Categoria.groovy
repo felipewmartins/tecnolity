@@ -1,9 +1,8 @@
 package org.esmerilprogramming.tecnolity.suprimentos
 
-import java.sql.*
-import javax.swing.*
-import org.esmerilprogramming.tecnolity.util.*
-import org.esmerilprogramming.tecnolity.aplicacao.*
+import javax.swing.JComboBox
+import org.esmerilprogramming.tecnolity.util.Conexao
+import org.esmerilprogramming.tecnolity.aplicacao.Aplicacao
 
 class Categoria {
   int codigo
@@ -27,14 +26,8 @@ class Categoria {
   }
 
   boolean cadastrarCategoria(String nomeCategoria) {
-    String query = 'insert into categoria_item (categoria) values ('' +  nomeCategoria +'')'
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-          return true
-      }
-    return false
+    Conexao.instance.db.execute 'insert into categoria_item (categoria) values (?)' ,nomeCategoria
+    false
   }
 
   Vector carregarCategorias(JComboBox comboBox, Aplicacao aplicacao) {
@@ -53,18 +46,13 @@ class Categoria {
     categorias
   }
 
-  Vector carregarCategorias(Conexao conexao) {
-    ResultSet dadosCategoria
+  Vector carregarCategorias() {
     Vector categorias = new Vector()
-    try {
-      dadosCategoria = conexao.executarConsulta('select * from categoria_item order by categoria asc')
-      categorias.addElement(null)
-      while (dadosCategoria.next()) {
-        categorias.addElement(new Categoria(dadosCategoria.getInt('codigo'), dadosCategoria.getString('categoria')))
-      }
-      dadosCategoria.close()
-    } catch (e) {
-      e.printStackTrace()
+    categorias.addElement(null)
+    def query = 'select codigo, categoria from categoria_item order by categoria asc'
+    def db = Conexao.instance.db
+    db.eachRow(query) {
+      categorias.addElement(new Categoria(it.codigo, it.categoria))
     }
     categorias
   }

@@ -53,22 +53,6 @@ class Lote
       this.definirDescricao(descricao)
   }
 
-  void definirNumero(int numero) {
-    this.numero = numero
-  }
-
-  void definirItem(Item item) {
-    this.item = item
-  }
-
-  void definirMovimentacao(Movimentacao movimentacao) {
-    this.movimentacao = movimentacao
-  }
-
-  void definirLocalizacao(Categoria localizacao) {
-    this.localizacao = localizacao
-  }
-
   void definirDataValidade(String dataValidade) throws Exception
   {
     String erro = ''
@@ -83,26 +67,6 @@ class Lote
     }
     else
       this.dataValidade = dataValidade
-  }
-
-  void definirQuantidade(float quantidade) {
-    this.quantidade = quantidade
-  }
-
-  void definirDescricao(String descricao) {
-    this.descricao = descricao
-  }
-
-  void definirReservado(boolean reservado) {
-    this.reservado = reservado
-  }
-
-  String obterLocalizacao() {
-    return this.localizacao.obterNomeCategoria()
-  }
-
-  String obterDataValidade() {
-    return this.dataValidade
   }
 
   void cadastrarLote() throws Exception
@@ -143,16 +107,6 @@ class Lote
                       }
   }
 
-  /**
-   * Method retirarItem. Subtrai as quantidades dos lotes para atender a
-   * quantidade de uma requisição interna. Se a quantidade solicitada for
-   * maior que a quantidade disponível, a disponível é liberada e o item
-   * continua pendente para ser atendido.
-   * @param movimentacao Movimentação criada para o item.
-   * @param itemRequisicaoInterna item, cuja quantidade será retirada do
-   * estoque.
-   * @throws Exception
-   */
   static void retirarItem(Movimentacao movimentacao, ItemRequisicaoInterna itemRequisicaoInterna) throws Exception
   {
     String erro = ''
@@ -229,13 +183,7 @@ class Lote
       }
   }
 
-  /** Exclui os lotes que não mais serão usados por estarem vazios. */
-  static void excluirLotesVazios() throws Exception
-  {
-    Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao('delete from lote where quantidade <= 0')
-          conexao.fecharConexao()
-      }
+  static void excluirLotesVazios() {
+    Conexao.instance.db.execute 'delete from lote where quantidade <= 0'
   }
 }

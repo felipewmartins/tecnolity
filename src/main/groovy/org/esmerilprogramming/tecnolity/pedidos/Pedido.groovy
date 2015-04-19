@@ -499,14 +499,13 @@ class Pedido {
     return dadosRecursos
   }
 
-  Vector carregarHistoricoPedido(Conexao conexao) throws Exception {
-    ResultSet rsHistorico
+  Vector carregarHistoricoPedido() {
     Vector historico = new Vector()
-    rsHistorico = conexao.executarConsulta("select * from historico_status_pedido where pedido = " +  this.obterCodigo() + " order by status")
-    while (rsHistorico.next()) {
-      historico.addElement(new RegistroHistoricoStatusPedido(rsHistorico.getString("status"), rsHistorico.getString("data")))
+    def query  = 'select status, data from historico_status_pedido where pedido = ' + codigo + ' order by status'
+    def db = Conexao.instance.db
+    db.eachRow(query) {
+      historico.addElement(new RegistroHistoricoStatusPedido(it.status, it.data))
     }
-    rsHistorico.close()
     historico
   }
 

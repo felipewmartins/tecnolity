@@ -17,20 +17,20 @@ class Movimentacao
     static final String DEPOSITO          = 'DP'
     static final String RETIRADA_DEPOSITO = 'RD'
 
-    private int codigo
-    private String tipoMovimentacao
-    private Item item
-    private ItemRequisicaoInterna itemRequisicaoInterna
-    private float quantidadeItem
-    private ItemRequisicao itemRequisicao
-    private RequisicaoInterna requisicaoInterna
-    private Colaborador responsavel
-    private Vector movimentacoesItens = new Vector()
-    private String dataDespacho, dataRecebimento
-    private Transportadora transportadora
-    private float valorConhecimento
-    private String numeroConhecimento
-    private String notaFiscal
+    int codigo
+    String tipoMovimentacao
+    Item item
+    ItemRequisicaoInterna itemRequisicaoInterna
+    float quantidadeItem
+    ItemRequisicao itemRequisicao
+    RequisicaoInterna requisicaoInterna
+    Colaborador responsavel
+    Vector movimentacoesItens = new Vector()
+    String dataDespacho, dataRecebimento
+    Transportadora transportadora
+    float valorConhecimento
+    String numeroConhecimento
+    String notaFiscal
 
     Movimentacao() {}
 
@@ -50,98 +50,6 @@ class Movimentacao
       definirItemRequisicaoInterna(itemRequisicaoInterna)
       definirRequisicaoInterna(requisicaoInterna)
       definirResponsavel(responsavel)
-  }
-
-  void definirCodigoMovimentacao(int codigo) {
-    this.codigo = codigo
-  }
-
-  void definirItemRequisicaoInterna(ItemRequisicaoInterna itemRequisicaoInterna) {
-    this.itemRequisicaoInterna = itemRequisicaoInterna
-  }
-
-  void definirTipoMovimentacao(String tipoMovimentacao) {
-    this.tipoMovimentacao = tipoMovimentacao
-  }
-
-  void definirItem(Item item) {
-    this.item = item
-  }
-
-  void definirQuantidadeItem(float quantidadeItem) {
-    this.quantidadeItem = quantidadeItem
-  }
-
-  void definirItemRequisicao(ItemRequisicao itemRequisicao) {
-    this.itemRequisicao = itemRequisicao
-  }
-
-  void definirRequisicaoInterna(RequisicaoInterna requisicaoInterna) {
-    this.requisicaoInterna = requisicaoInterna
-  }
-
-  void definirResponsavel(Colaborador responsavel) {
-    this.responsavel = responsavel
-  }
-
-  void definirDataDespacho(String dataDespacho) {
-    this.dataDespacho = dataDespacho
-  }
-
-  void definirDataRecebimento(String dataRecebimento) {
-    this.dataRecebimento = dataRecebimento
-  }
-
-  void definirTransportadora(Transportadora transportadora) {
-    this.transportadora = transportadora
-  }
-
-  void definirValorConhecimento(float valorConhecimento) {
-    this.valorConhecimento = valorConhecimento
-  }
-
-  void definirNumeroConhecimento(String numeroConhecimento) {
-    this.numeroConhecimento = numeroConhecimento
-  }
-
-  void definirNotaFiscal(String notaFiscal) {
-    this.notaFiscal = notaFiscal
-  }
-
-  ItemRequisicao obterItemRequisicao() {
-    return this.itemRequisicao
-  }
-
-  int obterCodigo() {
-    return this.codigo
-  }
-
-  Item obterItem() {
-    return this.item
-  }
-
-  String obterDataDespacho() {
-    return this.dataDespacho
-  }
-
-  String obterDataRecebimento() {
-    return this.dataRecebimento
-  }
-
-  Transportadora obterTransportadora() {
-    return this.transportadora
-  }
-
-  float obterValorConhecimento() {
-    return this.valorConhecimento
-  }
-
-  String obterNumeroConhecimento() {
-    return this.numeroConhecimento
-  }
-
-  String obterNotaFiscal() {
-    return this.notaFiscal
   }
 
   void cadastrarMovimentacao() throws Exception

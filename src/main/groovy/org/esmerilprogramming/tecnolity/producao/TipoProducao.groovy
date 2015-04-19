@@ -1,8 +1,6 @@
 package org.esmerilprogramming.tecnolity.producao
 
-
-import java.sql.*
-import org.esmerilprogramming.tecnolity.util.*
+import org.esmerilprogramming.tecnolity.util.Conexao
 
 class TipoProducao {
   int codigo
@@ -17,47 +15,28 @@ class TipoProducao {
     this.codigo = codigo
   }
 
-  Vector carregarTiposProducao(Conexao conexao) throws Exception
-  {
-    ResultSet dadosTipoProducao
-      Vector tiposProducao = new Vector()
-      try {
-        dadosTipoProducao = conexao.executarConsulta('select * from tipo_producao order by tipo_producao asc')
-          tiposProducao.addElement(null)
-
-          while (dadosTipoProducao.next()) {
-            tiposProducao.addElement(new TipoProducao(dadosTipoProducao.getInt('codigo'), dadosTipoProducao.getString('tipo_producao')))
-          }
-        dadosTipoProducao.close()
-      }
-    catch (SQLException e) {
-      e.printStackTrace()
+  Vector carregarTiposProducao() {
+    Vector tiposProducao = new Vector()
+    tiposProducao.addElement(null)
+    def query = 'select codigo, tipo_producao from tipo_producao order by tipo_producao asc'
+    def db = Conexao.instance.db
+    db.eachRow(query) {
+      tiposProducao.addElement(new TipoProducao(it.codigo, it.tipo_producao))
     }
-    return tiposProducao
+    tiposProducao
   }
 
-  int obterUltimoIdentificador(Conexao conexao) throws Exception
-  {
-    ResultSet dadosTipoProducao
-      try {
-        dadosTipoProducao = conexao.executarConsulta('select max(codigo) as identificador_maior from tipo_producao')
-          if (dadosTipoProducao.next()) {
-            return dadosTipoProducao.getInt('identificador_maior')  +  1
-          }
-        dadosTipoProducao.close()
-      }
-    catch (SQLException e) {
-      e.printStackTrace()
+  int obterUltimoIdentificador() {
+    def retorno = 1
+    def query 'select max(codigo) as identificador_maior from tipo_producao'
+    def db = Conexao.instance.db
+    db.firstRow(query) {
+      retorno += it.identificador_maior
     }
-    return 1
+    retorno
   }
 
   void cadastrarTipoProducao() {
-    String query = 'insert into tipo_producao (codigo, tipo_producao) values (' +  this.codigo + ', ' + this.tipoProducao + ')'
-      Conexao conexao = new Conexao('T')
-      if (conexao.abrirConexao()) {
-        conexao.executarAtualizacao(query)
-          conexao.fecharConexao()
-      }
+    Conexao.instance.db.execute 'insert into tipo_producao (codigo, tipo_producao) values (?,?)' ,codigo,tipoProducao
   }
 }
