@@ -16,34 +16,6 @@ class Colaborador extends PessoaFisica {
   boolean colaboradorExiste = true
   String ddd
 
-  Colaborador(String matricula, String senha, char sexo, String nomeCompleto,
-        String identidade, String orgaoEmissorIdentidade, String cpf,
-        Departamento departamento, String logradouro, String complemento,
-        String bairro, String cidade, Estado estado, String cep, String ddd,
-        String telefone, String ramal, String celular, String email,
-        boolean senhaAlterada) throws Exception {
-
-      super(nomeCompleto, logradouro, '', complemento, bairro, cidade, estado,
-          cep, telefone, celular, email, cpf, identidade,
-          orgaoEmissorIdentidade, sexo)
-        this.definirMatricula(matricula)
-        this.definirSenha(senha)
-        this.definirDepartamento(departamento)
-        this.definirRamal(ramal)
-        this.senhaAlterada(senhaAlterada)
-    }
-
-  Colaborador(String matricula, String senha) {
-    this.matricula = matricula
-    this.senha = senha
-  }
-
-  Colaborador(String matricula, String nomeCompleto, String senha) {
-    this.matricula = matricula
-    super.setNome(nomeCompleto)
-    this.senha = senha
-  }
-
   Colaborador(String matricula, Conexao conexao) throws Exception {
     this.matricula = matricula
     ResultSet dadosColaborador, dadosDepartamento
@@ -81,10 +53,6 @@ class Colaborador extends PessoaFisica {
       super.setEmail(dadosColaborador.getString('email'))
       this.senhaAlterada = dadosColaborador.getBoolean('senha_alterada')
     }
-  }
-
-  Colaborador(String matricula) {
-    this.matricula = matricula
   }
 
   void definirTelefone(String telefone) throws Exception {
