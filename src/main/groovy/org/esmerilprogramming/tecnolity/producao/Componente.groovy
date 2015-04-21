@@ -20,7 +20,7 @@ class Componente {
   }
 
   String obterNomeComponente(Conexao conexao) throws Exception {
-    def query 'select componente from componente where codigo = ' + codigo
+    def query = 'select componente from componente where codigo = ' + codigo
     def db = Conexao.instance.db
     db.eachRow(query) {
       nomeComponente = it.componente

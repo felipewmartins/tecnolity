@@ -28,7 +28,7 @@ class TipoProducao {
 
   int obterUltimoIdentificador() {
     def retorno = 1
-    def query 'select max(codigo) as identificador_maior from tipo_producao'
+    def query = 'select max(codigo) as identificador_maior from tipo_producao'
     def db = Conexao.instance.db
     db.firstRow(query) {
       retorno += it.identificador_maior
