@@ -23,7 +23,7 @@ class Despesa {
     this.placaAntesAlteracao = placa
     this.dataAntesAlteracao = data
 
-    def query 'select descricao, valor from despesa_veiculo where veiculo = ' +  placa + ' and datahora = ' + Calendario.inverterFormato(data, '/')
+    def query = 'select descricao, valor from despesa_veiculo where veiculo = ' +  placa + ' and datahora = ' + Calendario.inverterFormato(data, '/')
     def db = Conexao.instance.db
     if (db.firstRow(query)) {
       descricao = it.descricao
@@ -92,7 +92,7 @@ class Despesa {
   Vector carregarDatasDespesas() {
     Vector datasDespesas = new Vector()
     def query = 'select datahora from despesa_veiculo where veiculo = ' + placa + ' order by datahora desc'
-    def Conexao.instance.db
+    def db = Conexao.instance.db
     db.eachRow(query) {
       datasDespesas.addElement(new Despesa(it.datahora))
     }

@@ -40,5 +40,6 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
     def db = Conexao.instance.db
     if (!db.firstRow(query)) {
       db.execute 'insert into estado (sigla_estado, estado, pais) values (?,?,?)' , sigla, nome, pais.sigla
-  }
+    }
+ }
 }

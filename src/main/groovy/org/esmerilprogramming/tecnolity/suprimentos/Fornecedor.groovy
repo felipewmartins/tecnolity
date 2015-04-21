@@ -110,6 +110,9 @@ class Fornecedor {
               this.email = resultado.getString('email')
               this.website = resultado.getString('website')
           }
+      } catch (Exception e) {
+          e.printStackTrace()
+        }
   }
 
   static Vector carregarFornecedores(Conexao conexao) throws Exception
@@ -204,4 +207,5 @@ class Fornecedor {
   String toString() {
     return this.obterRazaoSocial()
   }
+
 }

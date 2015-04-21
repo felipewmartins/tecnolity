@@ -21,7 +21,7 @@ class Interface {
 
   Vector carregarInterfaces() {
     Vector interfaces = new Vector()
-    def query 'select identificador, interface as inter rom interface order by interface asc'
+    def query = 'select identificador, interface as inter rom interface order by interface asc'
     def db = Conexao.instance.db
     db.eachRow(query) {
       interfaces.addElement(new Interface(it.identificador, it.inter))
