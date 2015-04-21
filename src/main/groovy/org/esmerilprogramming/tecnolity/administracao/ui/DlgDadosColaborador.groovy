@@ -39,7 +39,7 @@ class DlgDadosColaborador extends JDialog implements ActionListener, FocusListen
     this.setTitle(tituloJanela)
     this.aplicacao = aplicacao
     this.modo = modo
-    this.departamentos = new Vector()
+    this.departamentos = []
     montarInterface()
   }
 
