@@ -24,13 +24,13 @@ class Estado extends org.esmerilprogramming.tecnolity.util.Estado {
     }
   }
 
-  static Vector carregarEstados(String pais) {
-    Vector estados = new Vector()
-    estados.addElement(null)
+  static List<Estado> carregarEstados(String pais) {
+    def estados = []
+    estados.add(null)
     def query = 'select sigla_estado, estado from estado where pais = ' + pais + ' order by estado asc'
     def db = Conexao.instance.db
     db.eachRow(query) {
-      estados.addElement(new Estado(it.sigla_estado, it.estado))
+      estados.add(new Estado(it.sigla_estado, it.estado))
     }
     estados
   }

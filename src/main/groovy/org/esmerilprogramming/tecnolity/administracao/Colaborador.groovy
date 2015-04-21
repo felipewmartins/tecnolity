@@ -143,13 +143,13 @@ class Colaborador extends PessoaFisica {
     true
   }
 
-  Vector carregarColaboradores() {
-    Vector colaboradores = new Vector()
-    colaboradores.addElement(null)
+  List<Colaborador> carregarColaboradores() {
+    def colaboradores = []
+    colaboradores.add(null)
     def db = Conexao.instance.db
     def query = 'select usuario, nome_completo, senha from usuario order by usuario asc'
     db.eachRow(query) {
-      colaboradores.addElement(new Colaborador(it.usuario, it.nome_completo, it.senha))
+      colaboradores.add(new Colaborador(it.usuario, it.nome_completo, it.senha))
     }
     colaboradores
   }
@@ -169,7 +169,7 @@ class Colaborador extends PessoaFisica {
     }
   }
 
-  void definirPermissoes(Vector permissoes) throws SQLException, Exception {
+  void definirPermissoes(List<Permissao> permissoes) throws SQLException, Exception {
     def db = Conexao.instance.db
     db.execute 'delete from permissao where usuario = ?', matricula
     for (int i = 0; i < permissoes.size(); i++) {
